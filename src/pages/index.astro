@@ -63,16 +63,14 @@ const approach = [
 
 		<header class="site-header">
 			<div class="shell header-inner">
-				<div class="brand-lockup" aria-label="3Back, The Team Execution Company">
+				<a class="brand-lockup" href="/" aria-label="3Back homepage">
 					<div class="wordmark"><span>3</span>Back</div>
 					<div class="descriptor">The Team Execution Company</div>
-				</div>
+				</a>
 
 				<nav class="desktop-nav" aria-label="Primary navigation">
-					<span>Operational Grip</span>
-					<span>Work With 3Back</span>
-					<span>Ideas</span>
-					<span>Learning</span>
+					<a href="#operational-grip">Operational Grip</a>
+					<a href="#thinking-heading">Ideas</a>
 					<span>About</span>
 				</nav>
 
@@ -286,16 +284,27 @@ const approach = [
 					<p>The Team Execution Company</p>
 				</div>
 				<div>
-					<p class="footer-heading">Navigate</p>
-					<ul><li>Operational Grip</li><li>Work With 3Back</li><li>Ideas</li><li>Learning</li><li>About</li></ul>
+					<p class="footer-heading">Explore</p>
+					<ul>
+						<li><a href="#operational-grip">Operational Grip</a></li>
+						<li><a href="#thinking-heading">Ideas</a></li>
+						<li>Papers</li>
+						<li>Articles</li>
+						<li>Tales of the Grip</li>
+					</ul>
 				</div>
 				<div>
-					<p class="footer-heading">Body of work</p>
-					<ul><li>Well-Formed Teams</li><li>Agility</li><li>Scrum</li><li>Publications</li><li>Tales of the Grip</li></ul>
+					<p class="footer-heading">Learning</p>
+					<ul><li>Training</li><li>Events</li></ul>
 				</div>
 				<div>
 					<p class="footer-heading">Company</p>
-					<ul><li>Contact</li><li>Privacy</li><li>Terms</li></ul>
+					<ul>
+						<li>About</li>
+						<li><a href="#contact">Start a Conversation</a></li>
+						<li>Privacy Policy</li>
+						<li>Terms</li>
+					</ul>
 				</div>
 			</div>
 			<div class="shell footer-bottom"><span>Bound what you can. Act locally. Observe the effects. Learn.</span><span>Copyright &copy; 3Back 2026</span></div>
@@ -348,9 +357,12 @@ const approach = [
 	.header-inner { min-height: 86px; display: grid; grid-template-columns: auto 1fr auto; align-items: center; gap: 36px; }
 	.wordmark { font-size: 1.75rem; font-weight: 800; letter-spacing: -0.055em; line-height: 1; }
 	.wordmark span { color: var(--amber); }
+	.brand-lockup { color: inherit; text-decoration: none; }
 	.descriptor { margin-top: 7px; color: var(--slate); font-size: 0.62rem; font-weight: 700; letter-spacing: 0.13em; text-transform: uppercase; }
 	.desktop-nav { display: flex; justify-content: center; gap: clamp(14px, 2.2vw, 34px); color: #3f4844; font-size: 0.83rem; font-weight: 600; }
-	.desktop-nav span { white-space: nowrap; }
+	.desktop-nav a, .desktop-nav span { white-space: nowrap; }
+	.desktop-nav a { text-decoration: none; }
+	.desktop-nav a:hover { color: var(--amber); }
 
 	.button { display: inline-flex; align-items: center; justify-content: center; min-height: 50px; padding: 12px 19px; border: 2px solid var(--amber); background: var(--amber); color: var(--charcoal); font-weight: 750; text-decoration: none; transition: background-color 140ms ease, color 140ms ease, transform 140ms ease; }
 	.button:hover { background: var(--charcoal); border-color: var(--charcoal); color: var(--paper); transform: translateY(-2px); }
@@ -465,6 +477,8 @@ const approach = [
 	.footer-brand p { margin-top: 10px; color: #7f8984; font-size: 0.72rem; font-weight: 700; letter-spacing: 0.13em; text-transform: uppercase; }
 	.footer-heading { color: var(--paper); font-size: 0.74rem; font-weight: 800; letter-spacing: 0.13em; text-transform: uppercase; }
 	.site-footer ul { margin: 0; padding: 0; list-style: none; color: #919b96; font-size: 0.86rem; line-height: 2; }
+	.site-footer li a { color: inherit; text-decoration: none; }
+	.site-footer li a:hover { color: var(--paper); }
 	.footer-bottom { display: flex; justify-content: space-between; gap: 30px; margin-top: 55px; padding-top: 20px; border-top: 1px solid #303936; color: #7f8984; font-size: 0.74rem; }
 	.footer-bottom span:first-child { color: #c8ceca; font-weight: 700; }
 

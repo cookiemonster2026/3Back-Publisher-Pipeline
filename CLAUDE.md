@@ -1,8 +1,59 @@
+# Repository instructions
+
+## Website change policy
+
+These instructions apply to every change that could alter the website, including content, styling, navigation, routes, interactions, assets, accessibility, build behavior, or published output.
+
+For every website change:
+
+1. Read this file and `docs/website-acceptance-checklist.md` before making changes.
+2. Identify the numbered acceptance conditions the requested change could affect before editing.
+3. Read the complete `docs/brand/source/3Back-Minimum-Viable-Brand-and-Design-Brief.md` when the work affects outward-facing content, positioning, navigation, hierarchy, interaction, or visual design. Treat this Markdown file as the sole governing brand and design brief for outward-facing decisions. Do not read, convert, or render any DOCX version.
+4. Make the smallest bounded change requested. Do not expand scope without explicit approval.
+5. Run every affected checklist item and every checklist item designated as a global regression check.
+6. Never claim that a check passed unless it was actually verified. A code inspection, build, browser test, and human judgment are different forms of evidence and are not interchangeable.
+7. Report each failed or unverified check by checklist item number, requirement, observed failure or reason, and what the user should inspect.
+8. Leave all human judgment checks pending for the user's review. Never mark them passed on the user's behalf.
+9. Never weaken, remove, renumber, reuse, or rewrite an acceptance condition without the user's explicit approval.
+10. If the work establishes a durable new requirement or reveals a missing safeguard, propose a checklist addition in the task report. Do not add it automatically.
+11. Do not commit, push, or deploy unless explicitly instructed.
+
+Checklist results belong in the task report, not in the baseline checklist. The number of checks run may vary because unrelated affected-only checks do not run.
+
+## Version control and release policy
+
+- Verification failures and unverified checks do not prevent committing and pushing a source checkpoint to a feature branch when the user explicitly requests it.
+- Report every failed and unverified check with the commit or push result using the established checklist format.
+- Do not deploy or release when any required check fails. Source checkpoint synchronization is not deployment approval.
+- Human-review items remain pending until the designated reviewer completes them.
+- A normal Git commit or Git push does not require GitHub CLI. Use normal Git unless the user explicitly requests another workflow.
+- Do not deploy directly to Cloudflare unless the user explicitly instructs you to deploy. Permission to commit or push does not authorize deployment.
+
+After every website task, report verification in exactly this structure:
+
+```text
+Verification: [passed]/[checks run] passed
+
+Failed:
+- Checklist item [number]: [requirement]
+  Observed failure: [specific description]
+  What to inspect: [page, component, viewport, or behavior]
+
+Unverified:
+- Checklist item [number]: [requirement]
+  Reason: [why it could not be verified]
+
+Human review: [number] pending
+Result: Ready for local review or Not ready
+```
+
+Omit the `Failed` or `Unverified` section when it is empty. Do not list individual passing checks unless requested. Use `Ready for local review` only when no Claude-verifiable check failed or remains unverified. Human-review items may remain pending with that result.
+
 ## Development
 
 When starting the dev server, use background mode:
 
-```
+```text
 astro dev --background
 ```
 

@@ -404,7 +404,7 @@ These are bounded content gaps. They do not block the desktop and mobile impleme
 
 This blueprint applies:
 
-- The 3Back Minimum Viable Brand and Design Brief
+- `docs/brand/source/3Back-Minimum-Viable-Brand-and-Design-Brief.md`
 - The Project Operating Manual: Operational Grip
 - The 3Back Visual Direction Tile v0.3
 - The approved audience clarification that executive and operational leaders are primary, while team leaders and practitioners are the broader audience
