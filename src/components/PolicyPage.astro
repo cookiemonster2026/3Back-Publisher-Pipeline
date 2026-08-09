@@ -1,0 +1,33 @@
+---
+import SiteLayout from "../layouts/SiteLayout.astro";
+
+interface Props {
+	title: string;
+	description: string;
+}
+
+const { title, description } = Astro.props;
+---
+
+<SiteLayout title={`${title} | 3Back`} description={description}>
+	<main id="main" class="policy-page">
+		<article class="shell policy-content">
+			<h1>{title}</h1>
+			<slot />
+		</article>
+	</main>
+</SiteLayout>
+
+<style is:global>
+	.policy-page { background: var(--paper); }
+	.policy-content { max-width: 880px; padding-block: clamp(72px, 10vw, 120px); }
+	.policy-content h1 { padding-bottom: 28px; border-bottom: 4px solid var(--amber); }
+	.policy-content h2 { margin: 52px 0 18px; font-size: clamp(1.65rem, 3vw, 2.35rem); }
+	.policy-content p, .policy-content li { color: #424c48; }
+	.policy-content ul { margin: 0 0 28px; padding-left: 24px; }
+	.policy-content li { margin-bottom: 12px; }
+	.policy-content li::marker { color: var(--amber); }
+	.policy-content a { text-decoration-color: var(--amber); text-decoration-thickness: 2px; text-underline-offset: 3px; }
+	.policy-content a:hover { color: var(--charcoal); text-decoration-thickness: 3px; }
+	.policy-content hr { margin: 52px 0; border: 0; border-top: 1px solid var(--rule); }
+</style>
