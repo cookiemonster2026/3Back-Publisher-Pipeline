@@ -1,5 +1,5 @@
 ---
-const homePrefix = Astro.url.pathname === "/" ? "" : "/";
+const currentPath = Astro.url.pathname;
 ---
 
 <header class="site-header">
@@ -10,12 +10,12 @@ const homePrefix = Astro.url.pathname === "/" ? "" : "/";
 		</a>
 
 		<nav class="desktop-nav" aria-label="Primary navigation">
-			<a href={`${homePrefix}#operational-grip`}>Operational Grip</a>
-			<a href={`${homePrefix}#thinking-heading`}>Ideas</a>
-			<span>About</span>
+			<a href="/operational-grip/" aria-current={currentPath === "/operational-grip/" ? "page" : undefined}>Operational Grip</a>
+			<a href="/ideas/" aria-current={currentPath === "/ideas/" ? "page" : undefined}>Ideas</a>
+			<a href="/about/" aria-current={currentPath === "/about/" ? "page" : undefined}>About</a>
 		</nav>
 
-		<a class="button button-small" href={`${homePrefix}#contact`}>Start a Conversation</a>
+		<a class="button button-small" href="/contact/" aria-current={currentPath === "/contact/" ? "page" : undefined}>Start a Conversation</a>
 
 		<button
 			class="menu-toggle"
@@ -28,10 +28,10 @@ const homePrefix = Astro.url.pathname === "/" ? "" : "/";
 		</button>
 
 		<nav id="mobile-navigation" class="mobile-nav" aria-label="Mobile navigation" hidden>
-			<a href={`${homePrefix}#operational-grip`}>Operational Grip</a>
-			<a href={`${homePrefix}#thinking-heading`}>Ideas</a>
-			<span>About</span>
-			<a class="button button-small" href={`${homePrefix}#contact`}>Start a Conversation</a>
+			<a href="/operational-grip/" aria-current={currentPath === "/operational-grip/" ? "page" : undefined}>Operational Grip</a>
+			<a href="/ideas/" aria-current={currentPath === "/ideas/" ? "page" : undefined}>Ideas</a>
+			<a href="/about/" aria-current={currentPath === "/about/" ? "page" : undefined}>About</a>
+			<a class="button button-small" href="/contact/" aria-current={currentPath === "/contact/" ? "page" : undefined}>Start a Conversation</a>
 		</nav>
 	</div>
 </header>
@@ -86,7 +86,8 @@ const homePrefix = Astro.url.pathname === "/" ? "" : "/";
 	.desktop-nav { display: flex; justify-content: center; gap: clamp(14px, 2.2vw, 34px); color: #3f4844; font-size: 0.83rem; font-weight: 600; }
 	.desktop-nav a, .desktop-nav span { white-space: nowrap; }
 	.desktop-nav a { text-decoration: none; }
-	.desktop-nav a:hover { color: var(--amber); }
+	.desktop-nav a:hover { color: var(--charcoal); text-decoration: underline; text-decoration-color: var(--amber); text-decoration-thickness: 2px; text-underline-offset: 6px; }
+	.desktop-nav a[aria-current="page"] { text-decoration: underline; text-decoration-color: var(--amber); text-decoration-thickness: 2px; text-underline-offset: 6px; }
 	.button-small { min-height: 42px; padding: 8px 14px; font-size: 0.82rem; }
 	.menu-toggle, .mobile-nav { display: none; }
 
@@ -102,6 +103,7 @@ const homePrefix = Astro.url.pathname === "/" ? "" : "/";
 		.mobile-nav[hidden] { display: none; }
 		.mobile-nav > a:not(.button), .mobile-nav > span { min-height: 45px; display: flex; align-items: center; padding: 9px 10px; border-bottom: 1px solid var(--rule); color: #3f4844; font-size: 0.93rem; font-weight: 650; text-decoration: none; }
 		.mobile-nav > span { color: var(--slate); }
+		.mobile-nav > a[aria-current="page"]:not(.button) { border-left: 3px solid var(--amber); }
 		.mobile-nav .button { margin-top: 12px; }
 		.menu-toggle:focus-visible, .mobile-nav a:focus-visible, .brand-lockup:focus-visible { outline: 3px solid var(--amber); outline-offset: 3px; }
 	}
