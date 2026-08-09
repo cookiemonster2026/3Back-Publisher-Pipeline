@@ -42,6 +42,43 @@ const approach = [
 		body: "Observe what changed, what propagated, and what the organization can now see well enough to do next.",
 	},
 ];
+
+const assessmentResults = [
+	{
+		key: "demand",
+		label: "Response to Changing Demand",
+		score: 95,
+		strength: "Strong",
+	},
+	{
+		key: "ownership",
+		label: "Ownership and Bounded Execution",
+		score: 35,
+		strength: "Weak",
+	},
+	{
+		key: "results",
+		label: "Observable and Traceable Results",
+		score: 90,
+		strength: "Strong",
+	},
+	{
+		key: "adaptation",
+		label: "Adaptation Without Loss of Control",
+		score: 90,
+		strength: "Strong",
+	},
+	{
+		key: "ai",
+		label: "AI Use and Control",
+		score: 60,
+		strength: "Moderate",
+	},
+];
+
+const overallGripScore = Math.round(
+	assessmentResults.reduce((total, result) => total + result.score, 0) / assessmentResults.length,
+);
 ---
 
 <!doctype html>
@@ -180,6 +217,64 @@ const approach = [
 				</div>
 			</section>
 
+			<section class="assessment-section section-rule" id="grip-assessment" aria-labelledby="assessment-heading">
+				<div class="shell assessment-grid">
+					<div class="assessment-copy">
+						<p class="eyebrow eyebrow-light">Operational Grip assessment</p>
+						<h2 id="assessment-heading">How strong is your organization's grip?</h2>
+						<p class="assessment-intro">See where execution is holding firm and where it is losing grip.</p>
+						<ul class="assessment-commitments" aria-label="Assessment details">
+							<li>15 questions</li>
+							<li>About 4 minutes</li>
+							<li>Immediate results</li>
+						</ul>
+						<button class="button assessment-button" type="button" disabled>Check Your Grip</button>
+					</div>
+
+					<article class="score-card" id="grip-score-card" aria-labelledby="score-card-heading">
+						<p class="score-eyebrow" id="score-card-heading">Sample Grip Score</p>
+						<div class="score-profile">
+							<svg class="score-ring" viewBox="0 0 520 300" role="group" aria-label="Five-section Operational Grip score profile">
+								<g transform="translate(260 250)">
+									<path id="ring-demand" data-section="demand" class="score-segment score-segment-strong" d="M -210 0 A 210 210 0 0 1 -170 -123" role="button" tabindex="0" aria-controls="result-demand" aria-label="Response to Changing Demand, 95 percent, Strong" aria-pressed="false"></path>
+									<path id="ring-ownership" data-section="ownership" class="score-segment score-segment-weak" d="M -158 -139 A 210 210 0 0 1 -65 -200" role="button" tabindex="0" aria-controls="result-ownership" aria-label="Ownership and Bounded Execution, 35 percent, Weak" aria-pressed="false"></path>
+									<path id="ring-results" data-section="results" class="score-segment score-segment-strong" d="M -48 -204 A 210 210 0 0 1 48 -204" role="button" tabindex="0" aria-controls="result-results" aria-label="Observable and Traceable Results, 90 percent, Strong" aria-pressed="false"></path>
+									<path id="ring-adaptation" data-section="adaptation" class="score-segment score-segment-strong" d="M 65 -200 A 210 210 0 0 1 158 -139" role="button" tabindex="0" aria-controls="result-adaptation" aria-label="Adaptation Without Loss of Control, 90 percent, Strong" aria-pressed="false"></path>
+									<path id="ring-ai" data-section="ai" class="score-segment score-segment-moderate" d="M 170 -123 A 210 210 0 0 1 210 0" role="button" tabindex="0" aria-controls="result-ai" aria-label="AI Use and Control, 60 percent, Moderate" aria-pressed="false"></path>
+								</g>
+							</svg>
+							<p class="overall-score" aria-label={`Overall score ${overallGripScore} out of 100`}>
+								<strong>{overallGripScore}</strong><span>/100</span>
+							</p>
+							<img class="hands-bar" src="/assets/operational-grip/hands-bar.png" alt="One hand holds a bar securely while the other begins to lose its grip." />
+						</div>
+
+						<div class="score-results" aria-label="Sample results by assessment section">
+							{assessmentResults.map((result) => (
+								<button
+									class:list={["score-result", `score-result-${result.key}`]}
+									id={`result-${result.key}`}
+									type="button"
+									data-section={result.key}
+									aria-controls={`ring-${result.key}`}
+									aria-pressed="false"
+								>
+									<span class="score-icon" aria-hidden="true"></span>
+									<span class="result-label">{result.label}</span>
+									<strong>{result.score}%</strong>
+									<span class="result-strength">{result.strength}</span>
+								</button>
+							))}
+						</div>
+
+						<div class="overall-reading">
+							<h3>Overall Reading</h3>
+							<p>Generally strong grip with a concentrated weakness in Ownership and Bounded Execution.</p>
+						</div>
+					</article>
+				</div>
+			</section>
+
 			<section class="section approach-section section-rule" aria-labelledby="approach-heading">
 				<div class="shell">
 					<div class="section-heading narrow-heading">
@@ -309,6 +404,58 @@ const approach = [
 			</div>
 			<div class="shell footer-bottom"><span>Bound what you can. Act locally. Observe the effects. Learn.</span><span>Copyright &copy; 3Back 2026</span></div>
 		</footer>
+
+		<script>
+			const assessment = document.querySelector("#grip-assessment");
+
+			if (assessment) {
+				const pairedControls = Array.from(assessment.querySelectorAll<HTMLElement>("[data-section]"));
+				let selectedSection: string | null = null;
+
+				const setActiveSection = (section: string | null) => {
+					assessment.dataset.activeSection = section ?? "";
+					pairedControls.forEach((control) => {
+						const isActive = control.dataset.section === section;
+						control.classList.toggle("is-active", isActive);
+						if (control.matches("button, [role='button']")) {
+							control.setAttribute("aria-pressed", String(isActive));
+						}
+					});
+				};
+
+				pairedControls.forEach((control) => {
+					const section = control.dataset.section;
+					if (!section) return;
+
+					control.addEventListener("pointerenter", (event) => {
+						if ((event as PointerEvent).pointerType !== "touch") setActiveSection(section);
+					});
+					control.addEventListener("pointerleave", (event) => {
+						if ((event as PointerEvent).pointerType !== "touch") setActiveSection(selectedSection);
+					});
+					control.addEventListener("focus", () => setActiveSection(section));
+					control.addEventListener("blur", () => setActiveSection(selectedSection));
+					control.addEventListener("click", (event) => {
+						event.stopPropagation();
+						selectedSection = event.detail === 0 ? section : selectedSection === section ? null : section;
+						setActiveSection(selectedSection);
+					});
+					control.addEventListener("keydown", (event) => {
+						if (control.matches("button")) return;
+						if (event.key === " " || event.key === "Enter") {
+							event.preventDefault();
+							selectedSection = section;
+							setActiveSection(section);
+						}
+					});
+				});
+
+				document.addEventListener("click", () => {
+					selectedSection = null;
+					setActiveSection(null);
+				});
+			}
+		</script>
 	</body>
 </html>
 
@@ -430,6 +577,52 @@ const approach = [
 	.loop-flow .signal-step::after { background: var(--amber-wash); }
 	.loop-note { max-width: 890px; margin: 45px 0 0 auto; color: var(--slate); }
 
+	.assessment-section { padding: 110px 0; background: #303936; color: var(--paper); }
+	.assessment-grid { display: grid; grid-template-columns: minmax(320px, 0.7fr) minmax(560px, 1.3fr); gap: clamp(32px, 4vw, 64px); align-items: center; }
+	.assessment-copy { min-width: 0; }
+	.assessment-copy h2 { max-width: 470px; margin-bottom: 30px; font-size: clamp(2.6rem, 3.6vw, 3.6rem); }
+	.assessment-intro { max-width: 430px; margin-bottom: 35px; color: #d4d9d6; font-size: 1.16rem; }
+	.assessment-commitments { display: grid; gap: 12px; margin: 0 0 38px; padding-left: 24px; color: #f2eee7; font-size: 1.08rem; }
+	.assessment-commitments li::marker { color: var(--amber); }
+	.assessment-button { min-width: min(100%, 270px); }
+	.assessment-button:disabled { background: var(--amber); border-color: #f5aa70; color: var(--charcoal); cursor: not-allowed; opacity: 1; transform: none; }
+
+	.score-card { min-width: 0; padding: clamp(28px, 4vw, 48px); border-radius: 16px; background: var(--reading); color: var(--charcoal); }
+	.score-eyebrow { margin-bottom: 6px; color: var(--charcoal); font-size: clamp(1.25rem, 2.3vw, 1.85rem); font-weight: 800; text-align: center; }
+	.score-profile { position: relative; max-width: 610px; margin: 0 auto; }
+	.score-ring { display: block; width: 100%; overflow: visible; }
+	.score-segment { fill: none; stroke-width: 52; stroke-linecap: butt; cursor: pointer; transform-box: fill-box; transform-origin: center; transition: transform 250ms ease-out, opacity 250ms ease-out, filter 250ms ease-out; }
+	.score-segment-strong { stroke: #172627; }
+	.score-segment-weak { stroke: #d96b18; }
+	.score-segment-moderate { stroke: #9a4328; }
+	.score-segment.is-active { position: relative; z-index: 2; transform: scale(1.2); }
+	.score-segment:focus-visible { outline: none; stroke-width: 60; filter: drop-shadow(0 0 2px #fcfaf6) drop-shadow(0 0 5px #d96b18); }
+	.assessment-section[data-active-section]:not([data-active-section=""]) .score-segment:not(.is-active),
+	.assessment-section[data-active-section]:not([data-active-section=""]) .score-result:not(.is-active) { opacity: 0.72; }
+	.overall-score { position: absolute; top: 44%; left: 50%; display: flex; align-items: baseline; gap: 7px; margin: 0; transform: translate(-50%, -50%); }
+	.overall-score strong { font-size: clamp(4.2rem, 8vw, 7rem); line-height: 0.8; letter-spacing: -0.07em; }
+	.overall-score span { font-size: clamp(1.25rem, 2.4vw, 2rem); font-weight: 800; }
+	.hands-bar { position: relative; display: block; width: 100%; height: auto; margin-top: -28%; }
+
+	.score-results { display: grid; grid-template-columns: repeat(5, minmax(0, 1fr)); margin-top: 8px; padding: 20px 0; border-top: 1px solid var(--rule); border-bottom: 1px solid var(--rule); }
+	.score-result { position: relative; min-width: 0; min-height: 172px; display: flex; align-items: center; flex-direction: column; padding: 3px clamp(8px, 1.2vw, 16px); border: 0; border-right: 1px solid var(--rule); background: transparent; color: var(--charcoal); text-align: center; cursor: pointer; transform-origin: center; transition: transform 250ms ease-out, opacity 250ms ease-out, background-color 250ms ease-out; }
+	.score-result:last-child { border-right: 0; }
+	.score-result.is-active { z-index: 2; background: var(--reading); transform: scale(1.08); }
+	.score-result:focus-visible { z-index: 3; outline: 3px solid var(--amber); outline-offset: 3px; }
+	.score-icon { width: 42px; height: 42px; flex: 0 0 auto; margin-bottom: 10px; background: currentColor; mask: var(--score-icon) center / contain no-repeat; }
+	.score-result-demand { --score-icon: url("/assets/operational-grip/icons/demand.svg"); }
+	.score-result-ownership { --score-icon: url("/assets/operational-grip/icons/ownership.svg"); color: #b84f0c; }
+	.score-result-results { --score-icon: url("/assets/operational-grip/icons/results.svg"); }
+	.score-result-adaptation { --score-icon: url("/assets/operational-grip/icons/adaptation.svg"); }
+	.score-result-ai { --score-icon: url("/assets/operational-grip/icons/ai.svg"); color: #7f351f; }
+	.result-label { min-height: 3.45em; color: inherit; font-size: clamp(0.72rem, 1vw, 0.84rem); font-weight: 650; line-height: 1.15; }
+	.score-result strong { margin-top: auto; font-size: clamp(1.5rem, 2.5vw, 2rem); line-height: 1; }
+	.result-strength { margin-top: 7px; color: var(--slate); font-size: 0.68rem; font-weight: 800; letter-spacing: 0.1em; text-transform: uppercase; }
+	.score-result-ownership .result-strength, .score-result-ai .result-strength { color: currentColor; }
+	.overall-reading { padding-top: 22px; }
+	.overall-reading h3 { margin-bottom: 6px; font-size: 1rem; letter-spacing: 0; }
+	.overall-reading p { margin-bottom: 0; color: #424c48; font-size: 0.95rem; }
+
 	.approach-section { background: var(--paper); }
 	.approach-list { margin: 70px 0 0; padding: 0; list-style: none; border-top: 4px solid var(--charcoal); }
 	.approach-list li { display: grid; grid-template-columns: 100px minmax(0, 1fr); padding: 30px 0; border-bottom: 1px solid var(--rule); }
@@ -487,12 +680,14 @@ const approach = [
 		.header-inner { grid-template-columns: 1fr auto; }
 		.hero-grid { grid-template-columns: 1fr; }
 		.hero-aside { max-width: 174px; }
-		.split-heading, .grip-grid, .body-work-grid, .contact-grid { grid-template-columns: 1fr; }
+		.split-heading, .grip-grid, .assessment-grid, .body-work-grid, .contact-grid { grid-template-columns: 1fr; }
 		.split-heading { gap: 12px; }
 		.split-heading .lead-copy { max-width: 720px; }
 		.diagnostic-grid { grid-template-columns: repeat(2, 1fr); }
 		.diagnostic-grid li:nth-child(2) { border-right: 0; }
 		.diagnostic-grid li:nth-child(-n+2) { border-bottom: 1px solid var(--rule); }
+		.assessment-copy { max-width: 680px; }
+		.score-card { width: 100%; max-width: 800px; margin-inline: auto; }
 		.body-work-grid { gap: 55px; }
 		.thinking-grid article:last-child { border-right: 0; }
 	}
@@ -522,6 +717,16 @@ const approach = [
 		.loop-flow li { display: grid; grid-template-columns: 55px 1fr; min-height: 82px; align-items: center; padding: 16px 20px; border-right: 0; border-bottom: 1px solid var(--rule); }
 		.loop-flow span { margin-bottom: 0; }
 		.loop-flow li::after { top: auto; right: auto; bottom: -6px; left: 27px; transform: rotate(135deg); }
+		.assessment-section { padding: 78px 0; }
+		.assessment-grid { gap: 48px; }
+		.assessment-copy h2 { font-size: clamp(2.5rem, 11vw, 3.5rem); }
+		.score-card { padding: 26px 20px; border-radius: 12px; }
+		.score-results { grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 1px; padding: 1px; border: 1px solid var(--rule); background: var(--rule); }
+		.score-result { min-height: 158px; padding: 16px 12px; border-right: 0; background: var(--reading); }
+		.score-result:last-child { grid-column: 1 / -1; min-height: 142px; }
+		.result-label { min-height: auto; }
+		.score-result strong { margin-top: 14px; }
+		.overall-reading { padding-top: 24px; }
 		.approach-list li { grid-template-columns: 55px 1fr; }
 		.approach-list li > div { grid-template-columns: 1fr; gap: 8px; }
 		.standard-quote { padding-left: 20px; }
@@ -533,8 +738,19 @@ const approach = [
 		.footer-bottom { align-items: flex-start; flex-direction: column; }
 	}
 
+	@media (max-width: 440px) {
+		.score-card { padding-inline: 16px; }
+		.score-ring { width: calc(100% + 8px); margin-left: -4px; }
+		.overall-score { top: 45%; }
+		.hands-bar { width: calc(100% + 8px); margin-left: -4px; }
+		.score-results { grid-template-columns: 1fr; }
+		.score-result:last-child { grid-column: auto; }
+		.score-result { min-height: 136px; }
+	}
+
 	@media (prefers-reduced-motion: reduce) {
 		html { scroll-behavior: auto; }
-		.button { transition: none; }
+		.button, .score-segment, .score-result { transition: none; }
+		.score-segment.is-active, .score-result.is-active { transform: none; }
 	}
 </style>
