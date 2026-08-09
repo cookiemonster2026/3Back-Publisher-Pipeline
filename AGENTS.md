@@ -8,7 +8,7 @@ For every website change:
 
 1. Read this file and `docs/website-acceptance-checklist.md` before making changes.
 2. Identify the numbered acceptance conditions the requested change could affect before editing.
-3. Read the complete `docs/brand/source/3Back-Minimum-Viable-Brand-and-Design-Brief.md` when the work affects outward-facing content, positioning, navigation, hierarchy, interaction, or visual design. Treat this Markdown file as the sole governing brand and design brief for outward-facing decisions. Do not read, convert, or render any DOCX version.
+3. Read the complete `docs/brand/source/3Back-Minimum-Viable-Brand-and-Design-Brief-v0.1.md` when the work affects outward-facing content, positioning, navigation, hierarchy, interaction, or visual design. Treat this Markdown file as the sole governing brand and design brief for outward-facing decisions. Do not read, convert, or render any DOCX version.
 4. Make the smallest bounded change requested. Do not expand scope without explicit approval.
 5. Run every affected checklist item and every checklist item designated as a global regression check.
 6. Never claim that a check passed unless it was actually verified. A code inspection, build, browser test, and human judgment are different forms of evidence and are not interchangeable.
@@ -76,7 +76,7 @@ Consult these guides before working on related tasks:
 
 For all outward-facing 3Back content and design work, read and apply:
 
-- [3Back Minimum Viable Brand and Design Brief](docs/brand/3back-brand-design-brief.md)
+- [3Back Minimum Viable Brand and Design Brief v0.1](docs/brand/source/3Back-Minimum-Viable-Brand-and-Design-Brief-v0.1.md)
 
 Use Operational Grip source materials for conceptual accuracy. Use the brand brief to control outward-facing positioning, audience, voice, language, and visual expression.
 

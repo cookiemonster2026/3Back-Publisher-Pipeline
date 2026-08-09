@@ -376,7 +376,7 @@ For the implementation test, all footer items may remain nonfunctional text. The
 
 ## 7. Visual and Interaction Constraints
 
-- Use the 3Back Visual Direction Tile v0.3 as the current visual constraint.
+- Use the 3Back Visual Direction Tile v0.4 as the current visual constraint.
 - Use Source Sans 3 as the implementation-test typeface.
 - Use warm paper for the site field, near-white for sustained reading surfaces, charcoal for authority, muted slate for secondary information, and amber only for demand, evidence, and action.
 - Keep all copy as live, selectable text. Do not flatten headings, diagrams, or navigation into images.
@@ -404,9 +404,9 @@ These are bounded content gaps. They do not block the desktop and mobile impleme
 
 This blueprint applies:
 
-- `docs/brand/source/3Back-Minimum-Viable-Brand-and-Design-Brief.md`
+- `docs/brand/source/3Back-Minimum-Viable-Brand-and-Design-Brief-v0.1.md`
 - The Project Operating Manual: Operational Grip
-- The 3Back Visual Direction Tile v0.3
+- The 3Back Visual Direction Tile v0.4
 - The approved audience clarification that executive and operational leaders are primary, while team leaders and practitioners are the broader audience
 - The approved brand architecture: 3Back is the enduring brand, Operational Grip is the current lead lens, and **We make teams better** and the swoosh are retired
 
