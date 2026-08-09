@@ -34,16 +34,16 @@
 <style>
 	.site-footer { padding: 70px 0 28px; background: #131917; color: #c8ceca; }
 	.footer-grid { display: grid; grid-template-columns: 1.6fr repeat(3, 1fr); gap: 50px; }
-	.wordmark { font-size: 1.75rem; font-weight: 800; letter-spacing: -0.055em; line-height: 1; }
+	.wordmark { font-size: 1.75rem; font-weight: var(--font-weight-heavy); letter-spacing: -0.035em; line-height: 1; }
 	.wordmark span { color: var(--amber); }
 	.wordmark-light { color: var(--paper); font-size: 2.1rem; }
-	.footer-brand p { margin-top: 10px; color: #7f8984; font-size: 0.72rem; font-weight: 700; letter-spacing: 0.13em; text-transform: uppercase; }
-	.footer-heading { color: var(--paper); font-size: 0.74rem; font-weight: 800; letter-spacing: 0.13em; text-transform: uppercase; }
-	.site-footer ul { margin: 0; padding: 0; list-style: none; color: #919b96; font-size: 0.86rem; line-height: 2; }
+	.footer-brand p { margin-top: 10px; color: #919b96; font-size: var(--type-caption); font-weight: var(--font-weight-bold); letter-spacing: var(--tracking-caption); text-transform: uppercase; }
+	.footer-heading { color: var(--paper); font-size: var(--type-caption); font-weight: var(--font-weight-heavy); letter-spacing: var(--tracking-caption); text-transform: uppercase; }
+	.site-footer ul { margin: 0; padding: 0; list-style: none; color: #a8b0ac; font-size: var(--type-nav); line-height: var(--leading-body); }
 	.site-footer li a { color: inherit; text-decoration: none; }
 	.site-footer li a:hover { color: var(--paper); }
 	.site-footer li a:focus-visible { outline: 3px solid var(--amber); outline-offset: 3px; }
-	.footer-bottom { display: flex; justify-content: space-between; gap: 30px; margin-top: 55px; padding-top: 20px; border-top: 1px solid #303936; color: #7f8984; font-size: 0.74rem; }
+	.footer-bottom { display: flex; justify-content: space-between; gap: 30px; margin-top: 55px; padding-top: 20px; border-top: 1px solid #303936; color: #a8b0ac; font-size: var(--type-caption); line-height: var(--leading-caption); }
 	.footer-bottom span:first-child { color: #c8ceca; font-weight: 700; }
 
 	@media (max-width: 720px) {
