@@ -1,4 +1,6 @@
 ---
+import SiteLayout from "../layouts/SiteLayout.astro";
+
 const diagnostics = [
 	{
 		number: "01",
@@ -81,41 +83,11 @@ const overallGripScore = Math.round(
 );
 ---
 
-<!doctype html>
-<html lang="en">
-	<head>
-		<meta charset="utf-8" />
-		<meta name="viewport" content="width=device-width, initial-scale=1" />
-		<meta
-			name="description"
-			content="3Back helps leaders find where organizational execution has lost grip and make bounded changes that reveal what to do next."
-		/>
-		<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
-		<link rel="icon" href="/favicon.ico" />
-		<meta name="generator" content={Astro.generator} />
-		<title>3Back | The Team Execution Company</title>
-	</head>
-	<body>
-		<a class="skip-link" href="#main">Skip to content</a>
-
-		<header class="site-header">
-			<div class="shell header-inner">
-				<a class="brand-lockup" href="/" aria-label="3Back homepage">
-					<div class="wordmark"><span>3</span>Back</div>
-					<div class="descriptor">The Team Execution Company</div>
-				</a>
-
-				<nav class="desktop-nav" aria-label="Primary navigation">
-					<a href="#operational-grip">Operational Grip</a>
-					<a href="#thinking-heading">Ideas</a>
-					<span>About</span>
-				</nav>
-
-				<a class="button button-small" href="#contact">Start a Conversation</a>
-			</div>
-		</header>
-
-		<main id="main">
+<SiteLayout
+	title="3Back | The Team Execution Company"
+	description="3Back helps leaders find where organizational execution has lost grip and make bounded changes that reveal what to do next."
+>
+	<main id="main">
 			<section class="hero section-rule">
 				<div class="shell hero-grid">
 					<div class="hero-copy">
@@ -370,40 +342,7 @@ const overallGripScore = Math.round(
 					</div>
 				</div>
 			</section>
-		</main>
-
-		<footer class="site-footer">
-			<div class="shell footer-grid">
-				<div class="footer-brand">
-					<div class="wordmark wordmark-light"><span>3</span>Back</div>
-					<p>The Team Execution Company</p>
-				</div>
-				<div>
-					<p class="footer-heading">Explore</p>
-					<ul>
-						<li><a href="#operational-grip">Operational Grip</a></li>
-						<li><a href="#thinking-heading">Ideas</a></li>
-						<li>Papers</li>
-						<li>Articles</li>
-						<li>Tales of the Grip</li>
-					</ul>
-				</div>
-				<div>
-					<p class="footer-heading">Learning</p>
-					<ul><li>Training</li><li>Events</li></ul>
-				</div>
-				<div>
-					<p class="footer-heading">Company</p>
-					<ul>
-						<li>About</li>
-						<li><a href="#contact">Start a Conversation</a></li>
-						<li>Privacy Policy</li>
-						<li>Terms</li>
-					</ul>
-				</div>
-			</div>
-			<div class="shell footer-bottom"><span>Bound what you can. Act locally. Observe the effects. Learn.</span><span>Copyright &copy; 3Back 2026</span></div>
-		</footer>
+	</main>
 
 		<script>
 			const assessment = document.querySelector("#grip-assessment");
@@ -455,66 +394,10 @@ const overallGripScore = Math.round(
 					setActiveSection(null);
 				});
 			}
-		</script>
-	</body>
-</html>
+	</script>
+</SiteLayout>
 
 <style is:global>
-	:root {
-		--paper: #f5f0e7;
-		--reading: #fcfaf6;
-		--charcoal: #1d2421;
-		--slate: #68726d;
-		--amber: #d96b18;
-		--amber-wash: #f4dfce;
-		--rule: #d8d1c6;
-		--font: "Source Sans 3", "Segoe UI", Arial, sans-serif;
-		--shell: min(1180px, calc(100vw - 48px));
-	}
-
-	* { box-sizing: border-box; }
-	html { scroll-behavior: smooth; }
-	body {
-		margin: 0;
-		background: var(--paper);
-		color: var(--charcoal);
-		font-family: var(--font);
-		font-size: 17px;
-		line-height: 1.55;
-		-webkit-font-smoothing: antialiased;
-	}
-
-	a { color: inherit; }
-	button, a { font: inherit; }
-	button { cursor: pointer; }
-	p, h1, h2, h3, blockquote { margin-top: 0; }
-	h1, h2, h3 { letter-spacing: -0.035em; line-height: 1.04; }
-	h1 { font-size: clamp(3.2rem, 5.5vw, 5.5rem); font-weight: 700; margin-bottom: 34px; max-width: 980px; }
-	h1 em { color: var(--slate); font-style: normal; }
-	h2 { font-size: clamp(2.35rem, 4vw, 4.5rem); margin-bottom: 24px; }
-	h3 { font-size: 1.42rem; margin-bottom: 12px; }
-
-	.shell { width: var(--shell); margin-inline: auto; }
-	.section { padding: 110px 0; }
-	.section-rule { border-bottom: 1px solid var(--rule); }
-	.skip-link { position: fixed; top: 12px; left: 12px; z-index: 100; padding: 10px 15px; background: var(--amber); color: var(--charcoal); font-weight: 700; transform: translateY(-150%); }
-	.skip-link:focus { transform: translateY(0); }
-
-	.site-header { position: sticky; top: 0; z-index: 50; background: color-mix(in srgb, var(--paper) 94%, transparent); border-bottom: 1px solid var(--rule); backdrop-filter: blur(12px); }
-	.header-inner { min-height: 86px; display: grid; grid-template-columns: auto 1fr auto; align-items: center; gap: 36px; }
-	.wordmark { font-size: 1.75rem; font-weight: 800; letter-spacing: -0.055em; line-height: 1; }
-	.wordmark span { color: var(--amber); }
-	.brand-lockup { color: inherit; text-decoration: none; }
-	.descriptor { margin-top: 7px; color: var(--slate); font-size: 0.62rem; font-weight: 700; letter-spacing: 0.13em; text-transform: uppercase; }
-	.desktop-nav { display: flex; justify-content: center; gap: clamp(14px, 2.2vw, 34px); color: #3f4844; font-size: 0.83rem; font-weight: 600; }
-	.desktop-nav a, .desktop-nav span { white-space: nowrap; }
-	.desktop-nav a { text-decoration: none; }
-	.desktop-nav a:hover { color: var(--amber); }
-
-	.button { display: inline-flex; align-items: center; justify-content: center; min-height: 50px; padding: 12px 19px; border: 2px solid var(--amber); background: var(--amber); color: var(--charcoal); font-weight: 750; text-decoration: none; transition: background-color 140ms ease, color 140ms ease, transform 140ms ease; }
-	.button:hover { background: var(--charcoal); border-color: var(--charcoal); color: var(--paper); transform: translateY(-2px); }
-	.button:focus-visible, .text-link:focus-visible { outline: 3px solid var(--amber); outline-offset: 4px; }
-	.button-small { min-height: 42px; padding: 8px 14px; font-size: 0.82rem; }
 	.button-row { display: flex; gap: 26px; align-items: center; flex-wrap: wrap; }
 	.text-link { font-weight: 700; text-decoration: underline; text-decoration-color: var(--amber); text-decoration-thickness: 2px; text-underline-offset: 6px; }
 	.text-link:hover { color: var(--amber); }
@@ -664,20 +547,7 @@ const overallGripScore = Math.round(
 	.contact-copy > p:first-child { margin-bottom: 32px; color: #b9c0bc; font-size: 1.08rem; }
 	.contact-note { margin: 25px 0 0; color: #909b95; font-size: 0.83rem; }
 
-	.site-footer { padding: 70px 0 28px; background: #131917; color: #c8ceca; }
-	.footer-grid { display: grid; grid-template-columns: 1.6fr repeat(3, 1fr); gap: 50px; }
-	.wordmark-light { color: var(--paper); font-size: 2.1rem; }
-	.footer-brand p { margin-top: 10px; color: #7f8984; font-size: 0.72rem; font-weight: 700; letter-spacing: 0.13em; text-transform: uppercase; }
-	.footer-heading { color: var(--paper); font-size: 0.74rem; font-weight: 800; letter-spacing: 0.13em; text-transform: uppercase; }
-	.site-footer ul { margin: 0; padding: 0; list-style: none; color: #919b96; font-size: 0.86rem; line-height: 2; }
-	.site-footer li a { color: inherit; text-decoration: none; }
-	.site-footer li a:hover { color: var(--paper); }
-	.footer-bottom { display: flex; justify-content: space-between; gap: 30px; margin-top: 55px; padding-top: 20px; border-top: 1px solid #303936; color: #7f8984; font-size: 0.74rem; }
-	.footer-bottom span:first-child { color: #c8ceca; font-weight: 700; }
-
 	@media (max-width: 1000px) {
-		.desktop-nav { display: none; }
-		.header-inner { grid-template-columns: 1fr auto; }
 		.hero-grid { grid-template-columns: 1fr; }
 		.hero-aside { max-width: 174px; }
 		.split-heading, .grip-grid, .assessment-grid, .body-work-grid, .contact-grid { grid-template-columns: 1fr; }
@@ -693,15 +563,6 @@ const overallGripScore = Math.round(
 	}
 
 	@media (max-width: 720px) {
-		:root { --shell: min(100% - 32px, 1180px); }
-		body { font-size: 16px; }
-		h1 { font-size: clamp(2.6rem, 11.5vw, 3.6rem); }
-		h2 { font-size: clamp(2.1rem, 9vw, 3.25rem); }
-		.section { padding: 78px 0; }
-		.header-inner { min-height: 74px; }
-		.header-inner .button { display: none; }
-		.wordmark { font-size: 1.55rem; }
-		.descriptor { font-size: 0.55rem; }
 		.hero { padding: 72px 0 80px; }
 		.hero-aside { max-width: 124px; padding-left: 16px; }
 		.button-row { align-items: flex-start; flex-direction: column; gap: 22px; }
@@ -733,9 +594,6 @@ const overallGripScore = Math.round(
 		.thinking-grid { grid-template-columns: 1fr; }
 		.thinking-grid article { min-height: auto; border-right: 0; border-bottom: 1px solid var(--rule); }
 		.thinking-grid article:last-child { grid-column: auto; border-top: 0; }
-		.footer-grid { grid-template-columns: 1fr 1fr; }
-		.footer-brand { grid-column: 1 / -1; }
-		.footer-bottom { align-items: flex-start; flex-direction: column; }
 	}
 
 	@media (max-width: 440px) {
@@ -749,8 +607,7 @@ const overallGripScore = Math.round(
 	}
 
 	@media (prefers-reduced-motion: reduce) {
-		html { scroll-behavior: auto; }
-		.button, .score-segment, .score-result { transition: none; }
+		.score-segment, .score-result { transition: none; }
 		.score-segment.is-active, .score-result.is-active { transform: none; }
 	}
 </style>

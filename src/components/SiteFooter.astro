@@ -1,0 +1,57 @@
+---
+const homePrefix = Astro.url.pathname === "/" ? "" : "/";
+---
+
+<footer class="site-footer">
+	<div class="shell footer-grid">
+		<div class="footer-brand">
+			<div class="wordmark wordmark-light"><span>3</span>Back</div>
+			<p>The Team Execution Company</p>
+		</div>
+		<div>
+			<p class="footer-heading">Explore</p>
+			<ul>
+				<li><a href={`${homePrefix}#operational-grip`}>Operational Grip</a></li>
+				<li><a href={`${homePrefix}#thinking-heading`}>Ideas</a></li>
+				<li>Papers</li>
+				<li>Articles</li>
+				<li>Tales of the Grip</li>
+			</ul>
+		</div>
+		<div>
+			<p class="footer-heading">Learning</p>
+			<ul><li>Training</li><li>Events</li></ul>
+		</div>
+		<div>
+			<p class="footer-heading">Company</p>
+			<ul>
+				<li>About</li>
+				<li><a href={`${homePrefix}#contact`}>Start a Conversation</a></li>
+				<li>Privacy Policy</li>
+				<li>Terms</li>
+			</ul>
+		</div>
+	</div>
+	<div class="shell footer-bottom"><span>Bound what you can. Act locally. Observe the effects. Learn.</span><span>Copyright &copy; 3Back 2026</span></div>
+</footer>
+
+<style>
+	.site-footer { padding: 70px 0 28px; background: #131917; color: #c8ceca; }
+	.footer-grid { display: grid; grid-template-columns: 1.6fr repeat(3, 1fr); gap: 50px; }
+	.wordmark { font-size: 1.75rem; font-weight: 800; letter-spacing: -0.055em; line-height: 1; }
+	.wordmark span { color: var(--amber); }
+	.wordmark-light { color: var(--paper); font-size: 2.1rem; }
+	.footer-brand p { margin-top: 10px; color: #7f8984; font-size: 0.72rem; font-weight: 700; letter-spacing: 0.13em; text-transform: uppercase; }
+	.footer-heading { color: var(--paper); font-size: 0.74rem; font-weight: 800; letter-spacing: 0.13em; text-transform: uppercase; }
+	.site-footer ul { margin: 0; padding: 0; list-style: none; color: #919b96; font-size: 0.86rem; line-height: 2; }
+	.site-footer li a { color: inherit; text-decoration: none; }
+	.site-footer li a:hover { color: var(--paper); }
+	.footer-bottom { display: flex; justify-content: space-between; gap: 30px; margin-top: 55px; padding-top: 20px; border-top: 1px solid #303936; color: #7f8984; font-size: 0.74rem; }
+	.footer-bottom span:first-child { color: #c8ceca; font-weight: 700; }
+
+	@media (max-width: 720px) {
+		.footer-grid { grid-template-columns: 1fr 1fr; }
+		.footer-brand { grid-column: 1 / -1; }
+		.footer-bottom { align-items: flex-start; flex-direction: column; }
+	}
+</style>

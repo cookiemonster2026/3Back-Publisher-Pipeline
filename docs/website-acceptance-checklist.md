@@ -68,6 +68,7 @@ Run an `Affected` item when the requested or resulting diff could change its con
 | 304 | Affected | Agent | The sitewide header, navigation labels, brand descriptor, primary action, and footer remain consistent across published pages. | Compare all built routes that use the changed shell or shared component. |
 | 305 | Affected | Agent | Navigation accurately identifies the current location or section without relying only on color. | Inspect and exercise affected navigation on each relevant route or section. |
 | 306 | Affected | Agent | Mobile navigation can be opened, traversed, activated, and dismissed without trapping focus or obscuring required controls. | Test by keyboard and touch-sized viewport whenever mobile navigation or shared shell behavior could be affected. |
+| 307 | Affected | Agent | Every published page uses the shared site layout for its sitewide header and footer; page-specific copies of header or footer markup are absent. | Inspect all published page sources and built routes, confirm each page uses the shared layout, and search for header or footer markup duplicated outside the shared components. |
 
 ## Links and contact path
 
