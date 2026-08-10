@@ -1,8 +1,362 @@
 ---
-import StubPage from "../components/StubPage.astro";
+import SiteLayout from "../layouts/SiteLayout.astro";
+
+const symptoms = [
+	{
+		src: "/assets/operational-grip/og-page/01-everything-requires-everybody.png",
+		alt: "A construction site where workers across the structure and ground have gathered around one active operation.",
+		caption: "Everything requires everybody.",
+		eager: true,
+	},
+	{
+		src: "/assets/operational-grip/og-page/02-only-heroes-can-make-it-work.png",
+		alt: "One office leader surrounded by coworkers routing documents and decisions through her.",
+		caption: "Only the heroes can make it work.",
+		eager: true,
+	},
+	{
+		src: "/assets/operational-grip/og-page/03-touch-anything-and-something-else-breaks.png",
+		alt: "A worker carrying a long ladder through a tightly packed glassware store.",
+		caption: "Touch anything and something else breaks.",
+	},
+	{
+		src: "/assets/operational-grip/og-page/04-working-harder-accomplishing-less.png",
+		alt: "A crowded restaurant kitchen working beneath a screen showing a large queue of orders.",
+		caption: "We're working harder and accomplishing less.",
+	},
+	{
+		src: "/assets/operational-grip/og-page/05-asked-for-cake-got-screwdrivers.png",
+		alt: "A businesswoman expecting a cake but opening a delivered box filled with screwdrivers.",
+		caption: "I asked for cake. I got a box of screwdrivers.",
+	},
+	{
+		src: "/assets/operational-grip/og-page/06-numbers-say-fine-reality-doesnt.png",
+		alt: "A factory performance screen reports healthy results while spilled paint and disrupted work are visible nearby.",
+		caption: "The numbers say we're fine. Reality doesn't.",
+	},
+];
+
+const areas = [
+	["Demand", "What the environment is asking the organization to respond to."],
+	["People", "Where judgment, authority, skill, and responsibility sit."],
+	["Knowledge", "What the organization knows, where it lives, and whether it reaches the people who need it."],
+	["Systems", "The technology, process, controls, dependencies, and structure through which people act."],
+];
+
+const questions = [
+	"Where are we failing our customers?",
+	"Who should actually own this decision?",
+	"Why has this become an organizational initiative instead of remaining local?",
+	"Why does a local decision pull in the rest of the organization?",
+	"Why do so many decisions flow through so few people?",
+	"Where has our ability to respond to demand begun to break down?",
+	"What are we afraid to change even though no one can explain why it still exists?",
+	"Have our rules, processes, or use of AI started replacing judgment?",
+];
+
+const movements = [
+	"Put something under the lens.",
+	"Ask simple questions.",
+	"Make a bounded change.",
+	"Observe what happens. Learn.",
+];
 ---
 
-<StubPage
-	name="Operational Grip"
-	description="Operational Grip is 3Back’s operating lens for diagnosing execution and making bounded changes tied to demand and delivery."
-/>
+<SiteLayout
+	title="Operational Grip | 3Back"
+	description="Operational Grip helps organizations find where execution has lost grip and make bounded changes that reveal what to do next."
+	canonical="https://3back.com/operational-grip"
+>
+	<main id="main" class="og-page">
+		<section class="section og-recognition" aria-labelledby="recognition-title">
+			<div class="shell">
+				<h1>Operational Grip</h1>
+				<h2 id="recognition-title">Does this look familiar?</h2>
+				<p class="section-intro">Organizations rarely notice they are losing control. The symptoms can be difficult to detect. Below are six you may recognize.</p>
+
+				<div class="symptom-grid">
+					{symptoms.map((symptom) => (
+						<figure class="symptom og-grow" tabindex="0">
+							<img
+								src={symptom.src}
+								alt={symptom.alt}
+								width="1672"
+								height="941"
+								loading={symptom.eager ? "eager" : "lazy"}
+								decoding="async"
+							/>
+							<figcaption>{symptom.caption}</figcaption>
+						</figure>
+					))}
+				</div>
+
+				<p class="symptom-summary">Different symptoms. Possibly the same underlying problem.</p>
+				<div class="question-panel">
+					<p>Can your organization change how it responds to demand without losing control?</p>
+				</div>
+			</div>
+		</section>
+
+		<section class="section og-definition" aria-labelledby="definition-title">
+			<div class="shell definition-inner">
+				<p class="eyebrow">Definition</p>
+				<h2 id="definition-title">What is Operational Grip?</h2>
+				<p class="definition-copy">Operational Grip is the control discipline that enables intentional, local change with predictable effect without requiring global reasoning.</p>
+			</div>
+		</section>
+
+		<section class="section og-continuing" aria-labelledby="continuing-title">
+			<div class="shell editorial-column">
+				<h2 id="continuing-title">Where is your organization losing Operational Grip?</h2>
+				<p>Operational Grip is not a state you achieve and keep. Your grip is continually challenged as demand, people, knowledge, and systems change.</p>
+				<p>What worked yesterday does not mean it will work tomorrow. People move. Knowledge shifts. Systems age. Dependencies accumulate. Demand changes. The operating shape must remain capable of changing with them. Any change to that shape will produce effects across the work. Operational Grip helps keep those effects predictable.</p>
+				<p>Predictable effects do not mean predictable outcomes. Outcomes emerge in unexpected ways. What matters is that the effects remain observed and contained so that we can learn from them.</p>
+			</div>
+		</section>
+
+		<section class="section og-areas" aria-labelledby="areas-title">
+			<div class="shell">
+				<h2 id="areas-title">Four Areas to Observe</h2>
+				<div class="area-grid">
+					{areas.map(([name, description]) => (
+						<article class="area og-grow" tabindex="0">
+							<h3>{name}</h3>
+							<p>{description}</p>
+						</article>
+					))}
+				</div>
+			</div>
+		</section>
+
+		<section class="section og-matters" aria-labelledby="matters-title">
+			<div class="shell">
+				<div class="editorial-column matters-copy">
+					<h2 id="matters-title">Why does it matter?</h2>
+					<p class="lead">Your ability to compete depends on your ability to change when demand changes.</p>
+					<p>Use Operational Grip as a lens from wherever you stand in the organization. It is a control discipline that applies across functions and levels, from coding and finance to operational work and organization-wide strategic direction. Start with the work you can see, the decisions you can influence, and the effects you can observe.</p>
+				</div>
+
+				<figure class="lens og-grow" tabindex="0">
+					<img
+						src="/assets/operational-grip/og-page/07-operational-grip-chicago-lens.png"
+						alt="A grayscale Chicago skyline viewed from Lake Michigan, with the Willis Tower area restored to sharp natural color through a handheld lens."
+						width="1672"
+						height="941"
+						loading="lazy"
+						decoding="async"
+					/>
+				</figure>
+
+				<div class="editorial-column matters-copy matters-copy-after">
+					<p>An organization that is not conditioned for change may discover its loss of grip only when change becomes necessary.</p>
+					<p>Heroes, fiefdoms, decision avoidance, technical debt, fragile dependencies, and processes or AI that replace judgment can all make the current operation feel stable while reducing its ability to adapt. Over time, these patterns shape how people think and act, becoming organizational habits. The overuse of deadlines reinforces those habits by creating a frenetic pace and constant motion without meaningful progress.</p>
+					<p>Once these habits become ingrained, changing them requires a commitment that runs as deep as the habits themselves. The deeper test of an organization's legacy is whether it remains capable of changing when the operating shape that made it successful no longer fits.</p>
+				</div>
+			</div>
+		</section>
+
+		<section class="section og-questions" aria-labelledby="questions-title">
+			<div class="shell">
+				<div class="editorial-column questions-intro">
+					<h2 id="questions-title">Questions to Help You Look</h2>
+					<p>Use these starter questions to examine the work and evidence around you. They can help you see where your organization is losing grip and where you can begin to strengthen it.</p>
+				</div>
+				<ol class="question-list">
+					{questions.map((question, index) => (
+						<li class="question og-grow" tabindex="0">
+							<span class="question-number" aria-hidden="true">{String(index + 1).padStart(2, "0")}</span>
+							<span>{question}</span>
+						</li>
+					))}
+				</ol>
+			</div>
+		</section>
+
+		<section class="section og-use" aria-labelledby="use-title">
+			<div class="shell">
+				<h2 id="use-title">How do you use Operational Grip?</h2>
+				<ol class="movement-list">
+					{movements.map((movement, index) => (
+						<li class="movement og-grow" tabindex="0">
+							<span class="movement-number">{index + 1}</span>
+							<span>{movement}</span>
+						</li>
+					))}
+				</ol>
+				<div class="return-path" aria-label="Return to the first movement">
+					<span>Then move the lens again.</span>
+				</div>
+				<div class="lightweight">
+					<p class="eyebrow">Lightweight by design</p>
+					<p>Operational Grip does not ask you to apply it everywhere to everything at once. That would overwhelm attention without providing useful understanding. The control discipline requires only a minimal lift in thinking. It does not require additional roles, processes, or ceremony. It reserves attention for the work itself: observing it, making bounded changes, and learning from the effects.</p>
+				</div>
+			</div>
+		</section>
+
+		<section class="section og-next" aria-labelledby="next-title">
+			<div class="shell">
+				<div class="editorial-column next-intro">
+					<h2 id="next-title">What next?</h2>
+					<p>You begin with the work in front of you. Choose a next step that helps you center and work outward.</p>
+				</div>
+				<div class="action-grid">
+					<a class="action og-grow" href="/grip-check">
+						<h3>Check Your Grip</h3>
+						<span class="action-target">3back.com/grip-check</span>
+						<p>Use the directional Grip Check to identify where execution may be losing grip and where to look more closely.</p>
+					</a>
+					<a class="action og-grow" href="/downloads/operational-grip.pdf" download>
+						<h3>Share Operational Grip</h3>
+						<span class="action-target">Download PDF <span aria-hidden="true">↓</span></span>
+						<p>Download a PDF of this page so you can send it to someone.</p>
+					</a>
+					<a class="action og-grow" href="/ideas">
+						<h3>Go Deeper</h3>
+						<span class="action-target">3back.com/ideas</span>
+						<p>Explore related Operational Grip writing and examples.</p>
+					</a>
+					<a class="action og-grow" href="mailto:og@3back.com">
+						<h3>Start a Conversation</h3>
+						<span class="action-target">og@3back.com</span>
+						<p>Apply the Operational Grip lens to a real execution problem with 3Back.</p>
+					</a>
+				</div>
+			</div>
+		</section>
+	</main>
+</SiteLayout>
+
+<style>
+	.og-page {
+		--og-dark-surface: #222b27;
+		font-size: 1.0625rem;
+		line-height: 1.55;
+	}
+
+	.og-page h1,
+	.og-page h2,
+	.og-page h3 {
+		line-height: 1.04;
+		letter-spacing: -0.035em;
+	}
+
+	.og-page h1 {
+		margin-bottom: 68px;
+		font-size: clamp(3.2rem, 5.5vw, 5.5rem);
+	}
+
+	.og-page h2 { margin-bottom: 34px; }
+	.og-page p:last-child { margin-bottom: 0; }
+	.section-intro,
+	.editorial-column { max-width: 820px; }
+	.section-intro { margin-bottom: 72px; }
+	.editorial-column p { margin-bottom: 24px; }
+	.lead { font-size: clamp(1.25rem, 2vw, 1.55rem); font-weight: 600; line-height: 1.4; }
+	.eyebrow { margin-bottom: 22px; color: var(--amber); font-size: 0.76rem; font-weight: 800; letter-spacing: 0.16em; text-transform: uppercase; }
+
+	.symptom-grid,
+	.area-grid,
+	.question-list,
+	.action-grid {
+		width: min(1060px, calc(100% - 80px));
+		margin-inline: auto;
+	}
+
+	.symptom-grid { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 82px 96px; }
+	.symptom { position: relative; margin: 0; }
+	.symptom img,
+	.lens img { width: 100%; height: auto; display: block; aspect-ratio: 16 / 9; object-fit: contain; }
+	.symptom figcaption { margin-top: 14px; font-weight: 700; }
+	.symptom-summary { margin: 80px 0 34px; font-size: 1.2rem; font-weight: 600; }
+	.question-panel { padding: 52px clamp(24px, 6vw, 82px); background: var(--charcoal); color: var(--paper); text-align: center; }
+	.question-panel p { max-width: 900px; margin: 0 auto; font-size: clamp(1.65rem, 3vw, 2.5rem); font-weight: 700; line-height: 1.15; letter-spacing: -0.025em; }
+
+	.og-definition { background: var(--charcoal); color: var(--paper); }
+	.definition-inner { max-width: 1040px; }
+	.definition-copy { max-width: 980px; margin: 0; font-size: clamp(1.7rem, 3vw, 2.7rem); font-weight: 600; line-height: 1.25; letter-spacing: -0.02em; }
+
+	.og-continuing,
+	.og-areas,
+	.og-questions { background: var(--reading); }
+	.og-continuing { padding-bottom: 90px; }
+	.og-areas { padding-top: 90px; border-top: 1px solid var(--rule); }
+	.area-grid { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 96px; }
+	.area { position: relative; min-height: 190px; padding: 34px; border: 1px solid var(--rule); background: var(--reading); }
+	.area h3 { margin-bottom: 18px; color: var(--amber-text); font-size: 1.42rem; text-transform: uppercase; }
+
+	.matters-copy { margin-inline: auto; }
+	.lens { position: relative; width: min(980px, calc(100% - 120px)); margin: 76px auto; }
+	.matters-copy-after { max-width: 900px; }
+
+	.questions-intro { margin-bottom: 68px; }
+	.question-list { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 48px 100px; padding: 0; list-style: none; }
+	.question { position: relative; display: grid; grid-template-columns: 52px 1fr; align-items: start; gap: 14px; padding: 22px 8px 22px 0; border-top: 1px solid var(--rule); border-bottom: 1px solid var(--rule); font-weight: 700; }
+	.question-number { color: var(--amber-text); font-weight: 800; letter-spacing: 0.08em; }
+
+	.movement-list { width: min(1100px, calc(100% - 80px)); display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 56px; margin: 66px auto 0; padding: 0; list-style: none; }
+	.movement { position: relative; min-height: 170px; display: flex; flex-direction: column; justify-content: space-between; gap: 26px; padding: 24px 0; border-top: 4px solid var(--amber); border-bottom: 1px solid var(--rule); font-size: 1.42rem; font-weight: 700; line-height: 1.2; }
+	.movement-number { color: var(--amber-text); font-size: 1rem; font-weight: 800; }
+	.return-path { position: relative; width: min(960px, calc(100% - 100px)); height: 78px; margin: 0 auto 56px; border-right: 3px solid var(--amber); border-bottom: 3px solid var(--amber); border-left: 3px solid var(--amber); }
+	.return-path::before { position: absolute; top: -9px; left: -9px; width: 0; height: 0; border-right: 8px solid transparent; border-bottom: 11px solid var(--amber); border-left: 8px solid transparent; content: ""; }
+	.return-path span { position: absolute; bottom: -18px; left: 50%; padding: 2px 16px; background: var(--paper); font-weight: 700; transform: translateX(-50%); white-space: nowrap; }
+	.lightweight { max-width: 900px; margin-inline: auto; padding: 34px 0 0 30px; border-left: 4px solid var(--amber); }
+
+	.og-next { background: var(--charcoal); color: var(--paper); }
+	.next-intro { margin-bottom: 68px; }
+	.action-grid { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 96px 100px; }
+	.action { position: relative; min-height: 260px; display: flex; flex-direction: column; padding: 36px; border: 1px solid #48524d; background: var(--og-dark-surface); color: var(--paper); text-decoration: none; }
+	.action h3 { margin-bottom: 22px; font-size: 1.42rem; }
+	.action-target { align-self: flex-start; margin-bottom: 30px; font-weight: 700; text-decoration: underline; text-decoration-color: var(--amber); text-decoration-thickness: 2px; text-underline-offset: 6px; }
+	.action p { margin-top: auto; color: #d6dbd8; }
+
+	.og-grow { transform-origin: center; transition: transform 200ms ease; }
+	.og-grow:focus-visible { outline: 3px solid var(--amber); outline-offset: 4px; }
+
+	@media (hover: hover) and (pointer: fine) {
+		.og-grow:hover,
+		.og-grow:focus-within { z-index: 5; transform: scale(1.2); }
+	}
+
+	@media (max-width: 900px) {
+		.movement-list { width: min(700px, calc(100% - 80px)); grid-template-columns: 1fr; gap: 0; margin-top: 48px; padding-left: 34px; }
+		.movement { min-height: 0; display: grid; grid-template-columns: 34px 1fr; justify-content: initial; gap: 12px; padding: 24px 0; border-top: 0; border-bottom: 1px solid var(--rule); font-size: 1.25rem; }
+		.movement::before { position: absolute; top: 0; bottom: 0; left: -34px; width: 3px; background: var(--amber); content: ""; }
+		.return-path { width: min(632px, calc(100% - 120px)); height: 54px; margin: 0 auto 56px; border-top: 0; }
+		.return-path span { bottom: -17px; font-size: 0.95rem; }
+	}
+
+	@media (max-width: 720px) {
+		.og-page { font-size: 1rem; }
+		.og-page h1 { margin-bottom: 52px; font-size: clamp(2.6rem, 11.5vw, 3.6rem); }
+		.og-page h2 { margin-bottom: 28px; }
+		.section-intro { margin-bottom: 54px; }
+		.symptom-grid,
+		.area-grid,
+		.question-list,
+		.action-grid { width: 100%; grid-template-columns: 1fr; }
+		.symptom-grid { gap: 48px; }
+		.symptom-summary { margin: 56px 0 28px; }
+		.question-panel { padding: 38px 20px; }
+		.definition-copy { font-size: 1.55rem; }
+		.og-continuing { padding-bottom: 64px; }
+		.og-areas { padding-top: 64px; }
+		.area-grid { gap: 28px; }
+		.area { min-height: 0; padding: 28px 24px; }
+		.lens { width: 100%; margin-block: 54px; }
+		.questions-intro { margin-bottom: 48px; }
+		.question-list { gap: 24px; }
+		.question { grid-template-columns: 44px 1fr; padding-block: 18px; }
+		.movement-list { width: 100%; }
+		.return-path { width: calc(100% - 68px); }
+		.lightweight { margin-top: 64px; padding-left: 20px; }
+		.next-intro { margin-bottom: 48px; }
+		.action-grid { gap: 28px; }
+		.action { min-height: 230px; padding: 28px 24px; }
+	}
+
+	@media (prefers-reduced-motion: reduce) {
+		.og-grow { transition: none; }
+		.og-grow:hover,
+		.og-grow:focus-within { transform: none; }
+	}
+</style>
