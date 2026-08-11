@@ -75,8 +75,9 @@ const movements = [
 				<p class="section-intro">Organizations rarely notice they are losing control. The symptoms can be difficult to detect. Below are six you may recognize.</p>
 
 				<div class="symptom-grid">
-					{symptoms.map((symptom) => (
+					{symptoms.map((symptom, index) => (
 						<figure class="symptom og-grow" tabindex="0">
+							<span class="symptom-number" aria-hidden="true">{String(index + 1).padStart(2, "0")}</span>
 							<img
 								src={symptom.src}
 								alt={symptom.alt}
@@ -264,6 +265,24 @@ const movements = [
 
 	.symptom-grid { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 82px 96px; }
 	.symptom { position: relative; margin: 0; }
+	.symptom-number {
+		position: absolute;
+		top: 12px;
+		left: 12px;
+		z-index: 1;
+		width: clamp(2.35rem, 3.2vw, 3rem);
+		aspect-ratio: 1;
+		display: grid;
+		place-items: center;
+		border: 2px solid var(--reading);
+		border-radius: 50%;
+		background: #D96B18;
+		color: var(--reading);
+		font-size: clamp(0.72rem, 1vw, 0.88rem);
+		font-weight: 800;
+		line-height: 1;
+		letter-spacing: 0.04em;
+	}
 	.symptom img,
 	.lens img { width: 100%; height: auto; display: block; aspect-ratio: 16 / 9; object-fit: contain; }
 	.symptom figcaption { margin-top: 14px; font-weight: 700; }
