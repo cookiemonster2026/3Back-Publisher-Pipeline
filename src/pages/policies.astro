@@ -1,10 +1,12 @@
 ---
 import PolicyPage from "../components/PolicyPage.astro";
+import { pageSeo } from "../seo/registry.mjs";
 ---
 
 <PolicyPage
 	title="Course Policy – 3Back"
 	description="Course policies for 3Back On-Demand, In-Person, and Live Online Public Courses."
+	metadata={pageSeo["/policies"]}
 >
 	<p>At 3Back, we offer flexible learning options, including On-Demand, In-Person, and Live Online Public Courses. Please review our course policies below:</p>
 

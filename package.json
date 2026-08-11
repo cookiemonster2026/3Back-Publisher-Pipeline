@@ -7,12 +7,16 @@
   },
   "scripts": {
     "dev": "astro dev",
-    "build": "astro build",
+    "build": "node scripts/build.mjs production",
+    "build:test": "node scripts/build.mjs test",
+    "validate:seo": "node scripts/validate-seo.mjs --environment production",
+    "validate:seo:test": "node scripts/validate-seo.mjs --environment test",
     "deploy": "pnpm build && wrangler deploy",
     "preview": "astro preview",
     "astro": "astro"
   },
   "dependencies": {
+    "@astrojs/sitemap": "^3.7.3",
     "astro": "^7.1.6"
   },
   "devDependencies": {

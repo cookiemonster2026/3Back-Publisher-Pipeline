@@ -1,10 +1,12 @@
 ---
 import PolicyPage from "../components/PolicyPage.astro";
+import { pageSeo } from "../seo/registry.mjs";
 ---
 
 <PolicyPage
 	title="Privacy Policy"
 	description="Privacy Policy for 3Back, LLC."
+	metadata={pageSeo["/privacy-policy"]}
 >
 	<h2>Privacy Policy for 3Back, LLC</h2>
 	<p>Effective Date: January 15th, 2021</p>

@@ -1,14 +1,14 @@
 ---
 import SiteFooter from "../components/SiteFooter.astro";
 import SiteHeader from "../components/SiteHeader.astro";
+import SeoHead from "../components/SeoHead.astro";
+import type { SeoMetadata } from "../seo/types";
 
 interface Props {
-	title: string;
-	description: string;
-	canonical?: string;
+	metadata: SeoMetadata;
 }
 
-const { title, description, canonical } = Astro.props;
+const { metadata } = Astro.props;
 ---
 
 <!doctype html>
@@ -16,15 +16,13 @@ const { title, description, canonical } = Astro.props;
 	<head>
 		<meta charset="utf-8" />
 		<meta name="viewport" content="width=device-width, initial-scale=1" />
-		<meta name="description" content={description} />
-		{canonical && <link rel="canonical" href={canonical} />}
+		<SeoHead metadata={metadata} />
 		<link rel="preconnect" href="https://fonts.googleapis.com" />
 		<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
 		<link href="https://fonts.googleapis.com/css2?family=Source+Sans+3:wght@400..800&display=swap" rel="stylesheet" />
 		<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
 		<link rel="icon" href="/favicon.ico" />
 		<meta name="generator" content={Astro.generator} />
-		<title>{title}</title>
 	</head>
 	<body>
 		<a class="skip-link" href="#main">Skip to content</a>

@@ -1,15 +1,18 @@
 ---
 import SiteLayout from "../layouts/SiteLayout.astro";
+import type { SeoMetadata } from "../seo/types";
 
 interface Props {
 	name: string;
 	description: string;
+	metadata: SeoMetadata;
 }
 
-const { name, description } = Astro.props;
+const { name, description, metadata } = Astro.props;
+if (metadata.status !== "stub") throw new Error(`StubPage requires stub SEO metadata for ${metadata.path}.`);
 ---
 
-<SiteLayout title={`${name} | 3Back`} description={description}>
+<SiteLayout metadata={metadata}>
 	<main id="main" class="stub-page">
 		<div class="shell stub-content">
 			<h1><span>STUB:</span> {name}</h1>

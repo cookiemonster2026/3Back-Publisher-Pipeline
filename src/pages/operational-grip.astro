@@ -1,5 +1,6 @@
 ---
 import SiteLayout from "../layouts/SiteLayout.astro";
+import { pageSeo } from "../seo/registry.mjs";
 
 const symptoms = [
 	{
@@ -63,9 +64,7 @@ const movements = [
 ---
 
 <SiteLayout
-	title="Operational Grip | 3Back"
-	description="Operational Grip helps organizations find where execution has lost grip and make bounded changes that reveal what to do next."
-	canonical="https://3back.com/operational-grip"
+	metadata={pageSeo["/operational-grip"]}
 >
 	<main id="main" class="og-page">
 		<section class="section og-recognition" aria-labelledby="recognition-title">

@@ -20,6 +20,19 @@ For every website change:
 
 Checklist results belong in the task report, not in the baseline checklist. The number of checks run may vary because unrelated affected-only checks do not run.
 
+## Recurring SEO workflow
+
+Apply this workflow whenever creating or materially changing a public page:
+
+1. Before editing, propose the page title, meta description, canonical path, indexability, Open Graph and social metadata, image alternative text, internal links, and appropriate structured data. Distinguish preserved approved language from new recommendations.
+2. Pause for human approval of material language and SEO recommendations. Do not implement a recommendation merely because it is technically valid.
+3. Implement only the approved recommendations. Preserve existing approved metadata descriptions unless a rewrite is explicitly approved.
+4. Validate the production and test-environment technical output. Missing required metadata on a public page that is not explicitly declared as a stub is an error. An undeclared public route is never inferred to be a stub.
+5. Treat explicitly declared stub pages as tracked SEO to-dos. Each stub must identify its missing work in the SEO metadata registry, emit `noindex, nofollow`, remain excluded from the sitemap, and appear in validation reporting as an intentional to-do rather than a build error.
+6. When a stub is completed, obtain approval for its final language and SEO recommendations, change its status to complete, replace `noindex, nofollow` with the approved indexability setting, remove its missing-work list, and include it in the sitemap.
+
+Only the explicit production-indexable build may emit production indexability, sitemap entries, structured data, or crawl-allowing robots rules. Development, dedicated test builds, and raw/default Astro builds must fail closed to `noindex, nofollow`; test robots rules must disallow crawling and must not advertise the production sitemap.
+
 ## Version control and release policy
 
 - Verification failures and unverified checks do not prevent committing and pushing a source checkpoint to a feature branch when the user explicitly requests it.

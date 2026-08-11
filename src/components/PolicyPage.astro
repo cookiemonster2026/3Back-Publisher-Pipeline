@@ -1,15 +1,18 @@
 ---
 import SiteLayout from "../layouts/SiteLayout.astro";
+import type { SeoMetadata } from "../seo/types";
 
 interface Props {
 	title: string;
 	description: string;
+	metadata: SeoMetadata;
 }
 
-const { title, description } = Astro.props;
+const { title, description, metadata } = Astro.props;
+if (metadata.status !== "complete") throw new Error(`PolicyPage requires complete SEO metadata for ${metadata.path}.`);
 ---
 
-<SiteLayout title={`${title} | 3Back`} description={description}>
+<SiteLayout metadata={metadata}>
 	<main id="main" class="policy-page">
 		<article class="shell policy-content">
 			<h1>{title}</h1>

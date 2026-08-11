@@ -1,0 +1,56 @@
+---
+import type { SeoMetadata } from "../seo/types";
+import { canonicalUrl, isProductionSeoEnvironment } from "../seo/registry.mjs";
+
+interface Props {
+	metadata: SeoMetadata;
+}
+
+const { metadata } = Astro.props;
+const isProduction = isProductionSeoEnvironment(process.env.SEO_BUILD_ENV);
+const canonical = canonicalUrl(metadata.path);
+const robots = isProduction ? metadata.indexability : "noindex, nofollow";
+const image = metadata.social.image;
+const imageUrl = image ? canonicalUrl(image.src) : undefined;
+const twitterCard = image ? "summary_large_image" : "summary";
+const structuredData = isProduction && metadata.status === "complete" ? metadata.structuredData : undefined;
+const serializedStructuredData = structuredData
+	? JSON.stringify(structuredData).replaceAll("<", "\\u003c")
+	: undefined;
+---
+
+<title>{metadata.title}</title>
+<meta name="description" content={metadata.description} />
+<meta name="robots" content={robots} />
+<meta name="googlebot" content={robots} />
+<link rel="canonical" href={canonical} />
+{isProduction && <link rel="sitemap" href="/sitemap-index.xml" />}
+
+<meta property="og:type" content={metadata.social.type} />
+<meta property="og:site_name" content="3Back" />
+<meta property="og:locale" content="en_US" />
+<meta property="og:title" content={metadata.social.title} />
+<meta property="og:description" content={metadata.social.description} />
+<meta property="og:url" content={canonical} />
+{image && imageUrl && (
+	<>
+		<meta property="og:image" content={imageUrl} />
+		<meta property="og:image:secure_url" content={imageUrl} />
+		<meta property="og:image:type" content={image.type} />
+		<meta property="og:image:width" content={String(image.width)} />
+		<meta property="og:image:height" content={String(image.height)} />
+		<meta property="og:image:alt" content={image.alt} />
+	</>
+)}
+
+<meta name="twitter:card" content={twitterCard} />
+<meta name="twitter:title" content={metadata.social.title} />
+<meta name="twitter:description" content={metadata.social.description} />
+{image && imageUrl && (
+	<>
+		<meta name="twitter:image" content={imageUrl} />
+		<meta name="twitter:image:alt" content={image.alt} />
+	</>
+)}
+
+{serializedStructuredData && <script type="application/ld+json" set:html={serializedStructuredData} />}

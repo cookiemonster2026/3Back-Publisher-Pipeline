@@ -1,8 +1,10 @@
 ---
 import StubPage from "../components/StubPage.astro";
+import { pageSeo } from "../seo/registry.mjs";
 ---
 
 <StubPage
 	name="Start a Conversation"
 	description="Contact 3Back about an observable execution problem or a bounded place to begin."
+	metadata={pageSeo["/contact"]}
 />

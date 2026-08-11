@@ -1,5 +1,6 @@
 ---
 import SiteLayout from "../layouts/SiteLayout.astro";
+import { pageSeo } from "../seo/registry.mjs";
 
 const diagnostics = [
 	{
@@ -84,8 +85,7 @@ const overallGripScore = Math.round(
 ---
 
 <SiteLayout
-	title="3Back | The Team Execution Company"
-	description="3Back helps leaders find where organizational execution has lost grip and make bounded changes that reveal what to do next."
+	metadata={pageSeo["/"]}
 >
 	<main id="main">
 			<section class="hero section-rule">
