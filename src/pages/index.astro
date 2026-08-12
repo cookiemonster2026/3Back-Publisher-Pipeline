@@ -1,6 +1,6 @@
 ---
 import SiteLayout from "../layouts/SiteLayout.astro";
-import { pageSeo } from "../seo/registry.mjs";
+import { HOMEPAGE_OPERATIONAL_GRIP_EXPLANATION, pageSeo } from "../seo/registry.mjs";
 
 const diagnostics = [
 	{
@@ -146,7 +146,7 @@ const overallGripScore = Math.round(
 						<p class="eyebrow eyebrow-light">Operational Grip</p>
 						<h2 id="grip-heading">Can the people closest to the work make a bounded change and predict its likely effect?</h2>
 						<div class="grip-body">
-							<p>Operational Grip is the ability of a team or scaled system to make bounded local changes, observe the effects, and adjust without creating uncontrolled downstream damage.</p>
+							<p class="operational-grip-explanation">{HOMEPAGE_OPERATIONAL_GRIP_EXPLANATION}</p>
 							<p>It is not total system understanding. It is enough actionable control to adapt intelligently while keeping work connected to purpose, quality, and value.</p>
 						</div>
 						<p class="operating-line">Bound what you can. Act locally. Observe the effects. Learn.</p>

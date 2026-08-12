@@ -1,6 +1,6 @@
 ---
 import SiteLayout from "../layouts/SiteLayout.astro";
-import { pageSeo } from "../seo/registry.mjs";
+import { OPERATIONAL_GRIP_ATTRIBUTION, OPERATIONAL_GRIP_DEFINITION, pageSeo } from "../seo/registry.mjs";
 
 const symptoms = [
 	{
@@ -101,7 +101,8 @@ const movements = [
 			<div class="shell definition-inner">
 				<p class="eyebrow">Definition</p>
 				<h2 id="definition-title">What is Operational Grip?</h2>
-				<p class="definition-copy">Operational Grip is the control discipline that enables intentional, local change with predictable effect without requiring global reasoning.</p>
+				<p class="definition-copy">{OPERATIONAL_GRIP_DEFINITION}</p>
+				<p class="operational-grip-attribution">{OPERATIONAL_GRIP_ATTRIBUTION}</p>
 			</div>
 		</section>
 

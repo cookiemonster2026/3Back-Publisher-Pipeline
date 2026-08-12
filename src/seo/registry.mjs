@@ -9,6 +9,7 @@ const operationalGripPath = "/operational-grip";
 const operationalGripUrl = `${SITE_ORIGIN}${operationalGripPath}`;
 const organizationId = `${SITE_ORIGIN}/#organization`;
 const websiteId = `${SITE_ORIGIN}/#website`;
+const homepagePageId = `${SITE_ORIGIN}/#webpage`;
 const operationalGripPageId = `${operationalGripUrl}#webpage`;
 const operationalGripImageId = `${operationalGripUrl}#primaryimage`;
 const operationalGripTermId = `${operationalGripUrl}#term`;
@@ -16,7 +17,9 @@ const operationalGripImagePath = "/assets/operational-grip/og-page/07-operationa
 const operationalGripImageUrl = `${SITE_ORIGIN}${operationalGripImagePath}`;
 const operationalGripImageAlt = "A grayscale Chicago skyline viewed from Lake Michigan, with the Willis Tower area restored to sharp natural color through a handheld lens.";
 const operationalGripDescription = "Operational Grip helps organizations find where execution has lost grip and make bounded changes that reveal what to do next.";
-const operationalGripDefinition = "Operational Grip is the control discipline that enables intentional, local change with predictable effect without requiring global reasoning.";
+export const OPERATIONAL_GRIP_DEFINITION = "Operational Grip is the discipline of preserving actionable control in complex work.";
+export const OPERATIONAL_GRIP_ATTRIBUTION = "Operational Grip is 3Back’s proprietary operating lens for diagnosing execution and guiding bounded change.";
+export const HOMEPAGE_OPERATIONAL_GRIP_EXPLANATION = "A team or scaled system has Operational Grip when it can make bounded local changes with enough confidence to predict their effects, preserve adaptability and local control, and keep work connected to purpose.";
 
 /** @type {Readonly<Record<string, SeoMetadata>>} */
 export const pageSeo = Object.freeze({
@@ -30,6 +33,36 @@ export const pageSeo = Object.freeze({
 			title: "3Back | The Team Execution Company",
 			description: "3Back helps leaders find where organizational execution has lost grip and make bounded changes that reveal what to do next.",
 			type: "website",
+		},
+		structuredData: {
+			"@context": "https://schema.org",
+			"@graph": [
+				{
+					"@type": "Organization",
+					"@id": organizationId,
+					name: "3Back",
+					url: `${SITE_ORIGIN}/`,
+					slogan: "The Team Execution Company",
+				},
+				{
+					"@type": "WebSite",
+					"@id": websiteId,
+					url: `${SITE_ORIGIN}/`,
+					name: "3Back",
+					inLanguage: "en-US",
+					publisher: { "@id": organizationId },
+				},
+				{
+					"@type": "WebPage",
+					"@id": homepagePageId,
+					url: `${SITE_ORIGIN}/`,
+					name: "3Back | The Team Execution Company",
+					description: "3Back helps leaders find where organizational execution has lost grip and make bounded changes that reveal what to do next.",
+					inLanguage: "en-US",
+					isPartOf: { "@id": websiteId },
+					publisher: { "@id": organizationId },
+				},
+			],
 		},
 	},
 	"/operational-grip": {
@@ -93,7 +126,7 @@ export const pageSeo = Object.freeze({
 					"@type": "DefinedTerm",
 					"@id": operationalGripTermId,
 					name: "Operational Grip",
-					description: operationalGripDefinition,
+					description: OPERATIONAL_GRIP_DEFINITION,
 					url: operationalGripUrl,
 					mainEntityOfPage: { "@id": operationalGripPageId },
 				},

@@ -1,6 +1,13 @@
 import { existsSync, readFileSync, readdirSync } from "node:fs";
 import { relative, resolve, sep } from "node:path";
-import { canonicalUrl, pageSeo, SITE_ORIGIN } from "../src/seo/registry.mjs";
+import {
+	canonicalUrl,
+	HOMEPAGE_OPERATIONAL_GRIP_EXPLANATION,
+	OPERATIONAL_GRIP_ATTRIBUTION,
+	OPERATIONAL_GRIP_DEFINITION,
+	pageSeo,
+	SITE_ORIGIN,
+} from "../src/seo/registry.mjs";
 
 const environmentFlagIndex = process.argv.indexOf("--environment");
 const environment = environmentFlagIndex >= 0 ? process.argv[environmentFlagIndex + 1] : "production";
@@ -14,6 +21,7 @@ const projectRoot = resolve(import.meta.dirname, "..");
 const distRoot = resolve(projectRoot, "dist");
 const publicRoot = resolve(projectRoot, "public");
 const errors = [];
+const structuredDataByRoute = new Map();
 
 function walk(directory, extension) {
 	if (!existsSync(directory)) return [];
@@ -70,6 +78,16 @@ function expectEqual(route, label, actual, expected) {
 	}
 }
 
+function renderedText(html) {
+	return decodeHtml(html.replace(/<[^>]+>/g, " ")).replace(/\s+/g, " ").trim();
+}
+
+function textByClass(html, className) {
+	const escapedClass = className.replace(/[.*+?^${}()|[\]\\]/g, "\\$&");
+	const match = html.match(new RegExp(`<([a-z][\\w-]*)\\b[^>]*class=["'][^"']*\\b${escapedClass}\\b[^"']*["'][^>]*>([\\s\\S]*?)<\\/\\1>`, "i"));
+	return match ? renderedText(match[2]) : undefined;
+}
+
 function validateRegistry() {
 	for (const [route, metadata] of Object.entries(pageSeo)) {
 		expectEqual(route, "registry path", metadata.path, route);
@@ -107,7 +125,7 @@ function validateStructuredData(route, head) {
 		return;
 	}
 
-	if (route !== "/operational-grip") return;
+	if (!new Set(["/", "/operational-grip"]).has(route)) return;
 	if (scripts.length !== 1) {
 		errors.push(`${route}: expected one JSON-LD graph, received ${scripts.length}.`);
 		return;
@@ -115,10 +133,14 @@ function validateStructuredData(route, head) {
 
 	try {
 		const data = JSON.parse(scripts[0][1]);
+		structuredDataByRoute.set(route, data);
 		expectEqual(route, "JSON-LD context", data["@context"], "https://schema.org");
 		if (!Array.isArray(data["@graph"])) throw new Error("@graph is not an array");
 		const byType = Object.fromEntries(data["@graph"].map((node) => [node["@type"], node]));
-		for (const type of ["Organization", "WebSite", "ImageObject", "WebPage", "DefinedTerm"]) {
+		const requiredTypes = route === "/" ? ["Organization", "WebSite", "WebPage"] : ["Organization", "WebSite", "ImageObject", "WebPage", "DefinedTerm"];
+		const unexpectedTypes = data["@graph"].map((node) => node["@type"]).filter((type) => !requiredTypes.includes(type));
+		if (unexpectedTypes.length > 0) errors.push(`${route}: JSON-LD has unexpected schema type(s): ${unexpectedTypes.join(", ")}.`);
+		for (const type of requiredTypes) {
 			if (!byType[type]) errors.push(`${route}: JSON-LD is missing ${type}.`);
 			else if (!byType[type]["@id"]) errors.push(`${route}: JSON-LD ${type} is missing @id.`);
 		}
@@ -135,6 +157,9 @@ function validateStructuredData(route, head) {
 			expectEqual(route, "WebPage mainEntity @id", page.mainEntity?.["@id"], term["@id"]);
 			expectEqual(route, "DefinedTerm mainEntityOfPage @id", term.mainEntityOfPage?.["@id"], page["@id"]);
 			if (Object.hasOwn(term, "owner")) errors.push(`${route}: DefinedTerm must not use an owner property.`);
+		}
+		if (route === "/operational-grip" && term) {
+			expectEqual(route, "DefinedTerm description", term.description, OPERATIONAL_GRIP_DEFINITION);
 		}
 	} catch (error) {
 		errors.push(`${route}: invalid JSON-LD (${error.message}).`);
@@ -192,6 +217,28 @@ function validateHtml() {
 		}
 
 		validateStructuredData(route, head);
+
+		if (route === "/operational-grip") {
+			expectEqual(route, "rendered canonical Operational Grip definition", textByClass(html, "definition-copy"), OPERATIONAL_GRIP_DEFINITION);
+			expectEqual(route, "rendered Operational Grip attribution", textByClass(html, "operational-grip-attribution"), OPERATIONAL_GRIP_ATTRIBUTION);
+		}
+		if (route === "/") {
+			const explanation = textByClass(html, "operational-grip-explanation");
+			expectEqual(route, "rendered Operational Grip explanation", explanation, HOMEPAGE_OPERATIONAL_GRIP_EXPLANATION);
+			if (explanation?.startsWith("Operational Grip is ")) errors.push("/: homepage Operational Grip explanation must not be presented as a competing definition.");
+		}
+	}
+
+	if (environment === "production") {
+		const homepageGraph = structuredDataByRoute.get("/")?.["@graph"] ?? [];
+		const operationalGripGraph = structuredDataByRoute.get("/operational-grip")?.["@graph"] ?? [];
+		for (const type of ["Organization", "WebSite"]) {
+			const homepageNode = homepageGraph.find((node) => node["@type"] === type);
+			const operationalGripNode = operationalGripGraph.find((node) => node["@type"] === type);
+			expectEqual("/", `${type} @id shared with /operational-grip`, homepageNode?.["@id"], operationalGripNode?.["@id"]);
+		}
+		const term = operationalGripGraph.find((node) => node["@type"] === "DefinedTerm");
+		expectEqual("/operational-grip", "rendered definition matches DefinedTerm description", textByClass(readFileSync(resolve(distRoot, "operational-grip", "index.html"), "utf8"), "definition-copy"), term?.description);
 	}
 }
 
