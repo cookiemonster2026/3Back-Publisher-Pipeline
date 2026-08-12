@@ -13,6 +13,13 @@ const validator = resolve(projectRoot, "scripts", "validate-seo.mjs");
 const childEnvironment = { ...process.env, SEO_BUILD_ENV: environment };
 const astroMode = environment === "production" ? "production-indexable" : "test";
 
+const diagnostics = spawnSync(process.execPath, [astroCli, "check"], {
+	cwd: projectRoot,
+	env: childEnvironment,
+	stdio: "inherit",
+});
+if (diagnostics.status !== 0) process.exit(diagnostics.status ?? 1);
+
 const build = spawnSync(process.execPath, [astroCli, "build", "--mode", astroMode], {
 	cwd: projectRoot,
 	env: childEnvironment,

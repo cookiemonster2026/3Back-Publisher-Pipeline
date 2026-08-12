@@ -345,7 +345,7 @@ const overallGripScore = Math.round(
 	</main>
 
 		<script>
-			const assessment = document.querySelector("#grip-assessment");
+			const assessment = document.querySelector<HTMLElement>("#grip-assessment");
 
 			if (assessment) {
 				const pairedControls = Array.from(assessment.querySelectorAll<HTMLElement>("[data-section]"));

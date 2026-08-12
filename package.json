@@ -7,6 +7,7 @@
   },
   "scripts": {
     "dev": "astro dev",
+    "check": "astro check",
     "build": "node scripts/build.mjs production",
     "build:test": "node scripts/build.mjs test",
     "validate:seo": "node scripts/validate-seo.mjs --environment production",
@@ -20,6 +21,8 @@
     "astro": "^7.1.6"
   },
   "devDependencies": {
+    "@astrojs/check": "^0.9.10",
+    "typescript": "^6.0.3",
     "wrangler": "^4.119.0"
   }
 }

@@ -237,15 +237,18 @@ export const pageSeo = Object.freeze({
 	},
 });
 
+/** @param {string | undefined} environment */
 export function isProductionSeoEnvironment(environment) {
 	return environment === PRODUCTION_SEO_ENVIRONMENT;
 }
 
+/** @param {string} pathname */
 export function normalizePath(pathname) {
 	if (pathname === "/") return "/";
 	return pathname.replace(/\/+$/, "");
 }
 
+/** @param {string} pathname */
 export function canonicalUrl(pathname) {
 	return pathname === "/" ? `${SITE_ORIGIN}/` : `${SITE_ORIGIN}${pathname}`;
 }

@@ -53,4 +53,4 @@ const serializedStructuredData = structuredData
 	</>
 )}
 
-{serializedStructuredData && <script type="application/ld+json" set:html={serializedStructuredData} />}
+{serializedStructuredData && <script is:inline type="application/ld+json" set:html={serializedStructuredData} />}

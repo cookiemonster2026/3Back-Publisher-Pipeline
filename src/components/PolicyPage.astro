@@ -8,7 +8,7 @@ interface Props {
 	metadata: SeoMetadata;
 }
 
-const { title, description, metadata } = Astro.props;
+const { title, metadata } = Astro.props;
 if (metadata.status !== "complete") throw new Error(`PolicyPage requires complete SEO metadata for ${metadata.path}.`);
 ---
 
