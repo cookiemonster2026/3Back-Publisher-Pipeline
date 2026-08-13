@@ -17,6 +17,12 @@ const operationalGripImagePath = "/assets/operational-grip/og-page/07-operationa
 const operationalGripImageUrl = `${SITE_ORIGIN}${operationalGripImagePath}`;
 const operationalGripImageAlt = "A grayscale Chicago skyline viewed from Lake Michigan, with the Willis Tower area restored to sharp natural color through a handheld lens.";
 const operationalGripDescription = "Operational Grip helps organizations find where execution has lost grip and make bounded changes that reveal what to do next.";
+const aboutUsPath = "/about-us";
+const aboutUsUrl = `${SITE_ORIGIN}${aboutUsPath}`;
+const aboutUsImageId = `${aboutUsUrl}#origin-image`;
+const aboutUsImagePath = "/social/about-3back.png";
+const aboutUsImageAlt = "Editorial illustration of a painter stepping back from a house to inspect several paint inconsistencies from a wider perspective.";
+const aboutUsDescription = "Meet the people behind 3Back and learn how experience across science, mathematics, engineering, the trades, and complex systems shaped Operational Grip.";
 export const OPERATIONAL_GRIP_DEFINITION = "Operational Grip is the discipline of preserving actionable control in complex work.";
 export const OPERATIONAL_GRIP_ATTRIBUTION = "Operational Grip is 3Back’s proprietary operating lens for diagnosing execution and guiding bounded change.";
 export const HOMEPAGE_OPERATIONAL_GRIP_EXPLANATION = "A team or scaled system has Operational Grip when it can make bounded local changes with enough confidence to predict their effects, preserve adaptability and local control, and keep work connected to purpose.";
@@ -157,18 +163,61 @@ export const pageSeo = Object.freeze({
 			type: "website",
 		},
 	},
-	"/about": {
-		status: "stub",
-		path: "/about",
-		title: "About | 3Back",
-		description: "Learn about 3Back, The Team Execution Company, and the perspective behind its work.",
-		indexability: "noindex, nofollow",
+	"/about-us": {
+		status: "complete",
+		path: aboutUsPath,
+		title: "About 3Back | The Team Execution Company",
+		description: aboutUsDescription,
+		indexability: "index, follow",
 		social: {
-			title: "About | 3Back",
-			description: "Learn about 3Back, The Team Execution Company, and the perspective behind its work.",
+			title: "About 3Back: Perspective Built Through the Work",
+			description: "For nearly three decades, 3Back has brought hands-on experience across science, mathematics, engineering, and the trades to the work of team execution.",
 			type: "website",
+			image: {
+				src: aboutUsImagePath,
+				alt: aboutUsImageAlt,
+				width: 1200,
+				height: 630,
+				type: "image/png",
+			},
 		},
-		missingWork: ["Substantive company and team content", "Approved complete-page metadata", "Appropriate structured data"],
+		structuredData: {
+			"@context": "https://schema.org",
+			"@graph": [
+				{
+					"@type": "Organization",
+					"@id": organizationId,
+					name: "3Back",
+					url: `${SITE_ORIGIN}/`,
+					description: "3Back is the Team Execution Company. It helps organizations find where execution has lost grip and make bounded changes that reveal what to do next.",
+				},
+				{
+					"@type": "WebSite",
+					"@id": websiteId,
+					url: `${SITE_ORIGIN}/`,
+					name: "3Back",
+					publisher: { "@id": organizationId },
+				},
+				{
+					"@type": "ImageObject",
+					"@id": aboutUsImageId,
+					contentUrl: `${SITE_ORIGIN}${aboutUsImagePath}`,
+					width: 1200,
+					height: 630,
+					caption: "A painter steps back from a house to inspect several paint inconsistencies from a wider perspective.",
+				},
+				{
+					"@type": "AboutPage",
+					"@id": `${aboutUsUrl}#webpage`,
+					url: aboutUsUrl,
+					name: "About 3Back | The Team Execution Company",
+					description: aboutUsDescription,
+					isPartOf: { "@id": websiteId },
+					mainEntity: { "@id": organizationId },
+					primaryImageOfPage: { "@id": aboutUsImageId },
+				},
+			],
+		},
 	},
 	"/contact": {
 		status: "stub",

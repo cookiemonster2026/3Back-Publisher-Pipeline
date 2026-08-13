@@ -125,7 +125,7 @@ function validateStructuredData(route, head) {
 		return;
 	}
 
-	if (!new Set(["/", "/operational-grip"]).has(route)) return;
+	if (!new Set(["/", "/operational-grip", "/about-us"]).has(route)) return;
 	if (scripts.length !== 1) {
 		errors.push(`${route}: expected one JSON-LD graph, received ${scripts.length}.`);
 		return;
@@ -137,7 +137,11 @@ function validateStructuredData(route, head) {
 		expectEqual(route, "JSON-LD context", data["@context"], "https://schema.org");
 		if (!Array.isArray(data["@graph"])) throw new Error("@graph is not an array");
 		const byType = Object.fromEntries(data["@graph"].map((node) => [node["@type"], node]));
-		const requiredTypes = route === "/" ? ["Organization", "WebSite", "WebPage"] : ["Organization", "WebSite", "ImageObject", "WebPage", "DefinedTerm"];
+		const requiredTypes = route === "/"
+			? ["Organization", "WebSite", "WebPage"]
+			: route === "/operational-grip"
+				? ["Organization", "WebSite", "ImageObject", "WebPage", "DefinedTerm"]
+				: ["Organization", "WebSite", "ImageObject", "AboutPage"];
 		const unexpectedTypes = data["@graph"].map((node) => node["@type"]).filter((type) => !requiredTypes.includes(type));
 		if (unexpectedTypes.length > 0) errors.push(`${route}: JSON-LD has unexpected schema type(s): ${unexpectedTypes.join(", ")}.`);
 		for (const type of requiredTypes) {
@@ -147,11 +151,11 @@ function validateStructuredData(route, head) {
 		const organization = byType.Organization;
 		const website = byType.WebSite;
 		const image = byType.ImageObject;
-		const page = byType.WebPage;
+		const page = byType.WebPage ?? byType.AboutPage;
 		const term = byType.DefinedTerm;
 		if (organization && website) expectEqual(route, "WebSite publisher @id", website.publisher?.["@id"], organization["@id"]);
-		if (website && page) expectEqual(route, "WebPage isPartOf @id", page.isPartOf?.["@id"], website["@id"]);
-		if (organization && page) expectEqual(route, "WebPage publisher @id", page.publisher?.["@id"], organization["@id"]);
+		if (website && page) expectEqual(route, "page isPartOf @id", page.isPartOf?.["@id"], website["@id"]);
+		if (organization && page && route !== "/about-us") expectEqual(route, "page publisher @id", page.publisher?.["@id"], organization["@id"]);
 		if (image && page) expectEqual(route, "WebPage primaryImageOfPage @id", page.primaryImageOfPage?.["@id"], image["@id"]);
 		if (term && page) {
 			expectEqual(route, "WebPage mainEntity @id", page.mainEntity?.["@id"], term["@id"]);
@@ -231,11 +235,14 @@ function validateHtml() {
 
 	if (environment === "production") {
 		const homepageGraph = structuredDataByRoute.get("/")?.["@graph"] ?? [];
-		const operationalGripGraph = structuredDataByRoute.get("/operational-grip")?.["@graph"] ?? [];
-		for (const type of ["Organization", "WebSite"]) {
-			const homepageNode = homepageGraph.find((node) => node["@type"] === type);
-			const operationalGripNode = operationalGripGraph.find((node) => node["@type"] === type);
-			expectEqual("/", `${type} @id shared with /operational-grip`, homepageNode?.["@id"], operationalGripNode?.["@id"]);
+	const operationalGripGraph = structuredDataByRoute.get("/operational-grip")?.["@graph"] ?? [];
+	const aboutUsGraph = structuredDataByRoute.get("/about-us")?.["@graph"] ?? [];
+	for (const type of ["Organization", "WebSite"]) {
+		const homepageNode = homepageGraph.find((node) => node["@type"] === type);
+		for (const [route, graph] of [["/operational-grip", operationalGripGraph], ["/about-us", aboutUsGraph]]) {
+			const node = graph.find((entry) => entry["@type"] === type);
+			expectEqual("/", `${type} @id shared with ${route}`, homepageNode?.["@id"], node?.["@id"]);
+		}
 		}
 		const term = operationalGripGraph.find((node) => node["@type"] === "DefinedTerm");
 		expectEqual("/operational-grip", "rendered definition matches DefinedTerm description", textByClass(readFileSync(resolve(distRoot, "operational-grip", "index.html"), "utf8"), "definition-copy"), term?.description);
