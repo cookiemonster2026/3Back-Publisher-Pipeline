@@ -232,17 +232,16 @@ export const pageSeo = Object.freeze({
 		},
 	},
 	"/contact": {
-		status: "stub",
+		status: "complete",
 		path: "/contact",
 		title: "Start a Conversation | 3Back",
 		description: "Contact 3Back about an observable execution problem or a bounded place to begin.",
-		indexability: "noindex, nofollow",
+		indexability: "index, follow",
 		social: {
 			title: "Start a Conversation | 3Back",
 			description: "Contact 3Back about an observable execution problem or a bounded place to begin.",
 			type: "website",
 		},
-		missingWork: ["Functional contact experience", "Completion and error handling", "Approved complete-page metadata"],
 	},
 	"/doomscroll": {
 		status: "stub",

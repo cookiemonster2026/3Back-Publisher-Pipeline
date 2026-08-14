@@ -1,0 +1,6 @@
+# Copy to .dev.vars for local Wrangler development. Do not commit .dev.vars.
+TURNSTILE_SECRET_KEY=
+RESEND_API_KEY=
+CONTACT_FROM_EMAIL="3Back <contact@3back.com>"
+# Optional. Defaults to og@3back.com.
+CONTACT_NOTIFICATION_EMAIL=og@3back.com
