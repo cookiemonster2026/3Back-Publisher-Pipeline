@@ -1,0 +1,149 @@
+---
+import SiteLayout from "../layouts/SiteLayout.astro";
+import { pageSeo } from "../seo/registry.mjs";
+---
+
+<SiteLayout metadata={pageSeo["/workshops"]}>
+	<main id="main" class="workshops-page">
+		<section class="workshops-opening section-rule">
+			<div class="shell opening-copy">
+				<h1>Workshops for Operational Grip</h1>
+				<p class="lead">3Back workshops help leadership groups examine real work and surface where team execution has lost Operational Grip.</p>
+				<p>These are diagnostic working sessions. The purpose is to make the gap between intended and actual operating behavior visible and owned by the people who can act on it.</p>
+			</div>
+		</section>
+
+		<section class="section section-rule" aria-labelledby="examines-title">
+			<div class="shell reading-column">
+				<h2 id="examines-title">What the workshop examines</h2>
+				<p>The session looks at the conditions that determine whether work can move with control:</p>
+				<ul class="question-list">
+					<li>Can people closest to the work make bounded decisions and see the effects?</li>
+					<li>Where has coordination replaced clear ownership?</li>
+					<li>Are deadlines creating focus or simply compressing judgment?</li>
+					<li>Is strategy reaching local action, or is it stopping at interpretation?</li>
+				</ul>
+				<p>The workshop is structured so the leadership group itself identifies and owns the gap. It does not hand them a finished diagnosis from outside.</p>
+			</div>
+		</section>
+
+		<section class="section section-rule" aria-labelledby="how-it-works-title">
+			<div class="shell">
+				<div class="section-heading"><h2 id="how-it-works-title">How it works</h2></div>
+				<ol class="phases">
+					<li>
+						<details class="expandable-block">
+							<summary>
+								<span class="phase-marker" aria-hidden="true">01</span>
+								<span class="summary-copy"><span class="summary-title">Before</span><span>An intake conversation establishes context, constraints, and the questions leadership is already asking. The session is then designed around that material.</span></span>
+							</summary>
+							<div class="expanded-copy"><h3>Before: Why this matters</h3><p>Most workshops fail because they start with generic content instead of the organization&rsquo;s actual conditions. A short intake forces the real questions, constraints, and friction into the room before anyone speaks. Without that, the session becomes theater.</p></div>
+						</details>
+					</li>
+					<li>
+						<details class="expandable-block">
+							<summary>
+								<span class="phase-marker" aria-hidden="true">02</span>
+								<span class="summary-copy"><span class="summary-title">During</span><span>A facilitated working session, typically two to four hours. Participants work with concrete examples from their own environment, surface patterns in small groups, and report out. The focus stays on observable operating behavior.</span></span>
+							</summary>
+							<div class="expanded-copy"><h3>During: Why this matters</h3><p>Leaders rarely see the same operating reality. Putting concrete examples on the table in a structured way makes the gap visible to the people who own it. The session is not for teaching a model. It is for forcing shared recognition of what is actually happening.</p></div>
+						</details>
+					</li>
+					<li>
+						<details class="expandable-block">
+							<summary>
+								<span class="phase-marker" aria-hidden="true">03</span>
+								<span class="summary-copy"><span class="summary-title">After</span><span>A concise findings readout names the themes that emerged, the places where grip is weakest, and the next bounded decisions the group can take. Any further training or implementation support is scoped from what the workshop actually revealed.</span></span>
+							</summary>
+							<div class="expanded-copy"><h3>After: Why this matters</h3><p>Insight without a next bounded decision is just conversation. The findings readout exists to name what surfaced, identify where grip is weakest, and leave the group with something small enough to act on. Training or further support only follows if the gap is owned.</p></div>
+						</details>
+					</li>
+				</ol>
+			</div>
+		</section>
+
+		<section class="section section-rule" aria-labelledby="participants-title">
+			<div class="shell reading-column">
+				<h2 id="participants-title">Who participates</h2>
+				<p>Leadership and key decision-makers accountable for the operating model or delivery outcomes. Group size is kept small enough that discussion remains concrete, usually six to twelve people.</p>
+			</div>
+		</section>
+
+		<section class="section outcome-section" aria-labelledby="leave-with-title">
+			<div class="shell outcome-grid">
+				<div><h2 id="leave-with-title">What you leave with</h2></div>
+				<div>
+					<ul class="outcome-list">
+						<li><details class="expandable-block"><summary><span class="summary-title">Shared language for the gaps that matter</span></summary><div class="expanded-copy"><p>Without shared language, the same problems keep getting renamed and debated. Common terms let the group stop arguing about definitions and start examining the work.</p></div></details></li>
+						<li><details class="expandable-block"><summary><span class="summary-title">Visible ownership of problems that were previously invisible or contested</span></summary><div class="expanded-copy"><p>Problems that no one owns do not get solved. The workshop makes the contested or hidden issues explicit so accountability can attach to them.</p></div></details></li>
+						<li><details class="expandable-block"><summary><span class="summary-title">A short list of signals worth watching</span></summary><div class="expanded-copy"><p>Organizations drown in metrics that do not inform decisions. A few observable signals that actually indicate grip is holding or slipping are more useful than a dashboard of noise.</p></div></details></li>
+						<li><details class="expandable-block"><summary><span class="summary-title">Clear next steps that stay inside the organization&rsquo;s capacity to act</span></summary><div class="expanded-copy"><p>Ambition that exceeds capacity produces more coordination tax, not better execution. The next steps are deliberately bounded so the organization can move without creating a new bottleneck.</p></div></details></li>
+					</ul>
+					<p>The workshop does not install a new framework. It improves the organization&rsquo;s ability to see whether its current way of working is functionally fit for purpose.</p>
+				</div>
+			</div>
+		</section>
+
+		<section class="next-step-section" aria-labelledby="next-step-title">
+			<div class="shell next-step-inner">
+				<h2 id="next-step-title">Next step</h2>
+				<p>If you want to explore a workshop, contact us. We will confirm scope and fit, then begin the intake process that prepares a successful engagement.</p>
+				<p>We look forward to hearing from you.</p>
+				<a class="button" href="/contact/">Inquire now</a>
+			</div>
+		</section>
+	</main>
+</SiteLayout>
+
+<style>
+	.workshops-page { overflow: clip; }
+	.workshops-opening { min-height: 590px; display: flex; align-items: center; padding: 124px 0 102px; }
+	.opening-copy { max-width: 830px; }
+	.opening-copy h1 { max-width: 760px; }
+	.opening-copy p, .reading-column > p, .phases p, .outcome-grid p, .next-step-inner p { font-size: 1.125rem; line-height: 1.65; }
+	.opening-copy .lead { max-width: 760px; margin-bottom: 26px; color: var(--charcoal); font-size: 1.4rem; font-weight: var(--font-weight-semibold); line-height: 1.5; }
+	.reading-column { max-width: 760px; }
+	.question-list, .outcome-list { margin: 0 0 28px; padding: 0; list-style: none; font-size: 1.125rem; font-weight: var(--font-weight-semibold); line-height: 1.6; }
+	.question-list li { padding: 12px 0; border-top: 1px solid var(--rule); }
+	.question-list li:last-child, .outcome-list li:last-child { border-bottom: 1px solid var(--rule); }
+	.section-heading { max-width: 760px; }
+	.phases { display: grid; grid-template-columns: repeat(3, 1fr); gap: clamp(32px, 5vw, 76px); margin: 58px 0 0; padding: 0; list-style: none; }
+	.phases li { position: relative; }
+	.expandable-block { border-top: 2px solid var(--charcoal); }
+	.outcome-list .expandable-block { border-top: 1px solid var(--rule); }
+	.expandable-block summary { display: grid; grid-template-columns: auto minmax(0, 1fr); gap: 18px; padding: 24px 0; cursor: pointer; list-style: none; }
+	.outcome-list .expandable-block summary { display: block; padding: 15px 18px 15px 0; }
+	.expandable-block summary::-webkit-details-marker { display: none; }
+	.expandable-block summary::after { align-self: start; color: var(--amber-text); content: "+"; font-size: 1.35rem; font-weight: var(--font-weight-semibold); line-height: 1; }
+	.phases .expandable-block summary::after { grid-column: 2; justify-self: end; grid-row: 1; }
+	.outcome-list .expandable-block summary::after { float: right; margin-left: 18px; }
+	.expandable-block[open] summary::after { content: "−"; }
+	.expandable-block summary:hover { background: var(--amber-wash); }
+	.expandable-block summary:focus-visible { outline: 3px solid var(--amber); outline-offset: 4px; }
+	.phase-marker { color: var(--amber-text); font-size: var(--type-caption); font-weight: var(--font-weight-heavy); letter-spacing: var(--tracking-caption); line-height: var(--leading-caption); }
+	.summary-copy { display: grid; gap: 12px; padding-right: 28px; font-size: 1.125rem; font-weight: var(--font-weight-regular); line-height: 1.65; }
+	.summary-title { display: block; color: var(--charcoal); font-size: var(--type-subheading); font-weight: var(--font-weight-bold); line-height: var(--leading-heading); letter-spacing: var(--tracking-heading); }
+	.outcome-list .summary-title { padding-right: 28px; font-size: 1.125rem; line-height: 1.6; }
+	.expanded-copy { padding: 0 24px 26px 42px; border-top: 1px solid var(--rule); }
+	.outcome-list .expanded-copy { padding: 18px 42px 20px 0; }
+	.expanded-copy h3 { margin: 20px 0 12px; font-size: 1.125rem; }
+	.expanded-copy p { margin-bottom: 0; font-size: 1rem; line-height: var(--leading-body); }
+	.outcome-section { background: var(--reading); }
+	.outcome-grid { display: grid; grid-template-columns: minmax(0, .8fr) minmax(0, 1.2fr); gap: clamp(42px, 8vw, 128px); }
+	.outcome-grid h2 { max-width: 440px; }
+	.next-step-section { padding: 100px 0; background: var(--charcoal); color: var(--paper); border-bottom: 5px solid var(--amber); }
+	.next-step-inner { max-width: 790px; }
+	.next-step-inner h2 { color: var(--paper); }
+	.next-step-inner p { max-width: 66ch; color: #e2e0d8; }
+	.next-step-inner .button { margin-top: 14px; }
+
+	@media (max-width: 820px) {
+		.workshops-opening { min-height: 0; padding: 88px 0 78px; }
+		.phases, .outcome-grid { grid-template-columns: 1fr; }
+		.phases { gap: 38px; margin-top: 42px; }
+		.next-step-section { padding: 78px 0; }
+	}
+	@media (max-width: 720px) {
+		.opening-copy p, .reading-column > p, .phases p, .outcome-grid p, .next-step-inner p, .question-list, .outcome-list { font-size: 1.125rem; }
+	}
+</style>

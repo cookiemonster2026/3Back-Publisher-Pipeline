@@ -139,6 +139,18 @@ export const pageSeo = Object.freeze({
 			],
 		},
 	},
+	"/workshops": {
+		status: "complete",
+		path: "/workshops",
+		title: "Workshops for Operational Grip | 3Back",
+		description: "Diagnostic workshops that help leadership groups examine real work and surface where team execution has lost Operational Grip.",
+		indexability: "index, follow",
+		social: {
+			title: "Workshops for Operational Grip",
+			description: "Leadership working sessions that make the gap between intended and actual operating behavior visible and owned.",
+			type: "website",
+		},
+	},
 	"/policies": {
 		status: "complete",
 		path: "/policies",
