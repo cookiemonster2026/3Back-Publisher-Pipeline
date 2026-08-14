@@ -1,6 +1,6 @@
 ---
-import { Image } from "astro:assets";
-import originIllustration from "../assets/about-us/3back-about-origin-candidate-v4.png";
+import painterPoster from "../assets/about-us/painter-three-steps-poster.webp";
+import painterVideo from "../assets/about-us/painter-three-steps-v1.mp4";
 import SiteLayout from "../layouts/SiteLayout.astro";
 import { pageSeo } from "../seo/registry.mjs";
 ---
@@ -27,7 +27,10 @@ import { pageSeo } from "../seo/registry.mjs";
 					<p>Three steps back was enough.</p>
 				</div>
 				<figure class="origin-figure">
-					<Image src={originIllustration} alt="Editorial illustration of a painter stepping back from a house to inspect several paint inconsistencies from a wider perspective." layout="constrained" widths={[480, 768, 1024, 1536]} sizes="(max-width: 820px) calc(100vw - 32px), 48vw" />
+					<video class="origin-motion" width="1152" height="768" autoplay muted loop playsinline preload="metadata" poster={painterPoster.src} aria-label="A painter covers a small orange defect with white paint, takes three steps back, and studies the result.">
+						<source src={painterVideo} type="video/mp4" />
+					</video>
+					<img class="origin-motion-poster" src={painterPoster.src} width="1152" height="768" alt="A painter covers a small orange defect with white paint, takes three steps back, and studies the result." />
 				</figure>
 			</div>
 		</section>
@@ -133,7 +136,8 @@ import { pageSeo } from "../seo/registry.mjs";
 	.origin-grid { display: grid; grid-template-columns: minmax(0, .94fr) minmax(0, 1.06fr); align-items: center; gap: clamp(38px, 6vw, 88px); }
 	.reading-column { max-width: 620px; }
 	.origin-figure { margin: 0; }
-	.origin-figure :global(img) { display: block; width: 100%; height: auto; }
+	.origin-figure :global(video), .origin-figure :global(img) { display: block; width: 100%; height: auto; }
+	.origin-motion-poster { display: none !important; }
 	.narrow-column { max-width: 760px; }
 	.question { margin-bottom: 5px; color: var(--charcoal); font-size: clamp(1.7rem, 3vw, 2.35rem) !important; font-weight: var(--font-weight-bold); line-height: 1.25 !important; }
 	.wide-reading { max-width: 1030px; }
@@ -167,5 +171,9 @@ import { pageSeo } from "../seo/registry.mjs";
 		.opening-copy p, .reading-column p, .narrow-column p, .wide-reading p, .editorial-columns p, .grip-copy p, .question-list, .continuation-inner p { font-size: 1.125rem; }
 		.grip-section { padding: 82px 0; }
 		.team-section { padding-bottom: 82px; }
+	}
+	@media (prefers-reduced-motion: reduce) {
+		.origin-motion { display: none; }
+		.origin-motion-poster { display: block !important; }
 	}
 </style>
