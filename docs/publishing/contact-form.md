@@ -4,11 +4,15 @@ The `/contact` form posts to the Cloudflare Worker route `/api/contact`. The Wor
 
 ## Public build variable
 
-Set this during the Astro build. It is intentionally public and only identifies the Turnstile widget.
+Set this as a Cloudflare Workers Builds **Production build variable**. It is intentionally public and only identifies the Turnstile widget.
 
 ```text
 PUBLIC_TURNSTILE_SITE_KEY
 ```
+
+Worker runtime variables and secrets are not passed to Astro's static build. In the Cloudflare dashboard, open the Worker that matches `wrangler.jsonc` (`3back-publisher-pipeline`), then go to **Settings > Build > Build variables and secrets** and add `PUBLIC_TURNSTILE_SITE_KEY` to the production trigger. Do not add it only under **Settings > Variables & Secrets**.
+
+`wrangler.jsonc` owns the production Astro build through its `build.command`. As a result, `wrangler deploy` runs `pnpm build` before it uploads `dist/`, and Astro receives `PUBLIC_TURNSTILE_SITE_KEY` from the deploy process environment. In Workers Builds, leave the separate build command empty and use `pnpm deploy` as the production deploy command to avoid building twice.
 
 ## Cloudflare Worker secrets and variables
 

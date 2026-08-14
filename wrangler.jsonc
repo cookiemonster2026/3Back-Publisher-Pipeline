@@ -2,6 +2,10 @@
   "$schema": "./node_modules/wrangler/config-schema.json",
   "name": "3back-publisher-pipeline",
   "compatibility_date": "2026-08-06",
+  "build": {
+    "command": "pnpm build",
+    "watch_dir": ["src", "public", "scripts", "astro.config.mjs"]
+  },
   "main": "./functions/worker.mjs",
   "assets": {
     "directory": "./dist"
