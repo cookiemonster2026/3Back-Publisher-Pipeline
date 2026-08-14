@@ -22,8 +22,9 @@ const turnstileSiteKey = import.meta.env.PUBLIC_TURNSTILE_SITE_KEY ?? "";
 					<div class="form-fields">
 						<div class="field"><label for="name">Name <span aria-hidden="true">(required)</span></label><input id="name" name="name" type="text" autocomplete="name" required maxlength="160" /></div>
 						<div class="field"><label for="email">Email <span aria-hidden="true">(required)</span></label><input id="email" name="email" type="email" autocomplete="email" required maxlength="254" /></div>
+						<div class="field"><label for="role">Role / position <span aria-hidden="true">(required)</span></label><input id="role" name="role" type="text" autocomplete="organization-title" required maxlength="160" /></div>
 						<div class="field"><label for="phone">Phone <span class="optional">(optional)</span></label><input id="phone" name="phone" type="tel" autocomplete="tel" maxlength="60" /></div>
-						<div class="field"><label for="message">What is the execution problem you want to examine? <span class="optional">(optional)</span></label><textarea id="message" name="message" rows="6" maxlength="4000"></textarea></div>
+						<div class="field"><label for="message">What is the execution problem you want to examine? <span aria-hidden="true">(required)</span></label><textarea id="message" name="message" rows="6" required maxlength="4000"></textarea></div>
 					</div>
 					<div class="turnstile-wrap">{turnstileSiteKey ? <div class="cf-turnstile" data-sitekey={turnstileSiteKey}></div> : <p class="form-error">This form is not configured yet. Please call us instead.</p>}</div>
 					<p class="form-error" role="alert" data-form-error hidden></p>
@@ -38,7 +39,7 @@ const turnstileSiteKey = import.meta.env.PUBLIC_TURNSTILE_SITE_KEY ?? "";
 				<div class="details-heading"><p class="eyebrow">Contact details</p><h2 id="contact-details-title">Or reach us directly.</h2></div>
 				<div class="details-contact">
 					<a class="phone" href="tel:+18553232225">(855) 323-2225</a>
-					<p class="phone-secondary">323-BACK</p>
+					<p class="phone-secondary">+1 855-323-BACK</p>
 					<address><a href="https://share.google/FYPKiOTqqwYThdslS" target="_blank" rel="noopener noreferrer">3Back, LLC<br />5005 W Loomis Rd Suite 202<br />Milwaukee, WI 53212<br />United States of America</a></address>
 				</div>
 				<a class="map-tile" href="https://share.google/FYPKiOTqqwYThdslS" target="_blank" rel="noopener noreferrer" aria-label="Get directions to 3Back, LLC in Google Maps"><Image src={mapImage} alt="Map showing 3Back, LLC near West Edgerton Avenue and South 51st Street in Milwaukee." layout="constrained" widths={[330, 480, 660]} sizes="(max-width: 820px) calc(100vw - 32px), 31vw" /></a>
@@ -77,12 +78,12 @@ const turnstileSiteKey = import.meta.env.PUBLIC_TURNSTILE_SITE_KEY ?? "";
 	.opening-copy { max-width: 680px; }
 	.eyebrow { margin-bottom: 14px; color: var(--amber-text); font-size: var(--type-caption); font-weight: var(--font-weight-heavy); letter-spacing: var(--tracking-caption); text-transform: uppercase; }
 	.opening-copy h1 { margin-bottom: 28px; }
-	.opening-copy p { max-width: 60ch; font-size: 1.125rem; line-height: 1.65; }
+	.opening-copy p:not(.eyebrow) { max-width: 60ch; font-size: 1.125rem; line-height: 1.65; }
 	.opening-copy .lead { margin-bottom: 22px; color: var(--charcoal); font-size: var(--type-lead); font-weight: var(--font-weight-semibold); line-height: var(--leading-lead); }
 	.contact-form { padding: clamp(26px, 4vw, 42px); background: var(--reading); border-top: 4px solid var(--amber); box-shadow: 0 12px 30px rgba(29, 36, 33, .08); }
 	.form-fields { display: grid; gap: 21px; }.field { display: grid; gap: 7px; }.field label { color: var(--charcoal); font-size: var(--type-caption); font-weight: var(--font-weight-bold); }.optional { color: var(--text-secondary); font-weight: var(--font-weight-regular); }
 	.field input, .field textarea { width: 100%; border: 1px solid #a9ada6; border-radius: 0; background: #fff; color: var(--charcoal); padding: 12px 13px; }.field textarea { resize: vertical; min-height: 136px; }
 	.turnstile-wrap { margin-top: 25px; min-height: 65px; }.form-error { margin: 0 0 18px; color: #9e2a18; font-weight: var(--font-weight-semibold); }.submit-button { width: 100%; border-radius: 0; }.submit-button:disabled { cursor: not-allowed; opacity: .6; }.form-success { margin: 20px 0 0; color: #315d42; font-weight: var(--font-weight-semibold); }
-	.contact-details { padding: 84px 0 96px; }.details-grid { display: grid; grid-template-columns: minmax(0, .8fr) minmax(245px, .68fr) minmax(270px, .9fr); align-items: start; gap: clamp(30px, 4vw, 62px); }.details-grid h2 { margin-bottom: 0; }.details-contact { display: grid; align-content: start; gap: 8px; }.phone { color: var(--charcoal); font-size: clamp(1.5rem, 2.5vw, 2rem); font-weight: var(--font-weight-bold); text-underline-offset: 5px; }.phone-secondary { margin: -4px 0 18px; color: var(--text-secondary); font-size: var(--type-caption); font-weight: var(--font-weight-semibold); letter-spacing: var(--tracking-caption); }address { margin: 0; font-size: 1rem; font-style: normal; line-height: 1.55; }address a { color: var(--charcoal); text-underline-offset: 4px; }.map-tile { display: block; max-width: 390px; border: 1px solid var(--rule); background: var(--charcoal); }.map-tile :global(img) { display: block; width: 100%; height: auto; transition: opacity 140ms ease; }.map-tile:hover :global(img) { opacity: .84; }
-	@media (max-width: 820px) { .contact-opening { padding: 88px 0 78px; }.opening-grid, .details-grid { grid-template-columns: 1fr; }.opening-grid { gap: 54px; }.details-grid { gap: 34px; }.map-tile { max-width: 480px; } }
+	.contact-details { padding: 84px 0 96px; }.details-grid { display: grid; grid-template-columns: minmax(0, .8fr) minmax(245px, .68fr) minmax(130px, .38fr); align-items: start; gap: clamp(30px, 4vw, 62px); }.details-grid h2 { margin-bottom: 0; }.details-contact { display: grid; align-content: start; gap: 8px; }.phone { color: var(--charcoal); font-size: clamp(1.5rem, 2.5vw, 2rem); font-weight: var(--font-weight-bold); text-decoration-color: var(--slate); text-decoration-thickness: 1px; text-underline-offset: 4px; }.phone-secondary { margin: -4px 0 18px; color: var(--text-secondary); font-size: var(--type-caption); font-weight: var(--font-weight-semibold); letter-spacing: var(--tracking-caption); }address { margin: 0; font-size: 1rem; font-style: normal; line-height: 1.55; }address a { color: var(--charcoal); text-underline-offset: 4px; }.map-tile { display: block; width: 130px; border: 1px solid var(--rule); background: var(--charcoal); }.map-tile :global(img) { display: block; width: 100%; height: auto; transition: opacity 140ms ease; }.map-tile:hover :global(img) { opacity: .84; }
+	@media (max-width: 820px) { .contact-opening { padding: 88px 0 78px; }.opening-grid, .details-grid { grid-template-columns: 1fr; }.opening-grid { gap: 54px; }.details-grid { gap: 34px; }.map-tile { width: 130px; } }
 </style>
