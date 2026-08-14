@@ -16,12 +16,12 @@ Worker runtime variables and secrets are not passed to Astro's static build. In 
 
 ## Cloudflare Worker secrets and variables
 
-Set these in the Cloudflare Worker settings or with `wrangler secret put`. Do not place them in source control or a `PUBLIC_` variable.
+Set the Turnstile and Resend values as Cloudflare Worker secrets or with `wrangler secret put`. Do not place them in source control or a `PUBLIC_` variable. The two address values are non-secret defaults declared in `wrangler.jsonc` and may be overridden as Worker text variables when needed.
 
 ```text
 TURNSTILE_SECRET_KEY       # Turnstile secret key for the configured site key
 RESEND_API_KEY             # Resend API key with permission to send transactional email
-CONTACT_FROM_EMAIL         # Verified Resend sender, for example: 3Back <contact@3back.com>
+CONTACT_FROM_EMAIL         # Optional verified Resend sender; defaults to noreply@3back.com
 CONTACT_NOTIFICATION_EMAIL # Optional recipient override; defaults to og@3back.com
 ```
 

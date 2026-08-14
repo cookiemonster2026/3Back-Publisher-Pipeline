@@ -7,6 +7,10 @@
     "watch_dir": ["src", "public", "scripts", "astro.config.mjs"]
   },
   "main": "./functions/worker.mjs",
+  "vars": {
+    "CONTACT_FROM_EMAIL": "noreply@3back.com",
+    "CONTACT_NOTIFICATION_EMAIL": "og@3back.com"
+  },
   "assets": {
     "directory": "./dist"
   }
