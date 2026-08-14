@@ -2,7 +2,7 @@
 
 This manifest records repository-verifiable technical context for publishing work. It describes the repository at the current `main` checkout. Where the repository does not establish a fact, that limitation is stated explicitly.
 
-**Verified as of:** 2026-08-11 against the expanded infrastructure-spike working tree based on commit `88192eec28eea9d3e7dcfcda44b51d20c85ef2b1`.
+**Verified as of:** 2026-08-14 against the current `main` checkout.
 
 ## Technology stack and versions
 
@@ -27,7 +27,7 @@ There are no declared React, Vue, Svelte, Tailwind, CMS, database, or test-runne
 - Page content is rendered from `.astro` source at build time. The `robots.txt.ts` endpoint generates environment-dependent text during the build.
 - The repository contains browser-side scripts in Astro components for the responsive navigation and homepage interaction. No client UI framework is declared.
 - `site` is fixed to `https://3back.com` in `astro.config.mjs` through `SITE_ORIGIN` from the SEO registry.
-- No content collections, dynamic route files, middleware, API service, or server-rendering adapter are present.
+- No content collections, dynamic route files, middleware, or server-rendering adapter are present. The Cloudflare Worker in `functions/worker.mjs` supplies the contact-form API route.
 
 ## Publishing-relevant repository structure
 
@@ -39,6 +39,8 @@ There are no declared React, Vue, Svelte, Tailwind, CMS, database, or test-runne
 |-- pnpm-lock.yaml                    Resolved dependency versions
 |-- pnpm-workspace.yaml               Single-package workspace and allowed native builds
 |-- wrangler.jsonc                    Cloudflare static-asset deployment configuration
+|-- functions/
+|   `-- worker.mjs                    Cloudflare Worker and `/api/contact` handler
 |-- scripts/
 |   |-- build.mjs                     Astro diagnostics, environment-gated build, SEO validation
 |   `-- validate-seo.mjs              Built-output SEO validator
@@ -143,10 +145,11 @@ The registry is `src/seo/registry.mjs`; its declared shape is documented by `src
 | --- | --- | --- | --- | --- |
 | `/` | Complete | `index, follow` | Organization, WebSite, WebPage | None |
 | `/operational-grip` | Complete | `index, follow` | Organization, WebSite, ImageObject, WebPage, DefinedTerm | None |
+| `/workshops` | Complete | `index, follow` | None | None |
 | `/policies` | Complete | `index, follow` | None | None |
 | `/privacy-policy` | Complete | `index, follow` | None | None |
 | `/about` | Stub | `noindex, nofollow` | None | Substantive company and team content; approved complete-page metadata; appropriate structured data |
-| `/contact` | Stub | `noindex, nofollow` | None | Functional contact experience; completion and error handling; approved complete-page metadata |
+| `/contact` | Complete | `index, follow` | None | None |
 | `/doomscroll` | Stub | `noindex, nofollow` | None | Actual diagnostic feed content; completed browsing experience; approved complete-page metadata |
 | `/grip-check` | Stub | `noindex, nofollow` | None | Completed screening flow; results behavior; functional contact handoff; approved complete-page metadata |
 | `/ideas` | Stub | `noindex, nofollow` | None | Approved resource inventory; substantive index content; approved complete-page metadata |
@@ -210,17 +213,25 @@ The approved publishing workflow is owner-verified:
 1. Commit the approved publishing changes to `main`.
 2. Push `main` to the GitHub remote. The push triggers the connected Cloudflare deployment automatically.
 
-The repository verifies that Git remote `origin` is `https://github.com/cookiemonster2026/3Back-Publisher-Pipeline.git`. It also provides `pnpm deploy`, which runs the production build and SEO validation before invoking `wrangler deploy`. That command is available but is not the standard publishing path and must not be run unless explicitly authorized. `wrangler.jsonc` names the Cloudflare deployment `3back-publisher-pipeline`, uses compatibility date `2026-08-06`, and publishes `./dist` as static assets.
+The repository verifies that Git remote `origin` is `https://github.com/cookiemonster2026/3Back-Publisher-Pipeline.git`. It also provides `pnpm deploy`, which invokes `wrangler deploy`. Wrangler runs its configured `pnpm build` custom build before publishing `./dist` as static assets. That command is available but is not the standard publishing path and must not be run unless explicitly authorized. `wrangler.jsonc` names the Cloudflare deployment `3back-publisher-pipeline`, uses compatibility date `2026-08-06`, and defines the Worker entry point at `functions/worker.mjs`.
 
 The repository does not contain a GitHub Actions workflow. The connected Cloudflare deployment behavior and `main` publishing branch are owner-verified rather than established by tracked workflow files. The deployed Cloudflare account/project, secrets, custom-domain routing, preview deployment behavior, and rollback procedure remain unverified from the available repository and owner-provided information.
 
+## Contact form infrastructure
+
+- `/contact` is a complete, production-indexable page with a contact form. It posts to `/api/contact`, which is handled by the Cloudflare Worker in `functions/worker.mjs`.
+- Cloudflare Turnstile protects the form. `PUBLIC_TURNSTILE_SITE_KEY` is a required public **build variable** available to Astro while it generates the static page. `TURNSTILE_SECRET_KEY` is a Worker runtime secret used for server-side token verification.
+- Resend sends the notification and acknowledgment emails. `RESEND_API_KEY` is a Worker runtime secret. The Worker defaults `CONTACT_FROM_EMAIL` to `noreply@3back.com` and `CONTACT_NOTIFICATION_EMAIL` to `og@3back.com`; `wrangler.jsonc` declares the same non-secret defaults. The `3back.com` sending domain must be verified in Resend before production delivery.
+- Build and runtime configuration are separate: Worker runtime variables and secrets do not enter Astro's static build. Configure `PUBLIC_TURNSTILE_SITE_KEY` as a production Build variable. Dashboard text variables may not persist across deploys, so the address defaults are also represented in `wrangler.jsonc`.
+- Required fields are Name, Email, Role / position, and the execution problem. Phone is optional. The Worker validates the required fields and includes Role / position in the internal notification to `og@3back.com`.
+- [`docs/publishing/contact-form.md`](contact-form.md) is the operational runbook for Cloudflare and Resend configuration.
+
 ## Current stubs and deferred capabilities
 
-The six registry-declared stubs are `/about`, `/contact`, `/doomscroll`, `/grip-check`, `/ideas`, and `/live-events`. Their exact deferred work is recorded in the SEO table above and enforced as nonempty registry metadata.
+The registry-declared stubs exclude `/contact`, which is complete. Their exact deferred work is recorded in the SEO table above and enforced as nonempty registry metadata.
 
 Additional current boundaries:
 
-- The contact route is display-only stub content; no form submission, success state, or error state is implemented.
 - Grip Check has no completed screening, result, or contact-handoff flow at its route. The homepage contains an in-page assessment interaction, but the registry separately tracks `/grip-check` as unfinished.
 - Ideas has no configured resource inventory or content system.
 - Live Events has no event schedule or event structured data.
