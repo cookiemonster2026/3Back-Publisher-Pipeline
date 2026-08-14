@@ -178,7 +178,7 @@ const overallGripScore = Math.round(
 
 					<ol class="loop-flow">
 						{loop.map((item, index) => (
-							<li class:list={[index === 0 && "signal-step"]}>
+							<li class:list={[index === 0 && "signal-step", index === 2 && "organization-end"]} tabindex="0">
 								<span>{String(index + 1).padStart(2, "0")}</span>
 								<strong>{item}</strong>
 							</li>
@@ -257,7 +257,7 @@ const overallGripScore = Math.round(
 
 					<ol class="approach-list">
 						{approach.map((item, index) => (
-							<li>
+							<li tabindex="0">
 								<span class="approach-number">{String(index + 1).padStart(2, "0")}</span>
 								<div>
 									<h3>{item.title}</h3>
@@ -267,7 +267,7 @@ const overallGripScore = Math.round(
 						))}
 					</ol>
 
-					<blockquote class="standard-quote">One bounded problem, one decision, one accountable owner, and one observable result at a time.</blockquote>
+					<blockquote class="standard-quote"><span class="approach-one approach-one-1">One</span> bounded problem, <span class="approach-one approach-one-2">one</span> decision, <span class="approach-one approach-one-3">one</span> accountable owner, and <span class="approach-one approach-one-4">one</span> observable result at a time.</blockquote>
 				</div>
 			</section>
 
@@ -451,13 +451,21 @@ const overallGripScore = Math.round(
 	.loop-section { background: var(--reading); }
 	.loop-flow { display: grid; grid-template-columns: repeat(5, 1fr); margin: 0; padding: 0; border-top: 4px solid var(--charcoal); border-bottom: 1px solid var(--rule); list-style: none; }
 	.loop-flow li { position: relative; min-height: 145px; padding: 24px 22px; border-right: 1px solid var(--rule); background: var(--reading); }
-	.loop-flow li::after { content: ""; position: absolute; top: 50%; right: -6px; z-index: 2; width: 10px; height: 10px; border-top: 2px solid var(--charcoal); border-right: 2px solid var(--charcoal); background: var(--reading); transform: translateY(-50%) rotate(45deg); }
+	.loop-flow li::after { content: ""; position: absolute; top: 50%; right: -6px; z-index: 2; width: 10px; height: 10px; border-top: 2px solid var(--charcoal); border-right: 2px solid var(--charcoal); background: transparent; transform: translateY(-50%) rotate(45deg); }
 	.loop-flow li:last-child { border-right: 0; }
 	.loop-flow li:last-child::after { display: none; }
 	.loop-flow span { display: block; margin-bottom: 42px; color: var(--amber-text); font-size: var(--type-card); font-weight: var(--font-weight-heavy); letter-spacing: var(--tracking-caption); line-height: var(--leading-card); }
 	.loop-flow strong { display: block; font-size: var(--type-card); line-height: var(--leading-card); }
 	.loop-flow .signal-step { background: var(--amber-wash); }
 	.loop-flow .signal-step::after { background: var(--amber-wash); }
+	.loop-flow .organization-end::before { content: none; position: absolute; z-index: 3; top: -4px; right: -2px; bottom: -1px; width: 3px; background: var(--charcoal); }
+	.loop-flow .organization-end::after { display: none; }
+	.loop-flow::before { position: absolute; z-index: 4; top: -39px; padding: 4px 8px; background: var(--reading); color: var(--slate); font-size: var(--type-card); font-weight: var(--font-weight-heavy); letter-spacing: var(--tracking-caption); line-height: var(--leading-card); text-transform: uppercase; }
+	.loop-flow:has(li:nth-child(-n+3):hover) .organization-end::before, .loop-flow:has(li:nth-child(-n+3):focus-visible) .organization-end::before, .loop-flow:has(li:nth-child(n+4):hover) .organization-end::before, .loop-flow:has(li:nth-child(n+4):focus-visible) .organization-end::before { content: ""; }
+	.loop-flow:has(li:nth-child(-n+3):hover)::before, .loop-flow:has(li:nth-child(-n+3):focus-visible)::before { content: "Organization"; left: 0; }
+	.loop-flow:has(li:nth-child(n+4):hover)::before, .loop-flow:has(li:nth-child(n+4):focus-visible)::before { content: "Market"; left: 60%; }
+	.loop-flow:has(li:nth-child(-n+3):hover) li:nth-child(-n+3), .loop-flow:has(li:nth-child(-n+3):focus-visible) li:nth-child(-n+3), .loop-flow:has(li:nth-child(n+4):hover) li:nth-child(n+4), .loop-flow:has(li:nth-child(n+4):focus-visible) li:nth-child(n+4) { background: var(--amber-wash); }
+	.loop-flow li:focus-visible { box-shadow: inset 0 0 0 3px var(--amber); }
 	.loop-note { max-width: 890px; margin: 45px 0 0 auto; color: var(--text-secondary); font-size: var(--type-body); line-height: var(--leading-body); }
 
 	.assessment-section { padding: 110px 0; background: #303936; color: var(--paper); }
@@ -508,11 +516,15 @@ const overallGripScore = Math.round(
 	.approach-section { background: var(--paper); }
 	.approach-list { margin: 70px 0 0; padding: 0; list-style: none; border-top: 4px solid var(--charcoal); }
 	.approach-list li { display: grid; grid-template-columns: 100px minmax(0, 1fr); padding: 30px 0; border-bottom: 1px solid var(--rule); }
+	.approach-list li { outline: none; }
+	.approach-list li:hover, .approach-list li:focus-visible { background: var(--amber-wash); }
 	.approach-list li > div { display: grid; grid-template-columns: 0.65fr 1fr; gap: 80px; align-items: baseline; }
 	.approach-list h3, .approach-list p { margin-bottom: 0; }
 	.approach-list p { color: var(--text-primary); font-size: var(--type-card); line-height: var(--leading-card); }
 	.approach-number { margin: 3px 0 0; }
 	.standard-quote { max-width: 940px; margin: 60px 0 0 auto; padding: 26px 0 0 36px; border-top: 4px solid var(--amber); border-left: 1px solid var(--rule); font-size: clamp(1.55rem, 3vw, 2.65rem); font-weight: var(--font-weight-bold); line-height: 1.14; letter-spacing: var(--tracking-display); }
+	.approach-one { transition: color 160ms ease-out; }
+	.approach-list:has(li:nth-child(1):hover) + .standard-quote .approach-one-1, .approach-list:has(li:nth-child(1):focus-visible) + .standard-quote .approach-one-1, .approach-list:has(li:nth-child(2):hover) + .standard-quote .approach-one-2, .approach-list:has(li:nth-child(2):focus-visible) + .standard-quote .approach-one-2, .approach-list:has(li:nth-child(3):hover) + .standard-quote .approach-one-3, .approach-list:has(li:nth-child(3):focus-visible) + .standard-quote .approach-one-3, .approach-list:has(li:nth-child(4):hover) + .standard-quote .approach-one-4, .approach-list:has(li:nth-child(4):focus-visible) + .standard-quote .approach-one-4 { color: #D96B18; }
 
 	.body-work-section { padding-bottom: 82px; }
 	.body-work-grid { display: grid; grid-template-columns: 1fr 1fr; gap: clamp(60px, 9vw, 130px); }
@@ -583,6 +595,8 @@ const overallGripScore = Math.round(
 		.loop-flow li { display: grid; grid-template-columns: 55px 1fr; min-height: 82px; align-items: center; padding: 16px 20px; border-right: 0; border-bottom: 1px solid var(--rule); }
 		.loop-flow span { margin-bottom: 0; }
 		.loop-flow li::after { top: auto; right: auto; bottom: -6px; left: 27px; transform: rotate(135deg); }
+		.loop-flow .organization-end::before { top: auto; right: 0; bottom: -2px; left: 0; width: auto; height: 3px; }
+		.loop-flow::before { top: auto; right: 16px; left: auto !important; bottom: 10px; }
 		.assessment-section { padding: 78px 0; }
 		.assessment-grid { gap: 48px; }
 		.assessment-copy h2 { font-size: clamp(2.5rem, 11vw, 3.5rem); }
@@ -621,5 +635,6 @@ const overallGripScore = Math.round(
 	@media (prefers-reduced-motion: reduce) {
 		.score-segment, .score-result { transition: none; }
 		.score-segment.is-active, .score-result.is-active { transform: none; }
+		.approach-one { transition: none; }
 	}
 </style>
