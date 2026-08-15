@@ -1,0 +1,101 @@
+---
+import SiteLayout from "../layouts/SiteLayout.astro";
+import { pageSeo } from "../seo/registry.mjs";
+---
+
+<SiteLayout metadata={pageSeo["/training"]}>
+	<main id="main" class="training-page">
+		<section class="training-opening">
+			<div class="shell opening-copy">
+				<h1>Training</h1>
+				<p class="lead">Training is available. If the real constraint is how work moves through the organization, start there instead.</p>
+			</div>
+		</section>
+
+		<section class="training-options" aria-label="Training options">
+			<div class="shell training-grid">
+				<article class="training-card">
+					<h2>Private Training</h2>
+					<p>Bring a course to your team: onsite or private virtual.</p>
+					<ul>
+						<li><a href="/courses">See the full course catalog</a></li>
+						<li><a href="/contact/">Schedule a conversation for a private course</a></li>
+					</ul>
+				</article>
+
+				<article class="training-card">
+					<h2>Hybrid Instructor-Led</h2>
+					<p>Self-paced material plus live instructor time, or full-day live sessions.</p>
+					<ul>
+						<li><a href="https://path.3back.com">Advanced hybrid courses (self-paced + office hours) → path.3back.com</a></li>
+						<li><a href="/events">Full-day live courses → Events</a></li>
+					</ul>
+				</article>
+
+				<article class="training-card expert-echo-card">
+					<h2>Expert Echo AI Courses</h2>
+					<p class="coming-soon">Coming soon.</p>
+					<p>AIs trained in our materials to create an Expert Echo of our voice.</p>
+					<p class="request-link"><a href="/contact/">Request to learn more about the Expert Echo AI.</a></p>
+				</article>
+			</div>
+		</section>
+
+		<section class="training-next-step" aria-labelledby="next-step-title">
+			<div class="shell next-step-copy">
+				<h2 id="next-step-title">Not sure training is the right next step?</h2>
+				<p>If the real issue is how work is actually moving through the organization, <a class="quiet-button" href="/contact/">schedule a conversation</a>.</p>
+			</div>
+		</section>
+
+		<section class="training-note">
+			<div class="shell">
+				<p>We still deliver private and hybrid courses. The primary work of 3Back is diagnosing and improving how teams actually execute. Training is one entry point, not the center.</p>
+			</div>
+		</section>
+	</main>
+</SiteLayout>
+
+<style>
+	.training-opening { padding: 124px 0 74px; }
+	.opening-copy { max-width: 820px; }
+	.opening-copy h1 { margin-bottom: 26px; }
+	.lead { max-width: 690px; margin-bottom: 0; color: var(--charcoal); font-size: var(--type-lead); font-weight: var(--font-weight-semibold); line-height: var(--leading-lead); }
+	.training-options { padding: 0 0 104px; }
+	.training-grid { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 24px; }
+	.training-card { display: flex; flex-direction: column; min-height: 344px; padding: clamp(26px, 3.2vw, 38px); border: 1px solid var(--rule); border-top: 3px solid var(--amber); background: var(--reading); box-shadow: 0 10px 26px rgba(29, 36, 33, .05); transition: transform 160ms ease, background-color 160ms ease, border-color 160ms ease; }
+	.training-card:hover, .training-card:focus-within, .training-card:active, .training-card:has(a:active) { transform: translateY(-2px); border-color: #c9c0b3; background: #fffdfa; }
+	.training-card h2 { margin-bottom: 18px; font-size: clamp(1.7rem, 2.5vw, 2.2rem); }
+	.training-card p { margin-bottom: 26px; font-size: 1.0625rem; line-height: 1.6; }
+	.training-card ul { display: grid; gap: 14px; margin: auto 0 0; padding: 0; list-style: none; }
+	.training-card li { padding-top: 14px; border-top: 1px solid var(--rule); }
+	.training-card a { color: var(--amber-text); font-weight: var(--font-weight-semibold); text-decoration-color: var(--amber); text-decoration-thickness: 2px; text-underline-offset: 4px; }
+	.training-card a:hover { color: var(--charcoal); }
+	.expert-echo-card { border-top-color: #b77745; background: #f7f3ec; }
+	.expert-echo-card .coming-soon { margin-bottom: 16px; color: var(--text-secondary); font-size: var(--type-caption); font-weight: var(--font-weight-bold); letter-spacing: var(--tracking-caption); text-transform: uppercase; }
+	.expert-echo-card p:not(.coming-soon) { margin-bottom: 18px; }
+	.expert-echo-card .request-link { margin-top: auto; margin-bottom: 0; padding-top: 14px; border-top: 1px solid var(--rule); }
+	.training-next-step { padding: 58px 0; border-block: 1px solid var(--rule); background: #ece8e0; }
+	.next-step-copy { max-width: 760px; }
+	.next-step-copy h2 { margin-bottom: 12px; font-size: clamp(1.7rem, 3vw, 2.35rem); }
+	.next-step-copy p { margin-bottom: 0; color: var(--text-secondary); font-size: 1.125rem; line-height: 1.6; }
+	.quiet-button { display: inline-flex; align-items: center; min-height: 38px; margin-inline: 3px; padding: 6px 12px; border: 1px solid var(--charcoal); background: var(--paper); color: var(--charcoal); font-weight: var(--font-weight-semibold); line-height: 1.2; text-decoration: none; transition: background-color 140ms ease, color 140ms ease; vertical-align: baseline; }
+	.quiet-button:hover { background: var(--charcoal); color: var(--paper); }
+	.training-note .shell { max-width: 760px; }
+	.training-note { padding: 34px 0 78px; }
+	.training-note p { margin-bottom: 0; color: var(--text-secondary); font-size: 1.125rem; font-weight: var(--font-weight-regular); line-height: 1.6; }
+
+	@media (max-width: 900px) {
+		.training-grid { grid-template-columns: 1fr; gap: 18px; }
+		.training-card { min-height: 0; }
+		.training-card ul { margin-top: 10px; }
+	}
+
+	@media (max-width: 720px) {
+		.training-opening { padding: 88px 0 52px; }
+		.training-options { padding-bottom: 72px; }
+		.training-card { padding: 26px 22px; }
+		.training-next-step { padding: 46px 0; }
+		.training-note { padding: 28px 0 58px; }
+	}
+</style>

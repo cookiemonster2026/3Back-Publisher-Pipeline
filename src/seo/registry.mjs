@@ -29,6 +29,18 @@ export const HOMEPAGE_OPERATIONAL_GRIP_EXPLANATION = "A team or scaled system ha
 
 /** @type {Readonly<Record<string, SeoMetadata>>} */
 export const pageSeo = Object.freeze({
+	"/training": {
+		status: "complete",
+		path: "/training",
+		title: "Training | 3Back",
+		description: "Private training, hybrid instructor-led courses, and upcoming Expert Echo AI courses. Route to the format that fits.",
+		indexability: "index, follow",
+		social: {
+			title: "Training | 3Back",
+			description: "Private training, hybrid instructor-led courses, and upcoming Expert Echo AI courses. Route to the format that fits.",
+			type: "website",
+		},
+	},
 	"/events": {
 		status: "complete",
 		path: "/events",
@@ -318,6 +330,19 @@ export const pageSeo = Object.freeze({
 			type: "website",
 		},
 		missingWork: ["Approved resource inventory", "Substantive index content", "Approved complete-page metadata"],
+	},
+	"/courses": {
+		status: "stub",
+		path: "/courses",
+		title: "Courses | 3Back",
+		description: "Course catalog for private and hybrid training. Full page coming next.",
+		indexability: "noindex, nofollow",
+		social: {
+			title: "Courses | 3Back",
+			description: "Course catalog for private and hybrid training. Full page coming next.",
+			type: "website",
+		},
+		missingWork: ["Complete course catalog", "Approved complete-page metadata"],
 	},
 	"/live-events": {
 		status: "stub",

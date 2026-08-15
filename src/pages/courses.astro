@@ -1,0 +1,10 @@
+---
+import StubPage from "../components/StubPage.astro";
+import { pageSeo } from "../seo/registry.mjs";
+---
+
+<StubPage
+	name="Courses"
+	description="Course catalog for private and hybrid training. Full page coming next."
+	metadata={pageSeo["/courses"]}
+/>
