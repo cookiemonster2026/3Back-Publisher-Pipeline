@@ -1,0 +1,215 @@
+---
+import SiteLayout from "../layouts/SiteLayout.astro";
+import { pageSeo } from "../seo/registry.mjs";
+
+const events = [
+	{ month: "August 2026", course: "Advanced Certified ScrumMaster®", mark: "(A-CSM®)", seal: { src: "/assets/events/sa-adv_csm.png", alt: "Scrum Alliance Advanced Certified ScrumMaster certification seal" }, date: "Aug 15–16", days: "Sat–Sun", url: "https://event.3back.com/advanced-certified-scrummaster-august-15-16" },
+	{ month: "August 2026", course: "Certified ScrumMaster®", mark: "(CSM®)", seal: { src: "/assets/events/sa-csm.png", alt: "Scrum Alliance Certified ScrumMaster certification seal" }, date: "Aug 19–20", days: "Wed–Thu", url: "https://event.3back.com/certified-scrummaster-august-19-20" },
+	{ month: "August 2026", course: "Scrum Better with Kanban", seal: { src: "/assets/events/ku-certified-training-seal.png", alt: "Kanban University Certified Kanban Training seal" }, date: "Aug 22", days: "Sat", url: "https://event.3back.com/scrum-better-with-kanban-august-22" },
+	{ month: "August 2026", course: "Certified ScrumMaster®", mark: "(CSM®)", seal: { src: "/assets/events/sa-csm.png", alt: "Scrum Alliance Certified ScrumMaster certification seal" }, date: "Aug 29–30", days: "Sat–Sun", url: "https://event.3back.com/certified-scrummaster-august-29-30" },
+	{ month: "September 2026", course: "Advanced Certified ScrumMaster®", mark: "(A-CSM®)", seal: { src: "/assets/events/sa-adv_csm.png", alt: "Scrum Alliance Advanced Certified ScrumMaster certification seal" }, date: "Sep 9–10", days: "Wed–Thu", url: "https://event.3back.com/advanced-certified-scrummaster-september-9-10" },
+	{ month: "September 2026", course: "Scrum Better with Kanban", seal: { src: "/assets/events/ku-certified-training-seal.png", alt: "Kanban University Certified Kanban Training seal" }, date: "Sep 12", days: "Sat", url: "https://event.3back.com/scrum-better-with-kanban-september-12" },
+	{ month: "September 2026", course: "Certified ScrumMaster®", mark: "(CSM®)", seal: { src: "/assets/events/sa-csm.png", alt: "Scrum Alliance Certified ScrumMaster certification seal" }, date: "Sep 15–16", days: "Tue–Wed", url: "https://event.3back.com/certified-scrummaster-september-15-16-2026" },
+	{ month: "September 2026", course: "Advanced Certified ScrumMaster®", mark: "(A-CSM®)", seal: { src: "/assets/events/sa-adv_csm.png", alt: "Scrum Alliance Advanced Certified ScrumMaster certification seal" }, date: "Sep 19–20", days: "Sat–Sun", url: "https://event.3back.com/advanced-certified-scrummaster-september-19-20" },
+	{ month: "September 2026", course: "Certified ScrumMaster®", mark: "(CSM®)", seal: { src: "/assets/events/sa-csm.png", alt: "Scrum Alliance Certified ScrumMaster certification seal" }, date: "Sep 26–27", days: "Sat–Sun", url: "https://event.3back.com/certified-scrummaster-september-26-27" },
+];
+
+const testimonials = [
+	"Marcelo was a great instructor. Very upbeat and knowledgeable. Taking the class helped me understand Scrum so much better than before. Would highly recommend him as an instructor.",
+	"Absolutely worth the time, effort, and cost.. Instructor Lopez was super informative and insightful about the content and how to apply context in day to day application.",
+	"Marcelo is an incredible instructor!!! He was very patient, informative, and demonstrated a clear passion, both for the material, as well as for his students. He provided excellent instruction, thought-provoking exercises, and detailed notes in a very clear format to be able to keep as a reference after the class had concluded.",
+	"Marcelo is an excellent teacher and I highly recommend him! His teaching style is interactive and incorporates practical application.",
+	"The course was extremely helpful since the work area utilizes scrum and kanban frameworks.",
+	"The 2-day course is well structured, timed appropriately and promotes collaboration and teamwork amongst the course attendees, in lieu of direct facilitation from the instructor. Our instructor, Marcelo, is deeply knowledgeable in the subject material and regularly used actual examples from his past experience to bring the concepts to life. This practice made the material easier to digest and understand. I would recommend this course to anyone looking to obtain the CSM certification.",
+	"The course content was fantastic. Marcelo’s knowledge, energy and enthusiasm is contagious! I recommend him highly!!! He is truly the best",
+	"Marcelo is a great instructor who explains concepts well and provides examples in order to help provide context. He is also very personable and makes the learning experience very positive. One can feel very confident in the material after taking his class.",
+	"Marcelo delivered the material in a way that was easy to digest, deeply relatable, and grounded in real-world scenarios. The flow of the class was seamless — every concept was introduced with clarity, reinforced through discussion, and tied back to the structure outlined in the Scrum Guide. If you’re looking for a certification that’s not just about theory, but about implementing structure and delivering results, this is it. Marcelo taught the class in the exact format you’d want to emulate once you’re certified — focused, intentional, and outcome-driven. Grateful for the experience and excited to apply what I’ve learned. Big thanks to Marcelo and the 3Back team for setting the bar high.",
+	"I recently completed the Scrum Master Bootcamp with Professor Trainer Marcelo Lopez, and it was an outstanding experience. Marcelo has an exceptional ability to explain Agile and Scrum concepts in a way that is both clear and engaging. He breaks down complex topics into practical, easy-to-understand components, making it simple to grasp not just the theory but also the real-world application. His teaching style is dynamic, structured, and highly interactive, which kept the sessions engaging from start to finish.",
+	"What I appreciated most was his ability to connect Scrum principles to practical scenarios, helping us understand how to apply them effectively within teams and organizations. He created a supportive learning environment where questions were encouraged, discussions were meaningful, and learning felt collaborative. This bootcamp significantly strengthened my understanding of the Scrum framework and the role of a Scrum Master. I highly recommend this training to anyone looking to deepen their Agile knowledge or prepare for a Scrum Master role. It was truly a fantastic learning experience.",
+	"Marcelo was an amazing instructor. Both professional and lively. He was very patient with me during some technical difficulties early in the course and luckily he had pre-planned work arounds to handle these types of situations. I would highly recommend anyone looking to take a course from him. The time and value is well worth the cost.",
+	"I loved how Marcelo introduced a concept & then gave us time for hands on application. I love teachers who incorporate visual aides.",
+	"Training was very helpful and well delivered. I loved the interactive experience and the resources offered were great.",
+];
+
+const months = [...new Set(events.map((event) => event.month))];
+---
+
+<SiteLayout metadata={pageSeo["/events"]}>
+	<main id="main" class="events-page">
+		<section class="events-opening section-rule">
+			<div class="shell opening-copy">
+				<div class="events-title-band">
+					<h1>Events</h1>
+					<p>Public courses with our instructors.</p>
+				</div>
+			</div>
+		</section>
+
+		<section class="section testimonials-section" aria-labelledby="testimonials-title">
+			<div class="shell testimonials-inner">
+				<h2 id="testimonials-title">What students said</h2>
+				<div class="testimonial-carousel" data-carousel aria-roledescription="carousel" aria-label="Student testimonials">
+					<button type="button" class="carousel-control carousel-previous" data-previous aria-label="Previous testimonial">Previous</button>
+					<div class="testimonial-viewport" aria-live="off">
+						<div class="testimonial-track" data-track>
+							{testimonials.map((testimonial, index) => <blockquote class:list={["testimonial", { "is-active": index === 0 }]} data-slide aria-hidden={index === 0 ? "false" : "true"}><p class="testimonial-stars"><span aria-hidden="true">★★★★★</span><span class="sr-only">Five stars</span></p><div class="testimonial-copy" id={`testimonial-copy-${index}`}><p>{testimonial}</p></div><button class="testimonial-expand" type="button" data-expand aria-controls={`testimonial-copy-${index}`} aria-expanded="false">Read more</button></blockquote>)}
+						</div>
+					</div>
+					<div class="carousel-side-controls">
+						<button type="button" class="carousel-control" data-next aria-label="Next testimonial">Next</button>
+						<button type="button" class="carousel-control" data-toggle aria-pressed="false">Pause</button>
+						<p data-status>1 of {testimonials.length}</p>
+					</div>
+				</div>
+			</div>
+		</section>
+
+		<section class="section section-rule events-listing" aria-label="Upcoming public classes">
+			<div class="shell">
+				{months.map((month) => (
+					<section class="event-month" aria-labelledby={`month-${month.replace(" ", "-")}`}>
+						<h2 id={`month-${month.replace(" ", "-")}`}>{month}</h2>
+						<div class="event-table" role="list">
+							{events.filter((event) => event.month === month).map((event) => (
+								<article class="event-row" role="listitem">
+									<a class="course-link" href={event.url}>{event.seal && <img class="credential-seal" src={event.seal.src} alt={event.seal.alt} width="150" height="150" />}<span class="course-name">{event.course}{event.mark && <span class="certification-mark"> {event.mark}</span>}</span></a>
+									<p class="event-format">Live Online</p>
+									<p class="event-date"><time>{event.date}</time><span>{event.days}</span></p>
+									<a class="enroll-link" href={event.url}>Enroll</a>
+								</article>
+							))}
+						</div>
+					</section>
+				))}
+				<p class="closing-line">If you do not see the date or class you need, <a href="/contact/">contact us</a>.</p>
+				<p class="grip-check-action"><a class="button" href="/grip-check">Check your grip</a></p>
+			</div>
+		</section>
+	</main>
+</SiteLayout>
+
+<script>
+	const carousel = document.querySelector("[data-carousel]");
+	if (carousel instanceof HTMLElement) {
+		const slides = [...carousel.querySelectorAll("[data-slide]")];
+		const previous = carousel.querySelector("[data-previous]");
+		const next = carousel.querySelector("[data-next]");
+		const toggle = carousel.querySelector("[data-toggle]");
+		const status = carousel.querySelector("[data-status]");
+		const viewport = carousel.querySelector(".testimonial-viewport");
+		let active = 0;
+		let paused = false;
+		let intervalId: number | undefined;
+		const setViewportHeight = () => {
+			const current = slides[active];
+			if (viewport instanceof HTMLElement && current instanceof HTMLElement) viewport.style.height = `${current.offsetHeight}px`;
+		};
+		slides.forEach((slide) => {
+			const expand = slide.querySelector("[data-expand]");
+			expand?.addEventListener("click", () => {
+				const isExpanded = slide.classList.toggle("is-expanded");
+				expand.setAttribute("aria-expanded", String(isExpanded));
+				expand.textContent = isExpanded ? "Show less" : "Read more";
+				window.requestAnimationFrame(setViewportHeight);
+			});
+		});
+
+		const show = (index: number) => {
+			const previousIndex = active;
+			active = (index + slides.length) % slides.length;
+			slides.forEach((slide, slideIndex) => {
+				slide.classList.toggle("is-leaving", slideIndex === previousIndex && previousIndex !== active);
+				slide.classList.toggle("is-active", slideIndex === active);
+				slide.setAttribute("aria-hidden", String(slideIndex !== active));
+			});
+			window.requestAnimationFrame(setViewportHeight);
+			if (status) status.textContent = `${active + 1} of ${slides.length}`;
+		};
+		const stop = () => { if (intervalId) window.clearInterval(intervalId); intervalId = undefined; };
+		const start = () => { stop(); if (!paused && !matchMedia("(prefers-reduced-motion: reduce)").matches) intervalId = window.setInterval(() => show(active + 1), 7000); };
+		const pauseForInteraction = () => { stop(); };
+		const resumeAfterInteraction = () => { start(); };
+
+		previous?.addEventListener("click", () => { show(active - 1); pauseForInteraction(); });
+		next?.addEventListener("click", () => { show(active + 1); pauseForInteraction(); });
+		toggle?.addEventListener("click", () => {
+			paused = !paused;
+			toggle.textContent = paused ? "Play" : "Pause";
+			toggle.setAttribute("aria-pressed", String(paused));
+			start();
+		});
+		carousel.addEventListener("mouseenter", pauseForInteraction);
+		carousel.addEventListener("mouseleave", resumeAfterInteraction);
+		carousel.addEventListener("focusin", pauseForInteraction);
+		carousel.addEventListener("focusout", () => window.setTimeout(() => { if (!carousel.contains(document.activeElement)) resumeAfterInteraction(); }));
+		carousel.addEventListener("touchstart", pauseForInteraction, { passive: true });
+		carousel.addEventListener("touchend", resumeAfterInteraction, { passive: true });
+		window.addEventListener("resize", setViewportHeight);
+		window.requestAnimationFrame(setViewportHeight);
+		start();
+	}
+</script>
+
+<style>
+	.events-opening { padding: 20px 0 0; }
+	.opening-copy { max-width: 860px; }
+	.events-title-band { display: flex; flex-wrap: wrap; align-items: baseline; gap: 8px 18px; }
+	.events-title-band h1 { margin: 0; }
+	.events-title-band p { margin: 0; padding-left: 18px; border-left: 3px solid var(--amber); color: var(--text-secondary); font-size: var(--type-lead); line-height: var(--leading-lead); }
+	.closing-line a { color: var(--charcoal); font-weight: var(--font-weight-semibold); text-decoration-color: var(--amber); text-decoration-thickness: 2px; text-underline-offset: 4px; }
+	.event-month + .event-month { margin-top: 52px; }
+	.event-month h2 { margin-bottom: 20px; font-size: clamp(1.8rem, 3vw, 2.5rem); }
+	.event-table { border-top: 2px solid var(--charcoal); }
+	.event-row { display: grid; grid-template-columns: minmax(250px, 2fr) minmax(110px, .75fr) minmax(140px, .85fr) auto; gap: 22px; align-items: center; padding: 21px 0; border-bottom: 1px solid var(--rule); }
+	.course-link { display: flex; flex-wrap: nowrap; gap: 12px; align-items: center; color: var(--charcoal); font-size: 1.125rem; font-weight: var(--font-weight-semibold); line-height: 1.4; text-decoration: none; }
+	.course-name { min-width: 0; }
+	.credential-seal { flex: 0 0 auto; width: 42px; height: 42px; object-fit: contain; }
+	.certification-mark { white-space: nowrap; }
+	.event-format, .event-date { margin: 0; color: var(--text-secondary); }
+	.event-date { display: flex; gap: 8px; flex-wrap: wrap; }
+	.event-date span::before { content: "·"; margin-right: 8px; }
+	.enroll-link { display: inline-flex; align-items: center; justify-content: center; min-height: 42px; padding: 8px 17px; background: var(--amber); color: var(--charcoal); font-weight: var(--font-weight-bold); text-decoration: none; }
+	.event-row:hover .course-link, .event-row:focus-within .course-link { color: var(--amber); text-decoration: underline; text-decoration-color: var(--amber); text-decoration-thickness: 2px; text-underline-offset: 4px; }
+	.event-row:hover .enroll-link, .event-row:focus-within .enroll-link { background: var(--charcoal); color: var(--paper); }
+	.closing-line { margin: 52px 0 0; font-size: 1.125rem; }
+	.grip-check-action { margin: 20px 0 0; }
+	.testimonials-section { padding: 16px 0 0; background: var(--reading); border-top: 1px solid var(--rule); }
+	.testimonials-inner { max-width: 860px; }
+	.testimonials-inner h2 { margin-bottom: 16px; }
+	.testimonial-carousel { display: grid; grid-template-columns: auto minmax(0, 1fr) auto; gap: 18px; align-items: start; padding: 16px 0; border-top: 2px solid var(--charcoal); border-bottom: 1px solid var(--rule); }
+	.events-listing { padding: 16px 0 110px; }
+	.testimonial-viewport { position: relative; overflow: hidden; transition: height 360ms ease; }
+	.testimonial-track { position: absolute; inset: 0; }
+	.testimonial { position: absolute; top: 0; left: 0; width: 100%; margin: 0; opacity: 0; pointer-events: none; transform: translateX(50px); transition: opacity 360ms ease, transform 360ms ease; }
+	.testimonial.is-active { opacity: 1; pointer-events: auto; transform: translateX(0); }
+	.testimonial.is-leaving { opacity: 0; transform: translateX(-40px); }
+	.testimonial-stars { margin: 0 0 14px; color: #ffb400; font-size: 1.6875rem; letter-spacing: .08em; line-height: 1; -webkit-text-stroke: .5px #765000; paint-order: stroke fill; }
+	.testimonial-copy { height: 10rem; overflow: hidden; }
+	.testimonial-copy p { max-width: 75ch; margin: 0; font-size: 1.25rem; line-height: 1.6; display: -webkit-box; -webkit-box-orient: vertical; -webkit-line-clamp: 5; overflow: hidden; }
+	.testimonial.is-expanded .testimonial-copy { height: auto; overflow: visible; }
+	.testimonial.is-expanded .testimonial-copy p { display: block; }
+	.testimonial .testimonial-stars { margin-bottom: 14px; }
+	.testimonial-expand { margin-top: 12px; padding: 0; border: 0; background: transparent; color: var(--text-secondary); font-size: var(--type-caption); font-weight: var(--font-weight-semibold); text-decoration: underline; text-decoration-color: var(--amber); text-underline-offset: 4px; }
+	.carousel-control { border: 0; background: transparent; color: var(--text-secondary); font-size: var(--type-caption); font-weight: var(--font-weight-semibold); text-decoration: underline; text-decoration-color: var(--amber); text-underline-offset: 4px; }
+	.carousel-side-controls { display: grid; justify-items: end; gap: 8px; }
+	.carousel-side-controls p { margin: 4px 0 0; color: var(--text-secondary); font-size: var(--type-caption); }
+	@media (max-width: 720px) {
+		.events-opening { padding: 20px 0 0; }
+		.events-title-band { gap: 4px 12px; }
+		.events-title-band p { padding-left: 12px; font-size: 1rem; }
+		.event-row { grid-template-columns: 1fr auto; gap: 12px 16px; padding: 20px 0; }
+		.course-link { grid-column: 1 / -1; }
+		.credential-seal { width: 38px; height: 38px; }
+		.event-format, .event-date { font-size: .9375rem; }
+		.enroll-link { grid-column: 2; grid-row: 2 / span 2; align-self: center; }
+		.testimonial-carousel { grid-template-columns: 1fr auto; gap: 12px; }
+		.carousel-previous { grid-column: 1; grid-row: 2; justify-self: start; }
+		.testimonial-viewport { grid-column: 1 / -1; grid-row: 1; }
+		.carousel-side-controls { grid-column: 2; grid-row: 2; display: flex; align-items: center; gap: 12px; }
+		.testimonial-copy { height: 9rem; }
+		.testimonial-copy p { font-size: 1.125rem; }
+		.events-listing { padding: 16px 0 78px; }
+	}
+	.sr-only { position: absolute; width: 1px; height: 1px; padding: 0; margin: -1px; overflow: hidden; clip: rect(0, 0, 0, 0); white-space: nowrap; border: 0; }
+	@media (prefers-reduced-motion: reduce) { .testimonial-viewport, .testimonial { transition: none; } }
+</style>

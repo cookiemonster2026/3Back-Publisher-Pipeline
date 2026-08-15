@@ -29,6 +29,43 @@ export const HOMEPAGE_OPERATIONAL_GRIP_EXPLANATION = "A team or scaled system ha
 
 /** @type {Readonly<Record<string, SeoMetadata>>} */
 export const pageSeo = Object.freeze({
+	"/events": {
+		status: "complete",
+		path: "/events",
+		title: "Events | 3Back",
+		description: "Public live Certified ScrumMaster®, Advanced Certified ScrumMaster®, and Scrum Better with Kanban classes. Upcoming dates and enrollment.",
+		indexability: "index, follow",
+		social: {
+			title: "Events | 3Back",
+			description: "Public live Certified ScrumMaster®, Advanced Certified ScrumMaster®, and Scrum Better with Kanban classes. Upcoming dates and enrollment.",
+			type: "website",
+		},
+		structuredData: {
+			"@context": "https://schema.org",
+			"@type": "ItemList",
+			itemListElement: [
+				["Advanced Certified ScrumMaster® (A-CSM®)", "2026-08-15", "https://event.3back.com/advanced-certified-scrummaster-august-15-16"],
+				["Certified ScrumMaster® (CSM®)", "2026-08-19", "https://event.3back.com/certified-scrummaster-august-19-20"],
+				["Scrum Better with Kanban", "2026-08-22", "https://event.3back.com/scrum-better-with-kanban-august-22"],
+				["Certified ScrumMaster® (CSM®)", "2026-08-29", "https://event.3back.com/certified-scrummaster-august-29-30"],
+				["Advanced Certified ScrumMaster® (A-CSM®)", "2026-09-09", "https://event.3back.com/advanced-certified-scrummaster-september-9-10"],
+				["Scrum Better with Kanban", "2026-09-12", "https://event.3back.com/scrum-better-with-kanban-september-12"],
+				["Certified ScrumMaster® (CSM®)", "2026-09-15", "https://event.3back.com/certified-scrummaster-september-15-16-2026"],
+				["Advanced Certified ScrumMaster® (A-CSM®)", "2026-09-19", "https://event.3back.com/advanced-certified-scrummaster-september-19-20"],
+				["Certified ScrumMaster® (CSM®)", "2026-09-26", "https://event.3back.com/certified-scrummaster-september-26-27"],
+			].map(([name, startDate, url], position) => ({
+				"@type": "ListItem",
+				position: position + 1,
+				item: {
+					"@type": "Event",
+					name,
+					startDate,
+					url,
+					eventAttendanceMode: "https://schema.org/OnlineEventAttendanceMode",
+				},
+			})),
+		},
+	},
 	"/": {
 		status: "complete",
 		path: "/",
