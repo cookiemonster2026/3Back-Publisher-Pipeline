@@ -28,7 +28,11 @@
 			</ul>
 		</div>
 	</div>
-	<div class="shell footer-bottom"><span>Bound what you can. Act locally. Observe the effects. Learn.</span><span>Copyright &copy; 3Back 2026</span></div>
+	<div class="shell footer-bottom">
+		<span class="footer-tagline">Bound what you can. Act locally. Observe the effects. Learn.</span>
+		<a class="footer-phone" href="tel:+18553232225">1-855-323-2225</a>
+		<span>Copyright &copy; 3Back 2026</span>
+	</div>
 </footer>
 
 <style>
@@ -44,12 +48,16 @@
 	.site-footer li a:hover { color: var(--paper); }
 	.site-footer li a:focus-visible { outline: 3px solid var(--amber); outline-offset: 3px; }
 	.footer-bottom { display: flex; justify-content: space-between; gap: 30px; margin-top: 55px; padding-top: 20px; border-top: 1px solid #303936; color: #a8b0ac; font-size: var(--type-body); line-height: var(--leading-body); }
-	.footer-bottom span:first-child { color: #c8ceca; font-weight: var(--font-weight-bold); }
+	.footer-tagline { color: #c8ceca; font-weight: var(--font-weight-bold); }
+	.footer-phone { display: none; color: #c8ceca; font-weight: var(--font-weight-bold); text-decoration-color: var(--amber); text-decoration-thickness: 2px; text-underline-offset: 4px; }
+	.footer-phone:hover { color: var(--paper); }
+	.footer-phone:focus-visible { outline: 3px solid var(--amber); outline-offset: 3px; }
 
 	@media (max-width: 720px) {
 		.footer-grid { grid-template-columns: 1fr 1fr; }
 		.footer-brand { grid-column: 1 / -1; }
 		.footer-bottom { align-items: center; flex-direction: column; text-align: center; }
+		.footer-phone { display: inline; }
 		.site-footer a[href="/contact/"] { white-space: nowrap; }
 	}
 </style>

@@ -176,6 +176,8 @@ const overallGripScore = Math.round(
 					<ol class="loop-flow">
 						{loop.map((item, index) => (
 							<li class:list={[index === 0 && "signal-step", index === 2 && "organization-end"]} tabindex="0" role="button" aria-pressed="false" data-loop-stage>
+								{index === 0 && <span class="loop-group-badge loop-group-badge-organization" aria-hidden="true">Organization</span>}
+								{index === 3 && <span class="loop-group-badge loop-group-badge-market" aria-hidden="true">Market</span>}
 								<span>{String(index + 1).padStart(2, "0")}</span>
 								<strong>{item}</strong>
 							</li>
@@ -566,8 +568,8 @@ const overallGripScore = Math.round(
 	.diagram-question-top { margin-bottom: 28px; }
 	.diagram-question-bottom { margin: 28px 0 0; text-align: right; }
 	.diagram-stage { min-height: 300px; display: grid; grid-template-columns: 1fr 70px 0.62fr; align-items: center; }
-	.local-boundary { position: relative; aspect-ratio: 1; display: grid; place-items: center; padding: 50px 12px 16px; border: 2px solid var(--paper); box-sizing: border-box; }
-	.diagram-label { position: absolute; top: 10px; left: 12px; color: #b9c0bc; font-size: var(--type-card); line-height: var(--leading-card); }
+	.local-boundary { position: relative; aspect-ratio: 1; display: grid; place-items: center; padding: 58px 12px 16px; border: 2px solid var(--paper); box-sizing: border-box; }
+	.diagram-label { position: absolute; top: 10px; left: 12px; right: 12px; color: #b9c0bc; font-size: var(--type-card); line-height: var(--leading-card); }
 	.local-action { width: 42%; aspect-ratio: 1; align-self: end; display: grid; place-items: center; background: var(--amber); color: var(--charcoal); text-align: center; font-size: var(--type-card); font-weight: var(--font-weight-heavy); line-height: var(--leading-display); transition: transform 160ms ease-out; }
 	.effect-line { display: flex; align-items: center; }
 	.effect-line span { width: 20px; height: 2px; margin-right: 4px; background: #8a948f; }
@@ -584,6 +586,7 @@ const overallGripScore = Math.round(
 	.loop-flow li:last-child { border-right: 0; }
 	.loop-flow li:last-child::after { display: none; }
 	.loop-flow span { display: block; margin-bottom: 42px; color: var(--amber-text); font-size: var(--type-card); font-weight: var(--font-weight-heavy); letter-spacing: var(--tracking-caption); line-height: var(--leading-card); }
+	.loop-flow .loop-group-badge { display: none; }
 	.loop-flow strong { display: block; font-size: var(--type-card); line-height: var(--leading-card); }
 	.loop-flow .signal-step { background: var(--amber-wash); }
 	.loop-flow .signal-step::after { background: var(--amber-wash); }
@@ -734,11 +737,11 @@ const overallGripScore = Math.round(
 		.loop-flow { grid-template-columns: 1fr; border-bottom: 0; }
 		.loop-flow li { display: grid; grid-template-columns: 55px 1fr; min-height: 82px; align-items: center; padding: 16px 20px; border-right: 0; border-bottom: 1px solid var(--rule); }
 		.loop-flow span { margin-bottom: 0; }
+		.loop-flow .loop-group-badge { grid-column: 1 / -1; width: max-content; margin: 0 0 10px; padding: 4px 8px; background: var(--reading); color: var(--slate); font-size: var(--type-card); font-weight: var(--font-weight-heavy); letter-spacing: var(--tracking-caption); line-height: var(--leading-card); text-transform: uppercase; }
+		.loop-section[data-active-group="organization"] .loop-group-badge-organization,
+		.loop-section[data-active-group="market"] .loop-group-badge-market { display: block; }
 		.loop-flow li::after { top: auto; right: auto; bottom: -6px; left: 27px; transform: rotate(135deg); }
-		.loop-flow .organization-end::before { top: auto; right: 0; bottom: -2px; left: 0; width: auto; height: 3px; }
-		.loop-flow::before { top: auto; right: 16px; left: auto !important; bottom: 10px; }
-		.loop-section[data-active-group="organization"] .loop-flow::before { content: none; }
-		.loop-section[data-active-group="organization"] .organization-end::after { content: "Organization"; position: absolute; z-index: 4; right: 16px; bottom: 10px; display: block; padding: 4px 8px; background: var(--reading); color: var(--slate); font-size: var(--type-card); font-weight: var(--font-weight-heavy); letter-spacing: var(--tracking-caption); line-height: var(--leading-card); text-transform: uppercase; }
+		.loop-flow::before { content: none !important; }
 		.assessment-section { padding: 78px 0; }
 		.assessment-grid { gap: 48px; }
 		.assessment-copy h2 { font-size: clamp(2.5rem, 11vw, 3.5rem); }
