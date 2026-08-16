@@ -88,6 +88,13 @@ export const pageSeo = Object.freeze({
 			title: "3Back | The Team Execution Company",
 			description: "3Back helps leaders find where organizational execution has lost grip and make bounded changes that reveal what to do next.",
 			type: "website",
+			image: {
+				src: "/social/3back-featured-image-v1.jpg",
+				alt: "3Back visualizing the connection between demand, team execution, and market value.",
+				width: 1200,
+				height: 630,
+				type: "image/jpeg",
+			},
 		},
 		structuredData: {
 			"@context": "https://schema.org",

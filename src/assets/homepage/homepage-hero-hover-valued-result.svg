@@ -1,0 +1,53 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 420 480" role="img" aria-labelledby="title description">
+  <title id="title">Bounded team produces valued result; dispersed work yields minimal value</title>
+  <desc id="description">Four people work within a clear team boundary along a shared flow toward a valued result. Below, the same four people are dispersed without a boundary and produce minimal value.</desc>
+
+  <defs>
+    <marker id="charcoal-arrow" viewBox="0 0 10 10" refX="8.5" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+      <path d="M 1 1 L 9 5 L 1 9" fill="none" stroke="#1D2421" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"/>
+    </marker>
+    <marker id="slate-arrow" viewBox="0 0 10 10" refX="8.5" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+      <path d="M 1 1 L 9 5 L 1 9" fill="none" stroke="#68726D" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"/>
+    </marker>
+
+    <g id="charcoal-person" fill="#1D2421">
+      <circle cx="0" cy="-10" r="5"/>
+      <path d="M -6 -3 Q 0 -6 6 -3 L 4 12 L 1.8 12 L 1.8 22 L -1.8 22 L -1.8 12 L -4 12 Z"/>
+    </g>
+    <g id="slate-person" fill="#68726D">
+      <circle cx="0" cy="-10" r="5"/>
+      <path d="M -6 -3 Q 0 -6 6 -3 L 4 12 L 1.8 12 L 1.8 22 L -1.8 22 L -1.8 12 L -4 12 Z"/>
+    </g>
+  </defs>
+
+  <!-- Bounded team -->
+  <g stroke="#1D2421" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" fill="none">
+    <rect x="78" y="76" width="204" height="88"/>
+    <path d="M 32 120 H 320" marker-end="url(#charcoal-arrow)"/>
+  </g>
+  <circle cx="28" cy="120" r="8" fill="#D96B18"/>
+  <!-- solid amber result, no ring -->
+  <circle cx="340" cy="120" r="12" fill="#D96B18"/>
+  <!-- labels OUTSIDE stroke group so text is not stroked -->
+  <text x="340" y="72" text-anchor="middle" font-family="Helvetica, Arial, sans-serif" font-size="15" font-weight="400" fill="#1D2421" stroke="none">Valued Result</text>
+
+  <use href="#charcoal-person" transform="translate(112 112)"/>
+  <use href="#charcoal-person" transform="translate(157 112)"/>
+  <use href="#charcoal-person" transform="translate(203 112)"/>
+  <use href="#charcoal-person" transform="translate(248 112)"/>
+
+  <!-- Dispersed -->
+  <g fill="none" stroke="#68726D" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" stroke-dasharray="7 7" marker-end="url(#slate-arrow)">
+    <path d="M 80 294 C 105 286 126 274 150 259"/>
+    <path d="M 248 282 C 273 265 292 244 310 218"/>
+    <path d="M 137 385 C 111 393 88 406 62 426"/>
+    <path d="M 282 397 C 302 415 315 434 326 458"/>
+  </g>
+
+  <use href="#slate-person" transform="translate(72 304)"/>
+  <use href="#slate-person" transform="translate(240 292)"/>
+  <use href="#slate-person" transform="translate(145 378)"/>
+  <use href="#slate-person" transform="translate(274 390)"/>
+
+  <text x="180" y="348" text-anchor="middle" font-family="Helvetica, Arial, sans-serif" font-size="15" font-weight="400" fill="#68726D" stroke="none">Minimal value</text>
+</svg>
