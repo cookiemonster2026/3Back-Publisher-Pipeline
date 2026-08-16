@@ -12,14 +12,14 @@ interface Course {
 interface CourseGroup { title: string; courses: Course[]; }
 const badge = (file: string, alt: string, width: number, height: number) => ({ src: `/assets/courses/${file}`, alt, width, height });
 const attributions: Record<string, string> = {
-	"Scrum Alliance Courses": "Certified ScrumMaster®, Advanced Certified ScrumMaster®, Certified Scrum Professional®, Certified Scrum Product Owner®, and Advanced Certified Scrum Product Owner® are certification marks of Scrum Alliance, Inc.",
+	"Scrum Alliance® Courses": "Certified ScrumMaster®, Advanced Certified ScrumMaster®, Certified Scrum Professional®, Certified Scrum Product Owner®, and Advanced Certified Scrum Product Owner® are certification marks of Scrum Alliance, Inc.",
 	"Scrum Guide Organization Courses": "Recognized Scrum Master 1, 2, and 3, Recognized Product Owner 1, 2, and 3, Recognized Scrum Guide, Industry Recognized Scrum Guide, and related Scaling marks are marks of the Scrum Guide Organization (SGO).",
 	"Kanban University Courses": "Team Kanban Practitioner, Scrum Kanban Practitioner, Kanban Management Professional, and related marks are marks of Kanban University.",
 	"Additional 3Back Courses": "Adaptive Team Model, Dysfunction Mapping Practitioner, Leading Remote Scrum Teams, Scrum for Leadership, and Scrum for Teams are courses offered by 3Back.",
 };
 
 const courseGroups: CourseGroup[] = [
-	{ title: "Scrum Alliance Courses", courses: [
+	{ title: "Scrum Alliance® Courses", courses: [
 		{ name: "Certified ScrumMaster® (CSM®)", href: "/courses/csm", badge: badge("sa-csm.png", "Scrum Alliance Certified ScrumMaster certification badge", 150, 150) },
 		{ name: "Advanced Certified ScrumMaster® (A-CSM®)", href: "https://path.3back.com", badge: badge("sa-a-csm.png", "Scrum Alliance Advanced Certified ScrumMaster certification badge", 150, 150) },
 		{ name: "Certified Scrum Professional® – ScrumMaster (CSP®-SM)", href: "https://path.3back.com", badge: badge("sa-csp-sm.png", "Scrum Alliance Certified Scrum Professional ScrumMaster certification badge", 150, 150) },
