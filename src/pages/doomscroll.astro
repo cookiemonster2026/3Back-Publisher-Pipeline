@@ -1,10 +1,65 @@
 ---
-import StubPage from "../components/StubPage.astro";
+import { Image } from "astro:assets";
+import SiteLayout from "../layouts/SiteLayout.astro";
+import singleFocus from "../assets/doomscroll/single-focus.jpg";
 import { pageSeo } from "../seo/registry.mjs";
 ---
 
-<StubPage
-	name="Doomscroll"
-	description="Cartoons, video shorts, and serious humor exposing the everyday failures that weaken organizational grip."
-	metadata={pageSeo["/doomscroll"]}
-/>
+<SiteLayout metadata={pageSeo["/doomscroll"]}>
+	<main id="main" class="doomscroll-page">
+		<section class="doomscroll-intro">
+			<div class="shell doomscroll-copy">
+				<p class="eyebrow">Doomscroll</p>
+				<h1>Tales of the Grip</h1>
+				<div class="reading-block">
+					<p>A recurring editorial cartoon about organizational execution.</p>
+					<p>It uses humor to expose serious failures in how work actually runs. The point is recognition, not instruction. You should see a familiar situation, laugh uneasily, and think: that is us.</p>
+				</div>
+			</div>
+		</section>
+
+		<section class="doomscroll-sample" aria-labelledby="sample-title">
+			<div class="shell">
+				<h2 id="sample-title" class="sample-label">Sample of what’s coming</h2>
+				<figure class="sample-strip">
+					<Image
+						src={singleFocus}
+						alt="Tales of the Grip sample strip titled Single Focus, four panels about a team told to choose one priority while work keeps arriving."
+						widths={[640, 960, 1280, 1728]}
+						sizes="(max-width: 720px) calc(100vw - 32px), min(1180px, calc(100vw - 48px))"
+						loading="lazy"
+					/>
+				</figure>
+			</div>
+		</section>
+
+		<section class="doomscroll-closing">
+			<div class="shell">
+				<p>More episodes coming soon.</p>
+			</div>
+		</section>
+	</main>
+</SiteLayout>
+
+<style>
+	.doomscroll-intro { padding: 122px 0 70px; }
+	.doomscroll-copy { max-width: 880px; }
+	.eyebrow, .sample-label { color: var(--amber-text); font-size: var(--type-caption); font-weight: var(--font-weight-bold); letter-spacing: var(--tracking-caption); text-transform: uppercase; }
+	.eyebrow { margin-bottom: 14px; }
+	.doomscroll-copy h1 { max-width: none; margin-bottom: 24px; font-size: clamp(4rem, 7.2vw, 6.4rem); font-weight: var(--font-weight-heavy); }
+	.reading-block { max-width: 740px; color: var(--charcoal); font-size: 1.1rem; font-weight: var(--font-weight-regular); line-height: 1.65; }
+	.reading-block p { margin-bottom: 16px; }
+	.reading-block p:last-child { margin-bottom: 0; }
+	.doomscroll-sample { padding: 0 0 88px; }
+	.sample-label { margin-bottom: 18px; }
+	.sample-strip { max-width: 980px; margin: 0; border: 1px solid var(--rule); background: var(--reading); box-shadow: 0 12px 30px rgba(29, 36, 33, .06); }
+	.sample-strip :global(img) { display: block; width: 100%; height: auto; }
+	.doomscroll-closing { padding: 54px 0 68px; border-block: 1px solid var(--rule); background: #eee8dd; }
+	.doomscroll-closing p { max-width: 680px; margin-bottom: 0; color: var(--charcoal); font-size: clamp(1.35rem, 2.4vw, 1.85rem); font-weight: var(--font-weight-semibold); line-height: 1.35; }
+
+	@media (max-width: 720px) {
+		.doomscroll-intro { padding: 84px 0 48px; }
+		.doomscroll-sample { padding-bottom: 64px; }
+		.doomscroll-closing { padding: 42px 0 52px; }
+	}
+</style>

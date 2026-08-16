@@ -293,17 +293,16 @@ export const pageSeo = Object.freeze({
 		},
 	},
 	"/doomscroll": {
-		status: "stub",
+		status: "complete",
 		path: "/doomscroll",
 		title: "Doomscroll | 3Back",
-		description: "Cartoons, video shorts, and serious humor exposing the everyday failures that weaken organizational grip.",
-		indexability: "noindex, nofollow",
+		description: "Tales of the Grip. A recurring editorial cartoon about organizational execution. Sample and episodes to come.",
+		indexability: "index, follow",
 		social: {
 			title: "Doomscroll | 3Back",
-			description: "Cartoons, video shorts, and serious humor exposing the everyday failures that weaken organizational grip.",
+			description: "Tales of the Grip. A recurring editorial cartoon about organizational execution. Sample and episodes to come.",
 			type: "website",
 		},
-		missingWork: ["Actual diagnostic feed content", "Completed browsing experience", "Approved complete-page metadata"],
 	},
 	"/grip-check": {
 		status: "stub",
