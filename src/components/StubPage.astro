@@ -4,7 +4,7 @@ import type { SeoMetadata } from "../seo/types";
 
 interface Props {
 	name: string;
-	description: string;
+	description?: string;
 	metadata: SeoMetadata;
 }
 
@@ -16,7 +16,8 @@ if (metadata.status !== "stub") throw new Error(`StubPage requires stub SEO meta
 	<main id="main" class="stub-page">
 		<div class="shell stub-content">
 			<h1><span>STUB:</span> {name}</h1>
-			<p>{description}</p>
+			{description && <p>{description}</p>}
+			<div class="stub-extra"><slot /></div>
 		</div>
 	</main>
 </SiteLayout>
@@ -27,4 +28,9 @@ if (metadata.status !== "stub") throw new Error(`StubPage requires stub SEO meta
 	h1 { margin-bottom: 28px; color: var(--amber); font-weight: var(--font-weight-bold); }
 	h1 span { color: var(--charcoal); }
 	p { max-width: 820px; margin-bottom: 0; color: var(--text-secondary); font-size: var(--type-lead); font-weight: var(--font-weight-regular); line-height: var(--leading-lead); }
+	.stub-extra { max-width: 820px; margin-top: 26px; }
+	.stub-extra:empty { display: none; }
+	.stub-extra :global(p) { margin: 0; color: var(--text-secondary); font-size: var(--type-lead); font-weight: var(--font-weight-regular); line-height: var(--leading-lead); }
+	.stub-extra :global(p + p) { margin-top: 14px; }
+	.stub-extra :global(a) { color: var(--charcoal); font-weight: var(--font-weight-semibold); text-decoration-color: var(--amber); text-decoration-thickness: 2px; text-underline-offset: 4px; }
 </style>

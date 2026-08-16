@@ -331,19 +331,65 @@ export const pageSeo = Object.freeze({
 		},
 		missingWork: ["Approved resource inventory", "Substantive index content", "Approved complete-page metadata"],
 	},
-	"/courses": {
+	"/building-domain-expertise": {
 		status: "stub",
-		path: "/courses",
-		title: "Courses | 3Back",
-		description: "Course catalog for private and hybrid training. Full page coming next.",
+		path: "/building-domain-expertise",
+		title: "Building Domain Expertise | 3Back",
+		description: "A post is coming.",
 		indexability: "noindex, nofollow",
 		social: {
-			title: "Courses | 3Back",
-			description: "Course catalog for private and hybrid training. Full page coming next.",
+			title: "Building Domain Expertise | 3Back",
+			description: "A post is coming.",
 			type: "website",
 		},
-		missingWork: ["Complete course catalog", "Approved complete-page metadata"],
+		missingWork: ["Post content", "Approved complete-page metadata"],
 	},
+	"/why-domain-expertise-matters": {
+		status: "stub",
+		path: "/why-domain-expertise-matters",
+		title: "Why Domain Expertise Matters | 3Back",
+		description: "Why domain expertise matters.",
+		indexability: "noindex, nofollow",
+		social: {
+			title: "Why Domain Expertise Matters | 3Back",
+			description: "Why domain expertise matters.",
+			type: "website",
+		},
+		missingWork: ["Post content", "Approved complete-page metadata"],
+	},
+	"/courses": {
+		status: "complete",
+		path: "/courses",
+		title: "Courses | 3Back",
+		description: "Private and hybrid credential courses. Request private delivery or choose hybrid options.",
+		indexability: "index, follow",
+		social: {
+			title: "Courses | 3Back",
+			description: "Private and hybrid credential courses. Request private delivery or choose hybrid options.",
+			type: "website",
+		},
+	},
+	"/courses/csm": courseStub("/courses/csm", "Certified ScrumMaster® (CSM®)"),
+	"/courses/cspo": courseStub("/courses/cspo", "Certified Scrum Product Owner® (CSPO®)"),
+	"/courses/rsm-1": courseStub("/courses/rsm-1", "Recognized Scrum Master 1"),
+	"/courses/rsm-2": courseStub("/courses/rsm-2", "Recognized Scrum Master 2"),
+	"/courses/rsm-3": courseStub("/courses/rsm-3", "Recognized Scrum Master 3"),
+	"/courses/rpo-1": courseStub("/courses/rpo-1", "Recognized Product Owner 1"),
+	"/courses/rpo-2": courseStub("/courses/rpo-2", "Recognized Product Owner 2"),
+	"/courses/rpo-3": courseStub("/courses/rpo-3", "Recognized Product Owner 3"),
+	"/courses/recognized-scrum-guide": courseStub("/courses/recognized-scrum-guide", "Recognized Scrum Guide"),
+	"/courses/industry-recognized-scrum-guide": courseStub("/courses/industry-recognized-scrum-guide", "Industry Recognized Scrum Guide – Pinnacle Credential"),
+	"/courses/kmp-1": courseStub("/courses/kmp-1", "KMP I: Kanban Systems Design"),
+	"/courses/kmp-2": courseStub("/courses/kmp-2", "KMP II: Kanban Management Professional"),
+	"/courses/scrum-better-with-kanban": courseStub("/courses/scrum-better-with-kanban", "Scrum Better with Kanban"),
+	"/courses/adaptive-team-model": courseStub("/courses/adaptive-team-model", "Adaptive Team Model"),
+	"/courses/dysfunction-mapping-practitioner": courseStub("/courses/dysfunction-mapping-practitioner", "Dysfunction Mapping Practitioner"),
+	"/courses/leading-remote-scrum-teams": courseStub("/courses/leading-remote-scrum-teams", "Leading Remote Scrum Teams"),
+	"/courses/scaling-scrum-with-scrum-professional": courseStub("/courses/scaling-scrum-with-scrum-professional", "Scaling Scrum with Scrum® Professional"),
+	"/courses/single-team-scrum": courseStub("/courses/single-team-scrum", "Single-Team Scrum"),
+	"/courses/multi-team-scrum": courseStub("/courses/multi-team-scrum", "Multi-Team Scrum"),
+	"/courses/scrum-for-leadership": courseStub("/courses/scrum-for-leadership", "Scrum for Leadership"),
+	"/courses/scrum-for-teams": courseStub("/courses/scrum-for-teams", "Scrum for Teams"),
 	"/live-events": {
 		status: "stub",
 		path: "/live-events",
@@ -358,6 +404,19 @@ export const pageSeo = Object.freeze({
 		missingWork: ["Current event details", "Event schedule", "Appropriate event structured data", "Approved complete-page metadata"],
 	},
 });
+
+/** @param {`/courses/${string}`} path @param {string} name @returns {SeoMetadata} */
+function courseStub(path, name) {
+	return {
+		status: "stub",
+		path,
+		title: `STUB: ${name} | 3Back`,
+		description: `${name}. Full page coming next.`,
+		indexability: "noindex, nofollow",
+		social: { title: `STUB: ${name} | 3Back`, description: `${name}. Full page coming next.`, type: "website" },
+		missingWork: ["Complete course page content", "Approved complete-page metadata"],
+	};
+}
 
 /** @param {string | undefined} environment */
 export function isProductionSeoEnvironment(environment) {

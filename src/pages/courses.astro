@@ -1,10 +1,69 @@
 ---
-import StubPage from "../components/StubPage.astro";
+import SiteLayout from "../layouts/SiteLayout.astro";
 import { pageSeo } from "../seo/registry.mjs";
+
+interface Course {
+	name: string;
+	href: string;
+	badge?: { src: string; alt: string; width: number; height: number };
+	wordMark?: string;
+}
+
+interface CourseGroup { title: string; courses: Course[]; }
+const badge = (file: string, alt: string, width: number, height: number) => ({ src: `/assets/courses/${file}`, alt, width, height });
+const attributions: Record<string, string> = {
+	"Scrum Alliance Courses": "Certified ScrumMaster®, Advanced Certified ScrumMaster®, Certified Scrum Professional®, Certified Scrum Product Owner®, and Advanced Certified Scrum Product Owner® are certification marks of Scrum Alliance, Inc.",
+	"Scrum Guide Organization Courses": "Recognized Scrum Master 1, 2, and 3, Recognized Product Owner 1, 2, and 3, Recognized Scrum Guide, Industry Recognized Scrum Guide, and related Scaling marks are marks of the Scrum Guide Organization (SGO).",
+	"Kanban University Courses": "Team Kanban Practitioner, Scrum Kanban Practitioner, Kanban Management Professional, and related marks are marks of Kanban University.",
+	"Additional 3Back Courses": "Adaptive Team Model, Dysfunction Mapping Practitioner, Leading Remote Scrum Teams, Scrum for Leadership, and Scrum for Teams are courses offered by 3Back.",
+};
+
+const courseGroups: CourseGroup[] = [
+	{ title: "Scrum Alliance Courses", courses: [
+		{ name: "Certified ScrumMaster® (CSM®)", href: "/courses/csm", badge: badge("sa-csm.png", "Scrum Alliance Certified ScrumMaster certification badge", 150, 150) },
+		{ name: "Advanced Certified ScrumMaster® (A-CSM®)", href: "https://path.3back.com", badge: badge("sa-a-csm.png", "Scrum Alliance Advanced Certified ScrumMaster certification badge", 150, 150) },
+		{ name: "Certified Scrum Professional® – ScrumMaster (CSP®-SM)", href: "https://path.3back.com", badge: badge("sa-csp-sm.png", "Scrum Alliance Certified Scrum Professional ScrumMaster certification badge", 150, 150) },
+		{ name: "Certified Scrum Product Owner® (CSPO®)", href: "/courses/cspo", badge: badge("sa-cspo.png", "Scrum Alliance Certified Scrum Product Owner certification badge", 150, 150) },
+		{ name: "Advanced Certified Scrum Product Owner® (A-CSPO®)", href: "https://path.3back.com", badge: badge("sa-a-cspo.png", "Scrum Alliance Advanced Certified Scrum Product Owner certification badge", 150, 150) },
+		{ name: "Certified Scrum Professional® – Product Owner (CSP®-PO)", href: "https://path.3back.com", badge: badge("sa-csp-po.png", "Scrum Alliance Certified Scrum Professional Product Owner certification badge", 150, 150) },
+	] },
+	{ title: "Scrum Guide Organization Courses", courses: [
+		{ name: "Recognized Scrum Master 1", href: "/courses/rsm-1", badge: badge("sg-rsm-1.png", "Recognized Scrum Master 1 badge", 150, 150) }, { name: "Recognized Scrum Master 2", href: "/courses/rsm-2", badge: badge("sg-rsm-2.png", "Recognized Scrum Master 2 badge", 150, 150) }, { name: "Recognized Scrum Master 3", href: "/courses/rsm-3", badge: badge("sg-rsm-3.png", "Recognized Scrum Master 3 badge", 150, 150) },
+		{ name: "Recognized Product Owner 1", href: "/courses/rpo-1", badge: badge("sg-rpo-1.png", "Recognized Product Owner 1 badge", 150, 150) }, { name: "Recognized Product Owner 2", href: "/courses/rpo-2", badge: badge("sg-rpo-2.png", "Recognized Product Owner 2 badge", 150, 150) }, { name: "Recognized Product Owner 3", href: "/courses/rpo-3", badge: badge("sg-rpo-3.png", "Recognized Product Owner 3 badge", 150, 150) },
+		{ name: "Scaling Scrum with Scrum® Professional", href: "/courses/scaling-scrum-with-scrum-professional", badge: badge("c3sg.png", "C3 Scrum Guide badge", 300, 294) }, { name: "Single-Team Scrum", href: "/courses/single-team-scrum", badge: badge("c3st.png", "C3 Single-Team Scrum badge", 150, 150) }, { name: "Multi-Team Scrum", href: "/courses/multi-team-scrum", badge: badge("c3sm.png", "C3 Multi-Team Scrum badge", 150, 150) },
+		{ name: "Recognized Scrum Guide", href: "/courses/recognized-scrum-guide", badge: badge("sg-recognized-scrum-guide.png", "Recognized Scrum Guide badge", 300, 294) }, { name: "Industry Recognized Scrum Guide – Pinnacle Credential", href: "/courses/industry-recognized-scrum-guide", badge: badge("sg-recognized-scrum-guide.png", "Industry Recognized Scrum Guide credential badge", 300, 294) },
+	] },
+	{ title: "Kanban University Courses", courses: [
+		{ name: "KMP I: Kanban Systems Design", href: "/courses/kmp-1", badge: badge("ku-team-kanban-practitioner.png", "Kanban University Team Kanban Practitioner badge", 300, 183) }, { name: "KMP II: Kanban Management Professional", href: "/courses/kmp-2", badge: badge("ku-kanban-management-professional.png", "Kanban University Kanban Management Professional badge", 300, 183) },
+		{ name: "Scrum Better with Kanban", href: "/courses/scrum-better-with-kanban", badge: badge("ku-scrum-kanban-practitioner.png", "Kanban University Scrum Kanban Practitioner badge", 300, 183) },
+	] },
+	{ title: "Additional 3Back Courses", courses: [
+		{ name: "Adaptive Team Model", href: "/courses/adaptive-team-model", badge: badge("3back-adaptive-team-model.png", "3Back Adaptive Team Model badge", 300, 300) }, { name: "Dysfunction Mapping Practitioner", href: "/courses/dysfunction-mapping-practitioner", badge: badge("3back-dysfunction-mapping.png", "3Back Dysfunction Mapping Practitioner badge", 300, 300) }, { name: "Leading Remote Scrum Teams", href: "/courses/leading-remote-scrum-teams", badge: badge("3back-leading-remote-teams.png", "3Back Leading Remote Scrum Teams badge", 300, 300) },
+		{ name: "Scrum for Leadership", href: "/courses/scrum-for-leadership", badge: badge("3back-scrum-for-leadership.png", "3Back Scrum for Leadership badge", 300, 300) }, { name: "Scrum for Teams", href: "/courses/scrum-for-teams", badge: badge("3back-scrum-for-teams.png", "3Back Scrum for Teams badge", 300, 300) },
+	] },
+];
 ---
 
-<StubPage
-	name="Courses"
-	description="Course catalog for private and hybrid training. Full page coming next."
-	metadata={pageSeo["/courses"]}
-/>
+<SiteLayout metadata={pageSeo["/courses"]}>
+	<main id="main" class="courses-page">
+		<section class="courses-opening"><div class="shell opening-copy"><h1>Courses</h1><p>3Back has offered these courses for three decades. Over that time our advice has changed.</p><p>A list of courses can look like a career path: take this credential, then the next, then the one after. That model is generic. It is not built in the domain of your work.</p><p>3Back does not recommend treating a course list as the primary path for organizations.</p><p class="framing-links"><a class="framing-button" href="/why-domain-expertise-matters">Why domain expertise matters</a></p></div></section>
+		<section class="catalog" aria-label="Course catalog"><div class="shell">
+			{courseGroups.map((group) => <section class="course-group" aria-labelledby={`group-${group.title.toLowerCase().replaceAll(" ", "-")}`}><h2 id={`group-${group.title.toLowerCase().replaceAll(" ", "-")}`}>{group.title}</h2><div class="course-grid">{group.courses.map((course) => <a class="course-card" href={course.href}>{course.badge ? <img class="credential-badge" src={course.badge.src} alt={course.badge.alt} width={course.badge.width} height={course.badge.height} /> : course.wordMark ? <span class="word-mark">{course.wordMark}</span> : <span class="word-mark" aria-hidden="true">Course</span>}<span class="course-name">{course.name}</span>{course.href.startsWith("https://") && <span class="external-note">Hybrid on path.3back.com</span>}</a>)}</div><p class="sa-attribution">{attributions[group.title]}</p></section>)}
+		</div></section>
+		<section class="course-side-cta" aria-label="Course inquiry"><a class="quiet-button" href="/contact/">Ask for a course</a></section>
+		<section class="course-cta" aria-label="Course inquiry"><a class="quiet-button" href="/contact/">Ask for a course or a customized course and workshop</a></section>
+	</main>
+</SiteLayout>
+
+<style>
+	.courses-opening { padding: 112px 0 60px; border-bottom: 1px solid var(--rule); }
+	.opening-copy { max-width: 760px; } .opening-copy p { max-width: 720px; margin: 0; color: var(--charcoal); font-size: var(--type-lead); font-weight: 600; line-height: var(--leading-lead); } .opening-copy p + p { margin-top: 14px; } .opening-copy .framing-links { color: var(--text-secondary); font-size: 1rem; font-weight: 400; } .framing-button { display: inline-flex; align-items: center; min-height: 42px; padding: 10px 14px; border: 1px solid var(--charcoal); background: var(--paper); color: var(--charcoal); font-weight: var(--font-weight-semibold); text-decoration: none; } .framing-button:hover { background: var(--charcoal); color: var(--paper); }
+	.catalog { padding: 24px 0 96px; } .course-group { padding: 54px 0 0; } .course-group + .course-group { border-top: 1px solid var(--rule); margin-top: 54px; } .course-group h2 { margin-bottom: 22px; font-size: clamp(1.8rem, 3vw, 2.5rem); }
+	.course-grid { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); border-top: 2px solid var(--charcoal); } .course-card { display: grid; grid-template-columns: 46px minmax(0, 1fr); column-gap: 14px; align-items: center; min-height: 112px; padding: 18px 16px 18px 0; border-bottom: 1px solid var(--rule); color: var(--charcoal); text-decoration: none; } .course-card:nth-child(3n + 2), .course-card:nth-child(3n) { padding-left: 16px; border-left: 1px solid var(--rule); }
+	.credential-badge { width: 46px; height: 46px; object-fit: contain; } .word-mark { display: inline-flex; align-items: center; justify-content: center; min-height: 30px; padding: 4px 6px; border: 1px solid var(--rule); color: var(--text-secondary); font-size: .68rem; font-weight: var(--font-weight-bold); letter-spacing: .06em; line-height: 1.1; text-align: center; text-transform: uppercase; } .course-name { font-size: 1.0625rem; font-weight: var(--font-weight-semibold); line-height: 1.35; } .external-note { grid-column: 2; margin-top: 3px; color: var(--text-secondary); font-size: var(--type-caption); }
+	.course-card:hover .course-name, .course-card:focus-visible .course-name { color: var(--amber-text); text-decoration: underline; text-decoration-color: var(--amber); text-decoration-thickness: 2px; text-underline-offset: 4px; }
+	.sa-attribution { max-width: 860px; margin: 22px 0 0; color: var(--text-secondary); font-size: var(--type-caption); line-height: var(--leading-caption); }
+	.course-side-cta { position: fixed; top: 50%; right: 0; z-index: 10; transform: translateY(-50%); } .course-cta { display: none; } .quiet-button { display: inline-flex; align-items: center; min-height: 42px; padding: 12px 10px; border: 1px solid var(--charcoal); border-right: 0; background: var(--paper); color: var(--charcoal); font-size: var(--type-caption); font-weight: var(--font-weight-semibold); line-height: 1.2; text-decoration: none; writing-mode: vertical-rl; } .course-side-cta .quiet-button { min-height: 84px; padding: 24px 18px; background: var(--charcoal); color: var(--paper); font-size: 1.25rem; } .quiet-button:hover { background: var(--charcoal); color: var(--paper); }
+	@media (max-width: 900px) { .course-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); } .course-card:nth-child(3n + 2), .course-card:nth-child(3n) { padding-left: 0; border-left: 0; } .course-card:nth-child(even) { padding-left: 16px; border-left: 1px solid var(--rule); } }
+	@media (max-width: 600px) { .courses-opening { padding: 82px 0 46px; } .catalog { padding-bottom: 72px; } .course-group { padding-top: 42px; } .course-group + .course-group { margin-top: 42px; } .course-grid { grid-template-columns: 1fr; } .course-card, .course-card:nth-child(even) { min-height: 92px; padding: 16px 0; border-left: 0; } .course-side-cta { display: none; } .course-cta { display: block; padding: 0 0 52px; text-align: center; } .course-cta .quiet-button { min-height: 42px; padding: 10px 16px; border-right: 1px solid var(--charcoal); writing-mode: horizontal-tb; } }
+</style>
