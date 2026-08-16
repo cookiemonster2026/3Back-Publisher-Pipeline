@@ -337,17 +337,23 @@ export const pageSeo = Object.freeze({
 		missingWork: ["Completed screening flow", "Results behavior", "Functional contact handoff", "Approved complete-page metadata"],
 	},
 	"/ideas": {
-		status: "stub",
+		status: "complete",
 		path: "/ideas",
 		title: "Ideas | 3Back",
-		description: "Explore 3Back’s papers, articles, Tales of the Grip, and current thinking about team execution.",
-		indexability: "noindex, nofollow",
+		description: "Papers, posts, books, and videos on organizational execution and Operational Grip. For executives and senior leaders improving how teams actually work.",
+		indexability: "index, follow",
 		social: {
 			title: "Ideas | 3Back",
-			description: "Explore 3Back’s papers, articles, Tales of the Grip, and current thinking about team execution.",
+			description: "Papers, posts, books, and videos on organizational execution and Operational Grip. For executives and senior leaders improving how teams actually work.",
 			type: "website",
+			image: {
+				src: "/social/ideas.jpg",
+				alt: "Editorial still life showing paper, a charcoal book, and a video frame on a warm background.",
+				width: 1168,
+				height: 784,
+				type: "image/jpeg",
+			},
 		},
-		missingWork: ["Approved resource inventory", "Substantive index content", "Approved complete-page metadata"],
 	},
 	"/building-domain-expertise": {
 		status: "stub",

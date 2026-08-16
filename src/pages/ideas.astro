@@ -1,10 +1,95 @@
 ---
-import StubPage from "../components/StubPage.astro";
+import SiteLayout from "../layouts/SiteLayout.astro";
 import { pageSeo } from "../seo/registry.mjs";
 ---
 
-<StubPage
-	name="Ideas"
-	description="Explore 3Back’s papers, articles, Tales of the Grip, and current thinking about team execution."
-	metadata={pageSeo["/ideas"]}
-/>
+<SiteLayout metadata={pageSeo["/ideas"]}>
+	<main id="main" class="ideas-page">
+		<section class="ideas-opening">
+			<div class="shell opening-copy">
+				<h1>Ideas</h1>
+				<div class="framing">
+					<p>Written work on organizational execution and Operational Grip.</p>
+					<p>Ideas is 3Back’s hub for papers, posts, books, and videos.</p>
+					<p>It is for executives and senior leadership who make decisions about how to improve the operational grip of their teams and their organization.</p>
+					<p>Browse by type. Jump to a specific work, or go deeper as more material is published.</p>
+				</div>
+			</div>
+		</section>
+
+		<section class="ideas-index" aria-label="Ideas by type">
+			<div class="shell ideas-grid">
+				<section class="idea-panel" aria-labelledby="papers-title">
+					<h2 id="papers-title">Papers</h2>
+					<ul>
+						<li><a href="/papers/no-head-works-alone">No Head Works Alone</a></li>
+						<li>Agility <span class="coming-soon">Coming soon</span></li>
+						<li>Scaling <span class="coming-soon">Coming soon</span></li>
+						<li>Leadership <span class="coming-soon">Coming soon</span></li>
+						<li>Well-Formed Team <span class="coming-soon">Coming soon</span></li>
+						<li>Done <span class="coming-soon">Coming soon</span></li>
+					</ul>
+				</section>
+
+				<section class="idea-panel" aria-labelledby="posts-title">
+					<h2 id="posts-title">Posts</h2>
+					<ul>
+						<li>Common organizational dysfunctions <span class="coming-soon">Coming soon</span></li>
+						<li>Team versus group <span class="coming-soon">Coming soon</span></li>
+						<li>Shadowed work / shadowed execution <span class="coming-soon">Coming soon</span></li>
+						<li>Rudderless teams <span class="coming-soon">Coming soon</span></li>
+						<li>Ritual without result <span class="coming-soon">Coming soon</span></li>
+					</ul>
+				</section>
+
+				<section class="idea-panel" aria-labelledby="books-title">
+					<h2 id="books-title">Books</h2>
+					<ul>
+						<li><a href="https://www.amazon.com/gp/product/B09F1CW194" target="_blank" rel="noreferrer">Scrum Mastering I: Facilitating Improvement</a></li>
+						<li><a href="https://www.amazon.com/gp/product/B09PP8VXGQ" target="_blank" rel="noreferrer">Scrum Mastering II: Building Great Teams</a></li>
+						<li><a href="https://www.amazon.com/gp/product/B0B8R8ZPN4" target="_blank" rel="noreferrer">Scrum Mastering III: Organizational Improvement</a></li>
+						<li><a href="https://www.amazon.com/gp/product/B09LWGTGBD" target="_blank" rel="noreferrer">Product Ownership I: Leading a Team</a></li>
+						<li><a href="https://www.amazon.com/gp/product/B09PM8BK29" target="_blank" rel="noreferrer">Product Ownership II: Making Hard Decisions</a></li>
+						<li><a href="https://www.amazon.com/Product-Ownership-III-Organizations-Leadership/dp/B0D34BVPMT" target="_blank" rel="noreferrer">Product Ownership III: Leading Agile Organizations</a></li>
+						<li><a href="https://www.amazon.com/Exploring-Scrum-Fundamentals-Dan-Rawsthorne-ebook/dp/B0058WS4T4" target="_blank" rel="noreferrer">Exploring Scrum: The Fundamentals</a></li>
+						<li>Operational Grip <span class="coming-soon">Coming soon</span></li>
+					</ul>
+				</section>
+
+				<section class="idea-panel" aria-labelledby="videos-title">
+					<h2 id="videos-title">Videos</h2>
+					<p class="coming-soon">Coming soon</p>
+				</section>
+			</div>
+		</section>
+	</main>
+</SiteLayout>
+
+<style>
+	.ideas-opening { padding: 122px 0 66px; }
+	.opening-copy { max-width: 820px; }
+	.opening-copy h1 { margin-bottom: 26px; }
+	.framing { max-width: 720px; color: var(--charcoal); font-size: var(--type-lead); font-weight: var(--font-weight-regular); line-height: var(--leading-lead); }
+	.framing p { margin-bottom: 16px; }
+	.framing p:last-child { margin-bottom: 0; }
+	.ideas-index { padding: 0 0 104px; }
+	.ideas-grid { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 20px; }
+	.idea-panel { padding: 32px 30px 34px; border: 1px solid var(--rule); border-top: 4px solid var(--amber); background: rgba(255, 253, 250, .34); }
+	.idea-panel:nth-child(n + 3) { border-top-color: #b8b1a6; }
+	.idea-panel h2 { margin-bottom: 20px; color: var(--charcoal); font-size: clamp(1.85rem, 2.8vw, 2.3rem); font-weight: var(--font-weight-heavy); letter-spacing: -.012em; }
+	.idea-panel ul { display: grid; gap: 13px; margin: 0; padding: 0; list-style: none; }
+	.idea-panel li { color: var(--charcoal); font-size: 1.0625rem; line-height: 1.5; }
+	.idea-panel a { color: var(--charcoal); font-weight: var(--font-weight-bold); text-decoration-color: var(--amber); text-decoration-thickness: 2px; text-underline-offset: 4px; }
+	.idea-panel a:hover { color: var(--amber-text); }
+	.coming-soon { color: var(--text-secondary); font-size: 0.9375rem; font-weight: var(--font-weight-semibold); white-space: nowrap; }
+	.idea-panel p { margin: 0; }
+
+	@media (max-width: 720px) {
+		.ideas-opening { padding: 84px 0 48px; }
+		.ideas-index { padding-bottom: 72px; }
+		.ideas-grid { grid-template-columns: 1fr; gap: 16px; }
+		.idea-panel, .idea-panel:nth-child(n + 3) { border-top-color: var(--rule); }
+		.idea-panel:first-child { border-top-color: var(--amber); }
+		.idea-panel { padding: 28px 22px 30px; }
+	}
+</style>
