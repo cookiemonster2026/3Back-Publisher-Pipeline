@@ -4,6 +4,7 @@ import { Image } from "astro:assets";
 import { HOMEPAGE_OPERATIONAL_GRIP_EXPLANATION, pageSeo } from "../seo/registry.mjs";
 import heroBoundaryVisual from "../assets/homepage/team-boundaries-diffuse.svg";
 import talesCardFragment from "../assets/doomscroll/tales-card-fragment-muted.jpg";
+import bowtieCard from "../assets/papers/bowtie-card-muted.jpg";
 
 const diagnostics = [
 	{
@@ -316,9 +317,13 @@ const overallGripScore = Math.round(
 					</div>
 
 					<div class="thinking-grid">
-						<article>
-							<p class="content-type">Publication / Excerpt</p>
-							<h3><a href="/ideas/">No Head Works Alone</a></h3>
+						<article class="paper-card">
+							<a class="paper-card-link" href="/papers/no-head-works-alone/">
+								<p class="content-type">Paper</p>
+								<h3 class="paper-title">No Head Works Alone</h3>
+								<div class="paper-fragment" aria-hidden="true"><Image src={bowtieCard} alt="" widths={[220, 320, 440]} sizes="(max-width: 720px) min(100%, 320px), 220px" loading="lazy" /></div>
+								<p class="paper-line">When the system works only because one head holds the whole context, that person may have control. The organization does not.</p>
+							</a>
 						</article>
 						<article class="tales-card">
 							<a class="tales-card-link" href="/doomscroll/">
@@ -695,6 +700,14 @@ const overallGripScore = Math.round(
 	.thinking-grid a:focus-visible { outline: 3px solid var(--amber); outline-offset: 4px; }
 	.content-type { color: var(--amber-text) !important; font-size: var(--type-card); font-weight: var(--font-weight-heavy); letter-spacing: var(--tracking-caption); line-height: var(--leading-card); text-transform: uppercase; }
 	.tales-card { background: var(--amber-wash); }
+	.paper-card { background: var(--paper); }
+	.paper-card-link { display: block; min-height: 100%; color: inherit; text-decoration: none; }
+	.paper-card-link:hover .paper-title { color: var(--charcoal); text-decoration: underline; text-decoration-color: var(--amber); text-decoration-thickness: 3px; text-underline-offset: 5px; }
+	.paper-card-link:focus-visible { outline: 3px solid var(--amber); outline-offset: 4px; }
+	.paper-title { margin-bottom: 16px; color: var(--charcoal); font-size: clamp(1.8rem, 2.5vw, 2.25rem); font-weight: var(--font-weight-heavy); }
+	.paper-fragment { width: 220px; height: 112px; margin: 0 0 16px; overflow: hidden; border: 1px solid rgba(29, 36, 33, .24); background: var(--reading); }
+	.paper-fragment :global(img) { display: block; width: 100%; height: 100%; object-fit: cover; }
+	.paper-line { max-width: 370px; margin-bottom: 0; color: var(--charcoal) !important; font-size: var(--type-card); font-weight: var(--font-weight-semibold); line-height: var(--leading-card); }
 	.tales-card-link { display: block; min-height: 100%; text-decoration: none; }
 	.tales-card-link:hover .tales-title { color: var(--charcoal); text-decoration: underline; text-decoration-color: var(--amber); text-decoration-thickness: 3px; text-underline-offset: 5px; }
 	.tales-title { margin-bottom: 16px; color: var(--charcoal); font-size: clamp(1.8rem, 2.5vw, 2.25rem); font-weight: var(--font-weight-heavy); }

@@ -188,6 +188,18 @@ export const pageSeo = Object.freeze({
 			],
 		},
 	},
+	"/papers/no-head-works-alone": {
+		status: "complete",
+		path: "/papers/no-head-works-alone",
+		title: "No Head Works Alone | 3Back",
+		description: "When judgment concentrates in one overloaded decision maker, the organization can look strong and still lose grip. The Bowtie Problem, and what restores bounded ownership.",
+		indexability: "index, follow",
+		social: {
+			title: "No Head Works Alone | 3Back",
+			description: "When judgment concentrates in one overloaded decision maker, the organization can look strong and still lose grip. The Bowtie Problem, and what restores bounded ownership.",
+			type: "article",
+		},
+	},
 	"/workshops": {
 		status: "complete",
 		path: "/workshops",

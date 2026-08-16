@@ -1,0 +1,64 @@
+---
+import { Image } from "astro:assets";
+import SiteLayout from "../../layouts/SiteLayout.astro";
+import { pageSeo } from "../../seo/registry.mjs";
+import bowtieFigure from "../../assets/papers/bowtie-figure-1-muted.jpg";
+
+const turnstileSiteKey = import.meta.env.PUBLIC_TURNSTILE_SITE_KEY ?? "";
+const faqs = [
+	["What is this paper about?", "How organizations lose grip when judgment concentrates in one overloaded decision maker, the Bowtie Problem, and what it means to restore bounded ownership."],
+	["What is the Bowtie Problem?", "Work and pressure arrive from many directions, but decisions, direction, and coordination flow back through one person. That knot can look strong and still leave the organization dependent."],
+	["Who is it for?", "Leaders and practitioners accountable for how work actually moves: executives, operational and transformation leaders, and people who sit near the knot."],
+	["What do I receive if I request the full paper?", "A PDF of No Head Works Alone emailed from noreply@3back.com. Requesting it also adds you to the 3Back list for occasional future content; you can unsubscribe at any time."],
+];
+---
+
+<SiteLayout metadata={pageSeo["/papers/no-head-works-alone"]}>
+	<main id="main" class="paper-page">
+		<section class="paper-opening">
+			<div class="shell reading-column">
+				<p class="eyebrow">Paper</p>
+				<h1>No Head Works Alone</h1>
+				<p class="deck">The Bowtie Problem, the hero pattern, and the overloaded decision maker</p>
+				<div class="excerpt">
+					<p>An organization can look decisive because one capable person is holding the whole problem together. That is the visible strength. The hidden weakness is that everyone else has learned to route judgment through that person.</p>
+					<p class="statement">No head works alone. Give each role a bounded judgment to own, then make the connections among those roles explicit.</p>
+					<p>The Bowtie Problem forms when work arrives from many directions, but the organization pushes the judgment into one head. Decisions then flow back out through that same person. At the center, an Overloaded Decision Maker (ODM) carries too many kinds of judgment and too much of the organization&apos;s cognitive load. This concentration forms a knot.</p>
+					<p>The pattern may once have made sense. Information was scarce, security required compartmentalization, urgency was high, or other roles would not decide. The knot becomes a loss of grip when another role has the authority and context to make the decision, yet the decision still returns to the knot. As demand accumulates at the knot, the organization responds too late, responds poorly, or does not respond at all.</p>
+					<blockquote>When the system works only because one head holds the whole context, that person may possess control, but the organization does not.</blockquote>
+					<h2>What pressures converge at the knot</h2>
+					<p>Each pressure arrives as a question the ODM is expected to answer. Every question is legitimate. Together they pull attention across the organization and dilute the ODM&apos;s focus on the problem being solved.</p>
+					<ul><li><strong>Evidence:</strong> What do I know, what has changed, and can I trust what I am being told?</li><li><strong>Risk:</strong> What could go wrong, who could be harmed, and how much can we absorb?</li><li><strong>Policy:</strong> What are we allowed to do, and which tradeoffs can I defend?</li><li><strong>Political and social pressure:</strong> Who expects an answer now, and what happens if I get it wrong?</li></ul>
+				</div>
+				<figure class="bowtie-figure"><Image src={bowtieFigure} alt="Bowtie diagram showing evidence, risk, policy, and political and social pressure converging on an overloaded decision maker, then spreading as decisions, direction, coordination, and communication." layout="constrained" widths={[640, 960, 1440]} sizes="(max-width: 760px) calc(100vw - 32px), min(960px, 82vw)" /><figcaption>Figure 1. Many judgments go in. One person&apos;s direction comes back out.</figcaption></figure>
+			</div>
+		</section>
+		<section class="request-section" aria-labelledby="request-title">
+			<div class="shell request-grid"><div><p class="eyebrow">Full paper</p><h2 id="request-title">Request the full paper.</h2><p>We will email the PDF to you.</p></div>
+				<form class="paper-form" action="/api/papers/no-head-works-alone" method="post" data-paper-form novalidate>
+					<div class="form-fields"><div class="field"><label for="first_name">First name</label><input id="first_name" name="first_name" type="text" autocomplete="given-name" required maxlength="80" /></div><div class="field"><label for="last_name">Last name</label><input id="last_name" name="last_name" type="text" autocomplete="family-name" required maxlength="80" /></div><div class="field"><label for="email">Email</label><input id="email" name="email" type="email" autocomplete="email" required maxlength="254" /></div><div class="field"><label for="confirm_email">Confirm email</label><input id="confirm_email" name="confirm_email" type="email" autocomplete="email" required maxlength="254" /></div><div class="field field-full"><label for="phone">Phone <span class="optional">(optional)</span></label><input id="phone" name="phone" type="tel" autocomplete="tel" maxlength="60" /></div></div>
+					<label class="consent"><input name="list_consent" type="checkbox" required /> <span>I agree to join the 3Back list for occasional future content. I can unsubscribe at any time.</span></label>
+					<div class="turnstile-wrap">{turnstileSiteKey ? <div class="cf-turnstile" data-sitekey={turnstileSiteKey}></div> : <p class="form-error">This form is not configured yet.</p>}</div><p class="form-error" role="alert" data-form-error hidden></p><button class="button submit-button" type="submit" disabled={!turnstileSiteKey}>Email me the paper</button>
+					<p class="form-success" role="status" data-form-success hidden><strong>Thank you. The paper is on its way.</strong><br />Expect an email from noreply@3back.com. If you do not see it within a few minutes, check spam or promotions.</p>
+				</form>
+			</div>
+		</section>
+		<section class="faq-section" aria-labelledby="faq-title"><div class="shell reading-column"><p class="eyebrow">FAQ</p><h2 id="faq-title">Questions about the paper</h2><div class="faq-list">{faqs.map(([question, answer]) => <details><summary>{question}</summary><p>{answer}</p></details>)}</div></div></section>
+	</main>
+</SiteLayout>
+
+<script is:inline src="https://challenges.cloudflare.com/turnstile/v0/api.js" async defer></script>
+<script>
+	declare global { interface Window { turnstile?: { reset(): void } } }
+	const form = document.querySelector("[data-paper-form]");
+	if (form instanceof HTMLFormElement) {
+		const error = form.querySelector("[data-form-error]"); const success = form.querySelector("[data-form-success]"); const button = form.querySelector("button[type=submit]"); const email = form.querySelector("#email"); const confirmEmail = form.querySelector("#confirm_email");
+		const validateEmailMatch = () => { if (email instanceof HTMLInputElement && confirmEmail instanceof HTMLInputElement) confirmEmail.setCustomValidity(email.value === confirmEmail.value ? "" : "Email addresses must match."); };
+		email?.addEventListener("input", validateEmailMatch); confirmEmail?.addEventListener("input", validateEmailMatch);
+		form.addEventListener("submit", async (event) => { event.preventDefault(); if (!(error instanceof HTMLElement) || !(success instanceof HTMLElement) || !(button instanceof HTMLButtonElement)) return; error.hidden = true; success.hidden = true; validateEmailMatch(); if (!form.reportValidity()) return; button.disabled = true; button.textContent = "Sending..."; try { const response = await fetch(form.action, { method: "POST", body: new FormData(form), headers: { Accept: "application/json" } }); const result = await response.json().catch(() => ({})); if (!response.ok) throw new Error(typeof result.error === "string" ? result.error : "We could not send the paper. Please try again shortly."); form.reset(); success.hidden = false; window.turnstile?.reset(); } catch (submissionError) { error.textContent = submissionError instanceof Error ? submissionError.message : "We could not send the paper. Please try again shortly."; error.hidden = false; window.turnstile?.reset(); } finally { button.disabled = false; button.textContent = "Email me the paper"; } });
+	}
+</script>
+
+<style>
+	.paper-opening { padding: 118px 0 90px; }.reading-column { max-width: 960px; }.eyebrow { margin-bottom: 14px; color: var(--amber-text); font-size: var(--type-caption); font-weight: var(--font-weight-heavy); letter-spacing: var(--tracking-caption); text-transform: uppercase; }.paper-opening h1 { max-width: 760px; margin-bottom: 18px; }.deck { max-width: 680px; margin-bottom: 48px; color: var(--slate); font-size: var(--type-lead); font-weight: var(--font-weight-semibold); line-height: var(--leading-lead); }.excerpt { max-width: 720px; font-size: 1.125rem; line-height: 1.7; }.excerpt p { margin-bottom: 22px; }.statement { color: var(--charcoal); font-size: 1.35rem; font-weight: var(--font-weight-semibold); line-height: 1.5; }.excerpt blockquote { margin: 38px 0; padding: 22px 0 22px 24px; border-left: 4px solid var(--amber); color: var(--charcoal); font-size: 1.45rem; font-weight: var(--font-weight-bold); line-height: 1.45; }.excerpt h2 { margin: 52px 0 16px; font-size: clamp(1.7rem, 3vw, 2.25rem); }.excerpt ul { display: grid; gap: 12px; padding-left: 22px; }.bowtie-figure { margin: 54px 0 0; }.bowtie-figure :global(img) { display: block; width: 100%; height: auto; border: 1px solid var(--rule); }.bowtie-figure figcaption { margin-top: 11px; color: var(--text-secondary); font-size: var(--type-caption); line-height: var(--leading-card); }.request-section { padding: 86px 0; background: var(--reading); border-top: 1px solid var(--rule); border-bottom: 1px solid var(--rule); }.request-grid { display: grid; grid-template-columns: minmax(0, .75fr) minmax(360px, .85fr); gap: clamp(48px, 8vw, 120px); align-items: start; }.request-grid h2 { margin-bottom: 16px; }.request-grid > div > p:last-child { max-width: 380px; color: var(--text-secondary); font-size: var(--type-lead); line-height: var(--leading-lead); }.paper-form { padding: clamp(26px, 4vw, 42px); border-top: 4px solid var(--amber); background: var(--paper); box-shadow: 0 12px 30px rgba(29, 36, 33, .08); }.form-fields { display: grid; grid-template-columns: 1fr 1fr; gap: 20px; }.field { display: grid; gap: 7px; }.field-full { grid-column: 1 / -1; }.field label { color: var(--charcoal); font-size: var(--type-caption); font-weight: var(--font-weight-bold); }.optional { color: var(--text-secondary); font-weight: var(--font-weight-regular); }.field input { width: 100%; border: 1px solid #a9ada6; border-radius: 0; background: #fff; color: var(--charcoal); padding: 12px 13px; }.consent { display: flex; gap: 10px; margin-top: 22px; color: var(--charcoal); font-size: 1rem; font-weight: var(--font-weight-semibold); line-height: 1.45; }.consent input { flex: 0 0 auto; width: 18px; height: 18px; margin-top: 3px; accent-color: var(--amber-text); }.turnstile-wrap { min-height: 65px; margin-top: 24px; }.form-error { margin: 0 0 18px; color: #9e2a18; font-weight: var(--font-weight-semibold); }.submit-button { width: 100%; border-radius: 0; }.submit-button:disabled { cursor: not-allowed; opacity: .6; }.form-success { margin: 20px 0 0; color: #315d42; font-weight: var(--font-weight-semibold); line-height: 1.5; }.faq-section { padding: 90px 0 110px; }.faq-section h2 { margin-bottom: 32px; }.faq-list { border-top: 1px solid var(--rule); }.faq-list details { border-bottom: 1px solid var(--rule); }.faq-list summary { cursor: pointer; padding: 20px 30px 20px 0; color: var(--charcoal); font-size: 1.2rem; font-weight: var(--font-weight-bold); }.faq-list p { max-width: 700px; margin: 0 0 22px; color: var(--text-primary); line-height: 1.6; } @media (max-width: 760px) { .paper-opening { padding: 82px 0 68px; }.deck { margin-bottom: 34px; }.request-section { padding: 68px 0; }.request-grid { grid-template-columns: 1fr; gap: 42px; }.form-fields { grid-template-columns: 1fr; }.field-full { grid-column: auto; }.faq-section { padding: 70px 0 84px; } } 
+</style>
