@@ -3,6 +3,7 @@ import SiteLayout from "../layouts/SiteLayout.astro";
 import { Image } from "astro:assets";
 import { HOMEPAGE_OPERATIONAL_GRIP_EXPLANATION, pageSeo } from "../seo/registry.mjs";
 import heroBoundaryVisual from "../assets/homepage/team-boundaries-diffuse.svg";
+import talesCardFragment from "../assets/doomscroll/tales-card-fragment-muted.jpg";
 
 const diagnostics = [
 	{
@@ -320,12 +321,15 @@ const overallGripScore = Math.round(
 							<h3><a href="/ideas/">No Head Works Alone</a></h3>
 						</article>
 						<article class="tales-card">
-							<p class="content-type"><a href="/doomscroll/">Tales of the Grip</a></p>
-							<div class="tales-mark" aria-hidden="true">
-								<div class="local-box"></div>
-								<div class="permission-lines"><i></i><i></i><i></i></div>
-							</div>
-							<h3><a href="/operational-grip/">The decision is local. The permission structure is not.</a></h3>
+							<a class="tales-card-link" href="/doomscroll/">
+								<p class="content-type">Doomscroll</p>
+								<h3 class="tales-title">Tales of the Grip</h3>
+								<div class="tales-fragment" aria-hidden="true">
+									<Image src={talesCardFragment} alt="" widths={[160, 240, 320]} sizes="(max-width: 720px) 160px, 240px" loading="lazy" />
+								</div>
+								<p class="tales-line">The decision is local. The permission structure is not.</p>
+								<p class="tales-coming">Coming soon</p>
+							</a>
 						</article>
 					</div>
 
@@ -691,14 +695,14 @@ const overallGripScore = Math.round(
 	.thinking-grid a:focus-visible { outline: 3px solid var(--amber); outline-offset: 4px; }
 	.content-type { color: var(--amber-text) !important; font-size: var(--type-card); font-weight: var(--font-weight-heavy); letter-spacing: var(--tracking-caption); line-height: var(--leading-card); text-transform: uppercase; }
 	.tales-card { background: var(--amber-wash); }
-	.tales-mark { position: relative; height: 78px; margin: 25px 0 28px; }
-	.local-box { position: absolute; left: 0; top: 7px; width: 62px; height: 62px; border: 2px solid var(--charcoal); }
-	.permission-lines { position: absolute; left: 61px; right: 10px; top: 14px; display: flex; flex-direction: column; gap: 13px; }
-	.permission-lines i { display: block; height: 2px; background: var(--charcoal); transform-origin: left; }
-	.permission-lines i:nth-child(1) { transform: rotate(10deg); }
-	.permission-lines i:nth-child(2) { transform: rotate(-7deg); }
-	.permission-lines i:nth-child(3) { transform: rotate(5deg); }
-	.section-action { margin: 42px 0 0; text-align: right; }
+	.tales-card-link { display: block; min-height: 100%; text-decoration: none; }
+	.tales-card-link:hover .tales-title { color: var(--charcoal); text-decoration: underline; text-decoration-color: var(--amber); text-decoration-thickness: 3px; text-underline-offset: 5px; }
+	.tales-title { margin-bottom: 16px; color: var(--charcoal); font-size: clamp(1.8rem, 2.5vw, 2.25rem); font-weight: var(--font-weight-heavy); }
+	.tales-fragment { width: 160px; height: 104px; margin: 0 0 16px; overflow: hidden; border: 1px solid rgba(29, 36, 33, .24); background: var(--reading); }
+	.tales-fragment :global(img) { display: block; width: 100%; height: 100%; object-fit: cover; object-position: 76% center; }
+	.tales-line { max-width: 370px; margin-bottom: 13px; color: var(--charcoal) !important; font-size: var(--type-card); font-weight: var(--font-weight-semibold); line-height: var(--leading-card); }
+	.tales-coming { margin-bottom: 0; color: var(--text-secondary) !important; font-size: var(--type-caption); font-weight: var(--font-weight-semibold); letter-spacing: var(--tracking-caption); text-transform: uppercase; }
+	.section-action { width: calc(50% - 12px); margin: 42px 0 0; text-align: left; }
 	.muted-link { color: var(--slate); }
 
 	.contact-section { padding: 110px 0; background: var(--charcoal); color: var(--paper); border-bottom: 5px solid var(--amber); }
