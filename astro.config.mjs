@@ -19,11 +19,11 @@ export default defineConfig({
 			filter(page) {
 				if (!isProduction) return false;
 				const metadata = pageSeo[normalizePath(new URL(page).pathname)];
-				return metadata?.status === 'complete';
+				return metadata?.status === 'complete' && metadata.indexability === 'index, follow';
 			},
 			serialize(item) {
 				const metadata = pageSeo[normalizePath(new URL(item.url).pathname)];
-				if (!isProduction || metadata?.status !== 'complete') return undefined;
+				if (!isProduction || metadata?.status !== 'complete' || metadata.indexability !== 'index, follow') return undefined;
 				item.url = canonicalUrl(metadata.path);
 				return item;
 			},

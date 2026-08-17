@@ -28,7 +28,7 @@ interface BaseSeoMetadata {
 
 export interface CompleteSeoMetadata extends BaseSeoMetadata {
 	status: "complete";
-	indexability: "index, follow";
+	indexability: Indexability;
 }
 
 export interface StubSeoMetadata extends BaseSeoMetadata {

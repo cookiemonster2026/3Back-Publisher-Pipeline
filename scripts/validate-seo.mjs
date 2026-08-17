@@ -101,9 +101,6 @@ function validateRegistry() {
 			if (typeof value !== "string" || value.trim() === "") errors.push(`${route}: missing required ${label}.`);
 		}
 
-		if (metadata.status === "complete" && metadata.indexability !== "index, follow") {
-			errors.push(`${route}: complete pages must declare index, follow.`);
-		}
 		if (metadata.status === "stub") {
 			if (metadata.indexability !== "noindex, nofollow") errors.push(`${route}: stub pages must declare noindex, nofollow.`);
 			if (!Array.isArray(metadata.missingWork) || metadata.missingWork.length === 0) errors.push(`${route}: stub pages must identify missing work.`);
@@ -268,8 +265,8 @@ function validateRobotsAndSitemap() {
 	const sitemapXml = sitemapFiles.map((file) => readFileSync(file, "utf8")).join("\n");
 	for (const metadata of Object.values(pageSeo)) {
 		const included = sitemapXml.includes(`<loc>${canonicalUrl(metadata.path)}</loc>`);
-		if (environment === "production" && metadata.status === "complete" && !included) errors.push(`${metadata.path}: complete production page is missing from the sitemap.`);
-		if ((environment === "test" || metadata.status === "stub") && included) errors.push(`${metadata.path}: page must be excluded from the ${environment} sitemap.`);
+		if (environment === "production" && metadata.indexability === "index, follow" && !included) errors.push(`${metadata.path}: indexable production page is missing from the sitemap.`);
+		if ((environment === "test" || metadata.indexability === "noindex, nofollow") && included) errors.push(`${metadata.path}: page must be excluded from the ${environment} sitemap.`);
 	}
 }
 

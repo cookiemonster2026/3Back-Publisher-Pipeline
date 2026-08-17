@@ -2,6 +2,7 @@ import paperPdf from "../src/assets/papers/3Back-No-Head-Works-Alone-v1.49.pdf";
 
 const CONTACT_PATH = "/api/contact";
 const PAPER_PATH = "/api/papers/no-head-works-alone";
+const GRIP_CHECK_PATH = "/api/grip-check";
 const TURNSTILE_VERIFY_URL = "https://challenges.cloudflare.com/turnstile/v0/siteverify";
 const RESEND_EMAIL_URL = "https://api.resend.com/emails";
 
@@ -56,4 +57,18 @@ async function handlePaperRequest(request, env) {
 	} catch { return json({ error: "We could not send the paper. Please try again shortly." }, 502); }
 	return json({ ok: true });
 }
-export default { async fetch(request, env) { const url = new URL(request.url); if (url.pathname === CONTACT_PATH) return handleContact(request, env); if (url.pathname === PAPER_PATH) return handlePaperRequest(request, env); return env.ASSETS.fetch(request); } };
+async function handleGripCheck(request, env) {
+	if (request.method !== "POST") return json({ error: "Method not allowed." }, 405);
+	const requestUrl = new URL(request.url); const origin = request.headers.get("origin");
+	if (origin && origin !== requestUrl.origin) return json({ error: "Invalid request origin." }, 403);
+	if (!env.TURNSTILE_SECRET_KEY || !env.RESEND_API_KEY) return json({ error: "The Grip Check form is not configured yet." }, 503);
+	const form = await request.formData(); const firstName = clean(form.get("first_name"), 80); const lastName = clean(form.get("last_name"), 80); const email = clean(form.get("email"), 254).toLowerCase(); const confirmEmail = clean(form.get("confirm_email"), 254).toLowerCase(); const role = clean(form.get("role"), 80); const organizationSize = clean(form.get("organization_size"), 40); const context = clean(form.get("context"), 4000); const scorePayload = clean(form.get("score_payload"), 1000); const reviewRequested = form.get("review_requested") === "on"; const token = clean(form.get("cf-turnstile-response"), 2048);
+	if (!firstName || !lastName || !email || email !== confirmEmail || !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email) || !role || !organizationSize || !scorePayload) return json({ error: "Complete all required fields with matching valid email addresses." }, 400);
+	let scores; try { scores = JSON.parse(scorePayload); } catch { return json({ error: "Your score is unavailable. Please complete Grip Check again." }, 400); }
+	if (!scores || !["organization", "work"].includes(scores.view) || !Number.isInteger(scores.composite) || !Array.isArray(scores.dimensionScores) || scores.dimensionScores.length !== 5 || scores.dimensionScores.some((score) => !Number.isInteger(score))) return json({ error: "Your score is unavailable. Please complete Grip Check again." }, 400);
+	if (!await verifyTurnstile(request, env, token)) return json({ error: "The security check could not be verified. Please try again." }, 400);
+	const safe = Object.fromEntries(Object.entries({ firstName, lastName, email, role, organizationSize, context, view: scores.view, composite: String(scores.composite), dimensions: scores.dimensionScores.join(", "), reviewRequested: String(reviewRequested) }).map(([key, value]) => [key, escapeHtml(value || "Not provided")]));
+	try { await sendEmail(env, { from: "gripcheck@3back.com", to: [email], subject: "Your 3Back Grip Check score", html: `<p>Your composite Grip Score: <strong>${safe.composite}</strong></p><p>Dimension scores: ${safe.dimensions}</p>` }); await sendEmail(env, { from: "gripcheck@3back.com", to: ["gripcheckscores@3back.com"], reply_to: email, subject: "[GripCheck] new result", html: `<h1>Grip Check result</h1><p><strong>View:</strong> ${safe.view}</p><p><strong>Composite:</strong> ${safe.composite}</p><p><strong>Dimensions:</strong> ${safe.dimensions}</p><p><strong>Name:</strong> ${safe.firstName} ${safe.lastName}</p><p><strong>Email:</strong> ${safe.email}</p><p><strong>Role:</strong> ${safe.role}</p><p><strong>Organization size:</strong> ${safe.organizationSize}</p><p><strong>Context:</strong><br>${safe.context.replace(/\n/g,"<br>")}</p><p><strong>30-minute review:</strong> ${safe.reviewRequested}</p>` }); } catch { return json({ error: "We could not send your results. Please try again shortly." }, 502); }
+	return json({ ok: true });
+}
+export default { async fetch(request, env) { const url = new URL(request.url); if (url.pathname === CONTACT_PATH) return handleContact(request, env); if (url.pathname === PAPER_PATH) return handlePaperRequest(request, env); if (url.pathname === GRIP_CHECK_PATH) return handleGripCheck(request, env); return env.ASSETS.fetch(request); } };
