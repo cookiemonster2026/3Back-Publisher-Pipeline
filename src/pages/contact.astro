@@ -51,6 +51,7 @@ const turnstileSiteKey = import.meta.env.PUBLIC_TURNSTILE_SITE_KEY ?? "";
 <script is:inline src="https://challenges.cloudflare.com/turnstile/v0/api.js" async defer></script>
 <script>
 	declare global { interface Window { turnstile?: { reset(): void } } }
+	declare const zaraz: { track: (eventName: string) => void } | undefined;
 	const form = document.querySelector("[data-contact-form]");
 	if (form instanceof HTMLFormElement) {
 		const error = form.querySelector("[data-form-error]"); const success = form.querySelector("[data-form-success]"); const button = form.querySelector("button[type=submit]");
@@ -64,6 +65,9 @@ const turnstileSiteKey = import.meta.env.PUBLIC_TURNSTILE_SITE_KEY ?? "";
 				const response = await fetch(form.action, { method: "POST", body: new FormData(form), headers: { Accept: "application/json" } });
 				const result = await response.json().catch(() => ({}));
 				if (!response.ok) throw new Error(typeof result.error === "string" ? result.error : "We could not send your message. Please call us instead.");
+				if (typeof zaraz !== "undefined" && typeof zaraz.track === "function") {
+					zaraz.track("start_conversation_succeeded");
+				}
 				form.reset(); success.hidden = false; window.turnstile?.reset();
 			} catch (submissionError) {
 				error.textContent = submissionError instanceof Error ? submissionError.message : "We could not send your message. Please call us instead."; error.hidden = false; window.turnstile?.reset();

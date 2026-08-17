@@ -50,12 +50,15 @@ const faqs = [
 <script is:inline src="https://challenges.cloudflare.com/turnstile/v0/api.js" async defer></script>
 <script>
 	declare global { interface Window { turnstile?: { reset(): void } } }
+	declare const zaraz: { track: (eventName: string) => void } | undefined;
 	const form = document.querySelector("[data-paper-form]");
 	if (form instanceof HTMLFormElement) {
 		const error = form.querySelector("[data-form-error]"); const success = form.querySelector("[data-form-success]"); const button = form.querySelector("button[type=submit]"); const email = form.querySelector("#email"); const confirmEmail = form.querySelector("#confirm_email");
 		const validateEmailMatch = () => { if (email instanceof HTMLInputElement && confirmEmail instanceof HTMLInputElement) confirmEmail.setCustomValidity(email.value === confirmEmail.value ? "" : "Email addresses must match."); };
 		email?.addEventListener("input", validateEmailMatch); confirmEmail?.addEventListener("input", validateEmailMatch);
-		form.addEventListener("submit", async (event) => { event.preventDefault(); if (!(error instanceof HTMLElement) || !(success instanceof HTMLElement) || !(button instanceof HTMLButtonElement)) return; error.hidden = true; success.hidden = true; validateEmailMatch(); if (!form.reportValidity()) return; button.disabled = true; button.textContent = "Sending..."; try { const response = await fetch(form.action, { method: "POST", body: new FormData(form), headers: { Accept: "application/json" } }); const result = await response.json().catch(() => ({})); if (!response.ok) throw new Error(typeof result.error === "string" ? result.error : "We could not send the paper. Please try again shortly."); form.reset(); success.hidden = false; window.turnstile?.reset(); } catch (submissionError) { error.textContent = submissionError instanceof Error ? submissionError.message : "We could not send the paper. Please try again shortly."; error.hidden = false; window.turnstile?.reset(); } finally { button.disabled = false; button.textContent = "Email me the paper"; } });
+		form.addEventListener("submit", async (event) => { event.preventDefault(); if (!(error instanceof HTMLElement) || !(success instanceof HTMLElement) || !(button instanceof HTMLButtonElement)) return; error.hidden = true; success.hidden = true; validateEmailMatch(); if (!form.reportValidity()) return; button.disabled = true; button.textContent = "Sending..."; try { const response = await fetch(form.action, { method: "POST", body: new FormData(form), headers: { Accept: "application/json" } }); const result = await response.json().catch(() => ({})); if (!response.ok) throw new Error(typeof result.error === "string" ? result.error : "We could not send the paper. Please try again shortly."); if (typeof zaraz !== "undefined" && typeof zaraz.track === "function") {
+			zaraz.track("no_head_works_alone_paper_requested");
+		} form.reset(); success.hidden = false; window.turnstile?.reset(); } catch (submissionError) { error.textContent = submissionError instanceof Error ? submissionError.message : "We could not send the paper. Please try again shortly."; error.hidden = false; window.turnstile?.reset(); } finally { button.disabled = false; button.textContent = "Email me the paper"; } });
 	}
 </script>
 
