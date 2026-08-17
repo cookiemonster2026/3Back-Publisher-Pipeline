@@ -1,0 +1,49 @@
+---
+import SiteLayout from "../layouts/SiteLayout.astro";
+import { pageSeo } from "../seo/registry.mjs";
+---
+
+<SiteLayout metadata={pageSeo["/scrum-alliance-path-images"]}>
+	<main id="main" class="scrum-alliance-path-images-page">
+		<div class="shell image-collection">
+			<h1>Scrum Alliance Path Images</h1>
+			<div class="purpose">
+				<p>Scrum Alliance Path Images on this page are referenced offsite on listings that sell the course.</p>
+				<p>The 3Back.com media library stores these images so external links can pull and use them.</p>
+				<p>This page displays the images so they remain available.</p>
+			</div>
+			<div class="images">
+				<img src="/wp-content/uploads/2024/09/ScrumAttendees-1536x397.jpg" alt="Scrum course attendees" width="1536" height="397" />
+				<img src="/wp-content/uploads/2024/09/shutterstock_1495929368.jpg" alt="People working together" width="712" height="348" />
+				<img src="/wp-content/uploads/2024/09/3back-student-learning-at-home-940-768x278.jpg" alt="Student learning at home" width="768" height="278" />
+				<img src="/wp-content/uploads/2024/09/trainer-doug-shimp-on-computer-screen-940-768x306.jpg" alt="Trainer Doug Shimp on a computer screen" width="768" height="306" />
+				<img src="/wp-content/uploads/2024/09/Join-the-insiders-768x424.jpg" alt="Join the insiders" width="768" height="424" />
+				<img src="/wp-content/uploads/2024/09/3Back-All-Courses-A-CSM-Cityscape.png" alt="Advanced Certified ScrumMaster course cityscape" width="738" height="646" />
+				<img src="/wp-content/uploads/2024/09/3Back-All-Courses-CSP-PO-Cityscape.png" alt="Certified Scrum Product Owner course cityscape" width="739" height="646" />
+				<img src="/wp-content/uploads/2024/09/3Back-All-Courses-A-CSPO-Cityscape.png" alt="Advanced Certified Scrum Product Owner course cityscape" width="739" height="646" />
+				<img src="/wp-content/uploads/2024/09/CSM-Bundle.png" alt="Certified ScrumMaster bundle" width="768" height="233" />
+				<img src="/wp-content/uploads/2024/09/conference-call-557.png" alt="Conference call" width="557" height="347" />
+				<img src="/wp-content/uploads/2024/09/A-CSM_2Day.png" alt="Advanced Certified ScrumMaster two-day course" width="477" height="240" />
+				<img src="/wp-content/uploads/2026/08/CSP-SM-v2-768x671.png" alt="Certified Scrum Professional ScrumMaster course" width="768" height="671" />
+				<img src="/wp-content/uploads/2026/03/Scrum-Dictionary-Logo-Tagline_v1.00.01-768x133.jpg" alt="Scrum Dictionary logo and tagline" width="768" height="133" />
+			</div>
+		</div>
+	</main>
+</SiteLayout>
+
+<style>
+	.scrum-alliance-path-images-page { padding: 122px 0 104px; }
+	.image-collection { max-width: 960px; }
+	.image-collection h1 { margin-bottom: 26px; }
+	.purpose { max-width: 720px; margin-bottom: 48px; color: var(--charcoal); font-size: var(--type-lead); line-height: var(--leading-lead); }
+	.purpose p { margin-bottom: 16px; }
+	.purpose p:last-child { margin-bottom: 0; }
+	.images { display: grid; gap: 32px; }
+	.images img { display: block; max-width: 100%; height: auto; }
+
+	@media (max-width: 720px) {
+		.scrum-alliance-path-images-page { padding: 84px 0 72px; }
+		.purpose { margin-bottom: 36px; }
+		.images { gap: 24px; }
+	}
+</style>

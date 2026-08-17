@@ -41,6 +41,18 @@ export const pageSeo = Object.freeze({
 			type: "website",
 		},
 	},
+	"/scrum-alliance-path-images": {
+		status: "complete",
+		path: "/scrum-alliance-path-images",
+		title: "Scrum Alliance Path Images | 3Back",
+		description: "Collection of images referenced by Scrum Alliance course listings. Hosted for external use.",
+		indexability: "noindex, nofollow",
+		social: {
+			title: "Scrum Alliance Path Images | 3Back",
+			description: "Collection of images referenced by Scrum Alliance course listings. Hosted for external use.",
+			type: "website",
+		},
+	},
 	"/events": {
 		status: "complete",
 		path: "/events",
