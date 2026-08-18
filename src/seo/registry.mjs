@@ -117,6 +117,12 @@ export const pageSeo = Object.freeze({
 					name: "3Back",
 					url: `${SITE_ORIGIN}/`,
 					slogan: "The Team Execution Company",
+					description: "3Back helps leaders find where organizational execution has lost grip and make bounded changes that reveal what to do next.",
+					logo: {
+						"@type": "ImageObject",
+						url: `${SITE_ORIGIN}/favicon.svg`,
+						contentUrl: `${SITE_ORIGIN}/favicon.svg`,
+					},
 				},
 				{
 					"@type": "WebSite",
@@ -213,15 +219,34 @@ export const pageSeo = Object.freeze({
 		title: "No Head Works Alone | 3Back",
 		description: "When judgment concentrates in one overloaded decision maker, the organization can look strong and still lose grip. The Bowtie Problem, and what restores bounded ownership.",
 		indexability: "index, follow",
-		social: {
-			title: "No Head Works Alone | 3Back",
-			description: "When judgment concentrates in one overloaded decision maker, the organization can look strong and still lose grip. The Bowtie Problem, and what restores bounded ownership.",
-			type: "article",
-		},
-		structuredData: {
-			"@context": "https://schema.org",
-			"@type": "FAQPage",
-			mainEntity: [
+			social: {
+				title: "No Head Works Alone | 3Back",
+				description: "When judgment concentrates in one overloaded decision maker, the organization can look strong and still lose grip. The Bowtie Problem, and what restores bounded ownership.",
+				type: "article",
+				image: {
+					src: "/social/3back-featured-image-v1.jpg",
+					alt: "No Head Works Alone — 3Back paper on the Bowtie Problem and bounded ownership.",
+					width: 1200,
+					height: 630,
+					type: "image/jpeg",
+				},
+			},
+			structuredData: {
+				"@context": "https://schema.org",
+				"@graph": [
+					{
+						"@type": "Article",
+						headline: "No Head Works Alone",
+						description: "When judgment concentrates in one overloaded decision maker, the organization can look strong and still lose grip. The Bowtie Problem, and what restores bounded ownership.",
+						url: `${SITE_ORIGIN}/papers/no-head-works-alone`,
+						mainEntityOfPage: `${SITE_ORIGIN}/papers/no-head-works-alone`,
+						isPartOf: { "@id": websiteId },
+						publisher: { "@id": organizationId },
+						image: `${SITE_ORIGIN}/social/3back-featured-image-v1.jpg`,
+					},
+					{
+						"@type": "FAQPage",
+						mainEntity: [
 				{
 					"@type": "Question",
 					name: "What is this paper about?",
@@ -254,8 +279,10 @@ export const pageSeo = Object.freeze({
 						text: "A PDF of No Head Works Alone emailed from noreply@3back.com. Requesting it also adds you to the 3Back list for occasional future content; you can unsubscribe at any time.",
 					},
 				},
-			],
-		},
+						],
+					},
+				],
+			},
 	},
 	"/workshops": {
 		status: "complete",
