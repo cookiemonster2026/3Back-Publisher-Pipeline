@@ -484,6 +484,32 @@ export const pageSeo = Object.freeze({
 		},
 		missingWork: ["Post content", "Approved complete-page metadata"],
 	},
+	"/papers/scaling": {
+		status: "stub",
+		path: "/papers/scaling",
+		title: "Scaling | 3Back",
+		description: "Scaling paper from 3Back. In preparation.",
+		indexability: "noindex, nofollow",
+		social: {
+			title: "Scaling | 3Back",
+			description: "Scaling paper from 3Back. In preparation.",
+			type: "website",
+		},
+		missingWork: ["Full paper excerpt and body", "Optional gate/form", "Complete-page metadata and indexability when ready"],
+	},
+	"/scrum-alliance-courses-faq": {
+		status: "stub",
+		path: "/scrum-alliance-courses-faq",
+		title: "Scrum Alliance Courses FAQ | 3Back",
+		description: "FAQ for Scrum Alliance courses from 3Back. In preparation.",
+		indexability: "noindex, nofollow",
+		social: {
+			title: "Scrum Alliance Courses FAQ | 3Back",
+			description: "FAQ for Scrum Alliance courses from 3Back. In preparation.",
+			type: "website",
+		},
+		missingWork: ["Approved FAQ content", "Links from courses pages", "Complete-page metadata when ready"],
+	},
 	"/courses": {
 		status: "complete",
 		path: "/courses",

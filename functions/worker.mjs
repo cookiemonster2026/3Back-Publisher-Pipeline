@@ -7,9 +7,7 @@ const PAPER_PATH = "/api/papers/no-head-works-alone";
 const GRIP_CHECK_PATH = "/api/grip-check";
 const GONE_PATHS = new Set([
 	"/process/scrum-dictionary-",
-	"/scaling-scrum-white-paper",
 	"/infographic/anatomy-of-a-retrospective",
-	"/scrum-faq",
 	"/scrum-patterns/the-release-sprint-how-to-get-the-product-out-the-door",
 	"/scrum-guidebook",
 	"/remote-scrum-teams/covid-19-impact-on-remote-scrum-team-health",
