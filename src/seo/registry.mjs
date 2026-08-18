@@ -218,6 +218,44 @@ export const pageSeo = Object.freeze({
 			description: "When judgment concentrates in one overloaded decision maker, the organization can look strong and still lose grip. The Bowtie Problem, and what restores bounded ownership.",
 			type: "article",
 		},
+		structuredData: {
+			"@context": "https://schema.org",
+			"@type": "FAQPage",
+			mainEntity: [
+				{
+					"@type": "Question",
+					name: "What is this paper about?",
+					acceptedAnswer: {
+						"@type": "Answer",
+						text: "How organizations lose grip when judgment concentrates in one overloaded decision maker, the Bowtie Problem, and what it means to restore bounded ownership.",
+					},
+				},
+				{
+					"@type": "Question",
+					name: "What is the Bowtie Problem?",
+					acceptedAnswer: {
+						"@type": "Answer",
+						text: "Work and pressure arrive from many directions, but decisions, direction, and coordination flow back through one person. That knot can look strong and still leave the organization dependent.",
+					},
+				},
+				{
+					"@type": "Question",
+					name: "Who is it for?",
+					acceptedAnswer: {
+						"@type": "Answer",
+						text: "Leaders and practitioners accountable for how work actually moves: executives, operational and transformation leaders, and people who sit near the knot.",
+					},
+				},
+				{
+					"@type": "Question",
+					name: "What do I receive if I request the full paper?",
+					acceptedAnswer: {
+						"@type": "Answer",
+						text: "A PDF of No Head Works Alone emailed from noreply@3back.com. Requesting it also adds you to the 3Back list for occasional future content; you can unsubscribe at any time.",
+					},
+				},
+			],
+		},
 	},
 	"/workshops": {
 		status: "complete",
