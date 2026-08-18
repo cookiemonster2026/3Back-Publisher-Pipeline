@@ -5,6 +5,19 @@ import { questions } from "../src/data/grip-check-questions.js";
 const CONTACT_PATH = "/api/contact";
 const PAPER_PATH = "/api/papers/no-head-works-alone";
 const GRIP_CHECK_PATH = "/api/grip-check";
+const GONE_PATHS = new Set([
+	"/process/scrum-dictionary-",
+	"/scaling-scrum-white-paper",
+	"/infographic/anatomy-of-a-retrospective",
+	"/scrum-faq",
+	"/scrum-patterns/the-release-sprint-how-to-get-the-product-out-the-door",
+	"/scrum-guidebook",
+	"/remote-scrum-teams/covid-19-impact-on-remote-scrum-team-health",
+	"/people/scrummaster/why-the-boss-should-never-be-the-scrummaster",
+	"/scrummaster/full-time-scrummaster",
+	"/scrum-industry-terms/the-4-types-of-technical-debt",
+	"/people/scrummaster/scrummaster-infographic"
+]);
 const TURNSTILE_VERIFY_URL = "https://challenges.cloudflare.com/turnstile/v0/siteverify";
 const RESEND_EMAIL_URL = "https://api.resend.com/emails";
 
@@ -92,4 +105,4 @@ async function handleGripCheck(request, env) {
 	try { await sendEmail(env, { from: "gripcheck@3back.com", to: [email], subject: userSubject, html: `<div style="margin:0;padding:0;background:#f7f3eb;font-family:Arial,sans-serif;color:#1d2421"><table role="presentation" width="100%" cellpadding="0" cellspacing="0" border="0" style="background:#f7f3eb"><tr><td style="padding:20px 12px"><table role="presentation" width="100%" cellpadding="0" cellspacing="0" border="0" style="max-width:640px;margin:0 auto"><tr><td style="padding:0 0 16px;border-bottom:3px solid #c45c26"><p style="margin:0;font-size:16px;line-height:1.5;color:#1d2421">${userOpening}</p></td></tr><tr><td style="padding:20px 0 16px"><p style="margin:0 0 6px;font-size:13px;font-weight:700;letter-spacing:.08em;text-transform:uppercase;color:#9d461b">Composite Grip Score for ${perspective}</p><p style="margin:0;font-size:52px;line-height:1;font-weight:700;color:#1d2421">${safe.composite}<span style="font-size:22px;font-weight:400">/100</span></p></td></tr><tr><td><table role="presentation" width="100%" cellpadding="0" cellspacing="0" border="0">${dimensionHtml}</table></td></tr><tr><td style="padding:18px 0 0"><p style="margin:0;font-size:16px;line-height:1.6;color:#1d2421">${userFollowUp}</p></td></tr><tr><td style="padding:20px 0 0"><p style="margin:0;font-size:14px;line-height:1.6;color:#1d2421"><strong style="font-size:21px"><span style="color:#c45c26">3</span>Back</strong><br>The Team Execution Company<br><a href="mailto:gripcheck@3back.com" style="color:#1d2421;text-decoration:underline">gripcheck@3back.com</a><br><a href="https://3back.com" style="color:#1d2421;text-decoration:underline">3back.com</a><br><a href="tel:+18553232225" style="color:#1d2421;text-decoration:underline">(855) 323-2225</a></p></td></tr></table></td></tr></table></div>` }); await sendEmail(env, { from: "gripcheck@3back.com", to: ["gripcheckscores@3back.com"], reply_to: email, subject: `[GripCheck] ${safe.firstName} ${safe.lastName} · ${safe.organizationName} · ${safe.composite}`, html: internalHtml, attachments: [{ filename: "3Back-Grip-Check-Question-Bank-v0.1.pdf", content: arrayBufferToBase64(gripCheckQuestionBankPdf), content_type: "application/pdf" }] }); } catch { return json({ error: "We could not send your results. Please try again shortly." }, 502); }
 	return json({ ok: true });
 }
-export default { async fetch(request, env) { const url = new URL(request.url); if (url.pathname === CONTACT_PATH) return handleContact(request, env); if (url.pathname === PAPER_PATH) return handlePaperRequest(request, env); if (url.pathname === GRIP_CHECK_PATH) return handleGripCheck(request, env); return env.ASSETS.fetch(request); } };
+export default { async fetch(request, env) { const url = new URL(request.url); if (url.pathname === CONTACT_PATH) return handleContact(request, env); if (url.pathname === PAPER_PATH) return handlePaperRequest(request, env); if (url.pathname === GRIP_CHECK_PATH) return handleGripCheck(request, env); const normalizedPath = url.pathname.length > 1 ? url.pathname.replace(/\/+$/, "") : url.pathname; if (GONE_PATHS.has(normalizedPath)) return new Response(null, { status: 410, headers: { "cache-control": "public, max-age=3600" } }); return env.ASSETS.fetch(request); } };
