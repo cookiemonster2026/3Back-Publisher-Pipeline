@@ -384,6 +384,17 @@ export const pageSeo = Object.freeze({
 			description: "7-minute directional screening of operating conditions. 20 questions. Immediate Grip Score.",
 			type: "website",
 		},
+		structuredData: {
+			"@context": "https://schema.org",
+			"@type": "FAQPage",
+			mainEntity: [
+				["What is Grip Check?", "Grip Check is a short directional screening of how execution holds under changing demand. It takes about 7 minutes and covers five dimensions of operational grip."],
+				["What do I get when I finish?", "You get a composite score and scores for each dimension, with a simple strong / moderate / weak reading. That is a starting snapshot, not a diagnosis. You can also request a 30-minute interpretation and debrief."],
+				["Is this a diagnosis?", "No. Grip Check is a screening. It points to where grip may be present and where it may be under strain. It does not prescribe a program or guarantee an outcome."],
+				["Should I take it for my organization or for my work?", "Choose My Organization if you will answer from a comparable organizational situation you can observe. Choose My Work if you will answer from your own experience of the work, authority, decisions, coordination, effects, and AI use around you. The questions differ for each path. You can take both."],
+				["What happens if I ask for the 30-minute review?", "After you submit your results, 3Back receives your scores and context. We use that to prepare a short conversation focused on interpretation, not a pitch. If you only want the scores emailed, choose that option instead."],
+			].map(([name, text]) => ({ "@type": "Question", name, acceptedAnswer: { "@type": "Answer", text } })),
+		},
 	},
 	"/grip-check/results": {
 		status: "complete",
