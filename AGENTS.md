@@ -42,6 +42,29 @@ Only the explicit production-indexable build may emit production indexability, s
 - A normal Git commit or Git push does not require GitHub CLI. Use normal Git unless the user explicitly requests another workflow.
 - Do not deploy directly to Cloudflare unless the user explicitly instructs you to deploy. Permission to commit or push does not authorize deployment.
 
+## Production publish (mandatory)
+
+Production is only `main` on the real GitHub remote for this repository: `github.com/cookiemonster2026/3Back-Publisher-Pipeline` or its SSH equivalent.
+
+Before any commit, push, or claim that work is on 3back.com, run and report:
+
+- `git remote -v`
+- `git branch --show-current`
+- `git rev-parse HEAD`
+- `git ls-remote origin refs/heads/main`
+
+Stop and report. Do not push or say deployed if:
+
+1. The current branch is not `main`.
+2. `origin` is not the GitHub URL above. Path-style or local non-bare remotes are not production remotes.
+3. You cannot confirm the commit SHA will be on GitHub `origin/main` after push.
+
+Never treat a local folder remote, `updateInstead` mirror, or feature branch as production.
+
+After push, do not claim “live on 3back.com” until the production URL shows the expected content. Spot-check the changed routes.
+
+Branch checkouts are for local experiment only. The only publish path is: land on `main` → push to GitHub → Cloudflare build from `main`. Override only if Douglas explicitly authorizes it in writing for that task.
+
 After every website task, report verification in exactly this structure:
 
 ```text

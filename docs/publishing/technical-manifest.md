@@ -208,6 +208,10 @@ The Astro mode names do not determine SEO behavior by themselves. SEO rendering 
 
 ## GitHub-to-Cloudflare deployment path
 
+### Production publish control
+
+Cloudflare production deploys from GitHub `main` only. Agents must not push production work to a non-GitHub remote or to a branch other than `main`. Before claiming a deploy, verify `origin` is the GitHub repository URL and that the commit exists on `origin/main`. Spot-check live routes after deploy. Full agent rules: root `AGENTS.md` (Production publish).
+
 The approved publishing workflow is owner-verified:
 
 1. Commit the approved publishing changes to `main`.
