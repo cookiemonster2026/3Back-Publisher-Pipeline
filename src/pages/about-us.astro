@@ -1,8 +1,25 @@
 ---
 import painterPoster from "../assets/about-us/painter-three-steps-poster.webp";
 import painterVideo from "../assets/about-us/painter-three-steps-v1.mp4";
+import { Image } from "astro:assets";
+import type { ImageMetadata } from "astro";
+import dougHeadshot from "../assets/team/doug-headshot-consistent.jpg";
+import danHeadshot from "../assets/team/dan-headshot-consistent.jpg";
+import marceloHeadshot from "../assets/team/marcelo-headshot-consistent.jpg";
+import ajHeadshot from "../assets/team/aj-headshot-consistent.jpg";
+import janHeadshot from "../assets/team/jan-headshot-consistent.jpg";
+import marcHeadshot from "../assets/team/marc-headshot-consistent.jpg";
 import SiteLayout from "../layouts/SiteLayout.astro";
 import { pageSeo } from "../seo/registry.mjs";
+
+const teamMembers: { name: string; href: string; image: ImageMetadata }[] = [
+	{ name: "Doug Shimp", href: "/team/doug-shimp", image: dougHeadshot },
+	{ name: "Dan Rawsthorne", href: "/team/dan-rawsthorne", image: danHeadshot },
+	{ name: "Marcelo Lopez Jr.", href: "/team/marcelo-lopez-jr", image: marceloHeadshot },
+	{ name: "AJ Biddles", href: "/team/aj-biddles", image: ajHeadshot },
+	{ name: "Jan Beaver", href: "/team/jan-beaver", image: janHeadshot },
+	{ name: "Marc Applebaum", href: "/team/marc-applebaum", image: marcHeadshot },
+];
 ---
 
 <SiteLayout metadata={pageSeo["/about-us"]}>
@@ -113,6 +130,16 @@ import { pageSeo } from "../seo/registry.mjs";
 			</div>
 		</section>
 
+		<section class="team-band" aria-labelledby="team-band-title">
+			<div class="shell">
+				<p class="eyebrow">The Team</p>
+				<h2 id="team-band-title">The Team</h2>
+				<div class="team-grid">
+					{teamMembers.map(({ name, href, image }) => <a class="team-card" href={href}><Image src={image} alt={`Portrait of ${name}`} widths={[240, 360]} sizes="(max-width: 720px) 45vw, (max-width: 1024px) 28vw, 16vw" /><span>{name}</span></a>)}
+				</div>
+			</div>
+		</section>
+
 		<section class="continuation-section">
 			<div class="shell continuation-inner">
 				<div>
@@ -151,6 +178,12 @@ import { pageSeo } from "../seo/registry.mjs";
 	.editorial-columns > section + section { padding-left: clamp(38px, 7vw, 110px); border-left: 1px solid var(--rule); }
 	.editorial-columns h2 { font-size: clamp(2rem, 3.3vw, 3.2rem); }
 	.team-section { padding-bottom: 130px; }
+	.team-band { padding: 96px 0 110px; border-top: 1px solid var(--rule); }
+	.team-band h2 { margin-bottom: 42px; }
+	.team-grid { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: clamp(28px, 4vw, 54px) clamp(22px, 3vw, 42px); max-width: 980px; }
+	.team-card { display: block; font-size: 1.05rem; font-weight: var(--font-weight-bold); text-decoration: none; }
+	.team-card :global(img) { display: block; width: 100%; height: auto; aspect-ratio: 1 / 1; object-fit: cover; object-position: center; margin-bottom: 14px; border: 1px solid var(--rule); background: var(--reading); transition: background-color 140ms ease; }
+	.team-card:hover :global(img) { background: var(--amber-wash); }
 	.question-list { margin: 0 0 28px; padding: 0; list-style: none; font-size: 1.125rem; font-weight: var(--font-weight-semibold); line-height: 1.65; }
 	.question-list li { padding: 7px 0; border-top: 1px solid var(--rule); }
 	.question-list li:last-child { border-bottom: 1px solid var(--rule); }
@@ -171,6 +204,8 @@ import { pageSeo } from "../seo/registry.mjs";
 		.opening-copy p, .reading-column p, .narrow-column p, .wide-reading p, .editorial-columns p, .grip-copy p, .question-list, .continuation-inner p { font-size: 1.125rem; }
 		.grip-section { padding: 82px 0; }
 		.team-section { padding-bottom: 82px; }
+		.team-band { padding: 72px 0 78px; }
+		.team-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 30px 16px; }
 	}
 	@media (prefers-reduced-motion: reduce) {
 		.origin-motion { display: none; }
