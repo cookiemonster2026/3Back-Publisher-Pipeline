@@ -30,12 +30,17 @@ export function getStaticPaths() {
 
 const slug = Astro.params.slug;
 const bio = bios[slug as keyof typeof bios];
+const formatBioSection = (section: readonly string[]) => {
+	const [first, ...remaining] = section;
+	const hasHeading = Boolean(first) && first.length < 80;
+	return { heading: hasHeading ? first : "", paragraphs: hasHeading ? remaining : section };
+};
 ---
 
 <SiteLayout metadata={pageSeo[`/team/${slug}`]}>
 	<main id="main" class="bio-page">
 		<section class="bio-hero"><div class="shell bio-hero-inner"><p class="eyebrow">The Team</p><h1>{bio.name}</h1><p class="title">{bio.title}</p><a class="contact-trigger" href="#bio-contact">Contact {bio.name.split(" ")[0]}</a></div></section>
-		<section class="section"><div class="shell bio-grid"><Image class="headshot" src={bio.image} alt={`Portrait of ${bio.name}`} widths={[480, 720]} sizes="(max-width: 820px) calc(100vw - 48px), 38vw" /><div class="bio-copy">{bio.sections.map(([heading, content]) => <section>{heading && <h2>{heading}</h2>}{content.split("\n\n").map((paragraph) => <p>{paragraph}</p>)}</section>)}</div></div></section>
+		<section class="section"><div class="shell bio-grid"><Image class="headshot" src={bio.image} alt={`Portrait of ${bio.name}`} widths={[480, 720]} sizes="(max-width: 820px) calc(100vw - 48px), 38vw" /><div class="bio-copy">{bio.sections.map((section) => { const { heading, paragraphs } = formatBioSection(section); return <section>{heading && <h2>{heading}</h2>}{paragraphs.flatMap((content) => content.split("\n\n")).map((paragraph) => <p>{paragraph}</p>)}</section>; })}</div></div></section>
 		{bio.credentials.length > 0 && <section class="credentials"><div class="shell"><p class="eyebrow">Credentials</p><div class="credential-grid">{bio.credentials.map((credential) => <Image src={credential} alt={`${bio.name} credential plate`} layout="constrained" />)}</div></div></section>}
 		<BioContactForm instructorName={bio.name} instructorSlug={slug!} />
 	</main>
