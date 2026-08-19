@@ -498,17 +498,16 @@ export const pageSeo = Object.freeze({
 		missingWork: ["Full paper excerpt and body", "Optional gate/form", "Complete-page metadata and indexability when ready"],
 	},
 	"/scrum-alliance-courses-faq": {
-		status: "stub",
+		status: "complete",
 		path: "/scrum-alliance-courses-faq",
 		title: "Scrum Alliance Courses FAQ | 3Back",
-		description: "FAQ for Scrum Alliance courses from 3Back. In preparation.",
-		indexability: "noindex, nofollow",
+		description: "Frequently asked questions about 3Back’s Scrum Alliance® courses, including logistics, payment, and certification.",
+		indexability: "index, follow",
 		social: {
 			title: "Scrum Alliance Courses FAQ | 3Back",
-			description: "FAQ for Scrum Alliance courses from 3Back. In preparation.",
+			description: "Frequently asked questions about 3Back’s Scrum Alliance® courses, including logistics, payment, and certification.",
 			type: "website",
 		},
-		missingWork: ["Approved FAQ content", "Links from courses pages", "Complete-page metadata when ready"],
 	},
 	"/courses": {
 		status: "complete",

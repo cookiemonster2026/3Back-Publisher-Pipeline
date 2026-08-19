@@ -65,6 +65,7 @@ const months = [...new Set(events.map((event) => event.month))];
 
 		<section class="section section-rule events-listing" aria-label="Upcoming public classes">
 			<div class="shell">
+				<p class="faq-discovery"><a href="/scrum-alliance-courses-faq">Scrum Alliance FAQ</a></p>
 				{months.map((month) => (
 					<section class="event-month" aria-labelledby={`month-${month.replace(" ", "-")}`}>
 						<h2 id={`month-${month.replace(" ", "-")}`}>{month}</h2>
@@ -155,7 +156,8 @@ const months = [...new Set(events.map((event) => event.month))];
 	.events-title-band { display: flex; flex-wrap: wrap; align-items: baseline; gap: 8px 18px; }
 	.events-title-band h1 { margin: 0; }
 	.events-title-band p { margin: 0; padding-left: 18px; border-left: 3px solid var(--amber); color: var(--text-secondary); font-size: var(--type-lead); line-height: var(--leading-lead); }
-	.closing-line a { color: var(--charcoal); font-weight: var(--font-weight-semibold); text-decoration-color: var(--amber); text-decoration-thickness: 2px; text-underline-offset: 4px; }
+	.closing-line a, .faq-discovery a { color: var(--charcoal); font-weight: var(--font-weight-semibold); text-decoration-color: var(--amber); text-decoration-thickness: 2px; text-underline-offset: 4px; }
+	.faq-discovery { margin: 0 0 26px; font-size: var(--type-caption); }
 	.event-month + .event-month { margin-top: 52px; }
 	.event-month h2 { margin-bottom: 20px; font-size: clamp(1.8rem, 3vw, 2.5rem); }
 	.event-table { border-top: 2px solid var(--charcoal); }

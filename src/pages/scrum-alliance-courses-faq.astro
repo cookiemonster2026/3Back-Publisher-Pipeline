@@ -1,10 +1,71 @@
 ---
-import StubPage from "../components/StubPage.astro";
+import SiteLayout from "../layouts/SiteLayout.astro";
+import faqInventory from "../data/scrum-alliance-faq-inventory.md?raw";
 import { pageSeo } from "../seo/registry.mjs";
+
+type FaqItem = { question: string; answer: string };
+type Section = { sourceHeading: string; title: string; slug: string; badge?: { src: string; alt: string } };
+
+const sections: Section[] = [
+	{ sourceHeading: "Before, During, & After Class: FAQ", title: "Before, During, & After Class", slug: "before-during-after" },
+	{ sourceHeading: "Course Delivery: FAQ", title: "Course Delivery", slug: "course-delivery" },
+	{ sourceHeading: "Payment, Rescheduling and Cancellation: FAQ", title: "Payment, Rescheduling & Cancellation", slug: "payment-rescheduling-cancellation" },
+	{ sourceHeading: "Certified ScrumMaster®: FAQ SA", title: "Certified ScrumMaster®", slug: "certified-scrummaster", badge: { src: "/assets/courses/sa-csm.png", alt: "Scrum Alliance Certified ScrumMaster certification badge" } },
+	{ sourceHeading: "Advanced Certified ScrumMaster®: FAQ SA", title: "Advanced Certified ScrumMaster®", slug: "advanced-certified-scrummaster", badge: { src: "/assets/courses/sa-a-csm.png", alt: "Scrum Alliance Advanced Certified ScrumMaster certification badge" } },
+	{ sourceHeading: "Certified Scrum Professional® – ScrumMaster: FAQ SA", title: "Certified Scrum Professional® – ScrumMaster", slug: "certified-scrum-professional-scrummaster", badge: { src: "/assets/courses/sa-csp-sm.png", alt: "Scrum Alliance Certified Scrum Professional ScrumMaster certification badge" } },
+	{ sourceHeading: "Certified Scrum Product Owner®: FAQ SA", title: "Certified Scrum Product Owner®", slug: "certified-scrum-product-owner", badge: { src: "/assets/courses/sa-cspo.png", alt: "Scrum Alliance Certified Scrum Product Owner certification badge" } },
+	{ sourceHeading: "Advanced Certified Scrum Product Owner®: FAQ SA", title: "Advanced Certified Scrum Product Owner®", slug: "advanced-certified-scrum-product-owner", badge: { src: "/assets/courses/sa-a-cspo.png", alt: "Scrum Alliance Advanced Certified Scrum Product Owner certification badge" } },
+	{ sourceHeading: "Certified Scrum Professional® – Product Owner: FAQ SA", title: "Certified Scrum Professional® – Product Owner", slug: "certified-scrum-professional-product-owner", badge: { src: "/assets/courses/sa-csp-po.png", alt: "Scrum Alliance Certified Scrum Professional Product Owner certification badge" } },
+];
+
+const inventorySections = new Map<string, FaqItem[]>();
+for (const sectionBlock of faqInventory.trim().split(/^## /m).slice(1)) {
+	const [heading, ...bodyLines] = sectionBlock.split(/\r?\n/);
+	const items = bodyLines.join("\n").trim().split(/\r?\n\r?\n(?=\*\*Q:\*\*)/).map((itemBlock) => {
+		const match = itemBlock.match(/^\*\*Q:\*\* (.*?)\r?\n\r?\n\*\*A:\*\* ([\s\S]*)$/);
+		if (!match) throw new Error(`Unable to parse FAQ item in ${heading}.`);
+		return { question: match[1], answer: match[2].trim() };
+	});
+	inventorySections.set(heading, items);
+}
+
+const faqs = sections.map((section) => ({ ...section, items: inventorySections.get(section.sourceHeading) as FaqItem[] }));
+if (faqs.some((section) => !section.items?.length) || faqs.flatMap((section) => section.items).length !== 82) throw new Error("Scrum Alliance FAQ inventory did not parse into the expected 82 questions.");
+
+const formatAnswer = (answer: string) => answer
+	.replaceAll("&", "&amp;")
+	.replaceAll("<", "&lt;")
+	.replaceAll(">", "&gt;")
+	.replace(/Public Course Policies/g, '<a href="/policies">Public Course Policies</a>')
+	.replace(/View our full policies here/g, 'View our full policies <a href="/policies">here</a>')
+	.replace(/cancellation policy here/g, 'cancellation policy <a href="/policies">here</a>')
+	.replace(/our policy page/g, 'our <a href="/policies">policy page</a>')
+	.replace(/contact us/g, '<a href="/contact">contact us</a>');
 ---
 
-<StubPage
-	name="Scrum Alliance Courses FAQ"
-	description="FAQ for Scrum Alliance courses. In preparation. Will be linked from courses and Scrum Alliance paths."
-	metadata={pageSeo["/scrum-alliance-courses-faq"]}
-/>
+<SiteLayout metadata={pageSeo["/scrum-alliance-courses-faq"]}>
+	<main id="main" class="faq-page">
+		<section class="faq-intro section-rule"><div class="shell faq-column">
+			<p class="eyebrow">Reference</p>
+			<h1>Scrum Alliance Courses FAQ</h1>
+			<p>Frequently asked questions about 3Back’s Scrum Alliance® training courses, services, and policies. If you do not find what you need, <a href="/contact">contact us</a>, call <a href="tel:+18553232225">855-323-2225</a>, or email <a href="mailto:info@3back.com">info@3back.com</a>.</p>
+			<nav class="jump-list" aria-label="FAQ sections"><p>Jump to section</p><ol>{faqs.map((section) => <li><a href={`#${section.slug}`}>{section.title}</a></li>)}</ol></nav>
+		</div></section>
+		<section class="faq-sections"><div class="shell faq-column">
+			{faqs.map((section, index) => <section id={section.slug} class="faq-section" aria-labelledby={`${section.slug}-title`}>
+				<header class="section-heading">{section.badge ? <img src={section.badge.src} alt={section.badge.alt} width="150" height="150" /> : <span class="section-mark" aria-hidden="true">{String(index + 1).padStart(2, "0")}</span>}<div><h2 id={`${section.slug}-title`}>{section.title}</h2>{section.badge && <p class="mark-attribution">Scrum Alliance® certification mark.</p>}</div></header>
+				<div class="faq-list">{section.items.map((item) => <details><summary>{item.question}</summary><p set:html={formatAnswer(item.answer)} /></details>)}</div>
+				{section.badge && <p class="training-link"><a href="/training">Explore Training</a></p>}
+			</section>)}
+			<p class="closing-line">Still have a question? <a href="/contact">Contact us</a>, call <a href="tel:+18553232225">855-323-2225</a>, or email <a href="mailto:info@3back.com">info@3back.com</a>.</p>
+		</div></section>
+	</main>
+</SiteLayout>
+
+<style>
+	.faq-page { background: var(--paper); } .faq-column { max-width: 900px; } .faq-intro { padding: clamp(72px, 10vw, 120px) 0 54px; } .eyebrow { margin: 0 0 12px; color: var(--amber-text); font-size: var(--type-caption); font-weight: var(--font-weight-bold); letter-spacing: var(--tracking-caption); text-transform: uppercase; } h1 { margin-bottom: 20px; } .faq-intro > .faq-column > p:not(.eyebrow) { max-width: 760px; color: var(--text-secondary); font-size: var(--type-lead); line-height: var(--leading-lead); } a { color: var(--charcoal); font-weight: var(--font-weight-semibold); text-decoration-color: var(--amber); text-decoration-thickness: 2px; text-underline-offset: 4px; }
+	.jump-list { max-width: 760px; margin-top: 42px; padding: 22px 0 0; border-top: 2px solid var(--charcoal); } .jump-list p { margin: 0 0 12px; font-size: var(--type-caption); font-weight: var(--font-weight-bold); letter-spacing: var(--tracking-caption); text-transform: uppercase; } .jump-list ol { columns: 2; gap: 36px; margin: 0; padding-left: 20px; } .jump-list li { break-inside: avoid; margin: 0 0 9px; padding-left: 4px; }
+	.faq-sections { padding: 0 0 110px; } .faq-section { padding: 54px 0; border-top: 1px solid var(--rule); scroll-margin-top: 32px; } .section-heading { display: flex; gap: 18px; align-items: center; margin-bottom: 24px; } .section-heading img { flex: 0 0 auto; width: 58px; height: 58px; object-fit: contain; } .section-heading h2 { margin: 0; font-size: clamp(1.65rem, 3vw, 2.4rem); } .section-mark { display: grid; flex: 0 0 auto; width: 58px; height: 58px; place-items: center; border: 2px solid var(--charcoal); color: var(--amber-text); font-size: 1.1rem; font-weight: var(--font-weight-bold); letter-spacing: .08em; } .mark-attribution { margin: 5px 0 0; color: var(--text-secondary); font-size: var(--type-caption); }
+	.faq-list { border-top: 2px solid var(--charcoal); } details { border-bottom: 1px solid var(--rule); } summary { position: relative; padding: 19px 36px 19px 0; color: var(--charcoal); font-size: 1.06rem; font-weight: var(--font-weight-bold); line-height: 1.45; cursor: pointer; } summary::after { position: absolute; right: 5px; content: "+"; color: var(--amber-text); font-size: 1.55rem; font-weight: var(--font-weight-regular); } details[open] summary::after { content: "−"; } details p { max-width: 76ch; margin: 0 0 22px; color: var(--text-secondary); line-height: 1.65; white-space: pre-line; } .training-link { margin: 19px 0 0; font-size: .95rem; } .closing-line { margin: 0; padding: 46px 0 0; border-top: 2px solid var(--charcoal); color: var(--text-secondary); font-size: var(--type-lead); }
+	@media (max-width: 640px) { .faq-intro { padding-top: 66px; } .jump-list ol { columns: 1; } .faq-section { padding: 42px 0; } .section-heading { align-items: flex-start; } .section-heading img, .section-mark { width: 48px; height: 48px; } }
+</style>
