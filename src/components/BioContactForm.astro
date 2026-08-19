@@ -1,0 +1,51 @@
+---
+interface Props { instructorName: string; instructorSlug: string; }
+const { instructorName, instructorSlug } = Astro.props;
+const turnstileSiteKey = import.meta.env.PUBLIC_TURNSTILE_SITE_KEY ?? "";
+---
+
+<section id="bio-contact" class="bio-contact" aria-labelledby="bio-contact-title">
+	<div class="shell bio-contact-inner">
+		<p class="eyebrow">Contact</p>
+		<h2 id="bio-contact-title">Contact {instructorName}</h2>
+		<form class="bio-contact-form" action="/api/bio-contact" method="post" data-bio-contact-form novalidate>
+			<input type="hidden" name="instructor_slug" value={instructorSlug} />
+			<input type="hidden" name="instructor_name" value={instructorName} />
+			<div class="form-fields">
+				<div class="field"><label for={`${instructorSlug}-first-name`}>First name <span aria-hidden="true">(required)</span></label><input id={`${instructorSlug}-first-name`} name="first_name" autocomplete="given-name" required maxlength="80" /></div>
+				<div class="field"><label for={`${instructorSlug}-last-name`}>Last name <span aria-hidden="true">(required)</span></label><input id={`${instructorSlug}-last-name`} name="last_name" autocomplete="family-name" required maxlength="80" /></div>
+				<div class="field"><label for={`${instructorSlug}-email`}>Email <span aria-hidden="true">(required)</span></label><input id={`${instructorSlug}-email`} name="email" type="email" autocomplete="email" required maxlength="254" /></div>
+				<div class="field"><label for={`${instructorSlug}-confirm-email`}>Email again <span aria-hidden="true">(required)</span></label><input id={`${instructorSlug}-confirm-email`} name="confirm_email" type="email" autocomplete="email" required maxlength="254" /></div>
+				<div class="field full-field"><label for={`${instructorSlug}-note`}>Note <span aria-hidden="true">(required)</span></label><textarea id={`${instructorSlug}-note`} name="note" rows="6" required maxlength="4000"></textarea></div>
+			</div>
+			<div class="turnstile-wrap">{turnstileSiteKey ? <div class="cf-turnstile" data-sitekey={turnstileSiteKey}></div> : <p class="form-error">This form is not configured yet.</p>}</div>
+			<p class="form-error" role="alert" data-form-error hidden></p>
+			<button class="button submit-button" type="submit" disabled={!turnstileSiteKey}>Send note</button>
+			<p class="form-success" role="status" data-form-success hidden>Your note was received.</p>
+		</form>
+	</div>
+</section>
+
+<script is:inline src="https://challenges.cloudflare.com/turnstile/v0/api.js" async defer></script>
+<script>
+	declare global { interface Window { turnstile?: { reset(): void } } }
+	document.querySelectorAll("[data-bio-contact-form]").forEach((candidate) => {
+		if (!(candidate instanceof HTMLFormElement)) return;
+		const error = candidate.querySelector("[data-form-error]"); const success = candidate.querySelector("[data-form-success]"); const button = candidate.querySelector("button[type=submit]");
+		const email = candidate.elements.namedItem("email"); const confirmation = candidate.elements.namedItem("confirm_email");
+		const validateEmails = () => { if (email instanceof HTMLInputElement && confirmation instanceof HTMLInputElement) confirmation.setCustomValidity(email.value === confirmation.value ? "" : "Email addresses must match."); };
+		if (email instanceof HTMLInputElement) email.addEventListener("input", validateEmails); if (confirmation instanceof HTMLInputElement) confirmation.addEventListener("input", validateEmails);
+		candidate.addEventListener("submit", async (event) => { event.preventDefault(); validateEmails(); if (!(error instanceof HTMLElement) || !(success instanceof HTMLElement) || !(button instanceof HTMLButtonElement)) return; error.hidden = true; success.hidden = true; if (!candidate.reportValidity()) return; button.disabled = true; button.textContent = "Sending..."; try { const response = await fetch(candidate.action, { method: "POST", body: new FormData(candidate), headers: { Accept: "application/json" } }); const result = await response.json().catch(() => ({})); if (!response.ok) throw new Error(typeof result.error === "string" ? result.error : "We could not send your note. Please try again."); candidate.reset(); success.hidden = false; window.turnstile?.reset(); } catch (submissionError) { error.textContent = submissionError instanceof Error ? submissionError.message : "We could not send your note. Please try again."; error.hidden = false; window.turnstile?.reset(); } finally { button.disabled = false; button.textContent = "Send note"; } });
+	});
+</script>
+
+<style>
+	.bio-contact { padding: 82px 0 104px; border-top: 1px solid var(--rule); }
+	.bio-contact-inner { max-width: 760px; }
+	.eyebrow { margin-bottom: 14px; color: var(--amber-text); font-size: var(--type-caption); font-weight: var(--font-weight-heavy); letter-spacing: var(--tracking-caption); text-transform: uppercase; }
+	.bio-contact h2 { margin-bottom: 28px; }
+	.bio-contact-form { padding: clamp(24px, 4vw, 38px); background: var(--reading); border-top: 3px solid var(--amber); }
+	.form-fields { display: grid; grid-template-columns: 1fr 1fr; gap: 20px; }.field { display: grid; gap: 7px; }.full-field { grid-column: 1 / -1; }.field label { font-size: var(--type-caption); font-weight: var(--font-weight-bold); }.field input, .field textarea { width: 100%; border: 1px solid #a9ada6; border-radius: 0; background: #fff; color: var(--charcoal); padding: 12px 13px; }.field textarea { resize: vertical; min-height: 136px; }
+	.turnstile-wrap { min-height: 65px; margin-top: 24px; }.form-error { margin: 0 0 18px; color: #9e2a18; font-weight: var(--font-weight-semibold); }.form-success { margin: 20px 0 0; color: #315d42; font-weight: var(--font-weight-semibold); }.submit-button { width: 100%; border-radius: 0; }.submit-button:disabled { cursor: not-allowed; opacity: .6; }
+	@media (max-width: 600px) { .bio-contact { padding: 66px 0 78px; }.form-fields { grid-template-columns: 1fr; }.full-field { grid-column: auto; } }
+</style>
