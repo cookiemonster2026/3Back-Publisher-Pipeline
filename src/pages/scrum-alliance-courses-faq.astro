@@ -32,6 +32,19 @@ for (const sectionBlock of faqInventory.trim().split(/^## /m).slice(1)) {
 const faqs = sections.map((section) => ({ ...section, items: inventorySections.get(section.sourceHeading) as FaqItem[] }));
 if (faqs.some((section) => !section.items?.length) || faqs.flatMap((section) => section.items).length !== 82) throw new Error("Scrum Alliance FAQ inventory did not parse into the expected 82 questions.");
 
+const faqStructuredData = {
+	"@context": "https://schema.org",
+	"@type": "FAQPage",
+	mainEntity: faqs.flatMap((section) => section.items.map((item) => ({
+		"@type": "Question",
+		name: item.question,
+		acceptedAnswer: {
+			"@type": "Answer",
+			text: item.answer,
+		},
+	}))),
+};
+
 const formatAnswer = (answer: string) => answer
 	.replaceAll("&", "&amp;")
 	.replaceAll("<", "&lt;")
@@ -43,7 +56,7 @@ const formatAnswer = (answer: string) => answer
 	.replace(/contact us/g, '<a href="/contact">contact us</a>');
 ---
 
-<SiteLayout metadata={pageSeo["/scrum-alliance-courses-faq"]}>
+<SiteLayout metadata={{ ...pageSeo["/scrum-alliance-courses-faq"], structuredData: faqStructuredData }}>
 	<main id="main" class="faq-page">
 		<section class="faq-intro section-rule"><div class="shell faq-column">
 			<p class="eyebrow">Reference</p>
