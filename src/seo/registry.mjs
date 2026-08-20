@@ -68,8 +68,6 @@ export const pageSeo = Object.freeze({
 			"@context": "https://schema.org",
 			"@type": "ItemList",
 			itemListElement: [
-				["Certified ScrumMaster® (CSM®)", "2026-08-19", "https://event.3back.com/certified-scrummaster-august-19-20"],
-				["Scrum Better with Kanban", "2026-08-22", "https://event.3back.com/scrum-better-with-kanban-august-22"],
 				["Certified ScrumMaster® (CSM®)", "2026-08-29", "https://event.3back.com/certified-scrummaster-august-29-30"],
 				["Advanced Certified ScrumMaster® (A-CSM®)", "2026-09-09", "https://event.3back.com/advanced-certified-scrummaster-september-9-10"],
 				["Scrum Better with Kanban", "2026-09-12", "https://event.3back.com/scrum-better-with-kanban-september-12"],
