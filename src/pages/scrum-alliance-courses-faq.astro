@@ -4,16 +4,16 @@ import faqInventory from "../data/scrum-alliance-faq-inventory.md?raw";
 import { pageSeo } from "../seo/registry.mjs";
 
 type FaqItem = { question: string; answer: string };
-type Section = { sourceHeading: string; title: string; slug: string; badge?: { src: string; alt: string } };
+type Section = { sourceHeading: string; title: string; slug: string; badge?: { src: string; alt: string }; trainingLink?: { href: string; label: string } };
 
 const sections: Section[] = [
 	{ sourceHeading: "Before, During, & After Class: FAQ", title: "Before, During, & After Class", slug: "before-during-after" },
 	{ sourceHeading: "Course Delivery: FAQ", title: "Course Delivery", slug: "course-delivery" },
 	{ sourceHeading: "Payment, Rescheduling and Cancellation: FAQ", title: "Payment, Rescheduling & Cancellation", slug: "payment-rescheduling-cancellation" },
-	{ sourceHeading: "Certified ScrumMaster®: FAQ SA", title: "Certified ScrumMaster®", slug: "certified-scrummaster", badge: { src: "/assets/courses/sa-csm.png", alt: "Scrum Alliance Certified ScrumMaster certification badge" } },
+	{ sourceHeading: "Certified ScrumMaster®: FAQ SA", title: "Certified ScrumMaster®", slug: "certified-scrummaster", badge: { src: "/assets/courses/sa-csm.png", alt: "Scrum Alliance Certified ScrumMaster certification badge" }, trainingLink: { href: "/certified-scrummaster-training/", label: "Explore the CSM course" } },
 	{ sourceHeading: "Advanced Certified ScrumMaster®: FAQ SA", title: "Advanced Certified ScrumMaster®", slug: "advanced-certified-scrummaster", badge: { src: "/assets/courses/sa-a-csm.png", alt: "Scrum Alliance Advanced Certified ScrumMaster certification badge" } },
 	{ sourceHeading: "Certified Scrum Professional® – ScrumMaster: FAQ SA", title: "Certified Scrum Professional® – ScrumMaster", slug: "certified-scrum-professional-scrummaster", badge: { src: "/assets/courses/sa-csp-sm.png", alt: "Scrum Alliance Certified Scrum Professional ScrumMaster certification badge" } },
-	{ sourceHeading: "Certified Scrum Product Owner®: FAQ SA", title: "Certified Scrum Product Owner®", slug: "certified-scrum-product-owner", badge: { src: "/assets/courses/sa-cspo.png", alt: "Scrum Alliance Certified Scrum Product Owner certification badge" } },
+	{ sourceHeading: "Certified Scrum Product Owner®: FAQ SA", title: "Certified Scrum Product Owner®", slug: "certified-scrum-product-owner", badge: { src: "/assets/courses/sa-cspo.png", alt: "Scrum Alliance Certified Scrum Product Owner certification badge" }, trainingLink: { href: "/certified-scrum-product-owner-training/", label: "Explore the CSPO course" } },
 	{ sourceHeading: "Advanced Certified Scrum Product Owner®: FAQ SA", title: "Advanced Certified Scrum Product Owner®", slug: "advanced-certified-scrum-product-owner", badge: { src: "/assets/courses/sa-a-cspo.png", alt: "Scrum Alliance Advanced Certified Scrum Product Owner certification badge" } },
 	{ sourceHeading: "Certified Scrum Professional® – Product Owner: FAQ SA", title: "Certified Scrum Professional® – Product Owner", slug: "certified-scrum-professional-product-owner", badge: { src: "/assets/courses/sa-csp-po.png", alt: "Scrum Alliance Certified Scrum Professional Product Owner certification badge" } },
 ];
@@ -68,7 +68,7 @@ const formatAnswer = (answer: string) => answer
 			{faqs.map((section, index) => <section id={section.slug} class="faq-section" aria-labelledby={`${section.slug}-title`}>
 				<header class="section-heading">{section.badge ? <img src={section.badge.src} alt={section.badge.alt} width="150" height="150" /> : <span class="section-mark" aria-hidden="true">{String(index + 1).padStart(2, "0")}</span>}<div><h2 id={`${section.slug}-title`}>{section.title}</h2>{section.badge && <p class="mark-attribution">Scrum Alliance® certification mark.</p>}</div></header>
 				<div class="faq-list">{section.items.map((item) => <details><summary>{item.question}</summary><p set:html={formatAnswer(item.answer)} /></details>)}</div>
-				{section.badge && <p class="training-link"><a href="/training">Explore Training</a></p>}
+				{section.badge && <p class="training-link"><a href={section.trainingLink?.href ?? "/training"}>{section.trainingLink?.label ?? "Explore Training"}</a></p>}
 			</section>)}
 			<p class="closing-line">Still have a question? <a href="/contact">Contact us</a>, call <a href="tel:+18553232225">855-323-2225</a>, or email <a href="mailto:info@3back.com">info@3back.com</a>.</p>
 		</div></section>
