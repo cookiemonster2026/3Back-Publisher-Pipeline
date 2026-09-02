@@ -1,0 +1,129 @@
+---
+import SiteLayout from "../layouts/SiteLayout.astro";
+import { pageSeo } from "../seo/registry.mjs";
+---
+
+<SiteLayout metadata={pageSeo["/domain-guides"]}>
+	<main id="main" class="domain-guides-page">
+		<section class="domain-guides-opening section-rule">
+			<div class="shell opening-copy">
+				<h1>Domain Guides</h1>
+				<p class="lead">Start with a workshop in the live work. Spend months building people who can protect operational grip in this domain. Keep the skill inside the company.</p>
+			</div>
+		</section>
+
+		<section class="section section-rule" aria-labelledby="looking-at-title">
+			<div class="shell reading-column">
+				<h2 id="looking-at-title">What you are looking at</h2>
+				<p>This is not the <a href="/courses">course catalog</a>. The catalog lists credentials and classes.</p>
+				<p>Domain Guides is the program for organizations that need the skill to stay after the class ends: the ability to see the work in this business, own the decisions that belong to it, and finish what it starts.</p>
+			</div>
+		</section>
+
+		<section class="section section-rule" aria-labelledby="what-this-is-title">
+			<div class="shell reading-column">
+				<h2 id="what-this-is-title">What this is</h2>
+				<p>A multi-month program, not a class.</p>
+				<p>The point is to leave the organization with its own guides. People who know this business. People who can tell when execution is losing its hold. People who can grow the next cohort without depending on outsiders.</p>
+				<p>The workshop starts it. It does not finish it.</p>
+			</div>
+		</section>
+
+		<section class="section section-rule" aria-labelledby="class-not-enough-title">
+			<div class="shell reading-column">
+				<h2 id="class-not-enough-title">Why a class is not enough</h2>
+				<p>Classroom Agile taught vocabulary. It did not teach this backlog, this intake, this decision owner, or this quality bar. The domain was decoration. When the coach left, the skill left, and the business was still the one that had to run.</p>
+				<p>There is no useful middle state called involved. A person is committed to getting the work done, or they are not.</p>
+			</div>
+		</section>
+
+		<section class="section section-rule" aria-labelledby="how-it-runs-title">
+			<div class="shell reading-column">
+				<h2 id="how-it-runs-title">How it runs</h2>
+				<ol class="run-list">
+					<li>A workshop in the domain. It extracts how work actually enters, who owns decisions, what Ready and Done mean here, where quality arrives late, and which problems are team problems versus intake or leadership problems. That extraction is the starting backlog. It is not the program.</li>
+					<li>Office Hours on the real cadence. People bring a ticket, a board, a dependency, a sprint problem. The object of the work is the classroom.</li>
+					<li>Role development in the same work. Recognized Scrum Master and Recognized Product Owner levels supply the thinking. The domain supplies the problems, the homework, and the evidence.</li>
+					<li>Guides stay. Graduates host Office Hours and teach the next cohort. The practice is recursive.</li>
+				</ol>
+			</div>
+		</section>
+
+		<section class="section section-rule" aria-labelledby="courses-here-title">
+			<div class="shell reading-column">
+				<h2 id="courses-here-title">What the courses are doing here</h2>
+				<p>RSM and RPO are not what this page sells. They are the books and courses used inside the program, rewritten through cases from this domain.</p>
+				<p>Foundation work uses live backlogs and live decisions, not fictional products. Later levels require the participant to bring work from this domain. If they cannot, they are not in the advanced path yet.</p>
+			</div>
+		</section>
+
+		<section class="section section-rule" aria-labelledby="who-may-teach-title">
+			<div class="shell reading-column">
+				<h2 id="who-may-teach-title">Who may teach or coach in it</h2>
+				<p>People who influence teams through this program must be able to open the board, read the work, and help the team move. Commentary is not a role. External credentials do not waive that.</p>
+			</div>
+		</section>
+
+		<section class="section section-rule" aria-labelledby="who-this-is-for-title">
+			<div class="shell reading-column">
+				<h2 id="who-this-is-for-title">Who this is for</h2>
+				<p>Leaders accountable for whether the business can actually execute.</p>
+				<p>Not individuals collecting the next badge.</p>
+			</div>
+		</section>
+
+		<section class="section" aria-labelledby="how-you-know-title">
+			<div class="shell reading-column">
+				<h2 id="how-you-know-title">How you know it is working</h2>
+				<p>Attendance is not evidence. Grip is evidence.</p>
+				<p>Signals live in the work: ready rate before planning, sprint interruption, hidden work, decision-ownership disputes, late Done, and whether people can run planning or refinement without an outsider in the room.</p>
+			</div>
+		</section>
+
+		<section class="next-step-section" aria-labelledby="next-step-title">
+			<div class="shell next-step-inner">
+				<h2 id="next-step-title">Next step</h2>
+				<p>If this is the constraint, start a conversation. We will see whether the program fits the domain before anything is scheduled.</p>
+				<a class="button" href="/contact/">Start a conversation</a>
+			</div>
+		</section>
+
+		<section class="closing-note">
+			<div class="shell reading-column">
+				<p>The primary work of 3Back is diagnosing and improving how teams actually execute. This program is one way that work stays in the company.</p>
+			</div>
+		</section>
+	</main>
+</SiteLayout>
+
+<style>
+	.domain-guides-page { overflow: clip; }
+	.domain-guides-opening { min-height: 590px; display: flex; align-items: center; padding: 124px 0 102px; }
+	.opening-copy { max-width: 830px; }
+	.opening-copy h1 { max-width: 760px; margin-bottom: 28px; }
+	.opening-copy p, .reading-column > p, .run-list, .next-step-inner p, .closing-note p { font-size: 1.125rem; line-height: 1.65; }
+	.opening-copy .lead { max-width: 760px; margin-bottom: 0; color: var(--charcoal); font-size: 1.4rem; font-weight: var(--font-weight-semibold); line-height: 1.5; }
+	.reading-column { max-width: 760px; }
+	.reading-column h2 { padding-bottom: 18px; border-bottom: 2px solid var(--rule); }
+	.reading-column a { color: var(--charcoal); font-weight: var(--font-weight-semibold); text-decoration-color: var(--amber); text-decoration-thickness: 2px; text-underline-offset: 4px; }
+	.reading-column a:hover { color: var(--amber-text); }
+	.run-list { margin: 0; padding: 0 0 0 1.35em; }
+	.run-list li { padding: 16px 0; border-top: 1px solid var(--rule); }
+	.run-list li:last-child { border-bottom: 1px solid var(--rule); }
+	.next-step-section { padding: 118px 0; background: #131917; color: var(--paper); border-top: 4px solid var(--amber); border-bottom: 5px solid var(--amber); }
+	.next-step-inner { max-width: 790px; padding-left: clamp(22px, 4vw, 48px); border-left: 3px solid var(--amber); }
+	.next-step-inner h2 { color: var(--paper); }
+	.next-step-inner p { max-width: 66ch; color: #e2e0d8; }
+	.next-step-inner .button { margin-top: 14px; }
+	.closing-note { padding: 34px 0 78px; }
+	.closing-note p { margin-bottom: 0; color: var(--text-secondary); }
+
+	@media (max-width: 820px) {
+		.domain-guides-opening { min-height: 0; padding: 88px 0 78px; }
+		.next-step-section { padding: 82px 0; }
+	}
+	@media (max-width: 720px) {
+		.opening-copy p, .reading-column > p, .run-list, .next-step-inner p, .closing-note p { font-size: 1.125rem; }
+		.closing-note { padding: 28px 0 58px; }
+	}
+</style>

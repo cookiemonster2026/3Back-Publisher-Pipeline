@@ -294,6 +294,18 @@ export const pageSeo = Object.freeze({
 			type: "website",
 		},
 	},
+	"/domain-guides": {
+		status: "complete",
+		path: "/domain-guides",
+		title: "Domain Guides | 3Back",
+		description: "A multi-month program that leaves the company with its own guides. The workshop starts in the live work. The skill stays in the company.",
+		indexability: "index, follow",
+		social: {
+			title: "Domain Guides | 3Back",
+			description: "A multi-month program that leaves the company with its own guides. The workshop starts in the live work. The skill stays in the company.",
+			type: "website",
+		},
+	},
 	"/policies": {
 		status: "complete",
 		path: "/policies",
