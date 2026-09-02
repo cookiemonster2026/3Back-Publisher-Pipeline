@@ -513,6 +513,18 @@ export const pageSeo = Object.freeze({
 			type: "website",
 		},
 	},
+	"/scrum-101": {
+		status: "complete",
+		path: "/scrum-101",
+		title: "Scrum 101: A Pocket Guide | 3Back",
+		description: "How 3Back taught Scrum prior to 2024. Download the pocket guide. This is historical reference, not current operating doctrine.",
+		indexability: "index, follow",
+		social: {
+			title: "Scrum 101: A Pocket Guide | 3Back",
+			description: "How 3Back taught Scrum prior to 2024. Download the pocket guide. This is historical reference, not current operating doctrine.",
+			type: "website",
+		},
+	},
 	"/courses": {
 		status: "complete",
 		path: "/courses",

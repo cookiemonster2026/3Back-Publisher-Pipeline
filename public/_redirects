@@ -16,6 +16,9 @@
 /called /contact 301
 /books /ideas 301
 /books/ /ideas 301
+/resources/scrum-101 /scrum-101 301
+/resources/scrum-101/ /scrum-101 301
+/wp-content/uploads/2024/10/Scrum-101-A-Pocket-Guide.pdf /scrum-101/Scrum-101-A-Pocket-Guide.pdf 301
 /scaling-scrum-white-paper /papers/scaling 301
 /scaling-scrum-white-paper/ /papers/scaling 301
 /scrum-faq /scrum-alliance-courses-faq 301
