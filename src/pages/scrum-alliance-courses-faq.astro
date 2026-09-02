@@ -53,7 +53,8 @@ const formatAnswer = (answer: string) => answer
 	.replace(/View our full policies here/g, 'View our full policies <a href="/policies">here</a>')
 	.replace(/cancellation policy here/g, 'cancellation policy <a href="/policies">here</a>')
 	.replace(/our policy page/g, 'our <a href="/policies">policy page</a>')
-	.replace(/contact us/g, '<a href="/contact">contact us</a>');
+	.replace(/contact us/g, '<a href="/contact">contact us</a>')
+	.replace(/Scrum 101/g, '<a href="/scrum-101">Scrum 101</a>');
 ---
 
 <SiteLayout metadata={{ ...pageSeo["/scrum-alliance-courses-faq"], structuredData: faqStructuredData }}>
