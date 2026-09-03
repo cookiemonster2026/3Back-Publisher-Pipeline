@@ -4,10 +4,10 @@ import { pageSeo } from "../seo/registry.mjs";
 
 const turnstileSiteKey = import.meta.env.PUBLIC_TURNSTILE_SITE_KEY ?? "";
 const runSteps = [
-	"A workshop in the domain. It extracts how work actually enters, who owns decisions, what Ready and Done mean here, where quality arrives late, and which problems are team problems versus intake or leadership problems. That extraction is the starting backlog. It is not the program.",
-	"Office Hours on the real cadence. People bring a ticket, a board, a dependency, a sprint problem. The object of the work is the classroom.",
-	"Role development in the same work. Recognized Scrum Master and Recognized Product Owner levels supply the thinking. The domain supplies the problems, the homework, and the evidence.",
-	"Guides stay. Graduates host Office Hours and teach the next cohort. The practice is recursive.",
+	["Workshop", "A workshop in the domain. It extracts how work actually enters, who owns decisions, what Ready and Done mean here, where quality arrives late, and which problems are team problems versus intake or leadership problems. That extraction is the starting backlog. It is not the program."],
+	["Office Hours", "Office Hours on the real cadence. People bring a ticket, a board, a dependency, a sprint problem. The object of the work is the classroom."],
+	["Role Development", "Role development happens in the same work. Participants develop the judgment needed to work with teams, decisions, ownership, and improvement. Recognized Scrum Master and Recognized Product Owner material may support that development. The domain supplies the problems, the homework, and the evidence."],
+	["Guides Stay", "Guides stay. Graduates host Office Hours and teach the next cohort. The practice is recursive."],
 ];
 ---
 
@@ -17,8 +17,8 @@ const runSteps = [
 			<div class="shell opening-copy">
 				<p class="eyebrow">Program</p>
 				<h1>Domain Guides</h1>
-				<p class="lead">Domain Guides are your people, inside your company. They know the operating environment of your company. They can make bounded changes and see whether the work responds. They can grow the next cohort from team members already in the work, so the skill is domain specific and can be renewed from within.</p>
-				<p>Most companies rent help that never enters the work. Vocabulary arrives. The operating environment does not change. When the outsider leaves, the skill leaves.</p>
+				<p class="lead">Domain Guides are your people, inside your company. They know the operating environment because they work in it. They learn to recognize where execution has lost grip, make bounded changes, and see whether the work responds. They can grow the next cohort from team members already in the work, so the skill is domain specific and can be renewed from within.</p>
+				<p>Many companies rent help that works around the work rather than inside it. Vocabulary arrives. The operating environment does not change. When the outsider leaves, the skill was never there to keep.</p>
 			</div>
 		</section>
 
@@ -27,7 +27,7 @@ const runSteps = [
 				<h2 id="looking-at-title">What you are looking at</h2>
 				<div class="section-body">
 					<p>This is not the <a href="/courses">course catalog</a>. The catalog lists credentials and classes.</p>
-					<p>This page is the program that builds those people in the live work.</p>
+					<p>This is the program that develops your people who live in the work.</p>
 				</div>
 			</div>
 		</section>
@@ -48,22 +48,30 @@ const runSteps = [
 				<h2 id="class-not-enough-title">Why a class is not enough</h2>
 				<div class="section-body">
 					<p>Classroom Agile taught vocabulary. It did not teach this backlog, this intake, this decision owner, or this quality bar. The domain was decoration. When the coach left, the skill left, and the business was still the one that had to run.</p>
-					<p>There is no useful middle state called involved. A person is committed to getting the work done, or they are not.</p>
+					<p>The work changes when someone owns getting it done. Observation and advice can help. They are not substitutes for ownership.</p>
 				</div>
 			</div>
 		</section>
 
-		<section class="section section-rule" aria-labelledby="how-it-runs-title">
+		<section class="section section-rule how-it-runs-section" aria-labelledby="how-it-runs-title">
 			<div class="shell split-section">
 				<h2 id="how-it-runs-title">How it runs</h2>
-				<ol class="run-list">
-					{runSteps.map((step, index) => (
-						<li tabindex="0">
-							<span class="run-number" aria-hidden="true">{String(index + 1).padStart(2, "0")}</span>
-							<p>{step}</p>
-						</li>
-					))}
-				</ol>
+				<div class="run-program">
+					<p class="run-introduction">The program begins in the actual work, develops people inside it, and returns capability to it.</p>
+					<div class="run-sequence" aria-label="Live work, then Workshop, Office Hours, Role Development, Guides Stay, and live work again.">
+						<div class="live-work live-work-start"><span>Live work</span></div>
+						<ol class="run-list">
+							{runSteps.map(([title, copy], index) => (
+								<li tabindex="0">
+									<span class="run-number" aria-hidden="true">{String(index + 1).padStart(2, "0")}</span>
+									<h3>{title}</h3>
+									<p>{copy}</p>
+								</li>
+							))}
+						</ol>
+						<div class="live-work live-work-end"><span>Live work</span><small>The next cohort starts here.</small></div>
+					</div>
+				</div>
 			</div>
 		</section>
 
@@ -71,7 +79,7 @@ const runSteps = [
 			<div class="shell split-section">
 				<h2 id="courses-here-title">What the courses are doing here</h2>
 				<div class="section-body">
-					<p>RSM and RPO are not what this page sells. They are the books and courses used inside the program, rewritten through cases from this domain.</p>
+					<p>RSM and RPO support the program. They are not the program.</p>
 					<p>Foundation work uses live backlogs and live decisions, not fictional products. Later levels require the participant to bring work from this domain. If they cannot, they are not in the advanced path yet.</p>
 				</div>
 			</div>
@@ -102,6 +110,9 @@ const runSteps = [
 				<div class="section-body">
 					<p>Attendance is not evidence. Grip is evidence.</p>
 					<p>Signals live in the work: ready rate before planning, sprint interruption, hidden work, decision-ownership disputes, late Done, and whether people can run planning or refinement without an outsider in the room.</p>
+					<p>Those are signs that execution is changing. They are not the finish line.</p>
+					<p>The stronger evidence appears beyond the work itself. Does the organization respond to demand more effectively? Does the market accept what it produces? Do customers buy, renew, expand, or otherwise demonstrate that the response created value? Does revenue respond? Where the investment can be bounded, does the economic return justify the change?</p>
+					<p>The work ultimately has to survive the marketplace. Operational improvement matters when it improves the organization’s ability to turn demand into valued results, market acceptance, and revenue.</p>
 				</div>
 			</div>
 		</section>
@@ -152,7 +163,7 @@ const runSteps = [
 
 		<section class="closing-note">
 			<div class="shell reading-column">
-				<p>The primary work of 3Back is diagnosing and improving how teams actually execute. This program is one way that work stays in the company.</p>
+				<p>The primary work of 3Back is diagnosing and improving how teams actually execute. This program is one way that work stays in the company, where it belongs.</p>
 			</div>
 		</section>
 	</main>
@@ -213,14 +224,30 @@ const runSteps = [
 	.opening-copy .lead { max-width: 760px; margin-bottom: 26px; color: var(--charcoal); font-size: 1.4rem; font-weight: var(--font-weight-semibold); line-height: 1.5; }
 	.split-section { display: grid; grid-template-columns: minmax(0, 0.85fr) minmax(0, 1.15fr); gap: clamp(42px, 8vw, 128px); align-items: start; }
 	.split-section h2 { margin-bottom: 0; padding-bottom: 18px; border-bottom: 2px solid var(--rule); }
+	.how-it-runs-section .split-section { grid-template-columns: 1fr; gap: 28px; }
+	.how-it-runs-section .split-section h2 { max-width: 31rem; }
 	.section-body a { color: var(--charcoal); font-weight: var(--font-weight-semibold); text-decoration-color: var(--amber); text-decoration-thickness: 2px; text-underline-offset: 4px; }
 	.section-body a:hover { color: var(--amber-text); }
 	.reading-column { max-width: 760px; }
-	.run-list { margin: 0; padding: 0; list-style: none; display: grid; gap: 14px; }
-	.run-list li { display: grid; grid-template-columns: 3.2rem minmax(0, 1fr); gap: 16px; padding: 22px 22px; border: 1px solid var(--rule); border-left: 3px solid var(--rule); background: var(--reading); outline: none; transition: transform 140ms ease, border-color 140ms ease, background-color 140ms ease, box-shadow 140ms ease; }
-	.run-list li:hover, .run-list li:focus-visible { transform: translateY(-2px); border-left-color: var(--amber); background: var(--amber-wash); box-shadow: inset 0 3px 0 var(--amber); }
-	.run-number { color: var(--amber-text); font-size: var(--type-caption); font-weight: var(--font-weight-heavy); letter-spacing: var(--tracking-caption); line-height: var(--leading-caption); }
-	.run-list p { margin-bottom: 0; }
+	.run-program { min-width: 0; }
+	.run-introduction { max-width: 66ch; margin-bottom: 28px; color: var(--text-secondary); font-weight: var(--font-weight-semibold); }
+	.run-sequence { display: grid; grid-template-columns: minmax(7.25rem, .75fr) minmax(0, 4fr) minmax(7.25rem, .75fr); align-items: stretch; border-top: 1px solid var(--rule); border-bottom: 1px solid var(--rule); }
+	.live-work { display: grid; place-content: center; gap: 8px; padding: 20px 14px; background: var(--paper); color: var(--charcoal); font-size: var(--type-caption); font-weight: var(--font-weight-heavy); letter-spacing: var(--tracking-caption); line-height: var(--leading-caption); text-align: center; text-transform: uppercase; }
+	.live-work span { display: block; }
+	.live-work small { max-width: 14ch; color: var(--text-secondary); font-size: .78rem; font-weight: var(--font-weight-semibold); letter-spacing: normal; line-height: 1.25; text-transform: none; }
+	.live-work-start { border-right: 1px solid var(--rule); }
+	.live-work-end { border-left: 1px solid var(--rule); }
+	.run-list { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); margin: 0; padding: 0; list-style: none; }
+	.run-list li { position: relative; min-width: 0; padding: 20px 16px 22px; border-right: 1px solid var(--rule); background: var(--reading); outline: none; transition: border-color 140ms ease, background-color 140ms ease; }
+	.run-list li:last-child { border-right: 0; }
+	.run-list li::after, .live-work-start::after { position: absolute; z-index: 1; width: 8px; height: 8px; border-top: 1px solid var(--slate); border-right: 1px solid var(--slate); content: ""; transform: rotate(45deg); }
+	.run-list li::after { top: 26px; right: -5px; }
+	.live-work-start { position: relative; }
+	.live-work-start::after { top: 50%; right: -5px; }
+	.run-list li:hover, .run-list li:focus-visible { background: var(--amber-wash); border-color: var(--amber); }
+	.run-number { display: block; margin-bottom: 20px; color: var(--amber-text); font-size: var(--type-caption); font-weight: var(--font-weight-heavy); letter-spacing: var(--tracking-caption); line-height: var(--leading-caption); }
+	.run-list h3 { margin: 0 0 13px; color: var(--charcoal); font-size: 1.05rem; line-height: 1.2; }
+	.run-list p { margin-bottom: 0; color: var(--text-secondary); font-size: 1rem !important; line-height: 1.48 !important; }
 	.next-step-section { padding: 118px 0; background: #131917; color: var(--paper); border-top: 4px solid var(--amber); border-bottom: 5px solid var(--amber); }
 	.next-step-inner { max-width: 790px; padding-left: clamp(22px, 4vw, 48px); border-left: 3px solid var(--amber); }
 	.next-step-inner h2 { color: var(--paper); }
@@ -246,6 +273,11 @@ const runSteps = [
 		.split-section { grid-template-columns: 1fr; gap: 22px; }
 		.next-step-section { padding: 82px 0; }
 	}
+	@media (max-width: 960px) and (min-width: 721px) {
+		.run-sequence { grid-template-columns: minmax(5.75rem, .65fr) minmax(0, 4fr) minmax(5.75rem, .65fr); }
+		.live-work { padding-right: 8px; padding-left: 8px; }
+		.run-list li { padding-right: 12px; padding-left: 12px; }
+	}
 	@media (max-width: 600px) {
 		.form-fields { grid-template-columns: 1fr; }
 		.full-field { grid-column: auto; }
@@ -253,7 +285,18 @@ const runSteps = [
 	@media (max-width: 720px) {
 		.opening-copy p:not(.eyebrow), .section-body p, .run-list p, .next-step-inner > p, .closing-note p { font-size: 1.125rem; }
 		.closing-note { padding: 28px 0 58px; }
-		.run-list li { grid-template-columns: 2.4rem minmax(0, 1fr); padding: 18px 16px; }
+		.run-introduction { margin-bottom: 22px; }
+		.run-sequence { grid-template-columns: 1fr; border: 0; }
+		.live-work, .run-list li { text-align: left; }
+		.live-work { position: relative; place-content: start; padding: 18px 0; border: 0; background: transparent; }
+		.live-work-start { border-top: 1px solid var(--rule); }
+		.live-work-end { border-bottom: 1px solid var(--rule); }
+		.live-work::after, .run-list li::after { top: auto; right: auto; bottom: -5px; left: 18px; transform: rotate(135deg); }
+		.run-list { grid-template-columns: 1fr; }
+		.run-list li { padding: 20px 0 22px; border: 0; border-top: 1px solid var(--rule); }
+		.run-list li:last-child { border-bottom: 1px solid var(--rule); }
+		.run-number { margin-bottom: 10px; }
+		.run-list h3 { margin-bottom: 8px; }
 	}
 	@media (prefers-reduced-motion: reduce) {
 		.run-list li { transition: none; }
