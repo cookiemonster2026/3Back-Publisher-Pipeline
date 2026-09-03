@@ -15,8 +15,9 @@ const runSteps = [
 	<main id="main" class="domain-guides-page">
 		<section class="domain-guides-opening section-rule">
 			<div class="shell opening-copy">
+				<p class="eyebrow">Program</p>
 				<h1>Domain Guides</h1>
-				<p class="lead">Start with a workshop in the live work. Spend months building people who can protect operational grip in this domain. Keep the skill inside the company.</p>
+				<p class="lead">Domain Guides are people inside your company who know this operating environment. They can see when execution is losing its hold. They can grow the next cohort so the skill stays and can be renewed from within.</p>
 			</div>
 		</section>
 
@@ -25,7 +26,7 @@ const runSteps = [
 				<h2 id="looking-at-title">What you are looking at</h2>
 				<div class="section-body">
 					<p>This is not the <a href="/courses">course catalog</a>. The catalog lists credentials and classes.</p>
-					<p>Domain Guides is the program for organizations that need the skill to stay after the class ends: the ability to see the work in this business, own the decisions that belong to it, and finish what it starts.</p>
+					<p>This page is the program that builds those people in the live work.</p>
 				</div>
 			</div>
 		</section>
@@ -35,7 +36,7 @@ const runSteps = [
 				<h2 id="what-this-is-title">What this is</h2>
 				<div class="section-body">
 					<p>A multi-month program, not a class.</p>
-					<p>The point is to leave the organization with its own guides. People who know this business. People who can tell when execution is losing its hold. People who can grow the next cohort without depending on outsiders.</p>
+					<p>You leave with your own guides. People who know how work actually moves here. People who can tell an execution problem from an intake problem. People who can teach the next group so the skill stays and can be renewed from within.</p>
 					<p>The workshop starts it. It does not finish it.</p>
 				</div>
 			</div>
@@ -131,12 +132,8 @@ const runSteps = [
 							<input id="dg-organization" name="organization" autocomplete="organization" required maxlength="160" />
 						</div>
 						<div class="field full-field">
-							<label for="dg-work">What is the work here? <span aria-hidden="true">(required)</span></label>
-							<textarea id="dg-work" name="work" rows="5" required maxlength="4000"></textarea>
-						</div>
-						<div class="field full-field">
-							<label for="dg-stay">What has to stay after outside help leaves? <span aria-hidden="true">(required)</span></label>
-							<textarea id="dg-stay" name="stay" rows="5" required maxlength="4000"></textarea>
+							<label for="dg-note">What should we know? <span class="optional">(optional)</span></label>
+							<textarea id="dg-note" name="note" rows="5" maxlength="4000"></textarea>
 						</div>
 						<div class="field full-field">
 							<label for="dg-phone">Phone <span class="optional">(optional)</span></label>
@@ -208,8 +205,9 @@ const runSteps = [
 	.domain-guides-page { overflow: clip; }
 	.domain-guides-opening { padding: 96px 0 72px; }
 	.opening-copy { max-width: 830px; }
+	.eyebrow { margin-bottom: 16px; color: var(--amber-text); font-size: var(--type-caption); font-weight: var(--font-weight-heavy); letter-spacing: var(--tracking-caption); line-height: var(--leading-caption); text-transform: uppercase; }
 	.opening-copy h1 { max-width: 760px; margin-bottom: 28px; }
-	.opening-copy p, .section-body p, .run-list p, .next-step-inner > p, .closing-note p { font-size: 1.125rem; line-height: 1.65; }
+	.opening-copy p:not(.eyebrow), .section-body p, .run-list p, .next-step-inner > p, .closing-note p { font-size: 1.125rem; line-height: 1.65; }
 	.opening-copy .lead { max-width: 760px; margin-bottom: 0; color: var(--charcoal); font-size: 1.4rem; font-weight: var(--font-weight-semibold); line-height: 1.5; }
 	.split-section { display: grid; grid-template-columns: minmax(0, 0.85fr) minmax(0, 1.15fr); gap: clamp(42px, 8vw, 128px); align-items: start; }
 	.split-section h2 { margin-bottom: 0; padding-bottom: 18px; border-bottom: 2px solid var(--rule); }
@@ -251,7 +249,7 @@ const runSteps = [
 		.full-field { grid-column: auto; }
 	}
 	@media (max-width: 720px) {
-		.opening-copy p, .section-body p, .run-list p, .next-step-inner > p, .closing-note p { font-size: 1.125rem; }
+		.opening-copy p:not(.eyebrow), .section-body p, .run-list p, .next-step-inner > p, .closing-note p { font-size: 1.125rem; }
 		.closing-note { padding: 28px 0 58px; }
 		.run-list li { grid-template-columns: 2.4rem minmax(0, 1fr); padding: 18px 16px; }
 	}
