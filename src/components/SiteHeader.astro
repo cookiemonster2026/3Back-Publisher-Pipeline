@@ -63,6 +63,12 @@ const currentPath = Astro.url.pathname;
 			if ((event.target as HTMLElement).closest("a")) closeMenu();
 		});
 
+		document.addEventListener("click", (event) => {
+			if (menuButton.getAttribute("aria-expanded") !== "true") return;
+			const target = event.target;
+			if (target instanceof Node && !menuButton.contains(target) && !mobileNavigation.contains(target)) closeMenu();
+		});
+
 		document.addEventListener("keydown", (event) => {
 			if (event.key === "Escape" && menuButton.getAttribute("aria-expanded") === "true") {
 				event.preventDefault();
