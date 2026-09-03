@@ -156,8 +156,8 @@ const runSteps = [
 					<div class="turnstile-wrap">{turnstileSiteKey ? <div class="cf-turnstile" data-sitekey={turnstileSiteKey} data-theme="light"></div> : <p class="form-error">This form is not configured yet.</p>}</div>
 					<p class="form-error" role="alert" data-form-error hidden></p>
 					<button class="button submit-button" type="submit" disabled={!turnstileSiteKey}>Start a conversation</button>
-					<p class="form-success" role="status" data-form-success hidden>We received the request. We will see whether the program fits the domain before anything is scheduled.</p>
 				</form>
+				<p class="form-success" role="status" data-form-success hidden><strong>Thank you. Your submission has been received.</strong><br>We’ll get back to you shortly. Please look for a confirmation email in your inbox.</p>
 			</div>
 		</section>
 
@@ -175,7 +175,7 @@ const runSteps = [
 	const form = document.querySelector("[data-domain-guides-form]");
 	if (form instanceof HTMLFormElement) {
 		const error = form.querySelector("[data-form-error]");
-		const success = form.querySelector("[data-form-success]");
+		const success = document.querySelector("[data-form-success]");
 		const button = form.querySelector("button[type=submit]");
 		const email = form.elements.namedItem("email");
 		const confirmation = form.elements.namedItem("confirm_email");
@@ -200,6 +200,7 @@ const runSteps = [
 				const result = await response.json().catch(() => ({}));
 				if (!response.ok) throw new Error(typeof result.error === "string" ? result.error : "We could not send your request. Please try again.");
 				form.reset();
+				form.hidden = true;
 				success.hidden = false;
 				window.turnstile?.reset();
 			} catch (submissionError) {
