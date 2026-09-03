@@ -41,6 +41,7 @@ Only the explicit production-indexable build may emit production indexability, s
 - Human-review items remain pending until the designated reviewer completes them.
 - A normal Git commit or Git push does not require GitHub CLI. Use normal Git unless the user explicitly requests another workflow.
 - Do not deploy directly to Cloudflare unless the user explicitly instructs you to deploy. Permission to commit or push does not authorize deployment.
+- `pnpm deploy`, `wrangler deploy`, and equivalent direct Cloudflare deployment commands are prohibited unless Douglas explicitly authorizes a direct Cloudflare deployment for that specific task. Normal production publishing is `main` → GitHub `origin/main` → Cloudflare build.
 
 ## Production publish (mandatory)
 

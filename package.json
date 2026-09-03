@@ -12,7 +12,7 @@
     "build:test": "node scripts/build.mjs test",
     "validate:seo": "node scripts/validate-seo.mjs --environment production",
     "validate:seo:test": "node scripts/validate-seo.mjs --environment test",
-    "deploy": "wrangler deploy",
+    "deploy": "node scripts/deploy.mjs",
     "preview": "astro preview",
     "astro": "astro"
   },

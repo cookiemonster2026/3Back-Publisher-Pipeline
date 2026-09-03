@@ -6,6 +6,10 @@ if (!new Set(["production", "test"]).has(environment)) {
 	console.error("Build environment must be production or test.");
 	process.exit(1);
 }
+if (environment === "production" && !process.env.PUBLIC_TURNSTILE_SITE_KEY?.trim()) {
+	console.error("Production build requires PUBLIC_TURNSTILE_SITE_KEY. Configure it in the Cloudflare production build environment.");
+	process.exit(1);
+}
 
 const projectRoot = resolve(import.meta.dirname, "..");
 const astroCli = resolve(projectRoot, "node_modules", "astro", "bin", "astro.mjs");
