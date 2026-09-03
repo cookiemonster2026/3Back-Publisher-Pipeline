@@ -120,8 +120,7 @@ const runSteps = [
 		<section class="next-step-section" aria-labelledby="next-step-title">
 			<div class="shell next-step-inner">
 				<h2 id="next-step-title">Next step</h2>
-				<p>If this is the constraint, start a conversation. We will see whether the program fits the domain before anything is scheduled.</p>
-				<p>Call us only if you will let us see the live work. Boards, intake, decisions, where Done actually happens. We will tell you if this program fits. If it does not, we will say so. This is not a class you buy and hope transfers.</p>
+				<p data-form-introduction>Tell us what you are trying to improve and what you are seeing in the work. We’ll review it and follow up to set up a short conversation.</p>
 				<form class="domain-guides-form" action="/api/domain-guides" method="post" data-domain-guides-form novalidate>
 					<div class="form-fields">
 						<div class="field">
@@ -157,7 +156,10 @@ const runSteps = [
 					<p class="form-error" role="alert" data-form-error hidden></p>
 					<button class="button submit-button" type="submit" disabled={!turnstileSiteKey}>Start a conversation</button>
 				</form>
-				<p class="form-success" role="status" data-form-success hidden><strong>Thank you. Your submission has been received.</strong><br>We’ll get back to you shortly. Please look for a confirmation email in your inbox.</p>
+				<div class="form-success" role="status" data-form-success hidden>
+					<p>Thank you. Your submission has been received.</p>
+					<p>We’ll get back to you shortly. Please look for a confirmation email in your inbox.</p>
+				</div>
 			</div>
 		</section>
 
@@ -174,6 +176,7 @@ const runSteps = [
 	declare global { interface Window { turnstile?: { reset(): void } } }
 	const form = document.querySelector("[data-domain-guides-form]");
 	if (form instanceof HTMLFormElement) {
+		const introduction = document.querySelector("[data-form-introduction]");
 		const error = form.querySelector("[data-form-error]");
 		const success = document.querySelector("[data-form-success]");
 		const button = form.querySelector("button[type=submit]");
@@ -201,6 +204,7 @@ const runSteps = [
 				if (!response.ok) throw new Error(typeof result.error === "string" ? result.error : "We could not send your request. Please try again.");
 				form.reset();
 				form.hidden = true;
+				if (introduction instanceof HTMLElement) introduction.hidden = true;
 				success.hidden = false;
 				window.turnstile?.reset();
 			} catch (submissionError) {
@@ -263,7 +267,9 @@ const runSteps = [
 	.field textarea { resize: vertical; min-height: 136px; }
 	.turnstile-wrap { min-height: 65px; margin-top: 24px; }
 	.form-error { margin: 18px 0; color: #f0b8a8; font-weight: var(--font-weight-semibold); }
-	.form-success { margin: 20px 0 0; color: #d5e4d8; font-weight: var(--font-weight-semibold); }
+	.form-success { margin: 20px 0 0; color: #d5e4d8; font-weight: var(--font-weight-regular); }
+	.form-success p { margin: 0; }
+	.form-success p + p { margin-top: 1em; }
 	.submit-button { margin-top: 8px; }
 	.submit-button:disabled { cursor: not-allowed; opacity: .6; }
 	.closing-note { padding: 34px 0 78px; }
