@@ -1,6 +1,14 @@
 ---
 import SiteLayout from "../layouts/SiteLayout.astro";
 import { pageSeo } from "../seo/registry.mjs";
+
+const turnstileSiteKey = import.meta.env.PUBLIC_TURNSTILE_SITE_KEY ?? "";
+const runSteps = [
+	"A workshop in the domain. It extracts how work actually enters, who owns decisions, what Ready and Done mean here, where quality arrives late, and which problems are team problems versus intake or leadership problems. That extraction is the starting backlog. It is not the program.",
+	"Office Hours on the real cadence. People bring a ticket, a board, a dependency, a sprint problem. The object of the work is the classroom.",
+	"Role development in the same work. Recognized Scrum Master and Recognized Product Owner levels supply the thinking. The domain supplies the problems, the homework, and the evidence.",
+	"Guides stay. Graduates host Office Hours and teach the next cohort. The practice is recursive.",
+];
 ---
 
 <SiteLayout metadata={pageSeo["/domain-guides"]}>
@@ -13,70 +21,86 @@ import { pageSeo } from "../seo/registry.mjs";
 		</section>
 
 		<section class="section section-rule" aria-labelledby="looking-at-title">
-			<div class="shell reading-column">
+			<div class="shell split-section">
 				<h2 id="looking-at-title">What you are looking at</h2>
-				<p>This is not the <a href="/courses">course catalog</a>. The catalog lists credentials and classes.</p>
-				<p>Domain Guides is the program for organizations that need the skill to stay after the class ends: the ability to see the work in this business, own the decisions that belong to it, and finish what it starts.</p>
+				<div class="section-body">
+					<p>This is not the <a href="/courses">course catalog</a>. The catalog lists credentials and classes.</p>
+					<p>Domain Guides is the program for organizations that need the skill to stay after the class ends: the ability to see the work in this business, own the decisions that belong to it, and finish what it starts.</p>
+				</div>
 			</div>
 		</section>
 
 		<section class="section section-rule" aria-labelledby="what-this-is-title">
-			<div class="shell reading-column">
+			<div class="shell split-section">
 				<h2 id="what-this-is-title">What this is</h2>
-				<p>A multi-month program, not a class.</p>
-				<p>The point is to leave the organization with its own guides. People who know this business. People who can tell when execution is losing its hold. People who can grow the next cohort without depending on outsiders.</p>
-				<p>The workshop starts it. It does not finish it.</p>
+				<div class="section-body">
+					<p>A multi-month program, not a class.</p>
+					<p>The point is to leave the organization with its own guides. People who know this business. People who can tell when execution is losing its hold. People who can grow the next cohort without depending on outsiders.</p>
+					<p>The workshop starts it. It does not finish it.</p>
+				</div>
 			</div>
 		</section>
 
 		<section class="section section-rule" aria-labelledby="class-not-enough-title">
-			<div class="shell reading-column">
+			<div class="shell split-section">
 				<h2 id="class-not-enough-title">Why a class is not enough</h2>
-				<p>Classroom Agile taught vocabulary. It did not teach this backlog, this intake, this decision owner, or this quality bar. The domain was decoration. When the coach left, the skill left, and the business was still the one that had to run.</p>
-				<p>There is no useful middle state called involved. A person is committed to getting the work done, or they are not.</p>
+				<div class="section-body">
+					<p>Classroom Agile taught vocabulary. It did not teach this backlog, this intake, this decision owner, or this quality bar. The domain was decoration. When the coach left, the skill left, and the business was still the one that had to run.</p>
+					<p>There is no useful middle state called involved. A person is committed to getting the work done, or they are not.</p>
+				</div>
 			</div>
 		</section>
 
 		<section class="section section-rule" aria-labelledby="how-it-runs-title">
-			<div class="shell reading-column">
+			<div class="shell split-section">
 				<h2 id="how-it-runs-title">How it runs</h2>
 				<ol class="run-list">
-					<li>A workshop in the domain. It extracts how work actually enters, who owns decisions, what Ready and Done mean here, where quality arrives late, and which problems are team problems versus intake or leadership problems. That extraction is the starting backlog. It is not the program.</li>
-					<li>Office Hours on the real cadence. People bring a ticket, a board, a dependency, a sprint problem. The object of the work is the classroom.</li>
-					<li>Role development in the same work. Recognized Scrum Master and Recognized Product Owner levels supply the thinking. The domain supplies the problems, the homework, and the evidence.</li>
-					<li>Guides stay. Graduates host Office Hours and teach the next cohort. The practice is recursive.</li>
+					{runSteps.map((step, index) => (
+						<li tabindex="0">
+							<span class="run-number" aria-hidden="true">{String(index + 1).padStart(2, "0")}</span>
+							<p>{step}</p>
+						</li>
+					))}
 				</ol>
 			</div>
 		</section>
 
 		<section class="section section-rule" aria-labelledby="courses-here-title">
-			<div class="shell reading-column">
+			<div class="shell split-section">
 				<h2 id="courses-here-title">What the courses are doing here</h2>
-				<p>RSM and RPO are not what this page sells. They are the books and courses used inside the program, rewritten through cases from this domain.</p>
-				<p>Foundation work uses live backlogs and live decisions, not fictional products. Later levels require the participant to bring work from this domain. If they cannot, they are not in the advanced path yet.</p>
+				<div class="section-body">
+					<p>RSM and RPO are not what this page sells. They are the books and courses used inside the program, rewritten through cases from this domain.</p>
+					<p>Foundation work uses live backlogs and live decisions, not fictional products. Later levels require the participant to bring work from this domain. If they cannot, they are not in the advanced path yet.</p>
+				</div>
 			</div>
 		</section>
 
 		<section class="section section-rule" aria-labelledby="who-may-teach-title">
-			<div class="shell reading-column">
+			<div class="shell split-section">
 				<h2 id="who-may-teach-title">Who may teach or coach in it</h2>
-				<p>People who influence teams through this program must be able to open the board, read the work, and help the team move. Commentary is not a role. External credentials do not waive that.</p>
+				<div class="section-body">
+					<p>People who influence teams through this program must be able to open the board, read the work, and help the team move. Commentary is not a role. External credentials do not waive that.</p>
+				</div>
 			</div>
 		</section>
 
 		<section class="section section-rule" aria-labelledby="who-this-is-for-title">
-			<div class="shell reading-column">
+			<div class="shell split-section">
 				<h2 id="who-this-is-for-title">Who this is for</h2>
-				<p>Leaders accountable for whether the business can actually execute.</p>
-				<p>Not individuals collecting the next badge.</p>
+				<div class="section-body">
+					<p>Leaders accountable for whether the business can actually execute.</p>
+					<p>Not individuals collecting the next badge.</p>
+				</div>
 			</div>
 		</section>
 
 		<section class="section" aria-labelledby="how-you-know-title">
-			<div class="shell reading-column">
+			<div class="shell split-section">
 				<h2 id="how-you-know-title">How you know it is working</h2>
-				<p>Attendance is not evidence. Grip is evidence.</p>
-				<p>Signals live in the work: ready rate before planning, sprint interruption, hidden work, decision-ownership disputes, late Done, and whether people can run planning or refinement without an outsider in the room.</p>
+				<div class="section-body">
+					<p>Attendance is not evidence. Grip is evidence.</p>
+					<p>Signals live in the work: ready rate before planning, sprint interruption, hidden work, decision-ownership disputes, late Done, and whether people can run planning or refinement without an outsider in the room.</p>
+				</div>
 			</div>
 		</section>
 
@@ -84,7 +108,46 @@ import { pageSeo } from "../seo/registry.mjs";
 			<div class="shell next-step-inner">
 				<h2 id="next-step-title">Next step</h2>
 				<p>If this is the constraint, start a conversation. We will see whether the program fits the domain before anything is scheduled.</p>
-				<a class="button" href="/contact/">Start a conversation</a>
+				<form class="domain-guides-form" action="/api/domain-guides" method="post" data-domain-guides-form novalidate>
+					<div class="form-fields">
+						<div class="field">
+							<label for="dg-first-name">First name <span aria-hidden="true">(required)</span></label>
+							<input id="dg-first-name" name="first_name" autocomplete="given-name" required maxlength="80" />
+						</div>
+						<div class="field">
+							<label for="dg-last-name">Last name <span aria-hidden="true">(required)</span></label>
+							<input id="dg-last-name" name="last_name" autocomplete="family-name" required maxlength="80" />
+						</div>
+						<div class="field">
+							<label for="dg-email">Email <span aria-hidden="true">(required)</span></label>
+							<input id="dg-email" name="email" type="email" autocomplete="email" required maxlength="254" />
+						</div>
+						<div class="field">
+							<label for="dg-confirm-email">Email again <span aria-hidden="true">(required, must match)</span></label>
+							<input id="dg-confirm-email" name="confirm_email" type="email" autocomplete="email" required maxlength="254" />
+						</div>
+						<div class="field full-field">
+							<label for="dg-organization">Organization <span aria-hidden="true">(required)</span></label>
+							<input id="dg-organization" name="organization" autocomplete="organization" required maxlength="160" />
+						</div>
+						<div class="field full-field">
+							<label for="dg-work">What is the work here? <span aria-hidden="true">(required)</span></label>
+							<textarea id="dg-work" name="work" rows="5" required maxlength="4000"></textarea>
+						</div>
+						<div class="field full-field">
+							<label for="dg-stay">What has to stay after outside help leaves? <span aria-hidden="true">(required)</span></label>
+							<textarea id="dg-stay" name="stay" rows="5" required maxlength="4000"></textarea>
+						</div>
+						<div class="field full-field">
+							<label for="dg-phone">Phone <span class="optional">(optional)</span></label>
+							<input id="dg-phone" name="phone" type="tel" autocomplete="tel" maxlength="60" />
+						</div>
+					</div>
+					<div class="turnstile-wrap">{turnstileSiteKey ? <div class="cf-turnstile" data-sitekey={turnstileSiteKey} data-theme="light"></div> : <p class="form-error">This form is not configured yet.</p>}</div>
+					<p class="form-error" role="alert" data-form-error hidden></p>
+					<button class="button submit-button" type="submit" disabled={!turnstileSiteKey}>Start a conversation</button>
+					<p class="form-success" role="status" data-form-success hidden>We received the request. We will see whether the program fits the domain before anything is scheduled.</p>
+				</form>
 			</div>
 		</section>
 
@@ -96,34 +159,104 @@ import { pageSeo } from "../seo/registry.mjs";
 	</main>
 </SiteLayout>
 
+<script is:inline src="https://challenges.cloudflare.com/turnstile/v0/api.js" async defer></script>
+<script>
+	declare global { interface Window { turnstile?: { reset(): void } } }
+	const form = document.querySelector("[data-domain-guides-form]");
+	if (form instanceof HTMLFormElement) {
+		const error = form.querySelector("[data-form-error]");
+		const success = form.querySelector("[data-form-success]");
+		const button = form.querySelector("button[type=submit]");
+		const email = form.elements.namedItem("email");
+		const confirmation = form.elements.namedItem("confirm_email");
+		const validateEmails = () => {
+			if (email instanceof HTMLInputElement && confirmation instanceof HTMLInputElement) {
+				confirmation.setCustomValidity(email.value === confirmation.value ? "" : "Email addresses must match.");
+			}
+		};
+		if (email instanceof HTMLInputElement) email.addEventListener("input", validateEmails);
+		if (confirmation instanceof HTMLInputElement) confirmation.addEventListener("input", validateEmails);
+		form.addEventListener("submit", async (event) => {
+			event.preventDefault();
+			validateEmails();
+			if (!(error instanceof HTMLElement) || !(success instanceof HTMLElement) || !(button instanceof HTMLButtonElement)) return;
+			error.hidden = true;
+			success.hidden = true;
+			if (!form.reportValidity()) return;
+			button.disabled = true;
+			button.textContent = "Sending...";
+			try {
+				const response = await fetch(form.action, { method: "POST", body: new FormData(form), headers: { Accept: "application/json" } });
+				const result = await response.json().catch(() => ({}));
+				if (!response.ok) throw new Error(typeof result.error === "string" ? result.error : "We could not send your request. Please try again.");
+				form.reset();
+				success.hidden = false;
+				window.turnstile?.reset();
+			} catch (submissionError) {
+				error.textContent = submissionError instanceof Error ? submissionError.message : "We could not send your request. Please try again.";
+				error.hidden = false;
+				window.turnstile?.reset();
+			} finally {
+				button.disabled = false;
+				button.textContent = "Start a conversation";
+			}
+		});
+	}
+</script>
+
 <style>
 	.domain-guides-page { overflow: clip; }
-	.domain-guides-opening { min-height: 590px; display: flex; align-items: center; padding: 124px 0 102px; }
+	.domain-guides-opening { padding: 96px 0 72px; }
 	.opening-copy { max-width: 830px; }
 	.opening-copy h1 { max-width: 760px; margin-bottom: 28px; }
-	.opening-copy p, .reading-column > p, .run-list, .next-step-inner p, .closing-note p { font-size: 1.125rem; line-height: 1.65; }
+	.opening-copy p, .section-body p, .run-list p, .next-step-inner > p, .closing-note p { font-size: 1.125rem; line-height: 1.65; }
 	.opening-copy .lead { max-width: 760px; margin-bottom: 0; color: var(--charcoal); font-size: 1.4rem; font-weight: var(--font-weight-semibold); line-height: 1.5; }
+	.split-section { display: grid; grid-template-columns: minmax(0, 0.85fr) minmax(0, 1.15fr); gap: clamp(42px, 8vw, 128px); align-items: start; }
+	.split-section h2 { margin-bottom: 0; padding-bottom: 18px; border-bottom: 2px solid var(--rule); }
+	.section-body a { color: var(--charcoal); font-weight: var(--font-weight-semibold); text-decoration-color: var(--amber); text-decoration-thickness: 2px; text-underline-offset: 4px; }
+	.section-body a:hover { color: var(--amber-text); }
 	.reading-column { max-width: 760px; }
-	.reading-column h2 { padding-bottom: 18px; border-bottom: 2px solid var(--rule); }
-	.reading-column a { color: var(--charcoal); font-weight: var(--font-weight-semibold); text-decoration-color: var(--amber); text-decoration-thickness: 2px; text-underline-offset: 4px; }
-	.reading-column a:hover { color: var(--amber-text); }
-	.run-list { margin: 0; padding: 0 0 0 1.35em; }
-	.run-list li { padding: 16px 0; border-top: 1px solid var(--rule); }
-	.run-list li:last-child { border-bottom: 1px solid var(--rule); }
+	.run-list { margin: 0; padding: 0; list-style: none; display: grid; gap: 14px; }
+	.run-list li { display: grid; grid-template-columns: 3.2rem minmax(0, 1fr); gap: 16px; padding: 22px 22px; border: 1px solid var(--rule); border-left: 3px solid var(--rule); background: var(--reading); outline: none; transition: transform 140ms ease, border-color 140ms ease, background-color 140ms ease, box-shadow 140ms ease; }
+	.run-list li:hover, .run-list li:focus-visible { transform: translateY(-2px); border-left-color: var(--amber); background: var(--amber-wash); box-shadow: inset 0 3px 0 var(--amber); }
+	.run-number { color: var(--amber-text); font-size: var(--type-caption); font-weight: var(--font-weight-heavy); letter-spacing: var(--tracking-caption); line-height: var(--leading-caption); }
+	.run-list p { margin-bottom: 0; }
 	.next-step-section { padding: 118px 0; background: #131917; color: var(--paper); border-top: 4px solid var(--amber); border-bottom: 5px solid var(--amber); }
 	.next-step-inner { max-width: 790px; padding-left: clamp(22px, 4vw, 48px); border-left: 3px solid var(--amber); }
 	.next-step-inner h2 { color: var(--paper); }
-	.next-step-inner p { max-width: 66ch; color: #e2e0d8; }
-	.next-step-inner .button { margin-top: 14px; }
+	.next-step-inner > p { max-width: 66ch; color: #e2e0d8; }
+	.domain-guides-form { margin-top: 28px; }
+	.form-fields { display: grid; grid-template-columns: 1fr 1fr; gap: 20px; }
+	.field { display: grid; gap: 7px; }
+	.full-field { grid-column: 1 / -1; }
+	.field label { color: var(--paper); font-size: var(--type-caption); font-weight: var(--font-weight-bold); }
+	.optional { color: #c8ceca; font-weight: var(--font-weight-regular); }
+	.field input, .field textarea { width: 100%; border: 1px solid #c8ceca; border-radius: 0; background: #fff; color: var(--charcoal); padding: 12px 13px; }
+	.field textarea { resize: vertical; min-height: 136px; }
+	.turnstile-wrap { min-height: 65px; margin-top: 24px; }
+	.form-error { margin: 18px 0; color: #f0b8a8; font-weight: var(--font-weight-semibold); }
+	.form-success { margin: 20px 0 0; color: #d5e4d8; font-weight: var(--font-weight-semibold); }
+	.submit-button { margin-top: 8px; }
+	.submit-button:disabled { cursor: not-allowed; opacity: .6; }
 	.closing-note { padding: 34px 0 78px; }
 	.closing-note p { margin-bottom: 0; color: var(--text-secondary); }
 
 	@media (max-width: 820px) {
-		.domain-guides-opening { min-height: 0; padding: 88px 0 78px; }
+		.domain-guides-opening { padding: 88px 0 58px; }
+		.split-section { grid-template-columns: 1fr; gap: 22px; }
 		.next-step-section { padding: 82px 0; }
 	}
+	@media (max-width: 600px) {
+		.form-fields { grid-template-columns: 1fr; }
+		.full-field { grid-column: auto; }
+	}
 	@media (max-width: 720px) {
-		.opening-copy p, .reading-column > p, .run-list, .next-step-inner p, .closing-note p { font-size: 1.125rem; }
+		.opening-copy p, .section-body p, .run-list p, .next-step-inner > p, .closing-note p { font-size: 1.125rem; }
 		.closing-note { padding: 28px 0 58px; }
+		.run-list li { grid-template-columns: 2.4rem minmax(0, 1fr); padding: 18px 16px; }
+	}
+	@media (prefers-reduced-motion: reduce) {
+		.run-list li { transition: none; }
+		.run-list li:hover, .run-list li:focus-visible { transform: none; }
 	}
 </style>
