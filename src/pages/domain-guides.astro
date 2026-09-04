@@ -6,7 +6,7 @@ const turnstileSiteKey = import.meta.env.PUBLIC_TURNSTILE_SITE_KEY ?? "";
 const runSteps = [
 	["Workshop", "A workshop in the domain. It extracts how work actually enters, who owns decisions, what Ready and Done mean here, where quality arrives late, and which problems are team problems versus intake or leadership problems. That extraction is the starting backlog. It is not the program."],
 	["Office Hours", "Office Hours on the real cadence. People bring a ticket, a board, a dependency, a sprint problem. The object of the work is the classroom."],
-	["Role Development", "Role development happens in the same work. Participants develop the judgment needed to work with teams, decisions, ownership, and improvement. Recognized Scrum Master and Recognized Product Owner material may support that development. The domain supplies the problems, the homework, and the evidence."],
+	["Role Development", "Instruction can introduce concepts and coaching can sharpen judgment, but neither substitutes for repeatedly working difficult problems inside the domain. Developing Guides work alongside experienced people, take on increasing responsibility, exercise judgment against real conditions, and eventually help develop others. The domain supplies the problems, the work, and the evidence. There is no classroom substitute for that experience. In complex domains, judgment is developed by doing the work.", "Domain Guides are developed through apprenticeship in the actual work."],
 	["Guides Stay", "Guides stay. Graduates host Office Hours and teach the next cohort. The practice is recursive."],
 ];
 ---
@@ -62,11 +62,11 @@ const runSteps = [
 					<div class="run-sequence" aria-label="Live work, then Workshop, Office Hours, Role Development, Guides Stay, and live work again.">
 						<div class="live-work live-work-start"><span>Live work</span></div>
 						<ol class="run-list">
-							{runSteps.map(([title, copy], index) => (
+							{runSteps.map(([title, copy, lead], index) => (
 								<li tabindex="0">
 									<span class="run-number" aria-hidden="true">{String(index + 1).padStart(2, "0")}</span>
 									<h3>{title}</h3>
-									<p>{copy}</p>
+									<p>{lead && <><strong>{lead}</strong> </>}{copy}</p>
 								</li>
 							))}
 						</ol>
@@ -122,8 +122,9 @@ const runSteps = [
 				<h2 id="why-3back-title">Why 3Back</h2>
 				<div class="section-body">
 					<p>3Back has spent nearly three decades working directly with teams and leaders on how difficult work gets done.</p>
-					<p>We get close to the actual work, preserve what is already functioning, identify where execution has lost grip, and make bounded changes with the people who have to live with the result.</p>
-					<p>Domain Guides grows out of that experience. We bring the experience of developing people who can improve team execution and develop others. Your people bring the domain. Our role should diminish as theirs grows.</p>
+					<p>One of our strengths is working alongside people who know their domain far better than we ever will. We know how to get into difficult problems with local experts, understand enough of the work to see where execution is breaking down, and help make progress without forcing the domain into our language or pretending to be the expert in their business.</p>
+					<p>We bring experience developing people who can improve team execution and develop others. Your people bring the domain. Domain Guides brings those capabilities together in a program designed to move more of that work inside the organization over time.</p>
+					<p><strong>Our role should diminish as theirs grows.</strong></p>
 				</div>
 			</div>
 		</section>
