@@ -3,10 +3,11 @@ import SiteLayout from "../layouts/SiteLayout.astro";
 import { pageSeo } from "../seo/registry.mjs";
 
 const turnstileSiteKey = import.meta.env.PUBLIC_TURNSTILE_SITE_KEY ?? "";
-const runSteps = [
+type RunStep = [title: string, copy: string, lead?: string];
+const runSteps: RunStep[] = [
 	["Workshop", "A workshop in the domain. It extracts how work actually enters, who owns decisions, what Ready and Done mean here, where quality arrives late, and which problems are team problems versus intake or leadership problems. That extraction is the starting backlog. It is not the program."],
 	["Office Hours", "Office Hours on the real cadence. People bring a ticket, a board, a dependency, a sprint problem. The object of the work is the classroom."],
-	["Role Development", "Instruction can introduce concepts and coaching can sharpen judgment, but neither substitutes for repeatedly working difficult problems inside the domain. Developing Guides work alongside experienced people, take on increasing responsibility, exercise judgment against real conditions, and eventually help develop others. The domain supplies the problems, the work, and the evidence. There is no classroom substitute for that experience. In complex domains, judgment is developed by doing the work.", "Domain Guides are developed through apprenticeship in the actual work."],
+	["Guide Development", "Developing Guides work alongside experienced people, take on increasing responsibility, exercise judgment against real conditions, and eventually help develop others. Progress is earned in the work, not by completing sessions.", "Domain Guides are developed through apprenticeship in the actual work."],
 	["Guides Stay", "Guides stay. Graduates host Office Hours and teach the next cohort. The practice is recursive."],
 ];
 ---
@@ -36,7 +37,7 @@ const runSteps = [
 			<div class="shell split-section">
 				<h2 id="what-this-is-title">What this is</h2>
 				<div class="section-body">
-					<p>A multi-month program, not a class.</p>
+					<p>A program that develops over months, not a class.</p>
 					<p>You leave with your own Domain Guides and a repeatable way to develop the next cohort inside your domain. People who know how work actually moves here. People who can tell an execution problem from an intake problem and develop others inside the work.</p>
 					<p>By design, 3Back’s role should diminish as that internal capability grows.</p>
 					<p>The workshop starts it. It does not finish it.</p>
@@ -48,7 +49,8 @@ const runSteps = [
 			<div class="shell split-section">
 				<h2 id="class-not-enough-title">Why a class is not enough</h2>
 				<div class="section-body">
-					<p>Classroom Agile taught vocabulary. It did not teach this backlog, this intake, this decision owner, or this quality bar. The domain was decoration. When the coach left, the skill left, and the business was still the one that had to run.</p>
+					<p>Classroom Agile taught vocabulary. It did not teach this backlog, this intake, this decision owner, or this quality bar. The domain was decoration. Reporting, ceremonies, and process compliance could make the work look organized while the underlying capability had never transferred.</p>
+					<p>When the coach left, the skill was never there to keep, and the business was still the one that had to run.</p>
 					<p>The work changes when someone owns getting it done. Observation and advice can help. They are not substitutes for ownership.</p>
 				</div>
 			</div>
@@ -59,7 +61,7 @@ const runSteps = [
 				<h2 id="how-it-runs-title">How it runs</h2>
 				<div class="run-program">
 					<p class="run-introduction">The program begins in the actual work, develops people inside it, and returns capability to it.</p>
-					<div class="run-sequence" aria-label="Live work, then Workshop, Office Hours, Role Development, Guides Stay, and live work again.">
+					<div class="run-sequence" aria-label="Live work, then Workshop, Office Hours, Guide Development, Guides Stay, and live work again.">
 						<div class="live-work live-work-start"><span>Live work</span></div>
 						<ol class="run-list">
 							{runSteps.map(([title, copy, lead], index) => (
@@ -72,25 +74,34 @@ const runSteps = [
 						</ol>
 						<div class="live-work live-work-end"><span>Live work</span><small>The next cohort starts here.</small></div>
 					</div>
+					<div class="run-timing">
+						<p><strong>Capability develops over time.</strong></p>
+						<p>There is no fixed calendar for developing a Domain Guide. The time required depends on the complexity of the domain and the depth, breadth, and quality of the person’s existing professional experience.</p>
+						<p>The deeper capability is not simply working independently. It is developing the judgment to work difficult problems, develop others, and help the organization adapt how work is organized and executed as demand changes. That level of capability takes longer to develop, and it is what the program is designed to leave behind.</p>
+					</div>
 				</div>
 			</div>
 		</section>
 
 		<section class="section section-rule" aria-labelledby="courses-here-title">
 			<div class="shell split-section">
-				<h2 id="courses-here-title">What the courses are doing here</h2>
+				<h2 id="courses-here-title">Foundational training still matters</h2>
 				<div class="section-body">
-					<p>RSM and RPO support the program. They are not the program.</p>
-					<p>Foundation work uses live backlogs and live decisions, not fictional products. Later levels require the participant to bring work from this domain. If they cannot, they are not in the advanced path yet.</p>
+					<p>The classroom has not gone away. Foundational courses give people useful concepts, shared language, and a better way to see the work.</p>
+					<p>RSM and RPO can provide that foundation for people across teams and leadership roles. They help people understand responsibilities, decisions, flow, and the conditions teams need to execute well.</p>
+					<p>But foundation is not capability. Domain Guide development begins when those ideas are worked against the organization’s actual problems, decisions, constraints, and consequences.</p>
 				</div>
 			</div>
 		</section>
 
-		<section class="section section-rule" aria-labelledby="who-may-teach-title">
+		<section class="section section-rule" aria-labelledby="domain-guide-capability-title">
 			<div class="shell split-section">
-				<h2 id="who-may-teach-title">Who may teach or coach in it</h2>
+				<h2 id="domain-guide-capability-title">What a Domain Guide must be able to do</h2>
 				<div class="section-body">
-					<p>People who influence teams through this program must be able to open the board, read the work, and help the team move. Commentary is not a role. External credentials do not waive that.</p>
+					<p>A Domain Guide must be able to move between developing others and participating directly in the work.</p>
+					<p>Sometimes the right role is to observe, question, mentor, or help someone reason through a difficult problem. Sometimes it is to step into the work, apply domain expertise, and help do it.</p>
+					<p>The capability is knowing which role the situation requires and being able to move between them. A Guide who always stays outside the work is limited. A Guide who always takes over the work is limited too.</p>
+					<p>The development goal is judgment between the two.</p>
 				</div>
 			</div>
 		</section>
@@ -109,6 +120,8 @@ const runSteps = [
 			<div class="shell split-section">
 				<h2 id="how-you-know-title">How you know it is working</h2>
 				<div class="section-body">
+					<p><strong>The team is the first useful boundary for seeing whether the capability is real.</strong></p>
+					<p>You see it in teams that can take on difficult work, adapt as conditions change, surface problems early, make more decisions where the work happens, and keep work moving without depending on extraordinary coordination or an outsider in the room.</p>
 					<p>Attendance is not evidence. Grip is evidence.</p>
 					<p>Signals live in the work: ready rate before planning, sprint interruption, hidden work, decision-ownership disputes, late Done, and whether people can run planning or refinement without an outsider in the room.</p>
 					<p>Those are signs that execution is changing. They are not the finish line.</p>
@@ -178,7 +191,7 @@ const runSteps = [
 
 		<section class="closing-note">
 			<div class="shell reading-column">
-				<p>The primary work of 3Back is diagnosing and improving how teams actually execute. This program is one way that work stays in the company, where it belongs.</p>
+				<p>The primary work of 3Back is diagnosing and improving how teams actually execute. This program is one way the organization builds the capability to keep improving its own work.</p>
 			</div>
 		</section>
 	</main>
@@ -248,7 +261,9 @@ const runSteps = [
 	.section-body a:hover { color: var(--amber-text); }
 	.reading-column { max-width: 760px; }
 	.run-program { min-width: 0; }
-	.run-introduction { max-width: 66ch; margin-bottom: 28px; color: var(--text-secondary); font-weight: var(--font-weight-semibold); }
+	.run-introduction { max-width: 66ch; margin-bottom: 28px; color: var(--charcoal); font-weight: var(--font-weight-semibold); }
+	.run-timing { max-width: 66ch; margin: 28px 0 0; color: var(--charcoal); font-size: 1.125rem; line-height: 1.65; }
+	.run-timing p:last-child { margin-bottom: 0; }
 	.run-sequence { display: grid; grid-template-columns: minmax(7.25rem, .75fr) minmax(0, 4fr) minmax(7.25rem, .75fr); align-items: stretch; border-top: 1px solid var(--rule); border-bottom: 1px solid var(--rule); }
 	.live-work { display: grid; place-content: center; gap: 8px; padding: 20px 14px; background: var(--paper); color: var(--charcoal); font-size: var(--type-caption); font-weight: var(--font-weight-heavy); letter-spacing: var(--tracking-caption); line-height: var(--leading-caption); text-align: center; text-transform: uppercase; }
 	.live-work span { display: block; }
@@ -306,6 +321,7 @@ const runSteps = [
 		.opening-copy p:not(.eyebrow), .section-body p, .run-list p, .next-step-inner > p, .closing-note p { font-size: 1.125rem; }
 		.closing-note { padding: 28px 0 58px; }
 		.run-introduction { margin-bottom: 22px; }
+		.run-timing { margin-top: 22px; }
 		.run-sequence { grid-template-columns: 1fr; border: 0; }
 		.live-work, .run-list li { text-align: left; }
 		.live-work { position: relative; place-content: start; padding: 18px 0; border: 0; background: transparent; }
