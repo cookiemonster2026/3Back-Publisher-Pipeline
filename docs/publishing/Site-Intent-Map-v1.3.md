@@ -1,8 +1,8 @@
 # 3Back Site Intent Map
 
-**Version:** 1.2  
-**Date:** 2026-09-01  
-**Scope:** add /scrum-101 historical pocket-guide reference page (Stage 8 closeout)  
+**Version:** 1.3  
+**Date:** 2026-09-03  
+**Scope:** add /why-domain-expertise-matters route intent (Stage 8 closeout)  
 **Twin to:** Technical Manifest (`docs/publishing/technical-manifest.md`)  
 **Update rule:** Stage 8 closeout only (after live verification). Increment version on material change.
 
@@ -134,6 +134,20 @@ Place name = **Doomscroll**. Series name on page = **Tales of the Grip**.
 | **Primary actions** | Request private delivery; follow hybrid options (including path.3back.com and events where applicable) |
 | **Indexability** | Present in sitemap; treat as catalog surface (stubs acceptable for individual courses over time) |
 | **Non-goals** | Not the brand home; not Operational Grip theory |
+
+---
+
+### `/why-domain-expertise-matters`
+
+| Field | Intent |
+|---|---|
+| **Purpose** | Explain why domain expertise must be developed in the work. An outside credential does not transfer expertise into the operating context. Coaches without domain expertise can create coverage and framework theater without building capability. |
+| **Audience** | Executives and senior leaders who inherited or bought generic coaching. |
+| **Primary action** | Start a Conversation (`/contact/`). |
+| **Secondary actions** | Grip Check (`/grip-check/`) and Domain Guides (`/domain-guides/`). |
+| **Indexability** | Complete; index, follow. |
+| **Related** | Linked from `/courses`. This is not the Domain Guides program page. |
+| **Non-goals** | Not a syllabus. Not a credential page. Not `/domain-guides`. |
 
 ---
 

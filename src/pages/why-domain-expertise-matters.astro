@@ -32,7 +32,7 @@ import { pageSeo } from "../seo/registry.mjs";
 						<p class="poster"><span class="poster-num" aria-hidden="true">01</span><span class="poster-label">Get in the work.</span></p>
 						<p class="poster"><span class="poster-num" aria-hidden="true">02</span><span class="poster-label">Or get out.</span></p>
 					</div>
-					<p>Commentary is not a role. Wall decoration is not a role.</p>
+					<p class="section-verdict">Commentary is not a role. Wall decoration is not a role.</p>
 				</div>
 			</div>
 		</section>
@@ -55,8 +55,8 @@ import { pageSeo } from "../seo/registry.mjs";
 					layout="constrained"
 				/>
 				<figcaption class="caption-pair">
-					<span>Signal. The constraint is still visible.</span>
-					<span>Silence. Made presentable.</span>
+					<span><strong class="caption-lead">Signal.</strong> The constraint is still visible.</span>
+					<span><strong class="caption-lead">Silence.</strong> Made presentable.</span>
 				</figcaption>
 			</figure>
 		</section>
@@ -191,7 +191,7 @@ import { pageSeo } from "../seo/registry.mjs";
 		line-height: 1.65;
 	}
 	.section-body p:last-child { margin-bottom: 0; }
-	.framework-emphasis { font-weight: var(--font-weight-bold); }
+	.framework-emphasis, .section-body .section-verdict { font-weight: var(--font-weight-bold); }
 	.evidence-list {
 		max-width: 38rem;
 		margin: 0 0 1.1em;
@@ -264,6 +264,7 @@ import { pageSeo } from "../seo/registry.mjs";
 		grid-template-columns: 1fr 1fr;
 		gap: 18px;
 	}
+	.caption-lead { font-weight: var(--font-weight-bold); }
 
 	.close-band {
 		padding: 118px 0;
