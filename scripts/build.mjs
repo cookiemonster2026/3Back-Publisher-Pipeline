@@ -7,7 +7,7 @@ if (!new Set(["production", "test"]).has(environment)) {
 	process.exit(1);
 }
 if (environment === "production" && !process.env.PUBLIC_TURNSTILE_SITE_KEY?.trim()) {
-	console.error("Production build requires PUBLIC_TURNSTILE_SITE_KEY. Configure it in the Cloudflare production build environment.");
+	console.error("Production build requires the public Turnstile site key. Cloudflare provides it in production; set PUBLIC_TURNSTILE_SITE_KEY only to reproduce that build locally.");
 	process.exit(1);
 }
 
