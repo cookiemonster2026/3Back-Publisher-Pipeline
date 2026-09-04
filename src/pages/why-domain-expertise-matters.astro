@@ -1,9 +1,354 @@
 ---
-import StubPage from "../components/StubPage.astro";
+import { Image } from "astro:assets";
+import SiteLayout from "../layouts/SiteLayout.astro";
+import boardSignalSilence from "../assets/why-domain-expertise/board-signal-silence.jpg";
+import signalIgnored from "../assets/why-domain-expertise/signal-ignored.png";
 import { pageSeo } from "../seo/registry.mjs";
 ---
 
-<StubPage
-	name="Why domain expertise matters"
-	metadata={pageSeo["/why-domain-expertise-matters"]}
-/>
+<SiteLayout metadata={pageSeo["/why-domain-expertise-matters"]}>
+	<main id="main" class="why-domain-page">
+		<section class="opening section-rule">
+			<div class="shell">
+				<h1>Why domain expertise matters</h1>
+				<p class="dek">People coaching teams in these environments should have expertise in the environment they are coaching. That expertise cannot be conferred by an outside body. It does not work. There is no substitute for developing expertise from within.</p>
+				<p class="display-line">In your business. Where ROI is measured in grip, not attendance.</p>
+				<div class="problem">
+					<p>Generic Agile taught vocabulary. It did not teach <span class="heat">this backlog</span>, <span class="heat">this intake</span>, <span class="heat">this decision</span>, or <span class="heat">this quality bar</span>. It was not in your domain. It was <span class="strike">decoration</span>. Your domain is not decoration. Your business matters. The credential did not transfer to the context in which you operate. That is the whole problem.</p>
+					<p>People without the domain still get put next to teams. They arrive with a credential from outside. They cannot see the work. They still talk. They still schedule. They still rearrange the ritual. The team has to translate the business for them. Then the credential is treated as if it outranks the work. That is backwards. It does not help the team. It is harmful.</p>
+				</div>
+			</div>
+		</section>
+
+		<section class="section section-rule" aria-labelledby="get-in-title">
+			<div class="shell split-section">
+				<h2 id="get-in-title">Get in the work or get out</h2>
+				<div class="section-body">
+					<p>Companies rent coaches who are not in the work, not in the tools, and not in the business. Those people stay involved. They comment. They schedule. They do not get the work done. When they leave, the skill leaves with them.</p>
+					<p>There is no useful middle state called involved. A person is committed to getting the work done, or they are not. If they cannot open the board, read the ticket, sit in the refinement, and help the team move, they are not a coach here.</p>
+					<div class="posters">
+						<p class="poster"><span class="poster-num" aria-hidden="true">01</span><span class="poster-label">Get involved.</span></p>
+						<p class="poster"><span class="poster-num" aria-hidden="true">02</span><span class="poster-label">Or get out.</span></p>
+					</div>
+					<p>Commentary is not a role. Wall decoration is not a role.</p>
+				</div>
+			</div>
+		</section>
+
+		<section class="section section-rule" aria-labelledby="board-title">
+			<div class="shell split-section">
+				<h2 id="board-title">The board tells the truth. Or it performs.</h2>
+				<div class="section-body">
+					<p>The board can tell you what is happening. Or it can perform control for an audience. Domain expertise is the difference. You need people who can read the board and say what the work is doing. Not people who tidy it until the evidence goes quiet.</p>
+					<p>We have watched teams sterilize the signal. Clean tickets. Pretty columns. No fight in the data. The work is slipping, and the board has been made presentable enough that nobody has to hear it. That is not grip. That is the sound of silence.</p>
+					<p>Someone with true expertise in a domain does the opposite. They keep the signal loud enough to act on. They rally the teams. They rally the work. They bring focus. They can bring focus because they actually understand the work. They know how to do it. They know the domain of execution.</p>
+				</div>
+			</div>
+			<figure class="shell editorial-figure board-figure">
+				<Image
+					src={boardSignalSilence}
+					alt="A wall crowded with work notes beside a wall where the same information has been arranged into a clean grid."
+					widths={[720, 960, 1280, 1600]}
+					sizes="(max-width: 720px) calc(100vw - 32px), min(1180px, calc(100vw - 48px))"
+					layout="constrained"
+				/>
+				<figcaption class="caption-pair">
+					<span>Signal. The constraint is still visible.</span>
+					<span>Silence. Made presentable.</span>
+				</figcaption>
+			</figure>
+		</section>
+
+		<section class="section" aria-labelledby="working-title">
+			<div class="shell split-section">
+				<h2 id="working-title">How you would know it is working</h2>
+				<div class="section-body">
+					<p>Attendance is not evidence. Grip is evidence.</p>
+					<p>Ready work before planning. Fewer sprint interruptions. Ownership that does not bounce. Dependencies visible early. Quality that does not arrive as a late surprise. People who can run planning without an outsider in the room.</p>
+					<p>If those signals get ignored, you have built another training universe. We already know how that ends.</p>
+				</div>
+			</div>
+			<figure class="shell editorial-figure beacon-figure">
+				<Image
+					src={signalIgnored}
+					alt="Two warning beacons, one lit amber and one covered with black tape."
+					widths={[720, 960, 1280, 1600]}
+					sizes="(max-width: 720px) calc(100vw - 32px), min(1180px, calc(100vw - 48px))"
+					layout="constrained"
+				/>
+				<figcaption>The signal being ignored.</figcaption>
+			</figure>
+		</section>
+
+		<section class="close-band">
+			<div class="shell close-inner">
+				<p class="close-lead">Start a conversation about the domain we need to know, and about who is actually in the work.</p>
+				<p class="close-bound">No transformation pitch. No universal answer. Your backlog. Your intake. Your quality bar.</p>
+				<p class="close-action"><a class="button" href="/contact/">Start a conversation</a></p>
+				<p class="close-links">
+					<a class="text-link" href="/grip-check/">Check Your Grip</a>
+					<a class="quiet-link" href="/domain-guides/">Domain Guides</a>
+				</p>
+				<p class="close-final">The skill stays where it belongs. In your business.</p>
+				<p class="close-final">ROI is measured in grip, not attendance.</p>
+			</div>
+		</section>
+	</main>
+</SiteLayout>
+
+<style>
+	.why-domain-page {
+		overflow: clip;
+		background: var(--paper);
+	}
+
+	.opening { padding: 108px 0 92px; }
+	.opening h1 {
+		max-width: none;
+		margin-bottom: 28px;
+		font-size: clamp(3.7rem, 8.4vw, 5.7rem);
+		font-weight: var(--font-weight-heavy);
+		line-height: 1.04;
+		letter-spacing: -0.028em;
+	}
+	.dek {
+		max-width: 42rem;
+		margin-bottom: 42px;
+		color: var(--charcoal);
+		font-size: clamp(1.28rem, 2.1vw, 1.55rem);
+		font-weight: var(--font-weight-bold);
+		line-height: 1.38;
+	}
+	.display-line {
+		max-width: none;
+		margin: 0 0 56px;
+		padding-top: 18px;
+		border-top: 4px solid var(--amber);
+		color: var(--amber-text);
+		font-size: clamp(1.55rem, 3.2vw, 2.35rem);
+		font-weight: var(--font-weight-heavy);
+		line-height: 1.15;
+		letter-spacing: -0.02em;
+	}
+	.problem {
+		max-width: 46rem;
+		padding: 6px 0 6px 22px;
+		border-left: 6px solid var(--amber);
+	}
+	.problem p {
+		margin-bottom: 1.1em;
+		color: var(--charcoal);
+		font-size: 1.125rem;
+		line-height: 1.65;
+	}
+	.problem p:last-child { margin-bottom: 0; }
+
+	.heat, .strike {
+		padding: 0 0.06em;
+		outline: none;
+	}
+	.heat {
+		box-decoration-break: clone;
+		-webkit-box-decoration-break: clone;
+		background: transparent;
+		box-shadow: inset 0 -0.38em 0 var(--amber);
+	}
+	.strike {
+		text-decoration: line-through;
+		text-decoration-color: var(--amber);
+		text-decoration-thickness: 3px;
+		text-underline-offset: 0;
+	}
+
+	.split-section {
+		display: grid;
+		grid-template-columns: minmax(0, 0.9fr) minmax(0, 1.1fr);
+		gap: clamp(42px, 8vw, 128px);
+		align-items: start;
+		margin-bottom: 48px;
+	}
+	.split-section h2 {
+		margin-bottom: 0;
+		padding-bottom: 18px;
+		border-bottom: 2px solid var(--charcoal);
+	}
+	.section-body p {
+		max-width: 38rem;
+		margin-bottom: 1.1em;
+		color: var(--charcoal);
+		font-size: 1.125rem;
+		line-height: 1.65;
+	}
+	.section-body p:last-child { margin-bottom: 0; }
+
+	.posters {
+		display: grid;
+		grid-template-columns: 1fr 1fr;
+		gap: 18px;
+		margin: 36px 0 28px;
+	}
+	.poster {
+		margin: 0;
+		padding: 28px 24px 24px;
+		border: 3px solid var(--amber);
+		background: var(--reading);
+		transition: transform 160ms ease-out, background-color 160ms ease-out, box-shadow 160ms ease-out;
+	}
+	@media (hover: hover) and (pointer: fine) {
+		.poster:hover {
+		background: var(--amber-wash);
+		box-shadow: inset 0 3px 0 var(--amber);
+		transform: translateY(-2px);
+		}
+	}
+	.poster-num {
+		display: block;
+		margin-bottom: 18px;
+		color: var(--amber-text);
+		font-size: clamp(2.4rem, 5vw, 3.6rem);
+		font-weight: var(--font-weight-heavy);
+		line-height: 0.9;
+		letter-spacing: -0.04em;
+	}
+	.poster-label {
+		display: block;
+		color: var(--charcoal);
+		font-size: clamp(1.35rem, 2.4vw, 1.75rem);
+		font-weight: var(--font-weight-heavy);
+		line-height: 1.15;
+	}
+
+	.editorial-figure {
+		margin: 0;
+	}
+	.editorial-figure :global(img) {
+		display: block;
+		width: 100%;
+		height: auto;
+	}
+	.editorial-figure figcaption {
+		margin-top: 14px;
+		color: var(--text-secondary);
+		font-size: 1rem;
+		font-weight: var(--font-weight-semibold);
+		line-height: 1.4;
+	}
+	.caption-pair {
+		display: grid;
+		grid-template-columns: 1fr 1fr;
+		gap: 18px;
+	}
+
+	.close-band {
+		padding: 118px 0;
+		background: var(--charcoal);
+		color: var(--paper);
+		border-top: 4px solid var(--amber);
+		border-bottom: 5px solid var(--amber);
+	}
+	.close-inner {
+		max-width: 790px;
+		padding-left: clamp(22px, 4vw, 48px);
+		border-left: 3px solid var(--amber);
+	}
+	.close-lead {
+		margin-bottom: 22px;
+		color: var(--paper);
+		font-size: clamp(1.7rem, 3.2vw, 2.4rem);
+		font-weight: var(--font-weight-heavy);
+		line-height: 1.18;
+		letter-spacing: -0.02em;
+	}
+	.close-bound {
+		max-width: 38rem;
+		margin-bottom: 32px;
+		color: var(--paper);
+		font-size: 1.125rem;
+		line-height: 1.65;
+	}
+	.close-action { margin-bottom: 28px; }
+	.close-links {
+		display: flex;
+		flex-wrap: wrap;
+		gap: 22px 36px;
+		align-items: center;
+		margin-bottom: 36px;
+	}
+	.text-link, .quiet-link {
+		position: relative;
+		color: var(--paper);
+		text-decoration: none;
+	}
+	.text-link::after, .quiet-link::after {
+		position: absolute;
+		right: 0;
+		bottom: -5px;
+		left: 0;
+		height: 2px;
+		background: var(--amber);
+		content: "";
+		transform: scaleX(0);
+		transform-origin: left;
+		transition: transform 160ms ease-out;
+	}
+	.text-link {
+		font-weight: var(--font-weight-bold);
+	}
+	.quiet-link {
+		color: var(--paper);
+		font-weight: var(--font-weight-semibold);
+	}
+	.text-link:hover, .quiet-link:hover {
+		color: var(--paper);
+	}
+	.text-link:hover::after, .quiet-link:hover::after {
+		transform: scaleX(1);
+	}
+	.close-final {
+		max-width: 38rem;
+		margin-bottom: 0;
+		color: var(--paper);
+		font-size: 1.125rem;
+		font-weight: var(--font-weight-semibold);
+		line-height: 1.5;
+	}
+	.close-final + .close-final { margin-top: 8px; }
+
+	@media (hover: hover) and (pointer: fine) {
+		.heat {
+			background: transparent;
+			box-shadow: inset 0 -0.38em 0 transparent;
+			transition: background-color 160ms ease-out, box-shadow 160ms ease-out;
+		}
+		.heat:hover {
+			background: var(--amber-wash);
+			box-shadow: inset 0 -0.38em 0 var(--amber);
+		}
+		.strike {
+			text-decoration-color: transparent;
+			transition: text-decoration-color 160ms ease-out;
+		}
+		.strike:hover {
+			text-decoration-color: var(--amber);
+		}
+	}
+
+	@media (max-width: 720px) {
+		.opening { padding: 84px 0 64px; }
+		.opening h1 { letter-spacing: -0.022em; }
+		.display-line { margin-bottom: 40px; }
+		.split-section {
+			grid-template-columns: 1fr;
+			gap: 18px;
+			margin-bottom: 32px;
+		}
+		.posters { grid-template-columns: 1fr; }
+		.caption-pair { grid-template-columns: 1fr; gap: 8px; }
+		.close-band { padding: 82px 0; }
+	}
+
+	@media (prefers-reduced-motion: reduce) {
+		.poster, .heat, .strike, .text-link::after, .quiet-link::after { transition: none; }
+		.poster:hover { transform: none; }
+	}
+</style>

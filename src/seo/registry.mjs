@@ -488,17 +488,16 @@ export const pageSeo = Object.freeze({
 		missingWork: ["Post content", "Approved complete-page metadata"],
 	},
 	"/why-domain-expertise-matters": {
-		status: "stub",
+		status: "complete",
 		path: "/why-domain-expertise-matters",
 		title: "Why Domain Expertise Matters | 3Back",
-		description: "Why domain expertise matters.",
-		indexability: "noindex, nofollow",
+		description: "A credential does not transfer into the work. Expertise in the domain cannot be conferred by an outside body. ROI is measured in grip, not attendance.",
+		indexability: "index, follow",
 		social: {
 			title: "Why Domain Expertise Matters | 3Back",
-			description: "Why domain expertise matters.",
+			description: "A credential does not transfer into the work. Expertise in the domain cannot be conferred by an outside body. ROI is measured in grip, not attendance.",
 			type: "website",
 		},
-		missingWork: ["Post content", "Approved complete-page metadata"],
 	},
 	"/papers/scaling": {
 		status: "stub",
