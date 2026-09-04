@@ -106,7 +106,7 @@ Run an `Affected` item when the requested or resulting diff could change its con
 
 | Item | Class | Verifier | Acceptance condition | Verification |
 | --- | --- | --- | --- | --- |
-| 601 | Global | Agent | The production site builds without errors. | Run `pnpm build` from the repository root and require a zero exit code. |
+| 601 | Global | Agent | The Cloudflare production build for `main` completes without errors using its production-managed build variables. | Confirm the successful Cloudflare build associated with the pushed `main` commit and spot-check the affected public route. Local verification uses `pnpm check` and `pnpm build:test`; a local `pnpm build` may require production-only public build variables. |
 | 602 | Global | Agent | Only files within the requested scope changed, and no build artifacts, local secrets, temporary files, or unrelated formatting changes were introduced. | Inspect `git status --short` and the final diff; distinguish pre-existing user changes from task changes. |
 | 603 | Affected | Agent | Every added or changed internal route builds and loads directly, not only through client-side navigation. | Open each affected route directly from built or preview output and verify the expected status and content. |
 | 604 | Affected | Agent | Affected pages produce no new runtime exceptions, failed local resource requests, or invalid asset references. | Inspect the browser console and network results while loading and exercising affected pages. |

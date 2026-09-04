@@ -24,7 +24,7 @@ import { pageSeo } from "../seo/registry.mjs";
 			<div class="shell split-section">
 				<h2 id="get-in-title">Get in the work or get out</h2>
 				<div class="section-body">
-					<p>Companies rent coaches who are not in the work, not in the tools, and not in the business. Those people stay involved. They comment. They schedule. They do not get the work done. When they leave, the skill leaves with them.</p>
+					<p>Companies rent coaches who are not in the work, not in the tools, and not in the business. Those people stay involved. They comment. They schedule. They do not get the work done. When they leave, the organization discovers the skill did not leave with them. It was never there. What looked like capability was coverage.</p>
 					<p>There is no useful middle state called involved. A person is committed to getting the work done, or they are not. If they cannot open the board, read the ticket, sit in the refinement, and help the team move, they are not a coach here.</p>
 					<div class="posters">
 						<p class="poster"><span class="poster-num" aria-hidden="true">01</span><span class="poster-label">Get in the work.</span></p>
@@ -64,6 +64,7 @@ import { pageSeo } from "../seo/registry.mjs";
 				<h2 id="working-title">How you would know it is working</h2>
 				<div class="section-body">
 					<p>Attendance is not evidence. Grip is evidence.</p>
+					<p>Process compliance is not evidence either. The recipe never outranks the realities of the work. A framework can guide the work. It cannot supply the judgment the work requires. Difficult situations require thinking, skill, and expertise in the domain.</p>
 					<ul class="evidence-list">
 						<li>Ready work before planning.</li>
 						<li>Fewer sprint interruptions.</li>
@@ -200,10 +201,15 @@ import { pageSeo } from "../seo/registry.mjs";
 	.posters {
 		display: grid;
 		grid-template-columns: 1fr 1fr;
+		grid-auto-rows: 1fr;
 		gap: 18px;
+		align-items: stretch;
 		margin: 36px 0 28px;
 	}
 	.poster {
+		display: grid;
+		grid-template-rows: auto 1fr;
+		height: 100%;
 		margin: 0;
 		padding: 28px 24px 24px;
 		border: 3px solid var(--amber);
