@@ -14,8 +14,10 @@ import { pageSeo } from "../seo/registry.mjs";
 				<p class="dek">People coaching teams should have expertise in the environment they are coaching. A credential from an outside body cannot confer that expertise. There is no substitute for developing expertise in the work.</p>
 				<p class="display-line">In your business. Where ROI is measured in grip, not attendance.</p>
 				<div class="problem">
-					<p>Generic Agile training taught vocabulary. It did not teach <span class="heat">this backlog</span>, <span class="heat">this intake</span>, <span class="heat">this decision</span>, or <span class="heat">this quality bar</span>. It was not in your domain. It was <span class="strike">decoration</span>. Your domain is not decoration. Your business matters. The credential did not transfer to the context in which you operate. That is the whole problem.</p>
+					<p>Generic Agile supplied vocabulary. It did not teach <span class="heat">this backlog</span>, <span class="heat">this intake</span>, <span class="heat">this decision</span>, or <span class="heat">this quality bar</span>. It was not in your domain. It was <span class="strike">decoration</span>. Your domain is not decoration. Your business matters. The credential did not transfer to the context in which you operate. That is the whole problem.</p>
 					<p>People without domain expertise still get put next to teams. They arrive with a credential from outside. They cannot see the work. They still talk. They still schedule. They still rearrange the ritual. The team has to translate the business for them. Then the credential is treated as if it outranks the work. That is backwards. It does not help the team. That is harmful.</p>
+					<p>They also bring framework load. Generic vocabulary, ceremonies, roles, and rules begin competing with the work for the team's attention. A framework should help people see the work and make better decisions. It should not become another system the team has to perform for. When too much attention goes into maintaining the framework, less attention remains for the demand, the quality, the decisions, and the work itself. That is another way teams lose grip.</p>
+					<p class="framework-emphasis">Use only enough framework to help the work move.</p>
 				</div>
 			</div>
 		</section>
@@ -154,6 +156,7 @@ import { pageSeo } from "../seo/registry.mjs";
 	.heat, .strike {
 		padding: 0 0.06em;
 		outline: none;
+		white-space: nowrap;
 	}
 	.heat {
 		box-decoration-break: clone;
@@ -188,6 +191,7 @@ import { pageSeo } from "../seo/registry.mjs";
 		line-height: 1.65;
 	}
 	.section-body p:last-child { margin-bottom: 0; }
+	.framework-emphasis { font-weight: var(--font-weight-bold); }
 	.evidence-list {
 		max-width: 38rem;
 		margin: 0 0 1.1em;
@@ -241,7 +245,7 @@ import { pageSeo } from "../seo/registry.mjs";
 	}
 
 	.editorial-figure {
-		margin: 0;
+		margin: 0 auto;
 	}
 	.editorial-figure :global(img) {
 		display: block;
@@ -249,7 +253,7 @@ import { pageSeo } from "../seo/registry.mjs";
 		height: auto;
 	}
 	.editorial-figure figcaption {
-		margin-top: 14px;
+		margin-top: 8px;
 		color: var(--text-secondary);
 		font-size: 1rem;
 		font-weight: var(--font-weight-semibold);
