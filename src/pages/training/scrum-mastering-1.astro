@@ -48,6 +48,7 @@ const progression = [
 <section id="sm1-private-inquiry" class="private-inquiry" aria-labelledby="sm1-private-inquiry-title" hidden><div class="shell private-inquiry-grid"><div><p class="eyebrow">Private Live course inquiry</p><h2 id="sm1-private-inquiry-title" tabindex="-1">Tell us about your Scrum Team.</h2><p>Tell us about your Scrum Team and training needs. We'll reply by email to schedule a 15- to 30-minute conversation and determine whether a private onsite or virtual SM1 course is the right fit.</p></div><div><form class="private-inquiry-form" action="/api/sm1-private-inquiry" method="post" data-sm1-private-form novalidate><div class="form-fields"><div class="field"><label for="sm1-first-name">First name</label><input id="sm1-first-name" name="first_name" autocomplete="given-name" required maxlength="80" /></div><div class="field"><label for="sm1-last-name">Last name</label><input id="sm1-last-name" name="last_name" autocomplete="family-name" required maxlength="80" /></div><div class="field"><label for="sm1-email">Email</label><input id="sm1-email" name="email" type="email" autocomplete="email" required maxlength="254" /></div><div class="field"><label for="sm1-confirm-email">Email again</label><input id="sm1-confirm-email" name="confirm_email" type="email" autocomplete="email" required maxlength="254" /></div><div class="field field-full"><label for="sm1-company">Company name</label><input id="sm1-company" name="company_name" autocomplete="organization" required maxlength="160" /></div><div class="field field-full"><label for="sm1-note">Tell us about your Scrum Team and training needs.</label><textarea id="sm1-note" name="note" rows="5" required maxlength="4000"></textarea></div></div><div class="turnstile-wrap">{turnstileSiteKey ? <div class="cf-turnstile" data-sitekey={turnstileSiteKey}></div> : <p class="form-error">This form is not configured yet.</p>}</div><p id="sm1-private-form-error" class="form-error" role="alert" tabindex="-1" data-form-error hidden></p><button class="primary-cta submit-button" type="submit" disabled={!turnstileSiteKey}>Send inquiry</button></form><div class="form-success" role="status" tabindex="-1" data-form-success hidden><h3>Thank you. We received your inquiry.</h3><p>We'll reply by email to schedule a 15- to 30-minute conversation about your Scrum Team and training needs. Please look for our reply.</p></div></div></div></section>
 <section class="sm1-section section-rule"><div class="shell split"><h2>Ready to begin?</h2><div class="section-body"><p>Build a stronger working understanding of the Scrum Master role and earn recognition for demonstrating it.</p><p class="offer-line">$150 | Complete within 12 months</p><button class="enrollment" type="button" disabled>Enrollment coming soon</button></div></div></section>
 <section class="domain-guides-band"><div class="shell split"><h2>If the skill needs to stay in the company</h2><div class="section-body"><p>SM1 can teach the material and test understanding. It does not leave the company with its own guides. Domain Guides starts in the live work and keeps that capability inside the domain. SM1 is one entry into that program, not the program itself.</p><a class="secondary-cta" href="/domain-guides">Explore the Domain Guides program</a></div></div></section>
+<section class="reviews-band"><div class="shell split"><div><p class="eyebrow">Client reviews</p><h2>The reviews are ours.</h2></div><div class="section-body"><p>More than 25,000 people have coached and trained with 3Back.</p><a class="secondary-cta" href="/reviews/">Read 3Back reviews</a></div></div></section>
 </main>
 </SiteLayout>
 <script is:inline src="https://challenges.cloudflare.com/turnstile/v0/api.js" async defer></script>
@@ -146,6 +147,8 @@ h2 { font-size: clamp(1.9rem, 3vw, 2.65rem); }
 .delivery-grid h3 { font-size: 1.45rem; }
 .delivery-grid p { min-height: 72px; }
 .domain-guides-band { padding: 60px 0; border-block: 1px solid var(--rule); background: var(--reading); }
+.reviews-band { padding: 60px 0; border-bottom: 1px solid var(--rule); }
+.reviews-band .section-body p { font-size: 1.125rem; }
 @media (max-width: 900px) {
  .hero-grid { grid-template-columns: minmax(0, 1fr) 220px; gap: 0 30px; }
  .hero-badge img { width: 180px; }
@@ -188,7 +191,7 @@ h2 { font-size: clamp(1.9rem, 3vw, 2.65rem); }
  .split h2 { margin-bottom: 8px; }
  .credential-band { padding: 48px 0; }
  .credential-grid img { margin-bottom: 14px; }
- .commercial-split, .domain-guides-band { padding: 44px 0; }
+ .commercial-split, .domain-guides-band, .reviews-band { padding: 44px 0; }
  .form-fields { grid-template-columns: 1fr; }
  .field-full { grid-column: auto; }
 }

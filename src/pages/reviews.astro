@@ -1,0 +1,22 @@
+---
+import SiteLayout from "../layouts/SiteLayout.astro";
+import { pageSeo } from "../seo/registry.mjs";
+---
+
+<SiteLayout metadata={pageSeo["/reviews"]}>
+	<main id="main" class="reviews-stub">
+		<div class="shell reviews-content">
+			<h1>3Back reviews</h1>
+			<p>The review archive is in production.</p>
+			<a href="/training/scrum-mastering-1/">Back to Scrum Mastering I</a>
+		</div>
+	</main>
+</SiteLayout>
+
+<style>
+	.reviews-stub { min-height: 62vh; background: var(--paper); }
+	.reviews-content { padding-block: clamp(88px, 12vw, 150px); }
+	h1 { margin-bottom: 28px; }
+	p { max-width: 820px; color: var(--text-secondary); font-size: var(--type-lead); line-height: var(--leading-lead); }
+	a { color: var(--charcoal); font-weight: var(--font-weight-semibold); text-decoration-color: var(--amber); text-decoration-thickness: 2px; text-underline-offset: 4px; }
+</style>

@@ -552,6 +552,19 @@ export const pageSeo = Object.freeze({
 			type: "website",
 		},
 	},
+	"/reviews": {
+		status: "stub",
+		path: "/reviews",
+		title: "3Back Reviews | 3Back",
+		description: "The review archive is in production.",
+		indexability: "noindex, nofollow",
+		social: {
+			title: "3Back Reviews | 3Back",
+			description: "The review archive is in production.",
+			type: "website",
+		},
+		missingWork: ["Review archive content", "Approved complete-page metadata and indexability"],
+	},
 	"/about-us": {
 		status: "complete",
 		path: aboutUsPath,
