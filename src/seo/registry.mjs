@@ -565,6 +565,19 @@ export const pageSeo = Object.freeze({
 		},
 		missingWork: ["Review archive content", "Approved complete-page metadata and indexability"],
 	},
+	"/training/scrum-mastering-1-data-sheet": {
+		status: "stub",
+		path: "/training/scrum-mastering-1-data-sheet",
+		title: "SM1 Data Sheet | 3Back",
+		description: "The downloadable data sheet is in production.",
+		indexability: "noindex, nofollow",
+		social: {
+			title: "SM1 Data Sheet | 3Back",
+			description: "The downloadable data sheet is in production.",
+			type: "website",
+		},
+		missingWork: ["Downloadable SM1 data sheet", "Approved complete-page metadata and indexability"],
+	},
 	"/about-us": {
 		status: "complete",
 		path: aboutUsPath,

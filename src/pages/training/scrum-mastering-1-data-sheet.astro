@@ -1,0 +1,22 @@
+---
+import SiteLayout from "../../layouts/SiteLayout.astro";
+import { pageSeo } from "../../seo/registry.mjs";
+---
+
+<SiteLayout metadata={pageSeo["/training/scrum-mastering-1-data-sheet"]}>
+	<main id="main" class="data-sheet-stub">
+		<div class="shell data-sheet-content">
+			<h1>SM1 data sheet</h1>
+			<p>The downloadable data sheet is in production.</p>
+			<a href="/training/scrum-mastering-1/">Back to Scrum Mastering I</a>
+		</div>
+	</main>
+</SiteLayout>
+
+<style>
+	.data-sheet-stub { min-height: 62vh; background: var(--paper); }
+	.data-sheet-content { padding-block: clamp(88px, 12vw, 150px); }
+	h1 { margin-bottom: 28px; }
+	p { max-width: 820px; color: var(--text-secondary); font-size: var(--type-lead); line-height: var(--leading-lead); }
+	a { color: var(--charcoal); font-weight: var(--font-weight-semibold); text-decoration-color: var(--amber); text-decoration-thickness: 2px; text-underline-offset: 4px; }
+</style>
