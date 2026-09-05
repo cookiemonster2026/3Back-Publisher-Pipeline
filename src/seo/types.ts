@@ -18,6 +18,7 @@ export interface SocialMetadata {
 export type JsonLdNode = Record<string, unknown>;
 
 interface BaseSeoMetadata {
+	productionRobots?: "index, follow, max-image-preview:large, max-snippet:-1";
 	path: `/${string}`;
 	title: string;
 	description: string;

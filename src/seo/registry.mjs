@@ -29,6 +29,228 @@ export const HOMEPAGE_OPERATIONAL_GRIP_EXPLANATION = "A team or scaled system ha
 
 /** @type {Readonly<Record<string, SeoMetadata>>} */
 export const pageSeo = Object.freeze({
+	"/training/scrum-mastering-1": {
+		"status": "complete",
+		"path": "/training/scrum-mastering-1",
+		"title": "Scrum Mastering I Course | RSM1 Credential | 3Back",
+		"description": "Study Scrum Mastering I at your own pace. Demonstrate the learning objectives and earn the RSM1 credential recognized by the Scrum Guide Organization.",
+		"indexability": "index, follow",
+		"productionRobots": "index, follow, max-image-preview:large, max-snippet:-1",
+		"social": {
+			"title": "Scrum Mastering I: Earn the RSM1 Credential",
+			"description": "Learn to lead the improvement game. Study at your own pace, demonstrate the SM1 learning objectives, and earn recognition on ScrumGuide.org.",
+			"type": "website",
+			"image": {
+				"src": "/social/scrum-mastering-1.png",
+				"alt": "Scrum Mastering I course cover and Recognized Scrum Master 1 credential badge on a 3Back-branded background.",
+				"width": 1200,
+				"height": 630,
+				"type": "image/png"
+			}
+		},
+		"structuredData": {
+			"@context": "https://schema.org",
+			"@graph": [
+				{
+					"@type": "Organization",
+					"@id": organizationId,
+					"name": "3Back",
+					"url": "https://3back.com/"
+				},
+				{
+					"@type": "WebSite",
+					"@id": websiteId,
+					"name": "3Back",
+					"url": "https://3back.com/",
+					"publisher": {
+						"@id": organizationId
+					}
+				},
+				{
+					"@type": "WebPage",
+					"@id": "https://3back.com/training/scrum-mastering-1#webpage",
+					"name": "Scrum Mastering I: Facilitating Improvement",
+					"url": "https://3back.com/training/scrum-mastering-1",
+					"description": "Study Scrum Mastering I at your own pace. Demonstrate the learning objectives and earn the RSM1 credential recognized by the Scrum Guide Organization.",
+					"isPartOf": {
+						"@id": websiteId
+					},
+					"publisher": {
+						"@id": organizationId
+					},
+					"mainEntity": {
+						"@id": "https://3back.com/training/scrum-mastering-1#course"
+					},
+					"breadcrumb": {
+						"@id": "https://3back.com/training/scrum-mastering-1#breadcrumb"
+					},
+					"image": "https://3back.com/social/scrum-mastering-1.png"
+				},
+				{
+					"@type": "BreadcrumbList",
+					"@id": "https://3back.com/training/scrum-mastering-1#breadcrumb",
+					"itemListElement": [
+						{
+							"@type": "ListItem",
+							"position": 1,
+							"name": "3Back",
+							"item": "https://3back.com/"
+						},
+						{
+							"@type": "ListItem",
+							"position": 2,
+							"name": "Training",
+							"item": "https://3back.com/training"
+						},
+						{
+							"@type": "ListItem",
+							"position": 3,
+							"name": "Scrum Mastering I",
+							"item": "https://3back.com/training/scrum-mastering-1"
+						}
+					]
+				},
+				{
+					"@type": "Course",
+					"@id": "https://3back.com/training/scrum-mastering-1#course",
+					"name": "Scrum Mastering I: Facilitating Improvement",
+					"courseCode": "RSM1",
+					"description": "A self-paced course for practitioners serving or preparing to serve as the Scrum Master on a team. Learners demonstrate understanding of the official SM1 learning objectives chapter by chapter.",
+					"url": "https://3back.com/training/scrum-mastering-1",
+					"provider": {
+						"@id": organizationId
+					},
+					"inLanguage": "en-US",
+					"interactivityType": "mixed",
+					"isAccessibleForFree": false,
+					"assesses": "Demonstrated understanding of the official Scrum Mastering I learning objectives.",
+					"educationalCredentialAwarded": {
+						"@id": "https://3back.com/training/scrum-mastering-1#credential"
+					},
+					"isBasedOn": {
+						"@id": "https://3back.com/training/scrum-mastering-1#book"
+					},
+					"hasCourseInstance": {
+						"@id": "https://3back.com/training/scrum-mastering-1#instance"
+					},
+					"syllabusSections": [
+						{
+							"@type": "Syllabus",
+							"name": "Scrum in a Nutshell",
+							"position": 1
+						},
+						{
+							"@type": "Syllabus",
+							"name": "The Scrum Team",
+							"position": 2
+						},
+						{
+							"@type": "Syllabus",
+							"name": "The Team's Scrum Master",
+							"position": 3
+						},
+						{
+							"@type": "Syllabus",
+							"name": "Modes of the Scrum Master",
+							"position": 4
+						},
+						{
+							"@type": "Syllabus",
+							"name": "People Outside the Team",
+							"position": 5
+						},
+						{
+							"@type": "Syllabus",
+							"name": "The Team Swarm",
+							"position": 6
+						},
+						{
+							"@type": "Syllabus",
+							"name": "Leadership",
+							"position": 7
+						},
+						{
+							"@type": "Syllabus",
+							"name": "The Backlog",
+							"position": 8
+						},
+						{
+							"@type": "Syllabus",
+							"name": "Technical Debt",
+							"position": 9
+						},
+						{
+							"@type": "Syllabus",
+							"name": "The Story's Definition of Done",
+							"position": 10
+						},
+						{
+							"@type": "Syllabus",
+							"name": "Velocity, Size, and Effort",
+							"position": 11
+						},
+						{
+							"@type": "Syllabus",
+							"name": "Backlog Refinement",
+							"position": 12
+						},
+						{
+							"@type": "Syllabus",
+							"name": "Planning Day",
+							"position": 13
+						},
+						{
+							"@type": "Syllabus",
+							"name": "The Daily Scrum",
+							"position": 14
+						},
+						{
+							"@type": "Syllabus",
+							"name": "Scaling an Organization",
+							"position": 15
+						}
+					],
+					"image": "https://3back.com/social/scrum-mastering-1.png"
+				},
+				{
+					"@type": "CourseInstance",
+					"@id": "https://3back.com/training/scrum-mastering-1#instance",
+					"name": "Scrum Mastering I self-paced course",
+					"courseMode": "online",
+					"inLanguage": "en-US"
+				},
+				{
+					"@type": "EducationalOccupationalCredential",
+					"@id": "https://3back.com/training/scrum-mastering-1#credential",
+					"name": "Recognized Scrum Master 1 (RSM1)",
+					"description": "Recognizes demonstrated understanding of the Scrum Mastering I learning objectives.",
+					"competencyRequired": "Recognizes demonstrated understanding of the Scrum Mastering I learning objectives.",
+					"credentialCategory": "Recognition credential",
+					"recognizedBy": {
+						"@type": "Organization",
+						"name": "Scrum Guide Organization",
+						"url": "https://scrumguide.org/"
+					}
+				},
+				{
+					"@type": "Book",
+					"@id": "https://3back.com/training/scrum-mastering-1#book",
+					"name": "Scrum Mastering I: Facilitating Improvement",
+					"isbn": "9798465225151",
+					"author": [
+						{
+							"@type": "Person",
+							"name": "Dan Rawsthorne"
+						},
+						{
+							"@type": "Person",
+							"name": "Doug Shimp"
+						}
+					]
+				}
+			]
+		}
+	},
 	"/training": {
 		status: "complete",
 		path: "/training",

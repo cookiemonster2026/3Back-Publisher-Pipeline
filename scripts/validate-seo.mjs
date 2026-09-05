@@ -107,6 +107,8 @@ function validateRegistry() {
 		}
 		if (!new Set(["complete", "stub"]).has(metadata.status)) errors.push(`${route}: invalid or missing page status.`);
 
+		if (metadata.productionRobots && (metadata.status !== "complete" || metadata.indexability !== "index, follow" || metadata.productionRobots !== "index, follow, max-image-preview:large, max-snippet:-1")) errors.push(`${route}: invalid production robots override.`);
+
 		const image = metadata.social?.image;
 		if (image) {
 			if (!existsSync(resolve(publicRoot, image.src.replace(/^\//, "")))) errors.push(`${route}: social image does not exist at ${image.src}.`);
@@ -119,6 +121,29 @@ function validateStructuredData(route, head) {
 	const scripts = [...head.matchAll(/<script\s+[^>]*type=["']application\/ld\+json["'][^>]*>([\s\S]*?)<\/script>/gi)];
 	if (environment === "test") {
 		if (scripts.length > 0) errors.push(`${route}: test output must not emit production structured data.`);
+		return;
+	}
+
+	if (route === "/training/scrum-mastering-1") {
+		if (scripts.length !== 1) { errors.push(`${route}: expected exactly one course graph.`); return; }
+		try {
+			const actual = JSON.parse(scripts[0][1]);
+			expectEqual(route, "approved course graph", JSON.stringify(actual), JSON.stringify(pageSeo[route].structuredData));
+			const graph = actual["@graph"];
+			const expectedTypes = ["Organization", "WebSite", "WebPage", "BreadcrumbList", "Course", "CourseInstance", "EducationalOccupationalCredential", "Book"];
+			expectEqual(route, "course graph node types", JSON.stringify(graph.map(node => node["@type"])), JSON.stringify(expectedTypes));
+			const course = graph.find(node => node["@type"] === "Course");
+			const instance = graph.find(node => node["@type"] === "CourseInstance");
+			if (course.syllabusSections.length !== 15) errors.push(`${route}: expected 15 syllabus sections.`);
+			for (const key of ["offers", "instructor", "startDate", "courseWorkload", "timeRequired"]) {
+				if (Object.hasOwn(course, key) || Object.hasOwn(instance, key)) errors.push(`${route}: unsupported ${key}.`);
+			}
+			if (/"@type"\s*:\s*"(?:Offer|ItemList|FAQPage|Review|AggregateRating)"/.test(scripts[0][1])) errors.push(`${route}: excluded schema node.`);
+			for (const type of ["Organization", "WebSite"]) {
+				const home = pageSeo["/"].structuredData["@graph"].find(node => node["@type"] === type);
+				expectEqual(route, `${type} shared identifier`, graph.find(node => node["@type"] === type)["@id"], home["@id"]);
+			}
+		} catch (error) { errors.push(`${route}: invalid course graph (${error.message}).`); }
 		return;
 	}
 
@@ -186,7 +211,7 @@ function validateHtml() {
 		const html = readFileSync(file, "utf8");
 		const head = html.match(/<head>([\s\S]*?)<\/head>/i)?.[1] ?? "";
 		const title = decodeHtml(head.match(/<title>([\s\S]*?)<\/title>/i)?.[1] ?? "");
-		const expectedRobots = environment === "production" ? metadata.indexability : "noindex, nofollow";
+		const expectedRobots = environment === "production" ? (metadata.productionRobots ?? metadata.indexability) : "noindex, nofollow";
 		const expectedCanonical = canonicalUrl(metadata.path);
 
 		expectEqual(route, "title", title, metadata.title);
@@ -263,6 +288,9 @@ function validateRobotsAndSitemap() {
 
 	const sitemapFiles = walk(distRoot, ".xml").filter((file) => /sitemap.*\.xml$/i.test(file));
 	const sitemapXml = sitemapFiles.map((file) => readFileSync(file, "utf8")).join("\n");
+	for (const redirect of ["/rsm1", "/courses/rsm-1"]) {
+		if (sitemapXml.includes(`<loc>${canonicalUrl(redirect)}</loc>`)) errors.push(`${redirect}: redirect must not appear in sitemap.`);
+	}
 	for (const metadata of Object.values(pageSeo)) {
 		const included = sitemapXml.includes(`<loc>${canonicalUrl(metadata.path)}</loc>`);
 		if (environment === "production" && metadata.indexability === "index, follow" && !included) errors.push(`${metadata.path}: indexable production page is missing from the sitemap.`);

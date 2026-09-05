@@ -67,7 +67,7 @@ There are no declared React, Vue, Svelte, Tailwind, CMS, database, or test-runne
 - `src/layouts/SiteLayout.astro` supplies the HTML document, English language declaration, viewport and favicon tags, Google Font loading, skip link, global CSS variables and base styles, `SeoHead`, `SiteHeader`, `SiteFooter`, and the page slot.
 - `src/components/SeoHead.astro` renders registry-controlled title, description, robots and Googlebot directives, canonical URL, Open Graph metadata, X metadata, optional social image metadata, optional sitemap discovery, and production-only JSON-LD.
 - `src/components/SiteHeader.astro` supplies desktop and mobile navigation and the browser script for opening, closing, Escape handling, link-close behavior, and desktop-breakpoint reset.
-- `src/components/SiteFooter.astro` supplies shared Explore, Learning, and Company links.
+- `src/components/SiteFooter.astro` supplies shared Explore, Execution, and Company links.
 - `src/components/PolicyPage.astro` wraps complete policy routes and rejects registry entries whose status is not `complete`.
 - `src/components/StubPage.astro` wraps declared stub routes and rejects registry entries whose status is not `stub`.
 - Every HTML page under `src/pages/` reaches `SiteLayout`: directly for `/` and `/operational-grip`, through `PolicyPage` for the two policy routes, or through `StubPage` for the six stub routes.

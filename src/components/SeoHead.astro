@@ -9,7 +9,7 @@ interface Props {
 const { metadata } = Astro.props;
 const isProduction = isProductionSeoEnvironment(process.env.SEO_BUILD_ENV);
 const canonical = canonicalUrl(metadata.path);
-const robots = isProduction ? metadata.indexability : "noindex, nofollow";
+const robots = isProduction ? (metadata.productionRobots ?? metadata.indexability) : "noindex, nofollow";
 const image = metadata.social.image;
 const imageUrl = image ? canonicalUrl(image.src) : undefined;
 const twitterCard = image ? "summary_large_image" : "summary";
