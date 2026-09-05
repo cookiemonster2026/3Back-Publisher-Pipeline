@@ -115,7 +115,7 @@ export const pageSeo = Object.freeze({
 					"@id": "https://3back.com/training/scrum-mastering-1/#course",
 					"name": "Scrum Mastering I: Facilitating Improvement",
 					"courseCode": "RSM1",
-					"description": "A self-paced course for practitioners serving or preparing to serve as the Scrum Master on a team. Learners demonstrate understanding of the official SM1 learning objectives module by module.",
+					"description": "A self-paced course for practitioners serving or preparing to serve as the Scrum Master on a team. Learners demonstrate understanding of the official SM1 learning objectives chapter by chapter.",
 					"url": "https://3back.com/training/scrum-mastering-1/",
 					"provider": {
 						"@id": organizationId

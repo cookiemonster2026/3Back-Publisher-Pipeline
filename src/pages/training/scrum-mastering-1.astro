@@ -8,10 +8,10 @@ const turnstileSiteKey = import.meta.env.PUBLIC_TURNSTILE_SITE_KEY ?? "";
 const chapters = ["Scrum in a Nutshell", "The Scrum Team", "The Team's Scrum Master", "Modes of the Scrum Master", "People Outside the Team", "The Team Swarm", "Leadership", "The Backlog", "Technical Debt", "The Story's Definition of Done", "Velocity, Size, and Effort", "Backlog Refinement", "Planning Day", "The Daily Scrum", "Scaling an Organization"];
 const clusters = [chapters.slice(0, 4), chapters.slice(4, 8), chapters.slice(8, 12), chapters.slice(12)];
 const progression = [
- ["Study", "Learn each module's official objectives with the agent tutor."],
+ ["Study", "Learn each chapter's official objectives with the agent tutor."],
  ["Apply", "Connect the material to your own work and domain experience."],
  ["Check", "Take an official objective-based check."],
- ["Unlock", "Score at least 80% to unlock the next module."],
+ ["Unlock", "Score at least 80% to unlock the next chapter."],
  ["Earn RSM1", "Complete all requirements within 12 months to earn RSM1."],
 ];
 ---
@@ -26,29 +26,28 @@ const progression = [
      <div class="hero-badge"><Image src={badge} alt="Recognized Scrum Master 1 credential badge." width={210} height={205} loading="eager" fetchpriority="high" /><p>Earn the Recognized Scrum Master 1 credential.</p></div>
      <div class="hero-cover"><Image src={cover} alt="Cover of Scrum Mastering I: Facilitating Improvement by Dan Rawsthorne and Doug Shimp." width={180} widths={[120, 180, 270, 360]} sizes="(max-width: 600px) 100px, (max-width: 900px) 150px, 180px" loading="eager" fetchpriority="high" /><p>Printed guidebook included</p></div>
     </div>
-    <div class="hero-body"><p>Scrum gives a team a way to organize around complex work. SM1 shows you how a Scrum Master helps that team make decisions, confront impediments, protect accountability, and continuously improve how the work gets done.</p><p>Study at your own pace with an agent tutor grounded in the SM1 guidebook. Apply each idea to your own work and demonstrate your understanding of the learning objectives module by module. Complete the requirements to earn the <a href="https://scrumguide.org/recognized-courses/scrum-master-1/">Recognized Scrum Master 1</a> (RSM1) credential, recognized by the Scrum Guide Organization and verifiable at ScrumGuide.org.</p></div>
-    <div class="hero-offer"><p class="offer-line">$150 | Printed guidebook included | 12 months to complete</p><button class="enrollment" type="button" disabled>Enrollment coming soon</button><p class="shipping"><a href="/policies">Printed-book delivery is limited to available destinations. Additional shipping charges may apply.</a></p></div>
+    <div class="hero-body"><p>Scrum gives a team a way to organize around complex work. SM1 shows you how a Scrum Master helps that team make decisions, confront impediments, protect accountability, and continuously improve how the work gets done.</p><p>Study at your own pace with an agent tutor grounded in the SM1 guidebook. Apply each idea to your own work and demonstrate your understanding of the learning objectives chapter by chapter. Complete the requirements to earn the <a href="https://scrumguide.org/recognized-courses/scrum-master-1/">Recognized Scrum Master 1</a> (RSM1) credential, recognized by the Scrum Guide Organization and verifiable at ScrumGuide.org.</p></div>
+    <div class="hero-offer"><p class="offer-line">$150 | Printed guidebook included | 12 months to complete</p><button class="enrollment" type="button" disabled>Enrollment coming soon</button><p class="shipping">Printed-book delivery is limited to available destinations. Additional shipping charges may apply.</p><a class="shipping-policy" href="/policies">Course policies</a></div>
    </div>
   </div>
  </section>
- <div class="proof-strip"><ul class="shell"><li>15 modules</li><li>80% to advance</li><li>12 months</li><li>RSM1 credential</li></ul></div>
-<section class="course-path"><div class="shell"><h2>Choose the right course path.</h2><div class="path-grid"><div><h3>Public self-paced</h3><p>Study at your own pace with the SM1 guidebook, agent tutor, and objective-based checks.</p><button class="enrollment" type="button" disabled>Enrollment coming soon</button></div><div><h3>Private Live</h3><p>Bring Scrum Mastering I to your Scrum Team through private onsite or virtual instruction.</p><button class="primary-cta" type="button" data-private-request-trigger aria-controls="sm1-private-inquiry">Request a private SM1 course</button></div><div><h3>Domain Guides</h3><p>Use SM1 as an entry point into the Domain Guides program and connect the learning to the work of your domain.</p><a class="secondary-cta" href="/domain-guides">Explore the Domain Guides program</a></div></div></div></section>
-<section id="sm1-private-inquiry" class="private-inquiry" aria-labelledby="sm1-private-inquiry-title"><div class="shell private-inquiry-grid"><div><p class="eyebrow">Private Live course inquiry</p><h2 id="sm1-private-inquiry-title" tabindex="-1">Tell us about your Scrum Team.</h2><p>Tell us about your Scrum Team and training needs. We'll reply by email to schedule a 15- to 30-minute conversation and determine whether a private onsite or virtual SM1 course is the right fit.</p></div><div><form class="private-inquiry-form" action="/api/sm1-private-inquiry" method="post" data-sm1-private-form novalidate><div class="form-fields"><div class="field"><label for="sm1-first-name">First name</label><input id="sm1-first-name" name="first_name" autocomplete="given-name" required maxlength="80" /></div><div class="field"><label for="sm1-last-name">Last name</label><input id="sm1-last-name" name="last_name" autocomplete="family-name" required maxlength="80" /></div><div class="field"><label for="sm1-email">Email</label><input id="sm1-email" name="email" type="email" autocomplete="email" required maxlength="254" /></div><div class="field"><label for="sm1-confirm-email">Email again</label><input id="sm1-confirm-email" name="confirm_email" type="email" autocomplete="email" required maxlength="254" /></div><div class="field field-full"><label for="sm1-company">Company name</label><input id="sm1-company" name="company_name" autocomplete="organization" required maxlength="160" /></div><div class="field field-full"><label for="sm1-note">Tell us about your Scrum Team and training needs.</label><textarea id="sm1-note" name="note" rows="5" required maxlength="4000"></textarea></div></div><div class="turnstile-wrap">{turnstileSiteKey ? <div class="cf-turnstile" data-sitekey={turnstileSiteKey}></div> : <p class="form-error">This form is not configured yet.</p>}</div><p id="sm1-private-form-error" class="form-error" role="alert" tabindex="-1" data-form-error hidden></p><button class="primary-cta submit-button" type="submit" disabled={!turnstileSiteKey}>Send inquiry</button></form><div class="form-success" role="status" tabindex="-1" data-form-success hidden><h3>Thank you. We received your inquiry.</h3><p>We'll reply by email to schedule a 15- to 30-minute conversation about your Scrum Team and training needs. Please look for our reply.</p></div></div></div></section>
+ <div class="proof-strip"><ul class="shell"><li>15 chapters</li><li>80% to advance</li><li>12 months</li><li>RSM1 credential</li></ul></div>
 <section class="sm1-section section-rule"><div class="shell split"><h2>Go beyond running Scrum events</h2><div class="section-body"><p>A Scrum Master does more than schedule meetings and repeat framework rules. SM1 develops a practical account of the role from inside the Team: how authority works, how decisions are made, how improvement is facilitated, and how the Team stays accountable for its work.</p>
 <p>Through the course, you will learn to:</p>
 <ul><li>Distinguish the responsibilities of the Team Member, Product Owner, Scrum Master, Business Owner, Stakeholder, and Subject Matter Expert</li><li>Facilitate Team decisions, Retrospectives, and Intraspectives</li><li>Organize work through the Team Swarm</li><li>Protect Product Owner priority decisions and Team accountability</li><li>Expose Technical Debt and strengthen the Definition of Done</li><li>Improve refinement, planning, daily adaptation, and organizational scaling decisions</li></ul></div></div></section>
 <section class="sm1-section section-rule"><div class="shell split"><h2>Learn the Scrum Mastering I model</h2><div class="section-body"><p>This is not a generic summary of the 2020 Scrum Guide. SM1 teaches the positions developed in Scrum Mastering I: Facilitating Improvement and identifies where those positions differ.</p>
 <p>You will examine the Team Swarm, seven Team Values, Agreement-Based Planning, the Team Captain, Abnormal Termination, the book&#x27;s treatment of Technical Debt, and the distinction between Acceptance Criteria and Standard of Care.</p></div></div></section>
-<section class="sm1-section section-rule"><div class="shell"><h2>Demonstrate what you understand</h2><p>Work through the 15 modules in sequence.</p><ol class="progression">{progression.map(([title, copy], index) => <li><span class="step-number" aria-hidden="true">{String(index + 1).padStart(2, "0")}</span><h3>{title}</h3><p>{copy}</p></li>)}</ol><p>When an answer reveals a gap, the tutor returns to the missed objectives before you try again.</p></div></section>
-<section class="credential-band"><div class="shell credential-grid"><Image src={badge} alt="Recognized Scrum Master 1 credential badge." width={138} height={135} loading="lazy" /><div><h2>Recognition based on demonstrated understanding, not attendance alone</h2><p>Earn RSM1 by completing all 15 modules and passing the required objective-based checks within 12 months. The credential recognizes demonstrated understanding of the Scrum Mastering I learning objectives. Domain experience is where that understanding is put to work.</p>
+<section class="sm1-section section-rule"><div class="shell"><h2>Demonstrate what you understand</h2><p>Work through the 15 chapters in sequence.</p><ol class="progression">{progression.map(([title, copy], index) => <li><span class="step-number" aria-hidden="true">{String(index + 1).padStart(2, "0")}</span><h3>{title}</h3><p>{copy}</p></li>)}</ol><p>When an answer reveals a gap, the tutor returns to the missed objectives before you try again.</p></div></section>
+<section class="credential-band"><div class="shell credential-grid"><Image src={badge} alt="Recognized Scrum Master 1 credential badge." width={138} height={135} loading="lazy" /><div><h2>Recognition based on demonstrated understanding, not attendance alone</h2><p>Earn RSM1 by completing all 15 chapters and passing the required objective-based checks within 12 months. The credential recognizes demonstrated understanding of the Scrum Mastering I learning objectives. Domain experience is where that understanding is put to work.</p>
 <p>Your RSM1 credential is recognized by the Scrum Guide Organization and verifiable at ScrumGuide.org.</p></div></div></section>
 <section class="sm1-section section-rule"><div class="shell split"><h2>What your $150 includes</h2><div class="section-body"><ul><li>Twelve months of access to the complete self-paced SM1 course</li><li>An agent tutor grounded in the SM1 guidebook</li><li>Official objective-based knowledge checks</li><li>A printed copy of Scrum Mastering I: Facilitating Improvement</li><li>The <a href="https://scrumguide.org/recognized-courses/scrum-master-1/">Recognized Scrum Master 1</a> credential</li><li>Recognition and verification through ScrumGuide.org</li></ul>
 <p>The public self-paced course does not include a live instructor or office hours.</p></div></div></section>
-<section class="sm1-section section-rule"><div class="shell"><h2>15 modules. One complete course.</h2><p>Each module is built around one chapter of the Scrum Mastering I guidebook.</p><div class="curriculum">{clusters.map((cluster, index) => <ol start={index * 4 + 1}>{cluster.map(chapter => <li>{chapter}</li>)}</ol>)}</div></div></section>
+<section class="sm1-section section-rule"><div class="shell"><h2>15 chapters. One complete course.</h2><p>Each chapter follows the corresponding chapter of the Scrum Mastering I guidebook.</p><div class="curriculum">{clusters.map((cluster, index) => <ol start={index * 4 + 1}>{cluster.map(chapter => <li>{chapter}</li>)}</ol>)}</div></div></section>
 <section class="sm1-section section-rule"><div class="shell split"><h2>Put it to work in your domain</h2><div class="section-body"><p>The course can teach the material and test your understanding. It cannot supply your domain experience for you. The value comes from recognizing how these ideas appear in the work you are already doing and deciding how to apply them there.</p></div></div></section>
+<section class="commercial-split section-rule"><div class="shell"><h2>Take Scrum Mastering I</h2><p class="split-lead">Same course. Two ways to take it.</p><div class="delivery-grid"><div><h3>Public self-paced</h3><p>Study on your own with the guidebook, the agent tutor, and the chapter checks. $150. Printed guidebook included.</p><button class="enrollment" type="button" disabled>Enrollment coming soon</button></div><div><h3>Private Live</h3><p>Same material, delivered to your team onsite or virtually.</p><button class="primary-cta" type="button" data-private-request-trigger aria-controls="sm1-private-inquiry" aria-expanded="false">Request a private SM1 course</button></div></div></div></section>
+<section id="sm1-private-inquiry" class="private-inquiry" aria-labelledby="sm1-private-inquiry-title" hidden><div class="shell private-inquiry-grid"><div><p class="eyebrow">Private Live course inquiry</p><h2 id="sm1-private-inquiry-title" tabindex="-1">Tell us about your Scrum Team.</h2><p>Tell us about your Scrum Team and training needs. We'll reply by email to schedule a 15- to 30-minute conversation and determine whether a private onsite or virtual SM1 course is the right fit.</p></div><div><form class="private-inquiry-form" action="/api/sm1-private-inquiry" method="post" data-sm1-private-form novalidate><div class="form-fields"><div class="field"><label for="sm1-first-name">First name</label><input id="sm1-first-name" name="first_name" autocomplete="given-name" required maxlength="80" /></div><div class="field"><label for="sm1-last-name">Last name</label><input id="sm1-last-name" name="last_name" autocomplete="family-name" required maxlength="80" /></div><div class="field"><label for="sm1-email">Email</label><input id="sm1-email" name="email" type="email" autocomplete="email" required maxlength="254" /></div><div class="field"><label for="sm1-confirm-email">Email again</label><input id="sm1-confirm-email" name="confirm_email" type="email" autocomplete="email" required maxlength="254" /></div><div class="field field-full"><label for="sm1-company">Company name</label><input id="sm1-company" name="company_name" autocomplete="organization" required maxlength="160" /></div><div class="field field-full"><label for="sm1-note">Tell us about your Scrum Team and training needs.</label><textarea id="sm1-note" name="note" rows="5" required maxlength="4000"></textarea></div></div><div class="turnstile-wrap">{turnstileSiteKey ? <div class="cf-turnstile" data-sitekey={turnstileSiteKey}></div> : <p class="form-error">This form is not configured yet.</p>}</div><p id="sm1-private-form-error" class="form-error" role="alert" tabindex="-1" data-form-error hidden></p><button class="primary-cta submit-button" type="submit" disabled={!turnstileSiteKey}>Send inquiry</button></form><div class="form-success" role="status" tabindex="-1" data-form-success hidden><h3>Thank you. We received your inquiry.</h3><p>We'll reply by email to schedule a 15- to 30-minute conversation about your Scrum Team and training needs. Please look for our reply.</p></div></div></div></section>
 <section class="sm1-section section-rule"><div class="shell split"><h2>Ready to begin?</h2><div class="section-body"><p>Build a stronger working understanding of the Scrum Master role and earn recognition for demonstrating it.</p><p class="offer-line">$150 | Complete within 12 months</p><button class="enrollment" type="button" disabled>Enrollment coming soon</button></div></div></section>
-<section class="pathways-band"><div class="shell"><p class="eyebrow">Scrum Pathways®</p><h2>Get yourself on the Scrum Guide Organization pathway.</h2><p>RSM1 is your first step in the Scrum Mastering sequence. Continue through RSM2 and RSM3, or follow the Product Ownership sequence from RPO1 through RPO3. Each course is available separately for $150.</p><div class="pathway-rows" aria-label="Scrum pathways"><p><strong>Scrum Mastering:</strong> <span class="current-step">RSM1 <span>You are here</span></span> <span aria-hidden="true">→</span> RSM2 <span aria-hidden="true">→</span> RSM3</p><p><strong>Product Ownership:</strong> RPO1 <span aria-hidden="true">→</span> RPO2 <span aria-hidden="true">→</span> RPO3</p></div><a class="text-link" href="https://scrumguide.org/recognized-courses/">Explore the Scrum Guide Organization Scrum Pathway</a><p class="legal-notice">Scrum Pathways® is a registered trademark of 3Back LLC.</p></div></section>
-<section class="closing-band"><div class="shell"><h2>Choose the right course path.</h2><div class="closing-actions"><button class="enrollment" type="button" disabled>Enrollment coming soon</button><button class="primary-cta" type="button" data-private-request-trigger aria-controls="sm1-private-inquiry">Request a private SM1 course</button><a class="secondary-cta" href="/domain-guides">Explore the Domain Guides program</a></div></div></section>
+<section class="domain-guides-band"><div class="shell split"><h2>If the skill needs to stay in the company</h2><div class="section-body"><p>SM1 can teach the material and test understanding. It does not leave the company with its own guides. Domain Guides starts in the live work and keeps that capability inside the domain. SM1 is one entry into that program, not the program itself.</p><a class="secondary-cta" href="/domain-guides">Explore the Domain Guides program</a></div></div></section>
 </main>
 </SiteLayout>
 <script is:inline src="https://challenges.cloudflare.com/turnstile/v0/api.js" async defer></script>
@@ -60,7 +59,7 @@ const progression = [
  const inquiryTriggers = document.querySelectorAll("[data-private-request-trigger]");
  if (inquirySection instanceof HTMLElement && inquiryForm instanceof HTMLFormElement) {
   const error = inquiryForm.querySelector("[data-form-error]"); const success = inquirySection.querySelector("[data-form-success]"); const button = inquiryForm.querySelector("button[type='submit']"); const email = inquiryForm.querySelector<HTMLInputElement>("[name='email']"); const confirmEmail = inquiryForm.querySelector<HTMLInputElement>("[name='confirm_email']");
-  const openInquiry = () => { inquirySection.scrollIntoView({ behavior: "smooth", block: "start" }); window.setTimeout(() => { if (inquiryHeading instanceof HTMLElement) inquiryHeading.focus(); }, 250); };
+  const openInquiry = () => { inquirySection.hidden = false; inquiryTriggers.forEach((trigger) => trigger.setAttribute("aria-expanded", "true")); inquirySection.scrollIntoView({ behavior: "smooth", block: "start" }); window.setTimeout(() => { if (inquiryHeading instanceof HTMLElement) inquiryHeading.focus(); }, 250); };
   inquiryTriggers.forEach((trigger) => trigger.addEventListener("click", openInquiry));
   const validateEmails = () => { if (email && confirmEmail) confirmEmail.setCustomValidity(email.value && confirmEmail.value && email.value !== confirmEmail.value ? "Email addresses must match." : ""); };
   email?.addEventListener("input", validateEmails); confirmEmail?.addEventListener("input", validateEmails);
@@ -88,9 +87,10 @@ h1 { font-size: clamp(2.25rem, 3.8vw, 3.35rem); line-height: 1.12; margin-bottom
 .offer-line { margin: 6px 0 14px; font-size: 1.125rem; font-weight: 700; }
 .enrollment { display: inline-flex; align-items: center; justify-content: center; min-height: 48px; padding: 11px 22px; border: 1px solid var(--slate); background: transparent; color: var(--charcoal); opacity: 1; font-weight: 700; cursor: default; }
 .shipping { max-width: 630px; margin: 12px 0 0; font-size: .875rem; line-height: 1.45; }
+.shipping-policy { display: inline-block; margin-top: 4px; font-size: .875rem; font-weight: 600; }
 a { text-underline-offset: 3px; }
-.breadcrumb a, .hero-body a, .shipping a, .text-link { transition: color 160ms ease, text-decoration-thickness 160ms ease; }
-.breadcrumb a:hover, .breadcrumb a:focus-visible, .hero-body a:hover, .hero-body a:focus-visible, .shipping a:hover, .shipping a:focus-visible, .text-link:hover, .text-link:focus-visible { color: var(--amber-text); text-decoration-thickness: 2px; }
+.breadcrumb a, .hero-body a, .shipping-policy { transition: color 160ms ease, text-decoration-thickness 160ms ease; }
+.breadcrumb a:hover, .breadcrumb a:focus-visible, .hero-body a:hover, .hero-body a:focus-visible, .shipping-policy:hover, .shipping-policy:focus-visible { color: var(--amber-text); text-decoration-thickness: 2px; }
 .primary-cta, .secondary-cta { display: inline-flex; align-items: center; justify-content: center; min-height: 48px; padding: 11px 18px; font: inherit; font-weight: 700; line-height: 1.25; text-align: center; text-decoration: none; cursor: pointer; transition: background-color 160ms ease, border-color 160ms ease, color 160ms ease, box-shadow 160ms ease, transform 160ms ease; }
 .primary-cta { border: 2px solid var(--amber); background: var(--amber); color: var(--charcoal); box-shadow: 4px 4px 0 var(--charcoal); }
 .secondary-cta { border: 1px solid currentColor; background: transparent; color: var(--charcoal); }
@@ -100,14 +100,6 @@ a { text-underline-offset: 3px; }
 .proof-strip ul { display: grid; grid-template-columns: repeat(4, 1fr); list-style: none; padding-block: 21px; padding-left: 0; margin-block: 0; }
 .proof-strip li { font-weight: 700; text-align: center; border-right: 1px solid var(--rule); }
 .proof-strip li:last-child { border: 0; }
-.course-path { padding: 58px 0 64px; border-bottom: 1px solid var(--rule); }
-.course-path h2 { margin-bottom: 30px; }
-.path-grid { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); border-top: 3px solid var(--amber); }
-.path-grid > div { padding: 28px 40px 0 0; }
-.path-grid > div + div { padding-left: 40px; border-left: 1px solid var(--rule); }
-.path-grid h3 { font-size: 1.45rem; }
-.path-grid p { min-height: 96px; }
-.text-link { display: inline-block; margin-top: 8px; font-weight: 700; text-decoration-thickness: 2px; }
 .private-inquiry { padding: 72px 0; scroll-margin-top: 24px; border-bottom: 1px solid var(--rule); background: var(--reading); }
 .private-inquiry-grid { display: grid; grid-template-columns: minmax(0, .75fr) minmax(360px, .85fr); gap: clamp(46px, 8vw, 120px); align-items: start; }
 .private-inquiry-grid > div:first-child > p:last-child { max-width: 440px; font-size: 1.125rem; line-height: 1.6; }
@@ -146,27 +138,23 @@ h2 { font-size: clamp(1.9rem, 3vw, 2.65rem); }
 .curriculum ol { margin: 12px 0 0; padding: 18px 0 0 24px; border-top: 1px solid var(--slate); }
 .curriculum li { margin: 0 0 14px; padding-left: 4px; }
 .curriculum li::marker { color: var(--amber-text); font-weight: 600; }
-.pathways-band { padding: 68px 0; background: var(--charcoal); color: var(--paper); }
-.pathways-band h2, .pathways-band > .shell > p { max-width: 850px; }
-.pathway-rows { margin: 30px 0 22px; border-top: 3px solid var(--amber); }
-.pathway-rows p { margin: 0; padding: 17px 0; border-bottom: 1px solid rgb(255 255 255 / 24%); }
-.pathway-rows strong { display: inline-block; min-width: 180px; }
-.current-step { color: var(--amber); font-weight: 700; }
-.current-step span { display: inline-block; margin: 0 12px 0 5px; padding: 3px 7px; border: 1px solid currentColor; font-size: .75rem; line-height: 1; }
-.pathways-band .text-link { color: var(--paper); }
-.pathways-band .text-link:hover, .pathways-band .text-link:focus-visible { color: var(--amber); }
-.legal-notice { margin: 30px 0 0; font-size: .8rem; opacity: .78; }
-.closing-band { padding: 60px 0; border-bottom: 1px solid var(--rule); }
-.closing-actions { display: flex; flex-wrap: wrap; gap: 16px; }
+.commercial-split { padding: 70px 0; }
+.split-lead { margin: -6px 0 30px; font-size: 1.25rem; font-weight: 600; }
+.delivery-grid { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); border-top: 3px solid var(--amber); }
+.delivery-grid > div { padding: 28px 40px 0 0; }
+.delivery-grid > div + div { padding-left: 40px; border-left: 1px solid var(--rule); }
+.delivery-grid h3 { font-size: 1.45rem; }
+.delivery-grid p { min-height: 72px; }
+.domain-guides-band { padding: 60px 0; border-block: 1px solid var(--rule); background: var(--reading); }
 @media (max-width: 900px) {
  .hero-grid { grid-template-columns: minmax(0, 1fr) 220px; gap: 0 30px; }
  .hero-badge img { width: 180px; }
  .hero-cover img { width: 150px; }
  .split { gap: 36px; }
- .path-grid { grid-template-columns: 1fr; }
- .path-grid > div { padding: 24px 0; }
- .path-grid > div + div { padding-left: 0; border-top: 1px solid var(--rule); border-left: 0; }
- .path-grid p { min-height: 0; }
+ .delivery-grid { grid-template-columns: 1fr; }
+ .delivery-grid > div { padding: 24px 0; }
+ .delivery-grid > div + div { padding-left: 0; border-top: 1px solid var(--rule); border-left: 0; }
+ .delivery-grid p { min-height: 0; }
  .private-inquiry-grid { grid-template-columns: 1fr; gap: 36px; }
  .curriculum { grid-template-columns: repeat(2, minmax(0, 1fr)); }
  .progression { grid-template-columns: 1fr; }
@@ -195,23 +183,17 @@ h2 { font-size: clamp(1.9rem, 3vw, 2.65rem); }
  .enrollment { width: 100%; }
  .proof-strip ul { grid-template-columns: repeat(2, 1fr); gap: 14px 0; }
  .proof-strip li:nth-child(2) { border: 0; }
- .course-path { padding: 44px 0 48px; }
  .sm1-section { padding: 48px 0; }
  .split, .credential-grid, .curriculum { grid-template-columns: 1fr; gap: 16px; }
  .split h2 { margin-bottom: 8px; }
  .credential-band { padding: 48px 0; }
  .credential-grid img { margin-bottom: 14px; }
- .pathways-band { padding: 48px 0; }
- .pathway-rows strong { display: block; min-width: 0; margin-bottom: 6px; }
- .current-step span { margin-right: 4px; }
- .closing-band { padding: 44px 0; }
+ .commercial-split, .domain-guides-band { padding: 44px 0; }
  .form-fields { grid-template-columns: 1fr; }
  .field-full { grid-column: auto; }
- .closing-actions { display: grid; }
- .closing-actions > * { width: 100%; }
 }
 @media (prefers-reduced-motion: reduce) {
- .breadcrumb a, .hero-body a, .shipping a, .text-link, .primary-cta, .secondary-cta { transition: none; }
+ .breadcrumb a, .hero-body a, .shipping-policy, .primary-cta, .secondary-cta { transition: none; }
  .primary-cta:hover, .primary-cta:focus-visible, .secondary-cta:hover, .secondary-cta:focus-visible { transform: none; }
 }
 </style>
