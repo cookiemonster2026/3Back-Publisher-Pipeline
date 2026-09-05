@@ -68,9 +68,9 @@ export const pageSeo = Object.freeze({
 				},
 				{
 					"@type": "WebPage",
-					"@id": "https://3back.com/training/scrum-mastering-1#webpage",
+					"@id": "https://3back.com/training/scrum-mastering-1/#webpage",
 					"name": "Scrum Mastering I: Facilitating Improvement",
-					"url": "https://3back.com/training/scrum-mastering-1",
+					"url": "https://3back.com/training/scrum-mastering-1/",
 					"description": "Study Scrum Mastering I at your own pace. Demonstrate the learning objectives and earn the RSM1 credential recognized by the Scrum Guide Organization.",
 					"isPartOf": {
 						"@id": websiteId
@@ -79,16 +79,16 @@ export const pageSeo = Object.freeze({
 						"@id": organizationId
 					},
 					"mainEntity": {
-						"@id": "https://3back.com/training/scrum-mastering-1#course"
+						"@id": "https://3back.com/training/scrum-mastering-1/#course"
 					},
 					"breadcrumb": {
-						"@id": "https://3back.com/training/scrum-mastering-1#breadcrumb"
+						"@id": "https://3back.com/training/scrum-mastering-1/#breadcrumb"
 					},
 					"image": "https://3back.com/social/scrum-mastering-1.png"
 				},
 				{
 					"@type": "BreadcrumbList",
-					"@id": "https://3back.com/training/scrum-mastering-1#breadcrumb",
+					"@id": "https://3back.com/training/scrum-mastering-1/#breadcrumb",
 					"itemListElement": [
 						{
 							"@type": "ListItem",
@@ -106,17 +106,17 @@ export const pageSeo = Object.freeze({
 							"@type": "ListItem",
 							"position": 3,
 							"name": "Scrum Mastering I",
-							"item": "https://3back.com/training/scrum-mastering-1"
+							"item": "https://3back.com/training/scrum-mastering-1/"
 						}
 					]
 				},
 				{
 					"@type": "Course",
-					"@id": "https://3back.com/training/scrum-mastering-1#course",
+					"@id": "https://3back.com/training/scrum-mastering-1/#course",
 					"name": "Scrum Mastering I: Facilitating Improvement",
 					"courseCode": "RSM1",
 					"description": "A self-paced course for practitioners serving or preparing to serve as the Scrum Master on a team. Learners demonstrate understanding of the official SM1 learning objectives module by module.",
-					"url": "https://3back.com/training/scrum-mastering-1",
+					"url": "https://3back.com/training/scrum-mastering-1/",
 					"provider": {
 						"@id": organizationId
 					},
@@ -125,13 +125,13 @@ export const pageSeo = Object.freeze({
 					"isAccessibleForFree": false,
 					"assesses": "Demonstrated understanding of the official Scrum Mastering I learning objectives.",
 					"educationalCredentialAwarded": {
-						"@id": "https://3back.com/training/scrum-mastering-1#credential"
+						"@id": "https://3back.com/training/scrum-mastering-1/#credential"
 					},
 					"isBasedOn": {
-						"@id": "https://3back.com/training/scrum-mastering-1#book"
+						"@id": "https://3back.com/training/scrum-mastering-1/#book"
 					},
 					"hasCourseInstance": {
-						"@id": "https://3back.com/training/scrum-mastering-1#instance"
+						"@id": "https://3back.com/training/scrum-mastering-1/#instance"
 					},
 					"syllabusSections": [
 						{
@@ -214,14 +214,14 @@ export const pageSeo = Object.freeze({
 				},
 				{
 					"@type": "CourseInstance",
-					"@id": "https://3back.com/training/scrum-mastering-1#instance",
+					"@id": "https://3back.com/training/scrum-mastering-1/#instance",
 					"name": "Scrum Mastering I self-paced course",
 					"courseMode": "online",
 					"inLanguage": "en-US"
 				},
 				{
 					"@type": "EducationalOccupationalCredential",
-					"@id": "https://3back.com/training/scrum-mastering-1#credential",
+					"@id": "https://3back.com/training/scrum-mastering-1/#credential",
 					"name": "Recognized Scrum Master 1 (RSM1)",
 					"description": "Recognizes demonstrated understanding of the Scrum Mastering I learning objectives.",
 					"competencyRequired": "Recognizes demonstrated understanding of the Scrum Mastering I learning objectives.",
@@ -234,7 +234,7 @@ export const pageSeo = Object.freeze({
 				},
 				{
 					"@type": "Book",
-					"@id": "https://3back.com/training/scrum-mastering-1#book",
+					"@id": "https://3back.com/training/scrum-mastering-1/#book",
 					"name": "Scrum Mastering I: Facilitating Improvement",
 					"isbn": "9798465225151",
 					"author": [
@@ -876,5 +876,6 @@ export function normalizePath(pathname) {
 
 /** @param {string} pathname */
 export function canonicalUrl(pathname) {
+	if (normalizePath(pathname) === "/training/scrum-mastering-1") return `${SITE_ORIGIN}/training/scrum-mastering-1/`;
 	return pathname === "/" ? `${SITE_ORIGIN}/` : `${SITE_ORIGIN}${pathname}`;
 }
