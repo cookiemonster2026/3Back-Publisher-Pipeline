@@ -27,8 +27,10 @@
 /FAQ/ /scrum-alliance-courses-faq 301
 /faq /scrum-alliance-courses-faq 301
 /faq/ /scrum-alliance-courses-faq 301
-/course-policy /policies 301
-/course-policy/ /policies 301
+/policies /course-policy 301
+/policies/ /course-policy 301
+/course-policies /course-policy 301
+/course-policies/ /course-policy 301
 /agile-scrum-training-consulting /training 301
 /agile-scrum-training-consulting/ /training 301
 /courses/csm /certified-scrummaster-training 301

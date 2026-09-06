@@ -607,9 +607,9 @@ export const pageSeo = Object.freeze({
 			type: "website",
 		},
 	},
-	"/policies": {
+	"/course-policy": {
 		status: "complete",
-		path: "/policies",
+		path: "/course-policy",
 		title: "Course Policies | 3Back",
 		description: "Course policies for 3Back On-Demand, In-Person, and Live Online Public Courses.",
 		indexability: "index, follow",
