@@ -29,6 +29,85 @@ export const HOMEPAGE_OPERATIONAL_GRIP_EXPLANATION = "A team or scaled system ha
 
 /** @type {Readonly<Record<string, SeoMetadata>>} */
 export const pageSeo = Object.freeze({
+	"/papers/how-3back-approaches-learning": {
+	  "status": "complete",
+	  "path": "/papers/how-3back-approaches-learning",
+	  "title": "How 3Back Approaches Learning | 3Back",
+	  "description": "How 3Back connects learning objectives, structured inquiry, domain work, and evidence so understanding can develop into professional capability.",
+	  "indexability": "index, follow",
+	  "productionRobots": "index, follow, max-image-preview:large, max-snippet:-1",
+	  "social": {
+	    "title": "How 3Back Approaches Learning",
+	    "description": "How 3Back connects learning objectives, structured inquiry, domain work, and evidence so understanding can develop into professional capability.",
+	    "type": "article",
+	    "image": {
+	      "src": "/social/how-3back-approaches-learning.png",
+	      "alt": "How 3Back Approaches Learning beside a five-step learning cycle from objective through calibration, with application in a domain of work at the center.",
+	      "width": 1200,
+	      "height": 630,
+	      "type": "image/png"
+	    }
+	  },
+	  "structuredData": {
+	    "@context": "https://schema.org",
+	    "@graph": [
+	      {
+	        "@type": "WebPage",
+	        "@id": "https://3back.com/papers/how-3back-approaches-learning#webpage",
+	        "url": "https://3back.com/papers/how-3back-approaches-learning",
+	        "name": "How 3Back Approaches Learning",
+	        "description": "How 3Back connects learning objectives, structured inquiry, domain work, and evidence so understanding can develop into professional capability.",
+	        "inLanguage": "en-US",
+	        "isPartOf": {
+	          "@id": "https://3back.com/#website"
+	        },
+	        "publisher": {
+	          "@id": "https://3back.com/#organization"
+	        },
+	        "primaryImageOfPage": {
+	          "@id": "https://3back.com/papers/how-3back-approaches-learning#primaryimage"
+	        },
+	        "mainEntity": {
+	          "@id": "https://3back.com/papers/how-3back-approaches-learning#article"
+	        }
+	      },
+	      {
+	        "@type": "Article",
+	        "@id": "https://3back.com/papers/how-3back-approaches-learning#article",
+	        "url": "https://3back.com/papers/how-3back-approaches-learning",
+	        "headline": "How 3Back Approaches Learning",
+	        "description": "How 3Back connects learning objectives, structured inquiry, domain work, and evidence so understanding can develop into professional capability.",
+	        "inLanguage": "en-US",
+	        "author": {
+	          "@id": "https://3back.com/#organization"
+	        },
+	        "publisher": {
+	          "@id": "https://3back.com/#organization"
+	        },
+	        "isPartOf": {
+	          "@id": "https://3back.com/#website"
+	        },
+	        "mainEntityOfPage": {
+	          "@id": "https://3back.com/papers/how-3back-approaches-learning#webpage"
+	        },
+	        "image": {
+	          "@id": "https://3back.com/papers/how-3back-approaches-learning#primaryimage"
+	        }
+	      },
+	      {
+	        "@type": "ImageObject",
+	        "@id": "https://3back.com/papers/how-3back-approaches-learning#primaryimage",
+	        "url": "https://3back.com/social/how-3back-approaches-learning.png",
+	        "contentUrl": "https://3back.com/social/how-3back-approaches-learning.png",
+	        "caption": "How 3Back Approaches Learning beside a five-step learning cycle from objective through calibration, with application in a domain of work at the center.",
+	        "width": 1200,
+	        "height": 630,
+	        "encodingFormat": "image/png",
+	        "inLanguage": "en-US"
+	      }
+	    ]
+	  }
+	},
 	"/training/scrum-mastering-1": {
 		"status": "complete",
 		"path": "/training/scrum-mastering-1",
