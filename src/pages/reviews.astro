@@ -6,6 +6,10 @@ import { parseReviews } from "../data/reviews/parse.mjs";
 const collection = parseReviews(csv);
 const star = "12,2 15.09,8.26 22,9.27 17,14.14 18.18,21.02 12,17.77 5.82,21.02 7,14.14 2,9.27 8.91,8.26";
 const offers = [["Training", "/training"], ["Workshops", "/workshops"], ["Domain Guides", "/domain-guides"], ["Events", "/events"]];
+const yearModes = Array.from({ length: 15 }, (_, index) => {
+  const year = 2026 - index;
+  return { year, count: collection.reviews.filter(review => review.review_year === year).length };
+});
 ---
 
 <SiteLayout metadata={pageSeo["/reviews"]}>
@@ -62,7 +66,7 @@ const offers = [["Training", "/training"], ["Workshops", "/workshops"], ["Domain
         <h2>Browse reviews</h2><p>Choose Featured or a year.</p>
         <div class="year-buttons" role="group" aria-label="Choose reviews">
           <button type="button" data-mode="featured" aria-pressed="true" aria-controls="review-viewport">Featured</button>
-          {collection.yearModes.map(mode => <button type="button" data-mode={mode.year} aria-pressed="false" aria-controls="review-viewport">{mode.year} ({mode.count})</button>)}
+          {yearModes.map(mode => <button type="button" data-mode={mode.year} aria-pressed="false" aria-controls="review-viewport" disabled={mode.count === 0}>{mode.year} ({mode.count})</button>)}
         </div>
       </div>
     </div></section>
@@ -180,10 +184,11 @@ const offers = [["Training", "/training"], ["Workshops", "/workshops"], ["Domain
   .date, .source-label { color: var(--text-secondary); }
   .carousel-controls { display: grid; grid-template-columns: 48px 130px 48px; gap: 14px; align-items: center; justify-content: end; margin-top: 22px; }
   button, .offer-links a { min-height: 48px; border: 1px solid var(--slate); border-radius: 3px; background: transparent; color: var(--charcoal); font: inherit; font-weight: 600; cursor: pointer; }
-  button:hover, .offer-links a:hover { background: var(--amber-wash); }
+  button:not([disabled]):not([aria-disabled="true"]):not([aria-pressed="true"]):hover, .offer-links a:hover { background: var(--charcoal); color: var(--paper); }
   button:focus-visible, .offer-links a:focus-visible, .review-viewport:focus-visible { outline: 3px solid var(--charcoal); outline-offset: 4px; }
   .carousel-controls button { font-size: 1.5rem; }
   button[aria-disabled="true"] { color: var(--slate); border-color: var(--rule); cursor: default; }
+  button:disabled { color: var(--slate); border-color: var(--rule); cursor: not-allowed; opacity: 0.72; }
   .range { margin: 0; text-align: center; font-variant-numeric: tabular-nums; }
   .browse { margin-top: 32px; }
   .browse h2 { margin-bottom: 6px; }
