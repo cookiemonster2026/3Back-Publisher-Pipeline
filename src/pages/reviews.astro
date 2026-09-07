@@ -49,7 +49,7 @@ const yearModes = Array.from({ length: 15 }, (_, index) => {
               </span>
               <blockquote><p>{review.review_text}</p></blockquote>
               <div class="review-credit">
-                <p class="attribution">{review.attribution}</p>
+                <p class="attribution">{review.display_name}</p>
                 {review.date_display && <p class="date">{review.review_date ? <time datetime={review.review_date}>{review.date_display}</time> : review.date_display}</p>}
                 <p class="source-label">{review.source_label}</p>
               </div>

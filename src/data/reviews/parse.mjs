@@ -1,5 +1,17 @@
 const columns = "review_id,review_year,review_date,date_display,rating,review_text,attribution,source_label,featured".split(",");
 
+/** Derive the public card name without changing the stored attribution.
+ * @param {string} attribution
+ */
+export function displayName(attribution) {
+  const trimmed = attribution.trim();
+  if (!trimmed || trimmed === "Consumer" || /^\p{L}\.\s+\S/u.test(trimmed)) return trimmed;
+  const withoutLastInitial = trimmed.replace(/\s+\p{L}\.?$/u, "");
+  if (withoutLastInitial === "Nga Yan") return withoutLastInitial;
+  const tokens = withoutLastInitial.split(/\s+/);
+  return tokens.length > 1 ? tokens[0] : withoutLastInitial;
+}
+
 /** Parse the public snapshot only. Quoted commas, newlines and doubled quotes are preserved.
  * @param {string} csv
  */
@@ -33,7 +45,7 @@ export function parseReviews(csv) {
     if (fields.length !== columns.length) fail("wrong column count.");
     if (fields.some(field => /[<>]|&(?:lt|gt|#0*6[02]|#x0*3[ce]);/i.test(field))) fail("HTML is not allowed.");
     const record = Object.fromEntries(columns.map((key, i) => [key, fields[i]]));
-    for (const key of columns.filter(key => !["review_date", "date_display"].includes(key))) {
+    for (const key of columns.filter(key => !["review_date", "date_display", "attribution"].includes(key))) {
       if (!record[key]?.trim()) fail(`blank ${key}.`);
     }
     if (!/^\d{4}-\d{3}$/.test(record.review_id) || ids.has(record.review_id)) fail("malformed or duplicate id.");
@@ -50,7 +62,8 @@ export function parseReviews(csv) {
       review_id: record.review_id, review_year: Number(record.review_year),
       review_date: record.review_date, date_display: record.date_display,
       rating: Number(record.rating), review_text: record.review_text,
-      attribution: record.attribution, source_label: record.source_label, featured: record.featured,
+      attribution: record.attribution, display_name: displayName(record.attribution),
+      source_label: record.source_label, featured: record.featured,
     };
   }).sort((a, b) => b.review_id.localeCompare(a.review_id));
   const featured = reviews.filter(review => review.featured === "yes");
