@@ -1,22 +1,209 @@
 ---
 import SiteLayout from "../layouts/SiteLayout.astro";
 import { pageSeo } from "../seo/registry.mjs";
+import csv from "../data/reviews/published.csv?raw";
+import { parseReviews } from "../data/reviews/parse.mjs";
+const collection = parseReviews(csv);
+const star = "12,2 15.09,8.26 22,9.27 17,14.14 18.18,21.02 12,17.77 5.82,21.02 7,14.14 2,9.27 8.91,8.26";
+const offers = [["Training", "/training"], ["Workshops", "/workshops"], ["Domain Guides", "/domain-guides"], ["Events", "/events"]];
 ---
 
 <SiteLayout metadata={pageSeo["/reviews"]}>
-	<main id="main" class="reviews-stub">
-		<div class="shell reviews-content">
-			<h1>3Back reviews</h1>
-			<p>The review archive is in production.</p>
-			<a href="/training/scrum-mastering-1/">Back to Scrum Mastering I</a>
-		</div>
-	</main>
+  <main id="main" class="reviews-page">
+    <section class="opening"><div class="shell">
+      <p class="eyebrow">REVIEWS</p>
+      <h1>What people say about 3Back</h1>
+      <p class="intro">Read selected 3Back reviews originally published online or provided directly to 3Back, with original star ratings and 15 years of feedback organized by year.</p>
+    </div></section>
+    <section class="aggregate section-rule" aria-label="Collection rating"><div class="shell">
+      <div class="rating-line">
+        <p class="rating"><strong>{collection.rating}</strong> out of 5</p>
+        <span class="stars aggregate-stars" role="img" aria-label={`${collection.rating} out of 5 stars`}>
+          {[0, 1, 2, 3, 4].map(index => (
+            <svg viewBox="0 0 24 24" aria-hidden="true">
+              <defs><clipPath id={`aggregate-star-${index}`}><rect x="0" y="0" width={24 * Math.max(0, Math.min(1, Number(collection.rating) - index))} height="24" /></clipPath></defs>
+              <polygon points={star} fill="none" stroke="var(--slate)" stroke-width="1.5" stroke-linejoin="round" />
+              <polygon points={star} fill="var(--amber)" clip-path={`url(#aggregate-star-${index})`} />
+            </svg>
+          ))}
+        </span>
+      </div>
+      <p class="proof">Across {collection.count} selected reviews from {collection.earliest}-{collection.latest}</p>
+      <p class="sources">{collection.sources.map(source => source.label === "Online review" ? "Online reviews" : source.label).join(" | ")}</p>
+      <p class="calculation">Calculated from the reviews published in this collection.</p>
+    </div></section>
+    <section class="review-section" aria-labelledby="reviews-title" data-review-carousel><div class="shell">
+      <h2 id="reviews-title">Featured reviews</h2>
+      <div class="review-viewport" id="review-viewport" tabindex="0" role="region" aria-roledescription="carousel" aria-labelledby="reviews-title">
+        <div class="review-track">
+          {collection.reviews.map(review => (
+            <article class="review-card" data-review-id={review.review_id} data-year={review.review_year} data-featured={review.featured} hidden={review.featured !== "yes"}>
+              <span class="stars" role="img" aria-label={`${review.rating} out of 5 stars`}>
+                {[1, 2, 3, 4, 5].map(index => (
+                  <svg viewBox="0 0 24 24" aria-hidden="true"><polygon points={star} fill={index <= review.rating ? "var(--amber)" : "none"} stroke={index <= review.rating ? "var(--amber)" : "var(--slate)"} stroke-width="1.5" stroke-linejoin="round" /></svg>
+                ))}
+              </span>
+              <blockquote><p>{review.review_text}</p></blockquote>
+              <div class="review-credit">
+                <p class="attribution">{review.attribution}</p>
+                {review.date_display && <p class="date">{review.review_date ? <time datetime={review.review_date}>{review.date_display}</time> : review.date_display}</p>}
+                <p class="source-label">{review.source_label}</p>
+              </div>
+            </article>
+          ))}
+        </div>
+      </div>
+      <div class="carousel-controls" hidden>
+        <button type="button" data-previous aria-label="Previous reviews" aria-controls="review-viewport">←</button>
+        <p class="range" role="status" aria-live="polite" aria-atomic="true"></p>
+        <button type="button" data-next aria-label="Next reviews" aria-controls="review-viewport">→</button>
+      </div>
+      <div class="browse" hidden>
+        <h2>Browse reviews</h2><p>Choose Featured or a year.</p>
+        <div class="year-buttons" role="group" aria-label="Choose reviews">
+          <button type="button" data-mode="featured" aria-pressed="true" aria-controls="review-viewport">Featured</button>
+          {collection.yearModes.map(mode => <button type="button" data-mode={mode.year} aria-pressed="false" aria-controls="review-viewport">{mode.year} ({mode.count})</button>)}
+        </div>
+      </div>
+    </div></section>
+    <section class="commercial section-rule" aria-labelledby="offers-title"><div class="shell">
+      <h2 id="offers-title">Explore what 3Back offers</h2>
+      <div class="offer-links">{offers.map(([label, href]) => <a href={href}>{label}</a>)}</div>
+    </div></section>
+    <section class="collection-note" aria-labelledby="collection-title"><div class="shell">
+      <h2 id="collection-title">About this collection</h2>
+      <p>These are selected reviews originally published online or provided directly to 3Back. The displayed average is calculated from the reviews currently included here. Handwritten feedback is presented as text for readability. Reviews are added over time.</p>
+    </div></section>
+  </main>
 </SiteLayout>
 
+<script>
+  const root = document.querySelector<HTMLElement>("[data-review-carousel]");
+  if (root) {
+    const viewport = root.querySelector<HTMLElement>(".review-viewport")!;
+    const track = root.querySelector<HTMLElement>(".review-track")!;
+    const cards = [...root.querySelectorAll<HTMLElement>(".review-card")];
+    const modes = [...root.querySelectorAll<HTMLButtonElement>("[data-mode]")];
+    const previous = root.querySelector<HTMLButtonElement>("[data-previous]")!;
+    const next = root.querySelector<HTMLButtonElement>("[data-next]")!;
+    const range = root.querySelector<HTMLElement>(".range")!;
+    const heading = root.querySelector<HTMLElement>("#reviews-title")!;
+    const reduced = matchMedia("(prefers-reduced-motion: reduce)");
+    let selected = cards.filter(card => card.dataset.featured === "yes");
+    let first = 0;
+    let animation: Animation | undefined;
+    let measuredWidth = 0;
+    const perView = () => Number(getComputedStyle(track).getPropertyValue("--cards"));
+    function measureCards() {
+      // Reserve the tallest card at this width so controls do not jump between reviews.
+      track.style.minHeight = "";
+      for (const card of cards) card.hidden = false;
+      track.style.minHeight = Math.ceil(Math.max(...cards.map(card => card.getBoundingClientRect().height))) + "px";
+      measuredWidth = viewport.clientWidth;
+    }
+    function render(direction = 0) {
+      animation?.cancel();
+      const size = perView();
+      first = Math.min(first, Math.max(0, selected.length - size));
+      const visible = new Set(selected.slice(first, first + size));
+      for (const card of cards) card.hidden = !visible.has(card);
+      previous.setAttribute("aria-disabled", String(first === 0));
+      next.setAttribute("aria-disabled", String(first + size >= selected.length));
+      range.textContent = `${first + 1}–${Math.min(first + size, selected.length)} of ${selected.length}`;
+      if (direction && !reduced.matches) animation = track.animate([{ transform: `translateX(${direction * 20}px)` }, { transform: "translateX(0)" }], { duration: 150, easing: "ease-out" });
+    }
+    function move(direction: number) {
+      const target = Math.max(0, Math.min(first + direction * perView(), selected.length - perView()));
+      if (target !== first) { first = target; render(direction); }
+    }
+    previous.addEventListener("click", () => move(-1));
+    next.addEventListener("click", () => move(1));
+    for (const button of modes) button.addEventListener("click", () => {
+      const mode = button.dataset.mode!;
+      selected = cards.filter(card => mode === "featured" ? card.dataset.featured === "yes" : card.dataset.year === mode);
+      first = 0;
+      heading.textContent = mode === "featured" ? "Featured reviews" : `Reviews from ${mode}`;
+      for (const option of modes) option.setAttribute("aria-pressed", String(option === button));
+      render();
+    });
+    viewport.addEventListener("keydown", event => {
+      if (event.key === "ArrowLeft" || event.key === "ArrowRight") { event.preventDefault(); move(event.key === "ArrowRight" ? 1 : -1); }
+      if (event.key === "Home" || event.key === "End") { event.preventDefault(); first = event.key === "Home" ? 0 : Math.max(0, selected.length - perView()); render(); }
+    });
+    let start: { x: number; y: number } | undefined;
+    viewport.addEventListener("pointerdown", event => { if (event.pointerType !== "mouse" && event.isPrimary) start = { x: event.clientX, y: event.clientY }; });
+    viewport.addEventListener("pointerup", event => {
+      if (!start) return;
+      const dx = event.clientX - start.x, dy = event.clientY - start.y;
+      start = undefined;
+      if (Math.abs(dx) >= 40 && Math.abs(dx) > Math.abs(dy)) move(dx < 0 ? 1 : -1);
+    });
+    viewport.addEventListener("pointercancel", () => { start = undefined; });
+    reduced.addEventListener("change", () => { if (reduced.matches) animation?.cancel(); });
+    new ResizeObserver(() => {
+      if (viewport.clientWidth !== measuredWidth) { measureCards(); render(); }
+    }).observe(viewport);
+    document.fonts.ready.then(() => { measureCards(); render(); });
+    root.querySelector<HTMLElement>(".carousel-controls")!.hidden = false;
+    root.querySelector<HTMLElement>(".browse")!.hidden = false;
+    measureCards();
+    render();
+  }
+</script>
+
 <style>
-	.reviews-stub { min-height: 62vh; background: var(--paper); }
-	.reviews-content { padding-block: clamp(88px, 12vw, 150px); }
-	h1 { margin-bottom: 28px; }
-	p { max-width: 820px; color: var(--text-secondary); font-size: var(--type-lead); line-height: var(--leading-lead); }
-	a { color: var(--charcoal); font-weight: var(--font-weight-semibold); text-decoration-color: var(--amber); text-decoration-thickness: 2px; text-underline-offset: 4px; }
+  .reviews-page { background: var(--paper); }
+  .opening { padding: clamp(58px, 7vw, 96px) 0 36px; }
+  .eyebrow { margin-bottom: 16px; color: var(--amber-text); font-size: 0.875rem; font-weight: 700; letter-spacing: 0.1em; }
+  h1 { max-width: 900px; margin-bottom: 24px; font-size: clamp(2.25rem, 4.3vw, 3.5rem); }
+  h2 { font-size: clamp(1.6rem, 2.6vw, 2.25rem); margin-bottom: 22px; }
+  .intro { max-width: 800px; font-size: var(--type-lead); line-height: 1.6; margin: 0; }
+  .aggregate { padding-bottom: 42px; }
+  .rating-line { display: flex; align-items: center; flex-wrap: wrap; gap: 12px 24px; }
+  .rating { margin: 0; font-size: 1.25rem; }
+  .rating strong { font-size: 2.75rem; font-weight: 700; line-height: 1.15; }
+  .stars { display: inline-flex; gap: 5px; flex-shrink: 0; }
+  .stars svg { width: 22px; height: 22px; }
+  .aggregate-stars svg { width: 25px; height: 25px; }
+  .proof { margin: 14px 0 7px; font-size: 1.125rem; font-weight: 600; }
+  .sources, .calculation { margin: 4px 0 0; color: var(--text-secondary); }
+  .review-section { padding: 48px 0 56px; }
+  .review-viewport { touch-action: pan-y; border-radius: 6px; overflow: hidden; }
+  .review-track { --cards: 3; display: grid; grid-template-columns: repeat(var(--cards), minmax(0, 1fr)); gap: 20px; }
+  .review-card { display: flex; flex-direction: column; min-width: 0; padding: 28px; border: 1px solid var(--rule); border-radius: 6px; background: var(--reading); overflow-wrap: anywhere; }
+  [hidden] { display: none !important; }
+  blockquote { margin: 22px 0 28px; font-size: 1.125rem; line-height: 1.6; }
+  blockquote p { margin: 0; }
+  .review-credit { margin-top: auto; }
+  .review-credit p { margin: 0; font-size: 1rem; }
+  .attribution { font-weight: 600; }
+  .date, .source-label { color: var(--text-secondary); }
+  .carousel-controls { display: grid; grid-template-columns: 48px 130px 48px; gap: 14px; align-items: center; justify-content: end; margin-top: 22px; }
+  button, .offer-links a { min-height: 48px; border: 1px solid var(--slate); border-radius: 3px; background: transparent; color: var(--charcoal); font: inherit; font-weight: 600; cursor: pointer; }
+  button:hover, .offer-links a:hover { background: var(--amber-wash); }
+  button:focus-visible, .offer-links a:focus-visible, .review-viewport:focus-visible { outline: 3px solid var(--charcoal); outline-offset: 4px; }
+  .carousel-controls button { font-size: 1.5rem; }
+  button[aria-disabled="true"] { color: var(--slate); border-color: var(--rule); cursor: default; }
+  .range { margin: 0; text-align: center; font-variant-numeric: tabular-nums; }
+  .browse { margin-top: 32px; }
+  .browse h2 { margin-bottom: 6px; }
+  .browse p { margin: 0 0 18px; }
+  .year-buttons { display: flex; flex-wrap: wrap; gap: 10px; }
+  .year-buttons button { min-width: 112px; padding: 10px 16px; }
+  .year-buttons button[aria-pressed="true"] { background: var(--amber); border-color: var(--charcoal); box-shadow: inset 0 -3px 0 var(--charcoal); }
+  .commercial { padding: 42px 0 48px; border-top: 1px solid var(--rule); }
+  .offer-links { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 14px; }
+  .offer-links a { display: flex; align-items: center; justify-content: center; padding: 12px; text-decoration: none; text-align: center; }
+  .collection-note { padding: 40px 0 64px; }
+  .collection-note h2 { font-size: 1.375rem; margin-bottom: 12px; }
+  .collection-note p { max-width: 820px; margin: 0; color: var(--text-secondary); }
+  @media (max-width: 1023px) { .review-track { --cards: 2; } }
+  @media (max-width: 639px) {
+    .review-track { --cards: 1; }
+    .review-card { padding: 24px; }
+    .offer-links { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+    .carousel-controls { justify-content: center; }
+    .year-buttons { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); }
+    .year-buttons button { min-width: 0; }
+  }
 </style>

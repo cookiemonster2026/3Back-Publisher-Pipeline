@@ -1,0 +1,16 @@
+review_id,review_year,review_date,date_display,rating,review_text,attribution,source_label,featured
+2026-003,2026,2026-09-03,"September 3, 2026",5,Clear explanations and useful examples made the session easy to follow.,Tester 1 Test 1,Direct feedback,yes
+2026-002,2026,2026-06-18,"June 18, 2026",4,The material was practical and gave me several ideas to try with my team.,Tester 2 Test 2,Online review,yes
+2026-001,2026,2026-02-11,"February 11, 2026",5,A focused experience with thoughtful instruction and helpful discussion.,Tester 3 Test 3,Direct feedback,no
+2025-003,2025,2025-10-22,"October 22, 2025",5,The examples connected the concepts to situations I see at work.,Tester 4 Test 4,Online review,yes
+2025-002,2025,2025-07-09,"July 9, 2025",4,"Well organized and useful, with enough time to ask questions.",Tester 5 Test 5,Direct feedback,yes
+2025-001,2025,2025-03-14,"March 14, 2025",5,I left with a clearer understanding of the role and where to focus next.,Tester 6 Test 6,Online review,no
+2024-003,2024,2024-11-05,"November 5, 2024",5,The instructor made complex ideas understandable without oversimplifying them.,Tester 7 Test 7,Direct feedback,yes
+2024-002,2024,2024-08-16,"August 16, 2024",4,"Good pacing, strong examples, and a practical approach throughout.",Tester 8 Test 8,Online review,yes
+2024-001,2024,2024-01-25,"January 25, 2024",5,The session helped me see team decisions and accountability more clearly.,Tester 9 Test 9,Direct feedback,no
+2023-003,2023,2023-09-28,"September 28, 2023",5,Engaging instruction and exercises that supported the main ideas.,Tester 10 Test 10,Online review,yes
+2023-002,2023,2023-05-12,"May 12, 2023",4,The course was useful and gave me a better way to discuss improvement.,Tester 11 Test 11,Direct feedback,yes
+2023-001,2023,2023-02-07,"February 7, 2023",5,A clear and practical introduction that respected the complexity of the work.,Tester 12 Test 12,Online review,no
+2022-003,2022,2022-12-01,"December 1, 2022",5,"The discussion was relevant, concise, and grounded in real team situations.",Tester 13 Test 13,Direct feedback,yes
+2022-002,2022,2022-06-23,"June 23, 2022",4,I appreciated the structure and the opportunity to apply each concept.,Tester 14 Test 14,Online review,yes
+2022-001,2022,2022-03-10,"March 10, 2022",5,"Helpful material, clear facilitation, and practical takeaways for my team.",Tester 15 Test 15,Direct feedback,no
