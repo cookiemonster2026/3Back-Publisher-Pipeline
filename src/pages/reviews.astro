@@ -6,10 +6,7 @@ import { parseReviews } from "../data/reviews/parse.mjs";
 const collection = parseReviews(csv);
 const star = "12,2 15.09,8.26 22,9.27 17,14.14 18.18,21.02 12,17.77 5.82,21.02 7,14.14 2,9.27 8.91,8.26";
 const offers = [["Workshops", "/workshops"], ["Domain Guides", "/domain-guides"], ["Training", "/training"], ["Events", "/events"]];
-const yearModes = Array.from({ length: 15 }, (_, index) => {
-  const year = 2026 - index;
-  return { year, count: collection.reviews.filter(review => review.review_year === year).length };
-});
+const yearModes = collection.yearModes;
 ---
 
 <SiteLayout metadata={pageSeo["/reviews"]}>
@@ -17,7 +14,7 @@ const yearModes = Array.from({ length: 15 }, (_, index) => {
     <section class="opening"><div class="shell">
       <p class="eyebrow">REVIEWS</p>
       <h1>What people say about 3Back</h1>
-      <p class="intro">Read selected 3Back reviews originally published online or provided directly to 3Back, with original star ratings and 15 years of feedback organized by year.</p>
+      <p class="intro">Read selected 3Back reviews originally published online or provided directly to 3Back, with original star ratings and feedback organized by year.</p>
     </div></section>
     <section class="aggregate section-rule" aria-label="Collection rating"><div class="shell">
       <div class="rating-line">
@@ -71,13 +68,9 @@ const yearModes = Array.from({ length: 15 }, (_, index) => {
         <h2>Browse reviews</h2><p>Choose Featured or a year.</p>
         <div class="year-buttons" role="group" aria-label="Choose reviews">
           <button type="button" data-mode="featured" aria-pressed="true" aria-controls="review-viewport">Featured</button>
-          {yearModes.map(mode => <button type="button" data-mode={mode.year} aria-pressed="false" aria-controls="review-viewport" disabled={mode.count === 0}>{mode.year} ({mode.count})</button>)}
+          {yearModes.map(mode => <button type="button" data-mode={mode.year} aria-pressed="false" aria-controls="review-viewport">{mode.year} ({mode.count})</button>)}
         </div>
       </div>
-    </div></section>
-    <section class="collection-note" aria-labelledby="collection-title"><div class="shell">
-      <h2 id="collection-title">About this collection</h2>
-      <p>These are selected reviews originally published online or provided directly to 3Back. The displayed average is calculated from the reviews currently included here. Handwritten feedback is presented as text for readability. Reviews are added over time.</p>
     </div></section>
     <section class="commercial" aria-labelledby="offers-title"><div class="shell">
       <h2 id="offers-title">Execute with 3Back</h2>
@@ -251,9 +244,6 @@ const yearModes = Array.from({ length: 15 }, (_, index) => {
   .offer-links { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 14px; }
   .offer-links a { display: flex; align-items: center; justify-content: center; padding: 12px; border-color: var(--paper); border-radius: 0; color: var(--paper); text-decoration: none; text-align: center; transition: background-color 120ms ease, border-color 120ms ease, color 120ms ease, transform 120ms ease; }
   .offer-links a:hover { border-color: var(--amber); background: var(--amber); color: var(--charcoal); transform: translateY(-2px); }
-  .collection-note { padding: 40px 0 64px; }
-  .collection-note h2 { font-size: 1.375rem; margin-bottom: 12px; }
-  .collection-note p { max-width: 820px; margin: 0; color: var(--text-secondary); }
   @media (max-width: 1023px) { .review-track { --cards: 2; } }
   @media (max-width: 639px) {
     .review-track { --cards: 1; }

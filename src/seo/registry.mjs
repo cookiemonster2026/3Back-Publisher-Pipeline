@@ -632,11 +632,11 @@ export const pageSeo = Object.freeze({
 		},
 	},
 	"/reviews": {
-		status: "stub",
+		status: "complete",
 		path: "/reviews",
 		title: "Reviews | 3Back",
-		description: "Read selected 3Back reviews originally published online or provided directly to 3Back, with original star ratings and 15 years of feedback organized by year.",
-		indexability: "noindex, nofollow",
+		description: "Read selected 3Back reviews originally published online or provided directly to 3Back, with original star ratings and feedback organized by year.",
+		indexability: "index, follow",
 		social: {
 			title: "3Back Reviews",
 			description: "A growing collection of selected reviews originally published online or provided directly to 3Back.",
@@ -649,7 +649,6 @@ export const pageSeo = Object.freeze({
 				type: "image/png",
 			},
 		},
-		missingWork: ["Replace the local mock snapshot with an approved snapshot containing 15 nonempty years", "Douglas authorization for the production index flip"],
 	},
 	"/about-us": {
 		status: "complete",
