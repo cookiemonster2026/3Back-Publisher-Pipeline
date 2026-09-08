@@ -82,7 +82,7 @@ const runSteps: RunStep[] = [
 
 		<section id="next-step" class="next-step-section" aria-labelledby="next-step-title">
 			<div class="shell next-step-inner">
-				<h2 id="next-step-title">Next step</h2>
+				<h2 id="next-step-title">Domain Guides conversation</h2>
 				<p>For nearly three decades, 3Back has worked alongside teams doing difficult work, helping develop capability without pretending to own their domain.</p>
 				<p>Call us only if you will let us see the live work. Boards, intake, decisions, where Done actually happens. We will tell you if this program fits. If it does not, we will say so. This is not a class you buy and hope transfers.</p>
 				<p data-form-introduction>Tell us what you are trying to improve and what you are seeing in the work.</p>
@@ -119,7 +119,7 @@ const runSteps: RunStep[] = [
 					</div>
 					<div class="turnstile-wrap">{turnstileSiteKey ? <div class="cf-turnstile" data-sitekey={turnstileSiteKey} data-theme="light"></div> : <p class="form-error">This form is not configured yet.</p>}</div>
 					<p class="form-error" role="alert" data-form-error hidden></p>
-					<button class="button submit-button" type="submit" disabled={!turnstileSiteKey}>Start a conversation</button>
+					<button class="button submit-button" type="submit" disabled={!turnstileSiteKey}>Start this conversation</button>
 				</form>
 				<div class="form-success" role="status" data-form-success hidden>
 					<p>Thank you. Your submission has been received.</p>
@@ -133,6 +133,19 @@ const runSteps: RunStep[] = [
 <script is:inline src="https://challenges.cloudflare.com/turnstile/v0/api.js" async defer></script>
 <script>
 	declare global { interface Window { turnstile?: { reset(): void } } }
+	const firstName = document.querySelector("#dg-first-name");
+	const focusFirstName = () => {
+		if (!(firstName instanceof HTMLInputElement)) return;
+		requestAnimationFrame(() => requestAnimationFrame(() => firstName.focus({ preventScroll: true })));
+	};
+	document.querySelectorAll<HTMLAnchorElement>('a[href="#next-step"]').forEach((link) => {
+		link.addEventListener("click", focusFirstName);
+	});
+	window.addEventListener("hashchange", () => {
+		if (window.location.hash === "#next-step") focusFirstName();
+	});
+	if (window.location.hash === "#next-step") focusFirstName();
+
 	const form = document.querySelector("[data-domain-guides-form]");
 	if (form instanceof HTMLFormElement) {
 		const introduction = document.querySelector("[data-form-introduction]");
@@ -172,7 +185,7 @@ const runSteps: RunStep[] = [
 				window.turnstile?.reset();
 			} finally {
 				button.disabled = false;
-				button.textContent = "Start a conversation";
+				button.textContent = "Start this conversation";
 			}
 		});
 	}
