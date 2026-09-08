@@ -30,7 +30,17 @@
 	</div>
 	<div class="shell footer-bottom">
 		<span class="footer-tagline">Bound what you can. Act locally. Observe the effects. Learn.</span>
-		<a class="footer-phone" href="tel:+18553232225">1-855-323-2225</a>
+		<div class="footer-social">
+			<a href="https://www.linkedin.com/company/3back-llc/" aria-label="LinkedIn" target="_blank" rel="noopener noreferrer">
+				<svg viewBox="0 0 24 24" width="20" height="20" fill="currentColor" aria-hidden="true" focusable="false"><path d="M20.45 2H3.55C2.69 2 2 2.68 2 3.52v16.96c0 .84.69 1.52 1.55 1.52h16.9c.86 0 1.55-.68 1.55-1.52V3.52c0-.84-.69-1.52-1.55-1.52ZM7.93 18.75H4.98V9.2h2.95v9.55ZM6.45 7.9a1.71 1.71 0 1 1 0-3.42 1.71 1.71 0 0 1 0 3.42Zm12.3 10.85H15.8V14.1c0-1.11-.02-2.54-1.55-2.54-1.55 0-1.79 1.21-1.79 2.46v4.73H9.51V9.2h2.83v1.3h.04c.39-.74 1.36-1.52 2.79-1.52 2.99 0 3.58 1.97 3.58 4.53v5.24Z" /></svg>
+			</a>
+			<a href="https://www.facebook.com/3back" aria-label="Facebook" target="_blank" rel="noopener noreferrer">
+				<svg viewBox="0 0 24 24" width="20" height="20" fill="currentColor" aria-hidden="true" focusable="false"><path d="M24 12a12 12 0 1 0-13.875 11.855v-8.386H7.078V12h3.047V9.356c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953h-1.513c-1.491 0-1.956.925-1.956 1.874V12h3.328l-.532 3.469h-2.796v8.386A12.003 12.003 0 0 0 24 12Z" /></svg>
+			</a>
+			<a href="https://x.com/scrum_coach" aria-label="X" target="_blank" rel="noopener noreferrer">
+				<svg viewBox="0 0 24 24" width="20" height="20" fill="currentColor" aria-hidden="true" focusable="false"><path d="M18.901 1.153h3.68l-8.04 9.19L24 22.846h-7.406l-5.8-7.584-6.64 7.584H.47l8.6-9.835L0 1.154h7.594l5.243 6.932 6.064-6.933Zm-1.29 19.49h2.039L6.486 3.24H4.298l13.313 17.403Z" /></svg>
+			</a>
+		</div>
 		<span>Copyright &copy; 3Back 2026</span>
 	</div>
 </footer>
@@ -50,16 +60,17 @@
 	.site-footer li a:focus-visible { outline: 3px solid var(--amber); outline-offset: 3px; }
 	.footer-bottom { display: flex; justify-content: space-between; gap: 30px; margin-top: 55px; padding-top: 20px; border-top: 1px solid #303936; color: #a8b0ac; font-size: var(--type-body); line-height: var(--leading-body); }
 	.footer-tagline { color: #c8ceca; font-weight: var(--font-weight-bold); }
-	.footer-phone { display: none; color: #c8ceca; font-weight: var(--font-weight-bold); text-decoration-color: var(--amber); text-decoration-thickness: 2px; text-underline-offset: 4px; }
-	.footer-phone:hover { color: var(--paper); }
-	.footer-phone:focus-visible { outline: 3px solid var(--amber); outline-offset: 3px; }
+	.footer-social { display: flex; align-items: center; justify-content: center; gap: 4px; flex-shrink: 0; }
+	.footer-social a { display: inline-flex; align-items: center; justify-content: center; width: 44px; height: 44px; color: inherit; }
+	.footer-social a:hover, .footer-social a:focus-visible { color: var(--paper); }
+	.footer-social a:focus-visible { outline: 3px solid var(--amber); outline-offset: 3px; }
+	.footer-bottom { align-items: center; }
 
 	@media (max-width: 720px) {
 		.site-footer .shell { width: auto; margin-inline: 24px; }
 		.footer-grid { grid-template-columns: 1fr 1fr; }
 		.footer-brand { grid-column: 1 / -1; }
 		.footer-bottom { align-items: center; flex-direction: column; text-align: center; }
-		.footer-phone { display: inline; }
 		.site-footer a[href="/contact/"] { white-space: nowrap; }
 	}
 </style>

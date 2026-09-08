@@ -8,6 +8,13 @@ export const PRODUCTION_SEO_ENVIRONMENT = "production";
 const operationalGripPath = "/operational-grip";
 const operationalGripUrl = `${SITE_ORIGIN}${operationalGripPath}`;
 const organizationId = `${SITE_ORIGIN}/#organization`;
+const organizationSameAs = [
+	"https://www.linkedin.com/company/3back-llc/",
+	"https://www.facebook.com/3back",
+	"https://x.com/scrum_coach",
+	"https://www.youtube.com/user/scrumtv",
+	"https://apps.dfi.wi.gov/apps/CorpSearch/Details.aspx?entityID=T051200&hash=587244409",
+];
 const websiteId = `${SITE_ORIGIN}/#website`;
 const homepagePageId = `${SITE_ORIGIN}/#webpage`;
 const operationalGripPageId = `${operationalGripUrl}#webpage`;
@@ -133,6 +140,7 @@ export const pageSeo = Object.freeze({
 				{
 					"@type": "Organization",
 					"@id": organizationId,
+					sameAs: organizationSameAs,
 					legalName: "3Back, LLC",
 					alternateName: ["3 Back", "Three Back", "3Back LLC", "3 Back LLC", "Three Back LLC"],
 					"name": "3Back",
@@ -416,6 +424,7 @@ export const pageSeo = Object.freeze({
 				{
 					"@type": "Organization",
 					"@id": organizationId,
+					sameAs: organizationSameAs,
 					legalName: "3Back, LLC",
 					alternateName: ["3 Back", "Three Back", "3Back LLC", "3 Back LLC", "Three Back LLC"],
 					name: "3Back",
@@ -474,6 +483,7 @@ export const pageSeo = Object.freeze({
 				{
 					"@type": "Organization",
 					"@id": organizationId,
+					sameAs: organizationSameAs,
 					legalName: "3Back, LLC",
 					alternateName: ["3 Back", "Three Back", "3Back LLC", "3 Back LLC", "Three Back LLC"],
 					name: "3Back",
@@ -683,6 +693,7 @@ export const pageSeo = Object.freeze({
 				{
 					"@type": "Organization",
 					"@id": organizationId,
+					sameAs: organizationSameAs,
 					legalName: "3Back, LLC",
 					alternateName: ["3 Back", "Three Back", "3Back LLC", "3 Back LLC", "Three Back LLC"],
 					name: "3Back",
