@@ -14,7 +14,7 @@ const yearModes = collection.yearModes;
     <section class="opening"><div class="shell">
       <p class="eyebrow">REVIEWS</p>
       <h1>What people say about 3Back</h1>
-      <p class="intro">Read selected 3Back reviews originally published online or provided directly to 3Back, with original star ratings and feedback organized by year.</p>
+      <p class="intro">This page is a sample of selected reviews. Scores are calculated from the reviews published in this collection. More than 25,000 people have coached and trained with 3Back.</p>
     </div></section>
     <section class="aggregate section-rule" aria-label="Collection rating"><div class="shell">
       <div class="rating-line">
@@ -30,8 +30,6 @@ const yearModes = collection.yearModes;
         </span>
       </div>
       <p class="proof">Across {collection.count} selected reviews from {collection.earliest}-{collection.latest}</p>
-      <p class="sources">{collection.sources.map(source => source.label === "Online review" ? "Online reviews" : source.label).join(" | ")}</p>
-      <p class="calculation">Calculated from the reviews published in this collection.</p>
     </div></section>
     <section class="review-section" aria-labelledby="reviews-title" data-review-carousel><div class="shell">
       <h2 id="reviews-title">Featured reviews</h2>
@@ -209,7 +207,6 @@ const yearModes = collection.yearModes;
   .stars svg { width: 22px; height: 22px; }
   .aggregate-stars svg { width: 25px; height: 25px; }
   .proof { margin: 14px 0 7px; font-size: 1.125rem; font-weight: 600; }
-  .sources, .calculation { margin: 4px 0 0; color: var(--text-secondary); }
   .review-section { padding: 48px 0 56px; }
   .review-viewport { touch-action: pan-y; overflow: hidden; }
   .review-track { --cards: 3; display: grid; grid-template-columns: repeat(var(--cards), minmax(0, 1fr)); gap: 20px; }

@@ -654,11 +654,11 @@ export const pageSeo = Object.freeze({
 		status: "complete",
 		path: "/reviews",
 		title: "Reviews | 3Back",
-		description: "Read selected 3Back reviews originally published online or provided directly to 3Back, with original star ratings and feedback organized by year.",
+		description: "This page is a sample of selected reviews. Scores are calculated from the reviews published in this collection. More than 25,000 people have coached and trained with 3Back.",
 		indexability: "index, follow",
 		social: {
 			title: "3Back Reviews",
-			description: "A growing collection of selected reviews originally published online or provided directly to 3Back.",
+			description: "This page is a sample of selected reviews. Scores are calculated from the reviews published in this collection. More than 25,000 people have coached and trained with 3Back.",
 			type: "website",
 			image: {
 				src: "/social/reviews.png",
