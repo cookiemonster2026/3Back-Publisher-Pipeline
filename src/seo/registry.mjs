@@ -133,12 +133,15 @@ export const pageSeo = Object.freeze({
 				{
 					"@type": "Organization",
 					"@id": organizationId,
+					legalName: "3Back, LLC",
+					alternateName: ["3 Back", "Three Back", "3Back LLC", "3 Back LLC", "Three Back LLC"],
 					"name": "3Back",
 					"url": "https://3back.com/"
 				},
 				{
 					"@type": "WebSite",
 					"@id": websiteId,
+					alternateName: ["3 Back", "Three Back", "3Back LLC", "3 Back LLC", "Three Back LLC", "3back.com"],
 					"name": "3Back",
 					"url": "https://3back.com/",
 					"publisher": {
@@ -413,6 +416,8 @@ export const pageSeo = Object.freeze({
 				{
 					"@type": "Organization",
 					"@id": organizationId,
+					legalName: "3Back, LLC",
+					alternateName: ["3 Back", "Three Back", "3Back LLC", "3 Back LLC", "Three Back LLC"],
 					name: "3Back",
 					url: `${SITE_ORIGIN}/`,
 					slogan: "The Team Execution Company",
@@ -426,6 +431,7 @@ export const pageSeo = Object.freeze({
 				{
 					"@type": "WebSite",
 					"@id": websiteId,
+					alternateName: ["3 Back", "Three Back", "3Back LLC", "3 Back LLC", "Three Back LLC", "3back.com"],
 					url: `${SITE_ORIGIN}/`,
 					name: "3Back",
 					inLanguage: "en-US",
@@ -468,6 +474,8 @@ export const pageSeo = Object.freeze({
 				{
 					"@type": "Organization",
 					"@id": organizationId,
+					legalName: "3Back, LLC",
+					alternateName: ["3 Back", "Three Back", "3Back LLC", "3 Back LLC", "Three Back LLC"],
 					name: "3Back",
 					url: `${SITE_ORIGIN}/`,
 					slogan: "The Team Execution Company",
@@ -475,6 +483,7 @@ export const pageSeo = Object.freeze({
 				{
 					"@type": "WebSite",
 					"@id": websiteId,
+					alternateName: ["3 Back", "Three Back", "3Back LLC", "3 Back LLC", "Three Back LLC", "3back.com"],
 					url: `${SITE_ORIGIN}/`,
 					name: "3Back",
 					inLanguage: "en-US",
@@ -674,6 +683,8 @@ export const pageSeo = Object.freeze({
 				{
 					"@type": "Organization",
 					"@id": organizationId,
+					legalName: "3Back, LLC",
+					alternateName: ["3 Back", "Three Back", "3Back LLC", "3 Back LLC", "Three Back LLC"],
 					name: "3Back",
 					url: `${SITE_ORIGIN}/`,
 					description: "3Back is the Team Execution Company. It helps organizations find where execution has lost grip and make bounded changes that reveal what to do next.",
@@ -681,6 +692,7 @@ export const pageSeo = Object.freeze({
 				{
 					"@type": "WebSite",
 					"@id": websiteId,
+					alternateName: ["3 Back", "Three Back", "3Back LLC", "3 Back LLC", "Three Back LLC", "3back.com"],
 					url: `${SITE_ORIGIN}/`,
 					name: "3Back",
 					publisher: { "@id": organizationId },
