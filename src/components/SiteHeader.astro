@@ -2,9 +2,20 @@
 const currentPath = Astro.url.pathname;
 const isDomainGuides = currentPath === "/domain-guides" || currentPath === "/domain-guides/";
 const isWhyDomainExpertise = currentPath === "/why-domain-expertise-matters" || currentPath === "/why-domain-expertise-matters/";
-const isDomainFunnel = isDomainGuides || isWhyDomainExpertise;
-const conversationHref = isDomainGuides ? "#next-step" : isWhyDomainExpertise ? "/domain-guides/#next-step" : "/contact/";
-const conversationLabel = isDomainFunnel ? "Start this conversation" : "Start a Conversation";
+const isCsm = currentPath === "/certified-scrummaster-training" || currentPath === "/certified-scrummaster-training/";
+const isCspo = currentPath === "/certified-scrum-product-owner-training" || currentPath === "/certified-scrum-product-owner-training/";
+const isSm1 = currentPath === "/training/scrum-mastering-1" || currentPath === "/training/scrum-mastering-1/";
+const isConversationFunnel = isDomainGuides || isWhyDomainExpertise || isCsm || isCspo || isSm1;
+const conversationHref = isDomainGuides
+	? "#next-step"
+	: isWhyDomainExpertise
+		? "/domain-guides/#next-step"
+		: isCsm || isCspo
+			? "#private-course-request"
+			: isSm1
+				? "#sm1-private-inquiry"
+				: "/contact/";
+const conversationLabel = isConversationFunnel ? "Start this conversation" : "Start a Conversation";
 ---
 
 <header class="site-header">
