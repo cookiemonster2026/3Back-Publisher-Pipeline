@@ -1,5 +1,10 @@
 ---
 const currentPath = Astro.url.pathname;
+const isDomainGuides = currentPath === "/domain-guides" || currentPath === "/domain-guides/";
+const isWhyDomainExpertise = currentPath === "/why-domain-expertise-matters" || currentPath === "/why-domain-expertise-matters/";
+const isDomainFunnel = isDomainGuides || isWhyDomainExpertise;
+const conversationHref = isDomainGuides ? "#next-step" : isWhyDomainExpertise ? "/domain-guides/#next-step" : "/contact/";
+const conversationLabel = isDomainFunnel ? "This conversation" : "Start a Conversation";
 ---
 
 <header class="site-header">
@@ -15,7 +20,7 @@ const currentPath = Astro.url.pathname;
 			<a href="/about-us" aria-current={currentPath === "/about-us" ? "page" : undefined}>About</a>
 		</nav>
 
-		<a class="button button-small" href="/contact/" aria-current={currentPath === "/contact/" ? "page" : undefined}>Start a Conversation</a>
+		<a class="button button-small" href={conversationHref} aria-current={currentPath === "/contact/" ? "page" : undefined}>{conversationLabel}</a>
 
 		<button
 			class="menu-toggle"
@@ -31,7 +36,7 @@ const currentPath = Astro.url.pathname;
 			<a href="/operational-grip/" aria-current={currentPath === "/operational-grip/" ? "page" : undefined}>Operational Grip</a>
 			<a href="/ideas/" aria-current={currentPath === "/ideas/" ? "page" : undefined}>Ideas</a>
 			<a href="/about-us" aria-current={currentPath === "/about-us" ? "page" : undefined}>About</a>
-			<a class="button button-small" href="/contact/" aria-current={currentPath === "/contact/" ? "page" : undefined}>Start a Conversation</a>
+			<a class="button button-small" href={conversationHref} aria-current={currentPath === "/contact/" ? "page" : undefined}>{conversationLabel}</a>
 		</nav>
 	</div>
 </header>

@@ -1,0 +1,81 @@
+---
+interface Props {
+	current: "why-domain-expertise" | "domain-guides";
+	tone?: "paper" | "dark";
+}
+
+const { current, tone = "paper" } = Astro.props;
+---
+
+<nav class:list={["domain-program-pair", `domain-program-pair--${tone}`]} aria-label="Domain expertise and Domain Guides">
+	{
+		current === "why-domain-expertise" ? (
+			<span class="domain-program-item is-current" aria-current="page">Why domain expertise matters</span>
+		) : (
+			<a class="domain-program-item" href="/why-domain-expertise-matters/">Why domain expertise matters</a>
+		)
+	}
+	{
+		current === "domain-guides" ? (
+			<span class="domain-program-item is-current" aria-current="page">Domain Guides</span>
+		) : (
+			<a class="domain-program-item" href="/domain-guides/">Domain Guides</a>
+		)
+	}
+</nav>
+
+<style>
+	.domain-program-pair {
+		display: grid;
+		grid-template-columns: repeat(2, minmax(0, 1fr));
+		gap: 12px;
+		width: min(100%, 43rem);
+		margin-top: 34px;
+	}
+	.domain-program-item {
+		display: inline-flex;
+		align-items: center;
+		justify-content: center;
+		min-height: 50px;
+		padding: 12px 19px;
+		border: 2px solid var(--amber);
+		color: var(--charcoal);
+		font-size: 1rem;
+		font-weight: var(--font-weight-bold);
+		line-height: 1.25;
+		text-align: center;
+		text-decoration: none;
+		transition: background-color 160ms ease, border-color 160ms ease, color 160ms ease, transform 160ms ease;
+	}
+	a.domain-program-item:hover,
+	a.domain-program-item:focus-visible {
+		background: var(--amber);
+		color: var(--charcoal);
+		transform: translateY(-2px);
+	}
+	.domain-program-item.is-current {
+		background: var(--charcoal);
+		color: var(--paper);
+	}
+	.domain-program-pair--dark .domain-program-item {
+		color: var(--paper);
+	}
+	.domain-program-pair--dark .domain-program-item.is-current {
+		background: var(--paper);
+		color: var(--charcoal);
+	}
+	.domain-program-pair--dark a.domain-program-item:hover,
+	.domain-program-pair--dark a.domain-program-item:focus-visible {
+		background: var(--amber);
+		color: var(--charcoal);
+	}
+	@media (max-width: 720px) {
+		.domain-program-pair { grid-template-columns: 1fr; }
+		.domain-program-item { width: 100%; }
+	}
+	@media (prefers-reduced-motion: reduce) {
+		.domain-program-item { transition: none; }
+		a.domain-program-item:hover,
+		a.domain-program-item:focus-visible { transform: none; }
+	}
+</style>

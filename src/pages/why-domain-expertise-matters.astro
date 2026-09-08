@@ -1,6 +1,7 @@
 ---
 import { Image } from "astro:assets";
 import SiteLayout from "../layouts/SiteLayout.astro";
+import DomainProgramPair from "../components/DomainProgramPair.astro";
 import boardSignalSilence from "../assets/why-domain-expertise/board-signal-silence.jpg";
 import signalIgnored from "../assets/why-domain-expertise/signal-ignored.png";
 import { pageSeo } from "../seo/registry.mjs";
@@ -108,10 +109,9 @@ import { pageSeo } from "../seo/registry.mjs";
 			<div class="shell close-inner">
 				<p class="close-lead">Start a conversation about your domain and who is actually in the work.</p>
 				<p class="close-bound">No transformation pitch. No universal answer. Your backlog. Your intake. Your quality bar.</p>
-				<p class="close-action"><a class="button" href="/contact/">Start a conversation</a></p>
+				<DomainProgramPair current="why-domain-expertise" tone="dark" />
 				<p class="close-links">
 					<a class="text-link" href="/grip-check/">Check Your Grip</a>
-					<a class="quiet-link" href="/domain-guides/">Domain Guides</a>
 					<a class="quiet-link" href="/papers/how-3back-approaches-learning">How 3Back approaches learning</a>
 				</p>
 				<p class="close-final">If the skill has to live in the team and be renewed from within, that is Domain Guides.</p>
@@ -309,12 +309,12 @@ import { pageSeo } from "../seo/registry.mjs";
 		font-size: 1.125rem;
 		line-height: 1.65;
 	}
-	.close-action { margin-bottom: 28px; }
 	.close-links {
 		display: flex;
 		flex-wrap: wrap;
 		gap: 22px 36px;
 		align-items: center;
+		margin-top: 30px;
 		margin-bottom: 36px;
 	}
 	.text-link, .quiet-link {

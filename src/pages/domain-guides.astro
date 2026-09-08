@@ -1,14 +1,15 @@
 ---
 import SiteLayout from "../layouts/SiteLayout.astro";
+import DomainProgramPair from "../components/DomainProgramPair.astro";
 import { pageSeo } from "../seo/registry.mjs";
 
 const turnstileSiteKey = import.meta.env.PUBLIC_TURNSTILE_SITE_KEY ?? "";
-type RunStep = [title: string, copy: string, lead?: string];
+type RunStep = [title: string, copy: string];
 const runSteps: RunStep[] = [
-	["Workshop", "A workshop in the domain. It extracts how work actually enters, who owns decisions, what Ready and Done mean here, where quality arrives late, and which problems are team problems versus intake or leadership problems. That extraction is the starting backlog. It is not the program."],
-	["Office Hours", "Office Hours on the real cadence. People bring a ticket, a board, a dependency, a sprint problem. The object of the work is the classroom."],
-	["Guide Development", "Developing Guides work alongside experienced people, take on increasing responsibility, exercise judgment against real conditions, and eventually help develop others. Progress is earned in the work, not by completing sessions.", "Domain Guides are developed through apprenticeship in the actual work."],
-	["Guides Stay", "Guides stay. Graduates host Office Hours and teach the next cohort. The practice is recursive."],
+	["Workshop", "In the domain. How work enters, who owns decisions, what Ready and Done mean here. That extraction is the starting backlog. It is not the program."],
+	["Office Hours", "On the real cadence. A ticket, a board, a dependency, a sprint problem. The object of the work is the classroom."],
+	["Guide development", "In the actual work. Progress is earned there, not by completing sessions."],
+	["Guides stay", "They host Office Hours and teach the next cohort."],
 ];
 ---
 
@@ -18,18 +19,9 @@ const runSteps: RunStep[] = [
 			<div class="shell opening-copy">
 				<p class="eyebrow">Program</p>
 				<h1>Domain Guides</h1>
-				<p class="lead">Domain Guides are your people, inside your company. They know the operating environment because they work in it. They learn to recognize where execution has lost grip, make bounded changes, and see whether the work responds. They can grow the next cohort from team members already in the work, so the skill is domain specific and can be renewed from within.</p>
-				<p>Many companies rent help that works around the work rather than inside it. Vocabulary arrives. The operating environment does not change. When the outsider leaves, the skill was never there to keep.</p>
-			</div>
-		</section>
-
-		<section class="section section-rule" aria-labelledby="looking-at-title">
-			<div class="shell split-section">
-				<h2 id="looking-at-title">What you are looking at</h2>
-				<div class="section-body">
-					<p>This is not the <a href="/courses">course catalog</a>. The catalog lists credentials and classes.</p>
-					<p>This is the program that develops your people who live in the work.</p>
-				</div>
+				<p class="lead">Domain Guides are your people, inside your company. They know the operating environment because they work in it. They recognize where execution has lost grip, make bounded changes, and see whether the work responds. They grow the next cohort from people already in the work.</p>
+				<p>Companies rent help and call those people guides. If they are not in your domain, they will never be able to guide you. Vocabulary arrives. The operating environment does not change. When the outsider leaves, the skill was never there to keep.</p>
+				<DomainProgramPair current="domain-guides" />
 			</div>
 		</section>
 
@@ -37,72 +29,43 @@ const runSteps: RunStep[] = [
 			<div class="shell split-section">
 				<h2 id="what-this-is-title">What this is</h2>
 				<div class="section-body">
-					<p>A program that develops over months, not a class.</p>
-					<p>You leave with your own Domain Guides and a repeatable way to develop the next cohort inside your domain. People who know how work actually moves here. People who can tell an execution problem from an intake problem and develop others inside the work.</p>
-					<p>By design, 3Back’s role should diminish as that internal capability grows.</p>
-					<p>The workshop starts it. It does not finish it.</p>
+					<p>We help you develop your Domain Guides. We are not your Domain Guides. We do not become the people who run your teams.</p>
+					<p>This takes months. It is not a class.</p>
+					<p>A Domain Guide must know when to help someone reason through the work and when to step into it directly. The capability is judgment between those roles, not permanent coaching or permanent ownership.</p>
+					<p>You leave with your own Guides and a way to develop the next cohort inside this domain. People who know how work actually moves here. People who can tell an execution problem from an intake problem. People who can develop others already in the work.</p>
+					<p>3Back’s role should diminish as that capability grows.</p>
 				</div>
 			</div>
 		</section>
 
-		<section class="section section-rule" aria-labelledby="class-not-enough-title">
+		<section class="section section-rule how-it-starts-section" aria-labelledby="how-it-starts-title">
 			<div class="shell split-section">
-				<h2 id="class-not-enough-title">Why a class is not enough</h2>
-				<div class="section-body">
-					<p>Classroom Agile taught vocabulary. It did not teach this backlog, this intake, this decision owner, or this quality bar. The domain was decoration. Reporting, ceremonies, and process compliance could make the work look organized while the underlying capability had never transferred.</p>
-					<p>When the coach left, the skill was never there to keep, and the business was still the one that had to run.</p>
-					<p>The work changes when someone owns getting it done. Observation and advice can help. They are not substitutes for ownership.</p>
-				</div>
-			</div>
-		</section>
-
-		<section class="section section-rule how-it-runs-section" aria-labelledby="how-it-runs-title">
-			<div class="shell split-section">
-				<h2 id="how-it-runs-title">How it runs</h2>
+				<h2 id="how-it-starts-title">How it starts</h2>
 				<div class="run-program">
-					<p class="run-introduction">The program begins in the actual work, develops people inside it, and returns capability to it.</p>
-					<div class="run-sequence" aria-label="Live work, then Workshop, Office Hours, Guide Development, Guides Stay, and live work again.">
+					<p class="run-introduction">This only works if we can see the live work.</p>
+					<div class="run-sequence" aria-label="Live work, then Workshop, Office Hours, Guide development, Guides stay, and live work again.">
 						<div class="live-work live-work-start"><span>Live work</span></div>
 						<ol class="run-list">
-							{runSteps.map(([title, copy, lead], index) => (
-								<li tabindex="0">
+							{runSteps.map(([title, copy], index) => (
+								<li>
 									<span class="run-number" aria-hidden="true">{String(index + 1).padStart(2, "0")}</span>
 									<h3>{title}</h3>
-									<p>{lead && <><strong>{lead}</strong> </>}{copy}</p>
+									<p>{copy}</p>
 								</li>
 							))}
 						</ol>
-						<div class="live-work live-work-end"><span>Live work</span><small>The next cohort starts here.</small></div>
+						<div class="live-work live-work-end">
+							<span>Live work</span>
+							<small>The next cohort starts here.</small>
+							<small>Capability transfer is confirmed here.</small>
+						</div>
 					</div>
 					<div class="run-timing">
-						<p><strong>Capability develops over time.</strong></p>
-						<p>There is no fixed calendar for developing a Domain Guide. The time required depends on the complexity of the domain and the depth, breadth, and quality of the person’s existing professional experience.</p>
-						<p>The deeper capability is not simply working independently. It is developing the judgment to work difficult problems, develop others, and help the organization adapt how work is organized and executed as demand changes. That level of capability takes longer to develop, and it is what the program is designed to leave behind.</p>
+						<h3>How it runs</h3>
+						<p>There is no fixed program sequence beyond beginning in the live work and returning capability to it.</p>
+						<p>As the work reveals what people need, the program adapts. Foundational training may establish shared language. Specialized workshops may address a specific constraint. Office Hours keep development tied to current work. The mix changes as people apply what they are learning and the organization learns what supports adoption.</p>
+						<p>The goal is not completion of a prescribed curriculum. It is durable capability inside the organization: people who can exercise judgment in the domain, develop others, and adapt the practice as the work changes.</p>
 					</div>
-				</div>
-			</div>
-		</section>
-
-		<section class="section section-rule" aria-labelledby="courses-here-title">
-			<div class="shell split-section">
-				<h2 id="courses-here-title">Foundational training still matters</h2>
-				<div class="section-body">
-					<p>The classroom has not gone away. Foundational courses give people useful concepts, shared language, and a better way to see the work.</p>
-					<p>RSM and RPO can provide that foundation for people across teams and leadership roles. They help people understand responsibilities, decisions, flow, and the conditions teams need to execute well.</p>
-					<p>But foundation is not capability. Domain Guide development begins when those ideas are worked against the organization’s actual problems, decisions, constraints, and consequences.</p>
-					<p><a href="/papers/how-3back-approaches-learning">How 3Back approaches learning</a> explains the difference between educational understanding and professional capability.</p>
-				</div>
-			</div>
-		</section>
-
-		<section class="section section-rule" aria-labelledby="domain-guide-capability-title">
-			<div class="shell split-section">
-				<h2 id="domain-guide-capability-title">What a Domain Guide must be able to do</h2>
-				<div class="section-body">
-					<p>A Domain Guide must be able to move between developing others and participating directly in the work.</p>
-					<p>Sometimes the right role is to observe, question, mentor, or help someone reason through a difficult problem. Sometimes it is to step into the work, apply domain expertise, and help do it.</p>
-					<p>The capability is knowing which role the situation requires and being able to move between them. A Guide who always stays outside the work is limited. A Guide who always takes over the work is limited too.</p>
-					<p>The development goal is judgment between the two.</p>
 				</div>
 			</div>
 		</section>
@@ -117,37 +80,12 @@ const runSteps: RunStep[] = [
 			</div>
 		</section>
 
-		<section class="section section-rule" aria-labelledby="how-you-know-title">
-			<div class="shell split-section">
-				<h2 id="how-you-know-title">How you know it is working</h2>
-				<div class="section-body">
-					<p><strong>The team is the first useful boundary for seeing whether the capability is real.</strong></p>
-					<p>You see it in teams that can take on difficult work, adapt as conditions change, surface problems early, make more decisions where the work happens, and keep work moving without depending on extraordinary coordination or an outsider in the room.</p>
-					<p>Attendance is not evidence. Grip is evidence.</p>
-					<p>Signals live in the work: ready rate before planning, sprint interruption, hidden work, decision-ownership disputes, late Done, and whether people can run planning or refinement without an outsider in the room.</p>
-					<p>Those are signs that execution is changing. They are not the finish line.</p>
-					<p>The work still has to survive the marketplace. Improvement inside the organization is not the finish line unless it improves the organization’s ability to respond to demand and produce results the market values.</p>
-				</div>
-			</div>
-		</section>
-
-		<section class="section section-rule" aria-labelledby="why-3back-title">
-			<div class="shell split-section">
-				<h2 id="why-3back-title">Why 3Back</h2>
-				<div class="section-body">
-					<p>3Back has spent nearly three decades working directly with teams and leaders on how difficult work gets done.</p>
-					<p>One of our strengths is working alongside people who know their domain far better than we ever will. We know how to get into difficult problems with local experts, understand enough of the work to see where execution is breaking down, and help make progress without forcing the domain into our language or pretending to be the expert in their business.</p>
-					<p>We bring experience developing people who can improve team execution and develop others. Your people bring the domain. Domain Guides brings those capabilities together in a program designed to move more of that work inside the organization over time.</p>
-					<p><strong>Our role should diminish as theirs grows.</strong></p>
-				</div>
-			</div>
-		</section>
-
-		<section class="next-step-section" aria-labelledby="next-step-title">
+		<section id="next-step" class="next-step-section" aria-labelledby="next-step-title">
 			<div class="shell next-step-inner">
 				<h2 id="next-step-title">Next step</h2>
-				<p>This work requires access to the live work and the people responsible for it.</p>
-				<p data-form-introduction>Tell us what you are trying to improve and what you are seeing in the work. We’ll review it and follow up to set up a short conversation.</p>
+				<p>For nearly three decades, 3Back has worked alongside teams doing difficult work, helping develop capability without pretending to own their domain.</p>
+				<p>Call us only if you will let us see the live work. Boards, intake, decisions, where Done actually happens. We will tell you if this program fits. If it does not, we will say so. This is not a class you buy and hope transfers.</p>
+				<p data-form-introduction>Tell us what you are trying to improve and what you are seeing in the work.</p>
 				<form class="domain-guides-form" action="/api/domain-guides" method="post" data-domain-guides-form novalidate>
 					<div class="form-fields">
 						<div class="field">
@@ -187,12 +125,6 @@ const runSteps: RunStep[] = [
 					<p>Thank you. Your submission has been received.</p>
 					<p>We’ll get back to you shortly. Please look for a confirmation email in your inbox.</p>
 				</div>
-			</div>
-		</section>
-
-		<section class="closing-note">
-			<div class="shell reading-column">
-				<p>The primary work of 3Back is diagnosing and improving how teams actually execute. This program is one way the organization builds the capability to keep improving its own work.</p>
 			</div>
 		</section>
 	</main>
@@ -252,37 +184,36 @@ const runSteps: RunStep[] = [
 	.opening-copy { max-width: 830px; }
 	.eyebrow { margin-bottom: 16px; color: var(--amber-text); font-size: var(--type-caption); font-weight: var(--font-weight-heavy); letter-spacing: var(--tracking-caption); line-height: var(--leading-caption); text-transform: uppercase; }
 	.opening-copy h1 { max-width: 760px; margin-bottom: 28px; }
-	.opening-copy p:not(.eyebrow), .section-body p, .run-list p, .next-step-inner > p, .closing-note p { font-size: 1.125rem; line-height: 1.65; }
+	.opening-copy p:not(.eyebrow), .section-body p, .run-list p, .next-step-inner > p { font-size: 1.125rem; line-height: 1.65; }
 	.opening-copy .lead { max-width: 760px; margin-bottom: 26px; color: var(--charcoal); font-size: 1.4rem; font-weight: var(--font-weight-semibold); line-height: 1.5; }
 	.split-section { display: grid; grid-template-columns: minmax(0, 0.85fr) minmax(0, 1.15fr); gap: clamp(42px, 8vw, 128px); align-items: start; }
 	.split-section h2 { margin-bottom: 0; padding-bottom: 18px; border-bottom: 2px solid var(--rule); }
-	.how-it-runs-section .split-section { grid-template-columns: 1fr; gap: 28px; }
-	.how-it-runs-section .split-section h2 { max-width: 31rem; }
+	.how-it-starts-section .split-section { grid-template-columns: 1fr; gap: 28px; }
+	.how-it-starts-section .split-section h2 { max-width: 31rem; }
 	.section-body a { color: var(--charcoal); font-weight: var(--font-weight-semibold); text-decoration-color: var(--amber); text-decoration-thickness: 2px; text-underline-offset: 4px; }
 	.section-body a:hover { color: var(--amber-text); }
-	.reading-column { max-width: 760px; }
 	.run-program { min-width: 0; }
 	.run-introduction { max-width: 66ch; margin-bottom: 28px; color: var(--charcoal); font-size: 1.125rem; font-weight: var(--font-weight-semibold); line-height: 1.65; }
-	.run-timing { max-width: 66ch; margin: 28px 0 0; color: var(--charcoal); font-size: 1.125rem; line-height: 1.65; }
-	.run-timing p:last-child { margin-bottom: 0; }
-	.run-sequence { display: grid; grid-template-columns: minmax(7.25rem, .75fr) minmax(0, 4fr) minmax(7.25rem, .75fr); align-items: stretch; border-top: 1px solid var(--rule); border-bottom: 1px solid var(--rule); }
+	.run-sequence { display: grid; grid-template-columns: minmax(7.25rem, .75fr) minmax(0, 4fr) minmax(9.5rem, .9fr); align-items: stretch; border-top: 1px solid var(--rule); border-bottom: 1px solid var(--rule); }
 	.live-work { display: grid; place-content: center; gap: 8px; padding: 20px 14px; background: var(--paper); color: var(--charcoal); font-size: var(--type-caption); font-weight: var(--font-weight-heavy); letter-spacing: var(--tracking-caption); line-height: var(--leading-caption); text-align: center; text-transform: uppercase; }
 	.live-work span { display: block; }
-	.live-work small { max-width: 14ch; color: var(--text-secondary); font-size: .78rem; font-weight: var(--font-weight-semibold); letter-spacing: normal; line-height: 1.25; text-transform: none; }
-	.live-work-start { border-right: 1px solid var(--rule); }
+	.live-work small { display: block; max-width: 18ch; color: var(--text-secondary); font-size: .78rem; font-weight: var(--font-weight-semibold); letter-spacing: normal; line-height: 1.3; text-transform: none; }
+	.live-work-start { position: relative; border-right: 1px solid var(--rule); }
 	.live-work-end { border-left: 1px solid var(--rule); }
 	.run-list { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); margin: 0; padding: 0; list-style: none; }
-	.run-list li { position: relative; min-width: 0; padding: 20px 16px 22px; border-right: 1px solid var(--rule); background: var(--reading); outline: none; transition: border-color 140ms ease, background-color 140ms ease; }
+	.run-list li { position: relative; min-width: 0; padding: 20px 16px 22px; border-right: 1px solid var(--rule); background: var(--reading); }
 	.run-list li:last-child { border-right: 0; }
 	.run-list li::after, .live-work-start::after { position: absolute; z-index: 1; width: 8px; height: 8px; border-top: 1px solid var(--slate); border-right: 1px solid var(--slate); content: ""; transform: rotate(45deg); }
 	.run-list li::after { top: 26px; right: -5px; }
-	.live-work-start { position: relative; }
 	.live-work-start::after { top: 50%; right: -5px; }
-	.run-list li:hover, .run-list li:focus-visible { background: var(--amber-wash); border-color: var(--amber); }
 	.run-number { display: block; margin-bottom: 20px; color: var(--amber-text); font-size: var(--type-caption); font-weight: var(--font-weight-heavy); letter-spacing: var(--tracking-caption); line-height: var(--leading-caption); }
 	.run-list h3 { margin: 0 0 13px; color: var(--charcoal); font-size: 1.05rem; line-height: 1.2; }
-	.run-list p { margin-bottom: 0; color: var(--text-secondary); font-size: 1rem !important; line-height: 1.48 !important; }
-	.next-step-section { padding: 118px 0; background: #131917; color: var(--paper); border-top: 4px solid var(--amber); border-bottom: 5px solid var(--amber); }
+	.run-list p { margin: 0; color: var(--text-secondary); font-size: 1rem; line-height: 1.48; }
+	.run-timing { max-width: 66ch; margin-top: 36px; color: var(--charcoal); }
+	.run-timing h3 { margin-bottom: 18px; font-size: 1.35rem; line-height: 1.2; }
+	.run-timing p { font-size: 1.125rem; line-height: 1.65; }
+	.run-timing p:last-child { margin-bottom: 0; }
+	.next-step-section { scroll-margin-top: 102px; padding: 118px 0; background: #131917; color: var(--paper); border-top: 4px solid var(--amber); border-bottom: 5px solid var(--amber); }
 	.next-step-inner { max-width: 790px; padding-left: clamp(22px, 4vw, 48px); border-left: 3px solid var(--amber); }
 	.next-step-inner h2 { color: var(--paper); }
 	.next-step-inner > p { max-width: 66ch; color: #e2e0d8; }
@@ -301,16 +232,14 @@ const runSteps: RunStep[] = [
 	.form-success p + p { margin-top: 1em; }
 	.submit-button { margin-top: 8px; }
 	.submit-button:disabled { cursor: not-allowed; opacity: .6; }
-	.closing-note { padding: 34px 0 78px; }
-	.closing-note p { margin-bottom: 0; color: var(--text-secondary); }
 
 	@media (max-width: 820px) {
 		.domain-guides-opening { padding: 88px 0 58px; }
 		.split-section { grid-template-columns: 1fr; gap: 22px; }
-		.next-step-section { padding: 82px 0; }
+		.next-step-section { scroll-margin-top: 90px; padding: 82px 0; }
 	}
 	@media (max-width: 960px) and (min-width: 721px) {
-		.run-sequence { grid-template-columns: minmax(5.75rem, .65fr) minmax(0, 4fr) minmax(5.75rem, .65fr); }
+		.run-sequence { grid-template-columns: minmax(5.75rem, .65fr) minmax(0, 4fr) minmax(8rem, .8fr); }
 		.live-work { padding-right: 8px; padding-left: 8px; }
 		.run-list li { padding-right: 12px; padding-left: 12px; }
 	}
@@ -319,10 +248,8 @@ const runSteps: RunStep[] = [
 		.full-field { grid-column: auto; }
 	}
 	@media (max-width: 720px) {
-		.opening-copy p:not(.eyebrow), .section-body p, .run-list p, .next-step-inner > p, .closing-note p { font-size: 1.125rem; }
-		.closing-note { padding: 28px 0 58px; }
+		.opening-copy p:not(.eyebrow), .section-body p, .run-list p, .next-step-inner > p { font-size: 1.125rem; }
 		.run-introduction { margin-bottom: 22px; }
-		.run-timing { margin-top: 22px; }
 		.run-sequence { grid-template-columns: 1fr; border: 0; }
 		.live-work, .run-list li { text-align: left; }
 		.live-work { position: relative; place-content: start; padding: 18px 0; border: 0; background: transparent; }
@@ -334,9 +261,6 @@ const runSteps: RunStep[] = [
 		.run-list li:last-child { border-bottom: 1px solid var(--rule); }
 		.run-number { margin-bottom: 10px; }
 		.run-list h3 { margin-bottom: 8px; }
-	}
-	@media (prefers-reduced-motion: reduce) {
-		.run-list li { transition: none; }
-		.run-list li:hover, .run-list li:focus-visible { transform: none; }
+		.run-timing { margin-top: 30px; }
 	}
 </style>
