@@ -103,10 +103,10 @@ const redirectRows = redirectsSource
 	{page.slug === "backlog" && <>
 		<h2>Successful deployments</h2>
 		<h3>Confirmed by Cloudflare</h3>
-		<p>Successful production deployments after the reconstructed period, newest first.</p>
+		<p>Recent successful production deployments, newest first.</p>
 		<p id="deployment-status" role="status">Loading deployments.</p>
 		<ol id="deployment-history" class="deployment-history" data-after={RECONSTRUCTED_PUSH_THROUGH}></ol>
-		<h3>Reconstructed from GitHub pushes</h3>
+		<h3>GitHub pushes</h3>
 		<p>Pushes to GitHub main from {centralDate.format(new Date(RECONSTRUCTED_PUSH_START))} through {centralDate.format(new Date(RECONSTRUCTED_PUSH_THROUGH))}. GitHub records the push, but does not prove that the corresponding Cloudflare build succeeded.</p>
 		<div class="reconstructed-history">
 			{reconstructedPushGroups.map(([date, pushes]) => <section>
@@ -154,7 +154,7 @@ const redirectRows = redirectsSource
 	const history = document.getElementById("client-error-history");
 	const status = document.getElementById("history-status");
 	if (history && status) {
-		fetch("/api/client-errors/history", { credentials: "omit", referrerPolicy: "no-referrer", cache: "no-store" })
+		fetch("/api/client-errors/history", { credentials: "same-origin", referrerPolicy: "no-referrer", cache: "no-store" })
 			.then(async (response) => { if (!response.ok) throw new Error("History unavailable"); return response.json(); })
 			.then((result) => {
 				if (!Array.isArray(result.weeks)) throw new Error("Invalid history");
@@ -176,7 +176,7 @@ const redirectRows = redirectsSource
 	const deploymentList = document.getElementById("deployment-history");
 	const deploymentStatus = document.getElementById("deployment-status");
 	if (deploymentList && deploymentStatus) {
-		fetch("/api/deployments/history", { credentials: "omit", referrerPolicy: "no-referrer", cache: "no-store" })
+		fetch("/api/deployments/history", { credentials: "same-origin", referrerPolicy: "no-referrer", cache: "no-store" })
 			.then(async (response) => { if (!response.ok) throw new Error("Deployment history unavailable"); return response.json(); })
 			.then((result) => {
 				if (!Array.isArray(result.deployments)) throw new Error("Invalid deployment history");
@@ -193,6 +193,6 @@ const redirectRows = redirectsSource
 					item.append(time, description); deploymentList.append(item);
 				}
 			})
-			.catch(() => { deploymentStatus.textContent = "The live Cloudflare record is unavailable right now. Reconstructed history follows."; });
+			.catch(() => { deploymentStatus.textContent = "The live Cloudflare record is unavailable right now. GitHub push history follows."; });
 	}
 </script>
