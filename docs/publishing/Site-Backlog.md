@@ -15,5 +15,3 @@
 - Replace GitHub pushes with Cloudflare-confirmed deploys
 
 # Done
-
-No items.

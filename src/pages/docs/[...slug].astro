@@ -44,7 +44,9 @@ const docGroups = [
 	{ label: "Technical", slugs: ["technical-manifest", "redirect-map", "agents", "contact-form", "lms"] },
 	{ label: "Marketing", slugs: ["brand", "visual-direction", "site-intent-map", "appendix-a"] },
 ];
-const milestoneDate = new Intl.DateTimeFormat("en-US", { year: "numeric", month: "long", day: "numeric", hour: "numeric", minute: "2-digit", timeZone: "America/Chicago", timeZoneName: "short" });
+const milestoneDate = new Intl.DateTimeFormat("en-US", { year: "numeric", month: "long", day: "numeric", timeZone: "America/Chicago" });
+const milestoneTime = new Intl.DateTimeFormat("en-US", { hour: "numeric", minute: "2-digit", timeZone: "America/Chicago", timeZoneName: "short" });
+const milestoneGroups = Object.entries(Object.groupBy(deploymentMilestones, (milestone) => milestoneDate.format(new Date(milestone.completedAt))));
 const redirectRows = redirectsSource
 	.split(/\r?\n/)
 	.map((line) => line.trim())
@@ -99,12 +101,13 @@ const redirectRows = redirectsSource
 		<div id="client-error-history"></div>
 	</>}
 	{page.slug === "backlog" && <>
-		<h2>Deployment milestones</h2>
-		<p>Meaningful completed packages, newest first.</p>
-		<ol class="deployment-history" reversed start={deploymentMilestones.length}>{deploymentMilestones.map((milestone) => <li>
-			<time datetime={milestone.completedAt}>{milestoneDate.format(new Date(milestone.completedAt))}</time>
-			<span>{milestone.description}</span>
-		</li>)}</ol>
+		{milestoneGroups.map(([date, milestones]) => <section>
+			<h3>{date}</h3>
+			<ol class="deployment-history" reversed start={milestones?.length}>{milestones?.map((milestone) => <li>
+				<time datetime={milestone.completedAt}>{milestoneTime.format(new Date(milestone.completedAt))}</time>
+				<span>{milestone.description}</span>
+			</li>)}</ol>
+		</section>)}
 	</>}
 </article></main>
 </SiteLayout>
