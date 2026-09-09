@@ -1,7 +1,7 @@
 import { PDFDocument, StandardFonts, rgb } from "pdf-lib";
 import { questions, dimensions } from "../src/data/grip-check-questions.js";
 
-// Generated at send time; question text is never maintained in a separate document.
+// Generated during the build; question text is never maintained in a separate document.
 export async function buildGripCheckBankPdf() {
   if (dimensions.length !== 5 || questions.length !== dimensions.length * 4) throw new Error("Invalid Grip Check bank dimensions.");
   const pdf = await PDFDocument.create();

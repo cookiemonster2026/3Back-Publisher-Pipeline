@@ -259,3 +259,11 @@ Additional current boundaries:
 - The exact local/CI Node and pnpm versions, an automated CI/CD topology, and Cloudflare account-side settings cannot be verified from tracked files.
 - Build output is ignored and is not a publishing source of record.
 - Repository policy requires human approval before implementing material public-page language or SEO recommendations and prohibits commit, push, or deploy unless explicitly instructed.
+
+## Grip Check question-bank attachment build
+
+`src/data/grip-check-questions.js` is the sole editorial source for the quiz and staff handout. Both supported build modes (`pnpm build` and `pnpm build:test`) remove any previous generated attachment, build the site, then generate and validate `dist/assets/grip-check/3Back-Grip-Check-Question-Bank.pdf`. PDF generation and PDF text extraction run only in the build scripts. Any generation, source-match, or read-back validation error fails the build and removes the attachment; there is no stale-file fallback.
+
+The PDF is ignored build output, not a tracked file under `public`. Do not manually edit or restore a separately maintained question-bank PDF. The Worker fetches the built asset through `env.ASSETS` and attaches it to the staff notification. It imports no PDF library. Attachment-fetch or email-provider failures still produce the existing error response; email order and participant content are unchanged.
+
+Generation and source-match validation run automatically inside the existing build; there is no separate test command. The existing Node >=22.12.0 requirement is unchanged. A direct/raw Astro build does not generate this attachment and is not the supported publishing command. `astro dev` serves the questionnaire UI; use the generated artifact or a built-site preview to inspect the PDF.

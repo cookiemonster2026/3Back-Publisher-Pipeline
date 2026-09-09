@@ -18,11 +18,12 @@
   },
   "dependencies": {
     "@astrojs/sitemap": "^3.7.3",
-    "astro": "^7.1.6",
-    "pdf-lib": "^1.17.1"
+    "astro": "^7.1.6"
   },
   "devDependencies": {
     "@astrojs/check": "^0.9.10",
+    "pdf-lib": "^1.17.1",
+    "pdfjs-dist": "5.4.149",
     "sharp": "0.35.3",
     "typescript": "^6.0.3",
     "wrangler": "^4.119.0"
