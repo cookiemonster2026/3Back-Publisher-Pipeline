@@ -158,9 +158,9 @@ async function handleGripCheck(request, env) {
 	if (!firstName || !lastName || !email || email !== confirmEmail || !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email) || !position || !organizationName || !organizationSize || !context || !scorePayload || !["yes", "no"].includes(reviewRequested)) return json({ error: "Complete all required fields with matching valid email addresses." }, 400);
 	let scores; try { scores = JSON.parse(scorePayload); } catch { return json({ error: "Your score is unavailable. Please complete Grip Check again." }, 400); }
 	if (!scores || !["organization", "work"].includes(scores.view) || !Number.isInteger(scores.composite) || !Array.isArray(scores.dimensionScores) || scores.dimensionScores.length !== 5 || scores.dimensionScores.some((score) => !Number.isInteger(score))) return json({ error: "Your score is unavailable. Please complete Grip Check again." }, 400);
-	const responsesAreValid = Array.isArray(scores.responses) && scores.responses.length === questions[scores.view].length && scores.responses.every((response) => response && Number.isInteger(response.dimensionIndex) && response.dimensionIndex >= 0 && response.dimensionIndex < 5 && typeof response.question === "string" && response.question.length > 0 && typeof response.selectedOption === "string" && response.selectedOption.length > 0);
+	const responsesAreValid = Array.isArray(scores.responses) && scores.responses.length === questions.length && scores.responses.every((response) => response && Number.isInteger(response.dimensionIndex) && response.dimensionIndex >= 0 && response.dimensionIndex < 5 && typeof response.question === "string" && response.question.length > 0 && typeof response.selectedOption === "string" && response.selectedOption.length > 0);
 	if (!await verifyTurnstile(request, env, token)) return json({ error: "The security check could not be verified. Please try again." }, 400);
-	const safe = Object.fromEntries(Object.entries({ firstName, lastName, email, position, organizationName, organizationSize, context, view: scores.view, composite: String(scores.composite), dimensions: scores.dimensionScores.join(", "), reviewRequested }).map(([key, value]) => [key, escapeHtml(value || "Not provided")]));
+	const safe = Object.fromEntries(Object.entries({ firstName, lastName, email, position, organizationName, organizationSize, context, view: "organization", composite: String(scores.composite), dimensions: scores.dimensionScores.join(", "), reviewRequested }).map(([key, value]) => [key, escapeHtml(value || "Not provided")]));
 	const gripDimensions = [
 		["Response to Changing Demand", "How clearly new demand is recognized, ordered, and acted on without waiting for the system to absorb it."],
 		["Ownership and Bounded Execution", "Whether the work has a named owner with enough authority and capability to produce the result inside clear limits."],
@@ -168,10 +168,10 @@ async function handleGripCheck(request, env) {
 		["Adaptation Without Loss of Control", "Whether established ways of working can be changed inside boundaries without creating uncontrolled side effects."],
 		["AI Use and Control", "Whether AI is applied to consequential work with accountable human ownership and traceable effects."]
 	];
-	const perspective = scores.view === "organization" ? "your organization" : "you";
-	const userSubject = scores.view === "organization" ? "Your organization's 3Back Grip Check score" : "Your personal 3Back Grip Check score";
-	const userOpening = scores.view === "organization" ? "Thank you for taking the Grip Check. Here is your organization's Grip Check result." : "Thank you for taking the Grip Check. Here is your personal Grip Check result.";
-	const internalPerspective = scores.view === "organization" ? "Organization" : "Personal";
+	const perspective = "your organization";
+	const userSubject = "Your organization's 3Back Grip Check score";
+	const userOpening = "Thank you for taking the Grip Check. Here is your organization's Grip Check result.";
+	const internalPerspective = "Organization";
 	const reviewStatus = reviewRequested === "yes" ? "30-minute interpretation and debrief requested" : "No response required";
 	const userFollowUp = reviewRequested === "yes" ? "You asked for a 30-minute interpretation and debrief. We will reach out shortly." : `This was your screening, not a diagnostic determination. A fuller interpretation needs a short conversation. Reply to this email or use <a href="https://3back.com/contact" style="color:#1d2421;text-decoration:underline">Start a Conversation on 3back.com</a> and say you completed a Grip Check. We will reply with a few short questions and available times.`;
 	const safeIp = escapeHtml(clean(request.headers.get("CF-Connecting-IP"), 100) || "Not available");
