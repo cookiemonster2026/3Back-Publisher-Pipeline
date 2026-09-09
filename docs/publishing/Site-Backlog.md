@@ -9,6 +9,7 @@
 - Fix YouTube ScrumTV channel about
 - Review Thinkific courses, infrastructure, and branding
 - Review TicketSpice tracking, analytics, and branding
+- Gate /docs with Cloudflare Access
 - Prove the Monday email and cron
 - Prove the KV binding
 - Replace GitHub pushes with Cloudflare-confirmed deploys
