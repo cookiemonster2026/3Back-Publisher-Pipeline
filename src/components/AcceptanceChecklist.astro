@@ -19,7 +19,7 @@ const testHtml = status ? [...status.html.matchAll(/<h[2-4][^>]*>[\s\S]*?<\/h[2-
 <section class="acceptance-overview" aria-label={results ? "Recorded results" : "Acceptance testing"}>
 {results && status ? <>
   {snapshot?.description && <h3 class="work-description">Done: {snapshot.description}</h3>}
-  <p class="milestone-dates"><span class="acceptance-status--unverified">Built: {milestoneDate(snapshot?.builtAt)}</span><span class="acceptance-status--passed">Reviewed: {milestoneDate(snapshot?.reviewedAt)}</span><span class="acceptance-status--judgment">Judged: {milestoneDate(snapshot?.judgedAt)}</span></p>
+  <p class="milestone-dates"><span class="acceptance-status--unverified">Deployed: {milestoneDate(snapshot?.deployedAt)}</span><span class="acceptance-status--passed">Reviewed: {milestoneDate(snapshot?.reviewedAt)}</span><span class="acceptance-status--judgment">Accepted: {milestoneDate(snapshot?.acceptedAt)}</span></p>
   <p class="acceptance-counts">
     <span class="acceptance-status--unverified"><span aria-hidden="true">?</span> ({status!.counts.unverified}) Review</span>
     <span class="verdict-pair"><span class="acceptance-status--passed"><span aria-hidden="true">✓</span> ({status!.counts.passed}/{status!.applicable}) Passed</span> <span aria-hidden="true">/</span>
