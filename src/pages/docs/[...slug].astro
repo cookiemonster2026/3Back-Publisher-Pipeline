@@ -41,9 +41,9 @@ if (page.source) {
 const metadata = pageSeo[page.path];
 const docsBySlug = Object.fromEntries(STAFF_DOCS.map((entry) => [entry.slug, entry]));
 const docGroups = [
-	{ label: "Work", slugs: ["backlog", "publisher-role", "acceptance-checks", "client-errors"] },
+	{ label: "Work", slugs: ["backlog", "acceptance-checks", "client-errors"] },
 	{ label: "Technical", slugs: ["technical-manifest", "redirect-map", "agents", "contact-form", "lms"] },
-	{ label: "Marketing", slugs: ["brand", "visual-direction", "site-intent-map", "appendix-a"] },
+	{ label: "Marketing", slugs: ["publisher-role", "brand", "visual-direction", "site-intent-map", "appendix-a"] },
 ];
 const milestoneDate = new Intl.DateTimeFormat("en-US", { year: "numeric", month: "long", day: "numeric", timeZone: "America/Chicago" });
 const milestoneTime = new Intl.DateTimeFormat("en-US", { hour: "numeric", minute: "2-digit", timeZone: "America/Chicago", timeZoneName: "short" });
@@ -152,7 +152,7 @@ const redirectRows = redirectsSource
 				for (const week of result.weeks.slice(0, 4)) {
 					const section = document.createElement("section");
 					const heading = document.createElement("h2"); heading.textContent = week.subject;
-					const frame = document.createElement("iframe"); frame.title = `Client errors ${week.week}`;
+					const frame = document.createElement("iframe"); frame.title = `JavaScript errors ${week.week}`;
 					frame.setAttribute("sandbox", ""); frame.referrerPolicy = "no-referrer";
 					frame.srcdoc = `<meta charset="utf-8"><meta http-equiv="Content-Security-Policy" content="default-src 'none'; style-src 'unsafe-inline'"><style>body{font:16px/1.6 sans-serif;color:#1d2421;padding:16px;overflow-wrap:anywhere}table{border-collapse:collapse;display:block;overflow:auto}td,th{border:1px solid #d8d1c6;padding:8px;text-align:left}</style>${week.html}`;
 					section.append(heading, frame); history.append(section);

@@ -17,6 +17,10 @@ export const deploymentMilestones = [
 		completedAt: "2026-09-09T15:15:44.0973223-05:00",
 		description: "Restore checklist borders and clarify status indicators",
 	},
+	{
+		completedAt: "2026-09-09T15:22:15.8286542-05:00",
+		description: "Reorganize staff docs and clarify JavaScript error reporting",
+	},
 ];
 
 // Preserve the existing archive while adding future completed milestones.

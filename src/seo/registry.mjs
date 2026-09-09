@@ -115,7 +115,7 @@ export const STAFF_DOCS = [
 	},
 	{
 		"slug": "client-errors",
-		"label": "Client errors",
+		"label": "JavaScript errors",
 		"source": null,
 		"path": "/docs/client-errors"
 	}
