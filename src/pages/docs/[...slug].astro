@@ -2,7 +2,7 @@
 import type { MarkdownInstance } from "astro";
 import { posix } from "node:path";
 import SiteLayout from "../../layouts/SiteLayout.astro";
-import { reconstructedPushes, RECONSTRUCTED_PUSH_START, RECONSTRUCTED_PUSH_THROUGH } from "../../data/reconstructed-pushes.js";
+import { deploymentMilestones } from "../../data/deployment-milestones.js";
 import { pageSeo, STAFF_DOCS } from "../../seo/registry.mjs";
 import redirectsSource from "../../../public/_redirects?raw";
 
@@ -44,9 +44,7 @@ const docGroups = [
 	{ label: "Technical", slugs: ["technical-manifest", "redirect-map", "agents", "contact-form", "lms"] },
 	{ label: "Marketing", slugs: ["brand", "visual-direction", "site-intent-map", "appendix-a"] },
 ];
-const centralDate = new Intl.DateTimeFormat("en-US", { year: "numeric", month: "long", day: "numeric", timeZone: "America/Chicago" });
-const centralTime = new Intl.DateTimeFormat("en-US", { hour: "numeric", minute: "2-digit", timeZone: "America/Chicago", timeZoneName: "short" });
-const reconstructedPushGroups = Object.entries(Object.groupBy(reconstructedPushes, (push) => centralDate.format(new Date(push.pushedAt))));
+const milestoneDate = new Intl.DateTimeFormat("en-US", { year: "numeric", month: "long", day: "numeric", hour: "numeric", minute: "2-digit", timeZone: "America/Chicago", timeZoneName: "short" });
 const redirectRows = redirectsSource
 	.split(/\r?\n/)
 	.map((line) => line.trim())
@@ -101,22 +99,12 @@ const redirectRows = redirectsSource
 		<div id="client-error-history"></div>
 	</>}
 	{page.slug === "backlog" && <>
-		<h2>Successful deployments</h2>
-		<h3>Confirmed by Cloudflare</h3>
-		<p>Recent successful production deployments, newest first.</p>
-		<p id="deployment-status" role="status">Loading deployments.</p>
-		<ol id="deployment-history" class="deployment-history" data-after={RECONSTRUCTED_PUSH_THROUGH}></ol>
-		<h3>GitHub pushes</h3>
-		<p>Pushes to GitHub main from {centralDate.format(new Date(RECONSTRUCTED_PUSH_START))} through {centralDate.format(new Date(RECONSTRUCTED_PUSH_THROUGH))}. GitHub records the push, but does not prove that the corresponding Cloudflare build succeeded.</p>
-		<div class="reconstructed-history">
-			{reconstructedPushGroups.map(([date, pushes]) => <section>
-				<h4>{date}</h4>
-				<ol class="deployment-history">{pushes?.map((push) => <li>
-					<time datetime={push.pushedAt}>{centralTime.format(new Date(push.pushedAt))}</time>
-					<span>{push.description}</span>
-				</li>)}</ol>
-			</section>)}
-		</div>
+		<h2>Deployment milestones</h2>
+		<p>Meaningful completed packages, newest first.</p>
+		<ol class="deployment-history" reversed start={deploymentMilestones.length}>{deploymentMilestones.map((milestone) => <li>
+			<time datetime={milestone.completedAt}>{milestoneDate.format(new Date(milestone.completedAt))}</time>
+			<span>{milestone.description}</span>
+		</li>)}</ol>
 	</>}
 </article></main>
 </SiteLayout>
@@ -142,8 +130,6 @@ const redirectRows = redirectsSource
 	.doc-groups ul { padding-left: 20px; }
 	.deployment-history { padding-left: 24px; }
 	.deployment-history :global(time) { display: block; font-weight: 700; }
-	.reconstructed-history h4 { margin: 32px 0 12px; font-size: 1.1rem; }
-	.reconstructed-history .deployment-history { margin-bottom: 0; }
 	.redirect-map { display: block; max-width: 100%; overflow-x: auto; border-collapse: collapse; margin-block: 24px; }
 	.redirect-map th, .redirect-map td { min-width: 120px; padding: 10px; border: 1px solid var(--rule); text-align: left; vertical-align: top; }
 	.redirect-map th { background: var(--reading); }
@@ -169,30 +155,5 @@ const redirectRows = redirectsSource
 				}
 			})
 			.catch(() => { status.textContent = "Reports are unavailable right now. Please try again later."; });
-	}
-</script>
-
-<script>
-	const deploymentList = document.getElementById("deployment-history");
-	const deploymentStatus = document.getElementById("deployment-status");
-	if (deploymentList && deploymentStatus) {
-		fetch("/api/deployments/history", { credentials: "same-origin", referrerPolicy: "no-referrer", cache: "no-store" })
-			.then(async (response) => { if (!response.ok) throw new Error("Deployment history unavailable"); return response.json(); })
-			.then((result) => {
-				if (!Array.isArray(result.deployments)) throw new Error("Invalid deployment history");
-				const after = new Date(deploymentList.dataset.after || 0);
-				const deployments = result.deployments.filter((deployment: { createdAt: string }) => new Date(deployment.createdAt) > after);
-				deploymentStatus.textContent = deployments.length ? "" : "No newer successful deployments found.";
-				const formatter = new Intl.DateTimeFormat("en-US", { year: "numeric", month: "short", day: "numeric", hour: "numeric", minute: "2-digit", timeZone: "America/Chicago", timeZoneName: "short" });
-				for (const deployment of deployments) {
-					const date = new Date(deployment.createdAt);
-					if (Number.isNaN(date.getTime()) || typeof deployment.description !== "string") continue;
-					const item = document.createElement("li");
-					const time = document.createElement("time"); time.dateTime = date.toISOString(); time.textContent = formatter.format(date);
-					const description = document.createElement("span"); description.textContent = deployment.description;
-					item.append(time, description); deploymentList.append(item);
-				}
-			})
-			.catch(() => { deploymentStatus.textContent = "The live Cloudflare record is unavailable right now. GitHub push history follows."; });
 	}
 </script>

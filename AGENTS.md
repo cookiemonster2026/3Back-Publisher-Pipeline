@@ -43,6 +43,10 @@ Only the explicit production-indexable build may emit production indexability, s
 - Do not deploy directly to Cloudflare unless the user explicitly instructs you to deploy. Permission to commit or push does not authorize deployment.
 - `pnpm deploy`, `wrangler deploy`, and equivalent direct Cloudflare deployment commands are prohibited unless Douglas explicitly authorizes a direct Cloudflare deployment for that specific task. Normal production publishing is `main` → GitHub `origin/main` → Cloudflare build.
 
+## Task closeout milestones
+
+When a task produces a meaningful completed package, propose one plain-English milestone description of ten words or fewer before the task closes. Approval of that description authorizes only this closeout sequence: inspect the working tree; add the approved description and completion timestamp to `src/data/deployment-milestones.js`; commit the already completed, user-approved task changes and that milestone in one commit; push that exact commit to `origin/main`; verify the working tree is clean; report what closed; and close the task. Make no cleanup, refactor, dependency, configuration, content, or other change during closeout. If unexpected uncommitted changes are present, stop, identify them, and ask Douglas whether to discard them; never discard them silently or close the task with a dirty working tree. If the required push cannot proceed without additional repository changes, stop and report. Do not add individual commits or pushes to the visible milestone history.
+
 ## Production publish (mandatory)
 
 Production is only `main` on the real GitHub remote for this repository: `github.com/cookiemonster2026/3Back-Publisher-Pipeline` or its SSH equivalent.
