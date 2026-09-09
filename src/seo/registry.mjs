@@ -44,7 +44,7 @@ export const STAFF_DOCS = [
 	{
 		"slug": "site-intent-map",
 		"label": "Site Intent Map",
-		"source": "docs/publishing/Site-Intent-Map-v1.8.md",
+		"source": "docs/publishing/Site-Intent-Map-v1.9.md",
 		"path": "/docs/site-intent-map"
 	},
 	{
@@ -52,6 +52,12 @@ export const STAFF_DOCS = [
 		"label": "Technical Manifest",
 		"source": "docs/publishing/technical-manifest.md",
 		"path": "/docs/technical-manifest"
+	},
+	{
+		"slug": "redirect-map",
+		"label": "Redirect Map",
+		"source": null,
+		"path": "/docs/redirect-map"
 	},
 	{
 		"slug": "agents",

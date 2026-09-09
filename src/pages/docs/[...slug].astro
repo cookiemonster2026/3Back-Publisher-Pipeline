@@ -4,6 +4,7 @@ import { posix } from "node:path";
 import SiteLayout from "../../layouts/SiteLayout.astro";
 import { reconstructedPushes, RECONSTRUCTED_PUSH_START, RECONSTRUCTED_PUSH_THROUGH } from "../../data/reconstructed-pushes.js";
 import { pageSeo, STAFF_DOCS } from "../../seo/registry.mjs";
+import redirectsSource from "../../../public/_redirects?raw";
 
 export function getStaticPaths() {
 	return STAFF_DOCS.map((page) => ({ params: { slug: page.slug || undefined }, props: { page } }));
@@ -13,7 +14,7 @@ const { page } = Astro.props;
 const documents = import.meta.glob<MarkdownInstance<Record<string, unknown>>>([
 	"../../../AGENTS.md",
 	"../../../docs/website-acceptance-checklist.md",
-	"../../../docs/publishing/Site-Intent-Map-v1.8.md",
+	"../../../docs/publishing/Site-Intent-Map-v1.9.md",
 	"../../../docs/publishing/technical-manifest.md",
 	"../../../docs/publishing/3Back-Publisher-Role-v0.2.md",
 	"../../../docs/publishing/contact-form.md",
@@ -40,12 +41,20 @@ const metadata = pageSeo[page.path];
 const docsBySlug = Object.fromEntries(STAFF_DOCS.map((entry) => [entry.slug, entry]));
 const docGroups = [
 	{ label: "Work", slugs: ["backlog", "publisher-role", "acceptance-checks", "client-errors"] },
-	{ label: "Technical", slugs: ["technical-manifest", "agents", "contact-form", "lms"] },
+	{ label: "Technical", slugs: ["technical-manifest", "redirect-map", "agents", "contact-form", "lms"] },
 	{ label: "Marketing", slugs: ["brand", "visual-direction", "site-intent-map", "appendix-a"] },
 ];
 const centralDate = new Intl.DateTimeFormat("en-US", { year: "numeric", month: "long", day: "numeric", timeZone: "America/Chicago" });
 const centralTime = new Intl.DateTimeFormat("en-US", { hour: "numeric", minute: "2-digit", timeZone: "America/Chicago", timeZoneName: "short" });
 const reconstructedPushGroups = Object.entries(Object.groupBy(reconstructedPushes, (push) => centralDate.format(new Date(push.pushedAt))));
+const redirectRows = redirectsSource
+	.split(/\r?\n/)
+	.map((line) => line.trim())
+	.filter((line) => line && !line.startsWith("#"))
+	.map((line) => {
+		const [from, to, status] = line.split(/\s+/);
+		return { from, to, status };
+	});
 ---
 
 <SiteLayout metadata={metadata}>
@@ -58,7 +67,10 @@ const reconstructedPushGroups = Object.entries(Object.groupBy(reconstructedPushe
 			{docGroups.map((group) => <section>
 				<h2>{group.label}</h2>
 				<ul>{group.slugs.map((slug) => <li><a href={docsBySlug[slug].path}>{docsBySlug[slug].label}</a></li>)}
-					{group.label === "Technical" && <li><a href="https://3back.com/sitemap-index.xml">Sitemap</a></li>}
+					{group.label === "Technical" && <>
+						<li><a href="https://3back.com/sitemap-index.xml">Sitemap</a></li>
+						<li><a href="https://github.com/cookiemonster2026/3Back-Publisher-Pipeline">GitHub repository</a></li>
+					</>}
 				</ul>
 			</section>)}
 		</div>
@@ -70,6 +82,13 @@ const reconstructedPushGroups = Object.entries(Object.groupBy(reconstructedPushe
 		<p>There is no Playwright suite.</p>
 	</>}
 	{page.slug === "visual-direction" && <p><a href="/assets/docs/3Back-Visual-Direction-Tile-v0.4.pdf">Open Visual Direction PDF</a></p>}
+	{page.slug === "redirect-map" && <>
+		<p>This is the deployed redirect and rewrite configuration from <code>public/_redirects</code>.</p>
+		<table class="redirect-map">
+			<thead><tr><th>Source</th><th>Destination</th><th>Status</th></tr></thead>
+			<tbody>{redirectRows.map((redirect) => <tr><td><code>{redirect.from}</code></td><td><code>{redirect.to}</code></td><td>{redirect.status}</td></tr>)}</tbody>
+		</table>
+	</>}
 	{page.slug === "lms" && <>
 		<p>path.3back.com is the Thinkific classroom. It is not an Astro route on 3back.com.</p>
 		<p><a href="https://path.3back.com">Open path.3back.com</a></p>
@@ -125,6 +144,9 @@ const reconstructedPushGroups = Object.entries(Object.groupBy(reconstructedPushe
 	.deployment-history :global(time) { display: block; font-weight: 700; }
 	.reconstructed-history h4 { margin: 32px 0 12px; font-size: 1.1rem; }
 	.reconstructed-history .deployment-history { margin-bottom: 0; }
+	.redirect-map { display: block; max-width: 100%; overflow-x: auto; border-collapse: collapse; margin-block: 24px; }
+	.redirect-map th, .redirect-map td { min-width: 120px; padding: 10px; border: 1px solid var(--rule); text-align: left; vertical-align: top; }
+	.redirect-map th { background: var(--reading); }
 	@media (max-width: 720px) { .doc-groups { grid-template-columns: 1fr; gap: 8px; } }
 </style>
 
