@@ -22,10 +22,17 @@ const status = acceptanceStatus(html, records);
   .acceptance-overview h2 { margin: 0 0 12px; }
   .acceptance-total { font-size: clamp(1.6rem, 4vw, 2.25rem); line-height: 1.2; font-weight: 700; margin: 0 0 16px; }
   .acceptance-counts { display: flex; flex-wrap: wrap; gap: 8px 24px; font-weight: 600; }
-  .acceptance-status--passed, .acceptance-checklist :global(.acceptance-status--passed) { color: #21643b; }
-  .acceptance-status--failed, .acceptance-checklist :global(.acceptance-status--failed) { color: #a52625; }
-  .acceptance-status--unverified, .acceptance-checklist :global(.acceptance-status--unverified) { color: #175da6; }
-  .acceptance-checklist :global(.acceptance-status) { display: inline-block; font-size: 1.125rem; line-height: 1; font-weight: 700; }
+  .acceptance-checklist { min-width: 0; overflow-wrap: anywhere; }
+  .acceptance-checklist :global(table) { display: block; max-width: 100%; overflow-x: auto; border-collapse: collapse; margin-block: 24px; }
+  .acceptance-checklist :global(th), .acceptance-checklist :global(td) { min-width: 120px; padding: 10px; border: 1px solid var(--rule); text-align: left; vertical-align: top; }
+  .acceptance-checklist :global(th) { background: var(--reading); font-weight: 700; }
+  .acceptance-checklist :global(h3), .acceptance-checklist :global(h4) { margin-top: 32px; }
+  .acceptance-status--passed, .acceptance-checklist :global(.acceptance-status--passed) { color: #16803a; }
+  .acceptance-status--failed, .acceptance-checklist :global(.acceptance-status--failed) { color: #dc2626; }
+  .acceptance-status--unverified, .acceptance-checklist :global(.acceptance-status--unverified) { color: #287dcc; }
+  .acceptance-checklist :global([data-acceptance-status="passed"]) { background: #effaf1; }
+  .acceptance-checklist :global([data-acceptance-status="failed"]) { background: #fff1f2; }
+  .acceptance-checklist :global([data-acceptance-status="unverified"]) { background: #eef7ff; }
+  .acceptance-checklist :global(.acceptance-status) { display: inline-block; font-size: 1.5rem; line-height: 1; font-weight: 800; }
   .source-document.acceptance-checklist :global(.acceptance-current-status), .source-document.acceptance-checklist :global(.acceptance-status-heading) { width: 64px; min-width: 64px; max-width: 64px; padding: 10px 4px; text-align: center; }
-  .acceptance-checklist :global(.acceptance-status-heading) { font-size: 0.8125rem; line-height: 1.3; }
 </style>

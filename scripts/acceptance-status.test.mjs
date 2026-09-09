@@ -43,6 +43,10 @@ test("one symbol per row, accessible evidence, and no extra row copy", () => {
   const cells = [...result.html.matchAll(/<td class="acceptance-current-status"[\s\S]*?<\/td>/g)].map(m => m[0]);
   assert.deepEqual(cells.map(cell => cell.replace(/<[^>]*>/g, "")), ["✓", "?"]);
   assert.ok(result.html.includes("aria-label="));
+  assert.ok(result.html.includes('<thead><tr><th scope="col" class="acceptance-status-heading">Current Status</th><th>Item</th>'));
+  assert.equal((result.html.match(/<tr><td class="acceptance-current-status"/g) || []).length, 2);
   assert.ok(!result.html.includes("<script>"));
-  assert.equal(result.html.replace('<th scope="col" class="acceptance-status-heading">Current Status</th>', '').replace(/<td class="acceptance-current-status"[\s\S]*?<\/td>/g, ""), table);
+  assert.ok(!result.html.includes('<th>Class</th>'));
+  assert.ok(result.html.includes('<th>Verifier</th>'));
+  assert.equal(result.html.replace('<th scope="col" class="acceptance-status-heading">Current Status</th>', '').replace(/<td class="acceptance-current-status"[\s\S]*?<\/td>/g, ""), table.replace('<th>Class</th>', '').replaceAll('<td>Affected</td>', ''));
 });

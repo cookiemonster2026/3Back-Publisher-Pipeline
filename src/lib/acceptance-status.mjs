@@ -22,7 +22,8 @@ export function acceptanceStatus(html, records) {
   let lastCheckedAt = null;
   const annotated = html.replace(/<table\b[^>]*>[\s\S]*?<\/table>/g, (table) => {
     if (!/<th>Item<\/th>/.test(table)) return table;
-    return table.replace("<th>Item</th>", '<th>Item</th><th scope="col" class="acceptance-status-heading">Current Status</th>')
+    return table.replace("<th>Item</th>", '<th scope="col" class="acceptance-status-heading">Current Status</th><th>Item</th>')
+      .replace("<th>Class</th>", "")
       .replace(/<tr>\s*<td>(\d{3})<\/td>([\s\S]*?)<\/tr>/g, (_row, item, rest) => {
         if (seen.has(item)) throw new Error(`Duplicate acceptance item ${item}`);
         seen.add(item);
@@ -37,7 +38,8 @@ export function acceptanceStatus(html, records) {
         let note = cells[1] === "Human" ? "Awaiting human review." : "No live-site verification recorded.";
         if (record) note = !conditionMatches ? "Condition changed. Recheck required." : !humanApproved ? "Awaiting human review." : record.evidence;
         const detail = `${labels[status]}. ${note}${record ? ` Checked ${dateFormat.format(new Date(record.checkedAt))} by ${record.reviewer} on ${record.url}.` : ""}`;
-        return `<tr><td>${item}</td><td class="acceptance-current-status" data-acceptance-status="${status}"><span class="acceptance-status acceptance-status--${status}" role="img" aria-label="${escapeHtml(detail)}" title="${escapeHtml(detail)}">${symbols[status]}</span></td>${rest}</tr>`;
+        const visibleRest = rest.replace(/^\s*<td>[\s\S]*?<\/td>/, "");
+        return `<tr><td class="acceptance-current-status" data-acceptance-status="${status}"><span class="acceptance-status acceptance-status--${status}" role="img" aria-label="${escapeHtml(detail)}" title="${escapeHtml(detail)}">${symbols[status]}</span></td><td>${item}</td>${visibleRest}</tr>`;
       });
   });
   for (const item of latest.keys()) if (!seen.has(item)) throw new Error(`Unknown acceptance item ${item}`);
