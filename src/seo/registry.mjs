@@ -34,8 +34,90 @@ export const OPERATIONAL_GRIP_DEFINITION = "Operational Grip is the discipline o
 export const OPERATIONAL_GRIP_ATTRIBUTION = "Operational Grip is 3Back’s proprietary operating lens for diagnosing execution and guiding bounded change.";
 export const HOMEPAGE_OPERATIONAL_GRIP_EXPLANATION = "A team or scaled system has Operational Grip when it can make bounded, local changes with enough confidence to observe their effects.";
 
+export const STAFF_DOCS = [
+	{
+		"slug": "",
+		"label": "Docs",
+		"source": null,
+		"path": "/docs"
+	},
+	{
+		"slug": "site-intent-map",
+		"label": "Site Intent Map",
+		"source": "docs/publishing/Site-Intent-Map-v1.6.md",
+		"path": "/docs/site-intent-map"
+	},
+	{
+		"slug": "technical-manifest",
+		"label": "Technical Manifest",
+		"source": "docs/publishing/technical-manifest.md",
+		"path": "/docs/technical-manifest"
+	},
+	{
+		"slug": "agents",
+		"label": "AGENTS",
+		"source": "AGENTS.md",
+		"path": "/docs/agents"
+	},
+	{
+		"slug": "publisher-role",
+		"label": "Publisher Role",
+		"source": "docs/publishing/3Back-Publisher-Role-v0.2.md",
+		"path": "/docs/publisher-role"
+	},
+	{
+		"slug": "contact-form",
+		"label": "Contact form",
+		"source": "docs/publishing/contact-form.md",
+		"path": "/docs/contact-form"
+	},
+	{
+		"slug": "brand",
+		"label": "Brand brief",
+		"source": "docs/brand/source/3Back-Minimum-Viable-Brand-and-Design-Brief-v0.1.md",
+		"path": "/docs/brand"
+	},
+	{
+		"slug": "visual-direction",
+		"label": "Visual Direction",
+		"source": null,
+		"path": "/docs/visual-direction"
+	},
+	{
+		"slug": "appendix-a",
+		"label": "Appendix A: SA Exception",
+		"source": "docs/brand/source/3Back-Brand-Brief-Appendix-SA-Course-Ecosystem-v0.1.md",
+		"path": "/docs/appendix-a"
+	},
+	{
+		"slug": "acceptance-checks",
+		"label": "Acceptance checks",
+		"source": "docs/website-acceptance-checklist.md",
+		"path": "/docs/acceptance-checks"
+	},
+	{
+		"slug": "backlog",
+		"label": "Backlog",
+		"source": "docs/publishing/Site-Backlog.md",
+		"path": "/docs/backlog"
+	},
+	{
+		"slug": "lms",
+		"label": "LMS",
+		"source": null,
+		"path": "/docs/lms"
+	},
+	{
+		"slug": "client-errors",
+		"label": "Client errors",
+		"source": null,
+		"path": "/docs/client-errors"
+	}
+];
+
 /** @type {Readonly<Record<string, SeoMetadata>>} */
 export const pageSeo = Object.freeze({
+	...Object.fromEntries(STAFF_DOCS.map(({path,label}) => [path, {status: "complete", path, title: `${label} | 3Back`, description: `${label}. Staff reading copy for 3Back.`, indexability: "noindex, nofollow", social: {title: `${label} | 3Back`, description: `${label}. Staff reading copy for 3Back.`, type: "website"}}])),
 	"/papers/how-3back-approaches-learning": {
 	  "status": "complete",
 	  "path": "/papers/how-3back-approaches-learning",

@@ -1,0 +1,156 @@
+---
+import type { MarkdownInstance } from "astro";
+import { posix } from "node:path";
+import SiteLayout from "../../layouts/SiteLayout.astro";
+import { pageSeo, STAFF_DOCS } from "../../seo/registry.mjs";
+
+export function getStaticPaths() {
+	return STAFF_DOCS.map((page) => ({ params: { slug: page.slug || undefined }, props: { page } }));
+}
+
+const { page } = Astro.props;
+const documents = import.meta.glob<MarkdownInstance<Record<string, unknown>>>([
+	"../../../AGENTS.md",
+	"../../../docs/website-acceptance-checklist.md",
+	"../../../docs/publishing/Site-Intent-Map-v1.6.md",
+	"../../../docs/publishing/technical-manifest.md",
+	"../../../docs/publishing/3Back-Publisher-Role-v0.2.md",
+	"../../../docs/publishing/contact-form.md",
+	"../../../docs/publishing/Site-Backlog.md",
+	"../../../docs/brand/source/3Back-Minimum-Viable-Brand-and-Design-Brief-v0.1.md",
+	"../../../docs/brand/source/3Back-Brand-Brief-Appendix-SA-Course-Ecosystem-v0.1.md",
+]);
+let sourceHtml = "";
+if (page.source) {
+	const document = await documents[`../../../${page.source}`]();
+	// Preserve source text; nest its heading hierarchy beneath the page title.
+	sourceHtml = (await document.compiledContent()).replace(/<(\/?)(h)([1-5])(\b[^>]*)>/g, (_tag, slash, h, depth, rest) => `<${slash}${h}${Number(depth) + 1}${rest}>`);
+	sourceHtml = sourceHtml.replace(/href="([^"#][^"]*)"/g, (attribute, href: string) => {
+		if (/^(?:[a-z]+:|\/)/i.test(href)) return attribute;
+		const [target, fragment] = href.split("#");
+		const resolved = target.startsWith("docs/") || target === "AGENTS.md" ? target : posix.normalize(posix.join(posix.dirname(page.source!), target));
+		const readingCopy = STAFF_DOCS.find((entry) => entry.source === resolved);
+		if (readingCopy) return `href="${readingCopy.path}${fragment ? `#${fragment}` : ""}"`;
+		if (resolved === "docs/brand/source/3Back-Visual-Direction-Tile-v0.4.pdf") return 'href="/assets/docs/3Back-Visual-Direction-Tile-v0.4.pdf"';
+		return attribute;
+	});
+}
+const metadata = pageSeo[page.path];
+const docsBySlug = Object.fromEntries(STAFF_DOCS.map((entry) => [entry.slug, entry]));
+const docGroups = [
+	{ label: "Work", slugs: ["backlog", "publisher-role", "acceptance-checks", "client-errors"] },
+	{ label: "Technical", slugs: ["technical-manifest", "agents", "contact-form", "lms"] },
+	{ label: "Marketing", slugs: ["brand", "visual-direction", "site-intent-map", "appendix-a"] },
+];
+---
+
+<SiteLayout metadata={metadata}>
+<main id="main" class="policy-page"><article class="shell policy-content">
+	{!page.slug && <p class="eyebrow">Staff</p>}
+	<h1>{page.label}</h1>
+	{page.slug ? <p><a href="/docs/">Docs</a></p> : <>
+		<p>These are reading copies of the current control files. They are not public pages.</p>
+		<div class="doc-groups">
+			{docGroups.map((group) => <section>
+				<h2>{group.label}</h2>
+				<ul>{group.slugs.map((slug) => <li><a href={docsBySlug[slug].path}>{docsBySlug[slug].label}</a></li>)}
+					{group.label === "Technical" && <li><a href="https://3back.com/sitemap-index.xml">Sitemap</a></li>}
+				</ul>
+			</section>)}
+		</div>
+	</>}
+	{sourceHtml && <div class="source-document" set:html={sourceHtml} />}
+	{page.slug === "acceptance-checks" && <>
+		<h2>Commands that run</h2>
+		<ul><li><code>pnpm check</code></li><li><code>pnpm build</code></li><li><code>pnpm build:test</code></li><li><code>pnpm validate:seo</code></li></ul>
+		<p>There is no Playwright suite.</p>
+	</>}
+	{page.slug === "visual-direction" && <p><a href="/assets/docs/3Back-Visual-Direction-Tile-v0.4.pdf">Open Visual Direction PDF</a></p>}
+	{page.slug === "lms" && <>
+		<p>path.3back.com is the Thinkific classroom. It is not an Astro route on 3back.com.</p>
+		<p><a href="https://path.3back.com">Open path.3back.com</a></p>
+		<p>What is there: A-CSM, CSP-SM, A-CSPO, and CSP-PO on demand, plus Mechanics of Scrum and the CSM Study Guide.</p>
+		<p>The <a href="/training">/training</a> hybrid link points at path.3back.com. There is no LMS manual in this repo.</p>
+	</>}
+	{page.slug === "client-errors" && <>
+		<p>Weekly first-party script failures. Four weeks kept. Email still goes to staff.</p>
+		<p id="history-status" role="status">Loading reports.</p>
+		<div id="client-error-history"></div>
+	</>}
+	{page.slug === "backlog" && <>
+		<h2>Successful deployments</h2>
+		<p>Confirmed production deployments, newest first. Times are shown in Central Time.</p>
+		<p id="deployment-status" role="status">Loading deployments.</p>
+		<ol id="deployment-history" class="deployment-history"></ol>
+	</>}
+</article></main>
+</SiteLayout>
+
+<style>
+	.policy-content { max-width: 880px; padding-block: clamp(72px, 10vw, 120px); }
+	h1 { padding-bottom: 28px; border-bottom: 4px solid var(--amber); }
+	.policy-content :global(h2) { margin: 52px 0 18px; font-size: clamp(1.65rem, 3vw, 2.35rem); }
+	.policy-content :global(ul) { margin-bottom: 28px; padding-left: 24px; }
+	.policy-content :global(li) { margin-bottom: 12px; }
+	.policy-content :global(a) { text-decoration-color: var(--amber); text-underline-offset: 3px; }
+	.eyebrow { font-size: 0.875rem; font-weight: 700; letter-spacing: .08em; text-transform: uppercase; }
+	.source-document { min-width: 0; overflow-wrap: anywhere; }
+	.source-document :global(pre) { max-width: 100%; overflow: auto; padding: 16px; background: var(--reading); border: 1px solid var(--rule); }
+	.source-document :global(table) { display: block; max-width: 100%; overflow-x: auto; border-collapse: collapse; margin-block: 24px; }
+	.source-document :global(th), .source-document :global(td) { min-width: 120px; padding: 10px; border: 1px solid var(--rule); text-align: left; vertical-align: top; }
+	.source-document :global(th) { background: var(--reading); }
+	.source-document :global(h3), .source-document :global(h4) { margin-top: 32px; }
+	#client-error-history :global(iframe) { width: 100%; height: 640px; border: 1px solid var(--rule); background: var(--reading); }
+	.doc-groups { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: clamp(20px, 4vw, 48px); margin-top: 40px; }
+	.doc-groups section { min-width: 0; }
+	.doc-groups h2 { margin-top: 0; font-size: clamp(1.35rem, 2.2vw, 1.8rem); }
+	.doc-groups ul { padding-left: 20px; }
+	.deployment-history { padding-left: 24px; }
+	.deployment-history :global(time) { display: block; font-weight: 700; }
+	@media (max-width: 720px) { .doc-groups { grid-template-columns: 1fr; gap: 8px; } }
+</style>
+
+<script>
+	const history = document.getElementById("client-error-history");
+	const status = document.getElementById("history-status");
+	if (history && status) {
+		fetch("/api/client-errors/history", { credentials: "omit", referrerPolicy: "no-referrer", cache: "no-store" })
+			.then(async (response) => { if (!response.ok) throw new Error("History unavailable"); return response.json(); })
+			.then((result) => {
+				if (!Array.isArray(result.weeks)) throw new Error("Invalid history");
+				status.textContent = result.weeks.length ? "" : "No reports yet.";
+				for (const week of result.weeks.slice(0, 4)) {
+					const section = document.createElement("section");
+					const heading = document.createElement("h2"); heading.textContent = week.subject;
+					const frame = document.createElement("iframe"); frame.title = `Client errors ${week.week}`;
+					frame.setAttribute("sandbox", ""); frame.referrerPolicy = "no-referrer";
+					frame.srcdoc = `<meta charset="utf-8"><meta http-equiv="Content-Security-Policy" content="default-src 'none'; style-src 'unsafe-inline'"><style>body{font:16px/1.6 sans-serif;color:#1d2421;padding:16px;overflow-wrap:anywhere}table{border-collapse:collapse;display:block;overflow:auto}td,th{border:1px solid #d8d1c6;padding:8px;text-align:left}</style>${week.html}`;
+					section.append(heading, frame); history.append(section);
+				}
+			})
+			.catch(() => { status.textContent = "Reports are unavailable right now. Please try again later."; });
+	}
+</script>
+
+<script>
+	const deploymentList = document.getElementById("deployment-history");
+	const deploymentStatus = document.getElementById("deployment-status");
+	if (deploymentList && deploymentStatus) {
+		fetch("/api/deployments/history", { credentials: "omit", referrerPolicy: "no-referrer", cache: "no-store" })
+			.then(async (response) => { if (!response.ok) throw new Error("Deployment history unavailable"); return response.json(); })
+			.then((result) => {
+				if (!Array.isArray(result.deployments)) throw new Error("Invalid deployment history");
+				deploymentStatus.textContent = result.deployments.length ? "" : "No successful deployments found.";
+				const formatter = new Intl.DateTimeFormat("en-US", { year: "numeric", month: "short", day: "numeric", hour: "numeric", minute: "2-digit", timeZone: "America/Chicago", timeZoneName: "short" });
+				for (const deployment of result.deployments) {
+					const date = new Date(deployment.createdAt);
+					if (Number.isNaN(date.getTime()) || typeof deployment.description !== "string") continue;
+					const item = document.createElement("li");
+					const time = document.createElement("time"); time.dateTime = date.toISOString(); time.textContent = formatter.format(date);
+					const description = document.createElement("span"); description.textContent = deployment.description;
+					item.append(time, description); deploymentList.append(item);
+				}
+			})
+			.catch(() => { deploymentStatus.textContent = "Deployment history is unavailable right now."; });
+	}
+</script>

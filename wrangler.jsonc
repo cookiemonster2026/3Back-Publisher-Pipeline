@@ -7,6 +7,9 @@
     "watch_dir": ["src", "public", "scripts", "astro.config.mjs"]
   },
   "main": "./functions/worker.mjs",
+  "triggers": {
+    "crons": ["0 14 * * 1", "0 16 * * 1"]
+  },
   "rules": [
     {
       "type": "Data",
@@ -16,7 +19,8 @@
   ],
   "vars": {
     "CONTACT_FROM_EMAIL": "noreply@3back.com",
-    "CONTACT_NOTIFICATION_EMAIL": "og@3back.com"
+    "CONTACT_NOTIFICATION_EMAIL": "og@3back.com",
+    "CLIENT_ERROR_NOTIFICATION_EMAIL": "javascript-errors@3back.com"
   },
   "assets": {
     "directory": "./dist",

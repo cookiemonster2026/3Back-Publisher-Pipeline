@@ -3,6 +3,7 @@ import SiteFooter from "../components/SiteFooter.astro";
 import SiteHeader from "../components/SiteHeader.astro";
 import SeoHead from "../components/SeoHead.astro";
 import type { SeoMetadata } from "../seo/types";
+import { beaconScript } from "../../functions/client-error.mjs";
 
 interface Props {
 	metadata: SeoMetadata;
@@ -15,6 +16,7 @@ const { metadata } = Astro.props;
 <html lang="en">
 	<head>
 		<meta charset="utf-8" />
+		<script is:inline set:html={beaconScript()}></script>
 		<meta name="viewport" content="width=device-width, initial-scale=1" />
 		<SeoHead metadata={metadata} />
 		<link rel="preconnect" href="https://fonts.googleapis.com" />
