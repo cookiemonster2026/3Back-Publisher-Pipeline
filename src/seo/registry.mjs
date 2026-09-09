@@ -1,3 +1,4 @@
+import { acceptanceSnapshots } from "../data/acceptance-snapshots.js";
 // @ts-check
 
 /** @typedef {import("./types").SeoMetadata} SeoMetadata */
@@ -97,10 +98,14 @@ export const STAFF_DOCS = [
 	},
 	{
 		"slug": "acceptance-checks",
-		"label": "Acceptance checks",
+		"label": "Acceptance Testing",
 		"source": "docs/website-acceptance-checklist.md",
 		"path": "/docs/acceptance-checks"
 	},
+	{
+		"slug": "acceptance-results", "label": "Acceptance Results Archive", "path": "/docs/acceptance-results"
+	},
+	...acceptanceSnapshots.map(snapshot => ({ slug: `acceptance-results/${snapshot.id}`, label: "Website Acceptance Test Suite", source: `src/data/acceptance-snapshots/${snapshot.id}.md`, path: snapshot.path.replace(/\/$/, "") })),
 	{
 		"slug": "backlog",
 		"label": "Backlog",

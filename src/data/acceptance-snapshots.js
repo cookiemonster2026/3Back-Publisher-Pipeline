@@ -1,0 +1,2 @@
+// Append snapshots; never replace or remove earlier entries. Freeze each suite and its evidence together.
+export const acceptanceSnapshots = [{ id: "2026-09-09", label: "Recent: September 9, 2026", path: "/docs/acceptance-results/2026-09-09/", milestoneCompletedAt: "2026-09-09T15:22:15.8286542-05:00", description: "Reorganize staff docs and clarify JavaScript error reporting", builtAt: null, reviewedAt: null, judgedAt: null, pushAt: null, commitSha: null }];

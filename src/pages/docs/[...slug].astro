@@ -3,6 +3,7 @@ import type { MarkdownInstance } from "astro";
 import { posix } from "node:path";
 import SiteLayout from "../../layouts/SiteLayout.astro";
 import AcceptanceChecklist from "../../components/AcceptanceChecklist.astro";
+import { acceptanceSnapshots } from "../../data/acceptance-snapshots.js";
 import { doneHistory } from "../../data/deployment-milestones.js";
 import { pageSeo, STAFF_DOCS } from "../../seo/registry.mjs";
 import redirectsSource from "../../../public/_redirects?raw";
@@ -14,6 +15,7 @@ export function getStaticPaths() {
 const { page } = Astro.props;
 const documents = import.meta.glob<MarkdownInstance<Record<string, unknown>>>([
 	"../../../AGENTS.md",
+	"../../data/acceptance-snapshots/*.md",
 	"../../../docs/website-acceptance-checklist.md",
 	"../../../docs/publishing/Site-Intent-Map-v1.9.md",
 	"../../../docs/publishing/technical-manifest.md",
@@ -25,7 +27,7 @@ const documents = import.meta.glob<MarkdownInstance<Record<string, unknown>>>([
 ]);
 let sourceHtml = "";
 if (page.source) {
-	const document = await documents[`../../../${page.source}`]();
+	const document = await documents[page.source.startsWith("src/") ? `../../${page.source.slice(4)}` : `../../../${page.source}`]();
 	// Preserve source text; nest its heading hierarchy beneath the page title.
 	sourceHtml = (await document.compiledContent()).replace(/<(\/?)(h)([1-5])(\b[^>]*)>/g, (_tag, slash, h, depth, rest) => `<${slash}${h}${Number(depth) + 1}${rest}>`);
 	sourceHtml = sourceHtml.replace(/href="([^"#][^"]*)"/g, (attribute, href: string) => {
@@ -59,10 +61,10 @@ const redirectRows = redirectsSource
 ---
 
 <SiteLayout metadata={metadata}>
-<main id="main" class="policy-page"><article class="shell policy-content">
+<main id="main" class="policy-page"><article class:list={["shell", "policy-content", { "acceptance-page": page.slug.startsWith("acceptance-") }]}>
 	{!page.slug && <p class="eyebrow">Staff</p>}
 	<h1>{page.label}</h1>
-	{page.slug ? <p><a href="/docs/">Docs</a></p> : <>
+	{page.slug ? <p class="docs-back"><a href="/docs/">Docs</a>{page.slug.startsWith("acceptance-results") && <> › <a href="/docs/acceptance-checks/">Acceptance Testing</a></>}</p> : <>
 		<p>These are reading copies of the current control files. They are not public pages.</p>
 		<div class="doc-groups">
 			{docGroups.map((group) => <section>
@@ -76,12 +78,7 @@ const redirectRows = redirectsSource
 			</section>)}
 		</div>
 	</>}
-	{sourceHtml && (page.slug === "acceptance-checks" ? <AcceptanceChecklist html={sourceHtml} /> : <div class="source-document" set:html={sourceHtml} />)}
-	{page.slug === "acceptance-checks" && <>
-		<h2>Commands that run</h2>
-		<ul><li><code>pnpm check</code></li><li><code>pnpm build</code></li><li><code>pnpm build:test</code></li><li><code>pnpm validate:seo</code></li></ul>
-		<p>There is no Playwright suite.</p>
-	</>}
+	{page.slug.startsWith("acceptance-") ? <AcceptanceChecklist snapshotId={page.slug.split("/")[1]} html={sourceHtml} results={page.slug.startsWith("acceptance-results/")} archive={page.slug === "acceptance-results"} /> : sourceHtml && <div class="source-document" set:html={sourceHtml} />}
 	{page.slug === "visual-direction" && <p><a href="/assets/docs/3Back-Visual-Direction-Tile-v0.4.pdf">Open Visual Direction PDF</a></p>}
 	{page.slug === "redirect-map" && <>
 		<p>This is the deployed redirect and rewrite configuration from <code>public/_redirects</code>.</p>
@@ -106,7 +103,7 @@ const redirectRows = redirectsSource
 			<h3>{date}</h3>
 			<ol class="deployment-history" reversed start={milestones?.length}>{milestones?.map((milestone) => <li>
 				<time datetime={milestone.completedAt}>{milestoneTime.format(new Date(milestone.completedAt))}</time>
-				<span>{milestone.description}</span>
+				<span>{acceptanceSnapshots.find(snapshot => snapshot.milestoneCompletedAt === milestone.completedAt) ? <a href={acceptanceSnapshots.find(snapshot => snapshot.milestoneCompletedAt === milestone.completedAt)!.path}>{milestone.description}</a> : milestone.description}</span>
 			</li>)}</ol>
 		</section>)}
 	</>}
@@ -116,6 +113,9 @@ const redirectRows = redirectsSource
 <style>
 	.policy-content { max-width: 880px; padding-block: clamp(72px, 10vw, 120px); }
 	h1 { padding-bottom: 28px; border-bottom: 4px solid var(--amber); }
+  .policy-content.acceptance-page { padding-top: 28px; }
+  .acceptance-page h1 { margin-block: 0 12px; }
+  .acceptance-page .docs-back { margin-block: 0 12px; }
 	.policy-content :global(h2) { margin: 52px 0 18px; font-size: clamp(1.65rem, 3vw, 2.35rem); }
 	.policy-content :global(ul) { margin-bottom: 28px; padding-left: 24px; }
 	.policy-content :global(li) { margin-bottom: 12px; }
