@@ -9,6 +9,10 @@ export const deploymentMilestones = [
 		completedAt: "2026-09-09T14:51:34.6279593-05:00",
 		description: "Restore complete history and enforce append-only closeout",
 	},
+	{
+		completedAt: "2026-09-09T15:08:01.1339469-05:00",
+		description: "Show live acceptance status and recorded review decisions",
+	},
 ];
 
 // Preserve the existing archive while adding future completed milestones.

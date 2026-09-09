@@ -2,6 +2,7 @@
 import type { MarkdownInstance } from "astro";
 import { posix } from "node:path";
 import SiteLayout from "../../layouts/SiteLayout.astro";
+import AcceptanceChecklist from "../../components/AcceptanceChecklist.astro";
 import { doneHistory } from "../../data/deployment-milestones.js";
 import { pageSeo, STAFF_DOCS } from "../../seo/registry.mjs";
 import redirectsSource from "../../../public/_redirects?raw";
@@ -75,7 +76,7 @@ const redirectRows = redirectsSource
 			</section>)}
 		</div>
 	</>}
-	{sourceHtml && <div class="source-document" set:html={sourceHtml} />}
+	{sourceHtml && (page.slug === "acceptance-checks" ? <AcceptanceChecklist html={sourceHtml} /> : <div class="source-document" set:html={sourceHtml} />)}
 	{page.slug === "acceptance-checks" && <>
 		<h2>Commands that run</h2>
 		<ul><li><code>pnpm check</code></li><li><code>pnpm build</code></li><li><code>pnpm build:test</code></li><li><code>pnpm validate:seo</code></li></ul>

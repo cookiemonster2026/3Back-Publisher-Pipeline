@@ -92,6 +92,12 @@ Result: Ready for local review or Not ready
 
 Omit the `Failed` or `Unverified` section when it is empty. Do not list individual passing checks unless requested. Use `Ready for local review` only when no Codex-verifiable check failed or remains unverified. Human-review items may remain pending with that result.
 
+## Live acceptance status
+
+The Current Status column and composite on `/docs/acceptance-checks/` report live-site verification only. Never use local builds, local previews, source inspection, or inferred deployment success to mark an item green or red. Green checkmark means passed; red X means failed; blue question mark means needs attention. Count every displayed checklist item in the denominator, including blue items; count only green items in the passed numerator. Use exactly three symbols in one narrow status column, with accessible labels and evidence in tooltips.
+
+Record actual live checks in `src/data/acceptance-status.json` by appending records; never replace the existing audit history. Include the item number, exact condition from the rendered checklist, status, live URL, check timestamp, reviewer, reviewer type, and evidence. The newest record for each item controls the display. Recheck affected items on the live site after each release; until rechecked, append a blue/unverified record explaining what changed. Do not carry forward a green result merely because a local test passed. If a result is uncertain or cannot be checked, ask Douglas by item number and requirement; record his assigned green/red result with `reviewerType: "human"`. Human-review items require his explicit decision. Never interpret silence, approval to commit, or approval to push as checklist acceptance.
+
 ## Development
 
 When starting the dev server, use background mode:
