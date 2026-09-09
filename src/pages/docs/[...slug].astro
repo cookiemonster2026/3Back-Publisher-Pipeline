@@ -2,7 +2,7 @@
 import type { MarkdownInstance } from "astro";
 import { posix } from "node:path";
 import SiteLayout from "../../layouts/SiteLayout.astro";
-import { deploymentMilestones } from "../../data/deployment-milestones.js";
+import { doneHistory } from "../../data/deployment-milestones.js";
 import { pageSeo, STAFF_DOCS } from "../../seo/registry.mjs";
 import redirectsSource from "../../../public/_redirects?raw";
 
@@ -46,7 +46,7 @@ const docGroups = [
 ];
 const milestoneDate = new Intl.DateTimeFormat("en-US", { year: "numeric", month: "long", day: "numeric", timeZone: "America/Chicago" });
 const milestoneTime = new Intl.DateTimeFormat("en-US", { hour: "numeric", minute: "2-digit", timeZone: "America/Chicago", timeZoneName: "short" });
-const milestoneGroups = Object.entries(Object.groupBy(deploymentMilestones, (milestone) => milestoneDate.format(new Date(milestone.completedAt))));
+const milestoneGroups = Object.entries(Object.groupBy(doneHistory, (milestone) => milestoneDate.format(new Date(milestone.completedAt))));
 const redirectRows = redirectsSource
 	.split(/\r?\n/)
 	.map((line) => line.trim())
