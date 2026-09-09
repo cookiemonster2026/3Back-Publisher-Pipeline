@@ -19,6 +19,7 @@
     "CONTACT_NOTIFICATION_EMAIL": "og@3back.com"
   },
   "assets": {
-    "directory": "./dist"
+    "directory": "./dist",
+    "binding": "ASSETS"
   }
 }
