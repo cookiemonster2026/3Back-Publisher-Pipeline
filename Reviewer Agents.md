@@ -1,69 +1,73 @@
 # Independent AI Reviewer
 
-Read this file before reviewing. AGENTS.md governs the AI Builder. Use your own reviewer identity and do not review work you implemented.
+Use your own identity. Review work you did not implement. [Repository](https://github.com/cookiemonster2026/3Back-Publisher-Pipeline).
+
+<span class="review-pass">P Pass</span> · <span class="review-fail">F Fail</span> · <span class="review-pending">R Review</span> · <span class="review-judgment">J Judgment</span>
 
 ## 000 — Initialize
 
-Each builder handoff resets 000 to <span class="review-pending">R Review</span>. Confirm you have:
+Use the task ID, suite ID, and production results URL supplied in the handoff. Reuse that exact URL throughout iteration; do not select whichever suite is latest. New suite IDs use creation time in UTC: YYYY-MM-DD-HHmmss. Existing IDs remain valid; suite creation belongs to the builder.
 
-- Read these instructions and the required files in [the repository](https://github.com/cookiemonster2026/3Back-Publisher-Pipeline): specification, tests, evidence, and lifecycle record.
-- Matched the permanent task ID to its suite, with Accepted blank and an open handoff.
-- An authorized way to record results, directly or through an agreed builder handoff. Verify actual capabilities; browser access does not imply repository write access or Node execution.
+Read these instructions, the specification, suite tests, evidence, and lifecycle record. Confirm the task matches an unaccepted suite with a current handoff, and that you can record results. Each builder handoff resets 000 to <span class="review-pending">R Review</span>.
 
-000 checks instructions, suite identification, independent identity, information, and a recording path. It does not certify access to every surface or deployment confirmation. Record <span class="review-pass">P Pass</span> only after verifying these prerequisites. Otherwise record <span class="review-fail">F Fail</span>, report <span class="review-judgment">J Judgment</span> with the missing access or information to the human, and stop. Leave Reviewed unchanged. If you cannot write the failure, report it in chat and ask the human to arrange recording. Retry initialization after the blocker is resolved.
+Record <span class="review-pass">P Pass</span> when these prerequisites hold. Otherwise record <span class="review-fail">F Fail</span>, identify the blocker for human judgment, and stop. If recording is impossible, report the failure in chat. An earlier handoff's pass does not carry forward.
 
 ```text
 node scripts/acceptance-lifecycle.mjs initialize --suite SUITE_ID --task TASK_ID --actor REVIEWER_ID --acknowledge-read --repository-access --information-ready --can-record-results
 ```
 
-Flags attest to checks you actually performed; they neither grant permissions nor prove you read the file. Missing confirmations fail readiness. An earlier handoff's pass does not carry forward.
+Node is optional. Use available repository tools, following the event structure and validations in `scripts/acceptance-lifecycle.mjs` and `src/lib/acceptance-lifecycle.mjs`. Attest only to prerequisites you verified. If a concrete capability blocker prevents recording, request an agreed builder handoff with task, suite, reviewer, handoff timestamp, confirmations, blockers, and decision. Confirm the record was written before claiming success.
 
-### Browser reviewer handoff
+## 1. Review
 
-Node is optional for the reviewer. If you cannot run the commands, send the human a recording request for the AI Builder: task and suite IDs, reviewer identity, handoff timestamp, each readiness confirmation or blocker, and your Pass/Fail decision. The builder runs the command with only your confirmed flags, preserves your identity and evidence, and returns the recorded outcome. Do not claim recording succeeded until confirmed. The builder records your decision; it does not self-pass your review.
+Derive the board from `src/data/acceptance-snapshots/SUITE_ID.md` and its JSON evidence using `src/lib/acceptance-status.mjs`: newest checkedAt per LIVE_ITEMS item wins; ties use the later array entry. Missing evidence, changed condition text, or an agent verdict on a Human item means <span class="review-pending">R Review</span>. Compare rendered plain-text conditions. The shared ledger is not the suite board; 000 comes from lifecycle events.
 
-Repository access can supply instructions and tests when staff docs require sign-in. It cannot replace access to a live surface a test examines. Ask the human to arrange access or perform the blocked check. Do not request credentials in chat. Blocked surfaces do not fail 000. Continue with accessible flagged items, leave blocked items <span class="review-pending">R Review</span>, and report <span class="review-judgment">J Judgment</span> to the human for access or acceptance. Do not change a blocked item to J merely because access is missing. Human acceptance of blockers is allowed under Accept and close.
+Test accessible flagged items on the live site. Record <span class="review-pass">P Pass</span> or <span class="review-fail">F Fail</span> with the condition, URL, observation timestamp, reviewer, and evidence covering the tested scope. Local checks do not establish live verdicts. Human-verifier items remain the human's decision.
 
-## Review
+Access and deployment limitations do not block all review. Leave affected items <span class="review-pending">R Review</span> and request human action. Repository access supplies definitions, not live evidence. Without version confirmation, omit releaseSha and describe observations at their actual check time; version-dependent checks stay unresolved. Do not request credentials in chat.
 
-Find the board in `src/data/acceptance-snapshots/SUITE_ID.md` (conditions and tests) and `src/data/acceptance-snapshots/SUITE_ID.json` (evidence). Follow `src/lib/acceptance-status.mjs`: for each LIVE_ITEMS entry, use the newest checkedAt record, with the later array entry winning ties. Missing evidence, a changed condition, or an agent verdict on a Human item means R Review; otherwise use the recorded status. Compare conditions as rendered plain text. The shared ledger is not the suite board. Item 000 comes separately from the lifecycle record. If unsure, request a builder-generated listing rather than guess.
+## 2. Agree
 
-Review accessible flagged items on the live site using their specified tests. When the deployed version is unconfirmed, identify evidence as an observation of the live URL at its check time, omit releaseSha, and do not claim a particular release was verified. Version-dependent checks remain <span class="review-pending">R Review</span>. Record <span class="review-pass">P Pass</span> or <span class="review-fail">F Fail</span> with evidence; local checks are not live verdicts. Work iteratively with the human:
+Discuss corrections and accumulate agreed condition or test edits in a pending change set, identified by item number and exact wording. A shipped mismatch is not approval. Raise <span class="review-judgment">J Judgment</span> when no defensible correction or test can be proposed; access blockers remain R on the board.
 
-- Propose corrections and necessary condition or test changes for approval.
-- Flag <span class="review-judgment">J Judgment</span> when you cannot propose a defensible correction or test.
-- Leave human-verifier verdicts to the human. Never change acceptance conditions without approval.
+Every F or J finding needs a clickable live-page link, exact section or element, and requested decision. Identify multiple images or controls separately. Add a verified section anchor or screenshot when needed to locate them.
 
-Append evidence to the suite and shared ledger. After completing and presenting the review, record Reviewed, even if some tests failed. Publish partial verdicts, but leave Reviewed unchanged while work is blocked or unfinished. The completed-review command still requires a confirmed version; never invent one.
+## 3. Apply
+
+On “apply change set,” or an explicit immediate-edit instruction, apply and publish the authorized edits yourself. Do not return another agent's change package or request the same approval again.
+
+Update the governing checklist and active suite. Append prior wording and human approval as evidence, retain item numbers, and record <span class="review-pending">R Review</span> for changed conditions. Run the revised live tests and append verdicts. Changing a test does not disqualify you from reviewing unchanged website implementation.
+
+Standing publication permission covers these files only:
+
+| File | Permitted update |
+| --- | --- |
+| `src/data/acceptance-snapshots/SUITE_ID.json` | Append this task's verdicts and evidence. |
+| `src/data/acceptance-lifecycle/SUITE_ID.json` | Append initialization, completed review, and explicit acceptance. |
+| `src/data/acceptance-status.json` | Append matching verdict evidence. |
+| `docs/website-acceptance-checklist.md` | Apply the authorized condition or test edits. |
+| `src/data/acceptance-snapshots/SUITE_ID.md` | Apply those edits to the unaccepted suite. |
+
+Preserve history and concurrent changes. Validate the exact diff, confirm the repository above and main, then commit and push to origin/main. Stop on conflicts. Do not edit implementation, instructions, configuration, other tasks, or unapproved tests. These permissions supply no credentials and exclude direct Cloudflare deployment.
+
+Publish partial verdicts without setting Reviewed. Record Reviewed only after completing and presenting the review with a confirmed version, even if tests failed:
 
 ```text
 node scripts/acceptance-lifecycle.mjs reviewed --suite SUITE_ID --task TASK_ID --actor REVIEWER_ID --version VERSION_ID
 ```
 
-## Publish
+When asked to update results, publish the available verdicts and judgment requests and return the assigned production results link. Repository write access allows updates even when the rendered staff page is inaccessible. In that case, report display confirmation as pending and ask the human to inspect the link.
 
-You have standing permission to commit and push review records to `main` on the repository above. Only these files are authorized:
+Review publications do not reset 000, replace Deployed, or add Done entries. Report the production results link, changes link, version or confirmation limitation, 000 outcome, verdicts, and pending decisions. Distinguish pushed from confirmed live.
 
-| File | Permitted updates |
-| --- | --- |
-| `src/data/acceptance-snapshots/SUITE_ID.json` | Append this task's verdicts and evidence. |
-| `src/data/acceptance-lifecycle/SUITE_ID.json` | Append initialization, completed review, and explicitly authorized acceptance events. |
-| `src/data/acceptance-status.json` | Append the same verdict evidence to the shared ledger. |
+## 4. Accept
 
-Preserve existing records. Do not edit instructions, tests, implementation, configuration, or other tasks. Check the exact diff, validate it, verify origin and main, and push only permitted changes. Stop on conflicting updates rather than overwrite them. Permission here does not supply credentials or authorize direct Cloudflare deployment.
-
-Review publications do not reset 000, replace Deployed, or create Done entries. Report the production results link, changes link, reviewed version, 000 outcome, checks, failures, and judgment requests. Distinguish a successful push from confirmed production display.
-
-## Accept and close
-
-Reuse the suite until the human explicitly accepts the results and closes the task. Clarify ambiguous “done”; do not reconfirm explicit acceptance and closure.
-
-The human may explicitly accept with known blockers or unfinished checks. Preserve them in the acceptance evidence and retain their statuses. Acceptance does not pass 000 or any test, or create a Reviewed timestamp. The builder recording handoff may record acceptance even when initialization is blocked.
-
-Record Accepted before publishing, using the human's stated date-time or the current time when their instruction arrives, including timezone. Preserve that instruction as evidence; do not use the later push time.
+On explicit human acceptance and closure, record Accepted using the supplied date-time or the time the instruction arrived, including timezone. Preserve the instruction as evidence. Clarify ambiguous “done”; do not reconfirm explicit acceptance.
 
 ```text
 node scripts/acceptance-lifecycle.mjs accepted --suite SUITE_ID --task TASK_ID --actor REVIEWER_ID --human-approval "HUMAN INSTRUCTION" --accepted-at ISO_TIMESTAMP
 ```
 
-Publish under the same file permissions, then freeze the suite. Reuse its single Done entry. If that entry needs creation or finalization, hand it to the AI Builder. Closeout remains incomplete until the Done entry, results link, and publication report are correct.
+Acceptance may include known blockers. Preserve them and their statuses; acceptance neither passes tests nor sets Reviewed. An agreed builder handoff can record acceptance if initialization is blocked.
+
+Publish, then freeze the suite. Reuse its single Done entry; ask the builder to create or finalize it if needed. Closeout is complete when the linked Done entry and publication report are correct.
