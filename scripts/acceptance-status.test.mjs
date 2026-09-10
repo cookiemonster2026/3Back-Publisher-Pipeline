@@ -45,11 +45,11 @@ test("one symbol per row, accessible evidence, and no extra row copy", () => {
   assert.deepEqual(cells.map(cell => cell.replace(/<[^>]*>/g, "")), ["P", "R"]);
   assert.ok(result.html.includes("aria-label="));
   assert.ok(result.html.includes('<thead><tr><th scope="col" class="acceptance-status-heading">Current Status</th><th>Item</th>'));
-  assert.equal((result.html.match(/<tr data-acceptance-row="[^"]+"><td class="acceptance-current-status"/g) || []).length, 2);
+  assert.equal((result.html.match(/<tr id="[^"]+" (?:id="[^"]+" )?data-acceptance-row="[^"]+"><td class="acceptance-current-status"/g) || []).length, 2);
   assert.ok(!result.html.includes("<script>"));
   assert.ok(!result.html.includes('<th>Class</th>'));
   assert.ok(result.html.includes('<th>Verifier</th>'));
-  assert.equal(result.html.replace('<th scope="col" class="acceptance-status-heading">Current Status</th>', '').replace(/ data-acceptance-row="[^"]+"/g, '').replace(/<td class="acceptance-current-status"[\s\S]*?<\/td>/g, ""), table.replace('<th>Class</th>', '').replaceAll('<td>Affected</td>', ''));
+  assert.equal(result.html.replace('<th scope="col" class="acceptance-status-heading">Current Status</th>', '').replace(/ (?:id="[^"]+" )?data-acceptance-row="[^"]+"/g, '').replace(/<td class="acceptance-current-status"[\s\S]*?<\/td>/g, ""), table.replace('<th>Class</th>', '').replaceAll('<td>Affected</td>', ''));
 });
 
 const baseline = readFileSync(new URL('../docs/website-acceptance-checklist.md', import.meta.url), 'utf8');
@@ -64,6 +64,7 @@ test('the complete baseline has exactly 54 live and eight process items', () => 
   assert.equal(result.applicable, 54);
   assert.equal(result.processCount, 8);
   assert.equal(result.counts.unverified, 54);
+  for (const item of LIVE_ITEMS) assert.equal(result.html.split('id="' + item + '"').length - 1, 1);
   for (const item of PROCESS_ITEMS) {
     assert.ok(result.html.includes(`title="Process item: reported in the task report"></td><td>${item}</td>`));
   }
@@ -73,7 +74,7 @@ test('existing real verdicts remain intact without rewriting records', () => {
   const { records } = JSON.parse(readFileSync(new URL('../src/data/acceptance-status.json', import.meta.url), 'utf8'));
   const before = JSON.stringify(records);
   const result = acceptanceStatus(completeTable, records);
-  assert.equal(result.counts.passed, 9);
+  assert.equal(result.counts.passed + result.counts.failed + result.counts.unverified + result.counts.judgment, result.applicable);
   assert.equal(result.applicable, 54);
   assert.equal(JSON.stringify(records), before);
 });

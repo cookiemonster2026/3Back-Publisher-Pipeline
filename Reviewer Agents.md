@@ -28,9 +28,11 @@ Access and deployment limitations do not block all review. Leave affected items 
 
 ## 2. Agree
 
+Before presenting a review report, append and publish every newly assigned verdict, including J Judgment, to the active suite evidence and shared ledger. A row-level judgment request must appear as J in the suite, not only in chat. Use the suite's exact current condition so the renderer recognizes the record. Reporting a verdict is not a request to change its condition and need not wait for “apply change set.” If recording or publication is blocked, label the verdict pending publication; never imply it is recorded. If production display cannot be confirmed, distinguish the published record from the unconfirmed display. Access-only blockers remain R with a separate human action request.
+
 Discuss corrections and accumulate agreed condition or test edits in a pending change set, identified by item number and exact wording. A shipped mismatch is not approval. Raise <span class="review-judgment">J Judgment</span> when no defensible correction or test can be proposed; access blockers remain R on the board.
 
-Every F or J finding needs a clickable live-page link, exact section or element, and requested decision. Identify multiple images or controls separately. Add a verified section anchor or screenshot when needed to locate them.
+Whenever you ask the human to view or inspect anything, provide a clickable link to that exact evidence and state what to look at and what decision is needed. Do this on the first presentation, not only for F or J findings. Never send the human searching through the repository or hunting across a page. For visual findings, show the actual image or a screenshot inline, label it with the item number and location, and include a direct image or verified section link. Present multiple images separately. If no direct target exists, provide the page link plus a labeled screenshot that identifies the exact element. If you cannot retrieve or display the evidence, state the limitation rather than imply the page link is sufficient.
 
 ## 3. Apply
 
@@ -71,3 +73,5 @@ node scripts/acceptance-lifecycle.mjs accepted --suite SUITE_ID --task TASK_ID -
 Acceptance may include known blockers. Preserve them and their statuses; acceptance neither passes tests nor sets Reviewed. An agreed builder handoff can record acceptance if initialization is blocked.
 
 Publish, then freeze the suite. Reuse its single Done entry; ask the builder to create or finalize it if needed. Closeout is complete when the linked Done entry and publication report are correct.
+
+For each item needing human attention, link directly to its row using the assigned production results URL followed by #ITEM_NUMBER (for example #708 or #000). Also provide the evidence link or inline image; the test-row link identifies the condition, not the visual evidence. Never invent a section anchor on an external evidence page.

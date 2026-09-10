@@ -81,6 +81,17 @@
         "Production version unconfirmed: observations do not verify a particular release."
       ],
       "requiresHumanJudgment": true
+    },
+    {
+      "type": "release-prepared",
+      "at": "2026-09-10T02:28:13.086Z",
+      "actor": "AI Builder",
+      "approximate": true
+    },
+    {
+      "type": "handoff",
+      "at": "2026-09-10T02:28:13.147Z",
+      "actor": "AI Builder"
     }
   ]
 }

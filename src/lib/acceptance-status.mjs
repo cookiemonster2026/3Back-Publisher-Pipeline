@@ -61,7 +61,7 @@ export function acceptanceStatus(html, records) {
         let note = `Never checked.${cells[1] === "Human" ? " Awaiting Douglas's live review." : ""}`;
         if (record) note = !conditionMatches ? "Condition text changed. Recheck required." : !humanApproved ? "Awaiting Douglas's live review." : `${record.reason ? `${reasons[record.reason]} ` : ""}${status === "judgment" ? "Unsettled rule: " : ""}${record.evidence}`;
         const detail = `${labels[status]}. ${note}${record ? ` ${isVerdict(status) ? "Checked" : "Recorded"} ${dateFormat.format(new Date(record.checkedAt))} by ${record.reviewer} on ${record.url}.${record.releaseSha ? ` Release SHA: ${record.releaseSha}.` : ""}` : ""}`;
-        return `<tr data-acceptance-row="${status}"><td class="acceptance-current-status" data-acceptance-status="${status}" title="${escapeHtml(detail)}"><span class="acceptance-status acceptance-status--${status}" role="img" aria-label="${escapeHtml(detail)}" title="${escapeHtml(detail)}">${symbols[status]}</span></td><td>${item}</td>${visibleRest}</tr>`;
+        return `<tr id="${item}" data-acceptance-row="${status}"><td class="acceptance-current-status" data-acceptance-status="${status}" title="${escapeHtml(detail)}"><span class="acceptance-status acceptance-status--${status}" role="img" aria-label="${escapeHtml(detail)}" title="${escapeHtml(detail)}">${symbols[status]}</span></td><td>${item}</td>${visibleRest}</tr>`;
       });
   });
   for (const item of latest.keys()) if (!seen.has(item)) throw new Error(`Unknown acceptance item ${item}`);
