@@ -36,7 +36,9 @@ export const OPERATIONAL_GRIP_ATTRIBUTION = "Operational Grip is 3Back’s propr
 export const HOMEPAGE_OPERATIONAL_GRIP_EXPLANATION = "A team or scaled system has Operational Grip when it can make bounded, local changes with enough confidence to observe their effects.";
 
 export const STAFF_DOCS = [
-  { slug: "reviewer-agents", label: "Reviewer Agents.md", source: "Reviewer Agents.md", path: "/docs/reviewer-agents" },
+  { slug: "approved-access-list", label: "Approved access list", source: null, path: "/docs/approved-access-list" },
+  { slug: "page-metadata", label: "Registry Metadata", source: null, path: "/docs/page-metadata" },
+  { slug: "reviewer-agents", label: "Reviewer Agents", source: "Reviewer Agents.md", path: "/docs/reviewer-agents" },
 	{
 		"slug": "",
 		"label": "Docs",
@@ -63,7 +65,7 @@ export const STAFF_DOCS = [
 	},
 	{
 		"slug": "agents",
-		"label": "AGENTS",
+		"label": "Builder Agents",
 		"source": "AGENTS.md",
 		"path": "/docs/agents"
 	},
@@ -93,7 +95,7 @@ export const STAFF_DOCS = [
 	},
 	{
 		"slug": "appendix-a",
-		"label": "Appendix A: SA Exception",
+		"label": "APP. A: SA Exception",
 		"source": "docs/brand/source/3Back-Brand-Brief-Appendix-SA-Course-Ecosystem-v0.1.md",
 		"path": "/docs/appendix-a"
 	},
@@ -104,7 +106,7 @@ export const STAFF_DOCS = [
 		"path": "/docs/acceptance-testing"
 	},
 	{
-		"slug": "acceptance-results", "label": "Acceptance Results Archive", "path": "/docs/acceptance-results"
+		"slug": "acceptance-results", "label": "Acceptance Results", "path": "/docs/acceptance-results"
 	},
 	...acceptanceSnapshots.map(snapshot => ({ slug: `acceptance-results/${snapshot.id}`, label: "Website Acceptance Package", source: `src/data/acceptance-snapshots/${snapshot.id}.md`, path: snapshot.path.replace(/\/$/, "") })),
 	{

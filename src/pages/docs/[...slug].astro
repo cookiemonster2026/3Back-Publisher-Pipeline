@@ -5,8 +5,9 @@ import SiteLayout from "../../layouts/SiteLayout.astro";
 import AcceptanceChecklist from "../../components/AcceptanceChecklist.astro";
 import { acceptanceSnapshots } from "../../data/acceptance-snapshots.js";
 import { doneHistory } from "../../data/deployment-milestones.js";
-import { pageSeo, STAFF_DOCS } from "../../seo/registry.mjs";
+import { pageSeo, STAFF_DOCS, canonicalUrl } from "../../seo/registry.mjs";
 import redirectsSource from "../../../public/_redirects?raw";
+import pageMetadataSource from "../../seo/registry.mjs?raw";
 
 export function getStaticPaths() {
 	return STAFF_DOCS.map((page) => ({ params: { slug: page.slug || undefined }, props: { page } }));
@@ -44,9 +45,10 @@ if (page.source) {
 const metadata = pageSeo[page.path];
 const docsBySlug = Object.fromEntries(STAFF_DOCS.map((entry) => [entry.slug, entry]));
 const docGroups = [
-	{ label: "Work", slugs: ["backlog", "acceptance-testing", "client-errors"] },
-	{ label: "Technical", slugs: ["technical-manifest", "redirect-map", "agents", "contact-form", "lms"] },
-	{ label: "Marketing", slugs: ["publisher-role", "brand", "visual-direction", "site-intent-map", "appendix-a"] },
+	{ label: "Work results", slugs: ["backlog", "acceptance-results", "client-errors"] },
+	{ label: "Technical", slugs: ["technical-manifest", "redirect-map", "page-metadata", "contact-form", "lms"] },
+	{ label: "Marketing", slugs: ["brand", "visual-direction", "site-intent-map", "appendix-a"] },
+	{ label: "Procedures", slugs: ["publisher-role", "agents", "reviewer-agents", "acceptance-testing"] },
 ];
 const milestoneDate = new Intl.DateTimeFormat("en-US", { year: "numeric", month: "long", day: "numeric", timeZone: "America/Chicago" });
 const milestoneTime = new Intl.DateTimeFormat("en-US", { hour: "numeric", minute: "2-digit", timeZone: "America/Chicago", timeZoneName: "short" });
@@ -66,7 +68,8 @@ const redirectRows = redirectsSource
 	{!page.slug && <p class="eyebrow">Staff</p>}
 	<h1>{page.label}</h1>
 	{page.slug ? <p class="docs-back"><span><a href="/docs/">Docs</a>{page.slug.startsWith("acceptance-results") && <> › <a href="/docs/acceptance-testing/">Acceptance Testing</a></>}</span>{page.slug === "acceptance-testing" && <a href="/docs/acceptance-results/">Archive</a>}</p> : <>
-		<p>These are reading copies of the current control files. They are not public pages.</p>
+		<p>Docs is 3Back’s internal hub. These pages are protected by Cloudflare Access and restricted to people on the <a href="/docs/approved-access-list/">approved access list</a>. Connections are encrypted with HTTPS, and the pages are configured to prevent search-engine indexing.</p>
+		<p>Operational Grip is 3Back’s doctrine and the foundation for how it governs itself and delivers its services. This hub brings together reading copies of the current control files that guide that work.</p>
 		<div class="doc-groups">
 			{docGroups.map((group) => <section>
 				<h2>{group.label}</h2>
@@ -81,6 +84,44 @@ const redirectRows = redirectsSource
 	</>}
 	{page.slug.startsWith("acceptance-") ? <AcceptanceChecklist snapshotId={page.slug.split("/")[1]} html={sourceHtml} results={page.slug.startsWith("acceptance-results/")} archive={page.slug === "acceptance-results"} /> : sourceHtml && <div class="source-document" set:html={sourceHtml} />}
 	{page.slug === "visual-direction" && <p><a href="/assets/docs/3Back-Visual-Direction-Tile-v0.4.pdf">Open Visual Direction PDF</a></p>}
+	{page.slug === "approved-access-list" && <div class="source-document">
+		<p>This list records the people and email addresses approved to access the staff Docs pages.</p>
+		<h2>Approved people</h2>
+		<h3>Marcelo Lopez Jr.</h3>
+		<ul><li><a href="mailto:marcelo@3back.com">marcelo@3back.com</a></li><li><a href="mailto:marcelo.lopezjr@3back.com">marcelo.lopezjr@3back.com</a></li></ul>
+		<h3>Douglas Shimp</h3>
+		<ul><li><a href="mailto:doug.shimp@3back.com">doug.shimp@3back.com</a></li><li><a href="mailto:doug@3back.com">doug@3back.com</a></li></ul>
+		<h2>Update the list</h2>
+		<p>To request an addition, provide the person’s name and email address to the builder in Codex. The builder updates the Cloudflare Access policy and this list, then verifies that the approved person can sign in.</p>
+		<p>Cloudflare Access controls sign-in. Updating this page alone does not grant access.</p>
+	</div>}
+	{page.slug === "page-metadata" && <div class="registry-display">
+		<p>Page-by-page settings from the website registry. These describe intended configuration, not proof of deployment or search-engine indexing. Preview builds keep all pages out of search results.</p>
+		<div class="registry-scroll" tabindex="0" role="region" aria-label="Page registry table">
+		<table class="registry-table">
+			<caption>{Object.keys(pageSeo).length} registered pages. Open a page’s metadata for titles, descriptions, and sharing settings.</caption>
+			<thead><tr><th scope="col">Page</th><th scope="col">Status</th><th scope="col">Search visibility</th><th scope="col">Missing work</th></tr></thead>
+			<tbody>{Object.values(pageSeo).sort((a, b) => a.path.localeCompare(b.path)).map((entry) => <tr>
+				<th scope="row"><a href={entry.path}>{entry.title.replace(/ \| 3Back$/, "")}</a><small>{entry.path}</small>
+					<details><summary>Metadata details</summary><dl>
+						<dt>Page title</dt><dd>{entry.title}</dd>
+						<dt>Description</dt><dd>{entry.description}</dd>
+						<dt>Preferred URL</dt><dd><a href={canonicalUrl(entry.path)}>{canonicalUrl(entry.path)}</a></dd>
+						<dt>Sharing title</dt><dd>{entry.social.title}</dd>
+						<dt>Sharing description</dt><dd>{entry.social.description}</dd>
+						<dt>Sharing type</dt><dd>{entry.social.type}</dd>
+						<dt>Sharing image</dt><dd>{entry.social.image ? <><a href={entry.social.image.src}>View image</a><br />{entry.social.image.alt}</> : "No image specified"}</dd>
+						<dt>Structured data</dt><dd>{entry.structuredData ? "Configured" : "Not specified"}</dd>
+						{STAFF_DOCS.find(doc => doc.path === entry.path) && <><dt>Staff source file</dt><dd>{STAFF_DOCS.find(doc => doc.path === entry.path)?.source || "Generated staff page"}</dd></>}
+					</dl></details>
+				</th>
+				<td>{entry.status === "stub" ? "Unfinished stub" : "Complete"}</td>
+				<td>{entry.indexability === "index, follow" ? "Indexing allowed" : "Excluded from indexing"}</td>
+				<td>{entry.status === "stub" ? <ul>{entry.missingWork.map(item => <li>{item}</li>)}</ul> : "None listed"}</td>
+			</tr>)}</tbody>
+		</table></div>
+		<details class="source-document"><summary>View registry source</summary><pre tabindex="0" aria-label="Registry source"><code>{pageMetadataSource}</code></pre></details>
+	</div>}
 	{page.slug === "redirect-map" && <>
 		<p>This is the deployed redirect and rewrite configuration from <code>public/_redirects</code>.</p>
 		<table class="redirect-map">
@@ -112,6 +153,24 @@ const redirectRows = redirectsSource
 </SiteLayout>
 
 <style>
+
+	.registry-display { min-width: 0; }
+	.registry-scroll { max-width: 100%; overflow-x: auto; margin-block: 28px; }
+	.registry-table { width: 100%; min-width: 680px; border-collapse: collapse; table-layout: fixed; }
+	.registry-table caption { text-align: left; margin-bottom: 16px; }
+	.registry-table th, .registry-table td { padding: 16px; border: 1px solid var(--rule); text-align: left; vertical-align: top; overflow-wrap: anywhere; }
+	.registry-table thead { background: var(--reading); }
+	.registry-table th:first-child { width: 40%; }
+	.registry-table tbody th { font-weight: 400; }
+	.registry-table tbody th > a { font-weight: 700; }
+	.registry-table small { display: block; margin-top: 8px; font-size: .875rem; }
+	.registry-table details { margin-top: 16px; }
+	.registry-display summary { cursor: pointer; font-weight: 600; }
+	.registry-display :is(summary, .registry-scroll):focus-visible { outline: 3px solid var(--amber); outline-offset: 3px; }
+	.registry-table dt { font-weight: 700; margin-top: 16px; }
+	.registry-table dd { margin: 4px 0 0; }
+	.registry-table ul { padding-left: 18px; margin: 0; }
+
  .source-document :global(.review-pass) { color: #008a3d; font-weight: 700; }
  .source-document :global(.review-fail) { color: #ff1616; font-weight: 700; }
  .source-document :global(.review-pending) { color: #2588e8; font-weight: 700; }
@@ -133,7 +192,7 @@ const redirectRows = redirectsSource
 	.source-document :global(th) { background: var(--reading); }
 	.source-document :global(h3), .source-document :global(h4) { margin-top: 32px; }
 	#client-error-history :global(iframe) { width: 100%; height: 640px; border: 1px solid var(--rule); background: var(--reading); }
-	.doc-groups { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: clamp(20px, 4vw, 48px); margin-top: 40px; }
+	.doc-groups { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: clamp(20px, 4vw, 48px); margin-top: 40px; }
 	.doc-groups section { min-width: 0; }
 	.doc-groups h2 { margin-top: 0; font-size: clamp(1.35rem, 2.2vw, 1.8rem); }
 	.doc-groups ul { padding-left: 20px; }
@@ -142,6 +201,7 @@ const redirectRows = redirectsSource
 	.redirect-map { display: block; max-width: 100%; overflow-x: auto; border-collapse: collapse; margin-block: 24px; }
 	.redirect-map th, .redirect-map td { min-width: 120px; padding: 10px; border: 1px solid var(--rule); text-align: left; vertical-align: top; }
 	.redirect-map th { background: var(--reading); }
+	@media (max-width: 960px) { .doc-groups { grid-template-columns: repeat(2, minmax(0, 1fr)); } }
 	@media (max-width: 720px) { .doc-groups { grid-template-columns: 1fr; gap: 8px; } }
 </style>
 
