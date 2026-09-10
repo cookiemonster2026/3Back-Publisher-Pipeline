@@ -41,7 +41,7 @@ export async function handleDeploymentHistory(request, env) {
 			return [{ createdAt: createdAt.toISOString(), description: deploymentDescription(deployment?.annotations?.["workers/message"]) }];
 		});
 		const currentDeployedAt = matchingDeploymentTime(body.result.deployments, env.CF_VERSION_METADATA?.id);
-        return json({ deployments, snapshotId: acceptanceSnapshots.at(-1)?.id ?? null, currentDeployedAt });
+        return json({ deployments, currentVersionId: env.CF_VERSION_METADATA?.id ?? null, snapshotId: acceptanceSnapshots.at(-1)?.id ?? null, currentDeployedAt });
 	} catch {
 		return json({ error: "Deployment history unavailable" }, 503);
 	}

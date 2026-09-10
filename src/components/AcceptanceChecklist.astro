@@ -1,4 +1,5 @@
 ---
+import { lifecycleState } from "../lib/acceptance-lifecycle.mjs";
 import { acceptanceStatus } from "../lib/acceptance-status.mjs";
 
 import { acceptanceSnapshots } from "../data/acceptance-snapshots.js";
@@ -8,6 +9,11 @@ const snapshot = acceptanceSnapshots.find(entry => entry.id === snapshotId);
 const evidence = import.meta.glob<{ records: any[] }>("../data/acceptance-snapshots/*.json", { eager: true });
 const records = snapshot ? evidence[`../data/acceptance-snapshots/${snapshot.id}.json`].records : [];
 const status = results && html ? acceptanceStatus(html, records) : null;
+const lifecycles = import.meta.glob<{ default: any }>("../data/acceptance-lifecycle/*.json", { eager: true });
+const lifecycle = lifecycles[`../data/acceptance-lifecycle/${snapshotId}.json`]?.default;
+const progress = lifecycleState(lifecycle);
+const initializationLabel = progress.status === 'passed' ? 'Passed' : progress.status === 'failed' ? 'Failed' : 'Review';
+const initializationSymbol = progress.status === 'passed' ? '✓' : progress.status === 'failed' ? '✕' : '?';
 let heading = "";
 const testHtml = status ? [...status.html.matchAll(/<h[2-4][^>]*>[\s\S]*?<\/h[2-4]>|<table[\s\S]*?<\/table>/g)].map(([block]) => {
   if (block.startsWith('<h')) { heading = block; return ''; }
@@ -19,7 +25,7 @@ const testHtml = status ? [...status.html.matchAll(/<h[2-4][^>]*>[\s\S]*?<\/h[2-
 <section class="acceptance-overview" aria-label={results ? "Recorded results" : "Acceptance testing"}>
 {results && status ? <>
   {snapshot?.description && <h3 class="work-description">Done: {snapshot.description}</h3>}
-  <p class="milestone-dates"><span class="acceptance-status--unverified">Deployed: <span data-deployment-date={snapshot?.id}>{milestoneDate(snapshot?.deployedAt)}</span></span><span class="acceptance-status--passed">Reviewed: {milestoneDate(snapshot?.reviewedAt)}</span><span class="acceptance-status--judgment">Accepted: {milestoneDate(snapshot?.acceptedAt)}</span></p>
+  <p class="milestone-dates"><span class="acceptance-status--unverified">Deployed: <span data-deployment-date={snapshot?.id}>{milestoneDate(progress.deployed?.at ?? snapshot?.deployedAt)}</span></span><span class="acceptance-status--passed">Reviewed: {milestoneDate(progress.reviewed?.at ?? snapshot?.reviewedAt)}</span><span class="acceptance-status--judgment">Accepted: {milestoneDate(progress.accepted?.at ?? snapshot?.acceptedAt)}</span></p>
   <p class="acceptance-counts">
     <span class="acceptance-status--unverified"><span aria-hidden="true">?</span> ({status!.counts.unverified}) Review</span>
     <span class="verdict-pair"><span class="acceptance-status--passed"><span aria-hidden="true">✓</span> ({status!.counts.passed}/{status!.applicable}) Passed</span> <span aria-hidden="true">/</span>
@@ -28,6 +34,11 @@ const testHtml = status ? [...status.html.matchAll(/<h[2-4][^>]*>[\s\S]*?<\/h[2-
     <span class="acceptance-status--judgment"><span aria-hidden="true">J</span> ({status!.counts.judgment}) Judgment</span>
   </p>
 
+  {lifecycle && <div class="source-document acceptance-checklist">
+    <h3>Initialize</h3>
+    <table><thead><tr><th class="acceptance-status-heading">Status</th><th>Item</th><th>Verifier</th><th>Acceptance condition</th><th>Test</th></tr></thead>
+    <tbody><tr data-acceptance-row={progress.status}><td class="acceptance-current-status" title={progress.initialization?.failures?.join(' ') || initializationLabel}><span class={`acceptance-status acceptance-status--${progress.status}`} role="img" aria-label={initializationLabel}>{initializationSymbol}</span></td><td>000</td><td>Independent AI Reviewer</td><td>Read Reviewer Agents.md and confirm readiness to perform according to its instructions.</td><td>Record Pass or Fail for this handoff. If Fail, state why and stop.</td></tr></tbody></table>
+  </div>}
   <div class="source-document acceptance-checklist" set:html={testHtml} />
 </> : <>
   <nav class="snapshot-links" aria-label="Recorded reviews">
