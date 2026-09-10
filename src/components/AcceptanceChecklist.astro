@@ -14,6 +14,12 @@ const lifecycle = lifecycles[`../data/acceptance-lifecycle/${snapshotId}.json`]?
 const progress = lifecycleState(lifecycle);
 const initializationLabel = progress.status === 'passed' ? 'Passed' : progress.status === 'failed' ? 'Failed' : 'Review';
 const initializationSymbol = progress.status === 'passed' ? '✓' : progress.status === 'failed' ? '✕' : '?';
+const releaseDate = (entry: typeof snapshot) => {
+ const state = lifecycleState(lifecycles[`../data/acceptance-lifecycle/${entry?.id}.json`]?.default);
+ return state.releasePrepared?.at ?? state.deployed?.at ?? entry?.deployedAt;
+};
+const archivedSuites = acceptanceSnapshots.filter(entry => !entry.supersededBy);
+const recentSuites = archivedSuites.filter(entry => releaseDate(entry)).sort((a,b) => Date.parse(releaseDate(b)) - Date.parse(releaseDate(a))).slice(0,1);
 let heading = "";
 const testHtml = status ? [...status.html.matchAll(/<h[2-4][^>]*>[\s\S]*?<\/h[2-4]>|<table[\s\S]*?<\/table>/g)].map(([block]) => {
   if (block.startsWith('<h')) { heading = block; return ''; }
@@ -25,7 +31,7 @@ const testHtml = status ? [...status.html.matchAll(/<h[2-4][^>]*>[\s\S]*?<\/h[2-
 <section class="acceptance-overview" aria-label={results ? "Recorded results" : "Acceptance testing"}>
 {results && status ? <>
   {snapshot?.description && <h3 class="work-description">Done: {snapshot.description}</h3>}
-  <p class="milestone-dates"><span class="acceptance-status--unverified">Deployed: <span data-deployment-date={snapshot?.id}>{milestoneDate(progress.deployed?.at ?? snapshot?.deployedAt)}</span></span><span class="acceptance-status--passed">Reviewed: {milestoneDate(progress.reviewed?.at ?? snapshot?.reviewedAt)}</span><span class="acceptance-status--judgment">Accepted: {milestoneDate(progress.accepted?.at ?? snapshot?.acceptedAt)}</span></p>
+  <p class="milestone-dates"><span class="acceptance-status--unverified">Deployed: <span data-deployment-date={snapshot?.id}>{milestoneDate(releaseDate(snapshot))}</span></span><span class="acceptance-status--passed">Reviewed: {milestoneDate(progress.reviewed?.at ?? snapshot?.reviewedAt)}</span><span class="acceptance-status--judgment">Accepted: {milestoneDate(progress.accepted?.at ?? snapshot?.acceptedAt)}</span></p>
   <p class="acceptance-counts">
     <span class="acceptance-status--unverified"><span aria-hidden="true">?</span> ({status!.counts.unverified}) Review</span>
     <span class="verdict-pair"><span class="acceptance-status--passed"><span aria-hidden="true">✓</span> ({status!.counts.passed}/{status!.applicable}) Passed</span> <span aria-hidden="true">/</span>
@@ -40,6 +46,7 @@ const testHtml = status ? [...status.html.matchAll(/<h[2-4][^>]*>[\s\S]*?<\/h[2-
     <tbody><tr data-acceptance-row={progress.status}><td class="acceptance-current-status" title={progress.initialization?.failures?.join(' ') || initializationLabel}><span class={`acceptance-status acceptance-status--${progress.status}`} role="img" aria-label={initializationLabel}>{initializationSymbol}</span></td><td>000</td><td>Independent AI Reviewer</td><td>Read Reviewer Agents.md and confirm readiness to perform according to its instructions.</td><td>Record Pass or Fail for this handoff. If Fail, state why and stop.</td></tr></tbody></table>
   </div>}
   <div class="source-document acceptance-checklist" set:html={testHtml} />
+  {snapshot && acceptanceSnapshots.some(entry => entry.supersededBy === snapshot.id) && <details><summary>Earlier evidence</summary>{acceptanceSnapshots.filter(entry => entry.supersededBy === snapshot.id).map(entry => <p><a href={entry.path}>{entry.description}</a></p>)}</details>}
 </> : <>
   <nav class="snapshot-links" aria-label="Recorded reviews">
     {(archive ? acceptanceSnapshots : acceptanceSnapshots.slice(-1)).map(snapshot => <a href={snapshot.path}>{archive ? snapshot.label.replace(/^Recent:\s*/, "") : snapshot.label}</a>)}
@@ -117,17 +124,3 @@ const testHtml = status ? [...status.html.matchAll(/<h[2-4][^>]*>[\s\S]*?<\/h[2-
   .source-document.acceptance-checklist :global(.acceptance-current-status), .source-document.acceptance-checklist :global(.acceptance-status-heading) { width: 64px; min-width: 64px; max-width: 64px; padding: 10px 4px; text-align: center; }
   @media (max-width: 600px) { .acceptance-overview .milestone-dates, .acceptance-overview .acceptance-counts { grid-template-columns: 1fr; gap: 8px; } }
 </style>
-
-<script>
-  const date = document.querySelector<HTMLElement>('[data-deployment-date]');
-  if (date && location.hostname === '3back.com') {
-    fetch('/api/deployments/history', { credentials: 'same-origin', cache: 'no-store' })
-      .then(response => { if (!response.ok) throw new Error('Deployment unavailable'); return response.json(); })
-      .then(result => {
-        if (result.snapshotId !== date.dataset.deploymentDate || !result.currentDeployedAt) return;
-        const timestamp = new Date(result.currentDeployedAt);
-        if (!Number.isFinite(timestamp.getTime())) return;
-        date.textContent = timestamp.toLocaleString('en-US', { timeZone: 'America/Chicago', timeZoneName: 'short' });
-      }).catch(() => { date.title = 'Deployment timestamp could not be retrieved from Cloudflare.'; });
-  }
-</script>

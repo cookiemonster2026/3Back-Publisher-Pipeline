@@ -11,7 +11,7 @@ try {
  if(record.taskId!==options.task) throw Error('Task ID does not match suite.');
  if(lifecycleState(record).accepted) throw Error('Suite is accepted; create a new task suite.');
  let event={type:command,at:new Date().toISOString(),actor:options.actor};let failed=false;
- if(command==='initialize') {
+ if(command==='prepare-release') { event.type='release-prepared'; event.approximate=true; } else if(command==='initialize') {
   const result=readiness(record,{taskId:options.task,instructionsExist:fs.existsSync(resolve(root,'Reviewer Agents.md')),acknowledged:options['acknowledge-read']===true,reviewer:options.actor});
   event={...event,...result};failed=result.status==='failed';
  } else if(command==='deployed') {
@@ -22,7 +22,7 @@ try {
   event={...event,at:new Date(result.currentDeployedAt).toISOString(),versionId:result.currentVersionId,confirmedAt:new Date().toISOString(),url:'https://3back.com/docs/acceptance-results/'+record.suiteId+'/'};
  } else if(command==='reviewed') event.versionId=options.version;
  else if(command==='accepted') event.humanApproval=options['human-approval'];
- else if(command!=='handoff') throw Error('Use handoff, initialize, deployed, reviewed, or accepted.');
+ else if(command!=='handoff') throw Error('Use prepare-release, handoff, initialize, deployed, reviewed, or accepted.');
  record=appendEvent(record,event);
  fs.writeFileSync(path,JSON.stringify(record,null,2)+'\n');
  console.log(JSON.stringify(event,null,2));if(failed) process.exitCode=1;

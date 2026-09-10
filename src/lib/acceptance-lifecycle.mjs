@@ -3,7 +3,7 @@ export function lifecycleState(record) {
  const last=type=>events.filter(e=>e.type===type).at(-1);
  const handoff=last('handoff');
  const initialization=events.filter(e=>e.type==='initialize'&&events.indexOf(e)>Math.max(events.lastIndexOf(handoff),events.lastIndexOf(last('deployed')))).at(-1);
- return {deployed:last('deployed'),reviewed:last('reviewed'),accepted:last('accepted'),handoff,initialization,status:initialization?.status??'unverified'};
+ return {releasePrepared:last('release-prepared'),deployed:last('deployed'),reviewed:last('reviewed'),accepted:last('accepted'),handoff,initialization,status:initialization?.status??'unverified'};
 }
 export function readiness(record,{taskId,instructionsExist,acknowledged,reviewer}) {
  const failures=[];
@@ -21,7 +21,7 @@ export function readiness(record,{taskId,instructionsExist,acknowledged,reviewer
 export function appendEvent(record,event) {
  if(lifecycleState(record).accepted) throw Error('Accepted suite is immutable; create a new task suite.');
  if(!Number.isFinite(Date.parse(event.at))||!event.actor?.trim()) throw Error('Event needs an ISO timestamp and actor.');
- if(!['handoff','initialize','deployed','reviewed','accepted'].includes(event.type)) throw Error('Unknown lifecycle event.');
+ if(!['handoff','initialize','deployed','reviewed','accepted','release-prepared'].includes(event.type)) throw Error('Unknown lifecycle event.');
  if(event.type==='initialize'&&!['passed','failed'].includes(event.status)) throw Error('Initialization must pass or fail.');
  if(event.type==='reviewed') {
   const state=lifecycleState(record);
