@@ -106,7 +106,7 @@ export const STAFF_DOCS = [
 	{
 		"slug": "acceptance-results", "label": "Acceptance Results Archive", "path": "/docs/acceptance-results"
 	},
-	...acceptanceSnapshots.map(snapshot => ({ slug: `acceptance-results/${snapshot.id}`, label: "Website Acceptance Test Suite", source: `src/data/acceptance-snapshots/${snapshot.id}.md`, path: snapshot.path.replace(/\/$/, "") })),
+	...acceptanceSnapshots.map(snapshot => ({ slug: `acceptance-results/${snapshot.id}`, label: "Website Acceptance Package", source: `src/data/acceptance-snapshots/${snapshot.id}.md`, path: snapshot.path.replace(/\/$/, "") })),
 	{
 		"slug": "backlog",
 		"label": "Backlog",

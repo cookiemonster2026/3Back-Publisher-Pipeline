@@ -25,7 +25,7 @@ Item numbers are permanent. New conditions require the user's explicit approval 
 
 ### Global regression checks
 
-Do not rerun every Global live item after every website change. A stored live green or red stands until the change could invalidate that condition. Then the implementer marks it blue and an outside reviewer rechecks only that surface. If the governing rule is missing, conflicting, or too ambiguous to support a defensible verdict, the outside reviewer marks J for Douglas. A clear failure of a known condition is red; access and evidence blockers remain blue. Process items 001, 002, 003, 004, 005, 006, 602, and 606 are answered in the task report. They have no live color.
+Do not rerun every Global live item after every website change. A stored live green or red stands until the change could invalidate that condition. Then the implementer marks it blue and an outside reviewer rechecks only that surface. If the governing rule is missing, conflicting, or too ambiguous to support a defensible verdict, the outside reviewer marks J for Douglas. A clear failure of a known condition is red. R means active investigation, not a final parking state. For every R, attempt the specified test or a defensible verification method. Record P or F when evidence supports it. Otherwise propose a concrete next action or an exact condition and test change for human approval. If human judgment is needed to proceed, record J with the blocker, attempted approaches, proposal if available, and decision requested. Never change a condition merely to manufacture a pass; approval authorizes a change, while verification establishes P. Process items 001, 002, 003, 004, 005, 006, 602, and 606 are answered in the task report. They have no live color.
 
 ### Checks that run only when affected
 
@@ -41,7 +41,7 @@ Run an `Affected` item when the requested or resulting diff could change its con
 
 ### Status on /docs/acceptance-testing
 
-Live colors apply to the 54 live items. Green and red are live verdicts on a known condition. Blue means a known condition needs a live look. J means the rule is not settled. The implementer may only mark blue. An outside reviewer marks green, red, or J. Douglas decides J. The surface map is a starting point, not a closed list. Last checked ignores blue and J.
+Live colors apply to the 54 live items. Green and red are live verdicts on a known condition. Blue means a known condition needs a live look. J means human judgment is needed to proceed. The implementer may only mark blue. An outside reviewer marks green, red, or J. Douglas decides J. The surface map is a starting point, not a closed list. Last checked ignores blue and J.
 
 ## Global brand and positioning
 

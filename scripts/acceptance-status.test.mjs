@@ -112,7 +112,7 @@ test('J requires evidence, uses its own symbol and row wash, and is not a pass',
   assert.equal(result.counts.passed, 0);
   assert.equal(result.lastCheckedAt, null);
   assert.ok(result.html.includes('data-acceptance-row="judgment"'));
-  assert.ok(result.html.includes('Unsettled rule: Which of the conflicting approved rules governs this surface?'));
+  assert.ok(result.html.includes('Human decision needed: Which of the conflicting approved rules governs this surface?'));
   assert.ok(result.html.includes('>J</span>'));
 });
 

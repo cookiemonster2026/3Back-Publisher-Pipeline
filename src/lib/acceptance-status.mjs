@@ -1,4 +1,4 @@
-const labels = { passed: "Passed", failed: "Failed", unverified: "Needs a live look", judgment: "Rule decision needed" };
+const labels = { passed: "Passed", failed: "Failed", unverified: "Needs a live look", judgment: "Human judgment needed" };
 const symbols = { passed: "P", failed: "F", unverified: "R", judgment: "J" };
 const reasons = { changed: "Surface changed.", "never-checked": "Never checked.", blocked: "Live check blocked.", "condition-changed": "Condition text changed.", "awaiting-human": "Awaiting Douglas's live review." };
 const range = (first, last) => Array.from({ length: last - first + 1 }, (_, index) => String(first + index));
@@ -59,7 +59,7 @@ export function acceptanceStatus(html, records) {
         const lastVerdict = latestVerdicts.get(item);
         if (lastVerdict && (!lastCheckedAt || Date.parse(lastVerdict.checkedAt) > Date.parse(lastCheckedAt))) lastCheckedAt = lastVerdict.checkedAt;
         let note = `Never checked.${cells[1] === "Human" ? " Awaiting Douglas's live review." : ""}`;
-        if (record) note = !conditionMatches ? "Condition text changed. Recheck required." : !humanApproved ? "Awaiting Douglas's live review." : `${record.reason ? `${reasons[record.reason]} ` : ""}${status === "judgment" ? "Unsettled rule: " : ""}${record.evidence}`;
+        if (record) note = !conditionMatches ? "Condition text changed. Recheck required." : !humanApproved ? "Awaiting Douglas's live review." : `${record.reason ? `${reasons[record.reason]} ` : ""}${status === "judgment" ? "Human decision needed: " : ""}${record.evidence}`;
         const detail = `${labels[status]}. ${note}${record ? ` ${isVerdict(status) ? "Checked" : "Recorded"} ${dateFormat.format(new Date(record.checkedAt))} by ${record.reviewer} on ${record.url}.${record.releaseSha ? ` Release SHA: ${record.releaseSha}.` : ""}` : ""}`;
         return `<tr id="${item}" data-acceptance-row="${status}"><td class="acceptance-current-status" data-acceptance-status="${status}" title="${escapeHtml(detail)}"><span class="acceptance-status acceptance-status--${status}" role="img" aria-label="${escapeHtml(detail)}" title="${escapeHtml(detail)}">${symbols[status]}</span></td><td>${item}</td>${visibleRest}</tr>`;
       });
