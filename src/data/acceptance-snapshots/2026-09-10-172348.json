@@ -1,4 +1,7 @@
 {
+  "taskId": "01a08c36-5dfe-7e11-b4fc-77b3f934cf85",
+  "suiteId": "2026-09-10-172348",
+  "createdAt": "2026-09-10T17:23:48.965Z",
   "records": [
     {
       "item": "701",
@@ -624,5 +627,19 @@
       "releaseSha": "295eee96612abc1d81bba8ce463c724022107d7c",
       "evidence": "Footer navigation and staff Docs changed in this task. Local checks, test build, and human local review were completed; independent live verification remains pending. Next action: inspect the changed footer on / and /reviews/, and the Docs index, access list, and Registry Metadata through an approved staff session. Preserve prior evidence; do not infer a live pass from local review."
     }
-  ]
+  ],
+  "localVerification": {
+    "commands": [
+      "pnpm check",
+      "pnpm build:test",
+      "git diff --check"
+    ],
+    "result": "passed before implementation commit 295eee9",
+    "limitations": "Local checks do not establish live verdicts."
+  },
+  "ownerDeploymentStatement": {
+    "statement": "User reports the implementation is deployed.",
+    "recordedAt": "2026-09-10T17:23:48.965Z",
+    "confirmedReleaseIdentity": false
+  }
 }

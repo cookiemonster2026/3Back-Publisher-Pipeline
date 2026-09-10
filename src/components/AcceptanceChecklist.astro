@@ -18,7 +18,7 @@ const releaseDate = (entry: typeof snapshot) => {
  const state = lifecycleState(lifecycles[`../data/acceptance-lifecycle/${entry?.id}.json`]?.default);
  return state.releasePrepared?.at ?? state.deployed?.at ?? entry?.deployedAt;
 };
-const archivedSuites = acceptanceSnapshots.filter(entry => !entry.supersededBy);
+const archivedSuites = acceptanceSnapshots.filter(entry => !entry.supersededBy).sort((a, b) => Date.parse(releaseDate(b) || "1970-01-01") - Date.parse(releaseDate(a) || "1970-01-01"));
 const recentSuites = archivedSuites.filter(entry => releaseDate(entry)).sort((a,b) => Date.parse(releaseDate(b)) - Date.parse(releaseDate(a))).slice(0,1);
 let heading = "";
 const testHtml = status ? [...status.html.matchAll(/<h[2-4][^>]*>[\s\S]*?<\/h[2-4]>|<table[\s\S]*?<\/table>/g)].map(([block]) => {
@@ -50,7 +50,7 @@ const testHtml = status ? [...status.html.matchAll(/<h[2-4][^>]*>[\s\S]*?<\/h[2-
   {snapshot && acceptanceSnapshots.some(entry => entry.supersededBy === snapshot.id) && <details><summary>Earlier evidence</summary>{acceptanceSnapshots.filter(entry => entry.supersededBy === snapshot.id).map(entry => <p><a href={entry.path}>{entry.description}</a></p>)}</details>}
 </> : <>
   <nav class="snapshot-links" aria-label="Recorded reviews">
-    {(archive ? archivedSuites : recentSuites).map(entry => <div><a href={entry.path}>{archive ? milestoneDate(releaseDate(entry)) : `Deployed: ${milestoneDate(releaseDate(entry))}`}</a>{archive && <p>{entry.description}</p>}</div>)}
+    {(archive ? archivedSuites : recentSuites).map(entry => <div><a href={entry.path}>{archive ? milestoneDate(releaseDate(entry)) : `Deployed: ${milestoneDate(releaseDate(entry))}`}</a>{archive && <><p>{entry.description}</p>{"createdAt" in entry && entry.createdAt && <p>Created: {new Date(entry.createdAt).toISOString().replace("T", " ").replace("Z", " UTC")}</p>}</>}</div>)}
 
   </nav>
   {!archive && <>

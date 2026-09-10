@@ -1,0 +1,25 @@
+{
+  "taskId": "01a08c36-5dfe-7e11-b4fc-77b3f934cf85",
+  "suiteId": "2026-09-10-172348",
+  "builder": "Codex Builder",
+  "createdAt": "2026-09-10T17:23:48.965Z",
+  "events": [
+    {
+      "type": "release-prepared",
+      "at": "2026-09-10T17:24:09.310Z",
+      "actor": "Codex Builder",
+      "approximate": true
+    },
+    {
+      "type": "handoff",
+      "at": "2026-09-10T17:24:09.418Z",
+      "actor": "Codex Builder"
+    },
+    {
+      "type": "release-prepared",
+      "at": "2026-09-10T17:25:58.045Z",
+      "actor": "Codex Builder",
+      "approximate": true
+    }
+  ]
+}

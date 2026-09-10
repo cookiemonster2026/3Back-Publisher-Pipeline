@@ -25,6 +25,7 @@ export const deploymentMilestones = [
 		completedAt: "2026-09-09T23:06:12.586Z",
 		description: "Establish acceptance testing workflow and linked result history",
 	},
+	{"completedAt":"2026-09-10T17:23:48.965Z","description":"Improve staff docs hub and on-demand course access"},
 ];
 
 // Preserve the existing archive while adding future completed milestones.
