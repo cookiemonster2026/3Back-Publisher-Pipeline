@@ -7,6 +7,7 @@
     "watch_dir": ["src", "public", "scripts", "astro.config.mjs"]
   },
   "main": "./functions/worker.mjs",
+  "version_metadata": { "binding": "CF_VERSION_METADATA" },
   "triggers": {
     "crons": ["0 14 * * 1", "0 16 * * 1"]
   },

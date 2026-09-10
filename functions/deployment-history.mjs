@@ -1,3 +1,4 @@
+import { acceptanceSnapshots } from "../src/data/acceptance-snapshots.js";
 const SCRIPT_NAME = "3back-publisher-pipeline";
 const TEN_MINUTES = 600;
 
@@ -39,8 +40,16 @@ export async function handleDeploymentHistory(request, env) {
 			if (Number.isNaN(createdAt.getTime())) return [];
 			return [{ createdAt: createdAt.toISOString(), description: deploymentDescription(deployment?.annotations?.["workers/message"]) }];
 		});
-		return json({ deployments });
+		const currentDeployedAt = matchingDeploymentTime(body.result.deployments, env.CF_VERSION_METADATA?.id);
+        return json({ deployments, snapshotId: acceptanceSnapshots.at(-1)?.id ?? null, currentDeployedAt });
 	} catch {
 		return json({ error: "Deployment history unavailable" }, 503);
 	}
+}
+
+export function matchingDeploymentTime(deployments, versionId) {
+  if (!versionId) return null;
+  const timestamps = deployments.filter(entry => entry.versions?.some(version => version.version_id === versionId && version.percentage > 0))
+    .map(entry => Date.parse(entry.created_on)).filter(Number.isFinite);
+  return timestamps.length ? new Date(Math.max(...timestamps)).toISOString() : null;
 }

@@ -64,7 +64,7 @@ const redirectRows = redirectsSource
 <main id="main" class="policy-page"><article class:list={["shell", "policy-content", { "acceptance-page": page.slug.startsWith("acceptance-") }]}>
 	{!page.slug && <p class="eyebrow">Staff</p>}
 	<h1>{page.label}</h1>
-	{page.slug ? <p class="docs-back"><a href="/docs/">Docs</a>{page.slug.startsWith("acceptance-results") && <> › <a href="/docs/acceptance-checks/">Acceptance Testing</a></>}</p> : <>
+	{page.slug ? <p class="docs-back"><span><a href="/docs/">Docs</a>{page.slug.startsWith("acceptance-results") && <> › <a href="/docs/acceptance-checks/">Acceptance Testing</a></>}</span>{page.slug === "acceptance-checks" && <a href="/docs/acceptance-results/">Archive</a>}</p> : <>
 		<p>These are reading copies of the current control files. They are not public pages.</p>
 		<div class="doc-groups">
 			{docGroups.map((group) => <section>
@@ -115,7 +115,7 @@ const redirectRows = redirectsSource
 	h1 { padding-bottom: 28px; border-bottom: 4px solid var(--amber); }
   .policy-content.acceptance-page { padding-top: 28px; }
   .acceptance-page h1 { margin-block: 0 12px; }
-  .acceptance-page .docs-back { margin-block: 0 12px; }
+  .acceptance-page .docs-back { display: flex; justify-content: space-between; align-items: baseline; gap: 16px; margin-block: 0 12px; }
 	.policy-content :global(h2) { margin: 52px 0 18px; font-size: clamp(1.65rem, 3vw, 2.35rem); }
 	.policy-content :global(ul) { margin-bottom: 28px; padding-left: 24px; }
 	.policy-content :global(li) { margin-bottom: 12px; }
