@@ -175,6 +175,72 @@
       "reviewer": "Independent AI Reviewer (Grok)",
       "reviewerType": "agent",
       "evidence": "Douglas approved the 706 rewrite 2026-09-09. Prior wording required a hero conversation button. Live hero button label is See where execution loses Operational Grip and targets /operational-grip/. Header Start a Conversation targets /contact/. Closing band keeps Start a Conversation. Hero is not a conversation button. Observation at check time. No releaseSha."
+    },
+    {
+      "item": "108",
+      "condition": "Visuals avoid generic consulting imagery, staged teams, decorative corporate geometry, software-company cues, heavy industrial styling, fixed-method framework diagrams, industry montages, and unjustified motion.",
+      "status": "passed",
+      "environment": "production",
+      "url": "https://3back.com/operational-grip/",
+      "checkedAt": "2026-09-10T02:19:00.000Z",
+      "reviewer": "Douglas Shimp",
+      "reviewerType": "human",
+      "evidence": "Douglas accepted the live Operational Grip symptom photographs as published, including panel 01 Everything requires everybody (https://3back.com/assets/operational-grip/og-page/01-everything-requires-everybody.png) and panel 02 Only the heroes can make it work (https://3back.com/assets/operational-grip/og-page/02-only-heroes-can-make-it-work.png). Instruction: those are accepted; mark them as pass."
+    },
+    {
+      "item": "201",
+      "condition": "No internal design notes, production instructions, test directions, placeholders, template tokens, or unconfirmed content appear in published output.",
+      "status": "passed",
+      "environment": "production",
+      "url": "https://3back.com/",
+      "checkedAt": "2026-09-10T02:19:00.000Z",
+      "reviewer": "Independent AI Reviewer (Grok)",
+      "reviewerType": "agent",
+      "evidence": "Inspected live https://3back.com/ HTML. No TODO, lorem ipsum, implementation test, or placeholder tokens in the published homepage. Scope this pass: homepage."
+    },
+    {
+      "item": "205",
+      "condition": "Public copy contains no accidental developer text, malformed characters, encoding corruption, or tool artifacts.",
+      "status": "passed",
+      "environment": "production",
+      "url": "https://3back.com/",
+      "checkedAt": "2026-09-10T02:19:00.000Z",
+      "reviewer": "Independent AI Reviewer (Grok)",
+      "reviewerType": "agent",
+      "evidence": "Inspected live https://3back.com/ HTML. No em dash. No visible encoding corruption or tool artifacts in the homepage document. Scope this pass: homepage."
+    },
+    {
+      "item": "301",
+      "condition": "Every published navigation and footer link resolves to its intended destination.",
+      "status": "passed",
+      "environment": "production",
+      "url": "https://3back.com/",
+      "checkedAt": "2026-09-10T02:19:00.000Z",
+      "reviewer": "Independent AI Reviewer (Grok)",
+      "reviewerType": "agent",
+      "evidence": "Enumerated live homepage header and footer hrefs. Local destinations returned 200 or 307-to-trailing-slash then 200: /operational-grip/, /ideas/, /doomscroll/, /grip-check/, /workshops, /domain-guides, /training, /events, /about-us, /reviews/, /contact/, /privacy-policy/, /course-policy/. Facebook and X returned 200. LinkedIn returned 429 to this checker (rate limit), not a missing route. Mobile menu not separately walked."
+    },
+    {
+      "item": "503",
+      "condition": "Each page has a descriptive title, one meaningful H1, logical heading order, and semantic landmarks.",
+      "status": "passed",
+      "environment": "production",
+      "url": "https://3back.com/",
+      "checkedAt": "2026-09-10T02:19:00.000Z",
+      "reviewer": "Independent AI Reviewer (Grok)",
+      "reviewerType": "agent",
+      "evidence": "Live https://3back.com/ title is 3Back | The Team Execution Company. One H1: Organizations do not outgrow teams. They lose the boundaries that made teams effective. Header and footer present. Scope this pass: homepage."
+    },
+    {
+      "item": "605",
+      "condition": "Metadata, canonical URLs, indexing directives, and social preview data remain accurate for the affected page and environment.",
+      "status": "passed",
+      "environment": "production",
+      "url": "https://3back.com/",
+      "checkedAt": "2026-09-10T02:19:00.000Z",
+      "reviewer": "Independent AI Reviewer (Grok)",
+      "reviewerType": "agent",
+      "evidence": "Live https://3back.com/ title 3Back | The Team Execution Company. Canonical https://3back.com/. Robots index, follow. Scope this pass: homepage document head. Open Graph image file not separately fetched."
     }
   ]
 }
