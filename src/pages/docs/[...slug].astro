@@ -45,7 +45,7 @@ if (page.source) {
 const metadata = pageSeo[page.path];
 const docsBySlug = Object.fromEntries(STAFF_DOCS.map((entry) => [entry.slug, entry]));
 const docGroups = [
-	{ label: "Work results", slugs: ["backlog", "acceptance-results", "client-errors"] },
+	{ label: "Work Results", slugs: ["backlog", "acceptance-results", "client-errors"] },
 	{ label: "Technical", slugs: ["technical-manifest", "redirect-map", "page-metadata", "contact-form", "lms"] },
 	{ label: "Marketing", slugs: ["brand", "visual-direction", "site-intent-map", "appendix-a"] },
 	{ label: "Procedures", slugs: ["publisher-role", "agents", "reviewer-agents", "acceptance-testing"] },
@@ -76,7 +76,7 @@ const redirectRows = redirectsSource
 				<ul>{group.slugs.map((slug) => <li><a href={docsBySlug[slug].path}>{docsBySlug[slug].label}</a></li>)}
 					{group.label === "Technical" && <>
 						<li><a href="https://3back.com/sitemap-index.xml">Sitemap</a></li>
-						<li><a href="https://github.com/cookiemonster2026/3Back-Publisher-Pipeline">GitHub repository</a></li>
+						<li><a href="https://github.com/cookiemonster2026/3Back-Publisher-Pipeline">GitHub Repository</a></li>
 					</>}
 				</ul>
 			</section>)}

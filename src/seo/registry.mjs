@@ -77,7 +77,7 @@ export const STAFF_DOCS = [
 	},
 	{
 		"slug": "contact-form",
-		"label": "Contact form",
+		"label": "Contact Form",
 		"source": "docs/publishing/contact-form.md",
 		"path": "/docs/contact-form"
 	},
@@ -123,7 +123,7 @@ export const STAFF_DOCS = [
 	},
 	{
 		"slug": "client-errors",
-		"label": "JavaScript errors",
+		"label": "JavaScript Errors",
 		"source": null,
 		"path": "/docs/client-errors"
 	}
