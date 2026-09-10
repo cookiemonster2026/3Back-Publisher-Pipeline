@@ -1,1 +1,1 @@
-RESTORE_FROM_LOCAL_SUITE_OUT
+{"records":[{"item":"701","condition":"The homepage quickly establishes 3Back as The Team Execution Company and describes organizational execution, not generic transformation or training.","status":"passed","environment":"production","url":"https://3back.com/","checkedAt":"2026-09-09T20:02:20.249Z","reviewer":"Codex","reviewerType":"agent","evidence":"Inspected https://3back.com/ in the live browser. The opening identifies 3Back as The Team Execution Company and leads with organizational execution and bounded changes."}]}
