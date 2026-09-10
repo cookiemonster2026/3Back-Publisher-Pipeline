@@ -96,7 +96,7 @@ Omit the `Failed` or `Unverified` section when it is empty. Do not list individu
 
 The Current Status column and composite on `/docs/acceptance-testing/` report live-site verification for the 54 live items only. Checks cover surfaces, not pages. This board is not a pure Boolean suite. Builders infer. Reviewers infer. The symbols are where inference stops. Never use local builds, local previews, source inspection, or inferred deployment success to mark an item green or red.
 
-Green means the live surface passed a known condition. Red means it failed. Blue question mark means a known condition needs a live look. Burnt orange J means the rule itself is not settled. J is not a pass, not a fail, and not a substitute for looking. Count the 54 live items only. Count only green in the passed numerator. Blue and J count in the total. Process items 001, 002, 003, 004, 005, 006, 602, and 606 stay in the checklist and are reported in the task report. They do not take a live color.
+Green means the live surface passed a known condition. Red means it failed. Blue R means a known condition needs a live look. Burnt orange J means the rule itself is not settled. J is not a pass, not a fail, and not a substitute for looking. Count the 54 live items only. Count only green in the passed numerator. Blue and J count in the total. Process items 001, 002, 003, 004, 005, 006, 602, and 606 stay in the checklist and are reported in the task report. They do not take a live color.
 
 Last checked is the newest green or red live-item timestamp. Blue and J do not move it.
 
@@ -155,7 +155,7 @@ The governing acceptance page shows one Deployed link using the latest task rele
 
 An agent acting as Independent AI Reviewer must first read Reviewer Agents.md and follow 000 — Initialize. Never treat the builder's test run as reviewer acknowledgment. A fresh builder reads this file and locates the lifecycle JSON by permanent task ID, not by the most recent date. Reuse its unaccepted suite through iterative pushes. If absent, create its suite, evidence file, and lifecycle JSON with taskId, suiteId, builder identity, and an empty events array. Accepted suites are immutable; new work gets a new permanent ID. Do not create additional Done entries during iteration.
 
-At every reviewer handoff, run node scripts/acceptance-lifecycle.mjs handoff --suite SUITE_ID --task TASK_ID --actor BUILDER_ID. This appends history and resets visible 000 to ?. Never self-pass 000 as builder. Reviewed and Accepted are not set by a handoff or push.
+At every reviewer handoff, run node scripts/acceptance-lifecycle.mjs handoff --suite SUITE_ID --task TASK_ID --actor BUILDER_ID. This appends history and resets visible 000 to R. Never self-pass 000 as builder. Reviewed and Accepted are not set by a handoff or push.
 
 Release trigger: "commit to main and push to origin" requests the complete release workflow. First acknowledge: "I will record the approximate release timestamp, commit to main, push to origin, attempt deployment confirmation, and report complete or incomplete."
 
@@ -165,7 +165,7 @@ Only explicit human acceptance and task closure authorize the accepted command w
 
 ## Required reviewer handoff prompt
 
-Before calling a handoff ready, record a confirmed production version with the deployed command, then append handoff. The approximate Deployed display alone does not satisfy reviewer 000. If access blocks confirmation, report the handoff blocked and request authorized access or verifiable deployment evidence. Do not invent confirmation; another push does not fix access.
+Attempt deployment confirmation, then append handoff. Missing confirmation does not block review of accessible surfaces. Reviewer 000 checks instructions, suite identification, independence, information, and a recording path. Assess access per item; keep blocked or version-dependent items blue and raise human judgment requests. Unconfirmed observations must not claim a release SHA. Partial review leaves Reviewed unchanged. Never invent confirmation.
 
 For a browser reviewer without Node, accept a human-relayed recording request containing task, suite, current handoff, reviewer identity, prerequisite attestations, and evidence. Run the lifecycle command with only the reviewer's attested flags and identity; return its recorded outcome. Never self-pass their review. Failed initialization records Fail and exits nonzero. Use reviewer-only publication rules for these records, without release preparation or handoff reset. Supply a board listing derived from the suite Markdown and JSON through acceptance-status.mjs when requested; source data identifies tests but does not prove live behavior.
 

@@ -42,7 +42,7 @@ test("local checks, unknown items and future results are rejected", () => {
 test("one symbol per row, accessible evidence, and no extra row copy", () => {
   const result = acceptanceStatus(table, [{ ...record, evidence: '<script>alert("test")</script>' }]);
   const cells = [...result.html.matchAll(/<td class="acceptance-current-status"[\s\S]*?<\/td>/g)].map(m => m[0]);
-  assert.deepEqual(cells.map(cell => cell.replace(/<[^>]*>/g, "")), ["✓", "?"]);
+  assert.deepEqual(cells.map(cell => cell.replace(/<[^>]*>/g, "")), ["P", "R"]);
   assert.ok(result.html.includes("aria-label="));
   assert.ok(result.html.includes('<thead><tr><th scope="col" class="acceptance-status-heading">Current Status</th><th>Item</th>'));
   assert.equal((result.html.match(/<tr data-acceptance-row="[^"]+"><td class="acceptance-current-status"/g) || []).length, 2);

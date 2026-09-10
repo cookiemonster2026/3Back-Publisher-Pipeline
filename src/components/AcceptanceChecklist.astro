@@ -13,7 +13,7 @@ const lifecycles = import.meta.glob<{ default: any }>("../data/acceptance-lifecy
 const lifecycle = lifecycles[`../data/acceptance-lifecycle/${snapshotId}.json`]?.default;
 const progress = lifecycleState(lifecycle);
 const initializationLabel = progress.status === 'passed' ? 'Passed' : progress.status === 'failed' ? 'Failed' : 'Review';
-const initializationSymbol = progress.status === 'passed' ? '✓' : progress.status === 'failed' ? '✕' : '?';
+const initializationSymbol = progress.status === 'passed' ? 'P' : progress.status === 'failed' ? 'F' : 'R';
 const releaseDate = (entry: typeof snapshot) => {
  const state = lifecycleState(lifecycles[`../data/acceptance-lifecycle/${entry?.id}.json`]?.default);
  return state.releasePrepared?.at ?? state.deployed?.at ?? entry?.deployedAt;
@@ -33,9 +33,9 @@ const testHtml = status ? [...status.html.matchAll(/<h[2-4][^>]*>[\s\S]*?<\/h[2-
   {snapshot?.description && <h3 class="work-description">Done: {snapshot.description}</h3>}
   <p class="milestone-dates"><span class="acceptance-status--unverified">Deployed: <span data-deployment-date={snapshot?.id}>{milestoneDate(releaseDate(snapshot))}</span></span><span class="acceptance-status--passed">Reviewed: {milestoneDate(progress.reviewed?.at ?? snapshot?.reviewedAt)}</span><span class="acceptance-status--judgment">Accepted: {milestoneDate(progress.accepted?.at ?? snapshot?.acceptedAt)}</span></p>
   <p class="acceptance-counts">
-    <span class="acceptance-status--unverified"><span aria-hidden="true">?</span> ({status!.counts.unverified}) Review</span>
-    <span class="verdict-pair"><span class="acceptance-status--passed"><span aria-hidden="true">✓</span> ({status!.counts.passed}/{status!.applicable}) Passed</span> <span aria-hidden="true">/</span>
-    <span class="acceptance-status--failed"><span aria-hidden="true">✕</span> ({status!.counts.failed}) Failed</span></span>
+    <span class="acceptance-status--unverified"><span aria-hidden="true">R</span> ({status!.counts.unverified}) Review</span>
+    <span class="verdict-pair"><span class="acceptance-status--passed"><span aria-hidden="true">P</span> ({status!.counts.passed}/{status!.applicable}) Passed</span> <span aria-hidden="true">/</span>
+    <span class="acceptance-status--failed"><span aria-hidden="true">F</span> ({status!.counts.failed}) Failed</span></span>
 
     <span class="acceptance-status--judgment"><span aria-hidden="true">J</span> ({status!.counts.judgment}) Judgment</span>
   </p>
@@ -67,14 +67,14 @@ const testHtml = status ? [...status.html.matchAll(/<h[2-4][^>]*>[\s\S]*?<\/h[2-
       <li><strong>AI Builder</strong>
         <ul>
           <li>Implements the specification.</li>
-          <li>Flags items <strong class="acceptance-status--unverified">? Review</strong> when changes may affect their status.</li>
+          <li>Flags items <strong class="acceptance-status--unverified">R Review</strong> when changes may affect their status.</li>
           <li><strong>Human:</strong> Authorizes commit and deployment.</li>
         </ul>
       </li>
       <li><strong>Independent AI Reviewer</strong>
         <ul>
-          <li>Resolves items flagged <strong class="acceptance-status--unverified">? Review</strong> through live checks and specified tests.</li>
-          <li>Reports <strong class="acceptance-status--passed">✓ Pass</strong> or <strong class="acceptance-status--failed">✕ Fail</strong>, proposing corrections for failures.</li>
+          <li>Resolves items flagged <strong class="acceptance-status--unverified">R Review</strong> through live checks and specified tests.</li>
+          <li>Reports <strong class="acceptance-status--passed">P Pass</strong> or <strong class="acceptance-status--failed">F Fail</strong>, proposing corrections for failures.</li>
           <li>Flags <strong class="acceptance-status--judgment">J Judgment</strong> when it cannot propose a defensible correction or test.</li>
           <li><strong>Human:</strong> Approves proposed corrections and any condition or test changes.</li>
         </ul>

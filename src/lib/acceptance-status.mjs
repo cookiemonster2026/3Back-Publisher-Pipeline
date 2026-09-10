@@ -1,5 +1,5 @@
 const labels = { passed: "Passed", failed: "Failed", unverified: "Needs a live look", judgment: "Rule decision needed" };
-const symbols = { passed: "✓", failed: "✕", unverified: "?", judgment: "J" };
+const symbols = { passed: "P", failed: "F", unverified: "R", judgment: "J" };
 const reasons = { changed: "Surface changed.", "never-checked": "Never checked.", blocked: "Live check blocked.", "condition-changed": "Condition text changed.", "awaiting-human": "Awaiting Douglas's live review." };
 const range = (first, last) => Array.from({ length: last - first + 1 }, (_, index) => String(first + index));
 export const PROCESS_ITEMS = Object.freeze(["001", "002", "003", "004", "005", "006", "602", "606"]);
