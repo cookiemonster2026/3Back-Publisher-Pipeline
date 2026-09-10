@@ -165,6 +165,12 @@ Only explicit human acceptance and task closure authorize the accepted command w
 
 ## Required reviewer handoff prompt
 
+Before calling a handoff ready, record a confirmed production version with the deployed command, then append handoff. The approximate Deployed display alone does not satisfy reviewer 000. If access blocks confirmation, report the handoff blocked and request authorized access or verifiable deployment evidence. Do not invent confirmation; another push does not fix access.
+
+For a browser reviewer without Node, accept a human-relayed recording request containing task, suite, current handoff, reviewer identity, prerequisite attestations, and evidence. Run the lifecycle command with only the reviewer's attested flags and identity; return its recorded outcome. Never self-pass their review. Failed initialization records Fail and exits nonzero. Use reviewer-only publication rules for these records, without release preparation or handoff reset. Supply a board listing derived from the suite Markdown and JSON through acceptance-status.mjs when requested; source data identifies tests but does not prove live behavior.
+
+The human may explicitly accept and close with known blockers. Preserve those blockers in humanApproval, retain their statuses, leave unfinished Reviewed unset, and record Accepted. Acceptance is not verification. Reuse the single Done entry and preserve history.
+
 After every push report, provide a separate fenced text block containing only a copyable Verify acceptance prompt. Replace the production results URL, SUITE_ID, and TASK_ID with the actual current task values. Keep release status and change links outside that block. Use:
 
 Verify acceptance for PRODUCTION_RESULTS_URL.

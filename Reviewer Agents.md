@@ -18,7 +18,15 @@ node scripts/acceptance-lifecycle.mjs initialize --suite SUITE_ID --task TASK_ID
 
 Flags attest to checks you actually performed; they neither grant permissions nor prove you read the file. Missing confirmations fail readiness. An earlier handoff's pass does not carry forward.
 
+### Browser reviewer handoff
+
+Node is optional for the reviewer. If you cannot run the commands, send the human a recording request for the AI Builder: task and suite IDs, reviewer identity, handoff timestamp, each readiness confirmation or blocker, and your Pass/Fail decision. The builder runs the command with only your confirmed flags, preserves your identity and evidence, and returns the recorded outcome. Do not claim recording succeeded until confirmed. The builder records your decision; it does not self-pass your review.
+
+Repository access can supply instructions and tests when staff docs require sign-in. It cannot replace access to a live surface a test examines. Ask the human to arrange access or perform the blocked check. Do not request credentials in chat. Until readiness is resolved, leave 000 Fail and Reviewed unchanged. Human acceptance of blockers is allowed under Accept and close.
+
 ## Review
+
+Find the board in `src/data/acceptance-snapshots/SUITE_ID.md` (conditions and tests) and `src/data/acceptance-snapshots/SUITE_ID.json` (evidence). Follow `src/lib/acceptance-status.mjs`: for each LIVE_ITEMS entry, use the newest checkedAt record, with the later array entry winning ties. Missing evidence, a changed condition, or an agent verdict on a Human item means ? Review; otherwise use the recorded status. Compare conditions as rendered plain text. The shared ledger is not the suite board. Item 000 comes separately from the lifecycle record. If unsure, request a builder-generated listing rather than guess.
 
 Review flagged items on the live site using their specified tests. Record **Pass** or **Fail** with evidence; local checks are not live verdicts. Work iteratively with the human:
 
@@ -49,6 +57,8 @@ Review publications do not reset 000, replace Deployed, or create Done entries. 
 ## Accept and close
 
 Reuse the suite until the human explicitly accepts the results and closes the task. Clarify ambiguous “done”; do not reconfirm explicit acceptance and closure.
+
+The human may explicitly accept with known blockers or unfinished checks. Preserve them in the acceptance evidence and retain their statuses. Acceptance does not pass 000 or any test, or create a Reviewed timestamp. The builder recording handoff may record acceptance even when initialization is blocked.
 
 Record Accepted before publishing, using the human's stated date-time or the current time when their instruction arrives, including timezone. Preserve that instruction as evidence; do not use the later push time.
 
