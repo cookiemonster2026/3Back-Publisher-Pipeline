@@ -19,6 +19,12 @@
       "at": "2026-09-10T01:02:24.563Z",
       "actor": "AI Builder",
       "approximate": true
+    },
+    {
+      "type": "release-prepared",
+      "at": "2026-09-10T01:12:14.015Z",
+      "actor": "AI Builder",
+      "approximate": true
     }
   ]
 }

@@ -12,7 +12,7 @@ try {
  if(lifecycleState(record).accepted) throw Error('Suite is accepted; create a new task suite.');
  let event={type:command,at:new Date().toISOString(),actor:options.actor};let failed=false;
  if(command==='prepare-release') { event.type='release-prepared'; event.approximate=true; } else if(command==='initialize') {
-  const result=readiness(record,{taskId:options.task,instructionsExist:fs.existsSync(resolve(root,'Reviewer Agents.md')),acknowledged:options['acknowledge-read']===true,reviewer:options.actor});
+  const result=readiness(record,{taskId:options.task,instructionsExist:fs.existsSync(resolve(root,'Reviewer Agents.md')),acknowledged:options['acknowledge-read']===true,reviewer:options.actor,repositoryAccess:options['repository-access']===true,liveAccess:options['live-access']===true,informationReady:options['information-ready']===true,canRecordResults:options['can-record-results']===true});
   event={...event,...result};failed=result.status==='failed';
  } else if(command==='deployed') {
   const response=await fetch('https://3back.com/api/deployments/history',{headers:process.env.THREEBACK_ACCESS_COOKIE?{cookie:process.env.THREEBACK_ACCESS_COOKIE}:{},redirect:'error'});

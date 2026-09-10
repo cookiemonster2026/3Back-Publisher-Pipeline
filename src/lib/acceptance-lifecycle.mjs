@@ -5,8 +5,12 @@ export function lifecycleState(record) {
  const initialization=events.filter(e=>e.type==='initialize'&&events.indexOf(e)>Math.max(events.lastIndexOf(handoff),events.lastIndexOf(last('deployed')))).at(-1);
  return {releasePrepared:last('release-prepared'),deployed:last('deployed'),reviewed:last('reviewed'),accepted:last('accepted'),handoff,initialization,status:initialization?.status??'unverified'};
 }
-export function readiness(record,{taskId,instructionsExist,acknowledged,reviewer}) {
+export function readiness(record,{taskId,instructionsExist,acknowledged,reviewer,repositoryAccess,liveAccess,informationReady,canRecordResults}) {
  const failures=[];
+ if(repositoryAccess !== true) failures.push('Human judgment required: reviewer has not confirmed access to the repository.');
+ if(liveAccess !== true) failures.push('Human judgment required: reviewer has not confirmed access to required live surfaces.');
+ if(informationReady !== true) failures.push('Human judgment required: required specification, suite, release information, or evidence is unavailable.');
+ if(canRecordResults !== true) failures.push('Human judgment required: no authorized way to record review results has been confirmed.');
  if(!instructionsExist) failures.push('Reviewer Agents.md is unavailable.');
  if(!acknowledged) failures.push('Reviewer has not acknowledged reading and following Reviewer Agents.md.');
  if(!record||record.taskId!==taskId) failures.push('No acceptance suite for this task.');
@@ -16,7 +20,7 @@ export function readiness(record,{taskId,instructionsExist,acknowledged,reviewer
  if(state.deployed && record.events.indexOf(state.handoff)<record.events.indexOf(state.deployed)) failures.push('New deployment requires a fresh reviewer handoff.');
  if(!state.deployed?.versionId||!state.deployed?.at) failures.push('No confirmed production deployment record.');
  if(!reviewer||reviewer===record?.builder) failures.push('Reviewer must be identified and independent of the builder.');
- return {status:failures.length?'failed':'passed',failures};
+ return {status:failures.length?'failed':'passed',failures,requiresHumanJudgment:failures.length>0};
 }
 export function appendEvent(record,event) {
  if(lifecycleState(record).accepted) throw Error('Accepted suite is immutable; create a new task suite.');
