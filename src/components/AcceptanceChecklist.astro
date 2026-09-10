@@ -49,7 +49,7 @@ const testHtml = status ? [...status.html.matchAll(/<h[2-4][^>]*>[\s\S]*?<\/h[2-
   {snapshot && acceptanceSnapshots.some(entry => entry.supersededBy === snapshot.id) && <details><summary>Earlier evidence</summary>{acceptanceSnapshots.filter(entry => entry.supersededBy === snapshot.id).map(entry => <p><a href={entry.path}>{entry.description}</a></p>)}</details>}
 </> : <>
   <nav class="snapshot-links" aria-label="Recorded reviews">
-    {(archive ? acceptanceSnapshots : acceptanceSnapshots.slice(-1)).map(snapshot => <a href={snapshot.path}>{archive ? snapshot.label.replace(/^Recent:\s*/, "") : snapshot.label}</a>)}
+    {(archive ? archivedSuites : recentSuites).map(entry => <div><a href={entry.path}>{archive ? milestoneDate(releaseDate(entry)) : `Deployed: ${milestoneDate(releaseDate(entry))}`}</a>{archive && <p>{entry.description}</p>}</div>)}
 
   </nav>
   {!archive && <>
