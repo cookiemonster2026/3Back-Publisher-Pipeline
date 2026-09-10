@@ -20,6 +20,12 @@
       "at": "2026-09-10T17:25:58.045Z",
       "actor": "Codex Builder",
       "approximate": true
+    },
+    {
+      "type": "accepted",
+      "at": "2026-09-10T17:36:16.192Z",
+      "actor": "Douglas Shimp",
+      "humanApproval": "Douglas supplied the independent read-only report and stated: Nothing too surprising here. I think we can close this thread. Accepted and closed with known limitations: reviewer could not access live staff pages; production release identity and Cloudflare build were unconfirmed; live footer interaction, responsive and keyboard checks remained unverified; reviewer raised training-hierarchy judgment. Previously approved On-Demand Courses capitalization is retained. Acceptance is not verification; preserve all verdicts and leave Reviewed unset."
     }
   ]
 }
