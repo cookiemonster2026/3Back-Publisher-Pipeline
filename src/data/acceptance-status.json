@@ -241,6 +241,17 @@
       "reviewer": "Independent AI Reviewer (Grok)",
       "reviewerType": "agent",
       "evidence": "Live https://3back.com/ title 3Back | The Team Execution Company. Canonical https://3back.com/. Robots index, follow. Scope this pass: homepage document head. Open Graph image file not separately fetched."
+    },
+    {
+      "item": "708",
+      "condition": "The homepage uses one H1 and live, selectable text for headings, navigation, and explanatory diagrams.",
+      "status": "judgment",
+      "environment": "production",
+      "url": "https://3back.com/",
+      "checkedAt": "2026-09-10T02:31:00.000Z",
+      "reviewer": "Independent AI Reviewer (Grok)",
+      "reviewerType": "agent",
+      "evidence": "Live https://3back.com/ has one H1 and selectable heading and navigation text. The hero explanatory diagram is an SVG image at https://3back.com/_astro/team-boundaries-diffuse.oKSgq17H_Z1eHDPV.svg (class hero-boundary-visual), not live selectable text. Decision needed: does that graphic count as an explanatory diagram that must be live text, or are selectable headings and navigation enough? No releaseSha."
     }
   ]
 }
