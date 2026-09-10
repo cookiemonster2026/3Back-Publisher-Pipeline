@@ -39,7 +39,7 @@ Run an `Affected` item when the requested or resulting diff could change its con
 - A successful build does not prove visual, link, accessibility, or content correctness.
 - `Human` items are always reported as pending until the user or designated reviewer approves them.
 
-### Status on /docs/acceptance-checks
+### Status on /docs/acceptance-testing
 
 Live colors apply to the 54 live items. Green and red are live verdicts on a known condition. Blue means a known condition needs a live look. J means the rule is not settled. The implementer may only mark blue. An outside reviewer marks green, red, or J. Douglas decides J. The surface map is a starting point, not a closed list. Last checked ignores blue and J.
 

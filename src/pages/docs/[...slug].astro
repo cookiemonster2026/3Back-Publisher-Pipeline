@@ -15,6 +15,7 @@ export function getStaticPaths() {
 const { page } = Astro.props;
 const documents = import.meta.glob<MarkdownInstance<Record<string, unknown>>>([
 	"../../../AGENTS.md",
+  "../../../Reviewer Agents.md",
 	"../../data/acceptance-snapshots/*.md",
 	"../../../docs/website-acceptance-checklist.md",
 	"../../../docs/publishing/Site-Intent-Map-v1.9.md",
@@ -43,7 +44,7 @@ if (page.source) {
 const metadata = pageSeo[page.path];
 const docsBySlug = Object.fromEntries(STAFF_DOCS.map((entry) => [entry.slug, entry]));
 const docGroups = [
-	{ label: "Work", slugs: ["backlog", "acceptance-checks", "client-errors"] },
+	{ label: "Work", slugs: ["backlog", "acceptance-testing", "client-errors"] },
 	{ label: "Technical", slugs: ["technical-manifest", "redirect-map", "agents", "contact-form", "lms"] },
 	{ label: "Marketing", slugs: ["publisher-role", "brand", "visual-direction", "site-intent-map", "appendix-a"] },
 ];
@@ -64,7 +65,7 @@ const redirectRows = redirectsSource
 <main id="main" class="policy-page"><article class:list={["shell", "policy-content", { "acceptance-page": page.slug.startsWith("acceptance-") }]}>
 	{!page.slug && <p class="eyebrow">Staff</p>}
 	<h1>{page.label}</h1>
-	{page.slug ? <p class="docs-back"><span><a href="/docs/">Docs</a>{page.slug.startsWith("acceptance-results") && <> › <a href="/docs/acceptance-checks/">Acceptance Testing</a></>}</span>{page.slug === "acceptance-checks" && <a href="/docs/acceptance-results/">Archive</a>}</p> : <>
+	{page.slug ? <p class="docs-back"><span><a href="/docs/">Docs</a>{page.slug.startsWith("acceptance-results") && <> › <a href="/docs/acceptance-testing/">Acceptance Testing</a></>}</span>{page.slug === "acceptance-testing" && <a href="/docs/acceptance-results/">Archive</a>}</p> : <>
 		<p>These are reading copies of the current control files. They are not public pages.</p>
 		<div class="doc-groups">
 			{docGroups.map((group) => <section>

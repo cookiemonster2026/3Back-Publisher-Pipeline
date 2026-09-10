@@ -94,7 +94,7 @@ Omit the `Failed` or `Unverified` section when it is empty. Do not list individu
 
 ## Live acceptance status
 
-The Current Status column and composite on `/docs/acceptance-checks/` report live-site verification for the 54 live items only. Checks cover surfaces, not pages. This board is not a pure Boolean suite. Builders infer. Reviewers infer. The symbols are where inference stops. Never use local builds, local previews, source inspection, or inferred deployment success to mark an item green or red.
+The Current Status column and composite on `/docs/acceptance-testing/` report live-site verification for the 54 live items only. Checks cover surfaces, not pages. This board is not a pure Boolean suite. Builders infer. Reviewers infer. The symbols are where inference stops. Never use local builds, local previews, source inspection, or inferred deployment success to mark an item green or red.
 
 Green means the live surface passed a known condition. Red means it failed. Blue question mark means a known condition needs a live look. Burnt orange J means the rule itself is not settled. J is not a pass, not a fail, and not a substitute for looking. Count the 54 live items only. Count only green in the passed numerator. Blue and J count in the total. Process items 001, 002, 003, 004, 005, 006, 602, and 606 stay in the checklist and are reported in the task report. They do not take a live color.
 

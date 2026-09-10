@@ -11,4 +11,4 @@ The map identifies likely affected items. Combine matching rows and include any 
 | `src/pages/index.astro` | Homepage body | 101–106, 401–404, 701–708, 901–905 | `https://3back.com/` |
 | A single page under `src/pages/` | That page body | 201–205, 321–323, 401–404, 503–505, 603–605, 901–905 | That live URL |
 | `src/data/acceptance-status.json` only | Board records | none | Do not stale live items |
-| `AGENTS.md`, checklist how-to, this map, staff `/docs` copy | Staff docs | none for public live items | `/docs/acceptance-checks/` is staff-only |
+| `AGENTS.md`, checklist how-to, this map, staff `/docs` copy | Staff docs | none for public live items | `/docs/acceptance-testing/` is staff-only |
