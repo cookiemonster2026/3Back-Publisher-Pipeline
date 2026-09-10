@@ -25,6 +25,17 @@
       "at": "2026-09-10T01:12:14.015Z",
       "actor": "AI Builder",
       "approximate": true
+    },
+    {
+      "type": "release-prepared",
+      "at": "2026-09-10T01:25:23.139Z",
+      "actor": "AI Builder",
+      "approximate": true
+    },
+    {
+      "type": "handoff",
+      "at": "2026-09-10T01:25:23.219Z",
+      "actor": "AI Builder"
     }
   ]
 }

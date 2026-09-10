@@ -21,7 +21,14 @@ try {
   if(result.snapshotId!==record.suiteId||!result.currentVersionId||!Number.isFinite(Date.parse(result.currentDeployedAt))) throw Error('Release incomplete: no matching confirmed deployment.');
   event={...event,at:new Date(result.currentDeployedAt).toISOString(),versionId:result.currentVersionId,confirmedAt:new Date().toISOString(),url:'https://3back.com/docs/acceptance-results/'+record.suiteId+'/'};
  } else if(command==='reviewed') event.versionId=options.version;
- else if(command==='accepted') event.humanApproval=options['human-approval'];
+ else if(command==='accepted') {
+  event.humanApproval=options['human-approval'];
+  if(options['accepted-at']) {
+    const timestamp=options['accepted-at'];
+    if(typeof timestamp!=='string'||!/(Z|[+-]\d{2}:\d{2})$/.test(timestamp)||!Number.isFinite(Date.parse(timestamp))||Date.parse(timestamp)>Date.now()) throw Error('Accepted time must be a valid, nonfuture timestamp with timezone.');
+    event.at=new Date(timestamp).toISOString();
+  }
+ }
  else if(command!=='handoff') throw Error('Use prepare-release, handoff, initialize, deployed, reviewed, or accepted.');
  record=appendEvent(record,event);
  fs.writeFileSync(path,JSON.stringify(record,null,2)+'\n');

@@ -1,33 +1,59 @@
 # Independent AI Reviewer
 
-Read this file completely before reviewing. AGENTS.md governs the builder; this file governs the independent review role. Do not review work you implemented. Use a distinct reviewer identity.
+Read this file before reviewing. AGENTS.md governs the AI Builder. Use your own reviewer identity and do not review work you implemented.
 
 ## 000 — Initialize
 
-Read these instructions and confirm you are ready to perform acceptance testing according to them. Grade readiness Pass or Fail. Acknowledgment is a reviewer attestation; software cannot prove that you read or understood this file.
+Each builder handoff resets 000 to **? Review**. Confirm you have:
 
-At each handoff the AI Builder resets 000 to ? Review by appending a handoff event. You must replace that pending result with your own initialization result for this handoff. An old pass does not carry forward.
+- Read these instructions and the required files in [the repository](https://github.com/cookiemonster2026/3Back-Publisher-Pipeline): specification, tests, evidence, and lifecycle record.
+- Matched the permanent task ID to its suite, with Accepted blank, an open handoff, and a confirmed deployed version to review.
+- Access to the required live pages and an authorized way to record results, directly or through an agreed builder handoff. Verify actual capabilities; browser access does not imply repository write access or Node execution.
 
-Before passing 000, verify that you have the access and information needed to do the job:
+Record **Pass** only after verifying every prerequisite. Otherwise record **Fail**, report **J Judgment** with the missing access or information to the human, and stop. Leave Reviewed unchanged. If you cannot write the failure, report it in chat and ask the human to arrange recording. Retry initialization after the blocker is resolved.
 
-- Read access to https://github.com/cookiemonster2026/3Back-Publisher-Pipeline, including these instructions, the specification, the task's acceptance suite, existing evidence, and lifecycle record. A link alone does not establish access; open and read the required files.
-- Access to the live pages and any authenticated surfaces required by the flagged tests.
-- The current task and suite IDs, the release being reviewed, the flagged items, and their specified tests.
-- A usable, authorized way to record initialization, verdicts, evidence, and the Reviewed timestamp. Repository write access is one option. A human-approved handoff to the AI Builder to record your report is another; agree on it before starting. Read access does not imply write permission.
+```text
+node scripts/acceptance-lifecycle.mjs initialize --suite SUITE_ID --task TASK_ID --actor REVIEWER_ID --acknowledge-read --repository-access --live-access --information-ready --can-record-results
+```
 
-For a browser-only reviewer such as Grok, do not assume you can run Node commands or write to GitHub. Verify your actual capabilities. If a prerequisite is missing, record 000 as Fail through the available reporting channel, identify exactly what access or information is needed, and stop. If you cannot write the failure to the suite, tell the human or AI Builder to record it; do not claim the suite was updated. Leave Reviewed unchanged. Pass means you have read the instructions and verified readiness, not merely that you can see this page.
-Before passing 000, confirm the current task ID matches its suite, Accepted is blank, and a confirmed production deployment identifies the version to review. Missing instructions, acknowledgment, suite, deployment, independence, or an open handoff is a failure. Report the specific blocker to the AI Builder and leave Reviewed unchanged. Never silently reuse another task's suite or modify an accepted suite.
-
-Run `node scripts/acceptance-lifecycle.mjs initialize --suite SUITE_ID --task TASK_ID --actor REVIEWER_ID --acknowledge-read --repository-access --live-access --information-ready --can-record-results` after reading. This records pass or fail for 000 and exits unsuccessfully on failure.
-
-Access flags are explicit attestations, not permission grants. Supply each flag only after actually opening the repository files, inspecting the necessary live surfaces, locating the required information, and verifying an authorized results-writing method. Missing flags fail initialization. Software can enforce the acknowledgment requirement but cannot prove a browser-only reviewer is truthful.
-
-If 000 fails, return the blocker directly to the human as **J Judgment: configuration or access required**. Keep 000 recorded as Fail; do not turn it into a pass or mark Reviewed. Ask the human to configure the missing access. Once resolved, rerun initialization. If unable to write to the repository, report the failure and J request in chat and ask the human to arrange recording; never silently leave ? without reporting the blocker.
+Flags attest to checks you actually performed; they neither grant permissions nor prove you read the file. Missing confirmations fail readiness. An earlier handoff's pass does not carry forward.
 
 ## Review
 
-Review only flagged items on the live site with the specified tests. Local builds do not establish live acceptance. Record pass or fail with evidence. For a failure, propose a correction and necessary condition or test changes for human approval. Flag J when you cannot propose a defensible correction or test; identify the unresolved issue. Human-verifier conditions remain human-only. Do not alter acceptance conditions without human approval.
+Review flagged items on the live site using their specified tests. Record **Pass** or **Fail** with evidence; local checks are not live verdicts. Work iteratively with the human:
 
-Append verdict evidence to the task's suite and the acceptance ledger. Preserve earlier evidence. A completed review is not equivalent to all items passing. After finishing and presenting results, run `node scripts/acceptance-lifecycle.mjs reviewed --suite SUITE_ID --task TASK_ID --actor REVIEWER_ID --version VERSION_ID`. Do not record Reviewed for blocked or unfinished work.
+- Propose corrections and necessary condition or test changes for approval.
+- Flag **J Judgment** when you cannot propose a defensible correction or test.
+- Leave human-verifier verdicts to the human. Never change acceptance conditions without approval.
 
-Publish recorded results only when authorized. Return the production results link, the reviewed version, your 000 acknowledgment and outcome, actual checks and evidence, failures, and judgment requests. Preserve Accepted until the human explicitly accepts and closes the task.
+Append evidence to the suite and shared ledger. After completing and presenting the review, record Reviewed, even if some tests failed. Do not record it for blocked or unfinished work.
+
+```text
+node scripts/acceptance-lifecycle.mjs reviewed --suite SUITE_ID --task TASK_ID --actor REVIEWER_ID --version VERSION_ID
+```
+
+## Publish
+
+You have standing permission to commit and push review records to `main` on the repository above. Only these files are authorized:
+
+| File | Permitted updates |
+| --- | --- |
+| `src/data/acceptance-snapshots/SUITE_ID.json` | Append this task's verdicts and evidence. |
+| `src/data/acceptance-lifecycle/SUITE_ID.json` | Append initialization, completed review, and explicitly authorized acceptance events. |
+| `src/data/acceptance-status.json` | Append the same verdict evidence to the shared ledger. |
+
+Preserve existing records. Do not edit instructions, tests, implementation, configuration, or other tasks. Check the exact diff, validate it, verify origin and main, and push only permitted changes. Stop on conflicting updates rather than overwrite them. Permission here does not supply credentials or authorize direct Cloudflare deployment.
+
+Review publications do not reset 000, replace Deployed, or create Done entries. Report the production results link, changes link, reviewed version, 000 outcome, checks, failures, and judgment requests. Distinguish a successful push from confirmed production display.
+
+## Accept and close
+
+Reuse the suite until the human explicitly accepts the results and closes the task. Clarify ambiguous “done”; do not reconfirm explicit acceptance and closure.
+
+Record Accepted before publishing, using the human's stated date-time or the current time when their instruction arrives, including timezone. Preserve that instruction as evidence; do not use the later push time.
+
+```text
+node scripts/acceptance-lifecycle.mjs accepted --suite SUITE_ID --task TASK_ID --actor REVIEWER_ID --human-approval "HUMAN INSTRUCTION" --accepted-at ISO_TIMESTAMP
+```
+
+Publish under the same file permissions, then freeze the suite. Reuse its single Done entry. If that entry needs creation or finalization, hand it to the AI Builder. Closeout remains incomplete until the Done entry, results link, and publication report are correct.
