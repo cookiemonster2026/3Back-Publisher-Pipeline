@@ -13,6 +13,8 @@ if (environment === "production" && !process.env.PUBLIC_TURNSTILE_SITE_KEY?.trim
 }
 
 const projectRoot = resolve(import.meta.dirname, "..");
+const { validateHistory } = await import("./validate-acceptance-history.mjs");
+validateHistory(projectRoot);
 // Invalidate any previous attachment before any build step can fail.
 const bankAsset = resolve(projectRoot, "dist/assets/grip-check/3Back-Grip-Check-Question-Bank.pdf");
 await rm(bankAsset, { force: true });

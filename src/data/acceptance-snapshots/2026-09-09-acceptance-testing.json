@@ -1,1 +1,290 @@
-{"records":[{"item":"701","condition":"The homepage quickly establishes 3Back as The Team Execution Company and describes organizational execution, not generic transformation or training.","status":"passed","environment":"production","url":"https://3back.com/","checkedAt":"2026-09-09T20:02:20.249Z","reviewer":"Codex","reviewerType":"agent","evidence":"Inspected https://3back.com/ in the live browser. The opening identifies 3Back as The Team Execution Company and leads with organizational execution and bounded changes."}]}
+{
+  "records": [
+    {
+      "item": "701",
+      "condition": "The homepage quickly establishes 3Back as The Team Execution Company and describes organizational execution, not generic transformation or training.",
+      "status": "passed",
+      "environment": "production",
+      "url": "https://3back.com/",
+      "checkedAt": "2026-09-09T20:02:20.249Z",
+      "reviewer": "Codex",
+      "reviewerType": "agent",
+      "evidence": "Inspected https://3back.com/ in the live browser. The opening identifies 3Back as The Team Execution Company and leads with organizational execution and bounded changes."
+    },
+    {
+      "item": "703",
+      "condition": "The homepage defines Operational Grip as the current lead lens and keeps 3Back as the enduring brand.",
+      "status": "passed",
+      "environment": "production",
+      "url": "https://3back.com/",
+      "checkedAt": "2026-09-09T20:02:20.251Z",
+      "reviewer": "Codex",
+      "reviewerType": "agent",
+      "evidence": "Inspected the live homepage. The body-of-work section explicitly identifies Operational Grip as the current operating lens and states that 3Back is the enduring brand."
+    },
+    {
+      "item": "704",
+      "condition": "The homepage connects execution from demand through organizational response, delivered value, market acceptance, and revenue without promising revenue.",
+      "status": "passed",
+      "environment": "production",
+      "url": "https://3back.com/",
+      "checkedAt": "2026-09-09T20:02:20.251Z",
+      "reviewer": "Codex",
+      "reviewerType": "agent",
+      "evidence": "Inspected the live homepage commercial loop. It contains Demand, Organizational response, Delivered value, Market acceptance, and Revenue. Revenue is described as evidence of market acceptance, not a promise."
+    },
+    {
+      "item": "705",
+      "condition": "The homepage explains an evidence-first approach centered on one bounded problem, one decision, one accountable owner, and one observable result.",
+      "status": "passed",
+      "environment": "production",
+      "url": "https://3back.com/",
+      "checkedAt": "2026-09-09T20:02:20.251Z",
+      "reviewer": "Codex",
+      "reviewerType": "agent",
+      "evidence": "Inspected the live homepage approach section. It leads with evidence and explicitly specifies one bounded problem, one decision, one accountable owner, and one observable result."
+    },
+    {
+      "item": "901",
+      "condition": "Final visual quality is polished, coherent, restrained, and credible across desktop and mobile.",
+      "status": "passed",
+      "environment": "production",
+      "url": "https://3back.com/",
+      "checkedAt": "2026-09-09T20:06:00.643Z",
+      "reviewer": "Douglas Shimp",
+      "reviewerType": "human",
+      "evidence": "Douglas explicitly assigned checklist items 901 through 905 green for the live site in this task."
+    },
+    {
+      "item": "902",
+      "condition": "The message is credible, appropriately bounded, and sounds like 3Back.",
+      "status": "passed",
+      "environment": "production",
+      "url": "https://3back.com/",
+      "checkedAt": "2026-09-09T20:06:00.644Z",
+      "reviewer": "Douglas Shimp",
+      "reviewerType": "human",
+      "evidence": "Douglas explicitly assigned checklist items 901 through 905 green for the live site in this task."
+    },
+    {
+      "item": "903",
+      "condition": "The result is relevant to executive and operational leaders without excluding practitioners who need the material.",
+      "status": "passed",
+      "environment": "production",
+      "url": "https://3back.com/",
+      "checkedAt": "2026-09-09T20:06:00.644Z",
+      "reviewer": "Douglas Shimp",
+      "reviewerType": "human",
+      "evidence": "Douglas explicitly assigned checklist items 901 through 905 green for the live site in this task."
+    },
+    {
+      "item": "904",
+      "condition": "Brand expression conveys quiet authority, operational depth, commercial grounding, and a bias toward action without resembling a training company, conventional consultancy, software startup, academic institute, or aggressive industrial brand.",
+      "status": "passed",
+      "environment": "production",
+      "url": "https://3back.com/",
+      "checkedAt": "2026-09-09T20:06:00.644Z",
+      "reviewer": "Douglas Shimp",
+      "reviewerType": "human",
+      "evidence": "Douglas explicitly assigned checklist items 901 through 905 green for the live site in this task."
+    },
+    {
+      "item": "905",
+      "condition": "Any new or materially changed case evidence, photography, illustration, humor, or sensitive claim is suitable and approved for publication.",
+      "status": "passed",
+      "environment": "production",
+      "url": "https://3back.com/",
+      "checkedAt": "2026-09-09T20:06:00.644Z",
+      "reviewer": "Douglas Shimp",
+      "reviewerType": "human",
+      "evidence": "Douglas explicitly assigned checklist items 901 through 905 green for the live site in this task."
+    },
+    {
+      "item": "101",
+      "condition": "3Back is positioned as The Team Execution Company.",
+      "status": "passed",
+      "environment": "production",
+      "url": "https://3back.com/",
+      "checkedAt": "2026-09-10T02:10:00.000Z",
+      "reviewer": "Independent AI Reviewer (Grok)",
+      "reviewerType": "agent",
+      "evidence": "Live homepage header lockup and hero eyebrow read 3Back / The Team Execution Company. Observation of https://3back.com/ at check time. No releaseSha. Staff results page display not confirmed."
+    },
+    {
+      "item": "102",
+      "condition": "Operational Grip is presented as 3Back's operating lens, not as a separate company, packaged methodology, certification system, guaranteed formula, or independent brand.",
+      "status": "passed",
+      "environment": "production",
+      "url": "https://3back.com/",
+      "checkedAt": "2026-09-10T02:10:00.000Z",
+      "reviewer": "Independent AI Reviewer (Grok)",
+      "reviewerType": "agent",
+      "evidence": "Live homepage states Operational Grip is the current operating lens. Live https://3back.com/operational-grip/ treats it as 3Back's operating lens, not a separate company. No guaranteed-outcome claim in the inspected definition. No releaseSha."
+    },
+    {
+      "item": "103",
+      "condition": "Training, Agile, Scrum, credentials, and certifications do not define or dominate the 3Back brand.",
+      "status": "passed",
+      "environment": "production",
+      "url": "https://3back.com/",
+      "checkedAt": "2026-09-10T02:10:00.000Z",
+      "reviewer": "Independent AI Reviewer (Grok)",
+      "reviewerType": "agent",
+      "evidence": "Live homepage hero and header are execution and Operational Grip. Training, Agile, and Scrum do not dominate that surface. This pass covers homepage plus shared header, not every course page."
+    },
+    {
+      "item": "108",
+      "condition": "Visuals avoid generic consulting imagery, staged teams, decorative corporate geometry, software-company cues, heavy industrial styling, fixed-method framework diagrams, industry montages, and unjustified motion.",
+      "status": "failed",
+      "environment": "production",
+      "url": "https://3back.com/operational-grip/",
+      "checkedAt": "2026-09-10T02:10:00.000Z",
+      "reviewer": "Independent AI Reviewer (Grok)",
+      "reviewerType": "agent",
+      "evidence": "Live Operational Grip page, section Does this look familiar? Panel 01 caption Everything requires everybody and panel 02 caption Only the heroes can make it work are staged workplace photographs. That violates the staged-teams / generic consulting imagery ban. No releaseSha."
+    },
+    {
+      "item": "303",
+      "condition": "Every Start a Conversation control leads to a functioning contact path.",
+      "status": "passed",
+      "environment": "production",
+      "url": "https://3back.com/contact/",
+      "checkedAt": "2026-09-10T02:10:00.000Z",
+      "reviewer": "Independent AI Reviewer (Grok)",
+      "reviewerType": "agent",
+      "evidence": "Header Start a Conversation on https://3back.com/ and https://3back.com/operational-grip/ opens https://3back.com/contact/. Contact page loads with Name, Email, Role/position, Phone optional, and execution-problem fields. Submit success and fail paths were not exercised."
+    },
+    {
+      "item": "702",
+      "condition": "The homepage presents weak or misplaced boundaries as a possible mechanism disconnecting demand, decisions, work, and results without claiming it is the universal cause of complexity.",
+      "status": "passed",
+      "environment": "production",
+      "url": "https://3back.com/",
+      "checkedAt": "2026-09-10T02:10:00.000Z",
+      "reviewer": "Independent AI Reviewer (Grok)",
+      "reviewerType": "agent",
+      "evidence": "Live homepage hero: Organizations do not outgrow teams. They lose the boundaries that made teams effective. Supporting copy names decisions, dependencies, coordination, and lost demand. No universal-cause claim."
+    },
+    {
+      "item": "706",
+      "condition": "The homepage hero offers one primary action into Operational Grip. Start a Conversation remains available in the header and the closing band, not as the hero button.",
+      "status": "passed",
+      "environment": "production",
+      "url": "https://3back.com/",
+      "checkedAt": "2026-09-10T02:10:00.000Z",
+      "reviewer": "Independent AI Reviewer (Grok)",
+      "reviewerType": "agent",
+      "evidence": "Douglas approved the 706 rewrite 2026-09-09. Prior wording required a hero conversation button. Live hero button label is See where execution loses Operational Grip and targets /operational-grip/. Header Start a Conversation targets /contact/. Closing band keeps Start a Conversation. Hero is not a conversation button. Observation at check time. No releaseSha."
+    },
+    {
+      "item": "108",
+      "condition": "Visuals avoid generic consulting imagery, staged teams, decorative corporate geometry, software-company cues, heavy industrial styling, fixed-method framework diagrams, industry montages, and unjustified motion.",
+      "status": "passed",
+      "environment": "production",
+      "url": "https://3back.com/operational-grip/",
+      "checkedAt": "2026-09-10T02:19:00.000Z",
+      "reviewer": "Douglas Shimp",
+      "reviewerType": "human",
+      "evidence": "Douglas accepted the live Operational Grip symptom photographs as published, including panel 01 Everything requires everybody (https://3back.com/assets/operational-grip/og-page/01-everything-requires-everybody.png) and panel 02 Only the heroes can make it work (https://3back.com/assets/operational-grip/og-page/02-only-heroes-can-make-it-work.png). Instruction: those are accepted; mark them as pass."
+    },
+    {
+      "item": "201",
+      "condition": "No internal design notes, production instructions, test directions, placeholders, template tokens, or unconfirmed content appear in published output.",
+      "status": "passed",
+      "environment": "production",
+      "url": "https://3back.com/",
+      "checkedAt": "2026-09-10T02:19:00.000Z",
+      "reviewer": "Independent AI Reviewer (Grok)",
+      "reviewerType": "agent",
+      "evidence": "Inspected live https://3back.com/ HTML. No TODO, lorem ipsum, implementation test, or placeholder tokens in the published homepage. Scope this pass: homepage."
+    },
+    {
+      "item": "205",
+      "condition": "Public copy contains no accidental developer text, malformed characters, encoding corruption, or tool artifacts.",
+      "status": "passed",
+      "environment": "production",
+      "url": "https://3back.com/",
+      "checkedAt": "2026-09-10T02:19:00.000Z",
+      "reviewer": "Independent AI Reviewer (Grok)",
+      "reviewerType": "agent",
+      "evidence": "Inspected live https://3back.com/ HTML. No em dash. No visible encoding corruption or tool artifacts in the homepage document. Scope this pass: homepage."
+    },
+    {
+      "item": "301",
+      "condition": "Every published navigation and footer link resolves to its intended destination.",
+      "status": "passed",
+      "environment": "production",
+      "url": "https://3back.com/",
+      "checkedAt": "2026-09-10T02:19:00.000Z",
+      "reviewer": "Independent AI Reviewer (Grok)",
+      "reviewerType": "agent",
+      "evidence": "Enumerated live homepage header and footer hrefs. Local destinations returned 200 or 307-to-trailing-slash then 200: /operational-grip/, /ideas/, /doomscroll/, /grip-check/, /workshops, /domain-guides, /training, /events, /about-us, /reviews/, /contact/, /privacy-policy/, /course-policy/. Facebook and X returned 200. LinkedIn returned 429 to this checker (rate limit), not a missing route. Mobile menu not separately walked."
+    },
+    {
+      "item": "503",
+      "condition": "Each page has a descriptive title, one meaningful H1, logical heading order, and semantic landmarks.",
+      "status": "passed",
+      "environment": "production",
+      "url": "https://3back.com/",
+      "checkedAt": "2026-09-10T02:19:00.000Z",
+      "reviewer": "Independent AI Reviewer (Grok)",
+      "reviewerType": "agent",
+      "evidence": "Live https://3back.com/ title is 3Back | The Team Execution Company. One H1: Organizations do not outgrow teams. They lose the boundaries that made teams effective. Header and footer present. Scope this pass: homepage."
+    },
+    {
+      "item": "605",
+      "condition": "Metadata, canonical URLs, indexing directives, and social preview data remain accurate for the affected page and environment.",
+      "status": "passed",
+      "environment": "production",
+      "url": "https://3back.com/",
+      "checkedAt": "2026-09-10T02:19:00.000Z",
+      "reviewer": "Independent AI Reviewer (Grok)",
+      "reviewerType": "agent",
+      "evidence": "Live https://3back.com/ title 3Back | The Team Execution Company. Canonical https://3back.com/. Robots index, follow. Scope this pass: homepage document head. Open Graph image file not separately fetched."
+    },
+    {
+      "item": "708",
+      "condition": "The homepage uses one H1 and live, selectable text for headings, navigation, and explanatory diagrams.",
+      "status": "judgment",
+      "environment": "production",
+      "url": "https://3back.com/",
+      "checkedAt": "2026-09-10T02:31:00.000Z",
+      "reviewer": "Independent AI Reviewer (Grok)",
+      "reviewerType": "agent",
+      "evidence": "Live https://3back.com/ has one H1 and selectable heading and navigation text. The hero explanatory diagram is an SVG image at https://3back.com/_astro/team-boundaries-diffuse.oKSgq17H_Z1eHDPV.svg (class hero-boundary-visual), not live selectable text. Decision needed: does that graphic count as an explanatory diagram that must be live text, or are selectable headings and navigation enough? No releaseSha."
+    },
+    {
+      "item": "708",
+      "condition": "The homepage uses one H1 and live, selectable text for headings, navigation, and explanatory diagrams.",
+      "status": "passed",
+      "environment": "production",
+      "url": "https://3back.com/",
+      "checkedAt": "2026-09-10T02:40:00.000Z",
+      "reviewer": "Douglas Shimp",
+      "reviewerType": "human",
+      "evidence": "Douglas accepted 708 as is and marked it Pass. Explicit exception for the current homepage hero graphic at https://3back.com/_astro/team-boundaries-diffuse.oKSgq17H_Z1eHDPV.svg. Headings and navigation remain live text. One H1 remains. Instruction: 708 is accepted as is, mark P."
+    },
+    {
+      "item": "706",
+      "condition": "The homepage hero offers one primary action into Operational Grip. Start a Conversation remains available in the header and the closing band, not as the hero button.",
+      "status": "unverified",
+      "environment": "production",
+      "url": "https://3back.com/",
+      "checkedAt": "2026-09-10T02:39:00.000Z",
+      "reviewer": "Independent AI Reviewer (Grok)",
+      "reviewerType": "agent",
+      "evidence": "Condition text changed by authorized apply-change-set. Prior wording required a hero conversation button. New wording takes effect. Prior matching records are stale until the revised live test."
+    },
+    {
+      "item": "706",
+      "condition": "The homepage hero offers one primary action into Operational Grip. Start a Conversation remains available in the header and the closing band, not as the hero button.",
+      "status": "passed",
+      "environment": "production",
+      "url": "https://3back.com/",
+      "checkedAt": "2026-09-10T02:40:00.000Z",
+      "reviewer": "Independent AI Reviewer (Grok)",
+      "reviewerType": "agent",
+      "evidence": "Revised live test on https://3back.com/. Hero control label is See where execution loses Operational Grip and targets /operational-grip/. Header Start a Conversation targets /contact/. Closing band Start a Conversation targets /contact/. Hero is not a conversation button. No releaseSha."
+    }
+  ]
+}
