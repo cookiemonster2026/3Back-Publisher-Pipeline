@@ -1,4 +1,7 @@
 {
+  "taskId": "01a09116-5cbf-7082-bbbf-eaab488d384a",
+  "suiteId": "2026-09-11-events-schedule",
+  "createdAt": "2026-09-11T15:46:28.744Z",
   "records": [
     {
       "item": "701",
@@ -2065,5 +2068,14 @@
       "evidence": "Human review of the updated live event schedule is pending.",
       "reason": "awaiting-human"
     }
-  ]
+  ],
+  "localVerification": {
+    "commands": [
+      "pnpm check",
+      "pnpm build:test",
+      "git diff --check"
+    ],
+    "result": "passed before release preparation",
+    "limitations": "Local checks do not establish live verdicts. The production build requires the Cloudflare-provided public Turnstile site key."
+  }
 }
