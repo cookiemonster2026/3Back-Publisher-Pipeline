@@ -1279,6 +1279,50 @@
       "reviewer": "3B Independent Reviewer",
       "reviewerType": "agent",
       "evidence": "Inspected public built head on https://3back.com/: title='3Back | The Team Execution Company', canonical=https://3back.com/, robots='index, follow', og:title matches title. https://3back.com/reviews/: title='Reviews | 3Back', canonical=https://3back.com/reviews. Referenced head/link assets resolve. Staff /docs metadata out of scope per Douglas."
+    },
+    {
+      "item": "102",
+      "condition": "Operational Grip is presented as 3Back's operating lens, not as a separate company, packaged methodology, certification system, guaranteed formula, or independent brand.",
+      "status": "passed",
+      "environment": "production",
+      "url": "https://3back.com/",
+      "checkedAt": "2026-09-11T03:28:05.000Z",
+      "reviewer": "3B Independent Reviewer",
+      "reviewerType": "agent",
+      "evidence": "Public-page recheck only (Douglas instruction 2026-09-11). Sampled live sitemap public routes including /, /operational-grip/, /about-us/, /grip-check/, /contact/, /reviews/, /workshops/, /ideas/, training/course pages. No public URL/quote found selling Operational Grip as a separate company, packaged method, certification, or independent brand. Home states: 'Operational Grip is the current operating lens guiding 3Back\u2019s work' and '3Back is the enduring brand. Operational Grip leads the current argument.' /operational-grip/ frames it as '3Back\u2019s' discipline/lens for organizational execution. /docs not used."
+    },
+    {
+      "item": "104",
+      "condition": "Outward-facing work speaks first to executive leaders accountable for execution and operational or transformation leaders responsible for improving it. Practitioners may remain a broader audience without controlling positioning.",
+      "status": "passed",
+      "environment": "production",
+      "url": "https://3back.com/",
+      "checkedAt": "2026-09-11T03:28:06.000Z",
+      "reviewer": "3B Independent Reviewer",
+      "reviewerType": "agent",
+      "evidence": "Public-page recheck only. Primary hierarchy on / leads with organizations/execution ('Organizations do not outgrow teams\u2026'; H1), TEC positioning, and operational leaders accountable for execution; contact H1 'Tell us where the work is stuck.' No public URL/quote found where hierarchy now leads with practitioners instead of executives accountable for execution. Practitioner/certification language appears on training/course pages and in third-party review quotes, without controlling site positioning. /docs not used."
+    },
+    {
+      "item": "105",
+      "condition": "Claims remain bounded, evidence-led, commercially grounded, and diagnostic before prescriptive. The site does not promise certainty, universal answers, guaranteed outcomes, or revenue.",
+      "status": "passed",
+      "environment": "production",
+      "url": "https://3back.com/",
+      "checkedAt": "2026-09-11T03:28:07.000Z",
+      "reviewer": "3B Independent Reviewer",
+      "reviewerType": "agent",
+      "evidence": "Public-page recheck only. No new unbounded promise of certainty, guaranteed outcomes, or revenue found. Counter-examples retained: home/contact 'No transformation pitch. No promise of a universal answer.'; /operational-grip/ 'Predictable effects do not mean predictable outcomes.'; /about-us/ 'Predictable effect does not mean a guaranteed outcome.'; /grip-check/ 'does not \u2026 guarantee an outcome.' FAQ 'guarantee your seat' is enrollment logistics, not an outcome/revenue promise. Revenue appears as market-evidence framing, not a promise. /docs not used."
+    },
+    {
+      "item": "106",
+      "condition": "Language leads with team execution and concrete operational mechanisms, not generic transformation, consultancy, motivational, culture-change, psychology, or promotional language.",
+      "status": "passed",
+      "environment": "production",
+      "url": "https://3back.com/",
+      "checkedAt": "2026-09-11T03:28:08.000Z",
+      "reviewer": "3B Independent Reviewer",
+      "reviewerType": "agent",
+      "evidence": "Public-page recheck only. Lead public language remains team execution and operational mechanisms (TEC, boundaries, Operational Grip lens, bounded change). Home explicitly: 'No transformation pitch.' No public URL/quote found where language now leads with generic transformation, consultancy, motivational, or culture-change copy. /docs not used."
     }
   ],
   "localVerification": {
