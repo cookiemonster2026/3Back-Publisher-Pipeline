@@ -20,7 +20,7 @@ Node is optional. Use available repository tools, following the event structure 
 
 ## 1. Review
 
-Reviewer reviewed is recorded once at the end of a presented sweep. Every authorized publish of suite evidence or lifecycle events updates Last published automatically. Do not record Accepted unless Douglas explicitly accepts and closes. Do not ask Douglas to stamp Last published.
+The results header does not print Reviewer reviewed. Record the `reviewed` lifecycle event at the end of a presented sweep so history exists. Last published updates from stored timestamps. Do not record Accepted unless Douglas explicitly accepts and closes.
 
 Derive the board from `src/data/acceptance-snapshots/SUITE_ID.md` and its JSON evidence using `src/lib/acceptance-status.mjs`: newest checkedAt per LIVE_ITEMS item wins; ties use the later array entry. Missing evidence, changed condition text, or an agent verdict on a Human item means <span class="review-pending">R Review</span>. Compare rendered plain-text conditions. The shared ledger is not the suite board; 000 comes from lifecycle events.
 

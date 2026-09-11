@@ -143,7 +143,7 @@ The brand brief does not govern the internal development of Operational Grip.
 
 ### Done entries and acceptance results
 
-Builder deployed on the results header is the website release to production. Do not treat a later acceptance-record commit as a new Builder deployed stamp. Verdict-only commits update Last published through evidence or lifecycle timestamps.
+The results header shows Created, Last published, and Accepted state. Builder deployed is not a header clock. A website release still matters for review, but the heading does not print it. Verdict-only commits update Last published through stored timestamps.
 
 For future completed work, associate its acceptance snapshot with the milestone using the exact completion timestamp in acceptance-snapshots.js. Use the milestone description as the snapshot description. The backlog renders that description as a link to its results page. Preserve existing milestones and snapshots; do not invent results or push dates for older entries. Show push and review dates to readers, without commit identifiers.
 
