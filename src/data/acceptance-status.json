@@ -870,6 +870,50 @@
       "reviewerType": "agent",
       "evidence": "Cannot read Docs document head through Access. Public homepage head previously checked in an earlier suite pass; this task specifically flagged Docs.",
       "judgmentRequest": "Confirm Docs metadata/canonical/robots in a staff session."
+    },
+    {
+      "item": "901",
+      "condition": "Final visual quality is polished, coherent, restrained, and credible across desktop and mobile.",
+      "status": "passed",
+      "environment": "production",
+      "url": "https://3back.com/",
+      "checkedAt": "2026-09-11T03:06:16.000Z",
+      "reviewer": "Douglas Shimp",
+      "reviewerType": "human",
+      "evidence": "Douglas Shimp explicitly assigned checklist items 901 through 904 Pass for the live site in this task (instruction in chat 2026-09-11 after the shared header/footer change). Row: https://3back.com/docs/acceptance-results/2026-09-10-172348/#901"
+    },
+    {
+      "item": "902",
+      "condition": "The message is credible, appropriately bounded, and sounds like 3Back.",
+      "status": "passed",
+      "environment": "production",
+      "url": "https://3back.com/",
+      "checkedAt": "2026-09-11T03:06:17.000Z",
+      "reviewer": "Douglas Shimp",
+      "reviewerType": "human",
+      "evidence": "Douglas Shimp explicitly assigned checklist items 901 through 904 Pass for the live site in this task (instruction in chat 2026-09-11 after the shared header/footer change). Row: https://3back.com/docs/acceptance-results/2026-09-10-172348/#902"
+    },
+    {
+      "item": "903",
+      "condition": "The result is relevant to executive and operational leaders without excluding practitioners who need the material.",
+      "status": "passed",
+      "environment": "production",
+      "url": "https://3back.com/",
+      "checkedAt": "2026-09-11T03:06:18.000Z",
+      "reviewer": "Douglas Shimp",
+      "reviewerType": "human",
+      "evidence": "Douglas Shimp explicitly assigned checklist items 901 through 904 Pass for the live site in this task (instruction in chat 2026-09-11 after the shared header/footer change). Row: https://3back.com/docs/acceptance-results/2026-09-10-172348/#903"
+    },
+    {
+      "item": "904",
+      "condition": "Brand expression conveys quiet authority, operational depth, commercial grounding, and a bias toward action without resembling a training company, conventional consultancy, software startup, academic institute, or aggressive industrial brand.",
+      "status": "passed",
+      "environment": "production",
+      "url": "https://3back.com/",
+      "checkedAt": "2026-09-11T03:06:19.000Z",
+      "reviewer": "Douglas Shimp",
+      "reviewerType": "human",
+      "evidence": "Douglas Shimp explicitly assigned checklist items 901 through 904 Pass for the live site in this task (instruction in chat 2026-09-11 after the shared header/footer change). Row: https://3back.com/docs/acceptance-results/2026-09-10-172348/#904"
     }
   ]
 }
