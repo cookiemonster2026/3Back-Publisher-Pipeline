@@ -1187,6 +1187,98 @@
       "reviewerType": "agent",
       "evidence": "Public homepage head previously verified (title, canonical https://3back.com/, robots index,follow). Docs metadata still Access-gated.",
       "judgmentRequest": "Proposed change set: scope 605 to public pages only for reviewer agent checks. Alternative: staff-verify Docs head."
+    },
+    {
+      "item": "601",
+      "condition": "After a push to main, production reflects that commit on an affected public route.",
+      "status": "unverified",
+      "environment": "production",
+      "url": "https://3back.com/",
+      "checkedAt": "2026-09-11T03:18:30.000Z",
+      "reviewer": "3B Independent Reviewer",
+      "reviewerType": "agent",
+      "reason": "condition-changed",
+      "evidence": "Authorized apply change set by Douglas Shimp 2026-09-11 for item 601 only. Prior wording replaced with public-route scope. Prior verification path retained in git history. New condition: 'After a push to main, production reflects that commit on an affected public route.' New verification: 'Spot-check an affected public route. Pass when the Deployed stamp or visible production content matches the push. Do not require the Cloudflare dashboard. Do not use /docs or the Access login. Fail only if the public route did not update or the build is known to have failed.' Human approval: Apply change set for items 601, 603, 604, and 605 only (chat). Restamped R Review pending revised live public tests. Item number retained."
+    },
+    {
+      "item": "603",
+      "condition": "Every added or changed public internal route builds and loads directly, not only through client-side navigation.",
+      "status": "unverified",
+      "environment": "production",
+      "url": "https://3back.com/",
+      "checkedAt": "2026-09-11T03:18:31.000Z",
+      "reviewer": "3B Independent Reviewer",
+      "reviewerType": "agent",
+      "reason": "condition-changed",
+      "evidence": "Authorized apply change set by Douglas Shimp 2026-09-11 for item 603 only. Prior wording replaced with public-route scope. Prior verification path retained in git history. New condition: 'Every added or changed public internal route builds and loads directly, not only through client-side navigation.' New verification: 'Open each affected public route from the address bar and verify status and content. Do not use /docs or the Access login.' Human approval: Apply change set for items 601, 603, 604, and 605 only (chat). Restamped R Review pending revised live public tests. Item number retained."
+    },
+    {
+      "item": "604",
+      "condition": "Affected public pages produce no new runtime exceptions, failed local resource requests, or invalid asset references.",
+      "status": "unverified",
+      "environment": "production",
+      "url": "https://3back.com/",
+      "checkedAt": "2026-09-11T03:18:32.000Z",
+      "reviewer": "3B Independent Reviewer",
+      "reviewerType": "agent",
+      "reason": "condition-changed",
+      "evidence": "Authorized apply change set by Douglas Shimp 2026-09-11 for item 604 only. Prior wording replaced with public-route scope. Prior verification path retained in git history. New condition: 'Affected public pages produce no new runtime exceptions, failed local resource requests, or invalid asset references.' New verification: 'Inspect the browser console and network on affected public pages. Do not use /docs or the Access login.' Human approval: Apply change set for items 601, 603, 604, and 605 only (chat). Restamped R Review pending revised live public tests. Item number retained."
+    },
+    {
+      "item": "605",
+      "condition": "Metadata, canonical URLs, indexing directives, and social preview data remain accurate for the affected public page and environment.",
+      "status": "unverified",
+      "environment": "production",
+      "url": "https://3back.com/",
+      "checkedAt": "2026-09-11T03:18:33.000Z",
+      "reviewer": "3B Independent Reviewer",
+      "reviewerType": "agent",
+      "reason": "condition-changed",
+      "evidence": "Authorized apply change set by Douglas Shimp 2026-09-11 for item 605 only. Prior wording replaced with public-route scope. Prior verification path retained in git history. New condition: 'Metadata, canonical URLs, indexing directives, and social preview data remain accurate for the affected public page and environment.' New verification: 'Inspect affected public built head output and referenced assets. Staff /docs metadata is out of this item unless Douglas includes it.' Human approval: Apply change set for items 601, 603, 604, and 605 only (chat). Restamped R Review pending revised live public tests. Item number retained."
+    },
+    {
+      "item": "601",
+      "condition": "After a push to main, production reflects that commit on an affected public route.",
+      "status": "passed",
+      "environment": "production",
+      "url": "https://3back.com/",
+      "checkedAt": "2026-09-11T03:23:26.000Z",
+      "reviewer": "3B Independent Reviewer",
+      "reviewerType": "agent",
+      "evidence": "Authorized public-route test after apply change set. Deployed stamp is staff-only under /docs and was not used. Spot-checked affected public routes https://3back.com/ and https://3back.com/reviews/ via direct GET: both HTTP 200. Visible production content matches current main public shell (Team Execution Company branding, On-Demand Courses footer link, Start a Conversation CTA, Operational Grip section). Cloudflare dashboard not used. No known production build failure. /docs and Access login not used."
+    },
+    {
+      "item": "603",
+      "condition": "Every added or changed public internal route builds and loads directly, not only through client-side navigation.",
+      "status": "passed",
+      "environment": "production",
+      "url": "https://3back.com/",
+      "checkedAt": "2026-09-11T03:23:27.000Z",
+      "reviewer": "3B Independent Reviewer",
+      "reviewerType": "agent",
+      "evidence": "Opened affected public routes from address bar (direct GET, not client-side nav only): https://3back.com/ -> 200; https://3back.com/reviews/ -> 200; https://3back.com/contact/ -> 200. Expected public shell content present on / and /reviews/. /docs and Access login not used."
+    },
+    {
+      "item": "604",
+      "condition": "Affected public pages produce no new runtime exceptions, failed local resource requests, or invalid asset references.",
+      "status": "passed",
+      "environment": "production",
+      "url": "https://3back.com/",
+      "checkedAt": "2026-09-11T03:23:28.000Z",
+      "reviewer": "3B Independent Reviewer",
+      "reviewerType": "agent",
+      "evidence": "Browser console/network on https://3back.com/ and https://3back.com/reviews/ only. No browser-reported console errors or uncaught runtime exceptions. No failed same-origin asset requests. Same-origin assets observed include SiteLayout/index/reviews CSS, operational-grip images/SVGs. Independent HEAD/GET probe of same-origin refs from rendered HTML: 0 failures. Third-party fonts/analytics/Clarity ignored as non-breaking noise. /docs and Access login not used. Evidence file: /workspace/review-evidence/console-604.md"
+    },
+    {
+      "item": "605",
+      "condition": "Metadata, canonical URLs, indexing directives, and social preview data remain accurate for the affected public page and environment.",
+      "status": "passed",
+      "environment": "production",
+      "url": "https://3back.com/",
+      "checkedAt": "2026-09-11T03:23:29.000Z",
+      "reviewer": "3B Independent Reviewer",
+      "reviewerType": "agent",
+      "evidence": "Inspected public built head on https://3back.com/: title='3Back | The Team Execution Company', canonical=https://3back.com/, robots='index, follow', og:title matches title. https://3back.com/reviews/: title='Reviews | 3Back', canonical=https://3back.com/reviews. Referenced head/link assets resolve. Staff /docs metadata out of scope per Douglas."
     }
   ],
   "localVerification": {
