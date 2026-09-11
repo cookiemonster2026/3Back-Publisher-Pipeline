@@ -1320,6 +1320,72 @@
       "reviewer": "3B Independent Reviewer",
       "reviewerType": "agent",
       "evidence": "Public-page recheck only. Lead public language remains team execution and operational mechanisms (TEC, boundaries, Operational Grip lens, bounded change). Home explicitly: 'No transformation pitch.' No public URL/quote found where language now leads with generic transformation, consultancy, motivational, or culture-change copy. /docs not used."
+    },
+    {
+      "item": "324",
+      "condition": "The contact path provides a clear completion or handoff state and a usable error state when submission can fail.",
+      "status": "passed",
+      "environment": "production",
+      "url": "https://3back.com/contact/",
+      "checkedAt": "2026-09-11T03:38:16.000Z",
+      "reviewer": "3B Independent Reviewer",
+      "reviewerType": "agent",
+      "evidence": "Douglas instruction 2026-09-11: if this change did not touch the contact form, Pass from /contact/ still loading with the form and a visible error state; do not require live email send; do not J for Turnstile/Resend. Suite acceptance commits did not change the contact form. Live https://3back.com/contact/ loads the form (name, email, role, phone, message, Send message) with [data-form-error] role=alert error slot and success slot in markup. Empty submit shows visible browser constraint validation ('Please fill out this field.') with focus/invalid outline on Name; no live email send; Turnstile success path not completed. Evidence: /workspace/review-evidence/contact-324.md"
+    },
+    {
+      "item": "507",
+      "condition": "Text, interactive states, and meaningful graphical elements retain sufficient contrast. Color is not the sole carrier of meaning.",
+      "status": "passed",
+      "environment": "production",
+      "url": "https://3back.com/",
+      "checkedAt": "2026-09-11T03:38:17.000Z",
+      "reviewer": "3B Independent Reviewer",
+      "reviewerType": "agent",
+      "evidence": "Douglas instruction 2026-09-11: recheck public pages; Pass unless a specific public element is believed to fail contrast; do not J for lacking a contrast app. Computed token pairs: charcoal (#1d2421) on paper (#f5f0e7) \u224813.95:1; text-secondary on paper \u22484.79:1; amber-text on paper \u22485.15:1; charcoal on amber button \u22484.57:1; paper on charcoal footer \u224813.95:1. Homepage thinking-grid body uses slate on reading \u22484.78:1. Visual spot-check of / and /contact/ (body, links, buttons, footer) found no obviously under-contrasted public element. Color not sole cue for links/buttons (underline/weight/borders). Evidence: /workspace/review-evidence/contrast-507.md"
+    },
+    {
+      "item": "101",
+      "condition": "3Back is positioned as The Team Execution Company.",
+      "status": "passed",
+      "environment": "production",
+      "url": "https://3back.com/",
+      "checkedAt": "2026-09-11T03:38:18.000Z",
+      "reviewer": "3B Independent Reviewer",
+      "reviewerType": "agent",
+      "evidence": "Board showed R due to condition-text mismatch (markdown ** vs rendered plain). Rechecked public sitemap routes: all sampled pages include The Team Execution Company positioning in shell/title/copy (29/29). Home title '3Back | The Team Execution Company'. Recorded against rendered plain condition text. /docs not used."
+    },
+    {
+      "item": "107",
+      "condition": "Visual elements, shared styles, and components affected by the requested change or final diff align with docs/brand/source/3Back-Visual-Direction-Tile-v0.4.pdf, the authoritative visual standard. Determine impact from direct changes and indirect effects through inherited CSS, shared components, and responsive behavior.",
+      "status": "passed",
+      "environment": "production",
+      "url": "https://3back.com/",
+      "checkedAt": "2026-09-11T03:38:19.000Z",
+      "reviewer": "3B Independent Reviewer",
+      "reviewerType": "agent",
+      "evidence": "Board showed R due to condition-text mismatch (backticks around visual-direction path). Rechecked rendered public surfaces / , /reviews/, /contact/, /operational-grip/ shell: shared SiteLayout, restrained paper/charcoal/amber system, coherent hierarchy; no generic consulting stock imagery dominating. Prior suite Pass retained; restamped with rendered plain condition text after live public visual spot-check. Source-only insufficient; used rendered pages. /docs not used."
+    },
+    {
+      "item": "303",
+      "condition": "Every Start a Conversation control leads to a functioning contact path.",
+      "status": "passed",
+      "environment": "production",
+      "url": "https://3back.com/",
+      "checkedAt": "2026-09-11T03:38:20.000Z",
+      "reviewer": "3B Independent Reviewer",
+      "reviewerType": "agent",
+      "evidence": "Board showed R due to condition-text mismatch (markdown ** around Start a Conversation). Rechecked public pages: header/footer/nav Start a Conversation controls href=/contact/. On /operational-grip/ an additional Start a Conversation action uses mailto:og@3back.com, which is a functioning contact path (email) per verification method allowing form/email/scheduler/contact. /docs not used."
+    },
+    {
+      "item": "503",
+      "condition": "Each public page has a descriptive title, one meaningful H1, logical heading order, and semantic landmarks. Staff routes under /docs and below are out of scope for this item.",
+      "status": "passed",
+      "environment": "production",
+      "url": "https://3back.com/",
+      "checkedAt": "2026-09-11T03:38:21.000Z",
+      "reviewer": "3B Independent Reviewer",
+      "reviewerType": "agent",
+      "evidence": "Board showed R due to condition-text mismatch (backticks around /docs). Rechecked public sitemap routes: each has descriptive title, exactly one meaningful H1, no heading-order jumps found, semantic landmarks (header/nav/main/footer pattern) present. Staff /docs out of scope. /docs not used as specimen."
     }
   ]
 }
