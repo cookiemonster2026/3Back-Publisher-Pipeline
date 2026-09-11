@@ -5,6 +5,22 @@ export function lifecycleState(record) {
  const initialization=events.filter(e=>e.type==='initialize'&&events.indexOf(e)>Math.max(events.lastIndexOf(handoff),events.lastIndexOf(last('deployed')))).at(-1);
  return {releasePrepared:last('release-prepared'),deployed:last('deployed'),reviewed:last('reviewed'),accepted:last('accepted'),handoff,initialization,status:initialization?.status??'unverified'};
 }
+export function lastPublished(record, records = []) {
+ let latest;
+ let newest = -Infinity;
+ // Evidence supplies a timestamp only. A lifecycle event wins an equal-time tie.
+ for (const candidate of [
+  ...records.map(entry => ({at: entry.checkedAt})),
+  ...(record?.events ?? []).map(event => ({at: event.at, actor: event.actor})),
+ ]) {
+  const time = Date.parse(candidate.at);
+  if (Number.isFinite(time) && time >= newest) {
+   latest = candidate;
+   newest = time;
+  }
+ }
+ return latest;
+}
 export function readiness(record,{taskId,instructionsExist,acknowledged,reviewer,repositoryAccess,liveAccess,informationReady,canRecordResults}) {
  const failures=[];
  if(repositoryAccess !== true) failures.push('Human judgment required: reviewer has not confirmed access to the repository.');
