@@ -9,7 +9,7 @@ const milestoneDate = (value: string | null | undefined) => value ? new Date(val
 const snapshot = acceptanceSnapshots.find(entry => entry.id === snapshotId);
 const evidence = import.meta.glob<{ records: any[] }>("../data/acceptance-snapshots/*.json", { eager: true });
 const records = snapshot ? evidence[`../data/acceptance-snapshots/${snapshot.id}.json`].records : [];
-const incrementTestsAdded = html?.includes("Eight new acceptance tests have been added to the acceptance testing suite.");
+const housekeepingIncrement = snapshotId === "2026-09-11-171700";
 const incrementAcceptanceStatus = (source: string, resultRecords: any[]) => {
   const latest = new Map<string, any>();
   for (const record of resultRecords) {
@@ -32,16 +32,17 @@ const incrementAcceptanceStatus = (source: string, resultRecords: any[]) => {
   });
   return { html: rendered, counts, applicable: counts.total, processCount: 0, lastCheckedAt: null };
 };
-const status = results && html ? (incrementTestsAdded ? incrementAcceptanceStatus(html, records) : acceptanceStatus(html, records)) : null;
-const standingStatus = results && incrementTestsAdded && standingHtml ? acceptanceStatus(standingHtml, acceptanceStatusHistory.records) : null;
+const status = results && html ? (housekeepingIncrement ? incrementAcceptanceStatus(html, records) : acceptanceStatus(html, records)) : null;
+const standingStatus = results && housekeepingIncrement && standingHtml ? acceptanceStatus(standingHtml, acceptanceStatusHistory.records) : null;
 const lifecycles = import.meta.glob<{ default: any }>("../data/acceptance-lifecycle/*.json", { eager: true });
 const lifecycle = lifecycles[`../data/acceptance-lifecycle/${snapshotId}.json`]?.default;
 const progress = lifecycleState(lifecycle);
 const accepted = isAccepted(lifecycle, snapshot?.acceptedByDefault === true);
 const published = lastPublished(lifecycle, records);
 const stampActor = (event: { actor?: string } | undefined) => event?.actor ? ` (${event.actor})` : "";
-const initializationLabel = progress.status === 'passed' ? 'Passed' : progress.status === 'failed' ? 'Failed' : 'Review';
-const initializationSymbol = progress.status === 'passed' ? 'P' : progress.status === 'failed' ? 'F' : 'R';
+const initializationStatus = progress.status;
+const initializationLabel = initializationStatus === 'passed' ? 'Passed' : initializationStatus === 'failed' ? 'Failed' : 'Review';
+const initializationSymbol = initializationStatus === 'passed' ? 'P' : initializationStatus === 'failed' ? 'F' : 'R';
 const releaseDate = (entry: typeof snapshot) => {
  const state = lifecycleState(lifecycles[`../data/acceptance-lifecycle/${entry?.id}.json`]?.default);
  return state.releasePrepared?.at ?? state.deployed?.at ?? entry?.deployedAt ?? entry?.createdAt ?? entry?.milestoneCompletedAt;
@@ -50,40 +51,53 @@ const archivedSuites = sortAcceptanceSnapshots(acceptanceSnapshots);
 const archivedRows = Array.from({ length: Math.ceil(archivedSuites.length / 2) }, (_, index) => archivedSuites.slice(index * 2, index * 2 + 2));
 const recentSuite = archivedSuites[0];
 const weeklySuite = archivedSuites.find(entry => /^weekly-\d{4}-\d{2}-\d{2}$/.test(entry.id));
-const displayTables = (source: string) => {
+const displayTables = (source: string, showStatusHint = true) => {
  let heading = "";
- return [...source.matchAll(/<h[2-4][^>]*>[\s\S]*?<\/h[2-4]>|<table[\s\S]*?<\/table>/g)].map(([block]) => {
+ const tables = [...source.matchAll(/<h[2-4][^>]*>[\s\S]*?<\/h[2-4]>|<table[\s\S]*?<\/table>/g)].map(([block]) => {
   if (block.startsWith('<h')) { heading = block; return ''; }
   const liveTable = block.replace(/<tr>(?:(?!<\/tr>)[\s\S])*?Process item: reported in the task report[\s\S]*?<\/tr>/g, "");
   return liveTable.includes('data-acceptance-row=') ? heading + liveTable.replaceAll('<th>Verification</th>', '<th>Test</th>').replaceAll('<th>Review prompt</th>', '<th>Test</th>').replace('>Current Status</th>', '>Status</th>').replaceAll('role="img"', 'role="img" tabindex="0"') : '';
- }).join('').replace(/<table[\s\S]*?<\/table>/, table => '<div class="hinted-table"><span class="status-hover-hint">* Hover for Status.</span>' + table + '</div>');
+ }).join('');
+ return showStatusHint ? tables.replace(/<table[\s\S]*?<\/table>/, table => '<div class="hinted-table"><span class="status-hover-hint">* Hover for Status.</span>' + table + '</div>') : tables;
 };
-const testHtml = status ? displayTables(status.html) : '';
-const standingTestHtml = standingStatus ? displayTables(standingStatus.html) : '';
+const testHtml = status ? displayTables(status.html, !housekeepingIncrement) : '';
+const standingTestHtml = standingStatus ? displayTables(standingStatus.html, !housekeepingIncrement) : '';
 ---
 
 <section class="acceptance-overview" aria-label={results ? "Recorded results" : "Acceptance testing"}>
 {results && status ? <>
-  {snapshot?.description && <h3 class="work-description">{snapshot.description}</h3>}
+  {snapshot?.description && <h2 class="work-description">{housekeepingIncrement ? `${accepted ? "Accepted" : "Not Accepted"}: ${snapshot.description}` : snapshot.description}</h2>}
   <div class="results-header-fields">
     <p><strong>Created:</strong> {milestoneDate(snapshot?.createdAt ?? lifecycle?.createdAt)}</p>
     <p><strong>Last published:</strong> {milestoneDate(published?.at)}{stampActor(published)}</p>
-    <p class:list={["acceptance-state", { "acceptance-status--judgment": accepted }]}><strong>{accepted ? "Accepted" : "Not accepted"}</strong></p>
+    {!housekeepingIncrement && <p class:list={["acceptance-state", { "acceptance-status--judgment": accepted }]}><strong>{accepted ? "Accepted" : "Not accepted"}</strong></p>}
   </div>
+
+  {lifecycle && !housekeepingIncrement && <h3>Initialize</h3>}
+  {lifecycle && !housekeepingIncrement && <div class="source-document acceptance-checklist">
+    <table><thead><tr><th class="acceptance-status-heading">Status</th><th>Item</th><th>Verifier</th><th>Acceptance condition</th><th>Test</th></tr></thead>
+    <tbody><tr id="000" data-acceptance-row={initializationStatus}><td class="acceptance-current-status" title={progress.initialization?.failures?.join(' ') || initializationLabel}><span class={`acceptance-status acceptance-status--${initializationStatus}`} role="img" aria-label={initializationLabel}>{initializationSymbol}</span></td><td>000</td><td>Independent AI Reviewer</td><td>Read <a href="/docs/reviewer-agents/">Reviewer Agents.md</a> and confirm repository access, required information, and readiness to perform according to its instructions.</td><td>Record Pass or Fail for this handoff. If Fail, state why and stop.</td></tr></tbody></table>
+  </div>}
+  {housekeepingIncrement && <h2 class="suite-heading">This increment has 8 new Passing Acceptance Tests (PATs).</h2>}
   <p class="acceptance-counts">
     <span class="acceptance-status--unverified"><span aria-hidden="true">R</span> ({status!.counts.unverified}) Review</span>
-    <span class="verdict-pair"><span class="acceptance-status--passed"><span aria-hidden="true">P</span> ({status!.counts.passed}/{status!.applicable}) Passed</span> <span aria-hidden="true">/</span> <span class="acceptance-status--failed"><span aria-hidden="true">F</span> ({status!.counts.failed}) Failed</span></span>
+    <span class="verdict-pair"><span class="acceptance-status--passed"><span aria-hidden="true">P</span> ({status!.counts.passed}/{status!.applicable}) PATs</span> <span aria-hidden="true">/</span> <span class="acceptance-status--failed"><span aria-hidden="true">F</span> ({status!.counts.failed}) PATs</span></span>
     <span class="acceptance-status--judgment"><span aria-hidden="true">J</span> ({status!.counts.judgment}) Judgment</span>
   </p>
-
-  {lifecycle && <h3>Initialize</h3>}
-  {lifecycle && <div class="source-document acceptance-checklist">
-    <table><thead><tr><th class="acceptance-status-heading">Status</th><th>Item</th><th>Verifier</th><th>Acceptance condition</th><th>Test</th></tr></thead>
-    <tbody><tr id="000" data-acceptance-row={progress.status}><td class="acceptance-current-status" title={progress.initialization?.failures?.join(' ') || initializationLabel}><span class={`acceptance-status acceptance-status--${progress.status}`} role="img" aria-label={initializationLabel}>{initializationSymbol}</span></td><td>000</td><td>Independent AI Reviewer</td><td>Read <a href="/docs/reviewer-agents/">Reviewer Agents.md</a> and confirm repository access, required information, and readiness to perform according to its instructions.</td><td>Record Pass or Fail for this handoff. If Fail, state why and stop.</td></tr></tbody></table>
-  </div>}
-  {incrementTestsAdded && <><p>Eight new acceptance tests have been added to the acceptance testing suite.</p><h3>This increment</h3></>}
   <div class="source-document acceptance-checklist" set:html={testHtml} />
-  {standingStatus && <><h3>Standing suite</h3><div class="source-document acceptance-checklist" set:html={standingTestHtml} /></>}
+  {standingStatus && <>
+    <h2 class="suite-heading">The standing suite has {standingStatus.applicable} Passing Acceptance Tests (PATs).</h2>
+    <p class="acceptance-counts">
+      <span class="acceptance-status--unverified"><span aria-hidden="true">R</span> ({standingStatus.counts.unverified}) Review</span>
+      <span class="verdict-pair"><span class="acceptance-status--passed"><span aria-hidden="true">P</span> ({standingStatus.counts.passed}/{standingStatus.applicable}) PATs</span> <span aria-hidden="true">/</span> <span class="acceptance-status--failed"><span aria-hidden="true">F</span> ({standingStatus.counts.failed}) PATs</span></span>
+      <span class="acceptance-status--judgment"><span aria-hidden="true">J</span> ({standingStatus.counts.judgment}) Judgment</span>
+    </p>
+    {lifecycle && <><h3 class="initialize-heading">Initialize</h3><div class="source-document acceptance-checklist">
+      <table><thead><tr><th class="acceptance-status-heading">Status</th><th>Item</th><th>Verifier</th><th>Acceptance condition</th><th>Test</th></tr></thead>
+      <tbody><tr id="000" data-acceptance-row={initializationStatus}><td class="acceptance-current-status" title={progress.initialization?.failures?.join(' ') || initializationLabel}><span class={`acceptance-status acceptance-status--${initializationStatus}`} role="img" aria-label={initializationLabel}>{initializationSymbol}</span></td><td>000</td><td>Independent AI Reviewer</td><td>Read <a href="/docs/reviewer-agents/">Reviewer Agents.md</a> and confirm repository access, required information, and readiness to perform according to its instructions.</td><td>Record Pass or Fail for this handoff. If Fail, state why and stop.</td></tr></tbody></table>
+    </div></>}
+    <div class="source-document acceptance-checklist" set:html={standingTestHtml} />
+  </>}
   {snapshot && acceptanceSnapshots.some(entry => entry.supersededBy === snapshot.id) && <details><summary>Earlier evidence</summary>{acceptanceSnapshots.filter(entry => entry.supersededBy === snapshot.id).map(entry => <p><a href={entry.path}>{entry.description}</a></p>)}</details>}
 </> : <>
   <nav class="snapshot-links" aria-label="Recorded reviews">
@@ -140,12 +154,14 @@ const standingTestHtml = standingStatus ? displayTables(standingStatus.html) : '
   .acceptance-checklist :global(.hinted-table) { position: relative; margin-block: 24px; }
   .acceptance-checklist :global(.hinted-table table) { margin-block: 0; }
   .acceptance-checklist :global(.status-hover-hint) { position: absolute; top: -19px; left: 0; font-size: .8rem; line-height: 18px; }
-  .results-header-fields { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 8px 32px; margin-block: 16px; }
-  .results-header-fields p { margin: 0; overflow-wrap: anywhere; }
+  .results-header-fields { display: flex; flex-wrap: wrap; justify-content: space-between; gap: 8px 24px; margin-block: 16px; }
+  .results-header-fields p { margin: 0; white-space: nowrap; }
   .acceptance-state { grid-column: 1 / -1; color: var(--ink, #202723); opacity: .72; }
   .verdict-pair { display: inline-flex; flex-wrap: wrap; align-items: baseline; gap: 6px; }
 
-  .work-description { margin-block: 16px 12px; font-size: 1.35rem; line-height: 1.35; font-weight: 700; }
+  .acceptance-overview .work-description { margin-block: 16px 12px; font-size: 1.5rem; line-height: 1.35; font-weight: 700; }
+  .acceptance-overview .suite-heading { margin: 32px 0 8px; font-size: 1.5rem; line-height: 1.35; color: var(--ink, #202723); }
+  .acceptance-overview .initialize-heading { margin: 32px 0 8px; }
   .snapshot-entry p { margin-block: 4px 12px; }
   .snapshot-links { display: flex; min-width: 0; flex-wrap: wrap; gap: 8px 24px; margin-block: 12px 24px; }
   .snapshot-table { width: 100%; max-width: 100%; min-width: 0; border-collapse: collapse; table-layout: fixed; }
@@ -177,7 +193,9 @@ const standingTestHtml = standingStatus ? displayTables(standingStatus.html) : '
   .acceptance-checklist :global(.acceptance-status) { display: inline-block; font-size: 1.5rem; line-height: 1; font-weight: 800; }
   .source-document.acceptance-checklist :global(.acceptance-current-status), .source-document.acceptance-checklist :global(.acceptance-status-heading) { width: 64px; min-width: 64px; max-width: 64px; padding: 10px 4px; text-align: center; }
   @media (max-width: 600px) {
-    .results-header-fields, .acceptance-overview .acceptance-counts { grid-template-columns: 1fr; gap: 8px; }
+    .results-header-fields { display: grid; grid-template-columns: 1fr; gap: 8px; }
+    .results-header-fields p { white-space: normal; overflow-wrap: anywhere; }
+    .acceptance-overview .acceptance-counts { grid-template-columns: 1fr; gap: 8px; }
     :global(.snapshot-table), :global(.snapshot-table tbody), :global(.snapshot-table tr), :global(.snapshot-table td) { display: block; width: 100%; }
     :global(.snapshot-table tr) { margin-bottom: 16px; }
     :global(.snapshot-table td), :global(.snapshot-table td + td) { padding: 2px 0 12px; }

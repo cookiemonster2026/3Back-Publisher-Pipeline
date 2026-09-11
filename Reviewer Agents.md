@@ -16,7 +16,7 @@ Record <span class="review-pass">P Pass</span> when these prerequisites hold. Ot
 node scripts/acceptance-lifecycle.mjs initialize --suite SUITE_ID --task TASK_ID --actor REVIEWER_ID --acknowledge-read --repository-access --information-ready --can-record-results
 ```
 
-When the suite under review added increment tests, the results page and the first line of the review both say: New acceptance tests have been added to the acceptance testing suite. Then review those increment tests. Do not open with a 54-item census unless those live items were flagged R for this increment. This is standing behavior, not a one-off.
+When the suite under review added increment tests, the increment heading states the number of new acceptance tests. Then review those increment tests. Do not open with a 54-item census unless those live items were flagged R for this increment. This is standing behavior, not a one-off.
 
 Node is optional. Use available repository tools, following the event structure and validations in `scripts/acceptance-lifecycle.mjs` and `src/lib/acceptance-lifecycle.mjs`. Attest only to prerequisites you verified. If a concrete capability blocker prevents recording, request an agreed builder handoff with task, suite, reviewer, handoff timestamp, confirmations, blockers, and decision. Confirm the record was written before claiming success.
 
