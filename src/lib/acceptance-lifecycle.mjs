@@ -21,6 +21,16 @@ export function lastPublished(record, records = []) {
  }
  return latest;
 }
+export function isAccepted(record, acceptedByDefault = false) {
+ return acceptedByDefault || Boolean(lifecycleState(record).accepted);
+}
+/** @template T @param {T[]} snapshots @returns {T[]} */
+export function sortAcceptanceSnapshots(snapshots) {
+ return snapshots.filter(entry => !entry.supersededBy).sort((a, b) => {
+  const createdDifference = Date.parse(b.createdAt ?? b.milestoneCompletedAt ?? "1970-01-01") - Date.parse(a.createdAt ?? a.milestoneCompletedAt ?? "1970-01-01");
+  return createdDifference || b.id.localeCompare(a.id);
+ });
+}
 export function readiness(record,{taskId,instructionsExist,acknowledged,reviewer,repositoryAccess,liveAccess,informationReady,canRecordResults}) {
  const failures=[];
  if(repositoryAccess !== true) failures.push('Human judgment required: reviewer has not confirmed access to the repository.');

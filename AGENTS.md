@@ -94,6 +94,8 @@ Omit the `Failed` or `Unverified` section when it is empty. Do not list individu
 
 ## Live acceptance status
 
+Housekeeping tripwires run at build. Open suite JSON and `acceptance-status.json` must stay under 200 KB. A single write must not append 162 records. Accepted suites are immutable. Weekly regression ids are `weekly-YYYY-MM-DD`. Run Sunday only after an accepted increment. No increment, no suite, no mail. The builder does not run the Sunday review and must not write 54 unchanged greens into a weekly suite. `/docs/acceptance-testing/` shows Recent, Weekly regression, and the standing weekly note. Recent is the latest non-superseded suite. An unaccepted suite beats an older accepted suite. Do not print Deployed on that chip. The results list is Acceptance Results, not Archive. Accepted rows append (Accepted) after the Chicago date. The suite heading is the increment description only. Do not print Done. Accepted or Not accepted is the finished state. Weekly mail subject is Weekly regression. Week result. plus the Chicago date-time. Mailbox is weeklyregression@3back.com.
+
 The Current Status column and composite on `/docs/acceptance-testing/` report live-site verification for the 54 live items only. Checks cover surfaces, not pages. This board is not a pure Boolean suite. Builders infer. Reviewers infer. The symbols are where inference stops. Never use local builds, local previews, source inspection, or inferred deployment success to mark an item green or red.
 
 Green means the live surface passed a known condition. Red means it failed. Blue R means a known condition needs a live look. Burnt orange J means a human decision is needed to proceed. J is not a pass, not a fail, and not a substitute for looking. Count the 54 live items only. Count only green in the passed numerator. Blue and J count in the total. Process items 001, 002, 003, 004, 005, 006, 602, and 606 stay in the checklist and are reported in the task report. They do not take a live color.
@@ -151,7 +153,7 @@ Acceptance snapshot milestone dates: Display the approximate release-prepared ti
 
 Use one permanent results ID for each task. Reuse that record and URL through all iterative pushes and reviews; preserve its evidence history by appending records. A push does not create a Done entry. Only explicit task closure finalizes the work description and creates or finalizes its single linked Done entry. If an entry was already created for the active task, reuse it rather than adding another. At closure, freeze the suite and results together. Preserve finalized records; later tasks receive new IDs. Every push handoff must include the production URL for that work's acceptance results, the GitHub changes link, and whether production deployment was verified or remains pending. A successful push alone is not deployment evidence.
 
-The governing acceptance page shows one Deployed link using the latest task release timestamp, even after acceptance. It uses the same date as the results page. Archive lists one canonical suite per task; consolidated legacy snapshots remain accessible as Earlier evidence, not duplicate archive entries.
+The governing acceptance page shows one Recent link using the latest non-superseded suite timestamp. It uses the same date as the results page. Acceptance Results lists one canonical suite per task; consolidated legacy snapshots remain accessible as Earlier evidence, not duplicate results entries.
 
 ## Builder and reviewer startup
 

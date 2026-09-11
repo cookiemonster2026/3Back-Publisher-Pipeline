@@ -1,5 +1,5 @@
 import test from 'node:test';import assert from 'node:assert/strict';
-import {readiness,appendEvent,lifecycleState} from '../src/lib/acceptance-lifecycle.mjs';
+import {readiness,appendEvent,isAccepted,lifecycleState} from '../src/lib/acceptance-lifecycle.mjs';
 const event=(type,extra={})=>({type,at:'2026-09-09T20:00:00Z',actor:'reviewer',...extra});
 const base=()=>({taskId:'task',suiteId:'suite',builder:'builder',events:[event('deployed',{versionId:'v1'}),event('handoff',{actor:'builder'})]});
 const opts={taskId:'task',instructionsExist:true,acknowledged:true,reviewer:'reviewer',repositoryAccess:true,liveAccess:true,informationReady:true,canRecordResults:true};
@@ -9,6 +9,7 @@ test('missing suite blocks readiness; missing deployment permits partial review'
 test('handoff resets an earlier initialization pass without removing history',()=>{let r=appendEvent(base(),event('initialize',{status:'passed'}));r=appendEvent(r,event('handoff'));assert.equal(lifecycleState(r).status,'unverified');assert.equal(r.events.length,4);});
 test('review requires current initialization and matching deployed version',()=>{assert.throws(()=>appendEvent(base(),event('reviewed',{versionId:'v1'})));const r=appendEvent(base(),event('initialize',{status:'passed'}));assert.throws(()=>appendEvent(r,event('reviewed',{versionId:'v2'})));assert.equal(lifecycleState(appendEvent(r,event('reviewed',{versionId:'v1'}))).reviewed.versionId,'v1');});
 test('accepted suites reject further events and fail readiness',()=>{assert.throws(()=>appendEvent(base(),event('accepted')));const r=appendEvent(base(),event('accepted',{humanApproval:'Human accepted and closed task.'}));assert.throws(()=>appendEvent(r,event('handoff')));assert.equal(readiness(r,opts).status,'failed');});
+test('historical suites can display as accepted without inventing a lifecycle event',()=>{assert.equal(isAccepted(base()),false);assert.equal(isAccepted(base(),true),true);});
 
 for (const capability of ['repositoryAccess','informationReady','canRecordResults']) {
  test(capability+' must be explicitly confirmed; failure returns to human',()=>{

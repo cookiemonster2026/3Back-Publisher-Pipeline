@@ -42,13 +42,18 @@ if (page.source) {
 		return attribute;
 	});
 }
+let standingAcceptanceHtml = "";
+if (page.slug.startsWith("acceptance-results/")) {
+	const standingDocument = await documents["../../../docs/website-acceptance-checklist.md"]();
+	standingAcceptanceHtml = (await standingDocument.compiledContent()).replace(/<(\/?)(h)([1-5])(\b[^>]*)>/g, (_tag, slash, h, depth, rest) => `<${slash}${h}${Number(depth) + 1}${rest}>`);
+}
 const metadata = pageSeo[page.path];
 const docsBySlug = Object.fromEntries(STAFF_DOCS.map((entry) => [entry.slug, entry]));
 const docGroups = [
 	{ label: "Work Results", slugs: ["backlog", "acceptance-results", "client-errors"] },
 	{ label: "Technical", slugs: ["technical-manifest", "redirect-map", "page-metadata", "contact-form", "lms"] },
 	{ label: "Marketing", slugs: ["brand", "visual-direction", "site-intent-map", "appendix-a"] },
-	{ label: "Procedures", slugs: ["publisher-role", "agents", "reviewer-agents", "acceptance-testing"] },
+	{ label: "Procedures", slugs: ["publisher-role", "agents", "reviewer-agents", "acceptance-testing", "approved-access-list"] },
 ];
 const milestoneDate = new Intl.DateTimeFormat("en-US", { year: "numeric", month: "long", day: "numeric", timeZone: "America/Chicago" });
 const milestoneTime = new Intl.DateTimeFormat("en-US", { hour: "numeric", minute: "2-digit", timeZone: "America/Chicago", timeZoneName: "short" });
@@ -67,7 +72,7 @@ const redirectRows = redirectsSource
 <main id="main" class="policy-page"><article class:list={["shell", "policy-content", { "acceptance-page": page.slug.startsWith("acceptance-") }]}>
 	{!page.slug && <p class="eyebrow">Staff</p>}
 	<h1>{page.label}</h1>
-	{page.slug ? <p class="docs-back"><span><a href="/docs/">Docs</a>{page.slug.startsWith("acceptance-results") && <> › <a href="/docs/acceptance-testing/">Acceptance Testing</a></>}</span>{page.slug === "acceptance-testing" && <a href="/docs/acceptance-results/">Archive</a>}</p> : <>
+	{page.slug ? <p class="docs-back"><span><a href="/docs/">Docs</a>{page.slug.startsWith("acceptance-results") && <> › <a href="/docs/acceptance-testing/">Acceptance Testing</a></>}</span>{page.slug === "acceptance-testing" && <a href="/docs/acceptance-results/">Acceptance Results</a>}</p> : <>
 		<p>Docs is 3Back’s internal hub. These pages are protected by Cloudflare Access and restricted to people on the <a href="/docs/approved-access-list/">approved access list</a>. Connections are encrypted with HTTPS, and the pages are configured to prevent search-engine indexing.</p>
 		<p>Operational Grip is 3Back’s doctrine and the foundation for how it governs itself and delivers its services. This hub brings together reading copies of the current control files that guide that work.</p>
 		<div class="doc-groups">
@@ -82,18 +87,15 @@ const redirectRows = redirectsSource
 			</section>)}
 		</div>
 	</>}
-	{page.slug.startsWith("acceptance-") ? <AcceptanceChecklist snapshotId={page.slug.split("/")[1]} html={sourceHtml} results={page.slug.startsWith("acceptance-results/")} archive={page.slug === "acceptance-results"} /> : sourceHtml && <div class="source-document" set:html={sourceHtml} />}
+	{page.slug.startsWith("acceptance-") ? <AcceptanceChecklist snapshotId={page.slug.split("/")[1]} html={sourceHtml} standingHtml={standingAcceptanceHtml} results={page.slug.startsWith("acceptance-results/")} archive={page.slug === "acceptance-results"} /> : sourceHtml && <div class="source-document" set:html={sourceHtml} />}
 	{page.slug === "visual-direction" && <p><a href="/assets/docs/3Back-Visual-Direction-Tile-v0.4.pdf">Open Visual Direction PDF</a></p>}
 	{page.slug === "approved-access-list" && <div class="source-document">
-		<p>This list records the people and email addresses approved to access the staff Docs pages.</p>
-		<h2>Approved people</h2>
-		<h3>Marcelo Lopez Jr.</h3>
-		<ul><li><a href="mailto:marcelo@3back.com">marcelo@3back.com</a></li><li><a href="mailto:marcelo.lopezjr@3back.com">marcelo.lopezjr@3back.com</a></li></ul>
-		<h3>Douglas Shimp</h3>
-		<ul><li><a href="mailto:doug.shimp@3back.com">doug.shimp@3back.com</a></li><li><a href="mailto:doug@3back.com">doug@3back.com</a></li></ul>
+		<p>Anybody with an email at 3back.com or tunatraffic.com can open staff Docs.</p>
+		<h2>Approved domains</h2>
+		<ul><li>@3back.com</li><li>@tunatraffic.com</li></ul>
 		<h2>Update the list</h2>
-		<p>To request an addition, provide the person’s name and email address to the builder in Codex. The builder updates the Cloudflare Access policy and this list, then verifies that the approved person can sign in.</p>
-		<p>Cloudflare Access controls sign-in. Updating this page alone does not grant access.</p>
+		<p>Cloudflare Access is the gate. The live policy is Emails ending in those two domains. Sign-in is the one-time PIN sent to that inbox. This page does not grant access.</p>
+		<p>To add a domain, change the Cloudflare Access policy for 3Back staff docs, then change this page. To add a person, give them an address at an approved domain. Do not put names on this page.</p>
 	</div>}
 	{page.slug === "page-metadata" && <div class="registry-display">
 		<p>Page-by-page settings from the website registry. These describe intended configuration, not proof of deployment or search-engine indexing. Preview builds keep all pages out of search results.</p>

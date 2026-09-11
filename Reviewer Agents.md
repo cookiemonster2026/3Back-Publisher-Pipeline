@@ -16,6 +16,8 @@ Record <span class="review-pass">P Pass</span> when these prerequisites hold. Ot
 node scripts/acceptance-lifecycle.mjs initialize --suite SUITE_ID --task TASK_ID --actor REVIEWER_ID --acknowledge-read --repository-access --information-ready --can-record-results
 ```
 
+When the suite under review added increment tests, the results page and the first line of the review both say: New acceptance tests have been added to the acceptance testing suite. Then review those increment tests. Do not open with a 54-item census unless those live items were flagged R for this increment. This is standing behavior, not a one-off.
+
 Node is optional. Use available repository tools, following the event structure and validations in `scripts/acceptance-lifecycle.mjs` and `src/lib/acceptance-lifecycle.mjs`. Attest only to prerequisites you verified. If a concrete capability blocker prevents recording, request an agreed builder handoff with task, suite, reviewer, handoff timestamp, confirmations, blockers, and decision. Confirm the record was written before claiming success.
 
 ## 1. Review
@@ -79,3 +81,23 @@ Publish, then freeze the suite. Reuse its single Done entry; ask the builder to 
 For each item needing human attention, link directly to its row using the assigned production results URL followed by #ITEM_NUMBER (for example #708 or #000). Also provide the evidence link or inline image; the test-row link identifies the condition, not the visual evidence. Never invent a section anchor on an external evidence page.
 
 Before publishing acceptance records, run node scripts/validate-acceptance-history.mjs against the freshly fetched origin/main (pass origin/main as its argument). It must pass before commit or push. This checks existing records for deletion, edits, or reordering. Never publish placeholder content or bypass the guard by changing scripts/acceptance-history-baseline.json. Validate complete JSON and the exact diff. If this environment cannot run the guard, stop publication and request a validated recording handoff. Normal builds also enforce the recovery baseline.
+
+## Sunday-night weekly regression
+
+Sunday-night weekly regression is reviewer-only. The builder does not run it and does not seed weekly files.
+
+Run only when at least one change suite was accepted since the last `weekly-YYYY-MM-DD` date. If none closed, do not create a weekly suite, do not restamp greens, and do not send mail.
+
+When it does run, create suite id `weekly-YYYY-MM-DD` using the America/Chicago calendar date for that Sunday. Reuse that id if it already exists and is unaccepted. Do not reuse a change-task suite. Record only items whose live result changed, failed, or needs J. Do not write 54 unchanged greens. Do not edit an accepted change suite. Human items 901–905 stay human.
+
+After that weekly suite is on `origin/main`, send one mail to `weeklyregression@3back.com`. Do not provision the mailbox. Do not add Resend or Worker code in this pass.
+
+Subject, exact pattern:
+
+Weekly regression. Week result. M/D/YYYY, h:mm AM/PM CDT
+
+Use America/Chicago date-time of the weekly suite record. Example: `Weekly regression. Week result. 9/13/2026, 8:00 PM CDT`
+
+Body: one sentence that the weekly regression ran, then the production results URL `https://3back.com/docs/acceptance-results/weekly-YYYY-MM-DD/`. No second archive. No PII.
+
+If no weekly suite exists yet, `/docs/acceptance-testing/` prints `None yet. Runs Sunday only after an accepted increment.`
