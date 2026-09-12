@@ -4,7 +4,7 @@ This file is the shared verification source for future website changes. It conta
 
 ## Acceptance Testing Readiness
 
-000 — Initialize: The Independent AI Reviewer reads Reviewer Agents.md and confirms readiness to perform according to its instructions. At each handoff the builder resets this item to R Review. The reviewer records Pass or Fail; on Fail, identifies the blocker and stops. This readiness result is separate from the 54 live-site verdicts.
+000 — Initialize: The Independent AI Reviewer reads Reviewer Agents.md and confirms readiness to perform according to its instructions. At each handoff the builder resets this item to R Review. The reviewer records Pass or Fail; on Fail, identifies the blocker and stops. This readiness result is separate from the 63 live-site verdicts.
 
 ## Governing sources
 
@@ -41,7 +41,7 @@ Run an `Affected` item when the requested or resulting diff could change its con
 
 ### Status on /docs/acceptance-testing
 
-Live colors apply to the 54 live items. Green and red are live verdicts on a known condition. Blue means a known condition needs a live look. J means human judgment is needed to proceed. The implementer may only mark blue. An outside reviewer marks green, red, or J. Douglas decides J. The surface map is a starting point, not a closed list. Last checked ignores blue and J.
+Live colors apply to the 63 live items. Green and red are live verdicts on a known condition. Blue means a known condition needs a live look. J means human judgment is needed to proceed. The implementer may only mark blue. An outside reviewer marks green, red, or J. Douglas decides J. The surface map is a starting point, not a closed list. Last checked ignores blue and J.
 
 ## Global brand and positioning
 
@@ -134,9 +134,21 @@ Live colors apply to the 54 live items. Green and red are live verdicts on a kno
 | 707 | Affected | Agent | Homepage section order supports an executive scan from problem, through lens and commercial relevance, to approach, evidence, deeper thinking, and action. | Review affected page hierarchy at desktop and mobile widths against the homepage blueprint. |
 | 708 | Affected | Agent | The homepage uses one H1 and live, selectable text for headings, navigation, and explanatory diagrams. | Inspect affected DOM and rendered selection behavior. |
 
-## Additional page-specific sections
+## Staff docs and Product Ownership I
 
-No other published page-specific baseline has been approved. Add a new page-specific condition only through the approval process in item 005, using an unused number from 800 through 899. Until then, verify additional pages with the applicable global and affected-area conditions above.
+Promoted at Accept of suite `2026-09-12-1319`. Six rows from suite `2026-09-11-171700`. Three rows from the PO1 increment. Numbers are new. Do not reuse increment `001`–`010`.
+
+| Item | Class | Verifier | Acceptance condition | Verification |
+| --- | --- | --- | --- | --- |
+| 801 | Affected | Agent | Testing page chip is Recent, not Deployed | Open `/docs/acceptance-testing/`. Confirm the chip label is Recent and the link opens the recent suite. |
+| 802 | Affected | Agent | Testing page top-right link is Acceptance Results | Confirm the link text and that it opens `/docs/acceptance-results/`. |
+| 803 | Affected | Agent | Weekly empty state is the locked sentence | Confirm `None yet. Runs Sunday only after an accepted increment.` |
+| 804 | Affected | Agent | Standing weekly note is on the testing page | Confirm the section 3.5 paragraph after the procedure block. |
+| 805 | Affected | Agent | Results list is most recent first and marks accepted rows | Confirm top-left is the newest suite. Accepted rows end with `CDT (Accepted)`. |
+| 806 | Affected | Agent | Users of Docs is approved domains | Open `/docs/`. Procedures includes Users of Docs. That page has no name list. It names `@3back.com` and `@tunatraffic.com`. |
+| 807 | Affected | Agent | Product Ownership I course page is live with the locked promise | Open `https://3back.com/training/product-ownership-1/`. Confirm H1 Product Ownership I: Leading a Team and promise Lead a Team. One owner. One backlog. |
+| 808 | Affected | Agent | Product Ownership I learning objectives spoke serves the approved PDF | Open `/training/product-ownership-1/learning-objectives`. Confirm it serves `3Back-PO1-Learning-Objectives-v1.25.pdf`. |
+| 809 | Affected | Agent | Product Ownership I data sheet spoke serves the approved PDF | Open `/training/product-ownership-1-data-sheet/`. Confirm it serves `3Back-PO1-Data-Sheet-v1.0.pdf`. |
 
 ## Human visual and executive review
 
