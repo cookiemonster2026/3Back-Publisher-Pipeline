@@ -6,7 +6,7 @@ Use your own identity. Review work you did not implement. [Repository](https://g
 
 ## 000 — Initialize
 
-Use the task ID, suite ID, and production results URL supplied in the handoff. Reuse that exact URL throughout iteration; do not select whichever suite is latest. New suite IDs use creation time in UTC: YYYY-MM-DD-HHmmss. Existing IDs remain valid; suite creation belongs to the builder.
+Use the task ID, suite ID, and production results URL supplied in the handoff. Reuse that exact URL throughout iteration; do not select whichever suite is latest. Suite IDs use America/Chicago `YYYY-MM-DD-HHMM`. No seconds. No UTC. Existing IDs remain valid; suite creation belongs to the builder.
 
 Read these instructions, the specification, suite tests, evidence, and lifecycle record. Confirm the task matches an unaccepted suite with a current handoff, and that you can record results. Each builder handoff resets 000 to <span class="review-pending">R Review</span>.
 
