@@ -8,7 +8,8 @@ const processItems = new Set(PROCESS_ITEMS);
 const liveItems = new Set(LIVE_ITEMS);
 const humanItems = new Set(range(901, 905));
 const isVerdict = (status) => status === "passed" || status === "failed";
-const escapeHtml = (value) => String(value).replace(/[&<>"']/g, (character) => ({ "&": "&", "<": "<", ">": ">", '"': """, "'": "&#39;" })[character]);
+const htmlEntities = { "&": "&" + "amp;", "<": "&" + "lt;", ">": "&" + "gt;", '"': "&" + "quot;", "'": "&#39;" };
+const escapeHtml = (value) => String(value).replace(/[&<>"']/g, (character) => htmlEntities[character]);
 const plain = (value) => value.replace(/<[^>]*>/g, "").trim();
 const dateFormat = new Intl.DateTimeFormat("en-US", { year: "numeric", month: "short", day: "numeric", hour: "numeric", minute: "2-digit", timeZone: "America/Chicago", timeZoneName: "short" });
 
