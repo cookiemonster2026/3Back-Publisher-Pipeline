@@ -2,6 +2,8 @@
 
 The `/contact` form posts to the Cloudflare Worker route `/api/contact`. The Worker verifies the Turnstile token before it processes form content, sends a notification to `og@3back.com`, then sends the submitter a short acknowledgment.
 
+The Scrum Mastering I private inquiry form posts to `/api/sm1-private-inquiry` and uses `rsm1-private@3back.com` for notifications and confirmations. The Product Ownership I private inquiry form posts to `/api/po1-private-inquiry` and uses `rpo1-private@3back.com` for notifications and confirmations. Both use the same Turnstile and Resend configuration described below.
+
 ## Public build variable
 
 Set this as a Cloudflare Workers Builds **Production build variable**. It is intentionally public and only identifies the Turnstile widget.

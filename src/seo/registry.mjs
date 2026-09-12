@@ -437,6 +437,112 @@ export const pageSeo = Object.freeze({
 			]
 		}
 	},
+	"/training/product-ownership-1": {
+		status: "complete",
+		path: "/training/product-ownership-1",
+		title: "Product Ownership I Course | RPO1 Credential | 3Back",
+		description: "Study Product Ownership I at your own pace. Demonstrate the learning objectives and earn the RPO1 credential recognized by the Scrum Guide Organization.",
+		indexability: "index, follow",
+		productionRobots: "index, follow, max-image-preview:large, max-snippet:-1",
+		social: {
+			title: "Product Ownership I: Earn the RPO1 Credential",
+			description: "Lead a Team. One owner. One backlog. Study at your own pace, demonstrate the PO1 learning objectives, and earn recognition on ScrumGuide.org.",
+			type: "website",
+			image: {
+				src: "/social/product-ownership-1.png",
+				alt: "Product Ownership I course cover and Recognized Product Owner 1 credential badge on a 3Back-branded background.",
+				width: 1200,
+				height: 630,
+				type: "image/png",
+			},
+		},
+		structuredData: {
+			"@context": "https://schema.org",
+			"@graph": [
+				{
+					"@type": "Organization",
+					"@id": organizationId,
+					sameAs: organizationSameAs,
+					legalName: "3Back, LLC",
+					alternateName: ["3 Back", "Three Back", "3Back LLC", "3 Back LLC", "Three Back LLC"],
+					name: "3Back",
+					url: "https://3back.com/",
+				},
+				{
+					"@type": "WebSite",
+					"@id": websiteId,
+					alternateName: ["3 Back", "Three Back", "3Back LLC", "3 Back LLC", "Three Back LLC", "3back.com"],
+					name: "3Back",
+					url: "https://3back.com/",
+					publisher: { "@id": organizationId },
+				},
+				{
+					"@type": "WebPage",
+					"@id": "https://3back.com/training/product-ownership-1/#webpage",
+					name: "Product Ownership I: Leading a Team",
+					url: "https://3back.com/training/product-ownership-1/",
+					description: "Study Product Ownership I at your own pace. Demonstrate the learning objectives and earn the RPO1 credential recognized by the Scrum Guide Organization.",
+					isPartOf: { "@id": websiteId },
+					publisher: { "@id": organizationId },
+					mainEntity: { "@id": "https://3back.com/training/product-ownership-1/#course" },
+					breadcrumb: { "@id": "https://3back.com/training/product-ownership-1/#breadcrumb" },
+					image: "https://3back.com/social/product-ownership-1.png",
+				},
+				{
+					"@type": "BreadcrumbList",
+					"@id": "https://3back.com/training/product-ownership-1/#breadcrumb",
+					itemListElement: [
+						{ "@type": "ListItem", position: 1, name: "3Back", item: "https://3back.com/" },
+						{ "@type": "ListItem", position: 2, name: "Training", item: "https://3back.com/training" },
+						{ "@type": "ListItem", position: 3, name: "Product Ownership I", item: "https://3back.com/training/product-ownership-1/" },
+					],
+				},
+				{
+					"@type": "Course",
+					"@id": "https://3back.com/training/product-ownership-1/#course",
+					name: "Product Ownership I: Leading a Team",
+					courseCode: "RPO1",
+					description: "Study Product Ownership I at your own pace. Demonstrate the learning objectives and earn the RPO1 credential recognized by the Scrum Guide Organization.",
+					url: "https://3back.com/training/product-ownership-1/",
+					provider: { "@id": organizationId },
+					inLanguage: "en-US",
+					interactivityType: "mixed",
+					isAccessibleForFree: false,
+					assesses: "Demonstrated understanding of the official Product Ownership I learning objectives.",
+					educationalCredentialAwarded: { "@id": "https://3back.com/training/product-ownership-1/#credential" },
+					isBasedOn: { "@id": "https://3back.com/training/product-ownership-1/#book" },
+					hasCourseInstance: { "@id": "https://3back.com/training/product-ownership-1/#instance" },
+					syllabusSections: ["Scrum in a Nutshell", "The Scrum Team", "The Team’s Product Owner", "People Outside The Team", "Leadership", "What is ‘Product’?", "The Backlog", "Capabilities and Chores", "Stories and Epics", "Technical Debt (short)", "The Story’s Definition of Done", "Velocity, Size, and Effort", "Backlog Refinement", "Planning Day", "Agreement-Based Planning", "The Daily Scrum", "Scaling An Organization"].map((name, index) => ({ "@type": "Syllabus", name, position: index + 1 })),
+					image: "https://3back.com/social/product-ownership-1.png",
+				},
+				{
+					"@type": "CourseInstance",
+					"@id": "https://3back.com/training/product-ownership-1/#instance",
+					name: "Product Ownership I self-paced course",
+					courseMode: "online",
+					inLanguage: "en-US",
+				},
+				{
+					"@type": "EducationalOccupationalCredential",
+					"@id": "https://3back.com/training/product-ownership-1/#credential",
+					name: "Recognized Product Owner 1 (RPO1)",
+					description: "Recognizes demonstrated understanding of the Product Ownership I learning objectives.",
+					competencyRequired: "Recognizes demonstrated understanding of the Product Ownership I learning objectives.",
+					credentialCategory: "Recognition credential",
+					recognizedBy: { "@type": "Organization", name: "Scrum Guide Organization", url: "https://scrumguide.org/" },
+				},
+				{
+					"@type": "Book",
+					"@id": "https://3back.com/training/product-ownership-1/#book",
+					name: "Product Ownership I: Leading a Team",
+					author: [
+						{ "@type": "Person", name: "Dan Rawsthorne" },
+						{ "@type": "Person", name: "Doug Shimp" },
+					],
+				},
+			],
+		},
+	},
 	"/training": {
 		status: "complete",
 		path: "/training",
@@ -1036,7 +1142,6 @@ export const pageSeo = Object.freeze({
 	"/courses/rsm-1": courseStub("/courses/rsm-1", "Recognized Scrum Master 1"),
 	"/courses/rsm-2": courseStub("/courses/rsm-2", "Recognized Scrum Master 2"),
 	"/courses/rsm-3": courseStub("/courses/rsm-3", "Recognized Scrum Master 3"),
-	"/courses/rpo-1": courseStub("/courses/rpo-1", "Recognized Product Owner 1"),
 	"/courses/rpo-2": courseStub("/courses/rpo-2", "Recognized Product Owner 2"),
 	"/courses/rpo-3": courseStub("/courses/rpo-3", "Recognized Product Owner 3"),
 	"/courses/recognized-scrum-guide": courseStub("/courses/recognized-scrum-guide", "Recognized Scrum Guide"),
@@ -1093,6 +1198,7 @@ export function normalizePath(pathname) {
 
 /** @param {string} pathname */
 export function canonicalUrl(pathname) {
-	if (normalizePath(pathname) === "/training/scrum-mastering-1") return `${SITE_ORIGIN}/training/scrum-mastering-1/`;
+	const normalizedPath = normalizePath(pathname);
+	if (normalizedPath === "/training/scrum-mastering-1" || normalizedPath === "/training/product-ownership-1") return `${SITE_ORIGIN}${normalizedPath}/`;
 	return pathname === "/" ? `${SITE_ORIGIN}/` : `${SITE_ORIGIN}${pathname}`;
 }
