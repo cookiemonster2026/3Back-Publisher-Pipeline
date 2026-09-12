@@ -40,6 +40,11 @@
       "humanApproval": "Accept",
       "standingPlus": ["001", "005", "006"],
       "standingNumbers": ["801", "802", "803", "804", "805", "806", "807", "808", "809"]
+    },
+    {
+      "type": "release-prepared",
+      "at": "2026-09-12T21:01:00.000Z",
+      "actor": "3Back Publisher"
     }
   ]
 }
