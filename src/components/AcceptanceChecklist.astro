@@ -4,12 +4,19 @@ import { acceptanceStatus } from "../lib/acceptance-status.mjs";
 
 import { acceptanceSnapshots } from "../data/acceptance-snapshots.js";
 import acceptanceStatusHistory from "../data/acceptance-status.json";
-const { html, standingHtml = "", results = false, archive = false, snapshotId } = Astro.props;
+import { canonicalUrl, pageSeo } from "../seo/registry.mjs";
+const { html, standingHtml = "", results = false, archive = false, snapshotId, brief = false } = Astro.props;
 const milestoneDate = (value: string | null | undefined) => value ? new Date(value).toLocaleString("en-US", { timeZone: "America/Chicago", timeZoneName: "short" }) : "Not Recorded";
 const snapshot = acceptanceSnapshots.find(entry => entry.id === snapshotId);
+const briefPagePath = snapshot?.brief?.pageRoute?.replace(/\/+$/, "");
+const briefPageMetadata = briefPagePath ? pageSeo[briefPagePath] : null;
 const evidence = import.meta.glob<{ records: any[] }>("../data/acceptance-snapshots/*.json", { eager: true });
 const records = snapshot ? evidence[`../data/acceptance-snapshots/${snapshot.id}.json`].records : [];
 const snapshotItems = [...html.matchAll(/<tr>\s*<td>(\d{3})<\/td>/g)].map(([, item]) => item);
+const briefConditions = [...html.matchAll(/<tr>\s*<td>(0\d{2})<\/td>([\s\S]*?)<\/tr>/g)].map(([, item, rest]) => ({
+  item,
+  conditionHtml: [...rest.matchAll(/<td>([\s\S]*?)<\/td>/g)][1]?.[1] ?? "",
+}));
 const incrementSuite = Boolean(snapshot && snapshotItems.length && snapshotItems.every(item => /^0\d{2}$/.test(item)));
 const incrementAcceptanceStatus = (source: string, resultRecords: any[]) => {
   const latest = new Map<string, any>();
@@ -67,14 +74,37 @@ const standingTestHtml = standingStatus ? displayTables(standingStatus.html, !in
 ---
 
 <section class="acceptance-overview" aria-label={results ? "Recorded results" : "Acceptance testing"}>
-{results && status ? <>
-  {snapshot?.description && <h2 class="work-description">{incrementSuite ? `${accepted ? "Accepted" : "Not Accepted"}: ${snapshot.description}` : snapshot.description}</h2>}
+{brief && snapshot?.brief ? <div class="working-brief">
+  <p><strong>Job:</strong> {snapshot.brief.job}</p>
+  <p><strong>Page route:</strong> <a href={snapshot.brief.pageRoute}><code>{snapshot.brief.pageRoute}</code></a></p>
+  <h2>Redirects</h2>
+  <ul>{snapshot.brief.redirects.map((redirect: { from: string; to: string; status: number }) => <li><a href={redirect.from}><code>{redirect.from}</code></a> → <code>{redirect.to}</code> ({redirect.status})</li>)}</ul>
+  {briefPageMetadata && <details class="brief-metadata">
+    <summary>Page metadata</summary>
+    <dl>
+      <dt>Page title</dt><dd>{briefPageMetadata.title}</dd>
+      <dt>Description</dt><dd>{briefPageMetadata.description}</dd>
+      <dt>Preferred URL</dt><dd><a href={canonicalUrl(briefPageMetadata.path)}>{canonicalUrl(briefPageMetadata.path)}</a></dd>
+      <dt>Search visibility</dt><dd>{briefPageMetadata.indexability}</dd>
+      <dt>Robots</dt><dd>{briefPageMetadata.productionRobots ?? "Default production policy"}</dd>
+      <dt>Sharing title</dt><dd>{briefPageMetadata.social.title}</dd>
+      <dt>Sharing description</dt><dd>{briefPageMetadata.social.description}</dd>
+      <dt>Sharing type</dt><dd>{briefPageMetadata.social.type}</dd>
+      <dt>Sharing image</dt><dd>{briefPageMetadata.social.image ? <><a href={briefPageMetadata.social.image.src}>View image</a><br />{briefPageMetadata.social.image.alt}</> : "No image specified"}</dd>
+      <dt>Structured data</dt><dd>{briefPageMetadata.structuredData ? "Configured" : "Not specified"}</dd>
+    </dl>
+  </details>}
+  <h2>Specimens</h2>
+  <ul>{snapshot.brief.specimens.map((specimen: { label: string; href: string }) => <li><a href={specimen.href} target="_blank" rel="noopener noreferrer">{specimen.label}</a></li>)}</ul>
+  <h2>Look-ats</h2>
+  <ul>{briefConditions.map(condition => <li><strong>{condition.item}</strong>: <span set:html={condition.conditionHtml} /></li>)}</ul>
+</div> : results && status ? <>
+  {snapshot?.description && <h2 class="work-description">{incrementSuite ? `${accepted ? "Accepted" : "Not Accepted"}: ${snapshot.description}` : snapshot.description}{snapshot?.brief && <> <a class="working-brief-link" href={snapshot.brief.path}>(Working Brief)</a></>}</h2>}
   <div class="results-header-fields">
     <p><strong>Created:</strong> {milestoneDate(snapshot?.createdAt ?? lifecycle?.createdAt)}</p>
     <p><strong>Last published:</strong> {milestoneDate(published?.at)}{stampActor(published)}</p>
     {!incrementSuite && <p class:list={["acceptance-state", { "acceptance-status--judgment": accepted }]}><strong>{accepted ? "Accepted" : "Not accepted"}</strong></p>}
   </div>
-
   {lifecycle && !incrementSuite && <h3>Initialize</h3>}
   {lifecycle && !incrementSuite && <div class="source-document acceptance-checklist">
     <table><thead><tr><th class="acceptance-status-heading">Status</th><th>Item</th><th>Verifier</th><th>Acceptance condition</th><th>Test</th></tr></thead>
@@ -153,6 +183,10 @@ const standingTestHtml = standingStatus ? displayTables(standingStatus.html, !in
   .acceptance-checklist :global(tr:target) { outline: 3px solid var(--amber); outline-offset: -3px; }
   .acceptance-overview { margin-block: 12px 32px; padding-block: 0 20px; border-bottom: 1px solid var(--rule); }
   .acceptance-overview h2 { margin: 0 0 12px; font-size: 1rem; line-height: 1.5; }
+  .working-brief details { margin-block: 16px 28px; }
+  .working-brief summary { cursor: pointer; font-weight: 600; text-decoration: underline; text-decoration-color: var(--amber); text-underline-offset: 3px; }
+  .working-brief dt { margin-top: 16px; font-weight: 700; }
+  .working-brief dd { margin: 4px 0 0; overflow-wrap: anywhere; }
   .acceptance-checklist :global(.hinted-table) { position: relative; margin-block: 24px; }
   .acceptance-checklist :global(.hinted-table table) { margin-block: 0; }
   .acceptance-checklist :global(.status-hover-hint) { position: absolute; top: -19px; left: 0; font-size: .8rem; line-height: 18px; }
@@ -162,6 +196,7 @@ const standingTestHtml = standingStatus ? displayTables(standingStatus.html, !in
   .verdict-pair { display: inline-flex; flex-wrap: wrap; align-items: baseline; gap: 6px; }
 
   .acceptance-overview .work-description { margin-block: 16px 12px; font-size: 1.5rem; line-height: 1.35; font-weight: 700; }
+  .acceptance-overview :global(.working-brief-link) { display: inline-block; font-size: 1rem; line-height: 1.6; font-weight: 400; white-space: nowrap; }
   .acceptance-overview .suite-heading { margin: 32px 0 8px; font-size: 1.5rem; line-height: 1.35; color: var(--ink, #202723); }
   .acceptance-overview .initialize-heading { margin: 32px 0 8px; }
   .snapshot-entry p { margin-block: 4px 12px; }

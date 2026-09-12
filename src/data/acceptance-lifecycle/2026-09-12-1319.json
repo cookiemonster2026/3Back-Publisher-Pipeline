@@ -26,6 +26,12 @@
         "Production version unconfirmed: observations do not verify a particular release."
       ],
       "requiresHumanJudgment": true
+    },
+    {
+      "type": "release-prepared",
+      "at": "2026-09-12T19:53:37.121Z",
+      "actor": "Codex Builder",
+      "approximate": true
     }
   ]
 }

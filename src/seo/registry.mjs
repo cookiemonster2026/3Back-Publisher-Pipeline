@@ -72,7 +72,7 @@ export const STAFF_DOCS = [
 	{
 		"slug": "publisher-role",
 		"label": "Publisher Role",
-		"source": "docs/publishing/3Back-Publisher-Role-v0.2.md",
+		"source": "docs/publishing/3Back-Publisher-Role-v0.3.md",
 		"path": "/docs/publisher-role"
 	},
 	{
@@ -108,7 +108,10 @@ export const STAFF_DOCS = [
 	{
 		"slug": "acceptance-results", "label": "Acceptance Results", "path": "/docs/acceptance-results"
 	},
-	...acceptanceSnapshots.map(snapshot => ({ slug: `acceptance-results/${snapshot.id}`, label: "Website Acceptance Increment", source: `src/data/acceptance-snapshots/${snapshot.id}.md`, path: snapshot.path.replace(/\/$/, "") })),
+	...acceptanceSnapshots.flatMap(snapshot => [
+		{ slug: `acceptance-results/${snapshot.id}`, label: "Website Acceptance Increment", source: `src/data/acceptance-snapshots/${snapshot.id}.md`, path: snapshot.path.replace(/\/$/, "") },
+		...(snapshot.brief ? [{ slug: `acceptance-results/${snapshot.id}/brief`, label: snapshot.brief.heading, source: `src/data/acceptance-snapshots/${snapshot.id}.md`, path: snapshot.brief.path.replace(/\/$/, "") }] : []),
+	]),
 	{
 		"slug": "backlog",
 		"label": "Backlog",

@@ -14,6 +14,7 @@ export function getStaticPaths() {
 }
 
 const { page } = Astro.props;
+const briefSnapshot = page.slug.endsWith("/brief") ? acceptanceSnapshots.find(snapshot => snapshot.id === page.slug.split("/")[1]) : null;
 const documents = import.meta.glob<MarkdownInstance<Record<string, unknown>>>([
 	"../../../AGENTS.md",
   "../../../Reviewer Agents.md",
@@ -21,7 +22,7 @@ const documents = import.meta.glob<MarkdownInstance<Record<string, unknown>>>([
 	"../../../docs/website-acceptance-checklist.md",
 	"../../../docs/publishing/Site-Intent-Map-v1.9.md",
 	"../../../docs/publishing/technical-manifest.md",
-	"../../../docs/publishing/3Back-Publisher-Role-v0.2.md",
+	"../../../docs/publishing/3Back-Publisher-Role-v0.3.md",
 	"../../../docs/publishing/contact-form.md",
 	"../../../docs/publishing/Site-Backlog.md",
 	"../../../docs/brand/source/3Back-Minimum-Viable-Brand-and-Design-Brief-v0.1.md",
@@ -72,7 +73,7 @@ const redirectRows = redirectsSource
 <main id="main" class="policy-page"><article class:list={["shell", "policy-content", { "acceptance-page": page.slug.startsWith("acceptance-"), "acceptance-result": page.slug.startsWith("acceptance-results/") }]}>
 	{!page.slug && <p class="eyebrow">Staff</p>}
 	<h1>{page.label}</h1>
-	{page.slug ? <p class="docs-back"><span><a href="/docs/">Docs</a>{page.slug.startsWith("acceptance-results") && <> › <a href="/docs/acceptance-testing/">Acceptance Testing</a></>}</span>{page.slug === "acceptance-testing" && <a href="/docs/acceptance-results/">Acceptance Results</a>}</p> : <>
+	{page.slug ? <p class="docs-back"><span><a href="/docs/">Docs</a>{briefSnapshot ? <> › <a href="/docs/acceptance-results/">Acceptance Results</a> › <a href={briefSnapshot.path}>{briefSnapshot.description}</a> › Brief</> : page.slug.startsWith("acceptance-results") && <> › <a href="/docs/acceptance-testing/">Acceptance Testing</a></>}</span>{page.slug === "acceptance-testing" && <a href="/docs/acceptance-results/">Acceptance Results</a>}</p> : <>
 		<p>Docs is 3Back’s internal hub. These pages are protected by Cloudflare Access and restricted to people on the <a href="/docs/approved-access-list/">approved access list</a>. Connections are encrypted with HTTPS, and the pages are configured to prevent search-engine indexing.</p>
 		<p>Operational Grip is 3Back’s doctrine and the foundation for how it governs itself and delivers its services. This hub brings together reading copies of the current control files that guide that work.</p>
 		<div class="doc-groups">
@@ -87,7 +88,7 @@ const redirectRows = redirectsSource
 			</section>)}
 		</div>
 	</>}
-	{page.slug.startsWith("acceptance-") ? <AcceptanceChecklist snapshotId={page.slug.split("/")[1]} html={sourceHtml} standingHtml={standingAcceptanceHtml} results={page.slug.startsWith("acceptance-results/")} archive={page.slug === "acceptance-results"} /> : sourceHtml && <div class="source-document" set:html={sourceHtml} />}
+	{page.slug.startsWith("acceptance-") ? <AcceptanceChecklist snapshotId={page.slug.split("/")[1]} html={sourceHtml} standingHtml={standingAcceptanceHtml} results={page.slug.startsWith("acceptance-results/")} archive={page.slug === "acceptance-results"} brief={page.slug.endsWith("/brief")} /> : sourceHtml && <div class="source-document" set:html={sourceHtml} />}
 	{page.slug === "visual-direction" && <p><a href="/assets/docs/3Back-Visual-Direction-Tile-v0.4.pdf">Open Visual Direction PDF</a></p>}
 	{page.slug === "approved-access-list" && <div class="source-document">
 		<p>Anybody with an email at 3back.com or tunatraffic.com can open staff Docs.</p>
