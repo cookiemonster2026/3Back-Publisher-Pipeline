@@ -32,6 +32,12 @@
       "at": "2026-09-11T23:54:00.000Z",
       "actor": "3Back Publisher",
       "version": "80f01f41a0f8e121c4363b52ab4bf053fbd8a0b0"
+    },
+    {
+      "type": "accepted",
+      "at": "2026-09-12T01:56:00.000Z",
+      "actor": "Douglas Shimp",
+      "humanApproval": "Accept"
     }
   ]
 }
