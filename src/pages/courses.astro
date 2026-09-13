@@ -1,11 +1,13 @@
 ---
+import type { ImageMetadata } from "astro";
 import SiteLayout from "../layouts/SiteLayout.astro";
 import { pageSeo } from "../seo/registry.mjs";
+import sswsBadge from "../assets/scaling-scrum-with-scrum/ssws-badge.png";
 
 interface Course {
 	name: string;
 	href: string;
-	badge?: { src: string; alt: string; width: number; height: number };
+	badge?: { src: string | ImageMetadata; alt: string; width: number; height: number };
 	wordMark?: string;
 }
 
@@ -30,7 +32,7 @@ const courseGroups: CourseGroup[] = [
 	{ title: "Scrum Guide Organization Courses", courses: [
 		{ name: "Recognized Scrum Master 1", href: "/training/scrum-mastering-1/", badge: badge("sg-rsm-1.png", "Recognized Scrum Master 1 badge", 150, 150) }, { name: "Recognized Scrum Master 2", href: "/training/scrum-mastering-2/", badge: badge("sg-rsm-2.png", "Recognized Scrum Master 2 badge", 150, 150) }, { name: "Recognized Scrum Master 3", href: "/training/scrum-mastering-3/", badge: badge("sg-rsm-3.png", "Recognized Scrum Master 3 badge", 150, 150) },
 		{ name: "Recognized Product Owner 1", href: "/training/product-ownership-1/", badge: badge("sg-rpo-1.png", "Recognized Product Owner 1 badge", 150, 150) }, { name: "Recognized Product Owner 2", href: "/training/product-ownership-2/", badge: badge("sg-rpo-2.png", "Recognized Product Owner 2 badge", 150, 150) }, { name: "Recognized Product Owner 3", href: "/training/product-ownership-3/", badge: badge("sg-rpo-3.png", "Recognized Product Owner 3 badge", 150, 150) },
-		{ name: "Scaling Scrum with Scrum® Professional", href: "/courses/scaling-scrum-with-scrum-professional", badge: badge("c3sg.png", "C3 Scrum Guide badge", 300, 294) }, { name: "Single-Team Scrum", href: "/courses/single-team-scrum", badge: badge("c3st.png", "C3 Single-Team Scrum badge", 150, 150) }, { name: "Multi-Team Scrum", href: "/courses/multi-team-scrum", badge: badge("c3sm.png", "C3 Multi-Team Scrum badge", 150, 150) },
+		{ name: "Scaling Scrum with Scrum", href: "/training/scaling-scrum-with-scrum/", badge: { src: sswsBadge, alt: "Scaling Scrum with Scrum SSwS designation badge", width: 150, height: 145 } },
 		{ name: "Recognized Scrum Guide", href: "/courses/recognized-scrum-guide", badge: badge("sg-recognized-scrum-guide.png", "Recognized Scrum Guide badge", 300, 294) }, { name: "Industry Recognized Scrum Guide – Pinnacle Credential", href: "/courses/industry-recognized-scrum-guide", badge: badge("sg-recognized-scrum-guide.png", "Industry Recognized Scrum Guide credential badge", 300, 294) },
 	] },
 	{ title: "Kanban University Courses", courses: [
@@ -48,7 +50,7 @@ const courseGroups: CourseGroup[] = [
 	<main id="main" class="courses-page">
 		<section class="courses-opening"><div class="shell opening-copy"><h1>Courses</h1><p>3Back has offered these courses for three decades. Over that time our advice has changed.</p><p>A list of courses can look like a career path: take this credential, then the next, then the one after. That model is generic. It is not built in the domain of your work.</p><p>3Back does not recommend treating a course list as the primary path for organizations.</p><p class="framing-links"><a class="framing-button" href="/why-domain-expertise-matters">Why domain expertise matters</a></p></div></section>
 		<section class="catalog" aria-label="Course catalog"><div class="shell">
-			{courseGroups.map((group) => <section class="course-group" aria-labelledby={`group-${group.title.toLowerCase().replaceAll(" ", "-")}`}><h2 id={`group-${group.title.toLowerCase().replaceAll(" ", "-")}`}>{group.title}{group.title === "Scrum Alliance® Courses" && <><span aria-hidden="true"> · </span><a class="faq-link" href="/scrum-alliance-courses-faq">Scrum Alliance FAQ</a></>}</h2><div class="course-grid">{group.courses.map((course) => <a class="course-card" href={course.href}>{course.badge ? <img class="credential-badge" src={course.badge.src} alt={course.badge.alt} width={course.badge.width} height={course.badge.height} /> : course.wordMark ? <span class="word-mark">{course.wordMark}</span> : <span class="word-mark" aria-hidden="true">Course</span>}<span class="course-name">{course.name}</span>{course.href.startsWith("https://") && <span class="external-note">Hybrid on path.3back.com</span>}</a>)}</div><p class="sa-attribution">{attributions[group.title]}</p></section>)}
+			{courseGroups.map((group) => <section class="course-group" aria-labelledby={`group-${group.title.toLowerCase().replaceAll(" ", "-")}`}><h2 id={`group-${group.title.toLowerCase().replaceAll(" ", "-")}`}>{group.title}{group.title === "Scrum Alliance® Courses" && <><span aria-hidden="true"> · </span><a class="faq-link" href="/scrum-alliance-courses-faq">Scrum Alliance FAQ</a></>}</h2><div class="course-grid">{group.courses.map((course) => <a class="course-card" href={course.href}>{course.badge ? <img class="credential-badge" src={typeof course.badge.src === "string" ? course.badge.src : course.badge.src.src} alt={course.badge.alt} width={course.badge.width} height={course.badge.height} /> : course.wordMark ? <span class="word-mark">{course.wordMark}</span> : <span class="word-mark" aria-hidden="true">Course</span>}<span class="course-name">{course.name}</span>{course.href.startsWith("https://") && <span class="external-note">Hybrid on path.3back.com</span>}</a>)}</div><p class="sa-attribution">{attributions[group.title]}</p></section>)}
 		</div></section>
 		<section class="course-side-cta" aria-label="Course inquiry"><a class="quiet-button" href="/contact/">Ask for a course</a></section>
 		<section class="course-cta" aria-label="Course inquiry"><a class="quiet-button" href="/contact/">Ask for a course or a customized course and workshop</a></section>

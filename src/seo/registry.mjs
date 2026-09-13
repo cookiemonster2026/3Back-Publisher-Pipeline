@@ -639,6 +639,102 @@ export const pageSeo = Object.freeze({
 			]
 		}
 	},
+	"/training/scaling-scrum-with-scrum": {
+		status: "complete",
+		path: "/training/scaling-scrum-with-scrum",
+		title: "Scaling Scrum with Scrum Course | SSwS | 3Back",
+		description: "Scaling is a series of moves forced by demand. Scrum stays Scrum. Respond at the scale the work requires without installing a second system.",
+		indexability: "index, follow",
+		productionRobots: "index, follow, max-image-preview:large, max-snippet:-1",
+		social: {
+			title: "Scaling Scrum with Scrum",
+			description: "Scaling is a series of moves forced by demand. Scrum stays Scrum. Respond at the scale the work requires without installing a second system.",
+			type: "website",
+			image: {
+				src: "/social/scaling-scrum-with-scrum.png",
+				alt: "Scaling Scrum with Scrum title and SSwS designation badge on a warm 3Back background.",
+				width: 1200,
+				height: 630,
+				type: "image/png"
+			}
+		},
+		structuredData: {
+			"@context": "https://schema.org",
+			"@graph": [
+				{
+					"@type": "Organization",
+					"@id": organizationId,
+					sameAs: organizationSameAs,
+					legalName: "3Back, LLC",
+					alternateName: ["3 Back", "Three Back", "3Back LLC", "3 Back LLC", "Three Back LLC"],
+					name: "3Back",
+					url: "https://3back.com/"
+				},
+				{
+					"@type": "WebSite",
+					"@id": websiteId,
+					alternateName: ["3 Back", "Three Back", "3Back LLC", "3 Back LLC", "Three Back LLC", "3back.com"],
+					name: "3Back",
+					url: "https://3back.com/",
+					publisher: { "@id": organizationId }
+				},
+				{
+					"@type": "WebPage",
+					"@id": "https://3back.com/training/scaling-scrum-with-scrum/#webpage",
+					name: "Scaling Scrum with Scrum",
+					url: "https://3back.com/training/scaling-scrum-with-scrum/",
+					description: "Scaling is a series of moves forced by demand. Scrum stays Scrum. Respond at the scale the work requires without installing a second system.",
+					isPartOf: { "@id": websiteId },
+					publisher: { "@id": organizationId },
+					mainEntity: { "@id": "https://3back.com/training/scaling-scrum-with-scrum/#course" },
+					breadcrumb: { "@id": "https://3back.com/training/scaling-scrum-with-scrum/#breadcrumb" },
+					image: "https://3back.com/social/scaling-scrum-with-scrum.png"
+				},
+				{
+					"@type": "BreadcrumbList",
+					"@id": "https://3back.com/training/scaling-scrum-with-scrum/#breadcrumb",
+					itemListElement: [
+						{ "@type": "ListItem", position: 1, name: "3Back", item: "https://3back.com/" },
+						{ "@type": "ListItem", position: 2, name: "Training", item: "https://3back.com/training" },
+						{ "@type": "ListItem", position: 3, name: "Scaling Scrum with Scrum", item: "https://3back.com/training/scaling-scrum-with-scrum/" }
+					]
+				},
+				{
+					"@type": "Course",
+					"@id": "https://3back.com/training/scaling-scrum-with-scrum/#course",
+					name: "Scaling Scrum with Scrum",
+					courseCode: "SSwS",
+					description: "Scaling is a series of moves forced by demand. Scrum stays Scrum. Respond at the scale the work requires without installing a second system.",
+					url: "https://3back.com/training/scaling-scrum-with-scrum/",
+					provider: { "@id": organizationId },
+					inLanguage: "en-US",
+					interactivityType: "mixed",
+					isAccessibleForFree: false,
+					assesses: "Demonstrated understanding of the official Scaling Scrum with Scrum learning objectives.",
+					educationalCredentialAwarded: { "@id": "https://3back.com/training/scaling-scrum-with-scrum/#credential" },
+					hasCourseInstance: { "@id": "https://3back.com/training/scaling-scrum-with-scrum/#instance" },
+					syllabusSections: ["Pre-SSwS", "The claim", "Context-driven moves", "Five problems", "Teams of teams", "Leadership and flow", "Communication across teams", "Governance", "Reviews and planning at scale", "Transformation", "In this organization"].map((name, index) => ({ "@type": "Syllabus", name, position: index + 1 })),
+					image: "https://3back.com/social/scaling-scrum-with-scrum.png"
+				},
+				{
+					"@type": "CourseInstance",
+					"@id": "https://3back.com/training/scaling-scrum-with-scrum/#instance",
+					name: "Scaling Scrum with Scrum private live course",
+					courseMode: ["onsite", "online"],
+					inLanguage: "en-US"
+				},
+				{
+					"@type": "EducationalOccupationalCredential",
+					"@id": "https://3back.com/training/scaling-scrum-with-scrum/#credential",
+					name: "Scaling Scrum with Scrum (SSwS)",
+					description: "Recognizes demonstrated understanding of the Scaling Scrum with Scrum learning objectives.",
+					competencyRequired: "Recognizes demonstrated understanding of the Scaling Scrum with Scrum learning objectives.",
+					credentialCategory: "Recognition designation",
+					recognizedBy: { "@type": "Organization", name: "Scrum Guide Organization", url: "https://scrumguide.org/" }
+				}
+			]
+		}
+	},
 	"/training/scrum-mastering-1": {
 		"status": "complete",
 		"path": "/training/scrum-mastering-1",
@@ -1789,9 +1885,6 @@ export const pageSeo = Object.freeze({
 	"/courses/adaptive-team-model": courseStub("/courses/adaptive-team-model", "Adaptive Team Model"),
 	"/courses/dysfunction-mapping-practitioner": courseStub("/courses/dysfunction-mapping-practitioner", "Dysfunction Mapping Practitioner"),
 	"/courses/leading-remote-scrum-teams": courseStub("/courses/leading-remote-scrum-teams", "Leading Remote Scrum Teams"),
-	"/courses/scaling-scrum-with-scrum-professional": courseStub("/courses/scaling-scrum-with-scrum-professional", "Scaling Scrum with Scrum® Professional"),
-	"/courses/single-team-scrum": courseStub("/courses/single-team-scrum", "Single-Team Scrum"),
-	"/courses/multi-team-scrum": courseStub("/courses/multi-team-scrum", "Multi-Team Scrum"),
 	"/courses/scrum-for-leadership": courseStub("/courses/scrum-for-leadership", "Scrum for Leadership"),
 	"/courses/scrum-for-teams": courseStub("/courses/scrum-for-teams", "Scrum for Teams"),
 	"/live-events": {
@@ -1836,6 +1929,6 @@ export function normalizePath(pathname) {
 /** @param {string} pathname */
 export function canonicalUrl(pathname) {
 	const normalizedPath = normalizePath(pathname);
-	if (normalizedPath === "/training/scrum-mastering-1" || normalizedPath === "/training/scrum-mastering-2" || normalizedPath === "/training/scrum-mastering-3" || normalizedPath === "/training/product-ownership-1" || normalizedPath === "/training/product-ownership-2" || normalizedPath === "/training/product-ownership-3") return `${SITE_ORIGIN}${normalizedPath}/`;
+	if (normalizedPath === "/training/scaling-scrum-with-scrum" || normalizedPath === "/training/scrum-mastering-1" || normalizedPath === "/training/scrum-mastering-2" || normalizedPath === "/training/scrum-mastering-3" || normalizedPath === "/training/product-ownership-1" || normalizedPath === "/training/product-ownership-2" || normalizedPath === "/training/product-ownership-3") return `${SITE_ORIGIN}${normalizedPath}/`;
 	return pathname === "/" ? `${SITE_ORIGIN}/` : `${SITE_ORIGIN}${pathname}`;
 }

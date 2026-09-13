@@ -1,0 +1,13 @@
+{
+  "taskId": "854fb684-31c7-475d-abe4-2613f0c4b356",
+  "suiteId": "2026-09-13-1036",
+  "builder": "Codex Builder",
+  "createdAt": "2026-09-13T10:36:06-05:00",
+  "events": [
+    {
+      "type": "handoff",
+      "at": "2026-09-13T15:47:41.287Z",
+      "actor": "Codex Builder"
+    }
+  ]
+}
