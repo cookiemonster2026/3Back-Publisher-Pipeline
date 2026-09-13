@@ -4,7 +4,7 @@ This file is the shared verification source for future website changes. It conta
 
 ## Acceptance Testing Readiness
 
-000 — Initialize: The Independent AI Reviewer reads Reviewer Agents.md and confirms readiness to perform according to its instructions. At each handoff the builder resets this item to R Review. The reviewer records Pass or Fail; on Fail, identifies the blocker and stops. This readiness result is separate from the 63 live-site verdicts.
+000 — Initialize: The Independent AI Reviewer reads Reviewer Agents.md and confirms readiness to perform according to its instructions. At each handoff the builder resets this item to R Review. The reviewer records Pass or Fail; on Fail, identifies the blocker and stops. This readiness result is separate from the 66 live-site verdicts.
 
 ## Governing sources
 
@@ -41,7 +41,7 @@ Run an `Affected` item when the requested or resulting diff could change its con
 
 ### Status on /docs/acceptance-testing
 
-Live colors apply to the 63 live items. Green and red are live verdicts on a known condition. Blue means a known condition needs a live look. J means human judgment is needed to proceed. The implementer may only mark blue. An outside reviewer marks green, red, or J. Douglas decides J. The surface map is a starting point, not a closed list. Last checked ignores blue and J.
+Live colors apply to the 66 live items. Green and red are live verdicts on a known condition. Blue means a known condition needs a live look. J means human judgment is needed to proceed. The implementer may only mark blue. An outside reviewer marks green, red, or J. Douglas decides J. The surface map is a starting point, not a closed list. Last checked ignores blue and J.
 
 ## Global brand and positioning
 
@@ -149,6 +149,9 @@ Promoted at Accept of suite `2026-09-12-1319`. Six rows from suite `2026-09-11-1
 | 807 | Affected | Agent | Product Ownership I course page is live with the locked promise | Open `https://3back.com/training/product-ownership-1/`. Confirm H1 Product Ownership I: Leading a Team and promise Lead a Team. One owner. One backlog. |
 | 808 | Affected | Agent | Product Ownership I learning objectives spoke serves the approved PDF | Open `/training/product-ownership-1/learning-objectives`. Confirm it serves `3Back-PO1-Learning-Objectives-v1.25.pdf`. |
 | 809 | Affected | Agent | Product Ownership I data sheet spoke serves the approved PDF | Open `/training/product-ownership-1-data-sheet/`. Confirm it serves `3Back-PO1-Data-Sheet-v1.0.pdf`. |
+| 810 | Affected | Agent | Product Ownership II course page is live with the locked promise | Open `https://3back.com/training/product-ownership-2/`. Confirm H1 Product Ownership II: Making Hard Decisions, hero promise Making Hard Decisions., and quiet line Builds on Product Ownership I. |
+| 811 | Affected | Agent | Product Ownership II enrollment and commercial facts stay locked | Open `https://3back.com/training/product-ownership-2/`. Confirm Enrollment coming soon is disabled, the offer line `$150 | Printed guidebook included | 12 months to complete`, and the proof strip 12 modules / 80% to advance / 12 months / RPO2 credential. |
+| 812 | Affected | Agent | Product Ownership II spokes serve the approved PDFs | Open `/training/product-ownership-2/learning-objectives` and `/training/product-ownership-2-data-sheet/`. Confirm they serve `3Back-PO2-Learning-Objectives-v1.17.pdf` and `3Back-PO2-Data-Sheet-v1.0.pdf`. |
 
 ## Human visual and executive review
 

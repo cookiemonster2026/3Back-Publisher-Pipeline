@@ -3179,6 +3179,127 @@
       "reviewer": "Codex",
       "reviewerType": "agent",
       "evidence": "Corrected the standing-board condition text to exactly match the current acceptance checklist. The preceding Pass verdict remains unchanged; this append-only record resolves the straight-versus-curly apostrophe mismatch that caused the board to display R."
+    },
+    {
+      "item": "001",
+      "condition": "Hero promise is Making Hard Decisions. Quiet line Builds on Product Ownership I.",
+      "status": "passed",
+      "environment": "production",
+      "url": "https://3back.com/training/product-ownership-2/",
+      "checkedAt": "2026-09-13T13:01:55.000Z",
+      "reviewer": "3B Independent Reviewer",
+      "reviewerType": "agent",
+      "evidence": "Independent reviewer assigned Pass to suite 2026-09-12-2243; Douglas Shimp authorized recording and acceptance."
+    },
+    {
+      "item": "002",
+      "condition": "Cover and RPO2 mark, not PO1 or SM1 art",
+      "status": "passed",
+      "environment": "production",
+      "url": "https://3back.com/training/product-ownership-2/",
+      "checkedAt": "2026-09-13T13:01:55.000Z",
+      "reviewer": "3B Independent Reviewer",
+      "reviewerType": "agent",
+      "evidence": "Independent reviewer assigned Pass to suite 2026-09-12-2243; Douglas Shimp authorized recording and acceptance."
+    },
+    {
+      "item": "003",
+      "condition": "Enrollment coming soon, $150 line, 12 / 80% / 12 months / RPO2",
+      "status": "passed",
+      "environment": "production",
+      "url": "https://3back.com/training/product-ownership-2/",
+      "checkedAt": "2026-09-13T13:01:55.000Z",
+      "reviewer": "3B Independent Reviewer",
+      "reviewerType": "agent",
+      "evidence": "Independent reviewer assigned Pass to suite 2026-09-12-2243; Douglas Shimp authorized recording and acceptance."
+    },
+    {
+      "item": "004",
+      "condition": "Request opens #po2-private-inquiry. Header Start this conversation lands there",
+      "status": "passed",
+      "environment": "production",
+      "url": "https://3back.com/training/product-ownership-2/",
+      "checkedAt": "2026-09-13T13:01:55.000Z",
+      "reviewer": "3B Independent Reviewer",
+      "reviewerType": "agent",
+      "evidence": "Independent reviewer assigned Pass to suite 2026-09-12-2243; Douglas Shimp authorized recording and acceptance."
+    },
+    {
+      "item": "005",
+      "condition": "Data sheet and LO links serve the approved PDFs",
+      "status": "passed",
+      "environment": "production",
+      "url": "https://3back.com/training/product-ownership-2/",
+      "checkedAt": "2026-09-13T13:01:55.000Z",
+      "reviewer": "3B Independent Reviewer",
+      "reviewerType": "agent",
+      "evidence": "Independent reviewer assigned Pass to suite 2026-09-12-2243; Douglas Shimp authorized recording and acceptance."
+    },
+    {
+      "item": "006",
+      "condition": "/rpo2 and /courses/rpo-2 301 to the canonical",
+      "status": "passed",
+      "environment": "production",
+      "url": "https://3back.com/training/product-ownership-2/",
+      "checkedAt": "2026-09-13T13:01:55.000Z",
+      "reviewer": "3B Independent Reviewer",
+      "reviewerType": "agent",
+      "evidence": "Independent reviewer assigned Pass to suite 2026-09-12-2243; Douglas Shimp authorized recording and acceptance."
+    },
+    {
+      "item": "007",
+      "condition": "Catalog card Recognized Product Owner 2 points at the new page",
+      "status": "passed",
+      "environment": "production",
+      "url": "https://3back.com/training/product-ownership-2/",
+      "checkedAt": "2026-09-13T13:01:55.000Z",
+      "reviewer": "3B Independent Reviewer",
+      "reviewerType": "agent",
+      "evidence": "Independent reviewer assigned Pass to suite 2026-09-12-2243; Douglas Shimp authorized recording and acceptance."
+    },
+    {
+      "item": "008",
+      "condition": "No path.3back.com link. No ladder. No em dash. No SGO prerequisite paragraph",
+      "status": "passed",
+      "environment": "production",
+      "url": "https://3back.com/training/product-ownership-2/",
+      "checkedAt": "2026-09-13T13:01:55.000Z",
+      "reviewer": "3B Independent Reviewer",
+      "reviewerType": "agent",
+      "evidence": "Independent reviewer assigned Pass to suite 2026-09-12-2243; Douglas Shimp authorized recording and acceptance."
+    },
+    {
+      "item": "810",
+      "condition": "Product Ownership II course page is live with the locked promise",
+      "status": "passed",
+      "environment": "production",
+      "url": "https://3back.com/training/product-ownership-2/",
+      "checkedAt": "2026-09-13T13:01:56.000Z",
+      "reviewer": "3B Independent Reviewer",
+      "reviewerType": "agent",
+      "evidence": "Accepted standing promotion from passed increment 001 in suite 2026-09-12-2243."
+    },
+    {
+      "item": "811",
+      "condition": "Product Ownership II enrollment and commercial facts stay locked",
+      "status": "passed",
+      "environment": "production",
+      "url": "https://3back.com/training/product-ownership-2/",
+      "checkedAt": "2026-09-13T13:01:57.000Z",
+      "reviewer": "3B Independent Reviewer",
+      "reviewerType": "agent",
+      "evidence": "Accepted standing promotion from passed increment 003 in suite 2026-09-12-2243."
+    },
+    {
+      "item": "812",
+      "condition": "Product Ownership II spokes serve the approved PDFs",
+      "status": "passed",
+      "environment": "production",
+      "url": "https://3back.com/training/product-ownership-2/learning-objectives",
+      "checkedAt": "2026-09-13T13:01:58.000Z",
+      "reviewer": "3B Independent Reviewer",
+      "reviewerType": "agent",
+      "evidence": "Accepted standing promotion from passed increment 005 in suite 2026-09-12-2243."
     }
   ]
 }

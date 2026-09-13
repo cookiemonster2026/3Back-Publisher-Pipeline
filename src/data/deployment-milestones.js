@@ -26,6 +26,7 @@ export const deploymentMilestones = [
 		description: "Establish acceptance testing workflow and linked result history",
 	},
 	{"completedAt":"2026-09-10T17:23:48.965Z","description":"Improve staff docs hub and on-demand course access"},
+	{"completedAt":"2026-09-13T13:01:55.960Z","description":"Close Product Ownership II acceptance suite"},
 ];
 
 // Preserve the existing archive while adding future completed milestones.

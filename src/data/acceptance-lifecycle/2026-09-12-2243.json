@@ -8,6 +8,14 @@
       "type": "handoff",
       "at": "2026-09-13T03:54:22.203Z",
       "actor": "Codex Builder"
+    },
+    {
+      "type": "accepted",
+      "at": "2026-09-13T13:01:55.960Z",
+      "actor": "Douglas Shimp",
+      "humanApproval": "Accept suite 2026-09-12-2243. Promote 001, 003, 005 as 810-812. Die 002, 004, 006, 007, 008.",
+      "standingPlus": ["001", "003", "005"],
+      "standingNumbers": ["801", "802", "803", "804", "805", "806", "807", "808", "809", "810", "811", "812"]
     }
   ]
 }

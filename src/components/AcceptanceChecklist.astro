@@ -49,7 +49,8 @@ const incrementAcceptanceStatus = (source: string, resultRecords: any[]) => {
   return { html: rendered, counts, applicable: counts.total, processCount: 0, lastCheckedAt: null };
 };
 const status = results && html ? (incrementSuite ? incrementAcceptanceStatus(html, records) : acceptanceStatus(html, records)) : null;
-const standingRecords = acceptanceStatusHistory.records.filter(record => !(record.status === "unverified" && record.reviewer === "Codex Builder"));
+const standingItems = new Set([...standingHtml.matchAll(/<tr>\s*<td>(\d{3})<\/td>/g)].map(([, item]) => item));
+const standingRecords = acceptanceStatusHistory.records.filter(record => standingItems.has(record.item) && !(record.status === "unverified" && record.reviewer === "Codex Builder"));
 const standingStatus = results && incrementSuite && standingHtml ? acceptanceStatus(standingHtml, standingRecords) : null;
 const progress = lifecycleState(lifecycle);
 const accepted = isAccepted(lifecycle, snapshot?.acceptedByDefault === true);
