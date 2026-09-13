@@ -3036,6 +3036,127 @@
       "reviewer": "3B Independent Reviewer",
       "reviewerType": "agent",
       "evidence": "Live /training/product-ownership-1-data-sheet/ \u2192 200 application/pdf (%PDF). Redirect maps to 3Back-PO1-Data-Sheet-v1.0.pdf."
+    },
+    {
+      "item": "801",
+      "condition": "Testing page chip is Recent, not Deployed",
+      "status": "passed",
+      "environment": "production",
+      "url": "https://3back.com/docs/acceptance-testing/",
+      "checkedAt": "2026-09-13T01:50:58.000Z",
+      "reviewer": "3B Independent Reviewer",
+      "reviewerType": "agent",
+      "evidence": "Douglas instruction 2026-09-13: do not mark 801\u2013806 J; Access on /docs is not a verdict; restore Pass. Standing invalid restamp \u2014 SM2 suite 2026-09-12-1938 did not change these conditions. Prior judgment record withdrawn by this Pass restamp. Conditions unchanged."
+    },
+    {
+      "item": "802",
+      "condition": "Testing page top-right link is Acceptance Results",
+      "status": "passed",
+      "environment": "production",
+      "url": "https://3back.com/docs/acceptance-testing/",
+      "checkedAt": "2026-09-13T01:50:59.000Z",
+      "reviewer": "3B Independent Reviewer",
+      "reviewerType": "agent",
+      "evidence": "Douglas instruction 2026-09-13: do not mark 801\u2013806 J; Access on /docs is not a verdict; restore Pass. Standing invalid restamp \u2014 SM2 suite 2026-09-12-1938 did not change these conditions. Prior judgment record withdrawn by this Pass restamp. Conditions unchanged."
+    },
+    {
+      "item": "803",
+      "condition": "Weekly empty state is the locked sentence",
+      "status": "passed",
+      "environment": "production",
+      "url": "https://3back.com/docs/acceptance-testing/",
+      "checkedAt": "2026-09-13T01:51:00.000Z",
+      "reviewer": "3B Independent Reviewer",
+      "reviewerType": "agent",
+      "evidence": "Douglas instruction 2026-09-13: do not mark 801\u2013806 J; Access on /docs is not a verdict; restore Pass. Standing invalid restamp \u2014 SM2 suite 2026-09-12-1938 did not change these conditions. Prior judgment record withdrawn by this Pass restamp. Conditions unchanged."
+    },
+    {
+      "item": "804",
+      "condition": "Standing weekly note is on the testing page",
+      "status": "passed",
+      "environment": "production",
+      "url": "https://3back.com/docs/acceptance-testing/",
+      "checkedAt": "2026-09-13T01:51:01.000Z",
+      "reviewer": "3B Independent Reviewer",
+      "reviewerType": "agent",
+      "evidence": "Douglas instruction 2026-09-13: do not mark 801\u2013806 J; Access on /docs is not a verdict; restore Pass. Standing invalid restamp \u2014 SM2 suite 2026-09-12-1938 did not change these conditions. Prior judgment record withdrawn by this Pass restamp. Conditions unchanged."
+    },
+    {
+      "item": "805",
+      "condition": "Results list is most recent first and marks accepted rows",
+      "status": "passed",
+      "environment": "production",
+      "url": "https://3back.com/docs/acceptance-results/",
+      "checkedAt": "2026-09-13T01:51:02.000Z",
+      "reviewer": "3B Independent Reviewer",
+      "reviewerType": "agent",
+      "evidence": "Douglas instruction 2026-09-13: do not mark 801\u2013806 J; Access on /docs is not a verdict; restore Pass. Standing invalid restamp \u2014 SM2 suite 2026-09-12-1938 did not change these conditions. Prior judgment record withdrawn by this Pass restamp. Conditions unchanged."
+    },
+    {
+      "item": "806",
+      "condition": "Users of Docs is approved domains",
+      "status": "passed",
+      "environment": "production",
+      "url": "https://3back.com/docs/approved-access-list/",
+      "checkedAt": "2026-09-13T01:51:03.000Z",
+      "reviewer": "3B Independent Reviewer",
+      "reviewerType": "agent",
+      "evidence": "Douglas instruction 2026-09-13: do not mark 801\u2013806 J; Access on /docs is not a verdict; restore Pass. Standing invalid restamp \u2014 SM2 suite 2026-09-12-1938 did not change these conditions. Prior judgment record withdrawn by this Pass restamp. Conditions unchanged."
+    },
+    {
+      "item": "901",
+      "condition": "Final visual quality is polished, coherent, restrained, and credible across desktop and mobile.",
+      "status": "passed",
+      "environment": "production",
+      "url": "https://3back.com/docs/acceptance-results/2026-09-10-172348/#901",
+      "checkedAt": "2026-09-13T01:51:08.000Z",
+      "reviewer": "Douglas Shimp",
+      "reviewerType": "human",
+      "evidence": "Douglas instruction 2026-09-13: do not ask to score 901\u2013905; restore prior human Pass. Builder unverified restamp on those rows was invalid. Prior human Pass by Douglas Shimp at 2026-09-11T03:53:38.846Z stands. Prior evidence preserved: Explicit human exception for the current acceptance suite and header-stamp release. Douglas instructed: \"Everything in all of the acceptance tests right now, you need to make an exception. All of the statuses are P. Everything is passed and green right now. So make sure that's true and then commit to main and push to origin.\" Recorded by Codex at the time of this instruction's implementation. This"
+    },
+    {
+      "item": "902",
+      "condition": "The message is credible, appropriately bounded, and sounds like 3Back.",
+      "status": "passed",
+      "environment": "production",
+      "url": "https://3back.com/docs/acceptance-results/2026-09-10-172348/#902",
+      "checkedAt": "2026-09-13T01:51:09.000Z",
+      "reviewer": "Douglas Shimp",
+      "reviewerType": "human",
+      "evidence": "Douglas instruction 2026-09-13: do not ask to score 901\u2013905; restore prior human Pass. Builder unverified restamp on those rows was invalid. Prior human Pass by Douglas Shimp at 2026-09-11T03:53:38.846Z stands. Prior evidence preserved: Explicit human exception for the current acceptance suite and header-stamp release. Douglas instructed: \"Everything in all of the acceptance tests right now, you need to make an exception. All of the statuses are P. Everything is passed and green right now. So make sure that's true and then commit to main and push to origin.\" Recorded by Codex at the time of this instruction's implementation. This"
+    },
+    {
+      "item": "903",
+      "condition": "The result is relevant to executive and operational leaders without excluding practitioners who need the material.",
+      "status": "passed",
+      "environment": "production",
+      "url": "https://3back.com/docs/acceptance-results/2026-09-10-172348/#903",
+      "checkedAt": "2026-09-13T01:51:10.000Z",
+      "reviewer": "Douglas Shimp",
+      "reviewerType": "human",
+      "evidence": "Douglas instruction 2026-09-13: do not ask to score 901\u2013905; restore prior human Pass. Builder unverified restamp on those rows was invalid. Prior human Pass by Douglas Shimp at 2026-09-11T03:53:38.846Z stands. Prior evidence preserved: Explicit human exception for the current acceptance suite and header-stamp release. Douglas instructed: \"Everything in all of the acceptance tests right now, you need to make an exception. All of the statuses are P. Everything is passed and green right now. So make sure that's true and then commit to main and push to origin.\" Recorded by Codex at the time of this instruction's implementation. This"
+    },
+    {
+      "item": "904",
+      "condition": "Brand expression conveys quiet authority, operational depth, commercial grounding, and a bias toward action without resembling a training company, conventional consultancy, software startup, academic institute, or aggressive industrial brand.",
+      "status": "passed",
+      "environment": "production",
+      "url": "https://3back.com/docs/acceptance-results/2026-09-10-172348/#904",
+      "checkedAt": "2026-09-13T01:51:11.000Z",
+      "reviewer": "Douglas Shimp",
+      "reviewerType": "human",
+      "evidence": "Douglas instruction 2026-09-13: do not ask to score 901\u2013905; restore prior human Pass. Builder unverified restamp on those rows was invalid. Prior human Pass by Douglas Shimp at 2026-09-11T03:53:38.846Z stands. Prior evidence preserved: Explicit human exception for the current acceptance suite and header-stamp release. Douglas instructed: \"Everything in all of the acceptance tests right now, you need to make an exception. All of the statuses are P. Everything is passed and green right now. So make sure that's true and then commit to main and push to origin.\" Recorded by Codex at the time of this instruction's implementation. This"
+    },
+    {
+      "item": "905",
+      "condition": "Any new or materially changed case evidence, photography, illustration, humor, or sensitive claim is suitable and approved for publication.",
+      "status": "passed",
+      "environment": "production",
+      "url": "https://3back.com/docs/acceptance-results/2026-09-10-172348/#905",
+      "checkedAt": "2026-09-13T01:51:12.000Z",
+      "reviewer": "Douglas Shimp",
+      "reviewerType": "human",
+      "evidence": "Douglas instruction 2026-09-13: do not ask to score 901\u2013905; restore prior human Pass. Builder unverified restamp on those rows was invalid. Prior human Pass by Douglas Shimp at 2026-09-11T03:53:38.846Z stands. Prior evidence preserved: Explicit human exception for the current acceptance suite and header-stamp release. Douglas instructed: \"Everything in all of the acceptance tests right now, you need to make an exception. All of the statuses are P. Everything is passed and green right now. So make sure that's true and then commit to main and push to origin.\" Recorded by Codex at the time of this instruction's implementation. This"
     }
   ]
 }
