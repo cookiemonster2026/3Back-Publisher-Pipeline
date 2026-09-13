@@ -16,7 +16,7 @@ const badge = (file: string, alt: string, width: number, height: number) => ({ s
 const attributions: Record<string, string> = {
 	"Scrum Alliance® Courses": "Certified ScrumMaster®, Advanced Certified ScrumMaster®, Certified Scrum Professional®, Certified Scrum Product Owner®, and Advanced Certified Scrum Product Owner® are certification marks of Scrum Alliance, Inc.",
 	"Scrum Guide Organization Courses": "Recognized Scrum Master 1, 2, and 3, Recognized Product Owner 1, 2, and 3, Recognized Scrum Guide, Industry Recognized Scrum Guide, and related Scaling marks are marks of the Scrum Guide Organization (SGO).",
-	"Kanban University Courses": "Team Kanban Practitioner, Scrum Kanban Practitioner, Kanban Management Professional, and related marks are marks of Kanban University.",
+	"Kanban University Courses": "Scrum Kanban Practitioner and related marks are marks of Kanban University.",
 	"Additional 3Back Courses": "Adaptive Team Model, Dysfunction Mapping Practitioner, Leading Remote Scrum Teams, Scrum for Leadership, and Scrum for Teams are courses offered by 3Back.",
 };
 
@@ -36,7 +36,6 @@ const courseGroups: CourseGroup[] = [
 		{ name: "Recognized Scrum Guide", href: "/courses/recognized-scrum-guide", badge: badge("sg-recognized-scrum-guide.png", "Recognized Scrum Guide badge", 300, 294) }, { name: "Industry Recognized Scrum Guide – Pinnacle Credential", href: "/courses/industry-recognized-scrum-guide", badge: badge("sg-recognized-scrum-guide.png", "Industry Recognized Scrum Guide credential badge", 300, 294) },
 	] },
 	{ title: "Kanban University Courses", courses: [
-		{ name: "KMP I: Kanban Systems Design", href: "/courses/kmp-1", badge: badge("ku-team-kanban-practitioner.png", "Kanban University Team Kanban Practitioner badge", 300, 183) }, { name: "KMP II: Kanban Management Professional", href: "/courses/kmp-2", badge: badge("ku-kanban-management-professional.png", "Kanban University Kanban Management Professional badge", 300, 183) },
 		{ name: "Scrum Better with Kanban", href: "/courses/scrum-better-with-kanban", badge: badge("ku-scrum-kanban-practitioner.png", "Kanban University Scrum Kanban Practitioner badge", 300, 183) },
 	] },
 	{ title: "Additional 3Back Courses", courses: [

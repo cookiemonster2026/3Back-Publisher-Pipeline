@@ -3630,6 +3630,116 @@
       "reviewer": "3B Independent Reviewer",
       "reviewerType": "agent",
       "evidence": "Accepted standing promotion from passed increment 005 in suite 2026-09-13-1036."
+    },
+    {
+      "item": "001",
+      "condition": "Canonical SBK course page is complete, indexable, and has no StubPage chrome or “Full page coming next” copy.",
+      "status": "passed",
+      "environment": "production",
+      "url": "https://3back.com/courses/scrum-better-with-kanban/",
+      "checkedAt": "2026-09-13T17:31:05.000Z",
+      "reviewer": "3B Independent Reviewer",
+      "reviewerType": "agent",
+      "evidence": "Live https://3back.com/courses/scrum-better-with-kanban/ → 200 (canonical slash). H1 'Scrum Better with Kanban Training'; course facts present (8 hours / none formal prereqs / no exam). robots index,follow. No StubPage chrome or 'Full page coming next'. /docs not used. Deployed SHA unconfirmed (deployment-history Access-blocked)."
+    },
+    {
+      "item": "002",
+      "condition": "Hero shows the official SKP badge stacked over the official Scrum Better with Kanban microcredential badge, uncropped, with the approved caption.",
+      "status": "passed",
+      "environment": "production",
+      "url": "https://3back.com/courses/scrum-better-with-kanban/",
+      "checkedAt": "2026-09-13T17:31:06.000Z",
+      "reviewer": "3B Independent Reviewer",
+      "reviewerType": "agent",
+      "evidence": "Desktop ~1280 and mobile ~390: official SKP badge stacked above Scrum Better with Kanban microcredential; both complete/uncropped; caption 'TWO CREDENTIALS. ONE COURSE. EIGHT HOURS.'; no Rosie; no rule through marks (badge-stage panel border only). Dual-stack asset sbk-dual-stack. /docs not used."
+    },
+    {
+      "item": "003",
+      "condition": "Proof strip shows five gold stars, 4.8, thousands of reviews, industry-recognized training, 25,000+ students trained, and the reviews link.",
+      "status": "passed",
+      "environment": "production",
+      "url": "https://3back.com/courses/scrum-better-with-kanban/",
+      "checkedAt": "2026-09-13T17:31:07.000Z",
+      "reviewer": "3B Independent Reviewer",
+      "reviewerType": "agent",
+      "evidence": "Proof strip: five gold SVG stars, 4.8, 'Based on thousands of student reviews', Industry-recognized training, 25,000+ students trained, reviews link → /reviews/. /docs not used."
+    },
+    {
+      "item": "004",
+      "condition": "Private request controls reveal #private-course-request; the header targets it; the required CSM-equivalent fields, Turnstile, success state, Worker path, and ssbwk@3back.com default are present.",
+      "status": "passed",
+      "environment": "production",
+      "url": "https://3back.com/courses/scrum-better-with-kanban/#private-course-request",
+      "checkedAt": "2026-09-13T17:31:08.000Z",
+      "reviewer": "3B Independent Reviewer",
+      "reviewerType": "agent",
+      "evidence": "Hero CTA + header Start this conversation → #private-course-request; band reveals and first-name focuses. CSM-equivalent fields first_name/last_name/email/confirm_email/company_name/note; Turnstile; success copy present (hidden until submit). Form POST /api/sbk-private-request; Worker default notificationTo ssbwk@3back.com. Table-plain condition. Form not live-submitted. /docs not used."
+    },
+    {
+      "item": "005",
+      "condition": "Public-course controls lead to `/events`; the existing catalog card still names Scrum Better with Kanban and reaches the canonical route; TicketSpice event rows are unchanged.",
+      "status": "passed",
+      "environment": "production",
+      "url": "https://3back.com/courses/scrum-better-with-kanban/",
+      "checkedAt": "2026-09-13T17:31:09.000Z",
+      "reviewer": "3B Independent Reviewer",
+      "reviewerType": "agent",
+      "evidence": "Public CTAs → /events. Catalog card 'Scrum Better with Kanban' → /courses/scrum-better-with-kanban. Live /events SBK TicketSpice rows: event.3back.com/scrum-better-with-kanban-september-12 and ...-october-20, matching prior events.astro rows (unchanged). /docs not used."
+    },
+    {
+      "item": "006",
+      "condition": "/scrum-better-with-kanban and its slash twin return 301 to /courses/scrum-better-with-kanban/.",
+      "status": "passed",
+      "environment": "production",
+      "url": "https://3back.com/scrum-better-with-kanban",
+      "checkedAt": "2026-09-13T17:31:10.000Z",
+      "reviewer": "3B Independent Reviewer",
+      "reviewerType": "agent",
+      "evidence": "/scrum-better-with-kanban and /scrum-better-with-kanban/ both 301 → /courses/scrum-better-with-kanban/. Table-plain condition. /docs not used."
+    },
+    {
+      "item": "007",
+      "condition": "Metadata matches the approved title and description, social image is 1200 by 630, robots are index and follow, the sitemap includes the canonical, and Course schema has two offers with no price.",
+      "status": "passed",
+      "environment": "production",
+      "url": "https://3back.com/courses/scrum-better-with-kanban/",
+      "checkedAt": "2026-09-13T17:31:11.000Z",
+      "reviewer": "3B Independent Reviewer",
+      "reviewerType": "agent",
+      "evidence": "Head title/description match approved SEO registry. og:image https://3back.com/social/scrum-better-with-kanban.png is 1200×630 PNG. robots index, follow. sitemap-index → sitemap-0.xml includes https://3back.com/courses/scrum-better-with-kanban. Course JSON-LD has two Offers (Private training, Open enrollment) with no price. /docs not used."
+    },
+    {
+      "item": "008",
+      "condition": "Page has no data sheet, required FAQ close, exam attempts, pass-rate, Study Guide, membership or SEU claim, founding-era sentence, price, path.3back.com link, Operational Grip pitch, or em dash.",
+      "status": "passed",
+      "environment": "production",
+      "url": "https://3back.com/courses/scrum-better-with-kanban/",
+      "checkedAt": "2026-09-13T17:31:12.000Z",
+      "reviewer": "3B Independent Reviewer",
+      "reviewerType": "agent",
+      "evidence": "Course-page main (ex header/footer): no data sheet, FAQ close, exam attempts, pass-rate, Study Guide, membership/SEU, founding-era sentence, $, path.3back.com, Operational Grip pitch, or em dash. Header/footer nav 'Operational Grip' link is site chrome, not a pitch. /docs not used."
+    },
+    {
+      "item": "819",
+      "condition": "Scrum Better with Kanban course page is complete and indexable",
+      "status": "passed",
+      "environment": "production",
+      "url": "https://3back.com/courses/scrum-better-with-kanban/",
+      "checkedAt": "2026-09-13T17:34:48.000Z",
+      "reviewer": "Douglas Shimp",
+      "reviewerType": "human",
+      "evidence": "Accepted standing promotion from passed increment 001 in suite 2026-09-13-1200."
+    },
+    {
+      "item": "820",
+      "condition": "Scrum Better with Kanban hero shows the two official credentials",
+      "status": "passed",
+      "environment": "production",
+      "url": "https://3back.com/courses/scrum-better-with-kanban/",
+      "checkedAt": "2026-09-13T17:34:49.000Z",
+      "reviewer": "Douglas Shimp",
+      "reviewerType": "human",
+      "evidence": "Accepted standing promotion from passed increment 002 in suite 2026-09-13-1200."
     }
   ]
 }

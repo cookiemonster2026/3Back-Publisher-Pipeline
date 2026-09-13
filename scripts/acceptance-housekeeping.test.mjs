@@ -26,11 +26,11 @@ test("rejects edits to every frozen suite file", () => {
   assert.throws(() => assertFrozenSuitesUnchanged(["accepted"], ["src/data/acceptance-lifecycle/accepted.json"]), /immutable/);
 });
 
-test("rejects 58 unchanged greens in a weekly suite", () => {
+test("rejects 60 unchanged greens in a weekly suite", () => {
   const checkedAt = "2026-09-11T12:00:00Z";
-  const status = Array.from({ length: 58 }, (_, index) => ({ item: String(index), condition: `Condition ${index}`, status: "passed", checkedAt }));
+  const status = Array.from({ length: 60 }, (_, index) => ({ item: String(index), condition: `Condition ${index}`, status: "passed", checkedAt }));
   const weekly = status.map(record => ({ ...record }));
-  assert.doesNotThrow(() => assertNoWeeklyRestamp(status, weekly.slice(0, 57), "fixture"));
-  assert.throws(() => assertNoWeeklyRestamp(status, weekly, "fixture"), /58 unchanged passed records/);
+  assert.doesNotThrow(() => assertNoWeeklyRestamp(status, weekly.slice(0, 59), "fixture"));
+  assert.throws(() => assertNoWeeklyRestamp(status, weekly, "fixture"), /60 unchanged passed records/);
   assert.doesNotThrow(() => assertNoWeeklyRestamp([...status, { ...status[0], status: "failed", checkedAt: "2026-09-11T13:00:00Z" }], weekly, "fixture"));
 });

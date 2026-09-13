@@ -56,14 +56,14 @@ const baseline = readFileSync(new URL('../docs/website-acceptance-checklist.md',
 const rows = baseline.split(/\r?\n/).filter(line => /^\| \d{3} \|/.test(line)).map(line => line.split('|').slice(1, -1).map(cell => cell.trim()));
 const completeTable = '<table><thead><tr><th>Item</th><th>Class</th><th>Verifier</th><th>Acceptance condition</th><th>Verification</th></tr></thead><tbody>' + rows.map(cells => '<tr>' + cells.map(cell => `<td>${cell}</td>`).join('') + '</tr>').join('') + '</tbody></table>';
 
-test('the complete baseline has exactly 72 live and eight process items', () => {
-  assert.equal(LIVE_ITEMS.length, 72);
+test('the complete baseline has exactly 74 live and eight process items', () => {
+  assert.equal(LIVE_ITEMS.length, 74);
   assert.equal(PROCESS_ITEMS.length, 8);
   assert.deepEqual(new Set(rows.map(row => row[0])), new Set([...LIVE_ITEMS, ...PROCESS_ITEMS]));
   const result = acceptanceStatus(completeTable, []);
-  assert.equal(result.applicable, 72);
+  assert.equal(result.applicable, 74);
   assert.equal(result.processCount, 8);
-  assert.equal(result.counts.unverified, 72);
+  assert.equal(result.counts.unverified, 74);
   for (const item of LIVE_ITEMS) assert.equal(result.html.split('id="' + item + '"').length - 1, 1);
   for (const item of PROCESS_ITEMS) {
     assert.ok(result.html.includes(`title="Process item: reported in the task report"></td><td>${item}</td>`));
@@ -75,7 +75,7 @@ test('existing real verdicts remain intact without rewriting records', () => {
   const before = JSON.stringify(records);
   const result = acceptanceStatus(completeTable, records);
   assert.equal(result.counts.passed + result.counts.failed + result.counts.unverified + result.counts.judgment, result.applicable);
-  assert.equal(result.applicable, 72);
+  assert.equal(result.applicable, 74);
   assert.equal(JSON.stringify(records), before);
 });
 
@@ -102,7 +102,7 @@ test('process records never add a live symbol, score, or timestamp', () => {
   const result = acceptanceStatus(completeTable, [{ ...record, item: '001', condition }]);
   assert.equal(result.counts.passed, 0);
   assert.equal(result.lastCheckedAt, null);
-  assert.equal(result.applicable, 72);
+  assert.equal(result.applicable, 74);
 });
 
 test('J requires evidence, uses its own symbol and row wash, and is not a pass', () => {
