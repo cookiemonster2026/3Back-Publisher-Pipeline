@@ -1877,7 +1877,19 @@ export const pageSeo = Object.freeze({
 	},
 	"/courses/rsm-1": courseStub("/courses/rsm-1", "Recognized Scrum Master 1"),
 	"/courses/rpo-3": courseStub("/courses/rpo-3", "Recognized Product Owner 3"),
-	"/courses/recognized-scrum-guide": courseStub("/courses/recognized-scrum-guide", "Recognized Scrum Guide"),
+	"/training/recognized-scrum-guide": {
+		status: "complete",
+		path: "/training/recognized-scrum-guide",
+		title: "Recognized Scrum Guide | 3Back",
+		description: "A 3Back program that attests depth in one domain and leads to the Recognized Scrum Guide mark. Courses plus interviews through time. Not an empty credential.",
+		indexability: "index, follow",
+		productionRobots: "index, follow, max-image-preview:large, max-snippet:-1",
+		social: {
+			title: "Recognized Scrum Guide | 3Back",
+			description: "A 3Back program that attests depth in one domain and leads to the Recognized Scrum Guide mark. Courses plus interviews through time. Not an empty credential.",
+			type: "website",
+		},
+	},
 	"/courses/industry-recognized-scrum-guide": courseStub("/courses/industry-recognized-scrum-guide", "Industry Recognized Scrum Guide – Pinnacle Credential"),
 	"/courses/kmp-1": courseStub("/courses/kmp-1", "KMP I: Kanban Systems Design"),
 	"/courses/kmp-2": courseStub("/courses/kmp-2", "KMP II: Kanban Management Professional"),
@@ -1960,6 +1972,6 @@ export function normalizePath(pathname) {
 /** @param {string} pathname */
 export function canonicalUrl(pathname) {
 	const normalizedPath = normalizePath(pathname);
-	if (normalizedPath === "/training/scaling-scrum-with-scrum" || normalizedPath === "/training/scrum-mastering-1" || normalizedPath === "/training/scrum-mastering-2" || normalizedPath === "/training/scrum-mastering-3" || normalizedPath === "/training/product-ownership-1" || normalizedPath === "/training/product-ownership-2" || normalizedPath === "/training/product-ownership-3") return `${SITE_ORIGIN}${normalizedPath}/`;
+	if (normalizedPath === "/training/scaling-scrum-with-scrum" || normalizedPath === "/training/recognized-scrum-guide" || normalizedPath === "/training/scrum-mastering-1" || normalizedPath === "/training/scrum-mastering-2" || normalizedPath === "/training/scrum-mastering-3" || normalizedPath === "/training/product-ownership-1" || normalizedPath === "/training/product-ownership-2" || normalizedPath === "/training/product-ownership-3") return `${SITE_ORIGIN}${normalizedPath}/`;
 	return pathname === "/" ? `${SITE_ORIGIN}/` : `${SITE_ORIGIN}${pathname}`;
 }

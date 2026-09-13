@@ -1,0 +1,212 @@
+---
+import SiteLayout from "../../layouts/SiteLayout.astro";
+import sswsBadge from "../../assets/scaling-scrum-with-scrum/ssws-badge.png";
+import { pageSeo } from "../../seo/registry.mjs";
+
+const pathNodes = [
+	{ name: "Mechanics of Scrum", short: "Mechanics", href: "https://path.3back.com/courses/mechanics-of-scrum", badge: "/assets/courses/sg-mechanics-of-scrum.png" },
+	{ name: "Scrum Mastering I", short: "SM I", href: "/training/scrum-mastering-1/", badge: "/assets/courses/sg-rsm-1.png", rail: "mastering" },
+	{ name: "Product Ownership I", short: "PO I", href: "/training/product-ownership-1/", badge: "/assets/courses/sg-rpo-1.png", rail: "ownership" },
+	{ name: "Scrum Mastering II", short: "SM II", href: "/training/scrum-mastering-2/", badge: "/assets/courses/sg-rsm-2.png", rail: "mastering" },
+	{ name: "Product Ownership II", short: "PO II", href: "/training/product-ownership-2/", badge: "/assets/courses/sg-rpo-2.png", rail: "ownership" },
+	{ name: "Scrum Mastering III", short: "SM III", href: "/training/scrum-mastering-3/", badge: "/assets/courses/sg-rsm-3.png", rail: "mastering" },
+	{ name: "Product Ownership III", short: "PO III", href: "/training/product-ownership-3/", badge: "/assets/courses/sg-rpo-3.png", rail: "ownership" },
+	{ name: "Scaling Scrum with Scrum", short: "SSwS", href: "/training/scaling-scrum-with-scrum/", badge: sswsBadge.src },
+];
+const mastering = pathNodes.filter((node) => node.rail === "mastering");
+const ownership = pathNodes.filter((node) => node.rail === "ownership");
+const mechanics = pathNodes[0];
+const scaling = pathNodes[pathNodes.length - 1];
+---
+
+<SiteLayout metadata={pageSeo["/training/recognized-scrum-guide"]}>
+	<main id="main" class="rsg-page">
+		<section class="opening section-rule">
+			<div class="shell opening-copy">
+				<div class="opening-head">
+					<div>
+						<p class="eyebrow">Individual program</p>
+						<h1>Recognized Scrum Guide</h1>
+						<p class="dek">This mark recognizes attested depth in one domain. It is not another degree. It is not an empty certification.</p>
+					</div>
+					<img class="opening-badge" src="/assets/courses/sg-recognized-scrum-guide.png" alt="Recognized Scrum Guide badge" width="300" height="294" />
+				</div>
+				<div class="opening-lower">
+					<div class="lead-copy">
+						<p>Recognized Scrum Guide is an individual path. You study the Scrum Guide Organization series with 3Back. You bring years of work in one domain. 3Back attests that practice through time. A human Scrum Guide reviewer takes the final submittal. The Scrum Guide Organization recognizes the mark.</p>
+						<p>Coursework does not count as hours. Passing a module does not attest a job. The hours are in the work.</p>
+					</div>
+					<aside class="opening-offer" aria-labelledby="opening-offer-title">
+						<p class="eyebrow">The package</p>
+						<h2 id="opening-offer-title">$2100. One program. Coming soon.</h2>
+						<button class="coming-soon" type="button" disabled>Coming soon</button>
+						<p class="opening-price-note">The package is $2100. Payment is not open yet.</p>
+					</aside>
+				</div>
+			</div>
+		</section>
+
+		<section class="path-section section-rule" aria-labelledby="path-title">
+			<div class="shell">
+				<div class="section-heading">
+					<p class="eyebrow">The path</p>
+					<h2 id="path-title">One connected path.</h2>
+					<p>Hover the courses and the page keeps saying the same thing. Plus experience.</p>
+				</div>
+				<div class="path-map" aria-label="Recognized Scrum Guide course path. Every course is combined with experience.">
+					<a class="path-node path-node-wide" href={mechanics.href} data-path-node>
+						<img src={mechanics.badge} alt="Mechanics of Scrum badge" width="150" height="150" />
+						<span class="node-copy"><strong>{mechanics.name}</strong><span class="experience-label">plus experience</span></span>
+					</a>
+					<div class="rails">
+						<div class="rail" aria-label="Scrum Mastering series">
+							<p class="rail-label">Scrum Mastering</p>
+							{mastering.map((node) => <a class="path-node" href={node.href} data-path-node><img src={node.badge} alt={`${node.name} badge`} width="150" height="150" /><span class="node-copy"><strong>{node.name}</strong><span class="experience-label">plus experience</span></span></a>)}
+						</div>
+						<div class="rail" aria-label="Product Ownership series">
+							<p class="rail-label">Product Ownership</p>
+							{ownership.map((node) => <a class="path-node" href={node.href} data-path-node><img src={node.badge} alt={`${node.name} badge`} width="150" height="150" /><span class="node-copy"><strong>{node.name}</strong><span class="experience-label">plus experience</span></span></a>)}
+						</div>
+					</div>
+					<a class="path-node path-node-wide" href={scaling.href} data-path-node>
+						<img src={scaling.badge} alt="Scaling Scrum with Scrum badge" width="150" height="145" />
+						<span class="node-copy"><strong>{scaling.name}</strong><span class="experience-label">plus experience</span></span>
+					</a>
+					<div class="capstone" aria-label="Recognized Scrum Guide capstone">
+						<img src="/assets/courses/sg-recognized-scrum-guide.png" alt="Recognized Scrum Guide mark" width="300" height="294" />
+						<div><p class="capstone-label">Capstone</p><h3>Recognized Scrum Guide</h3><p>Course series plus experience, interviews, attestation, and final human review.</p></div>
+					</div>
+				</div>
+			</div>
+		</section>
+
+		<section class="section section-rule" aria-labelledby="not-title">
+			<div class="shell split-section"><h2 id="not-title">What this is not</h2><div class="section-body">
+				<p>This is not Domain Guides. Domain Guides is the company program. It leaves the skill in that operating environment. Recognized Scrum Guide is the person. The two do not substitute for each other.</p>
+				<p>This is not a tour of ideas. Shallow time in many places does not qualify.</p>
+			</div></div>
+		</section>
+
+		<section class="section section-rule" aria-labelledby="for-title">
+			<div class="shell split-section"><h2 id="for-title">Who this mark is for</h2><div class="section-body idle-hands">
+				<p>These are not idle hands. The work already happened in the street. Coaching teams. Building teams. Getting work done. The mark is for people who get the work done.</p>
+			</div></div>
+		</section>
+
+		<section class="section section-rule" aria-labelledby="attestation-title">
+			<div class="shell split-section"><h2 id="attestation-title">How experience is attested</h2><div class="section-body">
+				<p>Attestation runs while you take the courses, module by module. An experience card accumulates into a whole. Expert Echo holds that card. Specialized interviews may run at the end of a course. You will be asked about specific jobs and work over time. You must be able to describe that work months later. Continuity and depth have to hold. A string of successes is not required. Competency growth is.</p>
+				<aside class="experience-card" aria-label="Experience card"><strong>Experience card</strong><span>Continuity. Depth. Competency growth.</span></aside>
+				<p>The shortest accumulation is six months, with multiple interviews. That is the floor for attestation, not a promise that six months earns the mark.</p>
+				<p>You need three to five years of deep experience in one domain. If you are still earning those years, plan on up to three years in the program.</p>
+			</div></div>
+		</section>
+
+		<section class="package-section" aria-labelledby="package-title">
+			<div class="shell package-inner">
+				<p class="eyebrow">The package</p>
+				<h2 id="package-title">$2100. One program. Coming soon.</h2>
+				<p>Included: Mechanics of Scrum, Scrum Mastering I II and III, Product Ownership I II and III, Scaling Scrum with Scrum, the experience card, interviews, and final submittal with a human Scrum Guide reviewer.</p>
+				<p>If you hold Certified Scrum Master, Scrum Mastering I is waived and you start Scrum Mastering II. If you hold Certified Product Owner, Product Ownership I is waived and you start Product Ownership II. Advanced Scrum Alliance courses do not waive. The price stays $2100. Interviews still run.</p>
+				<button class="coming-soon" type="button" disabled>Coming soon</button>
+				<p class="price-note">The package is $2100. Payment is not open yet.</p>
+			</div>
+		</section>
+
+		<section class="domain-guides-cta" aria-labelledby="domain-guides-title">
+			<div class="shell split-section">
+				<h2 id="domain-guides-title">Build the capability into the organization.</h2>
+				<div class="section-body">
+					<p>For organizations that need this capability built in, review our Domain Guides program.</p>
+					<a class="domain-guides-link" href="/domain-guides">Review the Domain Guides program</a>
+				</div>
+			</div>
+		</section>
+	</main>
+</SiteLayout>
+
+<script>
+	const courseNodes = document.querySelectorAll<HTMLAnchorElement>("[data-path-node]");
+	courseNodes.forEach((node) => node.addEventListener("click", (event) => {
+		if (!window.matchMedia("(hover: none), (pointer: coarse)").matches || node.dataset.revealed === "true") return;
+		event.preventDefault();
+		courseNodes.forEach((other) => { if (other !== node) delete other.dataset.revealed; });
+		node.dataset.revealed = "true";
+	}));
+</script>
+
+<style>
+	.rsg-page { overflow: clip; background: var(--paper); }
+	.opening { padding: 104px 0 82px; }
+	.opening-copy { max-width: 1120px; }
+	.opening-head { display: grid; grid-template-columns: minmax(0, 1fr) clamp(180px, 22vw, 260px); gap: clamp(28px, 6vw, 82px); align-items: center; }
+	.opening-badge { width: 100%; height: auto; object-fit: contain; }
+	.eyebrow, .rail-label, .capstone-label { color: var(--amber-text); font-size: var(--type-caption); font-weight: var(--font-weight-heavy); letter-spacing: var(--tracking-caption); line-height: var(--leading-caption); text-transform: uppercase; }
+	.opening h1 { max-width: 850px; margin-bottom: 22px; font-size: clamp(3.5rem, 8vw, 6rem); line-height: 1.02; letter-spacing: -.025em; }
+	.dek { max-width: 720px; color: var(--charcoal); font-size: clamp(1.3rem, 2.2vw, 1.65rem); font-weight: var(--font-weight-bold); line-height: 1.38; }
+	.opening-lower { display: grid; grid-template-columns: minmax(0, 1.45fr) minmax(270px, .75fr); gap: clamp(28px, 5vw, 64px); align-items: start; margin-top: 46px; }
+	.lead-copy { max-width: 760px; padding-left: 24px; border-left: 5px solid var(--amber); }
+	.opening-offer { padding: 24px; border-top: 5px solid var(--amber); background: var(--charcoal); color: var(--paper); }
+	.opening-offer h2 { margin: 8px 0 12px; color: var(--paper); font-size: clamp(1.55rem, 2.5vw, 2rem); line-height: 1.18; }
+	.opening-offer .coming-soon { width: 100%; margin-top: 8px; }
+	.opening-price-note { margin: 10px 0 0; color: #e2e0d8; font-size: .95rem; line-height: 1.45; }
+	.lead-copy p, .section-body p, .package-inner > p { font-size: 1.125rem; line-height: 1.65; }
+	.path-section { padding: 84px 0 96px; background: var(--reading); }
+	.section-heading { max-width: 700px; margin-bottom: 38px; }
+	.section-heading h2 { margin-bottom: 12px; }
+	.section-heading p:last-child { color: var(--charcoal); font-size: 1.125rem; }
+	.path-map { position: relative; max-width: 900px; }
+	.path-node { position: relative; display: grid; grid-template-columns: 58px minmax(0, 1fr); gap: 14px; align-items: center; min-height: 104px; padding: 14px 18px; border: 1px solid var(--rule); border-top: 3px solid var(--amber); background: var(--paper); color: var(--charcoal); text-decoration: none; }
+	.path-node::after { position: absolute; bottom: -20px; left: 50%; width: 2px; height: 20px; background: var(--amber); content: ""; }
+	.path-node img { width: 58px; height: 58px; object-fit: contain; }
+	.path-node-wide { max-width: 430px; margin-inline: auto; }
+	.node-copy { min-width: 0; }
+	.node-copy strong { display: block; font-size: 1.05rem; line-height: 1.25; }
+	.experience-label { display: block; max-height: 0; overflow: hidden; color: var(--amber-text); font-size: .9rem; font-weight: var(--font-weight-bold); opacity: 0; transition: max-height 150ms ease-out, opacity 150ms ease-out, margin 150ms ease-out; }
+	.path-node:hover .experience-label, .path-node:focus-visible .experience-label, .path-node[data-revealed="true"] .experience-label { max-height: 2em; margin-top: 5px; opacity: 1; }
+	.rails { position: relative; display: grid; grid-template-columns: 1fr 1fr; gap: 72px; margin: 20px 0; padding: 30px 0; }
+	.rails::before { position: absolute; top: 0; right: 25%; bottom: 0; left: 25%; border-top: 2px solid var(--amber); border-bottom: 2px solid var(--amber); content: ""; }
+	.rail { position: relative; display: grid; gap: 18px; }
+	.rail::before { position: absolute; top: 42px; bottom: 42px; left: 50%; z-index: 0; width: 2px; background: var(--amber); content: ""; }
+	.rail > * { z-index: 1; }
+	.rail-label { margin: 0; padding: 0 8px; background: var(--reading); text-align: center; }
+	.capstone { display: grid; grid-template-columns: 116px minmax(0, 1fr); gap: 26px; align-items: center; max-width: 620px; margin: 20px auto 0; padding: 28px; border: 3px solid var(--charcoal); border-top: 6px solid var(--amber); background: var(--charcoal); color: var(--paper); }
+	.capstone img { width: 116px; height: 116px; object-fit: contain; }
+	.capstone h3 { margin: 5px 0 8px; color: var(--paper); font-size: clamp(1.55rem, 3vw, 2.1rem); }
+	.capstone p:last-child { margin: 0; color: #e2e0d8; line-height: 1.5; }
+	.split-section { display: grid; grid-template-columns: minmax(0, .85fr) minmax(0, 1.15fr); gap: clamp(42px, 8vw, 128px); align-items: start; }
+	.split-section h2 { margin: 0; padding-bottom: 18px; border-bottom: 2px solid var(--charcoal); }
+	.section-body { max-width: 620px; }
+	.idle-hands { padding: 24px; border-left: 6px solid var(--amber); background: var(--reading); }
+	.idle-hands p { margin: 0; color: var(--charcoal); font-size: clamp(1.3rem, 2.4vw, 1.65rem); font-weight: var(--font-weight-bold); line-height: 1.4; }
+	.experience-card { display: grid; gap: 4px; margin: 28px 0; padding: 20px 22px; border: 1px solid var(--rule); border-left: 5px solid var(--amber); background: var(--reading); color: var(--charcoal); }
+	.experience-card span { color: var(--text-secondary); }
+	.package-section { padding: 112px 0; border-top: 5px solid var(--amber); border-bottom: 5px solid var(--amber); background: var(--charcoal); color: var(--paper); }
+	.package-inner { max-width: 790px; padding-left: clamp(22px, 4vw, 48px); border-left: 3px solid var(--amber); }
+	.package-inner h2 { color: var(--paper); }
+	.package-inner > p { color: #e2e0d8; }
+	.coming-soon { min-width: 180px; margin-top: 14px; padding: 13px 20px; border: 2px solid var(--amber); border-radius: 0; background: var(--amber); color: var(--charcoal); font: inherit; font-weight: var(--font-weight-heavy); cursor: not-allowed; opacity: .76; }
+	.package-inner .price-note { margin-top: 10px; color: var(--paper); font-size: 1rem; }
+	.domain-guides-cta { padding: 70px 0; border-bottom: 1px solid var(--rule); background: var(--reading); }
+	.domain-guides-cta .section-body p { margin-top: 0; }
+	.domain-guides-link { display: inline-flex; align-items: center; justify-content: center; min-height: 48px; margin-top: 12px; padding: 11px 18px; border: 2px solid var(--charcoal); color: var(--charcoal); font-weight: var(--font-weight-heavy); line-height: 1.25; text-align: center; text-decoration: none; transition: background-color 160ms ease, color 160ms ease, transform 160ms ease; }
+	.domain-guides-link:hover, .domain-guides-link:focus-visible { background: var(--charcoal); color: var(--paper); transform: translateY(-2px); }
+	@media (max-width: 720px) {
+		.opening { padding: 82px 0 62px; }
+		.opening-head { grid-template-columns: 1fr; }
+		.opening-badge { width: 150px; margin-top: 4px; }
+		.opening-lower { grid-template-columns: 1fr; margin-top: 34px; }
+		.path-section { padding: 66px 0 76px; }
+		.rails { grid-template-columns: 1fr; gap: 34px; padding: 28px 0; }
+		.rails::before { right: 50%; left: auto; }
+		.path-node-wide { max-width: none; }
+		.split-section { grid-template-columns: 1fr; gap: 20px; }
+		.capstone { grid-template-columns: 76px minmax(0, 1fr); gap: 18px; padding: 22px 18px; }
+		.capstone img { width: 76px; height: 76px; }
+		.package-section { padding: 82px 0; }
+		.domain-guides-cta { padding: 52px 0; }
+		.domain-guides-link { width: 100%; }
+	}
+	@media (max-width: 360px) { .path-node { padding-inline: 12px; } }
+	@media (prefers-reduced-motion: reduce) { .experience-label, .domain-guides-link { transition: none; } .domain-guides-link:hover, .domain-guides-link:focus-visible { transform: none; } }
+</style>
