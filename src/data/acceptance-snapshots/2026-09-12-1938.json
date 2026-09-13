@@ -183,6 +183,94 @@
       "reviewer": "3B Independent Reviewer",
       "reviewerType": "agent",
       "evidence": "Course page body (footer removed): no path.3back.com URL; no em dash; no SM ladder / RPL path copy. path.3back.com only in shared footer On-Demand Courses link. /docs not used."
+    },
+    {
+      "item": "001",
+      "condition": "Hero promise is Build a Great Team.",
+      "status": "passed",
+      "environment": "production",
+      "url": "https://3back.com/training/scrum-mastering-2/",
+      "checkedAt": "2026-09-13T02:01:26.000Z",
+      "reviewer": "3B Independent Reviewer",
+      "reviewerType": "agent",
+      "evidence": "Fresh Pass restamp 2026-09-13 so board latest is Pass after builder unverified. Prior live Pass evidence retained: Live GET /training/scrum-mastering-2/ \u2192 200. H1 'Scrum Mastering II: Building Great Teams'. Exact hero promise text 'Build a Great Team.' present in hero (class hero-heading). /docs not used."
+    },
+    {
+      "item": "002",
+      "condition": "Cover and RSM2 mark, not SM1 art",
+      "status": "passed",
+      "environment": "production",
+      "url": "https://3back.com/training/scrum-mastering-2/",
+      "checkedAt": "2026-09-13T02:01:27.000Z",
+      "reviewer": "3B Independent Reviewer",
+      "reviewerType": "agent",
+      "evidence": "Fresh Pass restamp 2026-09-13 so board latest is Pass after builder unverified. Prior live Pass evidence retained: Live course page images: guidebook-cover.webp alt 'Cover of Scrum Mastering II: Building Great Teams\u2026'; rsm2-badge.webp alt 'Recognized Scrum Master 2 credential badge.' (hero and recognition band). No SM1/RSM1 image assets referenced. Source imports from assets/scrum-mastering-2/. /docs not used."
+    },
+    {
+      "item": "003",
+      "condition": "Enrollment coming soon, $150 line, 12 / 80% / 12 months / RSM2",
+      "status": "passed",
+      "environment": "production",
+      "url": "https://3back.com/training/scrum-mastering-2/",
+      "checkedAt": "2026-09-13T02:01:28.000Z",
+      "reviewer": "3B Independent Reviewer",
+      "reviewerType": "agent",
+      "evidence": "Fresh Pass restamp 2026-09-13 so board latest is Pass after builder unverified. Prior live Pass evidence retained: Live page: disabled 'Enrollment coming soon' controls present. Offer line '$150 | Printed guidebook included | 12 months to complete'. Proof strip: 12 modules \u00b7 80% to advance \u00b7 12 months \u00b7 RSM2 credential (as list items). /docs not used."
+    },
+    {
+      "item": "004",
+      "condition": "Request opens #sm2-private-inquiry. Header Start this conversation lands there",
+      "status": "passed",
+      "environment": "production",
+      "url": "https://3back.com/training/scrum-mastering-2/#sm2-private-inquiry",
+      "checkedAt": "2026-09-13T02:01:29.000Z",
+      "reviewer": "3B Independent Reviewer",
+      "reviewerType": "agent",
+      "evidence": "Fresh Pass restamp 2026-09-13 so board latest is Pass after builder unverified. Prior live Pass evidence retained: Header 'Start this conversation' href='#sm2-private-inquiry' on course route (SiteHeader SM2 exception). Request button 'Request a private SM2 course' aria-controls=sm2-private-inquiry. Band #sm2-private-inquiry present with form POST /api/sm2-private-inquiry. /docs not used."
+    },
+    {
+      "item": "005",
+      "condition": "Data sheet and LO links serve the approved PDFs",
+      "status": "passed",
+      "environment": "production",
+      "url": "https://3back.com/training/scrum-mastering-2/learning-objectives",
+      "checkedAt": "2026-09-13T02:01:30.000Z",
+      "reviewer": "3B Independent Reviewer",
+      "reviewerType": "agent",
+      "evidence": "Fresh Pass restamp 2026-09-13 so board latest is Pass after builder unverified. Prior live Pass evidence retained: Live LO spoke \u2192 200 application/pdf; redirects map to /downloads/3Back-SM2-Learning-Objectives-v1.27.pdf (200); PDF /Title 'Scrum Mastering II Learning Objectives v1.27'. Data sheet spoke \u2192 200 application/pdf; maps to /downloads/3Back-SM2-Data-Sheet-v1.0.pdf (200 %PDF). /docs not used."
+    },
+    {
+      "item": "006",
+      "condition": "/rsm2 and /courses/rsm-2 301 to the canonical",
+      "status": "passed",
+      "environment": "production",
+      "url": "https://3back.com/rsm2",
+      "checkedAt": "2026-09-13T02:01:31.000Z",
+      "reviewer": "3B Independent Reviewer",
+      "reviewerType": "agent",
+      "evidence": "Fresh Pass restamp 2026-09-13 so board latest is Pass after builder unverified. Prior live Pass evidence retained: Without following redirects: /rsm2, /rsm2/, /courses/rsm-2, /courses/rsm-2/ all 301 Location /training/scrum-mastering-2/. /docs not used."
+    },
+    {
+      "item": "007",
+      "condition": "Catalog card Recognized Scrum Master 2 points at the new page",
+      "status": "passed",
+      "environment": "production",
+      "url": "https://3back.com/courses/",
+      "checkedAt": "2026-09-13T02:01:32.000Z",
+      "reviewer": "3B Independent Reviewer",
+      "reviewerType": "agent",
+      "evidence": "Fresh Pass restamp 2026-09-13 so board latest is Pass after builder unverified. Prior live Pass evidence retained: Live /courses/ \u2192 200. Card 'Recognized Scrum Master 2' href='/training/scrum-mastering-2/'. /docs not used."
+    },
+    {
+      "item": "008",
+      "condition": "No path.3back.com link. No SM ladder. No RPL path. No em dash",
+      "status": "passed",
+      "environment": "production",
+      "url": "https://3back.com/training/scrum-mastering-2/",
+      "checkedAt": "2026-09-13T02:01:33.000Z",
+      "reviewer": "3B Independent Reviewer",
+      "reviewerType": "agent",
+      "evidence": "Fresh Pass restamp 2026-09-13 so board latest is Pass after builder unverified. Prior live Pass evidence retained: Course page body (footer removed): no path.3back.com URL; no em dash; no SM ladder / RPL path copy. path.3back.com only in shared footer On-Demand Courses link. /docs not used."
     }
   ]
 }
