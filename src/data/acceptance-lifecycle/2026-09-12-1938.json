@@ -32,6 +32,12 @@
         "Production version unconfirmed: observations do not verify a particular release."
       ],
       "requiresHumanJudgment": true
+    },
+    {
+      "type": "accepted",
+      "at": "2026-09-13T03:20:13.383Z",
+      "actor": "Douglas Shimp",
+      "humanApproval": "Douglas Shimp accepted Scrum Mastering II course page on 2026-09-12. Increment 001–008 are not promoted. Standing 801–809 unchanged."
     }
   ]
 }
