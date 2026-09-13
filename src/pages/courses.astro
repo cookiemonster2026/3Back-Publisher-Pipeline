@@ -3,6 +3,9 @@ import type { ImageMetadata } from "astro";
 import SiteLayout from "../layouts/SiteLayout.astro";
 import { pageSeo } from "../seo/registry.mjs";
 import sswsBadge from "../assets/scaling-scrum-with-scrum/ssws-badge.png";
+import sftCatalogMark from "../assets/courses/sft-catalog-mark.png";
+import workshopsCatalogMark from "../assets/courses/workshops-catalog-mark.png";
+import domainGuidesCatalogMark from "../assets/courses/domain-guides-catalog-mark.png";
 
 interface Course {
 	name: string;
@@ -18,7 +21,7 @@ const attributions: Record<string, string> = {
 	"Scrum Alliance® Courses": "Certified ScrumMaster®, Advanced Certified ScrumMaster®, Certified Scrum Professional®, Certified Scrum Product Owner®, and Advanced Certified Scrum Product Owner® are certification marks of Scrum Alliance, Inc.",
 	"Scrum Guide Organization Courses": "Recognized Scrum Master 1, 2, and 3, Recognized Product Owner 1, 2, and 3, Recognized Scrum Guide, Industry Recognized Scrum Guide, and related Scaling marks are marks of the Scrum Guide Organization (SGO).",
 	"Kanban University Courses": "Scrum Kanban Practitioner and related marks are marks of Kanban University.",
-	"Additional 3Back Courses": "Adaptive Team Model, Dysfunction Mapping Practitioner, Leading Remote Scrum Teams, Scrum for Leadership, and Scrum for Teams are courses offered by 3Back.",
+	"Additional 3Back courses, workshops, and programs": "Scrum for Teams is a private 3Back course. Workshops and Domain Guides are not courses.",
 };
 
 const courseGroups: CourseGroup[] = [
@@ -34,14 +37,15 @@ const courseGroups: CourseGroup[] = [
 		{ name: "Recognized Scrum Master 1", href: "/training/scrum-mastering-1/", badge: badge("sg-rsm-1.png", "Recognized Scrum Master 1 badge", 150, 150) }, { name: "Recognized Scrum Master 2", href: "/training/scrum-mastering-2/", badge: badge("sg-rsm-2.png", "Recognized Scrum Master 2 badge", 150, 150) }, { name: "Recognized Scrum Master 3", href: "/training/scrum-mastering-3/", badge: badge("sg-rsm-3.png", "Recognized Scrum Master 3 badge", 150, 150) },
 		{ name: "Recognized Product Owner 1", href: "/training/product-ownership-1/", badge: badge("sg-rpo-1.png", "Recognized Product Owner 1 badge", 150, 150) }, { name: "Recognized Product Owner 2", href: "/training/product-ownership-2/", badge: badge("sg-rpo-2.png", "Recognized Product Owner 2 badge", 150, 150) }, { name: "Recognized Product Owner 3", href: "/training/product-ownership-3/", badge: badge("sg-rpo-3.png", "Recognized Product Owner 3 badge", 150, 150) },
 		{ name: "Scaling Scrum with Scrum", href: "/training/scaling-scrum-with-scrum/", badge: { src: sswsBadge, alt: "Scaling Scrum with Scrum SSwS designation badge", width: 150, height: 145 } },
-		{ name: "Recognized Scrum Guide", href: "/training/recognized-scrum-guide/", badge: badge("sg-recognized-scrum-guide.png", "Recognized Scrum Guide badge", 300, 294), note: "Individual" }, { name: "Domain Guides", href: "/domain-guides", wordMark: "Domain", note: "Organization" },
+		{ name: "Recognized Scrum Guide", href: "/training/recognized-scrum-guide/", badge: badge("sg-recognized-scrum-guide.png", "Recognized Scrum Guide badge", 300, 294), note: "Individual" }, { name: "Domain Guides", href: "/domain-guides", badge: { src: domainGuidesCatalogMark, alt: "3Back Domain Guides catalog mark", width: 300, height: 300 }, note: "Organization" },
 	] },
 	{ title: "Kanban University Courses", courses: [
 		{ name: "Scrum Better with Kanban", href: "/courses/scrum-better-with-kanban", badge: badge("ku-scrum-kanban-practitioner.png", "Kanban University Scrum Kanban Practitioner badge", 300, 183) },
 	] },
-	{ title: "Additional 3Back Courses", courses: [
-		{ name: "Adaptive Team Model", href: "/courses/adaptive-team-model", badge: badge("3back-adaptive-team-model.png", "3Back Adaptive Team Model badge", 300, 300) }, { name: "Dysfunction Mapping Practitioner", href: "/courses/dysfunction-mapping-practitioner", badge: badge("3back-dysfunction-mapping.png", "3Back Dysfunction Mapping Practitioner badge", 300, 300) }, { name: "Leading Remote Scrum Teams", href: "/courses/leading-remote-scrum-teams", badge: badge("3back-leading-remote-teams.png", "3Back Leading Remote Scrum Teams badge", 300, 300) },
-		{ name: "Scrum for Leadership", href: "/courses/scrum-for-leadership", badge: badge("3back-scrum-for-leadership.png", "3Back Scrum for Leadership badge", 300, 300) }, { name: "Scrum for Teams", href: "/courses/scrum-for-teams", badge: badge("3back-scrum-for-teams.png", "3Back Scrum for Teams badge", 300, 300) },
+	{ title: "Additional 3Back courses, workshops, and programs", courses: [
+		{ name: "Scrum for Teams", href: "/courses/scrum-for-teams", badge: { src: sftCatalogMark, alt: "Scrum for Teams catalog mark", width: 300, height: 300 } },
+		{ name: "Workshops", href: "/workshops", badge: { src: workshopsCatalogMark, alt: "3Back Workshops catalog mark", width: 300, height: 300 } },
+		{ name: "Domain Guides", href: "/domain-guides", badge: { src: domainGuidesCatalogMark, alt: "3Back Domain Guides catalog mark", width: 300, height: 300 } },
 	] },
 ];
 ---

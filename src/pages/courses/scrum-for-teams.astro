@@ -1,5 +1,119 @@
 ---
-import StubPage from "../../components/StubPage.astro";
+import { Image } from "astro:assets";
+import SiteLayout from "../../layouts/SiteLayout.astro";
 import { pageSeo } from "../../seo/registry.mjs";
+import cover from "../../assets/scrum-for-teams/exploring-scrum-cover.png";
+import sftMark from "../../assets/courses/sft-catalog-mark.png";
+const turnstileSiteKey = import.meta.env.PUBLIC_TURNSTILE_SITE_KEY ?? "";
 ---
-<StubPage name="Scrum for Teams" description="Scrum for Teams. Full page coming next." metadata={pageSeo["/courses/scrum-for-teams"]} />
+
+<SiteLayout metadata={pageSeo["/courses/scrum-for-teams"]}>
+<main id="main" class="sft-page">
+<section class="sft-hero"><div class="shell hero-shell">
+<nav class="breadcrumb" aria-label="Breadcrumb"><ol><li><a href="/">3Back</a></li><li><a href="/courses/">Courses</a></li><li aria-current="page">Scrum for Teams</li></ol></nav>
+<div class="hero-copy"><p class="eyebrow">Private course since 2004</p><h1>Scrum for Teams</h1><p class="lead">Give the whole team one practical way to organize product decisions, responsibilities, and daily work.</p><p class="origin"><strong>3Back’s original private course, taught since 2004.</strong> Foundational then. Still the right ground now.</p><p>The course is derived from <em>Exploring Scrum: The Fundamentals</em> and shaped to your organization and the needs of your teams.</p><p>3Back has been in this work since the founding of the Scrum Alliance. The people teaching it were in the Agile community as early as 1996.</p><p class="book-line">Dan Rawsthorne with Doug Shimp. Second edition.</p></div>
+<div class="hero-rail"><div class="hero-mark"><Image src={sftMark} alt="Scrum for Teams mark showing three team members on a shared line." width={180} widths={[120, 180, 240]} sizes="(max-width: 850px) 120px, 180px" /></div><aside class="ai-note" aria-labelledby="ai-note-title"><h2 id="ai-note-title">AI add-on</h2><p>A Scrum team now works with AI as a tool and as a team member. That is part of the team’s operating conditions and state. A course that leaves it out misses the point.</p><p>This course treats AI that way. The book does not. The add-on is current practice, taught against your work.</p></aside></div>
+<div class="facts" aria-label="Course facts"><p><strong>Typically two days.</strong> Private. On-site or virtual. Optional extra half-day for applied practice, mapping, and context so the work can take root. No exam. No badge.</p><button class="request-button" type="button" data-private-request-trigger aria-controls="sft-private-inquiry" aria-expanded="false">Request this course</button></div>
+</div></section>
+
+<section class="outcomes section-rule"><div class="shell"><div class="outcomes-heading"><p class="eyebrow">After the course</p><h2>What the team leaves with</h2><p>A shared foundation the team can use immediately, fitted to the work it is actually responsible for.</p></div><div class="outcomes-grid">
+<article><p class="section-number" aria-hidden="true">01</p><h3>Clearer responsibilities</h3><p>A shared account of who owns value, who coaches the team, who does the work, and how people outside the team participate.</p></article>
+<article><p class="section-number" aria-hidden="true">02</p><h3>A product the team can own</h3><p>A practical way to describe the product, order the backlog, and agree what done means in this organization.</p></article>
+<article><p class="section-number" aria-hidden="true">03</p><h3>Working inspection</h3><p>Planning, daily inspection, review, and adaptation centered on the work rather than status theater.</p></article>
+<article><p class="section-number" aria-hidden="true">04</p><h3>Visible next decisions</h3><p>A way to make progress, constraints, and unfinished work visible enough to support the next decision.</p></article>
+</div></div></section>
+
+<section class="course-frame section-rule"><div class="shell three-column">
+<article><p class="section-number" aria-hidden="true">01</p><h2>What this is</h2><p>A whole-team foundation in Scrum, shaped to your organization. People, Product, and Practices are the ground. The examples and constraints come from your work.</p></article>
+<article><p class="section-number" aria-hidden="true">02</p><h2>Who this is for</h2><p>Leaders sending an intact team, or teams that have to share one way of working. Right when Scrum is new, or when the framework is present and the work is not.</p></article>
+<article><p class="section-number" aria-hidden="true">03</p><h2>How it runs</h2><p>Two days with the team, in your context. The book is the ground, not a script. Add a half-day when you want applied mapping against live work so the practice can take root.</p></article>
+</div></section>
+
+<section class="ground"><div class="shell"><div class="ground-heading"><p class="eyebrow">The ground</p><h2>People. Product. Practices.</h2></div><div class="ground-grid">
+<article><h3>People.</h3><p>Who is on the team, including AI as a team member. Who owns the product. Who coaches. Who sits outside.</p></article>
+<article><h3>Product.</h3><p>What “product” means here, how the backlog is ordered, and what done has to mean when people and AI both touch the work.</p></article>
+<article><h3>Practices.</h3><p>Planning, the daily, review, and the agreements that let a sprint hold.</p></article>
+</div><p class="objectives-note">We shape the course to your organization and the needs of your teams. The learning objectives provide the baseline, not a fixed script.</p></div></section>
+
+<section class="book-section section-rule"><div class="shell book-grid"><div class="cover-wrap"><Image src={cover} alt="Cover of Exploring Scrum: The Fundamentals, second edition, by Dan Rawsthorne with Doug Shimp." width={330} widths={[180, 260, 330, 500]} sizes="(max-width: 700px) 190px, 280px" loading="lazy" /></div><div class="book-copy"><h2><em>Exploring Scrum: The Fundamentals.</em></h2><p>Dan Rawsthorne with Doug Shimp. Second edition. History and ground for the course. Not the product being sold.</p></div></div></section>
+
+<section class="closing-cta" aria-labelledby="closing-cta-title"><div class="shell closing-cta-grid"><div><p class="eyebrow">Private. Fitted to the work.</p><h2 id="closing-cta-title">Bring Scrum for Teams to your organization.</h2><p>Give an intact team shared ground for product decisions, responsibilities, and the practices it will use next.</p></div><div class="closing-action"><p><strong>Typically two days.</strong><br />On-site or virtual.<br />Optional applied half-day.</p><button class="request-button request-button-light" type="button" data-private-request-trigger aria-controls="sft-private-inquiry" aria-expanded="false">Request this course</button><div class="closing-resources"><p>Need details to review or share?</p><a href="/courses/scrum-for-teams/learning-objectives">Review the learning objectives</a><a href="/courses/scrum-for-teams-data-sheet">Download the course data sheet</a></div></div></div></section>
+
+<section id="sft-private-inquiry" class="private-inquiry" aria-labelledby="sft-private-inquiry-title" hidden><div class="shell private-inquiry-grid"><div class="request-copy"><h2 id="sft-private-inquiry-title">Request a private Scrum for Teams course</h2><p>Tell us the organization, the teams, and what has to change in the work. We will say whether this course fits, and how to shape it.</p></div><div>
+<form class="private-inquiry-form" action="/api/sft-private-inquiry" method="post" data-sft-private-form novalidate><div class="form-fields">
+<div class="field"><label for="sft-first-name">First name <span>Required</span></label><input id="sft-first-name" name="first_name" autocomplete="given-name" required maxlength="80" /></div>
+<div class="field"><label for="sft-last-name">Last name <span>Required</span></label><input id="sft-last-name" name="last_name" autocomplete="family-name" required maxlength="80" /></div>
+<div class="field"><label for="sft-email">Email <span>Required</span></label><input id="sft-email" name="email" type="email" autocomplete="email" required maxlength="254" /></div>
+<div class="field"><label for="sft-confirm-email">Email again <span>Required</span></label><input id="sft-confirm-email" name="confirm_email" type="email" autocomplete="email" required maxlength="254" /></div>
+<div class="field field-full"><label for="sft-organization">Organization <span>Required</span></label><input id="sft-organization" name="company_name" autocomplete="organization" required maxlength="160" /></div>
+<div class="field field-full"><label for="sft-note">What should we know? <span>Optional</span></label><textarea id="sft-note" name="note" rows="5" maxlength="4000"></textarea></div>
+<div class="field field-full"><label for="sft-phone">Phone <span>Optional</span></label><input id="sft-phone" name="phone" type="tel" autocomplete="tel" maxlength="60" /></div>
+</div><div class="turnstile-wrap">{turnstileSiteKey ? <div class="cf-turnstile" data-sitekey={turnstileSiteKey}></div> : <p class="form-error">This form is not configured yet.</p>}</div><p id="sft-private-form-error" class="form-error" role="alert" tabindex="-1" data-form-error hidden></p><button class="submit-button" type="submit" disabled={!turnstileSiteKey}>Request this course</button></form>
+<div class="form-success" role="status" tabindex="-1" data-form-success hidden><h3>We received the request.</h3><p>Watch for mail from sft-private@3back.com, including a spam folder.</p></div>
+</div></div></section>
+</main>
+</SiteLayout>
+
+<script is:inline src="https://challenges.cloudflare.com/turnstile/v0/api.js" async defer></script>
+<script>
+declare global { interface Window { turnstile?: { reset(): void } } }
+const inquirySection = document.querySelector("#sft-private-inquiry");
+const inquiryForm = document.querySelector("[data-sft-private-form]");
+const inquiryTriggers = document.querySelectorAll('[data-private-request-trigger], a[href="#sft-private-inquiry"]');
+if (inquirySection instanceof HTMLElement && inquiryForm instanceof HTMLFormElement) {
+ const error = inquiryForm.querySelector("[data-form-error]"); const success = inquirySection.querySelector("[data-form-success]"); const button = inquiryForm.querySelector("button[type='submit']"); const firstName = inquiryForm.querySelector<HTMLInputElement>("[name='first_name']"); const email = inquiryForm.querySelector<HTMLInputElement>("[name='email']"); const confirmEmail = inquiryForm.querySelector<HTMLInputElement>("[name='confirm_email']");
+ const focusFirstName = () => window.setTimeout(() => firstName?.focus({ preventScroll: true }), 350);
+ const openInquiry = (event?: Event) => { if (event) event.preventDefault(); inquirySection.hidden = false; inquiryTriggers.forEach((trigger) => { if (trigger.hasAttribute("aria-controls")) trigger.setAttribute("aria-expanded", "true"); }); inquirySection.scrollIntoView({ behavior: "smooth", block: "start" }); focusFirstName(); };
+ inquiryTriggers.forEach((trigger) => trigger.addEventListener("click", openInquiry));
+ const validateEmails = () => { if (email && confirmEmail) confirmEmail.setCustomValidity(email.value && confirmEmail.value && email.value !== confirmEmail.value ? "Email addresses must match." : ""); };
+ email?.addEventListener("input", validateEmails); confirmEmail?.addEventListener("input", validateEmails);
+ inquiryForm.addEventListener("submit", async (event) => { event.preventDefault(); validateEmails(); if (!(error instanceof HTMLElement) || !(success instanceof HTMLElement) || !(button instanceof HTMLButtonElement)) return; error.hidden = true; inquiryForm.removeAttribute("aria-describedby"); if (!inquiryForm.reportValidity()) return; button.disabled = true; button.textContent = "Sending..."; try { const response = await fetch(inquiryForm.action, { method: "POST", body: new FormData(inquiryForm), headers: { Accept: "application/json" } }); const result = await response.json().catch(() => ({})); if (!response.ok) throw new Error(typeof result.error === "string" ? result.error : "We could not send your request. Please try again."); inquiryForm.reset(); inquiryForm.hidden = true; success.hidden = false; success.focus(); } catch (submissionError) { error.textContent = submissionError instanceof Error ? submissionError.message : "We could not send your request. Please try again."; error.hidden = false; inquiryForm.setAttribute("aria-describedby", error.id); error.focus(); window.turnstile?.reset(); } finally { if (!inquiryForm.hidden) { button.disabled = false; button.textContent = "Request this course"; } } });
+ if (window.location.hash === "#sft-private-inquiry") { openInquiry(); window.addEventListener("load", focusFirstName, { once: true }); }
+}
+</script>
+
+<style>
+.sft-page{overflow-wrap:break-word}.sft-hero{padding:28px 0 0}.hero-shell{display:grid;grid-template-columns:minmax(0,1.25fr) minmax(300px,.75fr);column-gap:clamp(44px,7vw,100px)}.breadcrumb{grid-column:1/-1;margin-bottom:50px;font-size:.875rem}.breadcrumb ol{display:flex;flex-wrap:wrap;gap:8px 16px;list-style:none;margin:0;padding:0}.breadcrumb li+li:before{content:"/";margin-right:16px;color:var(--slate)}.breadcrumb a{text-underline-offset:3px}.hero-copy{max-width:760px;padding-bottom:58px}.eyebrow,.note-label,.section-number{color:var(--amber-text);font-size:.8125rem;font-weight:700;letter-spacing:.1em;text-transform:uppercase}.eyebrow{margin:0 0 12px}h1{max-width:750px;margin-bottom:22px;font-size:clamp(3.5rem,8vw,7rem);line-height:.98;letter-spacing:-.035em}.hero-copy p{max-width:710px;font-size:1.0625rem;line-height:1.58}.hero-copy .lead{max-width:700px;margin-bottom:24px;font-size:clamp(1.4rem,2.35vw,2rem);font-weight:700;line-height:1.28}.book-line{margin:28px 0 0;color:var(--text-secondary);font-size:.9375rem!important;font-weight:600}.ai-note{align-self:end;margin-bottom:58px;padding:28px 0 2px 28px;border-left:4px solid var(--amber)}.ai-note .note-label{margin:0 0 12px}.ai-note h2{max-width:330px;margin-bottom:18px;font-size:clamp(1.65rem,2.7vw,2.2rem);line-height:1.12}.ai-note p{font-size:1rem;line-height:1.55}.facts{grid-column:1/-1;display:grid;grid-template-columns:minmax(0,1fr) auto;gap:28px;align-items:center;padding:27px 0;border-block:1px solid var(--rule)}.facts p{max-width:900px;margin:0;font-size:1rem;line-height:1.55}.request-button,.submit-button{display:inline-flex;align-items:center;justify-content:center;min-height:48px;padding:11px 20px;border:2px solid var(--amber);background:var(--amber);color:var(--charcoal);font:inherit;font-weight:700;cursor:pointer}.request-button:hover,.request-button:focus-visible,.submit-button:hover,.submit-button:focus-visible{border-color:var(--charcoal);background:var(--charcoal);color:var(--paper)}.course-frame{padding:78px 0}.three-column{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));border-top:3px solid var(--amber)}.three-column article{padding:26px 34px 0 0}.three-column article+article{padding-left:34px;border-left:1px solid var(--rule)}.section-number{margin:0 0 26px}.three-column h2{margin-bottom:16px;font-size:clamp(1.65rem,2.5vw,2.2rem)}.three-column p:last-child{margin:0;font-size:1.0625rem;line-height:1.58}.ground{padding:76px 0;background:var(--reading)}.ground-heading{display:grid;grid-template-columns:minmax(180px,.48fr) minmax(0,1fr);gap:50px;align-items:end;margin-bottom:38px}.ground-heading .eyebrow{margin-bottom:7px}.ground-heading h2{margin:0;font-size:clamp(2.25rem,4.2vw,4rem);letter-spacing:-.025em}.ground-grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));border-top:1px solid var(--charcoal)}.ground-grid article{padding:30px 34px 16px 0}.ground-grid article+article{padding-left:34px;border-left:1px solid var(--rule)}.ground-grid h3{margin-bottom:18px;font-size:1.65rem}.ground-grid p{margin:0;font-size:1.0625rem;line-height:1.58}.objectives-note{max-width:780px;margin:42px 0 0;padding-top:22px;border-top:1px solid var(--rule);color:var(--text-secondary);font-size:1rem;font-weight:600}.book-section{padding:78px 0}.book-grid{display:grid;grid-template-columns:minmax(210px,330px) minmax(0,670px);gap:clamp(48px,9vw,120px);align-items:center}.cover-wrap{justify-self:center}.cover-wrap img{display:block;width:min(280px,100%);height:auto;box-shadow:0 18px 40px rgb(29 36 33/16%)}.book-copy h2{max-width:610px;margin-bottom:20px;font-size:clamp(2rem,4vw,3.35rem)}.book-copy p:last-child{max-width:630px;margin:0;font-size:1.125rem;line-height:1.65}.private-inquiry{padding:78px 0;scroll-margin-top:24px;background:var(--charcoal);color:var(--paper)}.private-inquiry-grid{display:grid;grid-template-columns:minmax(0,.8fr) minmax(380px,1fr);gap:clamp(50px,8vw,110px);align-items:start}.request-copy{padding-top:20px}.request-copy .eyebrow{color:var(--amber)}.request-copy h2{max-width:520px;font-size:clamp(2.3rem,4.7vw,4.4rem);line-height:1.04}.request-copy p:last-child{max-width:500px;font-size:1.125rem;line-height:1.62}.private-inquiry-form,.form-success{padding:clamp(26px,4vw,42px);border-top:4px solid var(--amber);background:var(--paper);color:var(--charcoal)}.form-fields{display:grid;grid-template-columns:1fr 1fr;gap:20px}.field{display:grid;gap:7px}.field-full{grid-column:1/-1}.field label{font-size:.875rem;font-weight:700}.field label span{color:var(--text-secondary);font-size:.75rem;font-weight:600;letter-spacing:.03em;text-transform:uppercase}.field input,.field textarea{width:100%;padding:12px 13px;border:1px solid #a9ada6;border-radius:0;background:#fff;color:var(--charcoal);font:inherit}.field textarea{resize:vertical}.turnstile-wrap{min-height:65px;margin-top:24px}.form-error{margin:0 0 18px;color:#9e2a18;font-weight:600}.submit-button{width:100%}.submit-button:disabled{cursor:not-allowed;opacity:.6}.form-success h3{font-size:1.75rem}.form-success p{margin-bottom:0}.quiet-links{padding:30px 0 38px;border-bottom:1px solid var(--rule)}.quiet-links .shell{display:flex;flex-wrap:wrap;gap:14px 34px}.quiet-links a{color:var(--charcoal);font-weight:700;text-underline-offset:5px;text-decoration-color:var(--amber);text-decoration-thickness:2px}
+@media(max-width:850px){.hero-shell{grid-template-columns:1fr}.hero-copy{padding-bottom:30px}.ai-note{margin:0 0 46px;max-width:690px}.three-column,.ground-grid{grid-template-columns:1fr}.three-column article,.three-column article+article,.ground-grid article,.ground-grid article+article{padding:24px 0;border-left:0;border-bottom:1px solid var(--rule)}.section-number{margin-bottom:12px}.ground-heading{grid-template-columns:1fr;gap:6px}.private-inquiry-grid{grid-template-columns:1fr}}
+@media(max-width:600px){.sft-hero{padding-top:18px}.breadcrumb{margin-bottom:36px}.breadcrumb ol{gap:5px 8px}.breadcrumb li+li:before{margin-right:8px}h1{font-size:clamp(3rem,16vw,4.5rem)}.hero-copy .lead{font-size:1.4rem}.ai-note{padding:22px 0 0 20px}.facts{grid-template-columns:1fr}.request-button{width:100%}.course-frame,.ground,.book-section,.private-inquiry{padding:52px 0}.book-grid{grid-template-columns:1fr;gap:34px}.cover-wrap img{width:190px}.private-inquiry-grid{gap:32px}.form-fields{grid-template-columns:1fr}.field-full{grid-column:auto}.quiet-links .shell{display:grid}}
+@media(prefers-reduced-motion:reduce){.request-button,.submit-button{transition:none}}
+
+/* Conversion revision */
+.hero-copy .origin{margin-bottom:20px}
+.hero-rail{align-self:end;margin-bottom:58px}
+.hero-mark{display:flex;justify-content:center;margin:0 0 28px}
+.hero-mark img{display:block;width:clamp(120px,14vw,180px);height:auto}
+.hero-rail .ai-note{margin:0}
+.request-button,.submit-button{transition:background-color .18s ease,color .18s ease,border-color .18s ease,transform .18s ease}
+.request-button:hover,.request-button:focus-visible,.submit-button:hover,.submit-button:focus-visible{transform:translateY(-2px)}
+.outcomes{padding:78px 0;background:var(--charcoal);color:var(--paper)}
+.outcomes-heading{display:grid;grid-template-columns:minmax(180px,.48fr) minmax(0,1fr);gap:18px 50px;align-items:end;margin-bottom:42px}
+.outcomes-heading .eyebrow{grid-row:1/3;color:var(--amber)}
+.outcomes-heading h2{margin:0;color:var(--paper);font-size:clamp(2.35rem,4.5vw,4.25rem);line-height:1.02}
+.outcomes-heading>p:last-child{grid-column:2;max-width:720px;margin:0;color:#d7d6cf;font-size:1.125rem;line-height:1.55}
+.outcomes-grid{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));border-top:3px solid var(--amber)}
+.outcomes-grid article{padding:27px 25px 8px 0}
+.outcomes-grid article+article{padding-left:25px;border-left:1px solid rgb(247 243 235/20%)}
+.outcomes-grid h3{margin-bottom:14px;color:var(--paper);font-size:1.35rem;line-height:1.2}
+.outcomes-grid p:last-child{margin:0;color:#d7d6cf;font-size:1rem;line-height:1.55}
+.ground-grid{border-top:3px solid var(--amber)}
+.objectives-note{max-width:none;width:100%;border-top-color:var(--charcoal)}
+.closing-cta{padding:76px 0;border-top:4px solid var(--amber);background:var(--charcoal);color:var(--paper)}
+.closing-cta-grid{display:grid;grid-template-columns:minmax(0,1fr) minmax(240px,.36fr);gap:clamp(46px,8vw,110px);align-items:end}
+.closing-cta .eyebrow{color:var(--amber)}
+.closing-cta h2{max-width:780px;margin-bottom:20px;color:var(--paper);font-size:clamp(2.4rem,5vw,4.8rem);line-height:1.02}
+.closing-cta-grid>div>p:last-child{max-width:700px;margin-bottom:0;color:#d7d6cf;font-size:1.125rem;line-height:1.55}
+.closing-action{padding-left:28px;border-left:1px solid rgb(247 243 235/22%)}
+.closing-action p{margin:0 0 24px;color:var(--paper);font-size:1rem;line-height:1.65}
+.request-button-light:hover,.request-button-light:focus-visible{border-color:var(--paper);background:var(--paper);color:var(--charcoal)}
+.closing-resources{display:grid;gap:9px;margin-top:30px;padding-top:24px;border-top:1px solid rgb(247 243 235/22%)}
+.closing-resources p{margin:0 0 3px;color:#d7d6cf;font-size:.875rem;font-weight:700}
+.closing-resources a{width:max-content;max-width:100%;color:var(--paper);font-weight:700;text-decoration-color:var(--amber);text-decoration-thickness:2px;text-underline-offset:5px;transition:color .18s ease,text-underline-offset .18s ease}
+.closing-resources a:hover,.closing-resources a:focus-visible{color:var(--amber);text-underline-offset:8px}
+.quiet-links a{transition:color .18s ease,text-underline-offset .18s ease}
+.quiet-links a:hover,.quiet-links a:focus-visible{color:var(--amber-text);text-underline-offset:8px}
+@media(max-width:1000px){.outcomes-grid{grid-template-columns:repeat(2,minmax(0,1fr))}.outcomes-grid article:nth-child(3){padding-left:0;border-left:0;border-top:1px solid rgb(247 243 235/20%)}.outcomes-grid article:nth-child(4){border-top:1px solid rgb(247 243 235/20%)}}
+@media(max-width:850px){.hero-rail{display:grid;grid-template-columns:140px minmax(0,1fr);gap:28px;align-items:center;margin-bottom:46px}.hero-mark{margin:0}.outcomes-heading{grid-template-columns:1fr;gap:6px}.outcomes-heading .eyebrow{grid-row:auto}.outcomes-heading>p:last-child{grid-column:auto;margin-top:12px}.closing-cta-grid{grid-template-columns:1fr}.closing-action{padding:0;border-left:0}.closing-action p{margin-top:6px}}
+@media(max-width:600px){.hero-rail{grid-template-columns:96px minmax(0,1fr);gap:18px}.hero-mark img{width:96px}.outcomes,.closing-cta{padding:52px 0}.outcomes-grid{grid-template-columns:1fr}.outcomes-grid article,.outcomes-grid article+article,.outcomes-grid article:nth-child(3),.outcomes-grid article:nth-child(4){padding:24px 0;border-left:0;border-top:1px solid rgb(247 243 235/20%)}.outcomes-grid article:first-child{border-top:0}}
+@media(prefers-reduced-motion:reduce){.request-button,.submit-button,.quiet-links a,.closing-resources a{transition:none}.request-button:hover,.request-button:focus-visible,.submit-button:hover,.submit-button:focus-visible{transform:none}}
+</style>
