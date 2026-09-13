@@ -9,7 +9,8 @@ const isSm2 = currentPath === "/training/scrum-mastering-2" || currentPath === "
 const isSm3 = currentPath === "/training/scrum-mastering-3" || currentPath === "/training/scrum-mastering-3/";
 const isPo1 = currentPath === "/training/product-ownership-1" || currentPath === "/training/product-ownership-1/";
 const isPo2 = currentPath === "/training/product-ownership-2" || currentPath === "/training/product-ownership-2/";
-const isConversationFunnel = isDomainGuides || isWhyDomainExpertise || isCsm || isCspo || isSm1 || isSm2 || isSm3 || isPo1 || isPo2;
+const isPo3 = currentPath === "/training/product-ownership-3" || currentPath === "/training/product-ownership-3/";
+const isConversationFunnel = isDomainGuides || isWhyDomainExpertise || isCsm || isCspo || isSm1 || isSm2 || isSm3 || isPo1 || isPo2 || isPo3;
 const conversationHref = isDomainGuides
 	? "#next-step"
 	: isWhyDomainExpertise
@@ -26,7 +27,9 @@ const conversationHref = isDomainGuides
 						? "#po1-private-inquiry"
 						: isPo2
 							? "#po2-private-inquiry"
-							: "/contact/";
+							: isPo3
+								? "#po3-private-inquiry"
+								: "/contact/";
 const conversationLabel = isConversationFunnel ? "Start this conversation" : "Start a Conversation";
 ---
 

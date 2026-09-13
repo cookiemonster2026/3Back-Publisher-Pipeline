@@ -1,0 +1,100 @@
+{
+  "records": [
+    {
+      "item": "001",
+      "condition": "Hero promise is Leading Agile Organizations. Quiet line Builds on Product Ownership II.",
+      "status": "unverified",
+      "environment": "production",
+      "url": "https://3back.com/training/product-ownership-3/",
+      "checkedAt": "2026-09-13T09:36:44-05:00",
+      "reviewer": "Codex Builder",
+      "reviewerType": "agent",
+      "reason": "changed",
+      "evidence": "New increment row requires independent review."
+    },
+    {
+      "item": "002",
+      "condition": "Cover and RPO3 mark, not PO1, PO2, or SM1 art",
+      "status": "unverified",
+      "environment": "production",
+      "url": "https://3back.com/training/product-ownership-3/",
+      "checkedAt": "2026-09-13T09:36:44-05:00",
+      "reviewer": "Codex Builder",
+      "reviewerType": "agent",
+      "reason": "changed",
+      "evidence": "New increment row requires independent review."
+    },
+    {
+      "item": "003",
+      "condition": "Enrollment coming soon, $150 line, 13 / 80% / 12 months / RPO3",
+      "status": "unverified",
+      "environment": "production",
+      "url": "https://3back.com/training/product-ownership-3/",
+      "checkedAt": "2026-09-13T09:36:44-05:00",
+      "reviewer": "Codex Builder",
+      "reviewerType": "agent",
+      "reason": "changed",
+      "evidence": "New increment row requires independent review."
+    },
+    {
+      "item": "004",
+      "condition": "Request opens `#po3-private-inquiry`. Header Start this conversation lands there",
+      "status": "unverified",
+      "environment": "production",
+      "url": "https://3back.com/training/product-ownership-3/#po3-private-inquiry",
+      "checkedAt": "2026-09-13T09:36:44-05:00",
+      "reviewer": "Codex Builder",
+      "reviewerType": "agent",
+      "reason": "changed",
+      "evidence": "New increment row requires independent review."
+    },
+    {
+      "item": "005",
+      "condition": "Data sheet and LO links serve the approved PDFs",
+      "status": "unverified",
+      "environment": "production",
+      "url": "https://3back.com/training/product-ownership-3/learning-objectives",
+      "checkedAt": "2026-09-13T09:36:44-05:00",
+      "reviewer": "Codex Builder",
+      "reviewerType": "agent",
+      "reason": "changed",
+      "evidence": "New increment row requires independent review."
+    },
+    {
+      "item": "006",
+      "condition": "`/rpo3` and `/courses/rpo-3` 301 to the canonical",
+      "status": "unverified",
+      "environment": "production",
+      "url": "https://3back.com/rpo3",
+      "checkedAt": "2026-09-13T09:36:44-05:00",
+      "reviewer": "Codex Builder",
+      "reviewerType": "agent",
+      "reason": "changed",
+      "evidence": "New increment row requires independent review."
+    },
+    {
+      "item": "007",
+      "condition": "Catalog card Recognized Product Owner 3 points at the new page",
+      "status": "unverified",
+      "environment": "production",
+      "url": "https://3back.com/courses/",
+      "checkedAt": "2026-09-13T09:36:44-05:00",
+      "reviewer": "Codex Builder",
+      "reviewerType": "agent",
+      "reason": "changed",
+      "evidence": "New increment row requires independent review."
+    },
+    {
+      "item": "008",
+      "condition": "No path.3back.com link. No ladder. No em dash. No SGO prerequisite paragraph. No RSM-path line",
+      "status": "unverified",
+      "environment": "production",
+      "url": "https://3back.com/training/product-ownership-3/",
+      "checkedAt": "2026-09-13T09:36:44-05:00",
+      "reviewer": "Codex Builder",
+      "reviewerType": "agent",
+      "reason": "changed",
+      "evidence": "New increment row requires independent review."
+    }
+  ]
+}

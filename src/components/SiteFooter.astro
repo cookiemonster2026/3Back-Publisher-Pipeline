@@ -1,3 +1,7 @@
+---
+const isProductOwnershipThree = Astro.url.pathname.replace(/\/+$/, "") === "/training/product-ownership-3";
+---
+
 <footer class="site-footer">
 	<div class="shell footer-grid">
 		<div class="footer-brand">
@@ -15,7 +19,7 @@
 		</div>
 		<div>
 			<p class="footer-heading">Execution</p>
-			<ul><li><a href="/workshops">Workshops</a></li><li><a href="/domain-guides">Domain Guides</a></li><li><a href="/training">Training</a></li><li><a href="/events">Events</a></li><li><a href="https://path.3back.com">On-Demand Courses</a></li></ul>
+			<ul><li><a href="/workshops">Workshops</a></li><li><a href="/domain-guides">Domain Guides</a></li><li><a href="/training">Training</a></li><li><a href="/events">Events</a></li>{!isProductOwnershipThree && <li><a href="https://path.3back.com">On-Demand Courses</a></li>}</ul>
 		</div>
 		<div>
 			<p class="footer-heading">Company</p>
