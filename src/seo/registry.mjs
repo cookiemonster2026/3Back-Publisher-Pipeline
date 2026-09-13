@@ -110,7 +110,7 @@ export const STAFF_DOCS = [
 	},
 	...acceptanceSnapshots.flatMap(snapshot => [
 		{ slug: `acceptance-results/${snapshot.id}`, label: "Website Acceptance Increment", source: `src/data/acceptance-snapshots/${snapshot.id}.md`, path: snapshot.path.replace(/\/$/, "") },
-		...(snapshot.brief ? [{ slug: `acceptance-results/${snapshot.id}/brief`, label: snapshot.brief.heading, source: `src/data/acceptance-snapshots/${snapshot.id}.md`, path: snapshot.brief.path.replace(/\/$/, "") }] : []),
+		...(snapshot.brief ? [{ slug: `acceptance-results/${snapshot.id}/brief`, label: snapshot.brief.heading, title: "Working brief | 3Back", source: `src/data/acceptance-snapshots/${snapshot.id}.md`, path: snapshot.brief.path.replace(/\/$/, "") }] : []),
 	]),
 	{
 		"slug": "backlog",
@@ -134,7 +134,7 @@ export const STAFF_DOCS = [
 
 /** @type {Readonly<Record<string, SeoMetadata>>} */
 export const pageSeo = Object.freeze({
-	...Object.fromEntries(STAFF_DOCS.map(({path,label}) => [path, {status: "complete", path, title: `${label} | 3Back`, description: `${label}. Staff reading copy for 3Back.`, indexability: "noindex, nofollow", social: {title: `${label} | 3Back`, description: `${label}. Staff reading copy for 3Back.`, type: "website"}}])),
+	...Object.fromEntries(STAFF_DOCS.map(({path,label,title}) => [path, {status: "complete", path, title: title ?? `${label} | 3Back`, description: `${label}. Staff reading copy for 3Back.`, indexability: "noindex, nofollow", social: {title: title ?? `${label} | 3Back`, description: `${label}. Staff reading copy for 3Back.`, type: "website"}}])),
 	"/papers/how-3back-approaches-learning": {
 	  "status": "complete",
 	  "path": "/papers/how-3back-approaches-learning",
@@ -213,6 +213,216 @@ export const pageSeo = Object.freeze({
 	      }
 	    ]
 	  }
+	},
+	"/training/scrum-mastering-2": {
+		"status": "complete",
+		"path": "/training/scrum-mastering-2",
+		"title": "Scrum Mastering II Course | RSM2 Credential | 3Back",
+		"description": "Study Scrum Mastering II at your own pace. Demonstrate the learning objectives and earn the RSM2 credential recognized by the Scrum Guide Organization.",
+		"indexability": "index, follow",
+		"productionRobots": "index, follow, max-image-preview:large, max-snippet:-1",
+		"social": {
+			"title": "Scrum Mastering II: Earn the RSM2 Credential",
+			"description": "Build a Great Team. Study at your own pace, demonstrate the SM2 learning objectives, and earn recognition on ScrumGuide.org.",
+			"type": "website",
+			"image": {
+				"src": "/social/scrum-mastering-2.png",
+				"alt": "Scrum Mastering II course cover and Recognized Scrum Master 2 credential badge on a 3Back-branded background.",
+				"width": 1200,
+				"height": 630,
+				"type": "image/png"
+			}
+		},
+		"structuredData": {
+			"@context": "https://schema.org",
+			"@graph": [
+				{
+					"@type": "Organization",
+					"@id": organizationId,
+					sameAs: organizationSameAs,
+					legalName: "3Back, LLC",
+					alternateName: ["3 Back", "Three Back", "3Back LLC", "3 Back LLC", "Three Back LLC"],
+					"name": "3Back",
+					"url": "https://3back.com/"
+				},
+				{
+					"@type": "WebSite",
+					"@id": websiteId,
+					alternateName: ["3 Back", "Three Back", "3Back LLC", "3 Back LLC", "Three Back LLC", "3back.com"],
+					"name": "3Back",
+					"url": "https://3back.com/",
+					"publisher": {
+						"@id": organizationId
+					}
+				},
+				{
+					"@type": "WebPage",
+					"@id": "https://3back.com/training/scrum-mastering-2/#webpage",
+					"name": "Scrum Mastering II: Building Great Teams",
+					"url": "https://3back.com/training/scrum-mastering-2/",
+					"description": "Study Scrum Mastering II at your own pace. Demonstrate the learning objectives and earn the RSM2 credential recognized by the Scrum Guide Organization.",
+					"isPartOf": {
+						"@id": websiteId
+					},
+					"publisher": {
+						"@id": organizationId
+					},
+					"mainEntity": {
+						"@id": "https://3back.com/training/scrum-mastering-2/#course"
+					},
+					"breadcrumb": {
+						"@id": "https://3back.com/training/scrum-mastering-2/#breadcrumb"
+					},
+					"image": "https://3back.com/social/scrum-mastering-2.png"
+				},
+				{
+					"@type": "BreadcrumbList",
+					"@id": "https://3back.com/training/scrum-mastering-2/#breadcrumb",
+					"itemListElement": [
+						{
+							"@type": "ListItem",
+							"position": 1,
+							"name": "3Back",
+							"item": "https://3back.com/"
+						},
+						{
+							"@type": "ListItem",
+							"position": 2,
+							"name": "Training",
+							"item": "https://3back.com/training"
+						},
+						{
+							"@type": "ListItem",
+							"position": 3,
+							"name": "Scrum Mastering II",
+							"item": "https://3back.com/training/scrum-mastering-2/"
+						}
+					]
+				},
+				{
+					"@type": "Course",
+					"@id": "https://3back.com/training/scrum-mastering-2/#course",
+					"name": "Scrum Mastering II: Building Great Teams",
+					"courseCode": "RSM2",
+					"description": "Study Scrum Mastering II at your own pace. Demonstrate the learning objectives and earn the RSM2 credential recognized by the Scrum Guide Organization.",
+					"url": "https://3back.com/training/scrum-mastering-2/",
+					"provider": {
+						"@id": organizationId
+					},
+					"inLanguage": "en-US",
+					"interactivityType": "mixed",
+					"isAccessibleForFree": false,
+					"assesses": "Demonstrated understanding of the official Scrum Mastering II learning objectives.",
+					"educationalCredentialAwarded": {
+						"@id": "https://3back.com/training/scrum-mastering-2/#credential"
+					},
+					"isBasedOn": {
+						"@id": "https://3back.com/training/scrum-mastering-2/#book"
+					},
+					"hasCourseInstance": {
+						"@id": "https://3back.com/training/scrum-mastering-2/#instance"
+					},
+					"syllabusSections": [
+						{
+							"@type": "Syllabus",
+							"name": "Scrum Refresher",
+							"position": 1
+						},
+						{
+							"@type": "Syllabus",
+							"name": "History, Values, and Principles",
+							"position": 2
+						},
+						{
+							"@type": "Syllabus",
+							"name": "Great Scrum Teams",
+							"position": 3
+						},
+						{
+							"@type": "Syllabus",
+							"name": "Basic Facilitation Techniques",
+							"position": 4
+						},
+						{
+							"@type": "Syllabus",
+							"name": "Coaching Techniques",
+							"position": 5
+						},
+						{
+							"@type": "Syllabus",
+							"name": "Facilitating Formal Meetings",
+							"position": 6
+						},
+						{
+							"@type": "Syllabus",
+							"name": "Vision and Product Backlog",
+							"position": 7
+						},
+						{
+							"@type": "Syllabus",
+							"name": "Refining the Product Backlog",
+							"position": 8
+						},
+						{
+							"@type": "Syllabus",
+							"name": "Definition of Done",
+							"position": 9
+						},
+						{
+							"@type": "Syllabus",
+							"name": "Team Impediments",
+							"position": 10
+						},
+						{
+							"@type": "Syllabus",
+							"name": "Organizational Impediments",
+							"position": 11
+						},
+						{
+							"@type": "Syllabus",
+							"name": "Scaling",
+							"position": 12
+						}
+					],
+					"image": "https://3back.com/social/scrum-mastering-2.png"
+				},
+				{
+					"@type": "CourseInstance",
+					"@id": "https://3back.com/training/scrum-mastering-2/#instance",
+					"name": "Scrum Mastering II self-paced course",
+					"courseMode": "online",
+					"inLanguage": "en-US"
+				},
+				{
+					"@type": "EducationalOccupationalCredential",
+					"@id": "https://3back.com/training/scrum-mastering-2/#credential",
+					"name": "Recognized Scrum Master 2 (RSM2)",
+					"description": "Recognizes demonstrated understanding of the Scrum Mastering II learning objectives.",
+					"competencyRequired": "Recognizes demonstrated understanding of the Scrum Mastering II learning objectives.",
+					"credentialCategory": "Recognition credential",
+					"recognizedBy": {
+						"@type": "Organization",
+						"name": "Scrum Guide Organization",
+						"url": "https://scrumguide.org/"
+					}
+				},
+				{
+					"@type": "Book",
+					"@id": "https://3back.com/training/scrum-mastering-2/#book",
+					"name": "Scrum Mastering II: Building Great Teams",
+					"author": [
+						{
+							"@type": "Person",
+							"name": "Dan Rawsthorne"
+						},
+						{
+							"@type": "Person",
+							"name": "Doug Shimp"
+						}
+					]
+				}
+			]
+		}
 	},
 	"/training/scrum-mastering-1": {
 		"status": "complete",
@@ -1143,7 +1353,6 @@ export const pageSeo = Object.freeze({
 		},
 	},
 	"/courses/rsm-1": courseStub("/courses/rsm-1", "Recognized Scrum Master 1"),
-	"/courses/rsm-2": courseStub("/courses/rsm-2", "Recognized Scrum Master 2"),
 	"/courses/rsm-3": courseStub("/courses/rsm-3", "Recognized Scrum Master 3"),
 	"/courses/rpo-2": courseStub("/courses/rpo-2", "Recognized Product Owner 2"),
 	"/courses/rpo-3": courseStub("/courses/rpo-3", "Recognized Product Owner 3"),
@@ -1202,6 +1411,6 @@ export function normalizePath(pathname) {
 /** @param {string} pathname */
 export function canonicalUrl(pathname) {
 	const normalizedPath = normalizePath(pathname);
-	if (normalizedPath === "/training/scrum-mastering-1" || normalizedPath === "/training/product-ownership-1") return `${SITE_ORIGIN}${normalizedPath}/`;
+	if (normalizedPath === "/training/scrum-mastering-1" || normalizedPath === "/training/scrum-mastering-2" || normalizedPath === "/training/product-ownership-1") return `${SITE_ORIGIN}${normalizedPath}/`;
 	return pathname === "/" ? `${SITE_ORIGIN}/` : `${SITE_ORIGIN}${pathname}`;
 }
