@@ -4,7 +4,7 @@ This file is the shared verification source for future website changes. It conta
 
 ## Acceptance Testing Readiness
 
-000 — Initialize: The Independent AI Reviewer reads Reviewer Agents.md and confirms readiness to perform according to its instructions. At each handoff the builder resets this item to R Review. The reviewer records Pass or Fail; on Fail, identifies the blocker and stops. This readiness result is separate from the 74 live-site verdicts.
+000 — Initialize: The Independent AI Reviewer reads Reviewer Agents.md and confirms readiness to perform according to its instructions. At each handoff the builder resets this item to R Review. The reviewer records Pass or Fail; on Fail, identifies the blocker and stops. This readiness result is separate from the 77 live-site verdicts.
 
 ## Governing sources
 
@@ -41,7 +41,7 @@ Run an `Affected` item when the requested or resulting diff could change its con
 
 ### Status on /docs/acceptance-testing
 
-Live colors apply to the 74 live items. Green and red are live verdicts on a known condition. Blue means a known condition needs a live look. J means human judgment is needed to proceed. The implementer may only mark blue. An outside reviewer marks green, red, or J. Douglas decides J. The surface map is a starting point, not a closed list. Last checked ignores blue and J.
+Live colors apply to the 77 live items. Green and red are live verdicts on a known condition. Blue means a known condition needs a live look. J means human judgment is needed to proceed. The implementer may only mark blue. An outside reviewer marks green, red, or J. Douglas decides J. The surface map is a starting point, not a closed list. Last checked ignores blue and J.
 
 ## Global brand and positioning
 
@@ -136,7 +136,7 @@ Live colors apply to the 74 live items. Green and red are live verdicts on a kno
 
 ## Staff docs and promoted course checks
 
-Promoted at Accept from the staff-docs, Product Ownership I, Product Ownership II, Scrum Mastering III, Product Ownership III, Scaling Scrum with Scrum, and Scrum Better with Kanban suites. Six rows came from suite `2026-09-11-171700`; later accepted course increments added fourteen rows. Numbers are new. Do not reuse increment `001`–`010`.
+Promoted at Accept from the staff-docs, Product Ownership I, Product Ownership II, Scrum Mastering III, Product Ownership III, Scaling Scrum with Scrum, Scrum Better with Kanban, and Scrum for Teams suites. Six rows came from suite `2026-09-11-171700`; later accepted course increments added seventeen rows. Numbers are new. Do not reuse increment `001`–`010`.
 
 | Item | Class | Verifier | Acceptance condition | Verification |
 | --- | --- | --- | --- | --- |
@@ -160,6 +160,9 @@ Promoted at Accept from the staff-docs, Product Ownership I, Product Ownership I
 | 818 | Affected | Agent | Scaling Scrum with Scrum spokes serve the approved PDFs | Open `/training/scaling-scrum-with-scrum/learning-objectives` and `/training/scaling-scrum-with-scrum-data-sheet/`. Confirm they serve `3Back-SSwS-Learning-Objectives-v1.1.pdf` and `3Back-SSwS-Data-Sheet-v1.1.pdf`. |
 | 819 | Affected | Agent | Scrum Better with Kanban course page is complete and indexable | Open `https://3back.com/courses/scrum-better-with-kanban/`. Confirm a 200 response, the approved H1 and course facts, and no stub treatment. |
 | 820 | Affected | Agent | Scrum Better with Kanban hero shows the two official credentials | Inspect the hero at desktop and mobile widths. Confirm the complete SKP mark above the complete Scrum Better with Kanban microcredential mark, the approved caption, and no Rosie cartoon or rule through the marks. |
+| 821 | Affected | Agent | The Scrum for Teams stub is replaced by a complete course page with the supplied mark, a direct whole-team promise, and the approved course history. | Open `/courses/scrum-for-teams/` and confirm the mark, eyebrow, H1, outcome promise, original-course line, Scrum Alliance history, and 1996 line. |
+| 822 | Affected | Agent | The Exploring Scrum cover sits beside the approved history caption and does not dominate the page. | Inspect the book section at desktop and mobile widths. |
+| 823 | Affected | Agent | The closing sales band presents the learning objectives and data sheet as buyer resources, both spokes serve the supplied v1.0 PDFs, and the legacy short path 301s to the canonical course route. | Inspect the closing resource links, request both PDF routes, and request `/scrum-for-teams` without following redirects. |
 
 ## Human visual and executive review
 
