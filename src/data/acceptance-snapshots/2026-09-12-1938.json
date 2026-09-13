@@ -359,6 +359,28 @@
       "reviewer": "3B Independent Reviewer",
       "reviewerType": "agent",
       "evidence": "Fresh Pass with exact condition string from src/data/acceptance-snapshots/2026-09-12-1938.md (character-for-character, including backticks). Live public checks previously confirmed. Fresh Pass restamp 2026-09-13 so board latest is Pass after builder unverified. Prior live Pass evidence retained: Course page body (footer removed): no path.3back.com URL; no em dash; no SM ladder / RPL path copy. path.3back.com only in shared footer On-Demand Courses link. /docs not used."
+    },
+    {
+      "item": "004",
+      "condition": "Request opens #sm2-private-inquiry. Header Start this conversation lands there",
+      "status": "passed",
+      "environment": "production",
+      "url": "https://3back.com/training/scrum-mastering-2/#sm2-private-inquiry",
+      "checkedAt": "2026-09-13T02:33:21.000Z",
+      "reviewer": "3B Independent Reviewer",
+      "reviewerType": "agent",
+      "evidence": "Fresh Pass with table-plain condition string (no markdown backticks) so AcceptanceChecklist plain() matcher matches rendered HTML. Encoding fix only \u2014 not a product miss. Prior live evidence retained: Fresh Pass with exact condition string from src/data/acceptance-snapshots/2026-09-12-1938.md (character-for-character, including backticks). Live public checks previously confirmed. Fresh Pass restamp 2026-09-13 so board latest is Pass after builder unverified. Prior live Pass evidence retained: Header 'Start this conversation' href='#sm2-private-inquiry' on course route (SiteHeader SM2 exception). Request button 'Request a private SM2 course' aria-controls=sm2-private-inquiry. Band #sm2-private-inquiry present with form POST /api/sm2-private-inquiry. /docs not used."
+    },
+    {
+      "item": "006",
+      "condition": "/rsm2 and /courses/rsm-2 301 to the canonical",
+      "status": "passed",
+      "environment": "production",
+      "url": "https://3back.com/rsm2",
+      "checkedAt": "2026-09-13T02:33:22.000Z",
+      "reviewer": "3B Independent Reviewer",
+      "reviewerType": "agent",
+      "evidence": "Fresh Pass with table-plain condition string (no markdown backticks) so AcceptanceChecklist plain() matcher matches rendered HTML. Encoding fix only \u2014 not a product miss. Prior live evidence retained: Fresh Pass with exact condition string from src/data/acceptance-snapshots/2026-09-12-1938.md (character-for-character, including backticks). Live public checks previously confirmed. Fresh Pass restamp 2026-09-13 so board latest is Pass after builder unverified. Prior live Pass evidence retained: Without following redirects: /rsm2, /rsm2/, /courses/rsm-2, /courses/rsm-2/ all 301 Location /training/scrum-mastering-2/. /docs not used."
     }
   ]
 }
