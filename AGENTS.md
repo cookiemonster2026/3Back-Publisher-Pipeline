@@ -43,6 +43,10 @@ Only the explicit production-indexable build may emit production indexability, s
 - Do not deploy directly to Cloudflare unless the user explicitly instructs you to deploy. Permission to commit or push does not authorize deployment.
 - `pnpm deploy`, `wrangler deploy`, and equivalent direct Cloudflare deployment commands are prohibited unless Douglas explicitly authorizes a direct Cloudflare deployment for that specific task. Normal production publishing is `main` → GitHub `origin/main` → Cloudflare build.
 
+### Short-path update
+
+Short-path update is publish authorization on the existing residual / hotfix path, not a third workflow. When asked for a short-path update, stay on `main`, create no branch, make one commit containing only the named files, run `pnpm build:test` successfully first, and push `origin/main` in that same turn. Published still requires a successful Cloudflare Pages build and verification of the affected URL; a push is not Published. Do not change public copy, visuals, SEO, or the Site Intent Map unless the package names that file. Do not Accept unless the prompt is an Accept closeout. If the diff grows beyond the named files or `pnpm build:test` fails, stop because the work is no longer a short-path update.
+
 ## Task closeout milestones
 
 Done history is cumulative. Preserve every existing milestone and the historical archive in `src/data/reconstructed-pushes.js`; add new milestones without replacing, truncating, or hiding earlier entries.
