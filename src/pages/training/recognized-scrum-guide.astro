@@ -27,14 +27,15 @@ const scaling = pathNodes[pathNodes.length - 1];
 					<div>
 						<p class="eyebrow">Individual program</p>
 						<h1>Recognized Scrum Guide</h1>
-						<p class="dek">This mark recognizes attested depth in one domain. It is not another degree. It is not an empty certification.</p>
+						<p class="dek">For people with experience. The mark requires three to five years of deep, on-the-job work in one domain.</p>
 					</div>
 					<img class="opening-badge" src="/assets/courses/sg-recognized-scrum-guide.png" alt="Recognized Scrum Guide badge" width="300" height="294" />
 				</div>
 				<div class="opening-lower">
 					<div class="lead-copy">
+						<p class="experience-required"><strong>Experience is required.</strong> If you are new to the work, this is not yet your path. Coursework cannot substitute for the years.</p>
 						<p>Recognized Scrum Guide is an individual path. You study the Scrum Guide Organization series with 3Back. You bring years of work in one domain. 3Back attests that practice through time. A human Scrum Guide reviewer takes the final submittal. The Scrum Guide Organization recognizes the mark.</p>
-						<p>Coursework does not count as hours. Passing a module does not attest a job. The hours are in the work.</p>
+						<p>This is not another degree. It is not an empty certification. Passing a module does not attest a job. The hours are in the work.</p>
 					</div>
 					<aside class="opening-offer" aria-labelledby="opening-offer-title">
 						<p class="eyebrow">The package</p>
@@ -51,7 +52,7 @@ const scaling = pathNodes[pathNodes.length - 1];
 				<div class="section-heading">
 					<p class="eyebrow">The path</p>
 					<h2 id="path-title">One connected path.</h2>
-					<p>Hover the courses and the page keeps saying the same thing. Plus experience.</p>
+					<p>Coursework builds knowledge. Experience runs through the entire path.</p>
 				</div>
 				<div class="path-map" aria-label="Recognized Scrum Guide course path. Every course is combined with experience.">
 					<a class="path-node path-node-wide" href={mechanics.href} data-path-node>
@@ -72,19 +73,21 @@ const scaling = pathNodes[pathNodes.length - 1];
 						<img src={scaling.badge} alt="Scaling Scrum with Scrum badge" width="150" height="145" />
 						<span class="node-copy"><strong>{scaling.name}</strong><span class="experience-label">plus experience</span></span>
 					</a>
+					<div class="path-experience-band" aria-label="Experience requirements carried through every course">
+						<p><span>Experience runs through every course</span></p>
+						<ul>
+							<li><strong>3–5 years</strong><span>domain depth</span></li>
+							<li><strong>6+ months</strong><span>attestation</span></li>
+							<li><strong>Multiple</strong><span>interviews</span></li>
+							<li><strong>Human</strong><span>review</span></li>
+						</ul>
+					</div>
 					<div class="capstone" aria-label="Recognized Scrum Guide capstone" data-capstone>
 						<img src="/assets/courses/sg-recognized-scrum-guide.png" alt="Recognized Scrum Guide mark" width="300" height="294" />
 						<div><p class="capstone-label">Capstone</p><h3>Recognized Scrum Guide</h3><p class="capstone-proof">Proven where the work happens.</p><p>Not just people who understand Scrum. People with the experience to move real work, whose practice holds up through interviews, attestation, and human review.</p></div>
 					</div>
 				</div>
 			</div>
-		</section>
-
-		<section class="section section-rule" aria-labelledby="not-title">
-			<div class="shell split-section"><h2 id="not-title">What this is not</h2><div class="section-body">
-				<p>This is not Domain Guides. Domain Guides is the company program. It leaves the skill in that operating environment. Recognized Scrum Guide is the person. The two do not substitute for each other.</p>
-				<p>This is not a tour of ideas. Shallow time in many places does not qualify.</p>
-			</div></div>
 		</section>
 
 		<section class="section section-rule" aria-labelledby="for-title">
@@ -95,10 +98,17 @@ const scaling = pathNodes[pathNodes.length - 1];
 
 		<section class="section section-rule" aria-labelledby="attestation-title">
 			<div class="shell split-section"><h2 id="attestation-title">How experience is attested</h2><div class="section-body">
-				<p>Attestation runs while you take the courses, module by module. An experience card accumulates into a whole. Expert Echo holds that card. Specialized interviews may run at the end of a course. You will be asked about specific jobs and work over time. You must be able to describe that work months later. Continuity and depth have to hold. A string of successes is not required. Competency growth is.</p>
-				<aside class="experience-card" aria-label="Experience card"><strong>Experience card</strong><span>Continuity. Depth. Competency growth.</span></aside>
-				<p>The shortest accumulation is six months, with multiple interviews. That is the floor for attestation, not a promise that six months earns the mark.</p>
-				<p>You need three to five years of deep experience in one domain. If you are still earning those years, plan on up to three years in the program.</p>
+				<p>Attestation runs while you take the courses, module by module. Expert Echo holds a growing experience card. It is written and vetted through the program, not assembled as a single claim at the end.</p>
+				<aside class="experience-process" aria-labelledby="experience-process-title">
+					<div class="experience-process-head"><p class="eyebrow">Your experience card</p><h3 id="experience-process-title">A living record of real work.</h3></div>
+					<ol>
+						<li><span class="step-number">01</span><strong>Bring specific experience</strong><p>Real jobs, decisions, outcomes, difficulties, and failures from one domain.</p></li>
+						<li><span class="step-number">02</span><strong>Revisit it over time</strong><p>Multiple interviews return to the same work. You must still be able to explain it months later.</p></li>
+						<li><span class="step-number">03</span><strong>Demonstrate growth</strong><p>3Back looks for continuity, depth, adaptation, and increasing competency before final human review.</p></li>
+					</ol>
+					<p class="experience-threshold"><strong>At least six months of attestation.</strong> Three to five years of domain depth. Coursework is not the experience.</p>
+				</aside>
+				<p>If you are still earning the required years, plan on up to three years in the program. Six months is the shortest attestation window, not a promise that six months earns the mark.</p>
 			</div></div>
 		</section>
 
@@ -157,6 +167,8 @@ const scaling = pathNodes[pathNodes.length - 1];
 	.dek { max-width: 720px; color: var(--charcoal); font-size: clamp(1.3rem, 2.2vw, 1.65rem); font-weight: var(--font-weight-bold); line-height: 1.38; }
 	.opening-lower { display: grid; grid-template-columns: minmax(0, 1.45fr) minmax(270px, .75fr); gap: clamp(28px, 5vw, 64px); align-items: start; margin-top: 46px; }
 	.lead-copy { max-width: 760px; padding-left: 24px; border-left: 5px solid var(--amber); }
+	.lead-copy .experience-required { margin-top: 0; color: var(--charcoal); font-size: clamp(1.25rem, 2vw, 1.5rem); font-weight: var(--font-weight-bold); line-height: 1.45; }
+	.experience-required strong { color: var(--amber-text); }
 	.opening-offer { padding: 24px; border-top: 5px solid var(--amber); background: var(--charcoal); color: var(--paper); }
 	.opening-offer h2 { margin: 8px 0 12px; color: var(--paper); font-size: clamp(1.55rem, 2.5vw, 2rem); line-height: 1.18; }
 	.opening-offer .coming-soon { width: 100%; margin-top: 8px; }
@@ -181,9 +193,17 @@ const scaling = pathNodes[pathNodes.length - 1];
 	.rail::before { position: absolute; top: 42px; bottom: 42px; left: 50%; z-index: 0; width: 2px; background: var(--amber); content: ""; }
 	.rail > * { z-index: 1; }
 	.rail-label { margin: 0; padding: 0 8px; background: var(--reading); text-align: center; }
-	.capstone { position: relative; display: grid; grid-template-columns: 132px minmax(0, 1fr); gap: 30px; align-items: center; max-width: 700px; margin: 20px auto 0; padding: 32px; border: 3px solid var(--charcoal); border-top: 6px solid var(--amber); background: var(--charcoal); color: var(--paper); }
+	.path-experience-band { position: relative; max-width: 780px; margin: 20px auto 0; padding: 18px 22px 20px; border: 2px solid var(--amber); background: var(--paper); color: var(--charcoal); }
+	.path-experience-band::after { position: absolute; bottom: -20px; left: 50%; width: 2px; height: 20px; background: var(--amber); content: ""; }
+	.path-experience-band > p { margin: 0 0 14px; color: var(--amber-text); font-size: var(--type-caption); font-weight: var(--font-weight-heavy); letter-spacing: var(--tracking-caption); line-height: var(--leading-caption); text-align: center; text-transform: uppercase; }
+	.path-experience-band ul { display: grid; grid-template-columns: repeat(4, 1fr); margin: 0; padding: 0; list-style: none; }
+	.path-experience-band li { display: grid; gap: 2px; padding: 0 14px; border-left: 1px solid var(--rule); text-align: center; }
+	.path-experience-band li:first-child { border-left: 0; }
+	.path-experience-band strong { font-size: 1.05rem; line-height: 1.25; }
+	.path-experience-band li span { color: var(--text-secondary); font-size: .9rem; line-height: 1.3; }
+	.capstone { position: relative; display: grid; grid-template-columns: 132px minmax(0, 1fr); gap: 30px; align-items: center; max-width: 700px; margin: 20px auto 0; padding: 32px; border: 3px solid var(--charcoal); border-top: 6px solid var(--amber); background: var(--charcoal); color: var(--paper); transition: box-shadow 180ms ease-out, transform 180ms ease-out; }
 	.capstone::after { position: absolute; top: -6px; right: -3px; left: -3px; height: 6px; background: var(--amber); content: ""; transform-origin: left center; }
-	.capstone img { width: 132px; height: 132px; object-fit: contain; }
+	.capstone img { width: 132px; height: 132px; object-fit: contain; transition: transform 180ms ease-out; }
 	.capstone h3 { margin: 5px 0 8px; color: var(--paper); font-size: clamp(1.55rem, 3vw, 2.1rem); }
 	.capstone .capstone-proof { margin: 0 0 8px; color: var(--paper); font-size: clamp(1.15rem, 2vw, 1.4rem); font-weight: var(--font-weight-heavy); line-height: 1.3; }
 	.capstone p:last-child { margin: 0; color: #e2e0d8; line-height: 1.5; }
@@ -193,13 +213,22 @@ const scaling = pathNodes[pathNodes.length - 1];
 	.capstone-awaiting[data-visible="true"] { opacity: 1; transform: translateY(0); transition: opacity 420ms ease-out, transform 520ms cubic-bezier(.2, .75, .25, 1); }
 	.capstone-awaiting[data-visible="true"]::after { transform: scaleX(1); transition: transform 620ms 100ms cubic-bezier(.2, .75, .25, 1); }
 	.capstone-awaiting[data-visible="true"] img { transform: scale(1); transition: transform 520ms 180ms cubic-bezier(.2, .75, .25, 1); }
+	.capstone:hover, .capstone-awaiting[data-visible="true"]:hover { box-shadow: 0 12px 0 rgb(27 35 31 / 14%); transform: translateY(-5px); }
+	.capstone:hover img, .capstone-awaiting[data-visible="true"]:hover img { transform: scale(1.045); }
 	.split-section { display: grid; grid-template-columns: minmax(0, .85fr) minmax(0, 1.15fr); gap: clamp(42px, 8vw, 128px); align-items: start; }
 	.split-section h2 { margin: 0; padding-bottom: 18px; border-bottom: 2px solid var(--charcoal); }
 	.section-body { max-width: 620px; }
 	.idle-hands { padding: 24px; border-left: 6px solid var(--amber); background: var(--reading); }
 	.idle-hands p { margin: 0; color: var(--charcoal); font-size: clamp(1.3rem, 2.4vw, 1.65rem); font-weight: var(--font-weight-bold); line-height: 1.4; }
-	.experience-card { display: grid; gap: 4px; margin: 28px 0; padding: 20px 22px; border: 1px solid var(--rule); border-left: 5px solid var(--amber); background: var(--reading); color: var(--charcoal); }
-	.experience-card span { color: var(--text-secondary); }
+	.experience-process { margin: 30px 0; padding: 28px; border-top: 5px solid var(--amber); background: var(--charcoal); color: var(--paper); }
+	.experience-process-head h3 { margin: 7px 0 24px; color: var(--paper); font-size: clamp(1.55rem, 3vw, 2rem); }
+	.experience-process ol { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1px; margin: 0; padding: 0; background: #68726d; list-style: none; }
+	.experience-process li { padding: 20px; background: var(--charcoal); }
+	.experience-process .step-number { display: block; margin-bottom: 12px; color: var(--amber); font-size: .85rem; font-weight: var(--font-weight-heavy); letter-spacing: .12em; }
+	.experience-process li strong { display: block; color: var(--paper); line-height: 1.3; }
+	.experience-process li p { margin: 8px 0 0; color: #e2e0d8; font-size: .98rem; line-height: 1.5; }
+	.experience-process .experience-threshold { margin: 24px 0 0; padding-top: 20px; border-top: 1px solid #68726d; color: #e2e0d8; font-size: 1rem; line-height: 1.55; }
+	.experience-threshold strong { color: var(--paper); }
 	.package-section { padding: 112px 0; border-top: 5px solid var(--amber); border-bottom: 5px solid var(--amber); background: var(--charcoal); color: var(--paper); }
 	.package-inner { max-width: 790px; padding-left: clamp(22px, 4vw, 48px); border-left: 3px solid var(--amber); }
 	.package-inner h2 { color: var(--paper); }
@@ -219,13 +248,18 @@ const scaling = pathNodes[pathNodes.length - 1];
 		.rails { grid-template-columns: 1fr; gap: 34px; padding: 28px 0; }
 		.rails::before { right: 50%; left: auto; }
 		.path-node-wide { max-width: none; }
+		.path-experience-band { padding-inline: 16px; }
+		.path-experience-band ul { grid-template-columns: 1fr 1fr; row-gap: 18px; }
+		.path-experience-band li:nth-child(odd) { border-left: 0; }
 		.split-section { grid-template-columns: 1fr; gap: 20px; }
 		.capstone { grid-template-columns: 76px minmax(0, 1fr); gap: 18px; padding: 22px 18px; }
 		.capstone img { width: 76px; height: 76px; }
+		.experience-process { padding: 22px 18px; }
+		.experience-process ol { grid-template-columns: 1fr; }
 		.package-section { padding: 82px 0; }
 		.domain-guides-cta { padding: 52px 0; }
 		.domain-guides-link { width: 100%; }
 	}
 	@media (max-width: 360px) { .path-node { padding-inline: 12px; } }
-	@media (prefers-reduced-motion: reduce) { .experience-label, .domain-guides-link, .capstone, .capstone::after, .capstone img { transition: none; } .domain-guides-link:hover, .domain-guides-link:focus-visible { transform: none; } }
+	@media (prefers-reduced-motion: reduce) { .experience-label, .domain-guides-link, .capstone, .capstone::after, .capstone img { transition: none; } .domain-guides-link:hover, .domain-guides-link:focus-visible, .capstone:hover { transform: none; } .capstone:hover { box-shadow: none; } .capstone:hover img { transform: none; } }
 </style>
