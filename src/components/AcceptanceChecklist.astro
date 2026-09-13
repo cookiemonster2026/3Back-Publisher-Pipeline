@@ -1,6 +1,7 @@
 ---
 import { isAccepted, lifecycleState, lastPublished, sortAcceptanceSnapshots } from "../lib/acceptance-lifecycle.mjs";
 import { acceptanceStatus } from "../lib/acceptance-status.mjs";
+import { normalizeAcceptanceCondition } from "../lib/acceptance-condition.mjs";
 
 import { acceptanceSnapshots } from "../data/acceptance-snapshots.js";
 import acceptanceStatusHistory from "../data/acceptance-status.json";
@@ -32,12 +33,11 @@ const incrementAcceptanceStatus = (source: string, resultRecords: any[]) => {
   const labels = { passed: "Passed", failed: "Failed", unverified: "Review", judgment: "Judgment" };
   const symbols = { passed: "P", failed: "F", unverified: "R", judgment: "J" };
   type ResultState = keyof typeof symbols;
-  const plain = (value: string) => value.replace(/<[^>]*>/g, "").replace(/^\+\s*/, "").trim();
   const rendered = source.replace("<th>Item</th>", '<th scope="col" class="acceptance-status-heading">Status</th><th>Item</th>').replace(/<tr>\s*<td>(\d{3})<\/td>([\s\S]*?)<\/tr>/g, (_row, item, rest) => {
-    const condition = plain([...rest.matchAll(/<td>([\s\S]*?)<\/td>/g)][1]?.[1] ?? "");
+    const condition = normalizeAcceptanceCondition([...rest.matchAll(/<td>([\s\S]*?)<\/td>/g)][1]?.[1] ?? "");
     const record = latest.get(item);
     const recordedState = record?.status as ResultState;
-    const recordedCondition = record?.condition ? plain(record.condition) : "";
+    const recordedCondition = normalizeAcceptanceCondition(record?.condition);
     const state: ResultState = standingPlus.has(item) && recordedState === "passed"
       ? "passed"
       : recordedCondition === condition && Object.hasOwn(symbols, recordedState) ? recordedState : "unverified";

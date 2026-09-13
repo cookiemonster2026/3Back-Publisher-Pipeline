@@ -28,11 +28,15 @@ Derive the board from `src/data/acceptance-snapshots/SUITE_ID.md` and its JSON e
 
 Test accessible flagged items on the live site. Record <span class="review-pass">P Pass</span> or <span class="review-fail">F Fail</span> with the condition, URL, observation timestamp, reviewer, and evidence covering the tested scope. Local checks do not establish live verdicts. Human-verifier items remain the human's decision.
 
-Access and deployment limitations do not block all review. Investigate alternatives for affected items; when progress requires a human decision, record <span class="review-judgment">J Judgment</span>. Repository access supplies definitions, not live evidence. Without version confirmation, omit releaseSha and describe observations at their actual check time; version-dependent checks require a proposed verification path or escalation to human judgment. Do not request credentials in chat.
+Do not restamp standing greens. Review only the flagged increment rows and any standing row the change actually broke.
+
+Cloudflare Access on the staff page is not by itself <span class="review-judgment">J Judgment</span>. Access and deployment limitations do not block all review. Investigate alternatives for affected items; when progress requires a human decision, record <span class="review-judgment">J Judgment</span>. Repository access supplies definitions, not live evidence. Without version confirmation, omit releaseSha and describe observations at their actual check time; version-dependent checks require a proposed verification path or escalation to human judgment. Do not request credentials in chat.
 
 ## 2. Agree
 
 Before presenting a review report, append and publish every newly assigned verdict, including J Judgment, to the active suite evidence and shared ledger. A row-level judgment request must appear as J in the suite, not only in chat. Use the suite's exact current condition so the renderer recognizes the record. Reporting a verdict is not a request to change its condition and need not wait for “apply change set.” If recording or publication is blocked, label the verdict pending publication; never imply it is recorded. If production display cannot be confirmed, distinguish the published record from the unconfirmed display. Access blockers become J when the reviewer needs a human decision to proceed.
+
+Push to origin/main is not Published. Published means the Cloudflare Pages build for that commit is success and the affected URL shows the change. Run `pnpm build:test` before pushing acceptance JSON or housekeeping files. If the Pages build fails, stop and report the error. Do not say Published.
 
 Discuss corrections and accumulate agreed condition or test edits in a pending change set, identified by item number and exact wording. A shipped mismatch is not approval. R means active investigation, not a final parking state. For every R, attempt the specified test or a defensible verification method. Record P or F when evidence supports it. Otherwise propose a concrete next action or an exact condition and test change for human approval. If human judgment is needed to proceed, record J with the blocker, attempted approaches, proposal if available, and decision requested. Never change a condition merely to manufacture a pass; approval authorizes a change, while verification establishes P.
 

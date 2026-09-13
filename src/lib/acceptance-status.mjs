@@ -1,3 +1,5 @@
+import { normalizeAcceptanceCondition } from "./acceptance-condition.mjs";
+
 const labels = { passed: "Passed", failed: "Failed", unverified: "Needs a live look", judgment: "Human judgment needed" };
 const symbols = { passed: "P", failed: "F", unverified: "R", judgment: "J" };
 const reasons = { changed: "Surface changed.", "never-checked": "Never checked.", blocked: "Live check blocked.", "condition-changed": "Condition text changed.", "awaiting-human": "Awaiting Douglas's live review." };
@@ -10,7 +12,7 @@ const humanItems = new Set(range(901, 905));
 const isVerdict = (status) => status === "passed" || status === "failed";
 const htmlEntities = { "&": "&" + "amp;", "<": "&" + "lt;", ">": "&" + "gt;", '"': "&" + "quot;", "'": "&#39;" };
 const escapeHtml = (value) => String(value).replace(/[&<>"']/g, (character) => htmlEntities[character]);
-const plain = (value) => value.replace(/<[^>]*>/g, "").trim();
+const plain = normalizeAcceptanceCondition;
 const dateFormat = new Intl.DateTimeFormat("en-US", { year: "numeric", month: "short", day: "numeric", hour: "numeric", minute: "2-digit", timeZone: "America/Chicago", timeZoneName: "short" });
 
 export function acceptanceStatus(html, records) {
@@ -52,7 +54,7 @@ export function acceptanceStatus(html, records) {
           return `<tr><td class="acceptance-current-status" aria-label="Process item: reported in the task report" title="Process item: reported in the task report"></td><td>${item}</td>${visibleRest}</tr>`;
         }
         const record = latest.get(item);
-        const conditionMatches = record?.condition === cells[2];
+        const conditionMatches = normalizeAcceptanceCondition(record?.condition) === normalizeAcceptanceCondition(cells[2]);
         const humanApproved = !isVerdict(record?.status) || cells[1] !== "Human" || record?.reviewerType === "human";
         const status = conditionMatches && humanApproved ? record.status : "unverified";
         counts[status]++;

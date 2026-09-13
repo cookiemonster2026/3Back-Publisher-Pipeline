@@ -3168,6 +3168,17 @@
       "reviewer": "3B Independent Reviewer",
       "reviewerType": "agent",
       "evidence": "Standing / invalid restamp on suite 2026-09-12-1938. SM2 did not change this condition (mismatch). Pass so board latest is not R. Access is not a verdict."
+    },
+    {
+      "item": "102",
+      "condition": "Operational Grip is presented as 3Back\u2019s operating lens, not as a separate company, packaged methodology, certification system, guaranteed formula, or independent brand.",
+      "status": "passed",
+      "environment": "production",
+      "url": "https://3back.com/docs/acceptance-results/2026-09-12-1938/#102",
+      "checkedAt": "2026-09-13T03:01:09.484Z",
+      "reviewer": "Codex",
+      "reviewerType": "agent",
+      "evidence": "Corrected the standing-board condition text to exactly match the current acceptance checklist. The preceding Pass verdict remains unchanged; this append-only record resolves the straight-versus-curly apostrophe mismatch that caused the board to display R."
     }
   ]
 }

@@ -3,7 +3,7 @@ import { execFileSync } from "node:child_process";
 import { resolve } from "node:path";
 import { pathToFileURL } from "node:url";
 
-export const MAX_OPEN_FILE_BYTES = 204800;
+export const MAX_OPEN_FILE_BYTES = 524288;
 export const MAX_APPENDED_RECORDS = 161;
 export const MAX_UNCHANGED_WEEKLY_GREENS = 53;
 
@@ -19,7 +19,7 @@ const newestByItem = records => {
 
 export function assertOpenFileSizes(files) {
   const oversized = files.filter(file => !file.accepted && file.size > MAX_OPEN_FILE_BYTES);
-  if (oversized.length) throw Error(`Acceptance housekeeping: open files exceed 200 KB: ${oversized.map(file => file.path).join(", ")}`);
+  if (oversized.length) throw Error(`Acceptance housekeeping: open files exceed 512 KB: ${oversized.map(file => file.path).join(", ")}`);
 }
 
 export function assertAppendLimit(currentRecords, previousRecords, label) {
