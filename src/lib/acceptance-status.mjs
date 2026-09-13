@@ -5,9 +5,10 @@ const symbols = { passed: "P", failed: "F", unverified: "R", judgment: "J" };
 const reasons = { changed: "Surface changed.", "never-checked": "Never checked.", blocked: "Live check blocked.", "condition-changed": "Condition text changed.", "awaiting-human": "Awaiting Douglas's live review." };
 const range = (first, last) => Array.from({ length: last - first + 1 }, (_, index) => String(first + index));
 export const PROCESS_ITEMS = Object.freeze(["001", "002", "003", "004", "005", "006", "602", "606"]);
-export const LIVE_ITEMS = Object.freeze([...range(101, 108), ...range(201, 205), ...range(301, 307), ...range(321, 324), ...range(401, 405), ...range(501, 508), "601", ...range(603, 605), ...range(701, 708), ...range(801, 816), ...range(901, 905)]);
+export const LIVE_ITEMS = Object.freeze([...range(101, 108), ...range(201, 205), ...range(301, 307), ...range(321, 324), ...range(401, 405), ...range(501, 508), "601", ...range(603, 605), ...range(701, 708), ...range(801, 818), ...range(901, 905)]);
 const processItems = new Set(PROCESS_ITEMS);
 const liveItems = new Set(LIVE_ITEMS);
+const incrementItems = new Set(Array.from({ length: 10 }, (_, index) => String(index + 1).padStart(3, "0")));
 const humanItems = new Set(range(901, 905));
 const isVerdict = (status) => status === "passed" || status === "failed";
 const htmlEntities = { "&": "&" + "amp;", "<": "&" + "lt;", ">": "&" + "gt;", '"': "&" + "quot;", "'": "&#39;" };
@@ -67,7 +68,7 @@ export function acceptanceStatus(html, records) {
         return `<tr id="${item}" data-acceptance-row="${status}"><td class="acceptance-current-status" data-acceptance-status="${status}" title="${escapeHtml(detail)}"><span class="acceptance-status acceptance-status--${status}" role="img" aria-label="${escapeHtml(detail)}" title="${escapeHtml(detail)}">${symbols[status]}</span></td><td>${item}</td>${visibleRest}</tr>`;
       });
   });
-  for (const item of latest.keys()) if (!seen.has(item)) throw new Error(`Unknown acceptance item ${item}`);
+  for (const item of latest.keys()) if (!seen.has(item) && !incrementItems.has(item)) throw new Error(`Unknown acceptance item ${item}`);
   if (!seen.size) throw new Error("No acceptance checklist items found");
   return { html: annotated, counts, applicable: counts.total, processCount, lastCheckedAt };
 }

@@ -5,7 +5,7 @@ import { pathToFileURL } from "node:url";
 
 export const MAX_OPEN_FILE_BYTES = 524288;
 export const MAX_APPENDED_RECORDS = 161;
-export const MAX_UNCHANGED_WEEKLY_GREENS = 55;
+export const MAX_UNCHANGED_WEEKLY_GREENS = 57;
 
 const readJson = path => JSON.parse(fs.readFileSync(path, "utf8"));
 const newestByItem = records => {
@@ -43,7 +43,7 @@ export function assertNoWeeklyRestamp(statusRecords, weeklyRecords, label) {
     const prior = current.get(record.item);
     return record.status === "passed" && prior?.status === "passed" && prior.condition === record.condition;
   });
-  if (unchangedGreens.length >= 56) throw Error(`${label}: contains ${unchangedGreens.length} unchanged passed records; limit is 55.`);
+  if (unchangedGreens.length >= 58) throw Error(`${label}: contains ${unchangedGreens.length} unchanged passed records; limit is 57.`);
 }
 
 function previousRecords(root, path) {

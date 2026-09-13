@@ -3520,6 +3520,116 @@
       "reviewer": "3B Independent Reviewer",
       "reviewerType": "agent",
       "evidence": "Accepted standing promotion from passed increment 005 in suite 2026-09-13-0936."
+    },
+    {
+      "item": "001",
+      "condition": "Hero promise is Respond at the scale the work requires. No book cover. Locked SSwS mark only.",
+      "status": "passed",
+      "environment": "production",
+      "url": "https://3back.com/training/scaling-scrum-with-scrum/",
+      "checkedAt": "2026-09-13T16:20:03.000Z",
+      "reviewer": "3B Independent Reviewer",
+      "reviewerType": "agent",
+      "evidence": "Live /training/scaling-scrum-with-scrum/ → 200. Hero 'Respond at the scale the work requires.' Hero artifact is locked SSwS badge only; no book cover images. /docs not used."
+    },
+    {
+      "item": "002",
+      "condition": "Prerequisite is on the page as a required gate, spelled out. Not a second badge.",
+      "status": "passed",
+      "environment": "production",
+      "url": "https://3back.com/training/scaling-scrum-with-scrum/",
+      "checkedAt": "2026-09-13T16:20:04.000Z",
+      "reviewer": "3B Independent Reviewer",
+      "reviewerType": "agent",
+      "evidence": "Prerequisite required spelled on page (quiet line, proof strip, progression module 01, earn copy). Only SSwS designation badge; no second badge. /docs not used."
+    },
+    {
+      "item": "003",
+      "condition": "Enrollment coming soon. No price. Private live is the live offer.",
+      "status": "passed",
+      "environment": "production",
+      "url": "https://3back.com/training/scaling-scrum-with-scrum/",
+      "checkedAt": "2026-09-13T16:20:05.000Z",
+      "reviewer": "3B Independent Reviewer",
+      "reviewerType": "agent",
+      "evidence": "Enrollment coming soon / disabled public enroll. No $ price on page. Private Live is the live offer with inquiry controls. /docs not used."
+    },
+    {
+      "item": "004",
+      "condition": "Request opens #ssws-private-inquiry. Header Start this conversation lands there.",
+      "status": "passed",
+      "environment": "production",
+      "url": "https://3back.com/training/scaling-scrum-with-scrum/#ssws-private-inquiry",
+      "checkedAt": "2026-09-13T16:20:06.000Z",
+      "reviewer": "3B Independent Reviewer",
+      "reviewerType": "agent",
+      "evidence": "Header Start this conversation → #ssws-private-inquiry; form POST /api/ssws-private-inquiry → ssws-private@3back.com. Table-plain condition. /docs not used."
+    },
+    {
+      "item": "005",
+      "condition": "Data sheet and LO links serve the approved PDFs.",
+      "status": "passed",
+      "environment": "production",
+      "url": "https://3back.com/training/scaling-scrum-with-scrum/learning-objectives",
+      "checkedAt": "2026-09-13T16:20:07.000Z",
+      "reviewer": "3B Independent Reviewer",
+      "reviewerType": "agent",
+      "evidence": "LO + data sheet spokes serve application/pdf; map to 3Back-SSwS-Learning-Objectives-v1.1.pdf and 3Back-SSwS-Data-Sheet-v1.1.pdf. /docs not used."
+    },
+    {
+      "item": "006",
+      "condition": "/ssws, /courses/scaling-scrum-with-scrum-professional, /courses/single-team-scrum, and /courses/multi-team-scrum 301 to the canonical.",
+      "status": "passed",
+      "environment": "production",
+      "url": "https://3back.com/ssws",
+      "checkedAt": "2026-09-13T16:20:08.000Z",
+      "reviewer": "3B Independent Reviewer",
+      "reviewerType": "agent",
+      "evidence": "/ssws, /courses/scaling-scrum-with-scrum-professional, /courses/single-team-scrum, /courses/multi-team-scrum (and trailing-slash) all 301 → /training/scaling-scrum-with-scrum/. Table-plain condition. /docs not used."
+    },
+    {
+      "item": "007",
+      "condition": "Catalog has one orange SSwS card. No STS card. No MTS card. No Professional card. The two black guide cards stay.",
+      "status": "passed",
+      "environment": "production",
+      "url": "https://3back.com/courses/",
+      "checkedAt": "2026-09-13T16:20:09.000Z",
+      "reviewer": "3B Independent Reviewer",
+      "reviewerType": "agent",
+      "evidence": "Catalog: one Scaling Scrum with Scrum card; no STS/MTS/Professional cards; Recognized Scrum Guide + Industry Recognized Scrum Guide remain. /docs not used."
+    },
+    {
+      "item": "008",
+      "condition": "No path.3back.com link. No Agile Scaling Professional on the page. No em dash.",
+      "status": "passed",
+      "environment": "production",
+      "url": "https://3back.com/training/scaling-scrum-with-scrum/",
+      "checkedAt": "2026-09-13T16:20:10.000Z",
+      "reviewer": "3B Independent Reviewer",
+      "reviewerType": "agent",
+      "evidence": "Body ex-footer: no path.3back.com, no 'Agile Scaling Professional', no em dash. /docs not used."
+    },
+    {
+      "item": "817",
+      "condition": "Scaling Scrum with Scrum course page is live with the locked promise",
+      "status": "passed",
+      "environment": "production",
+      "url": "https://3back.com/training/scaling-scrum-with-scrum/",
+      "checkedAt": "2026-09-13T16:32:53.000Z",
+      "reviewer": "3B Independent Reviewer",
+      "reviewerType": "agent",
+      "evidence": "Accepted standing promotion from passed increment 001 in suite 2026-09-13-1036."
+    },
+    {
+      "item": "818",
+      "condition": "Scaling Scrum with Scrum spokes serve the approved PDFs",
+      "status": "passed",
+      "environment": "production",
+      "url": "https://3back.com/training/scaling-scrum-with-scrum/learning-objectives",
+      "checkedAt": "2026-09-13T16:32:54.000Z",
+      "reviewer": "3B Independent Reviewer",
+      "reviewerType": "agent",
+      "evidence": "Accepted standing promotion from passed increment 005 in suite 2026-09-13-1036."
     }
   ]
 }

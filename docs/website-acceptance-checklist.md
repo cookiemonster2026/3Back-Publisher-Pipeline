@@ -4,7 +4,7 @@ This file is the shared verification source for future website changes. It conta
 
 ## Acceptance Testing Readiness
 
-000 — Initialize: The Independent AI Reviewer reads Reviewer Agents.md and confirms readiness to perform according to its instructions. At each handoff the builder resets this item to R Review. The reviewer records Pass or Fail; on Fail, identifies the blocker and stops. This readiness result is separate from the 70 live-site verdicts.
+000 — Initialize: The Independent AI Reviewer reads Reviewer Agents.md and confirms readiness to perform according to its instructions. At each handoff the builder resets this item to R Review. The reviewer records Pass or Fail; on Fail, identifies the blocker and stops. This readiness result is separate from the 72 live-site verdicts.
 
 ## Governing sources
 
@@ -41,7 +41,7 @@ Run an `Affected` item when the requested or resulting diff could change its con
 
 ### Status on /docs/acceptance-testing
 
-Live colors apply to the 70 live items. Green and red are live verdicts on a known condition. Blue means a known condition needs a live look. J means human judgment is needed to proceed. The implementer may only mark blue. An outside reviewer marks green, red, or J. Douglas decides J. The surface map is a starting point, not a closed list. Last checked ignores blue and J.
+Live colors apply to the 72 live items. Green and red are live verdicts on a known condition. Blue means a known condition needs a live look. J means human judgment is needed to proceed. The implementer may only mark blue. An outside reviewer marks green, red, or J. Douglas decides J. The surface map is a starting point, not a closed list. Last checked ignores blue and J.
 
 ## Global brand and positioning
 
@@ -136,7 +136,7 @@ Live colors apply to the 70 live items. Green and red are live verdicts on a kno
 
 ## Staff docs and promoted course checks
 
-Promoted at Accept from the staff-docs, Product Ownership I, Product Ownership II, Scrum Mastering III, and Product Ownership III suites. Six rows came from suite `2026-09-11-171700`; later accepted course increments added ten rows. Numbers are new. Do not reuse increment `001`–`010`.
+Promoted at Accept from the staff-docs, Product Ownership I, Product Ownership II, Scrum Mastering III, Product Ownership III, and Scaling Scrum with Scrum suites. Six rows came from suite `2026-09-11-171700`; later accepted course increments added twelve rows. Numbers are new. Do not reuse increment `001`–`010`.
 
 | Item | Class | Verifier | Acceptance condition | Verification |
 | --- | --- | --- | --- | --- |
@@ -156,6 +156,8 @@ Promoted at Accept from the staff-docs, Product Ownership I, Product Ownership I
 | 814 | Affected | Agent | Scrum Mastering III spokes serve the approved PDFs | Open `/training/scrum-mastering-3/learning-objectives` and `/training/scrum-mastering-3-data-sheet/`. Confirm they serve `3Back-SM3-Learning-Objectives-v1.25.pdf` and `3Back-SM3-Data-Sheet-v1.0.pdf`. |
 | 815 | Affected | Agent | Product Ownership III course page is live with the locked promise | Open `https://3back.com/training/product-ownership-3/`. Confirm H1 Product Ownership III: Leading Agile Organizations, hero promise Leading Agile Organizations., and quiet line Builds on Product Ownership II. |
 | 816 | Affected | Agent | Product Ownership III spokes serve the approved PDFs | Open `/training/product-ownership-3/learning-objectives` and `/training/product-ownership-3-data-sheet/`. Confirm they serve `3Back-PO3-Learning-Objectives-v1.37.pdf` and `3Back-PO3-Data-Sheet-v1.0.pdf`. |
+| 817 | Affected | Agent | Scaling Scrum with Scrum course page is live with the locked promise | Open `https://3back.com/training/scaling-scrum-with-scrum/`. Confirm the hero promise Respond at the scale the work requires., no book cover, and the locked SSwS mark only. |
+| 818 | Affected | Agent | Scaling Scrum with Scrum spokes serve the approved PDFs | Open `/training/scaling-scrum-with-scrum/learning-objectives` and `/training/scaling-scrum-with-scrum-data-sheet/`. Confirm they serve `3Back-SSwS-Learning-Objectives-v1.1.pdf` and `3Back-SSwS-Data-Sheet-v1.1.pdf`. |
 
 ## Human visual and executive review
 
