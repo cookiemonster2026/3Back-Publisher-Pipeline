@@ -4,7 +4,7 @@ This file is the shared verification source for future website changes. It conta
 
 ## Acceptance Testing Readiness
 
-000 — Initialize: The Independent AI Reviewer reads Reviewer Agents.md and confirms readiness to perform according to its instructions. At each handoff the builder resets this item to R Review. The reviewer records Pass or Fail; on Fail, identifies the blocker and stops. This readiness result is separate from the 66 live-site verdicts.
+000 — Initialize: The Independent AI Reviewer reads Reviewer Agents.md and confirms readiness to perform according to its instructions. At each handoff the builder resets this item to R Review. The reviewer records Pass or Fail; on Fail, identifies the blocker and stops. This readiness result is separate from the 68 live-site verdicts.
 
 ## Governing sources
 
@@ -41,7 +41,7 @@ Run an `Affected` item when the requested or resulting diff could change its con
 
 ### Status on /docs/acceptance-testing
 
-Live colors apply to the 66 live items. Green and red are live verdicts on a known condition. Blue means a known condition needs a live look. J means human judgment is needed to proceed. The implementer may only mark blue. An outside reviewer marks green, red, or J. Douglas decides J. The surface map is a starting point, not a closed list. Last checked ignores blue and J.
+Live colors apply to the 68 live items. Green and red are live verdicts on a known condition. Blue means a known condition needs a live look. J means human judgment is needed to proceed. The implementer may only mark blue. An outside reviewer marks green, red, or J. Douglas decides J. The surface map is a starting point, not a closed list. Last checked ignores blue and J.
 
 ## Global brand and positioning
 
@@ -134,9 +134,9 @@ Live colors apply to the 66 live items. Green and red are live verdicts on a kno
 | 707 | Affected | Agent | Homepage section order supports an executive scan from problem, through lens and commercial relevance, to approach, evidence, deeper thinking, and action. | Review affected page hierarchy at desktop and mobile widths against the homepage blueprint. |
 | 708 | Affected | Agent | The homepage uses one H1 and live, selectable text for headings, navigation, and explanatory diagrams. | Inspect affected DOM and rendered selection behavior. |
 
-## Staff docs and Product Ownership I
+## Staff docs and promoted course checks
 
-Promoted at Accept of suite `2026-09-12-1319`. Six rows from suite `2026-09-11-171700`. Three rows from the PO1 increment. Numbers are new. Do not reuse increment `001`–`010`.
+Promoted at Accept from the staff-docs, Product Ownership I, Product Ownership II, and Scrum Mastering III suites. Six rows came from suite `2026-09-11-171700`; later accepted course increments added eight rows. Numbers are new. Do not reuse increment `001`–`010`.
 
 | Item | Class | Verifier | Acceptance condition | Verification |
 | --- | --- | --- | --- | --- |
@@ -152,6 +152,8 @@ Promoted at Accept of suite `2026-09-12-1319`. Six rows from suite `2026-09-11-1
 | 810 | Affected | Agent | Product Ownership II course page is live with the locked promise | Open `https://3back.com/training/product-ownership-2/`. Confirm H1 Product Ownership II: Making Hard Decisions, hero promise Making Hard Decisions., and quiet line Builds on Product Ownership I. |
 | 811 | Affected | Agent | Product Ownership II enrollment and commercial facts stay locked | Open `https://3back.com/training/product-ownership-2/`. Confirm Enrollment coming soon is disabled, the offer line `$150 | Printed guidebook included | 12 months to complete`, and the proof strip 12 modules / 80% to advance / 12 months / RPO2 credential. |
 | 812 | Affected | Agent | Product Ownership II spokes serve the approved PDFs | Open `/training/product-ownership-2/learning-objectives` and `/training/product-ownership-2-data-sheet/`. Confirm they serve `3Back-PO2-Learning-Objectives-v1.17.pdf` and `3Back-PO2-Data-Sheet-v1.0.pdf`. |
+| 813 | Affected | Agent | Scrum Mastering III course page is live with the locked promise | Open `https://3back.com/training/scrum-mastering-3/`. Confirm H1 Scrum Mastering III: Organizational Improvement and the exact hero promise Organizational Improvement. |
+| 814 | Affected | Agent | Scrum Mastering III spokes serve the approved PDFs | Open `/training/scrum-mastering-3/learning-objectives` and `/training/scrum-mastering-3-data-sheet/`. Confirm they serve `3Back-SM3-Learning-Objectives-v1.25.pdf` and `3Back-SM3-Data-Sheet-v1.0.pdf`. |
 
 ## Human visual and executive review
 

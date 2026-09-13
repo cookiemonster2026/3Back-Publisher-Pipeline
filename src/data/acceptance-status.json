@@ -3300,6 +3300,116 @@
       "reviewer": "3B Independent Reviewer",
       "reviewerType": "agent",
       "evidence": "Accepted standing promotion from passed increment 005 in suite 2026-09-12-2243."
+    },
+    {
+      "item": "001",
+      "condition": "Hero promise is Organizational Improvement.",
+      "status": "passed",
+      "environment": "production",
+      "url": "https://3back.com/training/scrum-mastering-3/",
+      "checkedAt": "2026-09-13T14:13:32.000Z",
+      "reviewer": "3B Independent Reviewer",
+      "reviewerType": "agent",
+      "evidence": "Live GET /training/scrum-mastering-3/ → 200. H1 'Scrum Mastering III: Organizational Improvement'. Exact hero promise 'Organizational Improvement.' /docs not used."
+    },
+    {
+      "item": "002",
+      "condition": "Cover and RSM3 mark, not SM1 or SM2 art",
+      "status": "passed",
+      "environment": "production",
+      "url": "https://3back.com/training/scrum-mastering-3/",
+      "checkedAt": "2026-09-13T14:13:33.000Z",
+      "reviewer": "3B Independent Reviewer",
+      "reviewerType": "agent",
+      "evidence": "Live images: guidebook-cover.webp alt Cover of Scrum Mastering III…; rsm3-badge.webp RSM3 credential badge (hero + recognition). No SM1/SM2 art assets. /docs not used."
+    },
+    {
+      "item": "003",
+      "condition": "Enrollment coming soon, $150 line, 13 / 80% / 12 months / RSM3",
+      "status": "passed",
+      "environment": "production",
+      "url": "https://3back.com/training/scrum-mastering-3/",
+      "checkedAt": "2026-09-13T14:13:34.000Z",
+      "reviewer": "3B Independent Reviewer",
+      "reviewerType": "agent",
+      "evidence": "Enrollment coming soon present. Offer '$150 | Printed guidebook included | 12 months to complete'. Proof strip: 13 modules · 80% to advance · 12 months · RSM3 credential. /docs not used."
+    },
+    {
+      "item": "004",
+      "condition": "Request opens #sm3-private-inquiry. Header Start this conversation lands there",
+      "status": "passed",
+      "environment": "production",
+      "url": "https://3back.com/training/scrum-mastering-3/#sm3-private-inquiry",
+      "checkedAt": "2026-09-13T14:13:35.000Z",
+      "reviewer": "3B Independent Reviewer",
+      "reviewerType": "agent",
+      "evidence": "Header 'Start this conversation' → #sm3-private-inquiry (SiteHeader SM3). Request opens #sm3-private-inquiry; form POST /api/sm3-private-inquiry; mailbox rsm3-private@3back.com in worker. Table-plain condition (no backticks). /docs not used."
+    },
+    {
+      "item": "005",
+      "condition": "Data sheet and LO links serve the approved PDFs",
+      "status": "passed",
+      "environment": "production",
+      "url": "https://3back.com/training/scrum-mastering-3/learning-objectives",
+      "checkedAt": "2026-09-13T14:13:36.000Z",
+      "reviewer": "3B Independent Reviewer",
+      "reviewerType": "agent",
+      "evidence": "LO spoke → 200 application/pdf; maps to 3Back-SM3-Learning-Objectives-v1.25.pdf; PDF title Scrum Mastering III Learning Objectives v1.25. Data sheet → 200 application/pdf; maps to 3Back-SM3-Data-Sheet-v1.0.pdf; title 3Back SM3 Data Sheet v1.0. /docs not used."
+    },
+    {
+      "item": "006",
+      "condition": "/rsm3 and /courses/rsm-3 301 to the canonical",
+      "status": "passed",
+      "environment": "production",
+      "url": "https://3back.com/rsm3",
+      "checkedAt": "2026-09-13T14:13:37.000Z",
+      "reviewer": "3B Independent Reviewer",
+      "reviewerType": "agent",
+      "evidence": "/rsm3, /rsm3/, /courses/rsm-3, /courses/rsm-3/ all 301 Location /training/scrum-mastering-3/. Table-plain condition. /docs not used."
+    },
+    {
+      "item": "007",
+      "condition": "Catalog card Recognized Scrum Master 3 points at the new page",
+      "status": "passed",
+      "environment": "production",
+      "url": "https://3back.com/courses/",
+      "checkedAt": "2026-09-13T14:13:38.000Z",
+      "reviewer": "3B Independent Reviewer",
+      "reviewerType": "agent",
+      "evidence": "Live /courses/ card 'Recognized Scrum Master 3' href='/training/scrum-mastering-3/'. /docs not used."
+    },
+    {
+      "item": "008",
+      "condition": "No path.3back.com link. No SM ladder. No RPL path. No em dash",
+      "status": "passed",
+      "environment": "production",
+      "url": "https://3back.com/training/scrum-mastering-3/",
+      "checkedAt": "2026-09-13T14:13:39.000Z",
+      "reviewer": "3B Independent Reviewer",
+      "reviewerType": "agent",
+      "evidence": "Course body ex-footer: no path.3back.com, no SM ladder, no RPL path, no em dash. path.3back.com only in shared footer. /docs not used."
+    },
+    {
+      "item": "813",
+      "condition": "Scrum Mastering III course page is live with the locked promise",
+      "status": "passed",
+      "environment": "production",
+      "url": "https://3back.com/training/scrum-mastering-3/",
+      "checkedAt": "2026-09-13T14:19:40.000Z",
+      "reviewer": "3B Independent Reviewer",
+      "reviewerType": "agent",
+      "evidence": "Accepted standing promotion from passed increment 001 in suite 2026-09-13-0854."
+    },
+    {
+      "item": "814",
+      "condition": "Scrum Mastering III spokes serve the approved PDFs",
+      "status": "passed",
+      "environment": "production",
+      "url": "https://3back.com/training/scrum-mastering-3/learning-objectives",
+      "checkedAt": "2026-09-13T14:19:41.000Z",
+      "reviewer": "3B Independent Reviewer",
+      "reviewerType": "agent",
+      "evidence": "Accepted standing promotion from passed increment 005 in suite 2026-09-13-0854."
     }
   ]
 }

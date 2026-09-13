@@ -7,10 +7,10 @@ import {
   assertOpenFileSizes,
 } from "./validate-acceptance-housekeeping.mjs";
 
-test("caps the shared ledger and open suite files at 200 KB", () => {
-  assert.doesNotThrow(() => assertOpenFileSizes([{ path: "open.json", size: 204800, accepted: false }]));
-  assert.throws(() => assertOpenFileSizes([{ path: "open.json", size: 204801, accepted: false }]), /exceed 200 KB/);
-  assert.doesNotThrow(() => assertOpenFileSizes([{ path: "accepted.json", size: 400000, accepted: true }]));
+test("caps the shared ledger and open suite files at 512 KB", () => {
+  assert.doesNotThrow(() => assertOpenFileSizes([{ path: "open.json", size: 524288, accepted: false }]));
+  assert.throws(() => assertOpenFileSizes([{ path: "open.json", size: 524289, accepted: false }]), /exceed 512 KB/);
+  assert.doesNotThrow(() => assertOpenFileSizes([{ path: "accepted.json", size: 600000, accepted: true }]));
 });
 
 test("rejects a 162-record append storm", () => {

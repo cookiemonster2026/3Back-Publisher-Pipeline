@@ -54,11 +54,21 @@ function previousRecords(root, path) {
   }
 }
 
+function previouslyAccepted(root, path) {
+  try {
+    const lifecycle = JSON.parse(execFileSync("git", ["show", `HEAD:${path}`], { cwd: root, encoding: "utf8", stdio: ["ignore", "pipe", "pipe"] }));
+    return lifecycle.events?.some(event => event.type === "accepted") === true;
+  } catch {
+    return false;
+  }
+}
+
 export function validateAcceptanceHousekeeping(root) {
   const lifecycleDirectory = resolve(root, "src/data/acceptance-lifecycle");
   const snapshotDirectory = resolve(root, "src/data/acceptance-snapshots");
   const lifecycleFiles = fs.readdirSync(lifecycleDirectory).filter(name => name.endsWith(".json"));
   const acceptedSuiteIds = lifecycleFiles.filter(name => readJson(resolve(lifecycleDirectory, name)).events?.some(event => event.type === "accepted")).map(name => name.slice(0, -5));
+  const frozenSuiteIds = lifecycleFiles.filter(name => previouslyAccepted(root, `src/data/acceptance-lifecycle/${name}`)).map(name => name.slice(0, -5));
   const accepted = new Set(acceptedSuiteIds);
   const snapshotFiles = fs.readdirSync(snapshotDirectory).filter(name => name.endsWith(".json"));
   const statusPath = "src/data/acceptance-status.json";
@@ -74,7 +84,7 @@ export function validateAcceptanceHousekeeping(root) {
 
   const changedPaths = execFileSync("git", ["status", "--porcelain=v1", "--untracked-files=all"], { cwd: root, encoding: "utf8" })
     .split(/\r?\n/).filter(Boolean).map(line => line.slice(3).replaceAll("\\", "/")).map(path => path.includes(" -> ") ? path.split(" -> ").at(-1) : path);
-  assertFrozenSuitesUnchanged(acceptedSuiteIds, changedPaths);
+  assertFrozenSuitesUnchanged(frozenSuiteIds, changedPaths);
 
   const statusRecords = readJson(resolve(root, statusPath)).records ?? [];
   for (const name of snapshotFiles.filter(name => /^weekly-\d{4}-\d{2}-\d{2}\.json$/.test(name))) {
