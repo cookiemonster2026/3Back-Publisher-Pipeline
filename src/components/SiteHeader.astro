@@ -11,12 +11,13 @@ const isPo1 = currentPath === "/training/product-ownership-1" || currentPath ===
 const isPo2 = currentPath === "/training/product-ownership-2" || currentPath === "/training/product-ownership-2/";
 const isPo3 = currentPath === "/training/product-ownership-3" || currentPath === "/training/product-ownership-3/";
 const isSsws = currentPath === "/training/scaling-scrum-with-scrum" || currentPath === "/training/scaling-scrum-with-scrum/";
-const isConversationFunnel = isDomainGuides || isWhyDomainExpertise || isCsm || isCspo || isSm1 || isSm2 || isSm3 || isPo1 || isPo2 || isPo3 || isSsws;
+const isSbk = currentPath === "/courses/scrum-better-with-kanban" || currentPath === "/courses/scrum-better-with-kanban/";
+const isConversationFunnel = isDomainGuides || isWhyDomainExpertise || isCsm || isCspo || isSbk || isSm1 || isSm2 || isSm3 || isPo1 || isPo2 || isPo3 || isSsws;
 const conversationHref = isDomainGuides
 	? "#next-step"
 	: isWhyDomainExpertise
 		? "/domain-guides/#next-step"
-		: isCsm || isCspo
+		: isCsm || isCspo || isSbk
 			? "#private-course-request"
 			: isSm1
 				? "#sm1-private-inquiry"
