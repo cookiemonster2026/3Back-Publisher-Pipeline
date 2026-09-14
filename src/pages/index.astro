@@ -168,6 +168,55 @@ const overallGripScore = Math.round(
 				</div>
 			</section>
 
+			<section class="section where-start-section section-rule" id="where-to-start" aria-labelledby="where-start-heading">
+				<div class="shell">
+					<div class="section-heading narrow-heading">
+						<p class="eyebrow">Where to start</p>
+						<h2 id="where-start-heading">Once you can see the problem, choose how far to engage.</h2>
+						<p class="lead-copy">Where you begin depends on what you need to understand or change. You do not need every door. Pick the depth the work can support.</p>
+					</div>
+
+					<ol class="where-start-list">
+						<li>
+							<a class="where-start-row" href="/grip-check/">
+								<span class="where-start-number">01</span>
+								<div>
+									<h3>Check your grip</h3>
+									<div>
+										<p>See where execution is holding and where it is losing control.</p>
+										<span class="where-start-link">Check Your Grip</span>
+									</div>
+								</div>
+							</a>
+						</li>
+						<li>
+							<a class="where-start-row" href="/workshops/">
+								<span class="where-start-number">02</span>
+								<div>
+									<h3>Work a bounded problem</h3>
+									<div>
+										<p>Bring one live execution problem. A workshop makes the gap visible to the people who can act on it.</p>
+										<span class="where-start-link">Examine a Workshop</span>
+									</div>
+								</div>
+							</a>
+						</li>
+						<li>
+							<a class="where-start-row" href="/domain-guides/">
+								<span class="where-start-number">03</span>
+								<div>
+									<h3>Leave the skill in the company</h3>
+									<div>
+										<p>Domain Guides are your people. We help develop them. We do not become them.</p>
+										<span class="where-start-link">Explore Domain Guides</span>
+									</div>
+								</div>
+							</a>
+						</li>
+					</ol>
+				</div>
+			</section>
+
 			<section class="section loop-section" data-reveal aria-labelledby="loop-heading">
 				<div class="shell">
 					<div class="section-heading split-heading">
@@ -289,21 +338,21 @@ const overallGripScore = Math.round(
 					</div>
 
 					<div class="body-work-links">
-						<a href="/ideas/">
+						<article>
 							<span>01</span>
-							<h3>Well-Formed Teams</h3>
+							<h3>Well-Formed Team<sup class="registered-mark">®</sup></h3>
 							<p>The team and authority structure beneath accountable execution.</p>
-						</a>
-						<a href="/ideas/">
+						</article>
+						<article>
 							<span>02</span>
 							<h3>Decision ownership and adaptation</h3>
 							<p>How authority, local control, and feedback shape the ability to respond to changing demand.</p>
-						</a>
-						<a href="/ideas/">
+						</article>
+						<article>
 							<span>03</span>
 							<h3>Agility, Scrum, publications, and learning</h3>
 							<p>A continuing body of work that informs how 3Back thinks about teams, execution, and adaptation.</p>
-						</a>
+						</article>
 					</div>
 				</div>
 				<div class="shell boundary-statement">3Back is the enduring brand. Operational Grip leads the current argument. No single concept independently defines the company.</div>
@@ -336,7 +385,6 @@ const overallGripScore = Math.round(
 									<Image src={talesCardFragment} alt="" widths={[160, 240, 320]} sizes="(max-width: 720px) 160px, 240px" loading="lazy" />
 								</div>
 								<p class="tales-line">The decision is local. The permission structure is not.</p>
-								<p class="tales-coming">Coming soon</p>
 							</a>
 						</article>
 					</div>
@@ -611,15 +659,16 @@ const overallGripScore = Math.round(
 	.diagram-question-bottom { margin: 28px 0 0; text-align: right; }
 	.diagram-stage { min-height: 300px; display: grid; grid-template-columns: 1fr 70px 0.62fr; align-items: center; }
 	.local-boundary { position: relative; aspect-ratio: 1; display: grid; place-items: center; padding: 58px 12px 16px; border: 2px solid var(--paper); box-sizing: border-box; }
-	.diagram-label { position: absolute; top: 10px; left: 12px; right: 12px; color: #b9c0bc; font-size: var(--type-card); line-height: var(--leading-card); }
-	.local-action { width: 42%; aspect-ratio: 1; align-self: end; display: grid; place-items: center; background: var(--amber); color: var(--charcoal); text-align: center; font-size: var(--type-card); font-weight: var(--font-weight-heavy); line-height: var(--leading-display); transition: transform 160ms ease-out; }
+	.diagram-label { position: absolute; top: 10px; left: 12px; right: 12px; color: #b9c0bc; font-size: var(--type-card); line-height: var(--leading-card); transition: color 160ms ease-out; }
+	.local-action { position: absolute; top: calc(100% - 16px - 21%); left: 50%; width: 42%; aspect-ratio: 1; display: grid; place-items: center; background: var(--amber); color: var(--charcoal); text-align: center; font-size: var(--type-card); font-weight: var(--font-weight-heavy); line-height: var(--leading-display); transform: translate(-50%, -50%); transition: top 160ms ease-out; }
 	.effect-line { display: flex; align-items: center; }
 	.effect-line span { width: 20px; height: 2px; margin-right: 4px; background: #8a948f; }
 	.effect-line span:last-child { background: var(--amber); }
 	.effect-line::after { content: ""; width: 8px; height: 8px; margin-left: -5px; border-top: 2px solid #8a948f; border-right: 2px solid #8a948f; transform: rotate(45deg); }
 	.downstream { display: grid; place-items: center; min-height: 92px; border: 1px dashed #89928e; color: #c5cbc7; text-align: center; font-size: var(--type-card); line-height: var(--leading-card); letter-spacing: var(--tracking-heading); transition: border-color 160ms ease-out, color 160ms ease-out; }
 	.grip-diagram:hover .downstream, .grip-diagram:focus-visible .downstream, .grip-diagram.is-active .downstream { border-color: var(--amber); color: var(--amber); }
-	.grip-diagram:hover .local-action, .grip-diagram:focus-visible .local-action, .grip-diagram.is-active .local-action { transform: translateY(-28%); }
+	.grip-diagram:hover .diagram-label, .grip-diagram:focus-visible .diagram-label, .grip-diagram.is-active .diagram-label { color: var(--amber); }
+	.grip-diagram:hover .local-action, .grip-diagram:focus-visible .local-action, .grip-diagram.is-active .local-action { top: 50%; }
 	.grip-diagram:hover .effect-line span, .grip-diagram:focus-visible .effect-line span, .grip-diagram.is-active .effect-line span, .grip-diagram:hover .effect-line::after, .grip-diagram:focus-visible .effect-line::after, .grip-diagram.is-active .effect-line::after { border-color: var(--amber); background-color: var(--amber); }
 
 	.loop-section { background: var(--reading); }
@@ -705,6 +754,19 @@ const overallGripScore = Math.round(
 	.approach-list:has(li:nth-child(1):hover) + .standard-quote .approach-one-1, .approach-list:has(li:nth-child(1):focus-visible) + .standard-quote .approach-one-1, .approach-list:has(li:nth-child(2):hover) + .standard-quote .approach-one-2, .approach-list:has(li:nth-child(2):focus-visible) + .standard-quote .approach-one-2, .approach-list:has(li:nth-child(3):hover) + .standard-quote .approach-one-3, .approach-list:has(li:nth-child(3):focus-visible) + .standard-quote .approach-one-3, .approach-list:has(li:nth-child(4):hover) + .standard-quote .approach-one-4, .approach-list:has(li:nth-child(4):focus-visible) + .standard-quote .approach-one-4 { color: #D96B18; }
 	.approach-section[data-active-step="1"] .approach-one-1, .approach-section[data-active-step="2"] .approach-one-2, .approach-section[data-active-step="3"] .approach-one-3, .approach-section[data-active-step="4"] .approach-one-4 { color: #D96B18; }
 
+	.where-start-section { background: var(--reading); }
+	.where-start-list { max-width: 1040px; margin: 70px 0 0; padding: 0; list-style: none; border-top: 4px solid var(--charcoal); }
+	.where-start-list li { border-bottom: 1px solid var(--rule); }
+	.where-start-row { display: grid; grid-template-columns: 100px minmax(0, 1fr); padding: 30px 20px 30px 0; color: inherit; text-decoration: none; transition: background-color 160ms ease-out; }
+	.where-start-row > div { display: grid; grid-template-columns: minmax(220px, 0.65fr) minmax(0, 1fr); gap: clamp(40px, 7vw, 80px); align-items: baseline; }
+	.where-start-row:hover, .where-start-row:focus-visible { background: var(--amber-wash); }
+	.where-start-row:focus-visible { outline: 3px solid var(--amber); outline-offset: -3px; }
+	.where-start-list h3, .where-start-list p { margin-bottom: 0; }
+	.where-start-list p { color: var(--text-primary); font-size: var(--type-card); line-height: var(--leading-card); }
+	.where-start-number { margin: 3px 0 0 20px; color: var(--charcoal); }
+	.where-start-link { display: inline-flex; min-height: 44px; align-items: center; margin-top: 6px; color: var(--amber-text); font-size: var(--type-card); font-weight: var(--font-weight-bold); line-height: var(--leading-card); text-decoration-color: currentColor; text-decoration-line: underline; text-decoration-thickness: 2px; text-underline-offset: 5px; }
+	.where-start-row:hover .where-start-link, .where-start-row:focus-visible .where-start-link { color: var(--charcoal); text-decoration-thickness: 3px; }
+
 	[data-reveal] { transition: opacity 280ms ease-out, transform 280ms ease-out; }
 	.is-reveal-pending { opacity: 0; transform: translateY(12px); }
 
@@ -712,11 +774,10 @@ const overallGripScore = Math.round(
 	.body-work-grid { display: grid; grid-template-columns: 1fr 1fr; gap: clamp(60px, 9vw, 130px); }
 	.body-work-lead > p:last-child { max-width: 650px; color: var(--text-primary); font-size: var(--type-body); line-height: var(--leading-body); }
 	.body-work-links { border-top: 4px solid var(--charcoal); }
-	.body-work-links > a { position: relative; display: block; padding: 27px 0 27px 58px; border-bottom: 1px solid var(--rule); text-decoration: none; }
-	.body-work-links > a:hover h3 { color: var(--amber); }
-	.body-work-links > a:focus-visible { outline: 3px solid var(--amber); outline-offset: 4px; }
-	.body-work-links > a > span { position: absolute; left: 0; top: 31px; color: var(--amber-text); font-size: var(--type-card); font-weight: var(--font-weight-heavy); line-height: var(--leading-card); }
+	.body-work-links > article { position: relative; padding: 27px 0 27px 58px; border-bottom: 1px solid var(--rule); }
+	.body-work-links > article > span { position: absolute; left: 0; top: 31px; color: var(--amber-text); font-size: var(--type-card); font-weight: var(--font-weight-heavy); line-height: var(--leading-card); }
 	.body-work-links h3 { margin-bottom: 7px; }
+	.registered-mark { margin-left: 0.08em; font-size: 0.52em; line-height: 0; vertical-align: super; }
 	.body-work-links p { margin-bottom: 0; color: var(--text-primary); font-size: var(--type-card); line-height: var(--leading-card); }
 	.boundary-statement { margin-top: 75px; padding: 28px 0; border-top: 1px solid var(--rule); border-bottom: 1px solid var(--rule); color: var(--text-secondary); font-size: var(--type-body); font-weight: var(--font-weight-semibold); line-height: var(--leading-body); text-align: center; }
 
@@ -749,8 +810,7 @@ const overallGripScore = Math.round(
 	.tales-title { margin-bottom: 16px; color: var(--charcoal); font-size: clamp(1.8rem, 2.5vw, 2.25rem); font-weight: var(--font-weight-heavy); }
 	.tales-fragment { width: 160px; height: 104px; margin: 0 0 16px; overflow: hidden; border: 1px solid rgba(29, 36, 33, .24); background: var(--reading); }
 	.tales-fragment :global(img) { display: block; width: 100%; height: 100%; object-fit: cover; object-position: 76% center; }
-	.tales-line { max-width: 370px; margin-bottom: 13px; color: var(--charcoal) !important; font-size: var(--type-card); font-weight: var(--font-weight-semibold); line-height: var(--leading-card); }
-	.tales-coming { margin-bottom: 0; color: var(--text-secondary) !important; font-size: var(--type-caption); font-weight: var(--font-weight-semibold); letter-spacing: var(--tracking-caption); text-transform: uppercase; }
+	.tales-line { max-width: 370px; margin-bottom: 0; color: var(--charcoal) !important; font-size: var(--type-card); font-weight: var(--font-weight-semibold); line-height: var(--leading-card); }
 
 	.contact-section { padding: 110px 0; background: var(--charcoal); color: var(--paper); border-bottom: 5px solid var(--amber); }
 	.contact-grid { display: grid; grid-template-columns: 1.1fr 0.9fr; gap: clamp(60px, 9vw, 130px); align-items: start; }
@@ -814,6 +874,8 @@ const overallGripScore = Math.round(
 		.overall-reading { padding-top: 24px; }
 		.approach-list li { grid-template-columns: 55px 1fr; }
 		.approach-list li > div { grid-template-columns: 1fr; gap: 8px; }
+		.where-start-row { grid-template-columns: 55px minmax(0, 1fr); }
+		.where-start-row > div { grid-template-columns: 1fr; gap: 8px; }
 		.mobile-approach-one { display: none; position: absolute; right: 20px; bottom: 16px; color: #D96B18; font-size: var(--type-subheading); font-weight: var(--font-weight-heavy); line-height: var(--leading-heading); }
 		.approach-list li.is-active { padding-bottom: 58px; }
 		.approach-list li.is-active .mobile-approach-one { display: block; }
@@ -840,7 +902,6 @@ const overallGripScore = Math.round(
 		.score-segment, .score-result, .diagnostic-grid li, .local-action, .downstream, .loop-flow li { transition: none; }
 		.approach-one { transition: none; }
 		.score-segment.is-active, .score-result.is-active { transform: none; }
-		.grip-diagram:hover .local-action, .grip-diagram:focus-visible .local-action { transform: none; }
 		.is-reveal-pending { opacity: 1; transform: none; transition: none; }
 	}
 </style>
