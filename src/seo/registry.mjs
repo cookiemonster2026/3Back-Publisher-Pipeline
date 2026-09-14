@@ -48,7 +48,7 @@ export const STAFF_DOCS = [
 	{
 		"slug": "site-intent-map",
 		"label": "Site Intent Map",
-		"source": "docs/publishing/Site-Intent-Map-v1.9.md",
+		"source": "docs/publishing/Site-Intent-Map-v1.10.md",
 		"path": "/docs/site-intent-map"
 	},
 	{
@@ -1890,7 +1890,6 @@ export const pageSeo = Object.freeze({
 			type: "website",
 		},
 	},
-	"/courses/industry-recognized-scrum-guide": courseStub("/courses/industry-recognized-scrum-guide", "Industry Recognized Scrum Guide – Pinnacle Credential"),
 	"/courses/kmp-1": courseStub("/courses/kmp-1", "KMP I: Kanban Systems Design"),
 	"/courses/kmp-2": courseStub("/courses/kmp-2", "KMP II: Kanban Management Professional"),
 	"/courses/scrum-better-with-kanban": {
