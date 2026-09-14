@@ -33,7 +33,15 @@ const GONE_PATHS = new Set([
 	"/courses/leading-remote-scrum-teams",
 	"/courses/scrum-for-leadership",
 	"/scrum-industry-terms/the-4-types-of-technical-debt",
-	"/people/scrummaster/scrummaster-infographic"
+	"/people/scrummaster/scrummaster-infographic",
+	"/practice/when-to-start-and-finish-a-sprint",
+	"/practice/when-should-sprint-end",
+	"/practice/tactical-feedback-loops-in-scrum",
+	"/scrum/empowerment-without-expertise-in-scrum",
+	"/dysfuctions-of-scrum/force-fed-scrum",
+	"/scrum/scrum-masters-must-be-technical-and-work-domain-knowledgeable",
+	"/pricing",
+	"/scrum-application-workshop"
 ]);
 const TURNSTILE_VERIFY_URL = "https://challenges.cloudflare.com/turnstile/v0/siteverify";
 const RESEND_EMAIL_URL = "https://api.resend.com/emails";
