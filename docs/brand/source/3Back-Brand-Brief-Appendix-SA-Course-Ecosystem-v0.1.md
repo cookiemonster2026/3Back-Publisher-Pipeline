@@ -19,7 +19,7 @@ Applies to the classic Scrum Alliance credential pages and their shared template
 - Certified ScrumMaster® (CSM®) — `/certified-scrummaster-training`
 - Certified Scrum Product Owner® (CSPO®) and the remaining classic SA credentials that follow the same template
 
-It does not apply to Operational Grip pages, the homepage, Training routing page, Papers, Doomscroll, Ideas, or any other primary-brand surface.
+It does not apply to Operational Grip pages, the homepage, Training routing page, Papers, Tales of the Grip, Ideas, or any other primary-brand surface.
 
 ### Brand hierarchy (unchanged)
 

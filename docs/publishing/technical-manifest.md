@@ -150,7 +150,7 @@ The registry is `src/seo/registry.mjs`; its declared shape is documented by `src
 | `/privacy-policy` | Complete | `index, follow` | None | None |
 | `/about` | Stub | `noindex, nofollow` | None | Substantive company and team content; approved complete-page metadata; appropriate structured data |
 | `/contact` | Complete | `index, follow` | None | None |
-| `/doomscroll` | Stub | `noindex, nofollow` | None | Actual diagnostic feed content; completed browsing experience; approved complete-page metadata |
+| `/tales-of-the-grip` | Stub | `noindex, nofollow` | None | Actual diagnostic feed content; completed browsing experience; approved complete-page metadata |
 | `/grip-check` | Stub | `noindex, nofollow` | None | Completed screening flow; results behavior; functional contact handoff; approved complete-page metadata |
 | `/ideas` | Stub | `noindex, nofollow` | None | Approved resource inventory; substantive index content; approved complete-page metadata |
 | `/live-events` | Stub | `noindex, nofollow` | None | Current event details; event schedule; appropriate event structured data; approved complete-page metadata |
@@ -240,7 +240,7 @@ Additional current boundaries:
 - Ideas has no configured resource inventory or content system.
 - Live Events has no event schedule or event structured data.
 - About has no substantive company/team content or page-specific structured data.
-- Doomscroll has no diagnostic feed or completed browsing experience.
+- Tales of the Grip has no diagnostic feed or completed browsing experience.
 
 ## Technical conventions and known limitations
 

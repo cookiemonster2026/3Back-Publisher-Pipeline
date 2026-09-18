@@ -284,10 +284,11 @@ Use this hierarchy:
 
 Operational Grip cartoons can remain a distinct content series without defining the entire website.
 
-## Tales of the Grip and Doomscroll
+## Tales of the Grip
 
-- **Tales of the Grip** is the named editorial cartoon series.
-- **Doomscroll** is the continuous-feed experience for browsing it.
+- **Tales of the Grip** is the named editorial cartoon series and the public place to read it.
+- The public route is `/tales-of-the-grip`.
+- Doomscroll is a verb for the reading behavior. It is not the product name, not the route, and not footer chrome.
 - Each cartoon exposes an observable failure in execution.
 - Humor creates recognition without softening the diagnosis.
 - A cartoon may identify failure without prescribing a solution.

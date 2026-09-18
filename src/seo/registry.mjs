@@ -48,7 +48,7 @@ export const STAFF_DOCS = [
 	{
 		"slug": "site-intent-map",
 		"label": "Site Intent Map",
-		"source": "docs/publishing/Site-Intent-Map-v1.10.md",
+		"source": "docs/publishing/Site-Intent-Map-v1.11.md",
 		"path": "/docs/site-intent-map"
 	},
 	{
@@ -1685,14 +1685,14 @@ export const pageSeo = Object.freeze({
 			type: "website",
 		},
 	},
-	"/doomscroll": {
+	"/tales-of-the-grip": {
 		status: "complete",
-		path: "/doomscroll",
-		title: "Doomscroll | 3Back",
+		path: "/tales-of-the-grip",
+		title: "Tales of the Grip | 3Back",
 		description: "Tales of the Grip. A recurring editorial cartoon about organizational execution. Sample and episodes to come.",
 		indexability: "index, follow",
 		social: {
-			title: "Doomscroll | 3Back",
+			title: "Tales of the Grip | 3Back",
 			description: "Tales of the Grip. A recurring editorial cartoon about organizational execution. Sample and episodes to come.",
 			type: "website",
 		},
