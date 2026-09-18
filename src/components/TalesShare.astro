@@ -1,0 +1,69 @@
+---
+interface Props {
+	description: string;
+	title: string;
+	url: string;
+}
+
+const { description, title, url } = Astro.props;
+---
+
+<div class="share-tools" data-share-tools data-share-title={title} data-share-text={description} data-share-url={url}>
+	<button type="button" class="share-control" data-share-button hidden>Share</button>
+	<button type="button" class="share-control" data-copy-button>Copy link</button>
+	<span class="share-status" data-share-status aria-live="polite"></span>
+</div>
+
+<script>
+	document.querySelectorAll<HTMLElement>("[data-share-tools]").forEach((tools) => {
+		const shareButton = tools.querySelector<HTMLButtonElement>("[data-share-button]");
+		const copyButton = tools.querySelector<HTMLButtonElement>("[data-copy-button]");
+		const status = tools.querySelector<HTMLElement>("[data-share-status]");
+		const title = tools.dataset.shareTitle ?? document.title;
+		const text = tools.dataset.shareText ?? "";
+		const url = tools.dataset.shareUrl ?? window.location.href;
+		let statusTimer: number | undefined;
+
+		const setStatus = (message: string) => {
+			if (!status) return;
+			window.clearTimeout(statusTimer);
+			status.textContent = message;
+			statusTimer = window.setTimeout(() => { status.textContent = ""; }, 4000);
+		};
+
+		const copyLink = async () => {
+			try {
+				await navigator.clipboard.writeText(url);
+				setStatus("Link copied.");
+			} catch {
+				setStatus("Copying is unavailable. Use your browser's address bar.");
+			}
+		};
+
+		if (shareButton && typeof navigator.share === "function") {
+			shareButton.hidden = false;
+			shareButton.addEventListener("click", async () => {
+				try {
+					await navigator.share({ title, text, url });
+				} catch (error) {
+					if (!(error instanceof DOMException && error.name === "AbortError")) {
+						setStatus("Sharing is unavailable. Copy the link instead.");
+					}
+				}
+			});
+		}
+
+		copyButton?.addEventListener("click", copyLink);
+	});
+</script>
+
+<style>
+	.share-tools { display: flex; flex-wrap: wrap; align-items: center; gap: 10px 12px; max-width: 980px; margin-top: 28px; }
+	.share-control { min-height: 44px; padding: 9px 16px; border: 1px solid var(--charcoal); background: transparent; color: var(--charcoal); font-weight: var(--font-weight-semibold); transition: background-color 140ms ease, color 140ms ease; }
+	.share-control:hover { background: var(--charcoal); color: var(--paper); }
+	.share-status { min-height: 1.5em; color: var(--text-secondary); }
+
+	@media (prefers-reduced-motion: reduce) {
+		.share-control { transition: none; }
+	}
+</style>

@@ -1,0 +1,43 @@
+---
+import { Image } from "astro:assets";
+import type { ImageMetadata } from "astro";
+
+interface Props {
+	alt: string;
+	href?: string;
+	image: ImageMetadata;
+	labelledBy: string;
+	linkLabel?: string;
+	loading?: "eager" | "lazy";
+}
+
+const { alt, href, image, labelledBy, linkLabel, loading = "lazy" } = Astro.props;
+---
+
+<figure class="strip-frame" aria-labelledby={labelledBy}>
+	{href ? (
+		<a class="strip-link" href={href} aria-label={linkLabel}>
+			<Image
+				src={image}
+				alt={alt}
+				widths={[640, 960, 1280, 1728]}
+				sizes="(max-width: 720px) calc(100vw - 32px), min(980px, calc(100vw - 48px))"
+				loading={loading}
+			/>
+		</a>
+	) : (
+		<Image
+			src={image}
+			alt={alt}
+			widths={[640, 960, 1280, 1728]}
+			sizes="(max-width: 720px) calc(100vw - 32px), min(980px, calc(100vw - 48px))"
+			loading={loading}
+		/>
+	)}
+</figure>
+
+<style>
+	.strip-frame { max-width: 980px; margin: 0; border: 1px solid var(--rule); background: var(--reading); box-shadow: 0 12px 30px rgba(29, 36, 33, .06); }
+	.strip-link { display: block; }
+	.strip-frame :global(img) { display: block; width: 100%; height: auto; }
+</style>

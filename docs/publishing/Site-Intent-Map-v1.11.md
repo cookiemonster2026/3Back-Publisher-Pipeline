@@ -125,10 +125,12 @@ About, Reviews, Start a Conversation, Privacy Policy, Course Policy.
 |---|---|
 | **Purpose** | Destination for Tales of the Grip. Recognition first; instruction never. |
 | **Audience** | Same multi-level audience as OG: executives through practitioners; humor must cut both ways |
-| **Primary action** | Read the sample; recognize the pattern; return for episodes as they ship. |
+| **Primary action** | Read the newest strip first, continue through the reverse-chronological series, or open a strip's permanent page. |
 | **Indexability** | Complete; index, follow |
 | **Related** | Homepage right Current Thinking card; Footer Explore |
-| **Non-goals** | Not Ideas; not Operational Grip explainer; not a fake episode grid; not a sales CTA page; not company hit pieces; not a brand page for the retired name |
+| **Non-goals** | Not Ideas; not Operational Grip explainer; not a sales CTA page; not company hit pieces; not a brand page for the retired name |
+
+Each published strip has an indexable permanent route under `/tales-of-the-grip/{slug}` for direct sharing and search. The hub remains the public scrolling series, with the newest published strip first. Publication dates are shown without posting times. Quiet leftovers may retain direct routes without appearing in the public series.
 
 ---
 

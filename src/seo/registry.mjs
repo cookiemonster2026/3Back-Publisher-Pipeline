@@ -1,4 +1,5 @@
 import { acceptanceSnapshots } from "../data/acceptance-snapshots.js";
+import { publishedTalesStrips } from "../data/tales-of-the-grip.mjs";
 // @ts-check
 
 /** @typedef {import("./types").SeoMetadata} SeoMetadata */
@@ -1697,6 +1698,19 @@ export const pageSeo = Object.freeze({
 			type: "website",
 		},
 	},
+	...Object.fromEntries(publishedTalesStrips.map((strip) => [strip.path, {
+		status: "complete",
+		path: strip.path,
+		title: `${strip.title} | Tales of the Grip`,
+		description: strip.seoDescription,
+		indexability: "index, follow",
+		social: {
+			title: `${strip.title} | Tales of the Grip`,
+			description: strip.seoDescription,
+			type: "website",
+			image: { ...strip.socialImage, alt: strip.imageAlt },
+		},
+	}])),
 	"/tales-of-the-grip/single-focus": {
 		status: "complete",
 		path: "/tales-of-the-grip/single-focus",

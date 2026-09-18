@@ -1,0 +1,64 @@
+{
+  "records": [
+    {
+      "item": "001",
+      "condition": "The Tales of the Grip hub shows all four published strips newest first, using strip number as the same-day tie-breaker, with publication dates and links from each title and image to its permanent page.",
+      "status": "unverified",
+      "environment": "production",
+      "url": "https://3back.com/tales-of-the-grip/",
+      "checkedAt": "2026-09-18T12:14:24.754-05:00",
+      "reviewer": "Codex Builder",
+      "reviewerType": "agent",
+      "reason": "changed",
+      "evidence": "New increment row requires independent review."
+    },
+    {
+      "item": "002",
+      "condition": "The new permanent pages for strips 001, 003, and 004 return 200 and show the correct complete full-color artwork, title, publication date, shared header, and shared footer.",
+      "status": "unverified",
+      "environment": "production",
+      "url": "https://3back.com/tales-of-the-grip/meet-the-new-organization/",
+      "checkedAt": "2026-09-18T12:14:24.755-05:00",
+      "reviewer": "Codex Builder",
+      "reviewerType": "agent",
+      "reason": "changed",
+      "evidence": "New increment row requires independent review."
+    },
+    {
+      "item": "003",
+      "condition": "Every permanent strip page provides usable Share and Copy link controls plus a clear link back to Tales of the Grip.",
+      "status": "unverified",
+      "environment": "production",
+      "url": "https://3back.com/tales-of-the-grip/meet-the-new-organization/",
+      "checkedAt": "2026-09-18T12:14:24.756-05:00",
+      "reviewer": "Codex Builder",
+      "reviewerType": "agent",
+      "reason": "changed",
+      "evidence": "New increment row requires independent review."
+    },
+    {
+      "item": "004",
+      "condition": "Each new permanent page is indexable with its approved title, description, canonical URL, Open Graph and social image metadata, and appears in the production sitemap.",
+      "status": "unverified",
+      "environment": "production",
+      "url": "https://3back.com/tales-of-the-grip/meet-the-new-organization/",
+      "checkedAt": "2026-09-18T12:14:24.757-05:00",
+      "reviewer": "Codex Builder",
+      "reviewerType": "agent",
+      "reason": "changed",
+      "evidence": "New increment row requires independent review."
+    },
+    {
+      "item": "005",
+      "condition": "The hub and new permanent pages remain usable at desktop and mobile widths without broken images, overflow, clipping, keyboard, focus, heading, landmark, or console regressions.",
+      "status": "unverified",
+      "environment": "production",
+      "url": "https://3back.com/tales-of-the-grip/",
+      "checkedAt": "2026-09-18T12:14:24.758-05:00",
+      "reviewer": "Codex Builder",
+      "reviewerType": "agent",
+      "reason": "changed",
+      "evidence": "New increment row requires independent review."
+    }
+  ]
+}

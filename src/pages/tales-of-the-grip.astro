@@ -1,7 +1,8 @@
 ---
-import { Image } from "astro:assets";
 import SiteLayout from "../layouts/SiteLayout.astro";
-import aiBudgetHasLanded from "../assets/tales-of-the-grip/the-ai-budget-has-landed.png";
+import TalesStripFigure from "../components/TalesStripFigure.astro";
+import { nextScheduledTalesStrip, publishedTalesStrips } from "../data/tales-of-the-grip.mjs";
+import { talesStripImages } from "../data/tales-of-the-grip-assets";
 import { pageSeo } from "../seo/registry.mjs";
 ---
 
@@ -17,24 +18,39 @@ import { pageSeo } from "../seo/registry.mjs";
 			</div>
 		</section>
 
-		<section class="tales-sample" aria-labelledby="strip-title">
+		<section class="tales-feed" aria-label="Tales of the Grip strips">
 			<div class="shell">
-				<h2 id="strip-title" class="sample-label">The AI Budget Has Landed</h2>
-				<figure class="sample-strip">
-					<Image
-						src={aiBudgetHasLanded}
-						alt="Tales of the Grip strip titled The AI Budget Has Landed. Three people sit at a table. One says they used the entire AI budget. Another asks what it helped them finish. The reply is the budget."
-						widths={[640, 960, 1280, 1728]}
-						sizes="(max-width: 720px) calc(100vw - 32px), min(1180px, calc(100vw - 48px))"
-						loading="lazy"
-					/>
-				</figure>
+				{publishedTalesStrips.map((strip, index) => {
+					const titleId = `strip-${strip.slug}-title`;
+					const image = talesStripImages[strip.slug];
+					if (!image) throw new Error(`Missing Tales of the Grip image for ${strip.slug}`);
+					return (
+						<article class="strip-entry">
+							<header class="strip-header">
+								<h2 id={titleId}><a href={`${strip.path}/`}>{strip.title}</a></h2>
+								<p><time datetime={strip.datePublished}>{strip.dateLabel}</time></p>
+							</header>
+							<TalesStripFigure
+								alt={strip.imageAlt}
+								href={`${strip.path}/`}
+								image={image}
+								labelledBy={titleId}
+								linkLabel={`Read ${strip.title}`}
+								loading={index === 0 ? "eager" : "lazy"}
+							/>
+						</article>
+					);
+				})}
 			</div>
 		</section>
 
 		<section class="tales-closing">
 			<div class="shell">
-				<p>More episodes coming soon.</p>
+				{nextScheduledTalesStrip ? (
+					<p>Next strip: <strong>{nextScheduledTalesStrip.title}</strong> · <time datetime={nextScheduledTalesStrip.datePublished}>{nextScheduledTalesStrip.dateLabel}</time>.</p>
+				) : (
+					<p>More episodes coming soon.</p>
+				)}
 			</div>
 		</section>
 	</main>
@@ -43,21 +59,23 @@ import { pageSeo } from "../seo/registry.mjs";
 <style>
 	.tales-intro { padding: 122px 0 70px; }
 	.tales-copy { max-width: 880px; }
-	.sample-label { color: var(--amber-text); font-size: var(--type-caption); font-weight: var(--font-weight-bold); letter-spacing: var(--tracking-caption); text-transform: uppercase; }
 	.tales-copy h1 { max-width: none; margin-bottom: 24px; font-size: clamp(4rem, 7.2vw, 6.4rem); font-weight: var(--font-weight-heavy); }
 	.reading-block { max-width: 740px; color: var(--charcoal); font-size: 1.1rem; font-weight: var(--font-weight-regular); line-height: 1.65; }
 	.reading-block p { margin-bottom: 16px; }
 	.reading-block p:last-child { margin-bottom: 0; }
-	.tales-sample { padding: 0 0 88px; }
-	.sample-label { margin-bottom: 18px; }
-	.sample-strip { max-width: 980px; margin: 0; border: 1px solid var(--rule); background: var(--reading); box-shadow: 0 12px 30px rgba(29, 36, 33, .06); }
-	.sample-strip :global(img) { display: block; width: 100%; height: auto; }
+	.tales-feed { padding: 0 0 88px; }
+	.strip-entry + .strip-entry { margin-top: 88px; padding-top: 72px; border-top: 1px solid var(--rule); }
+	.strip-header { max-width: 980px; margin-bottom: 20px; }
+	.strip-header h2 { margin-bottom: 8px; font-size: clamp(1.75rem, 3vw, 2.5rem); line-height: 1.15; }
+	.strip-header h2 a { color: var(--charcoal); text-decoration-color: var(--amber-text); text-decoration-thickness: 2px; text-underline-offset: .16em; }
+	.strip-header p { margin: 0; color: var(--text-secondary); font-size: 1rem; }
 	.tales-closing { padding: 54px 0 68px; border-block: 1px solid var(--rule); background: #eee8dd; }
 	.tales-closing p { max-width: 680px; margin-bottom: 0; color: var(--charcoal); font-size: clamp(1.35rem, 2.4vw, 1.85rem); font-weight: var(--font-weight-semibold); line-height: 1.35; }
 
 	@media (max-width: 720px) {
 		.tales-intro { padding: 84px 0 48px; }
-		.tales-sample { padding-bottom: 64px; }
+		.tales-feed { padding-bottom: 64px; }
+		.strip-entry + .strip-entry { margin-top: 64px; padding-top: 52px; }
 		.tales-closing { padding: 42px 0 52px; }
 	}
 </style>

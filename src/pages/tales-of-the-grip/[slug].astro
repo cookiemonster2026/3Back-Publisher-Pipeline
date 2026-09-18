@@ -1,0 +1,46 @@
+---
+import SiteLayout from "../../layouts/SiteLayout.astro";
+import TalesShare from "../../components/TalesShare.astro";
+import TalesStripFigure from "../../components/TalesStripFigure.astro";
+import { publishedTalesStrips } from "../../data/tales-of-the-grip.mjs";
+import { talesStripImages } from "../../data/tales-of-the-grip-assets";
+import { canonicalUrl, pageSeo } from "../../seo/registry.mjs";
+
+export function getStaticPaths() {
+	return publishedTalesStrips.map((strip) => ({ params: { slug: strip.slug }, props: { strip } }));
+}
+
+const { strip } = Astro.props;
+const image = talesStripImages[strip.slug];
+if (!image) throw new Error(`Missing Tales of the Grip image for ${strip.slug}`);
+const titleId = `strip-${strip.slug}-title`;
+---
+
+<SiteLayout metadata={pageSeo[strip.path]}>
+	<main id="main" class="strip-page">
+		<article class="strip-article">
+			<div class="shell">
+				<header class="strip-header">
+					<h1 id={titleId}>{strip.title}</h1>
+					<p><time datetime={strip.datePublished}>{strip.dateLabel}</time></p>
+				</header>
+				<TalesStripFigure alt={strip.imageAlt} image={image} labelledBy={titleId} loading="eager" />
+				<TalesShare description={strip.seoDescription} title={strip.title} url={canonicalUrl(strip.path)} />
+				<p class="back-link"><a href="/tales-of-the-grip/">Tales of the Grip</a></p>
+			</div>
+		</article>
+	</main>
+</SiteLayout>
+
+<style>
+	.strip-article { padding: 122px 0 88px; }
+	.strip-header { max-width: 980px; margin-bottom: 28px; }
+	.strip-header h1 { max-width: 900px; margin-bottom: 12px; font-size: clamp(3.25rem, 6vw, 5.6rem); font-weight: var(--font-weight-heavy); line-height: 1.08; }
+	.strip-header p { margin: 0; color: var(--text-secondary); font-size: 1rem; }
+	.back-link { margin: 28px 0 0; font-weight: var(--font-weight-semibold); }
+
+	@media (max-width: 720px) {
+		.strip-article { padding: 84px 0 64px; }
+		.strip-header { margin-bottom: 22px; }
+	}
+</style>
