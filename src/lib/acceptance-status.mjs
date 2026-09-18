@@ -5,7 +5,7 @@ const symbols = { passed: "P", failed: "F", unverified: "R", judgment: "J" };
 const reasons = { changed: "Surface changed.", "never-checked": "Never checked.", blocked: "Live check blocked.", "condition-changed": "Condition text changed.", "awaiting-human": "Awaiting Douglas's live review." };
 const range = (first, last) => Array.from({ length: last - first + 1 }, (_, index) => String(first + index));
 export const PROCESS_ITEMS = Object.freeze(["001", "002", "003", "004", "005", "006", "602", "606"]);
-export const LIVE_ITEMS = Object.freeze([...range(101, 108), ...range(201, 205), ...range(301, 307), ...range(321, 324), ...range(401, 405), ...range(501, 508), "601", ...range(603, 605), ...range(701, 708), ...range(801, 823), ...range(901, 905)]);
+export const LIVE_ITEMS = Object.freeze([...range(101, 108), ...range(201, 205), ...range(301, 307), ...range(321, 324), ...range(401, 405), ...range(501, 508), "601", ...range(603, 605), ...range(701, 708), ...range(801, 824), ...range(901, 905)]);
 const processItems = new Set(PROCESS_ITEMS);
 const liveItems = new Set(LIVE_ITEMS);
 const incrementItems = new Set(Array.from({ length: 10 }, (_, index) => String(index + 1).padStart(3, "0")));

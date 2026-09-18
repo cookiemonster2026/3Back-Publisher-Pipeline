@@ -71,6 +71,78 @@
       "reviewerType": "agent",
       "reason": "changed",
       "evidence": "New increment row requires independent review."
+    },
+    {
+      "item": "001",
+      "condition": "The canonical Tales of the Grip hub returns 200 with the approved title, H1, body, sample, closer, and no Doomscroll eyebrow.",
+      "status": "passed",
+      "environment": "production",
+      "url": "https://3back.com/tales-of-the-grip/",
+      "checkedAt": "2026-09-17T21:29:11.665-05:00",
+      "reviewer": "Douglas Shimp",
+      "reviewerType": "human",
+      "reason": "human-accepted",
+      "evidence": "Douglas completed his review and explicitly instructed that all six increment items be marked Pass."
+    },
+    {
+      "item": "002",
+      "condition": "The homepage Current Thinking card is titled Tales of the Grip, has no content-type line, preserves its body line, and links to /tales-of-the-grip/.",
+      "status": "passed",
+      "environment": "production",
+      "url": "https://3back.com/",
+      "checkedAt": "2026-09-17T21:29:11.666-05:00",
+      "reviewer": "Douglas Shimp",
+      "reviewerType": "human",
+      "reason": "human-accepted",
+      "evidence": "Douglas completed his review and explicitly instructed that all six increment items be marked Pass."
+    },
+    {
+      "item": "003",
+      "condition": "Footer Explore labels the third item Tales of the Grip and links to /tales-of-the-grip/ on public pages.",
+      "status": "passed",
+      "environment": "production",
+      "url": "https://3back.com/tales-of-the-grip/",
+      "checkedAt": "2026-09-17T21:29:11.667-05:00",
+      "reviewer": "Douglas Shimp",
+      "reviewerType": "human",
+      "reason": "human-accepted",
+      "evidence": "Douglas completed his review and explicitly instructed that all six increment items be marked Pass."
+    },
+    {
+      "item": "004",
+      "condition": "/doomscroll and /doomscroll/ return 301 to /tales-of-the-grip/.",
+      "status": "passed",
+      "environment": "production",
+      "url": "https://3back.com/doomscroll",
+      "checkedAt": "2026-09-17T21:29:11.668-05:00",
+      "reviewer": "Douglas Shimp",
+      "reviewerType": "human",
+      "reason": "human-accepted",
+      "evidence": "Douglas completed his review and explicitly instructed that all six increment items be marked Pass."
+    },
+    {
+      "item": "005",
+      "condition": "Tales of the Grip is complete and indexable with the approved title and description, appears in the production sitemap, and the old route does not.",
+      "status": "passed",
+      "environment": "production",
+      "url": "https://3back.com/tales-of-the-grip/",
+      "checkedAt": "2026-09-17T21:29:11.669-05:00",
+      "reviewer": "Douglas Shimp",
+      "reviewerType": "human",
+      "reason": "human-accepted",
+      "evidence": "Douglas completed his review and explicitly instructed that all six increment items be marked Pass."
+    },
+    {
+      "item": "006",
+      "condition": "The renamed hub and homepage card remain usable at desktop and mobile widths with no broken image, overflow, keyboard, focus, heading, or landmark regression.",
+      "status": "passed",
+      "environment": "production",
+      "url": "https://3back.com/tales-of-the-grip/",
+      "checkedAt": "2026-09-17T21:29:11.670-05:00",
+      "reviewer": "Douglas Shimp",
+      "reviewerType": "human",
+      "reason": "human-accepted",
+      "evidence": "Douglas completed his review and explicitly instructed that all six increment items be marked Pass."
     }
   ]
 }

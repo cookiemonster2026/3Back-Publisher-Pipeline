@@ -163,6 +163,7 @@ Promoted at Accept from the staff-docs, Product Ownership I, Product Ownership I
 | 821 | Affected | Agent | The Scrum for Teams stub is replaced by a complete course page with the supplied mark, a direct whole-team promise, and the approved course history. | Open `/courses/scrum-for-teams/` and confirm the mark, eyebrow, H1, outcome promise, original-course line, Scrum Alliance history, and 1996 line. |
 | 822 | Affected | Agent | The Exploring Scrum cover sits beside the approved history caption and does not dominate the page. | Inspect the book section at desktop and mobile widths. |
 | 823 | Affected | Agent | The closing sales band presents the learning objectives and data sheet as buyer resources, both spokes serve the supplied v1.0 PDFs, and the legacy short path 301s to the canonical course route. | Inspect the closing resource links, request both PDF routes, and request `/scrum-for-teams` without following redirects. |
+| 824 | Affected | Agent | The canonical Tales of the Grip hub returns 200 with the approved title, H1, body, sample, closer, and no Doomscroll eyebrow. | Open `/tales-of-the-grip/` directly and inspect the rendered page and document title. |
 
 ## Human visual and executive review
 
