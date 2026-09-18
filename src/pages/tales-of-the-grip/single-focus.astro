@@ -1,0 +1,39 @@
+---
+import { Image } from "astro:assets";
+import SiteLayout from "../../layouts/SiteLayout.astro";
+import singleFocus from "../../assets/tales-of-the-grip/single-focus.jpg";
+import { pageSeo } from "../../seo/registry.mjs";
+---
+
+<SiteLayout metadata={pageSeo["/tales-of-the-grip/single-focus"]}>
+	<main id="main" class="tales-page">
+		<section class="tales-leftover">
+			<div class="shell">
+				<h1>Single Focus</h1>
+				<figure class="sample-strip">
+					<Image
+						src={singleFocus}
+						alt="Tales of the Grip sample strip titled Single Focus, four panels about a team told to choose one priority while work keeps arriving."
+						widths={[640, 960, 1280, 1728]}
+						sizes="(max-width: 720px) calc(100vw - 32px), min(1180px, calc(100vw - 48px))"
+						loading="lazy"
+					/>
+				</figure>
+				<p class="back-link"><a href="/tales-of-the-grip/">Tales of the Grip</a></p>
+			</div>
+		</section>
+	</main>
+</SiteLayout>
+
+<style>
+	.tales-leftover { padding: 122px 0 88px; }
+	.tales-leftover h1 { max-width: none; margin-bottom: 40px; font-size: clamp(4rem, 7.2vw, 6.4rem); font-weight: var(--font-weight-heavy); }
+	.sample-strip { max-width: 980px; margin: 0; border: 1px solid var(--rule); background: var(--reading); box-shadow: 0 12px 30px rgba(29, 36, 33, .06); }
+	.sample-strip :global(img) { display: block; width: 100%; height: auto; }
+	.back-link { margin: 28px 0 0; font-weight: var(--font-weight-semibold); }
+
+	@media (max-width: 720px) {
+		.tales-leftover { padding: 84px 0 64px; }
+		.tales-leftover h1 { margin-bottom: 28px; }
+	}
+</style>

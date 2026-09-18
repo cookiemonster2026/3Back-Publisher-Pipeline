@@ -1,7 +1,7 @@
 ---
 import { Image } from "astro:assets";
 import SiteLayout from "../layouts/SiteLayout.astro";
-import singleFocus from "../assets/tales-of-the-grip/single-focus.jpg";
+import aiBudgetHasLanded from "../assets/tales-of-the-grip/the-ai-budget-has-landed.png";
 import { pageSeo } from "../seo/registry.mjs";
 ---
 
@@ -17,13 +17,13 @@ import { pageSeo } from "../seo/registry.mjs";
 			</div>
 		</section>
 
-		<section class="tales-sample" aria-labelledby="sample-title">
+		<section class="tales-sample" aria-labelledby="strip-title">
 			<div class="shell">
-				<h2 id="sample-title" class="sample-label">Sample of what’s coming</h2>
+				<h2 id="strip-title" class="sample-label">The AI Budget Has Landed</h2>
 				<figure class="sample-strip">
 					<Image
-						src={singleFocus}
-						alt="Tales of the Grip sample strip titled Single Focus, four panels about a team told to choose one priority while work keeps arriving."
+						src={aiBudgetHasLanded}
+						alt="Tales of the Grip strip titled The AI Budget Has Landed. Three people sit at a table. One says they used the entire AI budget. Another asks what it helped them finish. The reply is the budget."
 						widths={[640, 960, 1280, 1728]}
 						sizes="(max-width: 720px) calc(100vw - 32px), min(1180px, calc(100vw - 48px))"
 						loading="lazy"
