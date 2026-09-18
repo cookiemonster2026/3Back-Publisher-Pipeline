@@ -1,16 +1,24 @@
 ---
 interface Props {
+	copyLabel?: string;
 	description: string;
+	shareLabel?: string;
 	title: string;
 	url: string;
 }
 
-const { description, title, url } = Astro.props;
+const {
+	copyLabel = "Copy link",
+	description,
+	shareLabel = "Share",
+	title,
+	url,
+} = Astro.props;
 ---
 
 <div class="share-tools" data-share-tools data-share-title={title} data-share-text={description} data-share-url={url}>
-	<button type="button" class="share-control" data-share-button hidden>Share</button>
-	<button type="button" class="share-control" data-copy-button>Copy link</button>
+	<button type="button" class="share-control" data-share-button hidden>{shareLabel}</button>
+	<button type="button" class="share-control" data-copy-button>{copyLabel}</button>
 	<span class="share-status" data-share-status aria-live="polite"></span>
 </div>
 

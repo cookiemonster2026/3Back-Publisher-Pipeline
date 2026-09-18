@@ -60,7 +60,7 @@ About, Reviews, Start a Conversation, Privacy Policy, Course Policy.
 |---|---|
 | **Purpose** | Orient a visitor to 3Back as the Team Execution Company; show the operating lens; route into Operational Grip, written work, and contact |
 | **Audience** | Executives and leaders accountable for organizational execution; operators who feel the problem before they have the language |
-| **Primary actions** | Explore Operational Grip → `/operational-grip/`; open Current Thinking cards (paper, Tales). Header and close keep Start a Conversation → `/contact/`. |
+| **Primary actions** | Explore Operational Grip → `/operational-grip/`; open Current Thinking cards (paper, newest Tales strip, or the Tales collection). Header and close keep Start a Conversation → `/contact/`. |
 | **Indexability** | Complete; index, follow |
 | **Non-goals** | Not a course catalog; not a news wire; not a Scrum marketing home |
 
@@ -70,7 +70,7 @@ About, Reviews, Start a Conversation, Privacy Policy, Course Policy.
 |---|---|
 | Hero | Name the problem and offer the Operational Grip path. Do not list a hero conversation button. |
 | How 3Back Works / operating lens | Show the observable → local change → observe effects loop without a sales pitch |
-| Current Thinking | Two quiet cards: paper (No Head Works Alone) and Tales of the Grip. Tease, do not dump library |
+| Current Thinking | Two quiet cards: paper (No Head Works Alone) and Tales of the Grip. The Tales card automatically promotes the newest published strip with its curated preview, title, date, and direct route, while preserving a route to the collection. Tease, do not dump library. |
 | Other bands | Support recognition of execution failure and bounded action; no loud cert marketing |
 
 ---
@@ -125,12 +125,12 @@ About, Reviews, Start a Conversation, Privacy Policy, Course Policy.
 |---|---|
 | **Purpose** | Destination for Tales of the Grip. Recognition first; instruction never. |
 | **Audience** | Same multi-level audience as OG: executives through practitioners; humor must cut both ways |
-| **Primary action** | Read the newest strip first, continue through the reverse-chronological series, or open a strip's permanent page. |
+| **Primary action** | Read the newest strip first, continue through the reverse-chronological series, open a strip's permanent page, or share the collection. |
 | **Indexability** | Complete; index, follow |
 | **Related** | Homepage right Current Thinking card; Footer Explore |
 | **Non-goals** | Not Ideas; not Operational Grip explainer; not a sales CTA page; not company hit pieces; not a brand page for the retired name |
 
-Each published strip has an indexable permanent route under `/tales-of-the-grip/{slug}` for direct sharing and search. The hub remains the public scrolling series, with the newest published strip first. Publication dates are shown without posting times. Quiet leftovers may retain direct routes without appearing in the public series.
+Each published strip has an indexable permanent route under `/tales-of-the-grip/{slug}` for direct sharing and search. The hub remains the public scrolling series, with the newest published strip first, collection-level share controls, and a dedicated large social preview. Publication dates are shown without posting times. Quiet leftovers may retain direct routes without appearing in the public series.
 
 ---
 

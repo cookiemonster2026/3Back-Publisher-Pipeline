@@ -1,9 +1,10 @@
 ---
 import SiteLayout from "../layouts/SiteLayout.astro";
+import TalesShare from "../components/TalesShare.astro";
 import TalesStripFigure from "../components/TalesStripFigure.astro";
 import { nextScheduledTalesStrip, publishedTalesStrips } from "../data/tales-of-the-grip.mjs";
 import { talesStripImages } from "../data/tales-of-the-grip-assets";
-import { pageSeo } from "../seo/registry.mjs";
+import { canonicalUrl, pageSeo } from "../seo/registry.mjs";
 ---
 
 <SiteLayout metadata={pageSeo["/tales-of-the-grip"]}>
@@ -12,9 +13,15 @@ import { pageSeo } from "../seo/registry.mjs";
 			<div class="shell tales-copy">
 				<h1>Tales of the Grip</h1>
 				<div class="reading-block">
-					<p>A recurring editorial cartoon about organizational execution.</p>
-					<p>It uses humor to expose serious failures in how work actually runs. The point is recognition, not instruction. You should see a familiar situation, laugh uneasily, and think: that is us.</p>
+					<p>Tales of the Grip is an editorial cartoon series about organizational execution. Each strip uses humor to expose a familiar failure in how work actually runs. The aim is recognition: you laugh, then think, that is us.</p>
 				</div>
+				<TalesShare
+					copyLabel="Copy collection link"
+					description={pageSeo["/tales-of-the-grip"].description}
+					shareLabel="Share collection"
+					title="Tales of the Grip"
+					url={canonicalUrl("/tales-of-the-grip")}
+				/>
 			</div>
 		</section>
 

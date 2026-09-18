@@ -3,10 +3,21 @@ import allHandsOnDirection from "../assets/tales-of-the-grip/all-hands-on-direct
 import aiBudgetHasLanded from "../assets/tales-of-the-grip/the-ai-budget-has-landed.png";
 import factoryAllGreen from "../assets/tales-of-the-grip/factory-all-green.png";
 import meetTheNewOrganization from "../assets/tales-of-the-grip/meet-the-new-organization.png";
+import allHandsOnDirectionPreview from "../assets/tales-of-the-grip/previews/all-hands-on-direction.png";
+import aiBudgetHasLandedPreview from "../assets/tales-of-the-grip/previews/the-ai-budget-has-landed.png";
+import factoryAllGreenPreview from "../assets/tales-of-the-grip/previews/factory-all-green.png";
+import meetTheNewOrganizationPreview from "../assets/tales-of-the-grip/previews/meet-the-new-organization.png";
 
 export const talesStripImages: Readonly<Record<string, ImageMetadata>> = Object.freeze({
 	"all-hands-on-direction": allHandsOnDirection,
 	"the-ai-budget-has-landed": aiBudgetHasLanded,
 	"factory-all-green": factoryAllGreen,
 	"meet-the-new-organization": meetTheNewOrganization,
+});
+
+export const talesStripHomepagePreviews: Readonly<Record<string, ImageMetadata>> = Object.freeze({
+	"all-hands-on-direction": allHandsOnDirectionPreview,
+	"the-ai-budget-has-landed": aiBudgetHasLandedPreview,
+	"factory-all-green": factoryAllGreenPreview,
+	"meet-the-new-organization": meetTheNewOrganizationPreview,
 });

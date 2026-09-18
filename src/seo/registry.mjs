@@ -1696,6 +1696,13 @@ export const pageSeo = Object.freeze({
 			title: "Tales of the Grip | 3Back",
 			description: "Tales of the Grip. A recurring editorial cartoon about organizational execution.",
 			type: "website",
+			image: {
+				src: "/social/tales-of-the-grip/tales-of-the-grip.png",
+				width: 1200,
+				height: 630,
+				type: "image/png",
+				alt: "Tales of the Grip collection cover with an illustrated workplace cartoon and the 3Back series title.",
+			},
 		},
 	},
 	...Object.fromEntries(publishedTalesStrips.map((strip) => [strip.path, {
