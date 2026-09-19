@@ -1,0 +1,64 @@
+{
+  "records": [
+    {
+      "item": "001",
+      "condition": "The Tales of the Grip hub shows all five published strips newest first, with Six Layers of Governance first and every title and image linked to its permanent page.",
+      "status": "unverified",
+      "environment": "production",
+      "url": "https://3back.com/tales-of-the-grip/",
+      "checkedAt": "2026-09-19T13:41:03.971-05:00",
+      "reviewer": "Codex Builder",
+      "reviewerType": "agent",
+      "reason": "changed",
+      "evidence": "New increment row requires independent review."
+    },
+    {
+      "item": "002",
+      "condition": "The Six Layers of Governance permanent page returns 200 and shows the correct title, publication date, all three supplied full-color parts in order, sharing controls, and a link back to Tales of the Grip.",
+      "status": "unverified",
+      "environment": "production",
+      "url": "https://3back.com/tales-of-the-grip/six-layers-of-governance/",
+      "checkedAt": "2026-09-19T13:41:03.972-05:00",
+      "reviewer": "Codex Builder",
+      "reviewerType": "agent",
+      "reason": "changed",
+      "evidence": "New increment row requires independent review."
+    },
+    {
+      "item": "003",
+      "condition": "The collection is a compact, ungrouped quick-reference view of every published strip, with each title above its thumbnail and publication date below, and both title and thumbnail linking to the permanent page.",
+      "status": "unverified",
+      "environment": "production",
+      "url": "https://3back.com/tales-of-the-grip/collection/",
+      "checkedAt": "2026-09-19T13:41:03.973-05:00",
+      "reviewer": "Codex Builder",
+      "reviewerType": "agent",
+      "reason": "changed",
+      "evidence": "New increment row requires independent review."
+    },
+    {
+      "item": "004",
+      "condition": "The collection renders as three columns on desktop, two columns at medium widths, and one column on narrow mobile widths without overflow, clipping, broken images, heading, landmark, keyboard, focus, or console regressions.",
+      "status": "unverified",
+      "environment": "production",
+      "url": "https://3back.com/tales-of-the-grip/collection/",
+      "checkedAt": "2026-09-19T13:41:03.974-05:00",
+      "reviewer": "Codex Builder",
+      "reviewerType": "agent",
+      "reason": "changed",
+      "evidence": "New increment row requires independent review."
+    },
+    {
+      "item": "005",
+      "condition": "Six Layers of Governance is indexable with its approved metadata and appears in the production sitemap, while the utility collection has its own canonical metadata, is noindex, nofollow, and is excluded from the production sitemap.",
+      "status": "unverified",
+      "environment": "production",
+      "url": "https://3back.com/tales-of-the-grip/collection/",
+      "checkedAt": "2026-09-19T13:41:03.975-05:00",
+      "reviewer": "Codex Builder",
+      "reviewerType": "agent",
+      "reason": "changed",
+      "evidence": "New increment row requires independent review."
+    }
+  ]
+}

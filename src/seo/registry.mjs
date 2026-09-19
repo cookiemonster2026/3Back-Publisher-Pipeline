@@ -1705,6 +1705,18 @@ export const pageSeo = Object.freeze({
 			},
 		},
 	},
+	"/tales-of-the-grip/collection": {
+		status: "complete",
+		path: "/tales-of-the-grip/collection",
+		title: "Collection | Tales of the Grip",
+		description: "A quick reference to every published Tales of the Grip strip.",
+		indexability: "noindex, nofollow",
+		social: {
+			title: "Collection | Tales of the Grip",
+			description: "A quick reference to every published Tales of the Grip strip.",
+			type: "website",
+		},
+	},
 	...Object.fromEntries(publishedTalesStrips.map((strip) => [strip.path, {
 		status: "complete",
 		path: strip.path,

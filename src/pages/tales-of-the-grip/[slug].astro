@@ -3,7 +3,7 @@ import SiteLayout from "../../layouts/SiteLayout.astro";
 import TalesShare from "../../components/TalesShare.astro";
 import TalesStripFigure from "../../components/TalesStripFigure.astro";
 import { publishedTalesStrips } from "../../data/tales-of-the-grip.mjs";
-import { talesStripImages } from "../../data/tales-of-the-grip-assets";
+import { talesStripImages, talesStripPartImages } from "../../data/tales-of-the-grip-assets";
 import { canonicalUrl, pageSeo } from "../../seo/registry.mjs";
 
 export function getStaticPaths() {
@@ -14,6 +14,7 @@ const { strip } = Astro.props;
 const image = talesStripImages[strip.slug];
 if (!image) throw new Error(`Missing Tales of the Grip image for ${strip.slug}`);
 const titleId = `strip-${strip.slug}-title`;
+const parts = strip.parts ?? [];
 ---
 
 <SiteLayout metadata={pageSeo[strip.path]}>
@@ -23,8 +24,27 @@ const titleId = `strip-${strip.slug}-title`;
 				<header class="strip-header">
 					<h1 id={titleId}>{strip.title}</h1>
 					<p><time datetime={strip.datePublished}>{strip.dateLabel}</time></p>
+					{parts.length > 0 && (
+						<nav class="part-nav" aria-label="Strip parts">
+							<ul>
+								{parts.map((part) => <li><a href={`#${part.id}`}>{part.label}</a></li>)}
+							</ul>
+						</nav>
+					)}
 				</header>
-				<TalesStripFigure alt={strip.imageAlt} image={image} labelledBy={titleId} loading="eager" />
+				{parts.length > 0 ? parts.map((part, index) => {
+					const partImage = talesStripPartImages[part.imageKey];
+					if (!partImage) throw new Error(`Missing Tales of the Grip part image for ${part.imageKey}`);
+					const partTitleId = `${strip.slug}-${part.id}-title`;
+					return (
+						<section class="strip-part" id={part.id} aria-labelledby={partTitleId}>
+							<h2 id={partTitleId}>{part.label}</h2>
+							<TalesStripFigure alt={part.imageAlt} image={partImage} labelledBy={partTitleId} loading={index === 0 ? "eager" : "lazy"} />
+						</section>
+					);
+				}) : (
+					<TalesStripFigure alt={strip.imageAlt} image={image} labelledBy={titleId} loading="eager" />
+				)}
 				<TalesShare description={strip.seoDescription} title={strip.title} url={canonicalUrl(strip.path)} />
 				<p class="back-link"><a href="/tales-of-the-grip/">Tales of the Grip</a></p>
 			</div>
@@ -37,10 +57,17 @@ const titleId = `strip-${strip.slug}-title`;
 	.strip-header { max-width: 980px; margin-bottom: 28px; }
 	.strip-header h1 { max-width: 900px; margin-bottom: 12px; font-size: clamp(3.25rem, 6vw, 5.6rem); font-weight: var(--font-weight-heavy); line-height: 1.08; }
 	.strip-header p { margin: 0; color: var(--text-secondary); font-size: 1rem; }
+	.part-nav { margin-top: 18px; }
+	.part-nav ul { display: flex; flex-wrap: wrap; gap: 10px 24px; margin: 0; padding: 0; list-style: none; }
+	.part-nav a { font-weight: var(--font-weight-semibold); }
+	.strip-part { scroll-margin-top: 24px; }
+	.strip-part + .strip-part { margin-top: 64px; padding-top: 48px; border-top: 1px solid var(--rule); }
+	.strip-part h2 { margin: 0 0 18px; color: var(--text-secondary); font-size: 1.15rem; font-weight: var(--font-weight-semibold); }
 	.back-link { margin: 28px 0 0; font-weight: var(--font-weight-semibold); }
 
 	@media (max-width: 720px) {
 		.strip-article { padding: 84px 0 64px; }
 		.strip-header { margin-bottom: 22px; }
+		.strip-part + .strip-part { margin-top: 48px; padding-top: 36px; }
 	}
 </style>

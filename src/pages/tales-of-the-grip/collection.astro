@@ -1,0 +1,63 @@
+---
+import { Image } from "astro:assets";
+import SiteLayout from "../../layouts/SiteLayout.astro";
+import { publishedTalesStrips } from "../../data/tales-of-the-grip.mjs";
+import { talesStripHomepagePreviews } from "../../data/tales-of-the-grip-assets";
+import { pageSeo } from "../../seo/registry.mjs";
+---
+
+<SiteLayout metadata={pageSeo["/tales-of-the-grip/collection"]}>
+	<main id="main" class="collection-page">
+		<div class="shell collection-shell">
+			<header class="collection-header">
+				<h1>Collection</h1>
+				<p>A quick reference to every published Tales of the Grip strip.</p>
+			</header>
+
+			<ul class="edition-grid" aria-label="Published Tales of the Grip strips">
+				{publishedTalesStrips.map((strip) => {
+					const preview = talesStripHomepagePreviews[strip.slug];
+					if (!preview) throw new Error(`Missing Tales of the Grip preview for ${strip.slug}`);
+					return (
+						<li class="edition-item">
+							<h2><a href={`${strip.path}/`}>{strip.title}</a></h2>
+							<a class="thumbnail-link" href={`${strip.path}/`} aria-label={`Read ${strip.title}`}>
+								<Image src={preview} alt="" widths={[320, 480, 640]} sizes="(max-width: 560px) calc(100vw - 32px), (max-width: 820px) calc((100vw - 60px) / 2), 300px" loading="lazy" />
+							</a>
+							<p><time datetime={strip.datePublished}>{strip.dateLabel}</time></p>
+						</li>
+					);
+				})}
+			</ul>
+
+			<p class="back-link"><a href="/tales-of-the-grip/">Tales of the Grip</a></p>
+		</div>
+	</main>
+</SiteLayout>
+
+<style>
+	.collection-page { padding: 122px 0 88px; }
+	.collection-shell { max-width: 980px; }
+	.collection-header { margin-bottom: 56px; }
+	.collection-header h1 { margin-bottom: 16px; font-size: clamp(3.5rem, 6.5vw, 5.8rem); font-weight: var(--font-weight-heavy); }
+	.collection-header p { max-width: 640px; margin: 0; color: var(--text-secondary); font-size: 1.1rem; }
+	.edition-grid { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 44px 28px; margin: 0; padding: 0; list-style: none; }
+	.edition-item { min-width: 0; }
+	.edition-item h2 { min-height: 2.5em; margin: 0 0 14px; font-size: clamp(1.2rem, 1.8vw, 1.5rem); line-height: 1.25; }
+	.edition-item h2 a { color: var(--charcoal); text-decoration-color: var(--amber-text); text-decoration-thickness: 2px; text-underline-offset: .16em; }
+	.thumbnail-link { display: block; border: 1px solid var(--rule); background: var(--reading); }
+	.thumbnail-link :global(img) { display: block; width: 100%; aspect-ratio: 16 / 9; object-fit: cover; object-position: top; }
+	.edition-item p { margin: 10px 0 0; color: var(--text-secondary); font-size: 1rem; }
+	.back-link { margin: 32px 0 0; font-weight: var(--font-weight-semibold); }
+
+	@media (max-width: 820px) {
+		.edition-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+	}
+
+	@media (max-width: 560px) {
+		.collection-page { padding: 84px 0 64px; }
+		.collection-header { margin-bottom: 42px; }
+		.edition-grid { grid-template-columns: 1fr; gap: 36px; }
+		.edition-item h2 { min-height: 0; }
+	}
+</style>

@@ -15,6 +15,7 @@ import { canonicalUrl, pageSeo } from "../seo/registry.mjs";
 				<div class="reading-block">
 					<p>Tales of the Grip is an editorial cartoon series about organizational execution. Each strip uses humor to expose a familiar failure in how work actually runs. The aim is recognition: you laugh, then think, that is us.</p>
 				</div>
+				<p class="collection-link"><a href="/tales-of-the-grip/collection/">Collection</a></p>
 				<TalesShare
 					copyLabel="Copy collection link"
 					description={pageSeo["/tales-of-the-grip"].description}
@@ -70,6 +71,7 @@ import { canonicalUrl, pageSeo } from "../seo/registry.mjs";
 	.reading-block { max-width: 740px; color: var(--charcoal); font-size: 1.1rem; font-weight: var(--font-weight-regular); line-height: 1.65; }
 	.reading-block p { margin-bottom: 16px; }
 	.reading-block p:last-child { margin-bottom: 0; }
+	.collection-link { margin: 18px 0 0; font-weight: var(--font-weight-semibold); }
 	.tales-feed { padding: 0 0 88px; }
 	.strip-entry + .strip-entry { margin-top: 88px; padding-top: 72px; border-top: 1px solid var(--rule); }
 	.strip-header { max-width: 980px; margin-bottom: 20px; }
