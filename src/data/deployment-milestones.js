@@ -33,6 +33,7 @@ export const deploymentMilestones = [
 	{"completedAt":"2026-09-13T17:37:12.998Z","description":"Close Scrum Better with Kanban acceptance suite"},
 	{"completedAt":"2026-09-13T18:42:04.309Z","description":"Complete Recognized Scrum Guide path hub"},
 	{"completedAt":"2026-09-13T20:05:32.040Z","description":"Complete Scrum for Teams course page"},
+	{"completedAt":"2026-09-19T15:00:43.524-05:00","description":"Publish Strip 005 and compact Tales collection"},
 ];
 
 // Preserve the existing archive while adding future completed milestones.

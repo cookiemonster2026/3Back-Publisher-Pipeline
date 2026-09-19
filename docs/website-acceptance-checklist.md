@@ -4,7 +4,7 @@ This file is the shared verification source for future website changes. It conta
 
 ## Acceptance Testing Readiness
 
-000 — Initialize: The Independent AI Reviewer reads Reviewer Agents.md and confirms readiness to perform according to its instructions. At each handoff the builder resets this item to R Review. The reviewer records Pass or Fail; on Fail, identifies the blocker and stops. This readiness result is separate from the 81 live-site verdicts.
+000 — Initialize: The Independent AI Reviewer reads Reviewer Agents.md and confirms readiness to perform according to its instructions. At each handoff the builder resets this item to R Review. The reviewer records Pass or Fail; on Fail, identifies the blocker and stops. This readiness result is separate from the 84 live-site verdicts.
 
 ## Governing sources
 
@@ -41,7 +41,7 @@ Run an `Affected` item when the requested or resulting diff could change its con
 
 ### Status on /docs/acceptance-testing
 
-Live colors apply to the 81 live items. Green and red are live verdicts on a known condition. Blue means a known condition needs a live look. J means human judgment is needed to proceed. The implementer may only mark blue. An outside reviewer marks green, red, or J. Douglas decides J. The surface map is a starting point, not a closed list. Last checked ignores blue and J.
+Live colors apply to the 84 live items. Green and red are live verdicts on a known condition. Blue means a known condition needs a live look. J means human judgment is needed to proceed. The implementer may only mark blue. An outside reviewer marks green, red, or J. Douglas decides J. The surface map is a starting point, not a closed list. Last checked ignores blue and J.
 
 ## Global brand and positioning
 
@@ -167,6 +167,9 @@ Promoted at Accept from the staff-docs, Product Ownership I, Product Ownership I
 | 825 | Affected | Agent | The Tales of the Grip hub shows all published strips newest first, using strip number as the same-day tie-breaker, with publication dates and links from each title and image to its permanent page. | Open `/tales-of-the-grip/`; confirm the order follows publication date and strip-number tie-breaker, then activate every title and image link. |
 | 826 | Affected | Agent | Every published permanent Tales of the Grip page returns 200 and shows the correct complete full-color artwork, title, publication date, shared header, and shared footer. | Open every published permanent strip URL directly and compare its rendered title and artwork with the approved final source. |
 | 827 | Affected | Agent | Every permanent Tales of the Grip page provides usable Share and Copy link controls plus a clear link back to Tales of the Grip. | Exercise the controls with pointer and keyboard on every permanent page; confirm the shared URL and return destination are correct. |
+| 828 | Affected | Agent | The Tales of the Grip hub orders published strips by publication date, newest first. When publication dates are equal, it uses strip number, highest first. Every title and image links to its permanent page. | Open `/tales-of-the-grip/`; confirm publication dates descend, confirm same-date strips use the highest strip number first, and activate every title and image link. |
+| 829 | Affected | Agent | The Six Layers of Governance permanent page returns 200 and shows the correct title, publication date, all three supplied full-color parts in order, sharing controls, and a link back to Tales of the Grip. | Open `/tales-of-the-grip/six-layers-of-governance/`; inspect all three panels and exercise the page controls with pointer and keyboard. |
+| 830 | Affected | Agent | The collection is a compact, ungrouped quick-reference view of every published strip, with each title above its thumbnail and publication date below, and both title and thumbnail linking to the permanent page. | Open `/tales-of-the-grip/collection/`; compare all entries with the hub and activate each title and thumbnail link. |
 
 ## Human visual and executive review
 

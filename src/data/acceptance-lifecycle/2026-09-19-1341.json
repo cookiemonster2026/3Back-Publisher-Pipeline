@@ -14,6 +14,20 @@
       "at": "2026-09-19T18:44:24.351Z",
       "actor": "Codex Builder",
       "approximate": true
+    },
+    {
+      "type": "release-prepared",
+      "at": "2026-09-19T20:06:05.508Z",
+      "actor": "Codex Builder",
+      "approximate": true
+    },
+    {
+      "type": "accepted",
+      "at": "2026-09-19T20:00:43.524Z",
+      "actor": "Douglas Shimp",
+      "humanApproval": "Update acceptance item 001 to order by publication date newest first with strip number highest first as the same-date tie-breaker; promote items 001, 002, and 003 to the standing acceptance test suite; mark every package test passed; mark suite 2026-09-19-1341 accepted; commit to main; and push to origin.",
+      "standingPlus": ["001", "002", "003"],
+      "standingNumbers": ["801", "802", "803", "804", "805", "806", "807", "808", "809", "810", "811", "812", "813", "814", "815", "816", "817", "818", "819", "820", "821", "822", "823", "824", "825", "826", "827", "828", "829", "830"]
     }
   ]
 }

@@ -59,6 +59,66 @@
       "reviewerType": "agent",
       "reason": "changed",
       "evidence": "New increment row requires independent review."
+    },
+    {
+      "item": "001",
+      "condition": "The Tales of the Grip hub orders published strips by publication date, newest first. When publication dates are equal, it uses strip number, highest first. Every title and image links to its permanent page.",
+      "status": "passed",
+      "environment": "production",
+      "url": "https://3back.com/tales-of-the-grip/",
+      "checkedAt": "2026-09-19T15:00:43.524-05:00",
+      "reviewer": "Douglas Shimp",
+      "reviewerType": "human",
+      "reason": "human-accepted",
+      "evidence": "Douglas explicitly approved the revised publication-date condition, instructed that every package test be marked Pass, promoted items 001 through 003, and accepted the suite."
+    },
+    {
+      "item": "002",
+      "condition": "The Six Layers of Governance permanent page returns 200 and shows the correct title, publication date, all three supplied full-color parts in order, sharing controls, and a link back to Tales of the Grip.",
+      "status": "passed",
+      "environment": "production",
+      "url": "https://3back.com/tales-of-the-grip/six-layers-of-governance/",
+      "checkedAt": "2026-09-19T15:00:43.525-05:00",
+      "reviewer": "Douglas Shimp",
+      "reviewerType": "human",
+      "reason": "human-accepted",
+      "evidence": "Douglas explicitly instructed that every package test be marked Pass and accepted the suite."
+    },
+    {
+      "item": "003",
+      "condition": "The collection is a compact, ungrouped quick-reference view of every published strip, with each title above its thumbnail and publication date below, and both title and thumbnail linking to the permanent page.",
+      "status": "passed",
+      "environment": "production",
+      "url": "https://3back.com/tales-of-the-grip/collection/",
+      "checkedAt": "2026-09-19T15:00:43.526-05:00",
+      "reviewer": "Douglas Shimp",
+      "reviewerType": "human",
+      "reason": "human-accepted",
+      "evidence": "Douglas explicitly instructed that every package test be marked Pass and accepted the suite."
+    },
+    {
+      "item": "004",
+      "condition": "The collection renders as three columns on desktop, two columns at medium widths, and one column on narrow mobile widths without overflow, clipping, broken images, heading, landmark, keyboard, focus, or console regressions.",
+      "status": "passed",
+      "environment": "production",
+      "url": "https://3back.com/tales-of-the-grip/collection/",
+      "checkedAt": "2026-09-19T15:00:43.527-05:00",
+      "reviewer": "Douglas Shimp",
+      "reviewerType": "human",
+      "reason": "human-accepted",
+      "evidence": "Douglas explicitly instructed that every package test be marked Pass and accepted the suite."
+    },
+    {
+      "item": "005",
+      "condition": "Six Layers of Governance is indexable with its approved metadata and appears in the production sitemap, while the utility collection has its own canonical metadata, is noindex, nofollow, and is excluded from the production sitemap.",
+      "status": "passed",
+      "environment": "production",
+      "url": "https://3back.com/tales-of-the-grip/collection/",
+      "checkedAt": "2026-09-19T15:00:43.528-05:00",
+      "reviewer": "Douglas Shimp",
+      "reviewerType": "human",
+      "reason": "human-accepted",
+      "evidence": "Douglas explicitly instructed that every package test be marked Pass and accepted the suite."
     }
   ]
 }

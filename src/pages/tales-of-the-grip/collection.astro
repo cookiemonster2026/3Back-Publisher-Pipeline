@@ -45,8 +45,8 @@ import { pageSeo } from "../../seo/registry.mjs";
 	.edition-item { min-width: 0; }
 	.edition-item h2 { min-height: 2.5em; margin: 0 0 14px; font-size: clamp(1.2rem, 1.8vw, 1.5rem); line-height: 1.25; }
 	.edition-item h2 a { color: var(--charcoal); text-decoration-color: var(--amber-text); text-decoration-thickness: 2px; text-underline-offset: .16em; }
-	.thumbnail-link { display: block; border: 1px solid var(--rule); background: var(--reading); }
-	.thumbnail-link :global(img) { display: block; width: 100%; aspect-ratio: 16 / 9; object-fit: cover; object-position: top; }
+	.thumbnail-link { display: block; aspect-ratio: 16 / 9; overflow: hidden; border: 1px solid var(--rule); background: var(--reading); }
+	.thumbnail-link :global(img) { display: block; width: 100%; height: 100%; object-fit: cover; object-position: top; }
 	.edition-item p { margin: 10px 0 0; color: var(--text-secondary); font-size: 1rem; }
 	.back-link { margin: 32px 0 0; font-weight: var(--font-weight-semibold); }
 
