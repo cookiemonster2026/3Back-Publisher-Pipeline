@@ -21,8 +21,8 @@ const websiteId = `${SITE_ORIGIN}/#website`;
 const homepagePageId = `${SITE_ORIGIN}/#webpage`;
 const operationalGripPageId = `${operationalGripUrl}#webpage`;
 const operationalGripTermId = `${operationalGripUrl}#term`;
-const operationalGripImagePath = "/social/3back-featured-image-v1.jpg";
-const operationalGripImageAlt = "3Back, The Team Execution Company. Organizations do not outgrow teams. Human expertise + AI capability.";
+const operationalGripImagePath = "/social/operational-grip-wheelbarrow-mess.webp";
+const operationalGripImageAlt = "A worker pushing a wheelbarrow carrying a large tangled mass of rope while becoming entangled in it.";
 const operationalGripDescription = "Understand Operational Grip: the ability to make bounded changes, observe their effects, and adapt without losing control.";
 const aboutUsPath = "/about-us";
 const aboutUsUrl = `${SITE_ORIGIN}${aboutUsPath}`;
@@ -1411,7 +1411,7 @@ export const pageSeo = Object.freeze({
 				alt: operationalGripImageAlt,
 				width: 1200,
 				height: 630,
-				type: "image/jpeg",
+				type: "image/webp",
 			},
 		},
 		structuredData: {

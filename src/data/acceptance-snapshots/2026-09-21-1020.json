@@ -1,0 +1,64 @@
+{
+  "records": [
+    {
+      "item": "001",
+      "condition": "Operational Grip includes the approved AI section after The definition and before Look at a particular change, with the approved copy unchanged.",
+      "status": "unverified",
+      "environment": "production",
+      "url": "https://3back.com/operational-grip/",
+      "checkedAt": "2026-09-21T10:20:10-05:00",
+      "reviewer": "Codex Builder",
+      "reviewerType": "agent",
+      "reason": "changed",
+      "evidence": "Local source, build, and browser checks passed. Independent live review remains required after release."
+    },
+    {
+      "item": "002",
+      "condition": "The approved wheelbarrow, tangled-mass, and entangled-engineer illustration is the primary page visual, remains complete and unannotated, and uses concise descriptive alternative text.",
+      "status": "unverified",
+      "environment": "production",
+      "url": "https://3back.com/operational-grip/",
+      "checkedAt": "2026-09-21T10:20:10-05:00",
+      "reviewer": "Codex Builder",
+      "reviewerType": "agent",
+      "reason": "changed",
+      "evidence": "Local source, asset hash, desktop, 320-pixel, and 390-pixel browser checks passed. Independent live review remains required after release."
+    },
+    {
+      "item": "003",
+      "condition": "Operational Grip Open Graph and Twitter metadata use the approved 1200 by 630 branded wheelbarrow derivative without changing the approved title, description, canonical, indexability, or structured data.",
+      "status": "unverified",
+      "environment": "production",
+      "url": "https://3back.com/operational-grip/",
+      "checkedAt": "2026-09-21T10:20:10-05:00",
+      "reviewer": "Codex Builder",
+      "reviewerType": "agent",
+      "reason": "changed",
+      "evidence": "Local production and test SEO validation passed and both image assets returned HTTP 200. Independent live review remains required after release."
+    },
+    {
+      "item": "004",
+      "condition": "Check your grip, Workshop a live problem, and Build Domain Guides use identical heading typography, spacing, and link treatment while retaining their approved copy and destinations.",
+      "status": "unverified",
+      "environment": "production",
+      "url": "https://3back.com/operational-grip/",
+      "checkedAt": "2026-09-21T10:20:10-05:00",
+      "reviewer": "Codex Builder",
+      "reviewerType": "agent",
+      "reason": "changed",
+      "evidence": "Local computed-style checks matched across all three headings at desktop and mobile widths. Independent live review remains required after release."
+    },
+    {
+      "item": "005",
+      "condition": "The revised Operational Grip page loads directly without horizontal overflow, invalid asset references, console errors, or unrelated page changes.",
+      "status": "unverified",
+      "environment": "production",
+      "url": "https://3back.com/operational-grip/",
+      "checkedAt": "2026-09-21T10:20:10-05:00",
+      "reviewer": "Codex Builder",
+      "reviewerType": "agent",
+      "reason": "changed",
+      "evidence": "Local builds and browser checks passed. Independent live review remains required after release."
+    }
+  ]
+}

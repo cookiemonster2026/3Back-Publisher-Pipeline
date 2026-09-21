@@ -11,6 +11,9 @@ import { OPERATIONAL_GRIP_DEFINITION, pageSeo } from "../seo/registry.mjs";
         <p class="condition">Can the people closest to the work make a local change whose effects stay observable and correctable?</p>
         <p>That is the test. Not whether the organization looks busy. Not whether it understands itself as a whole. Not whether yesterday’s structure still runs.</p>
         <p class="lead">Demand changes. People move. Knowledge shifts. Systems age. AI makes more action cheap to produce. The constraint is whether a local change can still be seen and corrected before it escapes the boundary that made it.</p>
+        <figure class="og-hero-figure">
+          <img src="/assets/operational-grip/operational-grip-wheelbarrow-mess.webp" alt="A worker pushing a wheelbarrow carrying a large tangled mass of rope while becoming entangled in it." width="1536" height="1024" loading="eager" fetchpriority="high" decoding="async" />
+        </figure>
       </div>
     </section>
 
@@ -21,6 +24,22 @@ import { OPERATIONAL_GRIP_DEFINITION, pageSeo } from "../seo/registry.mjs";
         <p>That ability is the condition named above. The discipline is how you preserve it as demand changes: bound what you can, act locally, observe the effects, and learn.</p>
         <p>Predictable effect does not mean a guaranteed outcome. It means the change is bounded well enough that its consequences can be observed, contained, and corrected. The objective is not total understanding or centralized control. It is actionable control.</p>
         <p>Operational Grip is not an end state. An organization can have it for a smaller change and lack it for a larger one. A change that cannot be controlled at one boundary may become controllable when it is decomposed, constrained, or moved to a boundary where the conditions fit.</p>
+      </div>
+    </section>
+
+    <section class="og-section ai-mess-section" aria-labelledby="ai-mess-title">
+      <div class="reading-column">
+        <h2 id="ai-mess-title">AI can accelerate a mess</h2>
+        <p>AI makes more action cheap to produce. That is not the problem.</p>
+        <p>The problem is what leaders do with that new capacity.</p>
+        <p><strong>AI can accelerate a mess.</strong> It can help an organization generate more code, more features, more releases, more analysis, more decisions, and more output before anyone has determined whether the result fits the need.</p>
+        <p>The common mistake is to assume more is better. More output creates more system mass. More mass is more to understand, more to coordinate, more to change, and more to correct. Without close attention to outcomes, it also creates more ambiguity about what is working and whether the product actually fits the needs of the market.</p>
+        <p>AI can also shorten the distance between a management decision and its consequences. For experienced people who have seen other ways of working, the loss of grip may become visible very quickly. They can recognize when output is growing faster than understanding, when complexity is compounding, and when the work is drifting away from need.</p>
+        <p>But that recognition depends on judgment. People without enough experience may not recognize the deterioration at all. If AI is producing work they cannot independently evaluate, greater output can actually reduce their ability to distinguish fit from slop.</p>
+        <p><strong>Speed is not the problem. Unbridled speed is.</strong></p>
+        <p>The discipline is to do what is needed, observe what happens, evaluate the result, correct it, and remove what does not help. Ignoring feedback in the name of speed is poor management. Ignoring the consequences as poor quality compounds is <strong>managerial negligence</strong>.</p>
+        <p>Operational Grip matters more in the age of AI, not less. The question is not whether people are using AI. The question is whether the people closest to the work can still judge the result, observe the effect, and correct the change before the damage spreads.</p>
+        <p class="capability-measure"><strong>Capability is not measured by how much you produce. It is measured by how well the product fits the needs of the market.</strong></p>
       </div>
     </section>
 
@@ -103,6 +122,10 @@ import { OPERATIONAL_GRIP_DEFINITION, pageSeo } from "../seo/registry.mjs";
   .og-section .reading-column { border-top: 1px solid var(--rule); padding-top: 48px; }
   .og-page h2 { font-size: clamp(1.75rem, 3vw, 2.25rem); margin: 0 0 24px; }
   .definition-copy { font-size: 1.4rem; font-weight: 600; line-height: 1.45; }
+  .ai-mess-section strong { font-weight: 700; }
+  .og-hero-figure { margin: 40px 0 0; padding: 18px 0; border-top: 3px solid var(--amber); border-bottom: 1px solid var(--rule); }
+  .og-hero-figure img { display: block; width: 100%; height: auto; background: var(--reading); }
+  .capability-measure { margin-top: 36px !important; padding: 24px 28px; border-left: 3px solid var(--amber); background: var(--charcoal); color: var(--paper); font-size: 1.25rem; line-height: 1.45; }
   .fit-conditions { list-style: none; padding: 0; margin: 30px 0; }
   .fit-conditions li { padding: 20px 0; border-bottom: 1px solid var(--rule); }
   .fit-conditions li:first-child { border-top: 1px solid var(--rule); }
@@ -117,14 +140,12 @@ import { OPERATIONAL_GRIP_DEFINITION, pageSeo } from "../seo/registry.mjs";
   .og-next { background: var(--charcoal); color: var(--paper); padding: 64px 0; }
   .next-intro { max-width: 660px; font-size: var(--type-lead); }
   .offer-row { display: grid; grid-template-columns: minmax(0, 1fr) auto; align-items: center; gap: 36px; color: var(--paper); text-decoration: none; border-bottom: 1px solid var(--slate); }
-  .offer-row h3 { text-decoration: underline; text-decoration-color: var(--amber); text-decoration-thickness: 1px; text-underline-offset: 5px; }
+  .offer-row h3 { margin: 0 0 8px; font-size: 1.3rem; font-weight: var(--font-weight-bold); line-height: var(--leading-heading); text-decoration: underline; text-decoration-color: var(--amber); text-decoration-thickness: 1px; text-underline-offset: 5px; }
   .offer-row:hover h3, .offer-row:focus-visible h3 { text-decoration-thickness: 2px; }
   .offer-row .arrow { display: inline-block; color: var(--amber); font-size: 1.5rem; transition: transform 160ms ease-out; }
   .offer-row:hover .arrow, .offer-row:focus-visible .arrow { transform: translate(3px, -3px); }
   .featured-action { padding: 32px 0; margin-top: 30px; border-top: 2px solid var(--amber); }
-  .featured-action h3 { font-size: 1.6rem; }
   .secondary-action { padding: 26px 0; border-bottom: 1px solid var(--slate); }
-  .secondary-action h3 { font-size: 1.3rem; }
   .quiet-links a { color: var(--paper); text-underline-offset: 5px; text-decoration-thickness: 1px; text-decoration-color: var(--amber); }
   .quiet-links a:hover { text-decoration-thickness: 2px; }
   .featured-action p, .secondary-action p { font-size: 1.0625rem; }
@@ -137,6 +158,8 @@ import { OPERATIONAL_GRIP_DEFINITION, pageSeo } from "../seo/registry.mjs";
     .og-section { padding: 28px 0; }
     .og-section .reading-column { padding-top: 32px; }
     .definition-copy { font-size: 1.25rem; }
+    .og-hero-figure { margin-top: 32px; padding-top: 14px; }
+    .capability-measure { margin-top: 30px !important; padding: 22px 20px; font-size: 1.125rem; }
     .og-application { padding-bottom: 48px; }
     .og-application .reading-column { padding-top: 12px; }
     .hypothetical { padding-left: 20px; }

@@ -11,3 +11,5 @@ export const acceptanceSnapshots = [{ id: "2026-09-09", supersededBy: "2026-09-0
 ];
 
 acceptanceSnapshots.push({"id":"2026-09-20-2216","taskId":"01a0c1cb-11aa-7a71-8cf8-96af63dd8eeb","supersededBy":null,"label":"September 20, 2026","path":"/docs/acceptance-results/2026-09-20-2216/","createdAt":"2026-09-20T22:16:39-05:00","milestoneCompletedAt":"2026-09-20T22:43:27.6739044-05:00","description":"Rebuild Operational Grip introduction, PDF, and shared featured image","builtAt":null,"deployedAt":null,"reviewedAt":null,"acceptedAt":null,"judgedAt":null,"pushAt":null,"commitSha":null});
+
+acceptanceSnapshots.push({"id":"2026-09-21-1020","taskId":"24c75cc1-8da5-4d53-8bd1-cc4ad79e92c0","supersededBy":null,"label":"September 21, 2026","path":"/docs/acceptance-results/2026-09-21-1020/","createdAt":"2026-09-21T10:20:10-05:00","milestoneCompletedAt":null,"description":"Operational Grip AI metaphor and featured illustration","builtAt":null,"deployedAt":null,"reviewedAt":null,"acceptedAt":null,"judgedAt":null,"pushAt":null,"commitSha":null});
