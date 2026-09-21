@@ -5,9 +5,11 @@ const symbols = { passed: "P", failed: "F", unverified: "R", judgment: "J" };
 const reasons = { changed: "Surface changed.", "never-checked": "Never checked.", blocked: "Live check blocked.", "condition-changed": "Condition text changed.", "awaiting-human": "Awaiting Douglas's live review." };
 const range = (first, last) => Array.from({ length: last - first + 1 }, (_, index) => String(first + index));
 export const PROCESS_ITEMS = Object.freeze(["001", "002", "003", "004", "005", "006", "602", "606"]);
-export const LIVE_ITEMS = Object.freeze([...range(101, 108), ...range(201, 205), ...range(301, 307), ...range(321, 324), ...range(401, 405), ...range(501, 508), "601", ...range(603, 605), ...range(701, 708), ...range(801, 830), ...range(901, 905)]);
+export const RETIRED_ITEMS = Object.freeze(["304", "704", "705", "706", "707"]);
+export const LIVE_ITEMS = Object.freeze([...range(101, 109), ...range(201, 205), ...range(301, 303), ...range(305, 309), ...range(321, 324), ...range(401, 405), ...range(501, 508), "601", ...range(603, 605), ...range(701, 703), ...range(708, 715), ...range(801, 830), ...range(901, 905)]);
 const processItems = new Set(PROCESS_ITEMS);
 const liveItems = new Set(LIVE_ITEMS);
+const retiredItems = new Set(RETIRED_ITEMS);
 const incrementItems = new Set(Array.from({ length: 10 }, (_, index) => String(index + 1).padStart(3, "0")));
 const humanItems = new Set(range(901, 905));
 const isVerdict = (status) => status === "passed" || status === "failed";
@@ -30,7 +32,7 @@ export function acceptanceStatus(html, records) {
     if (record.releaseSha !== undefined && (typeof record.releaseSha !== "string" || !/^[0-9a-f]{7,40}$/i.test(record.releaseSha))) throw new Error(`Invalid release SHA for ${record.item}`);
     const previous = latest.get(record.item);
     if (!previous || Date.parse(record.checkedAt) >= Date.parse(previous.checkedAt)) latest.set(record.item, record);
-    if (liveItems.has(record.item) && isVerdict(record.status) && (!humanItems.has(record.item) || record.reviewerType === "human")) {
+    if ((liveItems.has(record.item) || retiredItems.has(record.item)) && isVerdict(record.status) && (!humanItems.has(record.item) || record.reviewerType === "human")) {
       const previousVerdict = latestVerdicts.get(record.item);
       if (!previousVerdict || Date.parse(record.checkedAt) >= Date.parse(previousVerdict.checkedAt)) latestVerdicts.set(record.item, record);
     }
@@ -38,6 +40,7 @@ export function acceptanceStatus(html, records) {
 
   const counts = { passed: 0, failed: 0, unverified: 0, judgment: 0, total: 0 };
   let processCount = 0;
+  let retiredCount = 0;
   const seen = new Set();
   let lastCheckedAt = null;
   const annotated = html.replace(/<table\b[^>]*>[\s\S]*?<\/table>/g, (table) => {
@@ -47,9 +50,15 @@ export function acceptanceStatus(html, records) {
       .replace(/<tr>\s*<td>(\d{3})<\/td>([\s\S]*?)<\/tr>/g, (_row, item, rest) => {
         if (seen.has(item)) throw new Error(`Duplicate acceptance item ${item}`);
         seen.add(item);
-        if (!processItems.has(item) && !liveItems.has(item)) throw new Error(`Unclassified acceptance item ${item}`);
+        if (!processItems.has(item) && !liveItems.has(item) && !retiredItems.has(item)) throw new Error(`Unclassified acceptance item ${item}`);
         const cells = [...rest.matchAll(/<td>([\s\S]*?)<\/td>/g)].map((match) => plain(match[1]));
         const visibleRest = rest.replace(/^\s*<td>[\s\S]*?<\/td>/, "");
+        // Only explicitly retired rows leave the current denominator. Archived
+        // checklists with their original class retain their historical verdicts.
+        if (retiredItems.has(item) && cells[0] === "Retired") {
+          retiredCount++;
+          return `<tr id="${item}" data-acceptance-retired="true"><td class="acceptance-current-status" title="Retired condition; historical evidence is preserved">Retired</td><td>${item}</td>${visibleRest}</tr>`;
+        }
         if (processItems.has(item)) {
           processCount++;
           return `<tr><td class="acceptance-current-status" aria-label="Process item: reported in the task report" title="Process item: reported in the task report"></td><td>${item}</td>${visibleRest}</tr>`;
@@ -70,5 +79,5 @@ export function acceptanceStatus(html, records) {
   });
   for (const item of latest.keys()) if (!seen.has(item) && !incrementItems.has(item)) throw new Error(`Unknown acceptance item ${item}`);
   if (!seen.size) throw new Error("No acceptance checklist items found");
-  return { html: annotated, counts, applicable: counts.total, processCount, lastCheckedAt };
+  return { html: annotated, counts, applicable: counts.total, processCount, retiredCount, lastCheckedAt };
 }

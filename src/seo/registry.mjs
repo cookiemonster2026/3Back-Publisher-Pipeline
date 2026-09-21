@@ -34,7 +34,7 @@ const aboutUsImageAlt = "Editorial illustration of a painter stepping back from 
 const aboutUsDescription = "Meet the people behind 3Back and learn how experience across science, mathematics, engineering, the trades, and complex systems shaped Operational Grip.";
 export const OPERATIONAL_GRIP_DEFINITION = "Operational Grip is the discipline of preserving actionable control.";
 export const OPERATIONAL_GRIP_ATTRIBUTION = "Operational Grip is 3Back’s proprietary operating lens for diagnosing execution and guiding bounded change.";
-export const HOMEPAGE_OPERATIONAL_GRIP_EXPLANATION = "A team or scaled system has Operational Grip when it can make bounded, local changes with enough confidence to observe their effects.";
+export const HOMEPAGE_OPERATIONAL_GRIP_EXPLANATION = "A team has Operational Grip when it can act within a useful boundary, see what changed, and correct course before local failure becomes systemic failure.";
 
 export const STAFF_DOCS = [
   { slug: "approved-access-list", label: "Users of Docs", source: null, path: "/docs/approved-access-list" },
@@ -49,7 +49,7 @@ export const STAFF_DOCS = [
 	{
 		"slug": "site-intent-map",
 		"label": "Site Intent Map",
-		"source": "docs/publishing/Site-Intent-Map-v1.11.md",
+		"source": "docs/publishing/Site-Intent-Map-v1.12.md",
 		"path": "/docs/site-intent-map"
 	},
 	{

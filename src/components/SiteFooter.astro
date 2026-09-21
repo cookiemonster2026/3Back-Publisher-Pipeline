@@ -14,12 +14,15 @@ const isProductOwnershipThree = Astro.url.pathname.replace(/\/+$/, "") === "/tra
 				<li><a href="/operational-grip/">Operational Grip</a></li>
 				<li><a href="/ideas/">Ideas</a></li>
 				<li><a href="/tales-of-the-grip/">Tales of the Grip</a></li>
-				<li><a href="/grip-check/">Grip Check</a></li>
 			</ul>
 		</div>
 		<div>
-			<p class="footer-heading">Execution</p>
-			<ul><li><a href="/workshops">Workshops</a></li><li><a href="/domain-guides">Domain Guides</a></li><li><a href="/training">Training</a></li><li><a href="/events">Events</a></li>{!isProductOwnershipThree && <li><a href="https://path.3back.com">On-Demand Courses</a></li>}</ul>
+			<p class="footer-heading">Engage</p>
+			<ul><li><a href="/grip-check/">Grip Check</a></li><li><a href="/workshops/">Workshops</a></li><li><a href="/domain-guides/">Domain Guides</a></li></ul>
+        </div>
+        <div>
+            <p class="footer-heading">Learn</p>
+            <ul><li><a href="/training">Training</a></li><li><a href="/events">Events</a></li>{!isProductOwnershipThree && <li><a href="https://path.3back.com">On-Demand Courses</a></li>}</ul>
 		</div>
 		<div>
 			<p class="footer-heading">Company</p>
@@ -51,7 +54,7 @@ const isProductOwnershipThree = Astro.url.pathname.replace(/\/+$/, "") === "/tra
 
 <style>
 	.site-footer { padding: 70px 0 28px; background: #131917; color: #c8ceca; }
-	.footer-grid { display: grid; grid-template-columns: 1.6fr repeat(3, 1fr); gap: 50px; }
+	.footer-grid { display: grid; grid-template-columns: 1.45fr repeat(4, minmax(0, 1fr)); gap: 50px; }
 	.wordmark { font-size: 1.75rem; font-weight: var(--font-weight-heavy); letter-spacing: -0.035em; line-height: 1; }
 	.wordmark span { color: var(--amber); }
 	.wordmark-light { color: var(--paper); font-size: 2.1rem; }
@@ -69,6 +72,11 @@ const isProductOwnershipThree = Astro.url.pathname.replace(/\/+$/, "") === "/tra
 	.footer-social a:hover, .footer-social a:focus-visible { color: var(--paper); }
 	.footer-social a:focus-visible { outline: 3px solid var(--amber); outline-offset: 3px; }
 	.footer-bottom { align-items: center; }
+
+	@media (max-width: 1000px) {
+        .footer-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 32px; }
+        .footer-brand { grid-column: 1 / -1; }
+    }
 
 	@media (max-width: 720px) {
 		.site-footer .shell { width: auto; margin-inline: 24px; }

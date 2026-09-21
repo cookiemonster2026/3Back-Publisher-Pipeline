@@ -4,7 +4,7 @@ This file is the shared verification source for future website changes. It conta
 
 ## Acceptance Testing Readiness
 
-000 — Initialize: The Independent AI Reviewer reads Reviewer Agents.md and confirms readiness to perform according to its instructions. At each handoff the builder resets this item to R Review. The reviewer records Pass or Fail; on Fail, identifies the blocker and stops. This readiness result is separate from the 84 live-site verdicts.
+000 — Initialize: The Independent AI Reviewer reads Reviewer Agents.md and confirms readiness to perform according to its instructions. At each handoff the builder resets this item to R Review. The reviewer records Pass or Fail; on Fail, identifies the blocker and stops. This readiness result is separate from the 89 active live-site verdicts.
 
 ## Governing sources
 
@@ -41,7 +41,9 @@ Run an `Affected` item when the requested or resulting diff could change its con
 
 ### Status on /docs/acceptance-testing
 
-Live colors apply to the 84 live items. Green and red are live verdicts on a known condition. Blue means a known condition needs a live look. J means human judgment is needed to proceed. The implementer may only mark blue. An outside reviewer marks green, red, or J. Douglas decides J. The surface map is a starting point, not a closed list. Last checked ignores blue and J.
+Live colors apply to the 89 active live items. Five retired conditions remain visible for traceability but have no current score or live color. Green and red are live verdicts on a known condition. Blue means a known condition needs a live look. J means human judgment is needed to proceed. The implementer may only mark blue. An outside reviewer marks green, red, or J. Douglas decides J. The surface map is a starting point, not a closed list. Last checked ignores blue and J.
+
+Retirement authority: Douglas approved the replacement homepage, route-specific header and regrouped footer, and the conflicting-test revisions in task `01a0bba0-a8c0-73b3-866c-49c7ae602c95`, implemented September 20, 2026. Retire 304 and 704–707 without deleting their conditions or historical evidence. Replacement coverage is 309 and 709–715. Production typography and colors are invariants, not new design choices; 109 adds regression coverage. Item 308 covers the approved homepage arrow grammar.
 
 ## Global brand and positioning
 
@@ -55,6 +57,10 @@ Live colors apply to the 84 live items. Green and red are live verdicts on a kno
 | 106 | Affected | Agent | Language leads with team execution and concrete operational mechanisms, not generic transformation, consultancy, motivational, culture-change, psychology, or promotional language. | Review changed headings, body copy, metadata, alt text, and calls to action against the brief's language discipline and exclusions. |
 | 107 | Affected | Agent | Visual elements, shared styles, and components affected by the requested change or final diff align with `docs/brand/source/3Back-Visual-Direction-Tile-v0.4.pdf`, the authoritative visual standard. Determine impact from direct changes and indirect effects through inherited CSS, shared components, and responsive behavior. | Inspect appropriate rendered visual evidence for every affected surface at representative desktop and mobile widths and compare it with `docs/brand/source/3Back-Visual-Direction-Tile-v0.4.pdf`. Source inspection or a successful build alone is insufficient. Report the item unverified when adequate rendered evidence cannot be obtained. |
 | 108 | Affected | Agent | Visuals avoid generic consulting imagery, staged teams, decorative corporate geometry, software-company cues, heavy industrial styling, fixed-method framework diagrams, industry montages, and unjustified motion. | Inspect all affected images, illustrations, diagrams, animation, and decorative treatments. |
+
+| Item | Class | Verifier | Acceptance condition | Verification |
+| --- | --- | --- | --- | --- |
+| 109 | Affected | Agent | Homepage and shared-shell typography, production colors, weights, line heights, and button variants use the established production design system. Approved composition and diagram changes do not introduce a new font family or palette. | Compare computed and actually rendered fonts, token values, buttons, eyebrows, header, and footer against the production baseline at desktop and mobile widths and in hover and focus states. |
 
 ## Published content
 
@@ -73,10 +79,15 @@ Live colors apply to the 84 live items. Green and red are live verdicts on a kno
 | 301 | Global | Agent | Every published navigation and footer link resolves to its intended destination. | Enumerate header, mobile navigation, and footer links in built output; follow each local link and check external links when network access is available. |
 | 302 | Global | Agent | Unavailable destinations are not assigned fabricated, misleading, or guessed routes. | Compare every affected or newly published destination with actual routes and approved external URLs. Plain text or an explicitly disabled treatment is acceptable when honest and usable. |
 | 303 | Global | Agent | Every **Start a Conversation** control leads to a functioning contact path. | Activate each instance by keyboard and pointer from built output; verify that the intended form, email, scheduler, or contact destination opens and can be used. |
-| 304 | Affected | Agent | The sitewide header, navigation labels, brand descriptor, primary action, and footer remain consistent across published pages. | Compare all built routes that use the changed shell or shared component. |
+| 304 | Retired | Agent | The sitewide header, navigation labels, brand descriptor, primary action, and footer remain consistent across published pages. | Compare all built routes that use the changed shell or shared component. |
 | 305 | Affected | Agent | Navigation accurately identifies the current location or section without relying only on color. | Inspect and exercise affected navigation on each relevant route or section. |
 | 306 | Affected | Agent | Mobile navigation can be opened, traversed, activated, and dismissed without trapping focus or obscuring required controls. | Test by keyboard and touch-sized viewport whenever mobile navigation or shared shell behavior could be affected. |
 | 307 | Affected | Agent | Every published page uses the shared site layout for its sitewide header and footer; page-specific copies of header or footer markup are absent. | Inspect all published page sources and built routes, confirm each page uses the shared layout, and search for header or footer markup duplicated outside the shared components. |
+
+| Item | Class | Verifier | Acceptance condition | Verification |
+| --- | --- | --- | --- | --- |
+| 308 | Affected | Agent | Homepage engagement actions use an up-right arrow, informational route links a right arrow, and same-page links a down arrow. Shared chrome may remain arrow-free. Arrows are decorative, separately styled, and never underlined. | Exercise each homepage action with pointer and keyboard. Confirm its destination, arrow, accessible name, underline, hover, and focus behavior. Current Ideas links follow the informational route grammar. |
+| 309 | Affected | Agent | Shared header and footer preserve production typography and sizing while supporting the approved homepage navigation and footer groups. Existing inner-page navigation, conversation-funnel destinations, legal and social links, and the Product Ownership III on-demand exception remain intact. | Inspect homepage, ordinary inner page, Domain Guides, and every existing course header variant. Test mobile navigation. Confirm homepage Operational Grip opens its route, How to engage opens the homepage engagement section, and footer groups are Explore, Engage, Learn, and Company. |
 
 ## Links and contact path
 
@@ -127,12 +138,22 @@ Live colors apply to the 84 live items. Green and red are live verdicts on a kno
 | --- | --- | --- | --- | --- |
 | 701 | Affected | Agent | The homepage quickly establishes 3Back as The Team Execution Company and describes organizational execution, not generic transformation or training. | Inspect the rendered title, hero, opening copy, and primary hierarchy whenever the homepage or sitewide brand shell changes. |
 | 702 | Affected | Agent | The homepage presents weak or misplaced boundaries as a possible mechanism disconnecting demand, decisions, work, and results without claiming it is the universal cause of complexity. | Compare affected problem framing with `docs/brand/source/3Back-Minimum-Viable-Brand-and-Design-Brief-v0.1.md` and the homepage blueprint. |
-| 703 | Affected | Agent | The homepage defines Operational Grip as the current lead lens and keeps 3Back as the enduring brand. | Inspect affected hero, Operational Grip section, navigation, body-of-work section, metadata, and calls to action. |
-| 704 | Affected | Agent | The homepage connects execution from demand through organizational response, delivered value, market acceptance, and revenue without promising revenue. | Inspect affected copy and diagrams for the complete relationship and bounded claim. |
-| 705 | Affected | Agent | The homepage explains an evidence-first approach centered on one bounded problem, one decision, one accountable owner, and one observable result. | Inspect affected approach and evidence sections against governing sources. |
-| 706 | Affected | Agent | The homepage hero offers one primary action into Operational Grip. Start a Conversation remains available in the header and the closing band, not as the hero button. | Inspect and activate the hero button, the header conversation control, and the closing conversation control on live /. |
-| 707 | Affected | Agent | Homepage section order supports an executive scan from problem, through lens and commercial relevance, to approach, evidence, deeper thinking, and action. | Review affected page hierarchy at desktop and mobile widths against the homepage blueprint. |
+| 703 | Affected | Agent | The homepage defines Operational Grip as the current lead lens and keeps 3Back as the enduring brand. | Inspect affected hero, Operational Grip section, navigation, credibility section, metadata, and calls to action. |
+| 704 | Retired | Agent | The homepage connects execution from demand through organizational response, delivered value, market acceptance, and revenue without promising revenue. | Inspect affected copy and diagrams for the complete relationship and bounded claim. |
+| 705 | Retired | Agent | The homepage explains an evidence-first approach centered on one bounded problem, one decision, one accountable owner, and one observable result. | Inspect affected approach and evidence sections against governing sources. |
+| 706 | Retired | Agent | The homepage hero offers one primary action into Operational Grip. Start a Conversation remains available in the header and the closing band, not as the hero button. | Inspect and activate the hero button, the header conversation control, and the closing conversation control on live /. |
+| 707 | Retired | Agent | Homepage section order supports an executive scan from problem, through lens and commercial relevance, to approach, evidence, deeper thinking, and action. | Review affected page hierarchy at desktop and mobile widths against the homepage blueprint. |
 | 708 | Affected | Agent | The homepage uses one H1 and live, selectable text for headings, navigation, and explanatory diagrams. | Inspect affected DOM and rendered selection behavior. |
+
+| Item | Class | Verifier | Acceptance condition | Verification |
+| --- | --- | --- | --- | --- |
+| 709 | Affected | Agent | The homepage leads with teams, connects human expertise and AI capability to organizational outcomes, and explains that cheaper possibilities shift the constraint toward selection. | Inspect the approved hero, selection card, and bounded-execution service statement in rendered context. |
+| 710 | Affected | Agent | Domain-guided selection is explicit, and Domain Guides develop the organization's own capability rather than being presented as externally supplied 3Back experts. | Read the diagram, guided-selection signal, engagement copy, and credibility posture together. |
+| 711 | Affected | Agent | Four signals of Operational Grip are labeled Legible demand, Guided selection, Bounded failure, and Visible results. They are signals, not ordered steps or a guarantee of success. | Inspect all four descriptions, group label, equal inset spacing, hover and keyboard-focus treatment, and reduced-motion behavior. |
+| 712 | Affected | Agent | The hero offers Check your grip to /grip-check/ and See ways to engage to #engage. The grip section offers Explore Operational Grip to /operational-grip/, and Why 3Back links to #why-3back. | Activate every specified link at desktop and mobile widths; inspect unique fragment targets and scroll clearance. |
+| 713 | Affected | Agent | One problem. Three ways to engage presents distinct Grip Check, Workshops, and Domain Guides destinations, not three links to a shared closing CTA. | Activate each engagement row and compare its description with its destination. |
+| 714 | Affected | Agent | The homepage sequence is hero and AI-selection card, Operational Grip and four signals, engagement choices, concise credibility, and four Current Ideas cards followed by the shared footer. Current Ideas presents the latest Tales strip, No Head Works Alone, How 3Back Approaches Learning, and the books collection with approved images and concise descriptions. Removed problem tiles, commercial essay, sample score, working sequence, and lineage band do not return as standalone bands. | Inspect the full rendered page in desktop and mobile order; verify credibility claims against approved repository sources and activate all four card destinations. |
+| 715 | Affected | Agent | The selection diagram uses legible live text for Possibilities, Teamwork with AI, Domain-guided selection, and Outcomes. Its box grows 15–20 percent and reverses orange contrast on desktop hover or keyboard focus, without drawing the output line over the box. Mobile remains static and reduced-motion preferences are respected. | Inspect resting, hover, focus, reduced-motion, 320px, and modern mobile states. Measure text and box size, line stacking, label placement, contrast, and overflow. |
 
 ## Staff docs and promoted course checks
 

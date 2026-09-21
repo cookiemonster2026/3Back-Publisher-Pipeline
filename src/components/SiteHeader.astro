@@ -1,5 +1,6 @@
 ---
 const currentPath = Astro.url.pathname;
+const isHomepage = currentPath === "/";
 const isDomainGuides = currentPath === "/domain-guides" || currentPath === "/domain-guides/";
 const isWhyDomainExpertise = currentPath === "/why-domain-expertise-matters" || currentPath === "/why-domain-expertise-matters/";
 const isCsm = currentPath === "/certified-scrummaster-training" || currentPath === "/certified-scrummaster-training/";
@@ -49,8 +50,10 @@ const conversationLabel = isConversationFunnel ? "Start this conversation" : "St
 
 		<nav class="desktop-nav" aria-label="Primary navigation">
 			<a href="/operational-grip/" aria-current={currentPath === "/operational-grip/" ? "page" : undefined}>Operational Grip</a>
-			<a href="/ideas/" aria-current={currentPath === "/ideas/" ? "page" : undefined}>Ideas</a>
-			<a href="/about-us" aria-current={currentPath === "/about-us" ? "page" : undefined}>About</a>
+			{isHomepage ? <a href="#engage">How to engage</a> : <>
+            <a href="/ideas/" aria-current={currentPath === "/ideas/" ? "page" : undefined}>Ideas</a>
+            <a href="/about-us" aria-current={currentPath === "/about-us" ? "page" : undefined}>About</a>
+          </>}
 		</nav>
 
 		<a class="button button-small" href={conversationHref} aria-current={currentPath === "/contact/" ? "page" : undefined}>{conversationLabel}</a>
@@ -67,8 +70,10 @@ const conversationLabel = isConversationFunnel ? "Start this conversation" : "St
 
 		<nav id="mobile-navigation" class="mobile-nav" aria-label="Mobile navigation" hidden>
 			<a href="/operational-grip/" aria-current={currentPath === "/operational-grip/" ? "page" : undefined}>Operational Grip</a>
-			<a href="/ideas/" aria-current={currentPath === "/ideas/" ? "page" : undefined}>Ideas</a>
-			<a href="/about-us" aria-current={currentPath === "/about-us" ? "page" : undefined}>About</a>
+			{isHomepage ? <a href="#engage">How to engage</a> : <>
+            <a href="/ideas/" aria-current={currentPath === "/ideas/" ? "page" : undefined}>Ideas</a>
+            <a href="/about-us" aria-current={currentPath === "/about-us" ? "page" : undefined}>About</a>
+          </>}
 			<a class="button button-small" href={conversationHref} aria-current={currentPath === "/contact/" ? "page" : undefined}>{conversationLabel}</a>
 		</nav>
 	</div>

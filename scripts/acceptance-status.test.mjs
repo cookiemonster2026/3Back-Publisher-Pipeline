@@ -1,7 +1,7 @@
 import assert from "node:assert/strict";
 import test from "node:test";
 import { readFileSync } from "node:fs";
-import { acceptanceStatus, LIVE_ITEMS, PROCESS_ITEMS } from "../src/lib/acceptance-status.mjs";
+import { acceptanceStatus, LIVE_ITEMS, PROCESS_ITEMS, RETIRED_ITEMS } from "../src/lib/acceptance-status.mjs";
 
 const table = '<table><thead><tr><th>Item</th><th>Class</th><th>Verifier</th><th>Acceptance condition</th><th>Verification</th></tr></thead><tbody><tr><td>701</td><td>Affected</td><td>Agent</td><td>Homepage condition</td><td>Inspect live homepage</td></tr><tr><td>901</td><td>Affected</td><td>Human</td><td>Visual condition</td><td>Human review</td></tr></tbody></table>';
 const record = { item: "701", condition: "Homepage condition", status: "passed", environment: "production", url: "https://3back.com/", checkedAt: "2026-09-09T18:00:00Z", reviewer: "Test reviewer", reviewerType: "agent", evidence: "Synthetic test evidence; never published." };
@@ -56,14 +56,16 @@ const baseline = readFileSync(new URL('../docs/website-acceptance-checklist.md',
 const rows = baseline.split(/\r?\n/).filter(line => /^\| \d{3} \|/.test(line)).map(line => line.split('|').slice(1, -1).map(cell => cell.trim()));
 const completeTable = '<table><thead><tr><th>Item</th><th>Class</th><th>Verifier</th><th>Acceptance condition</th><th>Verification</th></tr></thead><tbody>' + rows.map(cells => '<tr>' + cells.map(cell => `<td>${cell}</td>`).join('') + '</tr>').join('') + '</tbody></table>';
 
-test('the complete baseline has exactly 84 live and eight process items', () => {
-  assert.equal(LIVE_ITEMS.length, 84);
+test('the complete baseline has 89 active live, eight process, and five retired items', () => {
+  assert.equal(LIVE_ITEMS.length, 89);
   assert.equal(PROCESS_ITEMS.length, 8);
-  assert.deepEqual(new Set(rows.map(row => row[0])), new Set([...LIVE_ITEMS, ...PROCESS_ITEMS]));
+  assert.equal(RETIRED_ITEMS.length, 5);
+  assert.deepEqual(new Set(rows.map(row => row[0])), new Set([...LIVE_ITEMS, ...PROCESS_ITEMS, ...RETIRED_ITEMS]));
   const result = acceptanceStatus(completeTable, []);
-  assert.equal(result.applicable, 84);
+  assert.equal(result.applicable, 89);
   assert.equal(result.processCount, 8);
-  assert.equal(result.counts.unverified, 84);
+  assert.equal(result.retiredCount, 5);
+  assert.equal(result.counts.unverified, 89);
   for (const item of LIVE_ITEMS) assert.equal(result.html.split('id="' + item + '"').length - 1, 1);
   for (const item of PROCESS_ITEMS) {
     assert.ok(result.html.includes(`title="Process item: reported in the task report"></td><td>${item}</td>`));
@@ -75,7 +77,7 @@ test('existing real verdicts remain intact without rewriting records', () => {
   const before = JSON.stringify(records);
   const result = acceptanceStatus(completeTable, records);
   assert.equal(result.counts.passed + result.counts.failed + result.counts.unverified + result.counts.judgment, result.applicable);
-  assert.equal(result.applicable, 84);
+  assert.equal(result.applicable, 89);
   assert.equal(JSON.stringify(records), before);
 });
 
@@ -102,7 +104,7 @@ test('process records never add a live symbol, score, or timestamp', () => {
   const result = acceptanceStatus(completeTable, [{ ...record, item: '001', condition }]);
   assert.equal(result.counts.passed, 0);
   assert.equal(result.lastCheckedAt, null);
-  assert.equal(result.applicable, 84);
+  assert.equal(result.applicable, 89);
 });
 
 test('J requires evidence, uses its own symbol and row wash, and is not a pass', () => {
@@ -139,4 +141,23 @@ test('rule resolution returns to blue and requires a new live verdict', () => {
   assert.equal(result.counts.passed, 0);
   assert.equal(result.counts.unverified, 2);
   assert.equal(result.lastCheckedAt, null);
+});
+
+test('retirement removes current scoring but preserves historical evidence and archives', () => {
+  const legacy = table.replaceAll('701', '704');
+  const retired = legacy.replace('<td>704</td><td>Affected</td>', '<td>704</td><td>Retired</td>');
+  const evidence = [{...record, item:'704'}];
+  const before = JSON.stringify(evidence);
+  const current = acceptanceStatus(retired, evidence);
+  assert.equal(current.retiredCount, 1);
+  assert.equal(current.counts.total, 1);
+  assert.equal(current.counts.passed, 0);
+  assert.equal(current.lastCheckedAt, null);
+  assert.ok(current.html.includes('data-acceptance-retired="true"'));
+  const archived = acceptanceStatus(legacy, evidence);
+  assert.equal(archived.retiredCount, 0);
+  assert.equal(archived.counts.total, 2);
+  assert.equal(archived.counts.passed, 1);
+  assert.equal(archived.lastCheckedAt, record.checkedAt);
+  assert.equal(JSON.stringify(evidence), before);
 });

@@ -1,0 +1,148 @@
+{
+  "records": [
+    {
+      "item": "001",
+      "condition": "The homepage preserves the approved team-first hero, AI-selection explanation, and question: Is your team execution bounded, or has AI accelerated the mess?",
+      "status": "unverified",
+      "environment": "production",
+      "url": "https://3back.com/",
+      "checkedAt": "2026-09-20T22:25:20.910Z",
+      "reviewer": "Codex Builder",
+      "reviewerType": "agent",
+      "reason": "changed",
+      "evidence": "Implemented locally; not deployed. Independent live review remains required after an authorized release. Local verification is recorded separately in the change package."
+    },
+    {
+      "item": "002",
+      "condition": "Production Source Sans 3, colors, typography tokens, button variants, header heights, and footer type remain unchanged.",
+      "status": "unverified",
+      "environment": "production",
+      "url": "https://3back.com/",
+      "checkedAt": "2026-09-20T22:25:20.910Z",
+      "reviewer": "Codex Builder",
+      "reviewerType": "agent",
+      "reason": "changed",
+      "evidence": "Implemented locally; not deployed. Independent live review remains required after an authorized release. Local verification is recorded separately in the change package."
+    },
+    {
+      "item": "003",
+      "condition": "Homepage navigation and regrouped shared footer work while all existing inner-page navigation and conversation-funnel variants remain intact.",
+      "status": "unverified",
+      "environment": "production",
+      "url": "https://3back.com/",
+      "checkedAt": "2026-09-20T22:25:20.910Z",
+      "reviewer": "Codex Builder",
+      "reviewerType": "agent",
+      "reason": "changed",
+      "evidence": "Implemented locally; not deployed. Independent live review remains required after an authorized release. Local verification is recorded separately in the change package."
+    },
+    {
+      "item": "004",
+      "condition": "Homepage engagement, information, and same-page links use the approved up-right, right, and down arrows respectively, including the closing conversation button.",
+      "status": "unverified",
+      "environment": "production",
+      "url": "https://3back.com/",
+      "checkedAt": "2026-09-20T22:25:20.910Z",
+      "reviewer": "Codex Builder",
+      "reviewerType": "agent",
+      "reason": "changed",
+      "evidence": "Implemented locally; not deployed. Independent live review remains required after an authorized release. Local verification is recorded separately in the change package."
+    },
+    {
+      "item": "005",
+      "condition": "The diagram has legible live labels, desktop-only 15–20 percent box growth and orange reversal, no output line over the box, and static mobile and reduced-motion behavior.",
+      "status": "unverified",
+      "environment": "production",
+      "url": "https://3back.com/",
+      "checkedAt": "2026-09-20T22:25:20.910Z",
+      "reviewer": "Codex Builder",
+      "reviewerType": "agent",
+      "reason": "changed",
+      "evidence": "Implemented locally; not deployed. Independent live review remains required after an authorized release. Local verification is recorded separately in the change package."
+    },
+    {
+      "item": "006",
+      "condition": "The four signals are Legible demand, Guided selection, Bounded failure, and Visible results, with an explicit group label and equal internal padding.",
+      "status": "unverified",
+      "environment": "production",
+      "url": "https://3back.com/",
+      "checkedAt": "2026-09-20T22:25:20.910Z",
+      "reviewer": "Codex Builder",
+      "reviewerType": "agent",
+      "reason": "changed",
+      "evidence": "Implemented locally; not deployed. Independent live review remains required after an authorized release. Local verification is recorded separately in the change package."
+    },
+    {
+      "item": "007",
+      "condition": "Grip Check, Workshops, and Domain Guides open distinct engagement routes; concise credibility is sourced and the closing conversation retains the orange footer divider.",
+      "status": "unverified",
+      "environment": "production",
+      "url": "https://3back.com/",
+      "checkedAt": "2026-09-20T22:25:20.910Z",
+      "reviewer": "Codex Builder",
+      "reviewerType": "agent",
+      "reason": "changed",
+      "evidence": "Implemented locally; not deployed. Independent live review remains required after an authorized release. Local verification is recorded separately in the change package."
+    },
+    {
+      "item": "008",
+      "condition": "The affected homepage and shared shell remain usable at 320, 390, 768, and 1440 CSS pixels with keyboard access, visible focus, readable contrast, and no clipping, overflow, or new runtime/resource errors.",
+      "status": "unverified",
+      "environment": "production",
+      "url": "https://3back.com/",
+      "checkedAt": "2026-09-20T22:25:20.910Z",
+      "reviewer": "Codex Builder",
+      "reviewerType": "agent",
+      "reason": "changed",
+      "evidence": "Implemented locally; not deployed. Independent live review remains required after an authorized release. Local verification is recorded separately in the change package."
+    },
+    {
+      "item": "009",
+      "condition": "Homepage metadata and indexing behavior remain unchanged, retired checklist rows do not affect current scoring, and historical acceptance evidence remains intact.",
+      "status": "unverified",
+      "environment": "production",
+      "url": "https://3back.com/",
+      "checkedAt": "2026-09-20T22:25:20.910Z",
+      "reviewer": "Codex Builder",
+      "reviewerType": "agent",
+      "reason": "changed",
+      "evidence": "Implemented locally; not deployed. Independent live review remains required after an authorized release. Local verification is recorded separately in the change package."
+    },
+    {
+      "item": "001",
+      "condition": "The homepage preserves the approved team-first hero, AI-selection explanation, and service statement: 3Back helps leaders work through a bounded execution problem and build the capability to handle the next one.",
+      "status": "unverified",
+      "environment": "production",
+      "url": "https://3back.com/",
+      "checkedAt": "2026-09-21T01:59:16.701Z",
+      "reviewer": "Codex Builder",
+      "reviewerType": "agent",
+      "reason": "changed",
+      "evidence": "Douglas authorized alignment before release: service statement replaces diagnostic question; Current Ideas replaces closing conversation. Prior conditions and records preserved. Independent live verification required."
+    },
+    {
+      "item": "004",
+      "condition": "Homepage engagement, information, and same-page links use the approved up-right, right, and down arrows respectively, including the Current Ideas links.",
+      "status": "unverified",
+      "environment": "production",
+      "url": "https://3back.com/",
+      "checkedAt": "2026-09-21T01:59:16.702Z",
+      "reviewer": "Codex Builder",
+      "reviewerType": "agent",
+      "reason": "changed",
+      "evidence": "Douglas authorized alignment before release: service statement replaces diagnostic question; Current Ideas replaces closing conversation. Prior conditions and records preserved. Independent live verification required."
+    },
+    {
+      "item": "007",
+      "condition": "Grip Check, Workshops, and Domain Guides open distinct engagement routes; concise credibility is sourced and four illustrated Current Ideas cards replace the closing conversation and retain the orange footer divider.",
+      "status": "unverified",
+      "environment": "production",
+      "url": "https://3back.com/",
+      "checkedAt": "2026-09-21T01:59:16.702Z",
+      "reviewer": "Codex Builder",
+      "reviewerType": "agent",
+      "reason": "changed",
+      "evidence": "Douglas authorized alignment before release: service statement replaces diagnostic question; Current Ideas replaces closing conversation. Prior conditions and records preserved. Independent live verification required."
+    }
+  ]
+}
