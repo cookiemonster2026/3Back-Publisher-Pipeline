@@ -1,6 +1,7 @@
 import { reconstructedPushes } from "./reconstructed-pushes.js";
 
 export const deploymentMilestones = [
+	{completedAt: "2026-09-20T22:43:27.6739044-05:00", description: "Rebuild Operational Grip introduction, PDF, and shared featured image"},
 	{
 		completedAt: "2026-09-09T14:26:43-05:00",
 		description: "Launch protected staff docs and client error reporting",

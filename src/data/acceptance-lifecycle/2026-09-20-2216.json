@@ -20,6 +20,17 @@
       "at": "2026-09-21T03:19:04.940Z",
       "actor": "Codex Builder",
       "approximate": true
+    },
+    {
+      "type": "handoff",
+      "at": "2026-09-21T03:44:46.661Z",
+      "actor": "Codex Builder"
+    },
+    {
+      "type": "release-prepared",
+      "at": "2026-09-21T03:45:49.082Z",
+      "actor": "Codex Builder",
+      "approximate": true
     }
   ]
 }

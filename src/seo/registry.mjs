@@ -20,19 +20,17 @@ const organizationSameAs = [
 const websiteId = `${SITE_ORIGIN}/#website`;
 const homepagePageId = `${SITE_ORIGIN}/#webpage`;
 const operationalGripPageId = `${operationalGripUrl}#webpage`;
-const operationalGripImageId = `${operationalGripUrl}#primaryimage`;
 const operationalGripTermId = `${operationalGripUrl}#term`;
-const operationalGripImagePath = "/assets/operational-grip/og-page/07-operational-grip-chicago-lens.png";
-const operationalGripImageUrl = `${SITE_ORIGIN}${operationalGripImagePath}`;
-const operationalGripImageAlt = "A grayscale Chicago skyline viewed from Lake Michigan, with the Willis Tower area restored to sharp natural color through a handheld lens.";
-const operationalGripDescription = "Operational Grip helps organizations find where execution has lost grip and make bounded changes that reveal what to do next.";
+const operationalGripImagePath = "/social/3back-featured-image-v1.jpg";
+const operationalGripImageAlt = "3Back, The Team Execution Company. Organizations do not outgrow teams. Human expertise + AI capability.";
+const operationalGripDescription = "Understand Operational Grip: the ability to make bounded changes, observe their effects, and adapt without losing control.";
 const aboutUsPath = "/about-us";
 const aboutUsUrl = `${SITE_ORIGIN}${aboutUsPath}`;
 const aboutUsImageId = `${aboutUsUrl}#origin-image`;
 const aboutUsImagePath = "/social/about-3back.png";
 const aboutUsImageAlt = "Editorial illustration of a painter stepping back from a house to inspect several paint inconsistencies from a wider perspective.";
 const aboutUsDescription = "Meet the people behind 3Back and learn how experience across science, mathematics, engineering, the trades, and complex systems shaped Operational Grip.";
-export const OPERATIONAL_GRIP_DEFINITION = "Operational Grip is the discipline of preserving actionable control.";
+export const OPERATIONAL_GRIP_DEFINITION = "Operational Grip is the ability to apply intentional, local change with predictable effect without requiring global reasoning.";
 export const OPERATIONAL_GRIP_ATTRIBUTION = "Operational Grip is 3Back’s proprietary operating lens for diagnosing execution and guiding bounded change.";
 export const HOMEPAGE_OPERATIONAL_GRIP_EXPLANATION = "A team has Operational Grip when it can act within a useful boundary, see what changed, and correct course before local failure becomes systemic failure.";
 
@@ -1402,19 +1400,19 @@ export const pageSeo = Object.freeze({
 	"/operational-grip": {
 		status: "complete",
 		path: operationalGripPath,
-		title: "Operational Grip for Organizational Execution | 3Back",
+		title: "Operational Grip | 3Back",
 		description: operationalGripDescription,
 		indexability: "index, follow",
 		social: {
-			title: "Operational Grip for Organizational Execution | 3Back",
+			title: "Operational Grip | 3Back",
 			description: operationalGripDescription,
 			type: "website",
 			image: {
 				src: operationalGripImagePath,
 				alt: operationalGripImageAlt,
-				width: 1672,
-				height: 941,
-				type: "image/png",
+				width: 1200,
+				height: 630,
+				type: "image/jpeg",
 			},
 		},
 		structuredData: {
@@ -1440,24 +1438,14 @@ export const pageSeo = Object.freeze({
 					publisher: { "@id": organizationId },
 				},
 				{
-					"@type": "ImageObject",
-					"@id": operationalGripImageId,
-					url: operationalGripImageUrl,
-					contentUrl: operationalGripImageUrl,
-					width: 1672,
-					height: 941,
-					caption: operationalGripImageAlt,
-				},
-				{
 					"@type": "WebPage",
 					"@id": operationalGripPageId,
 					url: operationalGripUrl,
-					name: "Operational Grip for Organizational Execution | 3Back",
+					name: "Operational Grip | 3Back",
 					description: operationalGripDescription,
 					inLanguage: "en-US",
 					isPartOf: { "@id": websiteId },
 					publisher: { "@id": organizationId },
-					primaryImageOfPage: { "@id": operationalGripImageId },
 					mainEntity: { "@id": operationalGripTermId },
 				},
 				{

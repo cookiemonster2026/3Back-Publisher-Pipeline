@@ -3,7 +3,6 @@ import { relative, resolve, sep } from "node:path";
 import {
 	canonicalUrl,
 	HOMEPAGE_OPERATIONAL_GRIP_EXPLANATION,
-	OPERATIONAL_GRIP_ATTRIBUTION,
 	OPERATIONAL_GRIP_DEFINITION,
 	pageSeo,
 	SITE_ORIGIN,
@@ -162,7 +161,7 @@ function validateStructuredData(route, head) {
 		const requiredTypes = route === "/"
 			? ["Organization", "WebSite", "WebPage"]
 			: route === "/operational-grip"
-				? ["Organization", "WebSite", "ImageObject", "WebPage", "DefinedTerm"]
+				? ["Organization", "WebSite", "WebPage", "DefinedTerm"]
 				: ["Organization", "WebSite", "ImageObject", "AboutPage"];
 		const unexpectedTypes = data["@graph"].map((node) => node["@type"]).filter((type) => !requiredTypes.includes(type));
 		if (unexpectedTypes.length > 0) errors.push(`${route}: JSON-LD has unexpected schema type(s): ${unexpectedTypes.join(", ")}.`);
@@ -246,7 +245,6 @@ function validateHtml() {
 
 		if (route === "/operational-grip") {
 			expectEqual(route, "rendered canonical Operational Grip definition", textByClass(html, "definition-copy"), OPERATIONAL_GRIP_DEFINITION);
-			expectEqual(route, "rendered Operational Grip attribution", textByClass(html, "operational-grip-attribution"), OPERATIONAL_GRIP_ATTRIBUTION);
 		}
 		if (route === "/") {
 			const explanation = textByClass(html, "operational-grip-explanation");
