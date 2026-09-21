@@ -108,6 +108,7 @@ const standingTestHtml = standingStatus ? displayTables(standingStatus.html, !in
 </div> : results && status ? <>
   {snapshot?.description && <h2 class="work-description">{incrementSuite ? `${accepted ? "Accepted" : "Not Accepted"}: ${snapshot.description}` : snapshot.description}{snapshot?.brief && <> <a class="working-brief-link" href={snapshot.brief.path} target="_blank" rel="noopener noreferrer">Open working brief</a></>}</h2>}
   <div class="results-header-fields">
+    {snapshot?.id === "2026-09-20-1726" && <p><strong>Note:</strong> <a href="/docs/homepage-testing-walkthrough/#human-walkthrough">Testing walkthrough</a></p>}
     <p><strong>Created:</strong> {milestoneDate(snapshot?.createdAt ?? lifecycle?.createdAt)}</p>
     <p><strong>Last published:</strong> {milestoneDate(published?.at)}{stampActor(published)}</p>
     {!incrementSuite && <p class:list={["acceptance-state", { "acceptance-status--judgment": accepted }]}><strong>{accepted ? "Accepted" : "Not accepted"}</strong></p>}

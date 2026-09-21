@@ -8,7 +8,7 @@ Site Intent Map: https://3back.com/docs/site-intent-map/
 
 ## Approved alignment
 
-Douglas explicitly authorized checklist and package alignment before commit and push. Standing 714 now requires the five-beat homepage ending in four Current Ideas cards, not a conversation band. Verification instructions for 308 and 709 now reference the information-card arrows and service statement. Increment 001, 004, and 007 follow these decisions. Prior increment evidence is preserved and new R records are appended. No builder Pass verdicts, human acceptance, or task closure are recorded.
+Douglas explicitly authorized checklist and package alignment before commit and push. Standing 714 now requires the five-beat homepage ending in four Current Ideas cards, not a conversation band. Verification instructions for 308 and 709 now reference the information-card arrows and service statement. Increment 001, 004, and 007 follow these decisions. Prior increment evidence is preserved and new R records are appended. At release, no builder Pass verdicts or human acceptance were recorded. Douglas has since explicitly passed all nine increment tests and standing 308, 309, and 709–715, accepted this package, and promoted increment 003, 006, and 007 to standing 310, 716, and 717. These are human verdicts, not an independent agent review.
 
 ## Human walkthrough
 
@@ -23,7 +23,7 @@ Douglas explicitly authorized checklist and package alignment before commit and 
 
 ## Evidence boundary
 
-Local builds, unit tests, browser checks, and history guard support release preparation. They do not establish live acceptance. The independent reviewer follows 000 Initialize and verifies the standing and nine increment conditions on the published site. Human items 901–905 remain for Douglas.
+Local builds, unit tests, browser checks, and history guard support release preparation. They do not establish live acceptance. Douglas’s explicit acceptance is recorded in the package. No independent reviewer initialization or completed-review event is inferred from that acceptance. Unrelated standing verdicts are preserved.
 
 ## Current verification supplement
 

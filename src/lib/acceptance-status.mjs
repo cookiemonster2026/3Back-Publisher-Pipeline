@@ -6,7 +6,7 @@ const reasons = { changed: "Surface changed.", "never-checked": "Never checked."
 const range = (first, last) => Array.from({ length: last - first + 1 }, (_, index) => String(first + index));
 export const PROCESS_ITEMS = Object.freeze(["001", "002", "003", "004", "005", "006", "602", "606"]);
 export const RETIRED_ITEMS = Object.freeze(["304", "704", "705", "706", "707"]);
-export const LIVE_ITEMS = Object.freeze([...range(101, 109), ...range(201, 205), ...range(301, 303), ...range(305, 309), ...range(321, 324), ...range(401, 405), ...range(501, 508), "601", ...range(603, 605), ...range(701, 703), ...range(708, 715), ...range(801, 830), ...range(901, 905)]);
+export const LIVE_ITEMS = Object.freeze([...range(101, 109), ...range(201, 205), ...range(301, 303), ...range(305, 310), ...range(321, 324), ...range(401, 405), ...range(501, 508), "601", ...range(603, 605), ...range(701, 703), ...range(708, 717), ...range(801, 830), ...range(901, 905)]);
 const processItems = new Set(PROCESS_ITEMS);
 const liveItems = new Set(LIVE_ITEMS);
 const retiredItems = new Set(RETIRED_ITEMS);
@@ -57,7 +57,7 @@ export function acceptanceStatus(html, records) {
         // checklists with their original class retain their historical verdicts.
         if (retiredItems.has(item) && cells[0] === "Retired") {
           retiredCount++;
-          return `<tr id="${item}" data-acceptance-retired="true"><td class="acceptance-current-status" title="Retired condition; historical evidence is preserved">Retired</td><td>${item}</td>${visibleRest}</tr>`;
+          return ""; // Omit retired rows from current output, not source or historical evidence.
         }
         if (processItems.has(item)) {
           processCount++;

@@ -37,6 +37,7 @@ export const OPERATIONAL_GRIP_ATTRIBUTION = "Operational Grip is 3Back’s propr
 export const HOMEPAGE_OPERATIONAL_GRIP_EXPLANATION = "A team has Operational Grip when it can act within a useful boundary, see what changed, and correct course before local failure becomes systemic failure.";
 
 export const STAFF_DOCS = [
+  { slug: "homepage-testing-walkthrough", label: "Homepage testing walkthrough", source: "docs/publishing/packages/homepage-team-ai/release-testing-guide.md", path: "/docs/homepage-testing-walkthrough" },
   { slug: "approved-access-list", label: "Users of Docs", source: null, path: "/docs/approved-access-list" },
   { slug: "page-metadata", label: "Registry Metadata", source: null, path: "/docs/page-metadata" },
   { slug: "reviewer-agents", label: "Reviewer Agents", source: "Reviewer Agents.md", path: "/docs/reviewer-agents" },

@@ -4,7 +4,7 @@ This file is the shared verification source for future website changes. It conta
 
 ## Acceptance Testing Readiness
 
-000 — Initialize: The Independent AI Reviewer reads Reviewer Agents.md and confirms readiness to perform according to its instructions. At each handoff the builder resets this item to R Review. The reviewer records Pass or Fail; on Fail, identifies the blocker and stops. This readiness result is separate from the 89 active live-site verdicts.
+000 — Initialize: The Independent AI Reviewer reads Reviewer Agents.md and confirms readiness to perform according to its instructions. At each handoff the builder resets this item to R Review. The reviewer records Pass or Fail; on Fail, identifies the blocker and stops. This readiness result is separate from the 92 active live-site verdicts.
 
 ## Governing sources
 
@@ -41,7 +41,7 @@ Run an `Affected` item when the requested or resulting diff could change its con
 
 ### Status on /docs/acceptance-testing
 
-Live colors apply to the 89 active live items. Five retired conditions remain visible for traceability but have no current score or live color. Green and red are live verdicts on a known condition. Blue means a known condition needs a live look. J means human judgment is needed to proceed. The implementer may only mark blue. An outside reviewer marks green, red, or J. Douglas decides J. The surface map is a starting point, not a closed list. Last checked ignores blue and J.
+Live colors apply to the 92 active live items. Five retired conditions remain in source history but are omitted from the current results view and score. Green and red are live verdicts on a known condition. Blue means a known condition needs a live look. J means human judgment is needed to proceed. The implementer may only mark blue. An outside reviewer marks green, red, or J. Douglas decides J. The surface map is a starting point, not a closed list. Last checked ignores blue and J.
 
 Retirement authority: Douglas approved the replacement homepage, route-specific header and regrouped footer, and the conflicting-test revisions in task `01a0bba0-a8c0-73b3-866c-49c7ae602c95`, implemented September 20, 2026. Retire 304 and 704–707 without deleting their conditions or historical evidence. Replacement coverage is 309 and 709–715. Production typography and colors are invariants, not new design choices; 109 adds regression coverage. Item 308 covers the approved homepage arrow grammar.
 
@@ -88,6 +88,7 @@ Retirement authority: Douglas approved the replacement homepage, route-specific 
 | --- | --- | --- | --- | --- |
 | 308 | Affected | Agent | Homepage engagement actions use an up-right arrow, informational route links a right arrow, and same-page links a down arrow. Shared chrome may remain arrow-free. Arrows are decorative, separately styled, and never underlined. | Exercise each homepage action with pointer and keyboard. Confirm its destination, arrow, accessible name, underline, hover, and focus behavior. Current Ideas links follow the informational route grammar. |
 | 309 | Affected | Agent | Shared header and footer preserve production typography and sizing while supporting the approved homepage navigation and footer groups. Existing inner-page navigation, conversation-funnel destinations, legal and social links, and the Product Ownership III on-demand exception remain intact. | Inspect homepage, ordinary inner page, Domain Guides, and every existing course header variant. Test mobile navigation. Confirm homepage Operational Grip opens its route, How to engage opens the homepage engagement section, and footer groups are Explore, Engage, Learn, and Company. |
+| 310 | Affected | Agent | Homepage navigation and regrouped shared footer work while all existing inner-page navigation and conversation-funnel variants remain intact. | Check desktop and mobile header destinations, all footer groups and legal/social links, and Product Ownership III on-demand exclusion. |
 
 ## Links and contact path
 
@@ -154,6 +155,10 @@ Retirement authority: Douglas approved the replacement homepage, route-specific 
 | 713 | Affected | Agent | One problem. Three ways to engage presents distinct Grip Check, Workshops, and Domain Guides destinations, not three links to a shared closing CTA. | Activate each engagement row and compare its description with its destination. |
 | 714 | Affected | Agent | The homepage sequence is hero and AI-selection card, Operational Grip and four signals, engagement choices, concise credibility, and four Current Ideas cards followed by the shared footer. Current Ideas presents the latest Tales strip, No Head Works Alone, How 3Back Approaches Learning, and the books collection with approved images and concise descriptions. Removed problem tiles, commercial essay, sample score, working sequence, and lineage band do not return as standalone bands. | Inspect the full rendered page in desktop and mobile order; verify credibility claims against approved repository sources and activate all four card destinations. |
 | 715 | Affected | Agent | The selection diagram uses legible live text for Possibilities, Teamwork with AI, Domain-guided selection, and Outcomes. Its box grows 15–20 percent and reverses orange contrast on desktop hover or keyboard focus, without drawing the output line over the box. Mobile remains static and reduced-motion preferences are respected. | Inspect resting, hover, focus, reduced-motion, 320px, and modern mobile states. Measure text and box size, line stacking, label placement, contrast, and overflow. |
+| 716 | Affected | Agent | The four signals are Legible demand, Guided selection, Bounded failure, and Visible results, with an explicit group label and equal internal padding. | Inspect all descriptions, hover and keyboard states, first-card left inset, and reduced-motion behavior. |
+| 717 | Affected | Agent | Grip Check, Workshops, and Domain Guides open distinct engagement routes; concise credibility is sourced and four illustrated Current Ideas cards replace the closing conversation and retain the orange footer divider. | Follow the three engagement rows, Why 3Back, About, Reviews, and all four Current Ideas destinations; verify the seven-minute note, Assess it, Workshop a bounded problem, and Build your Domain Guides program; compare credibility against approved About content. |
+
+Promoted from accepted homepage suite `2026-09-20-1726`: increment 003 → standing 310, 006 → 716, and 007 → 717.
 
 ## Staff docs and promoted course checks
 

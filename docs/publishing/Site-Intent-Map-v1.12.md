@@ -3,6 +3,7 @@
 **Version:** 1.12
 **Date:** 2026-09-20
 **Scope:** Approved team-first AI homepage release; homepage navigation, footer groups, and four Current Ideas cards. Unrelated route intents retained.
+**Acceptance:** Douglas accepted the homepage package and all nine increment tests; standing promotions are 310, 716, and 717. [Acceptance results](/docs/acceptance-results/2026-09-20-1726/).
 **Twin to:** Technical Manifest (`docs/publishing/technical-manifest.md`)
 **Update rule:** Increment version on material change. This homepage release update was explicitly authorized before push; production confirmation is reported separately.
 
