@@ -31,6 +31,12 @@
       "at": "2026-09-21T03:45:49.082Z",
       "actor": "Codex Builder",
       "approximate": true
+    },
+    {
+      "type": "accepted",
+      "at": "2026-09-21T03:51:19.163Z",
+      "actor": "Codex recording Douglas acceptance",
+      "humanApproval": "Douglas: mark the rebuild operational introduction package accepted for tests 2, 4, and 7. Add those to the test suite. Mark tests 1 through 8 as accepted. Mark the package as accepted. Commit to main and push to origin."
     }
   ]
 }
