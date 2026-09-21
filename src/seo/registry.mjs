@@ -1351,8 +1351,8 @@ export const pageSeo = Object.freeze({
 			description: "3Back helps leaders find where organizational execution has lost grip and make bounded changes that reveal what to do next.",
 			type: "website",
 			image: {
-				src: "/social/3back-featured-image-v1.jpg",
-				alt: "3Back visualizing the connection between demand, team execution, and market value.",
+				src: "/social/3back-featured-image-v2.jpg",
+				alt: "3Back, The Team Execution Company. Organizations do not outgrow teams. Human expertise + AI capability.",
 				width: 1200,
 				height: 630,
 				type: "image/jpeg",
@@ -1482,8 +1482,8 @@ export const pageSeo = Object.freeze({
 				description: "When judgment concentrates in one overloaded decision maker, the organization can look strong and still lose grip. The Bowtie Problem, and what restores bounded ownership.",
 				type: "article",
 				image: {
-					src: "/social/3back-featured-image-v1.jpg",
-					alt: "No Head Works Alone — 3Back paper on the Bowtie Problem and bounded ownership.",
+					src: "/social/3back-featured-image-v2.jpg",
+					alt: "3Back, The Team Execution Company. Organizations do not outgrow teams. Human expertise + AI capability.",
 					width: 1200,
 					height: 630,
 					type: "image/jpeg",
@@ -1500,7 +1500,7 @@ export const pageSeo = Object.freeze({
 						mainEntityOfPage: `${SITE_ORIGIN}/papers/no-head-works-alone`,
 						isPartOf: { "@id": websiteId },
 						publisher: { "@id": organizationId },
-						image: `${SITE_ORIGIN}/social/3back-featured-image-v1.jpg`,
+						image: `${SITE_ORIGIN}/social/3back-featured-image-v2.jpg`,
 					},
 					{
 						"@type": "FAQPage",

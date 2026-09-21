@@ -1,0 +1,40 @@
+{
+  "records": [
+    {
+      "item": "001",
+      "condition": "The homepage Open Graph and Twitter image references use the approved team-first 1200 by 630 JPEG, with accurate alternative text.",
+      "status": "unverified",
+      "environment": "production",
+      "url": "https://3back.com/",
+      "checkedAt": "2026-09-20T22:16:39-05:00",
+      "reviewer": "Codex Builder",
+      "reviewerType": "agent",
+      "reason": "changed",
+      "evidence": "Approved artwork prepared for release. Independent live review pending; no standing verdicts changed."
+    },
+    {
+      "item": "002",
+      "condition": "Both featured-image v1 and v2 URLs serve the approved Human expertise + AI capability artwork without cropping or misspelled text.",
+      "status": "unverified",
+      "environment": "production",
+      "url": "https://3back.com/",
+      "checkedAt": "2026-09-20T22:16:39-05:00",
+      "reviewer": "Codex Builder",
+      "reviewerType": "agent",
+      "reason": "changed",
+      "evidence": "Approved artwork prepared for release. Independent live review pending; no standing verdicts changed."
+    },
+    {
+      "item": "003",
+      "condition": "No Head Works Alone uses the updated shared image consistently in social metadata and Article structured data; unrelated page content and metadata remain unchanged.",
+      "status": "unverified",
+      "environment": "production",
+      "url": "https://3back.com/papers/no-head-works-alone/",
+      "checkedAt": "2026-09-20T22:16:39-05:00",
+      "reviewer": "Codex Builder",
+      "reviewerType": "agent",
+      "reason": "changed",
+      "evidence": "Approved artwork prepared for release. Independent live review pending; no standing verdicts changed."
+    }
+  ]
+}
