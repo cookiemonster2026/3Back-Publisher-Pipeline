@@ -9,6 +9,12 @@
       "at": "2026-09-21T15:22:02.523Z",
       "actor": "Codex Builder",
       "approximate": true
+    },
+    {
+      "type": "release-prepared",
+      "at": "2026-09-21T15:41:28.145Z",
+      "actor": "Codex Builder",
+      "approximate": true
     }
   ]
 }
