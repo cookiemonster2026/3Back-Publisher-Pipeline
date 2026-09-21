@@ -48,7 +48,7 @@ export const STAFF_DOCS = [
 	{
 		"slug": "site-intent-map",
 		"label": "Site Intent Map",
-		"source": "docs/publishing/Site-Intent-Map-v1.12.md",
+		"source": "docs/publishing/Site-Intent-Map-v1.13.md",
 		"path": "/docs/site-intent-map"
 	},
 	{

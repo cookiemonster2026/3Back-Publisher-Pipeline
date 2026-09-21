@@ -51,7 +51,7 @@ There are no declared React, Vue, Svelte, Tailwind, CMS, database, or test-runne
 |   `-- seo/                          Central metadata registry and its TypeScript types
 |-- public/                           Files copied to published output unchanged
 |   |-- assets/operational-grip/      Homepage and Operational Grip images/icons
-|   |-- downloads/operational-grip.pdf
+|   |-- downloads/3Back-Operational-Grip-Executive-Brief.pdf
 |   `-- favicon.{svg,ico}
 `-- docs/
     |-- brand/source/                 Governing and page-specific brand sources
@@ -80,7 +80,7 @@ There are no declared React, Vue, Svelte, Tailwind, CMS, database, or test-runne
 - Static files under `public/` publish from the site root without source transformation.
 - Operational Grip PNG illustrations are under `public/assets/operational-grip/og-page/`.
 - Homepage icon SVGs and `hands-bar.png` are under `public/assets/operational-grip/`.
-- The downloadable paper is `public/downloads/operational-grip.pdf`.
+- The downloadable executive brief is `public/downloads/3Back-Operational-Grip-Executive-Brief.pdf`.
 - Favicons are `public/favicon.svg` and `public/favicon.ico`.
 
 ## Image and asset handling convention
@@ -121,7 +121,7 @@ The repository currently has no `src/assets/` directory and does not use Astro `
 | `public/assets/operational-grip/og-page/01-*.png` through `06-*.png` as rendered by `src/pages/operational-grip.astro` | Six 1672 by 941 substantial page rasters are served unprocessed from `public`. Their raw `<img>` elements do declare correct intrinsic dimensions, but they do not receive Astro-generated responsive sources or format optimization. |
 | `public/assets/operational-grip/og-page/07-operational-grip-chicago-lens.png` | Its stable public path conforms to the social-sharing role declared in `src/seo/registry.mjs` and required by `scripts/validate-seo.mjs`. Its additional use as a substantial raw page image should be reviewed separately for an imported page-rendering source while preserving the public social asset. |
 
-The current `public/favicon.svg`, `public/favicon.ico`, `public/downloads/operational-grip.pdf`, and five SVG files under `public/assets/operational-grip/icons/` match the public-file side of this convention: they are favicons, a download, or intentionally URL-addressed CSS masks. This classification does not assess or reapprove their visual content.
+The current `public/favicon.svg`, `public/favicon.ico`, `public/downloads/3Back-Operational-Grip-Executive-Brief.pdf`, and five SVG files under `public/assets/operational-grip/icons/` match the public-file side of this convention: they are favicons, a download, or intentionally URL-addressed CSS masks. This classification does not assess or reapprove their visual content.
 
 ### Astro guidance basis
 
