@@ -1318,13 +1318,12 @@ export const pageSeo = Object.freeze({
 			"@context": "https://schema.org",
 			"@type": "ItemList",
 			itemListElement: [
-				["Certified ScrumMaster® (CSM®)", "2026-08-29", "https://event.3back.com/certified-scrummaster-august-29-30"],
-				["Advanced Certified ScrumMaster® (A-CSM®)", "2026-09-09", "https://event.3back.com/advanced-certified-scrummaster-september-9-10"],
-				["Scrum Better with Kanban", "2026-09-12", "https://event.3back.com/scrum-better-with-kanban-september-12"],
-				["Certified ScrumMaster® (CSM®)", "2026-09-15", "https://event.3back.com/certified-scrummaster-september-15-16-2026"],
-				["Advanced Certified ScrumMaster® (A-CSM®)", "2026-09-19", "https://event.3back.com/advanced-certified-scrummaster-september-19-20"],
 				["Certified Scrum Product Owner® (CSPO®)", "2026-09-22", "https://event.3back.com/certified-scrum-product-owner-september-22-23"],
 				["Certified ScrumMaster® (CSM®)", "2026-09-26", "https://event.3back.com/certified-scrummaster-september-26-27"],
+				["Certified ScrumMaster® (CSM®)", "2026-10-07", "https://event.3back.com/certified-scrummaster-october-7-8"],
+				["Certified ScrumMaster® (CSM®)", "2026-10-17", "https://event.3back.com/certified-scrummaster-october-17-18"],
+				["Scrum Better with Kanban", "2026-10-20", "https://event.3back.com/scrum-better-with-kanban-october-20"],
+				["Advanced Certified ScrumMaster® (A-CSM®)", "2026-10-22", "https://event.3back.com/advanced-certified-scrummaster-october-22-23"],
 			].map(([name, startDate, url], position) => ({
 				"@type": "ListItem",
 				position: position + 1,
