@@ -2,6 +2,7 @@ import fs from "node:fs";
 import { execFileSync } from "node:child_process";
 import { resolve } from "node:path";
 import { pathToFileURL } from "node:url";
+import { LIVE_ITEMS, PROCESS_ITEMS, RETIRED_ITEMS } from "../src/lib/acceptance-status.mjs";
 
 export const MAX_OPEN_FILE_BYTES = 524288;
 export const MAX_APPENDED_RECORDS = 161;
@@ -46,6 +47,20 @@ export function assertNoWeeklyRestamp(statusRecords, weeklyRecords, label) {
   if (unchangedGreens.length >= 60) throw Error(`${label}: contains ${unchangedGreens.length} unchanged passed records; limit is 59.`);
 }
 
+export function assertChecklistLiveItems(checklistMarkdown, liveItems, processItems, retiredItems) {
+  const classified = new Set([...liveItems, ...processItems, ...retiredItems]);
+  const missing = [];
+  const seen = new Set();
+  for (const match of checklistMarkdown.matchAll(/^\| (\d{3}) \|/gm)) {
+    const id = match[1];
+    if (!classified.has(id) && !seen.has(id)) {
+      missing.push(id);
+      seen.add(id);
+    }
+  }
+  if (missing.length) throw Error(`Checklist contains ${missing.join(", ")}, but LIVE_ITEMS does not.`);
+}
+
 function previousRecords(root, path) {
   try {
     return JSON.parse(execFileSync("git", ["show", `HEAD:${path}`], { cwd: root, encoding: "utf8", stdio: ["ignore", "pipe", "pipe"] })).records ?? [];
@@ -73,6 +88,8 @@ export function validateAcceptanceHousekeeping(root) {
   const snapshotFiles = fs.readdirSync(snapshotDirectory).filter(name => name.endsWith(".json"));
   const statusPath = "src/data/acceptance-status.json";
   const watchedJsonPaths = [statusPath, ...snapshotFiles.map(name => `src/data/acceptance-snapshots/${name}`)];
+
+  assertChecklistLiveItems(fs.readFileSync(resolve(root, "docs/website-acceptance-checklist.md"), "utf8"), LIVE_ITEMS, PROCESS_ITEMS, RETIRED_ITEMS);
 
   assertOpenFileSizes([
     { path: statusPath, size: fs.statSync(resolve(root, statusPath)).size, accepted: false },

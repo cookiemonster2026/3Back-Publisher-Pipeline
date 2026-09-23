@@ -102,9 +102,9 @@ Housekeeping tripwires run at build. Open suite JSON and `acceptance-status.json
 
 Push to origin/main is not Published. Published means the Cloudflare Pages build for that commit is success and the affected URL shows the change. Run `pnpm build:test` before pushing acceptance JSON or housekeeping files. If the Pages build fails, stop and report the error. Do not say Published.
 
-The Current Status column and composite on `/docs/acceptance-testing/` report live-site verification for the 54 live items only. Checks cover surfaces, not pages. This board is not a pure Boolean suite. Builders infer. Reviewers infer. The symbols are where inference stops. Never use local builds, local previews, source inspection, or inferred deployment success to mark an item green or red.
+The Current Status column and composite on `/docs/acceptance-testing/` report live-site verification for the 97 live items only. Checks cover surfaces, not pages. This board is not a pure Boolean suite. Builders infer. Reviewers infer. The symbols are where inference stops. Never use local builds, local previews, source inspection, or inferred deployment success to mark an item green or red.
 
-Green means the live surface passed a known condition. Red means it failed. Blue R means a known condition needs a live look. Burnt orange J means a human decision is needed to proceed. J is not a pass, not a fail, and not a substitute for looking. Count the 54 live items only. Count only green in the passed numerator. Blue and J count in the total. Process items 001, 002, 003, 004, 005, 006, 602, and 606 stay in the checklist and are reported in the task report. They do not take a live color.
+Green means the live surface passed a known condition. Red means it failed. Blue R means a known condition needs a live look. Burnt orange J means a human decision is needed to proceed. J is not a pass, not a fail, and not a substitute for looking. Count the 97 live items only. Count only green in the passed numerator. Blue and J count in the total. Process items 001, 002, 003, 004, 005, 006, 602, and 606 stay in the checklist and are reported in the task report. They do not take a live color.
 
 Last checked is the newest green or red live-item timestamp. Blue and J do not move it.
 
@@ -172,6 +172,8 @@ Release trigger: "commit to main and push to origin" requests the complete relea
 Immediately before the release commit, run node scripts/acceptance-lifecycle.mjs prepare-release --suite SUITE_ID --task TASK_ID --actor BUILDER_ID. This appends the actual current time as the agreed approximate Deployed timestamp so it ships in the same push. Do not fabricate a confirmed-deployment event. Reset 000 with the handoff command when handing to a reviewer. Push, wait for Cloudflare, and attempt to confirm the release. If accessible, the deployed command can retain exact confirmation separately; the displayed approximate time does not require a second push. If blocked or failed, report Release incomplete and identify the provisional timestamp and next action. Return the production results URL and changes link. Never label an unconfirmed release complete. This rule supersedes the earlier exact-timestamp requirement; no runtime storage or second metadata push is required for the displayed date.
 
 Only explicit human acceptance and task closure authorize the accepted command with --human-approval containing that instruction. Finalize the existing single Done entry or append it if none exists. Preserve all earlier deployment, review, initialization, acceptance evidence, and finalized work.
+
+When Douglas accepts and closes in the same turn that still needs a release-prepared stamp, run `accept-closeout` instead of `accepted`. That command writes `release-prepared` if missing, then `accepted`, in one lifecycle-file persistence step. Do not run `prepare-release` after `accepted`. Do not use `accept-closeout` to write standing checklist rows or `LIVE_ITEMS`.
 
 ## Required reviewer handoff prompt
 

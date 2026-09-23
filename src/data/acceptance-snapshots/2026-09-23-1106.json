@@ -1,0 +1,64 @@
+{
+  "records": [
+    {
+      "item": "001",
+      "condition": "accept-closeout validates and appends release-prepared when missing followed by accepted, then persists the lifecycle file once and leaves the suite immutable.",
+      "status": "unverified",
+      "environment": "production",
+      "url": "https://3back.com/docs/acceptance-results/2026-09-23-1106/",
+      "checkedAt": "2026-09-23T11:06:41.8288245-05:00",
+      "reviewer": "Codex Builder",
+      "reviewerType": "agent",
+      "reason": "changed",
+      "evidence": "All lifecycle and housekeeping unit tests pass locally. Independent review remains required after release."
+    },
+    {
+      "item": "002",
+      "condition": "Optional standing-plus mappings accept only unique increment ids 001–010 that exist in the suite and map to existing live standing ids. They are stored only on the accepted event and do not edit the checklist or LIVE_ITEMS.",
+      "status": "unverified",
+      "environment": "production",
+      "url": "https://3back.com/docs/acceptance-results/2026-09-23-1106/",
+      "checkedAt": "2026-09-23T11:06:41.8288245-05:00",
+      "reviewer": "Codex Builder",
+      "reviewerType": "agent",
+      "reason": "changed",
+      "evidence": "Valid, malformed, duplicate, and timestamp boundary tests pass locally. Independent review remains required after release."
+    },
+    {
+      "item": "003",
+      "condition": "Build housekeeping fails before Astro diagnostics when the standing checklist contains ids absent from LIVE_ITEMS, PROCESS_ITEMS, and RETIRED_ITEMS, naming every missing id in checklist order.",
+      "status": "unverified",
+      "environment": "production",
+      "url": "https://3back.com/docs/acceptance-results/2026-09-23-1106/",
+      "checkedAt": "2026-09-23T11:06:41.8288245-05:00",
+      "reviewer": "Codex Builder",
+      "reviewerType": "agent",
+      "reason": "changed",
+      "evidence": "The 836 and 837 fixture fails with the required message and the current checklist passes locally. Independent review remains required after release."
+    },
+    {
+      "item": "004",
+      "condition": "Standing items 831–835 retain Douglas's accepted Pass verdicts from suite 2026-09-22-2028, the active count is 97, and the accepted suite remains unchanged.",
+      "status": "unverified",
+      "environment": "production",
+      "url": "https://3back.com/docs/acceptance-testing/",
+      "checkedAt": "2026-09-23T11:06:41.8288245-05:00",
+      "reviewer": "Codex Builder",
+      "reviewerType": "agent",
+      "reason": "changed",
+      "evidence": "The ledger promotions match the accepted suite's human verdicts and mappings; the accepted suite diff is empty. Independent display review remains required after release."
+    },
+    {
+      "item": "005",
+      "condition": "The residual changes do not alter homepage or other public-site content, staff-document source wiring, routes, sitemap behavior, or indexing controls, and the test build succeeds.",
+      "status": "unverified",
+      "environment": "production",
+      "url": "https://3back.com/",
+      "checkedAt": "2026-09-23T11:06:41.8288245-05:00",
+      "reviewer": "Codex Builder",
+      "reviewerType": "agent",
+      "reason": "changed",
+      "evidence": "Final diff inspection and pnpm build:test pass locally. Independent post-release review remains required."
+    }
+  ]
+}

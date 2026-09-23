@@ -1,11 +1,21 @@
 import test from "node:test";
 import assert from "node:assert/strict";
+import fs from "node:fs";
+import { resolve } from "node:path";
+import { LIVE_ITEMS, PROCESS_ITEMS, RETIRED_ITEMS } from "../src/lib/acceptance-status.mjs";
 import {
   assertAppendLimit,
+  assertChecklistLiveItems,
   assertFrozenSuitesUnchanged,
   assertNoWeeklyRestamp,
   assertOpenFileSizes,
 } from "./validate-acceptance-housekeeping.mjs";
+
+test("rejects checklist ids missing from the acceptance classifications", () => {
+  assert.throws(() => assertChecklistLiveItems("| 836 | Affected | Agent | Test | Test |\n| 837 | Affected | Agent | Test | Test |", LIVE_ITEMS, PROCESS_ITEMS, RETIRED_ITEMS), /Checklist contains 836, 837, but LIVE_ITEMS does not\./);
+  const currentChecklist = fs.readFileSync(resolve(import.meta.dirname, "../docs/website-acceptance-checklist.md"), "utf8");
+  assert.doesNotThrow(() => assertChecklistLiveItems(currentChecklist, LIVE_ITEMS, PROCESS_ITEMS, RETIRED_ITEMS));
+});
 
 test("caps the shared ledger and open suite files at 512 KB", () => {
   assert.doesNotThrow(() => assertOpenFileSizes([{ path: "open.json", size: 524288, accepted: false }]));

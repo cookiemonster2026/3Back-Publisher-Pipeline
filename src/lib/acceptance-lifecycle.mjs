@@ -24,6 +24,39 @@ export function lastPublished(record, records = []) {
 export function isAccepted(record, acceptedByDefault = false) {
  return acceptedByDefault || Boolean(lifecycleState(record).accepted);
 }
+function validateStandingPlus(standingPlus) {
+ if(!Array.isArray(standingPlus)||standingPlus.length===0) throw Error('Standing-plus needs at least one increment-to-standing pair.');
+ const fromIds=new Set();
+ const toIds=new Set();
+ for(const pair of standingPlus) {
+  if(!pair||!/^00[1-9]$|^010$/.test(pair.from??'')||!/^\d{3}$/.test(pair.to??'')) throw Error('Standing-plus pairs must map increment ids 001-010 to three-digit standing ids.');
+  if(fromIds.has(pair.from)||toIds.has(pair.to)) throw Error('Standing-plus increment and standing ids must be unique.');
+  fromIds.add(pair.from);toIds.add(pair.to);
+ }
+ return standingPlus.map(({from,to})=>({from,to}));
+}
+export function acceptCloseout(record,{actor,humanApproval,acceptedAt,standingPlus,now=new Date()}) {
+ if(lifecycleState(record).accepted) throw Error('Accepted suite is immutable; create a new task suite.');
+ const currentTime=new Date(now);
+ if(!Number.isFinite(currentTime.valueOf())) throw Error('Closeout needs a valid current time.');
+ const state=lifecycleState(record);
+ if(acceptedAt!==undefined&&typeof acceptedAt!=='string') throw Error('Accepted time must be a valid, nonfuture timestamp with timezone.');
+ if(acceptedAt!==undefined&&(!/(Z|[+-]\d{2}:\d{2})$/.test(acceptedAt)||!Number.isFinite(Date.parse(acceptedAt))||Date.parse(acceptedAt)>currentTime.valueOf())) throw Error('Accepted time must be a valid, nonfuture timestamp with timezone.');
+ if(!state.releasePrepared&&acceptedAt!==undefined) throw Error('Accept-closeout cannot use --accepted-at when release-prepared is missing.');
+ if(state.releasePrepared&&acceptedAt!==undefined&&Date.parse(acceptedAt)<Date.parse(state.releasePrepared.at)) throw Error('Accepted time cannot precede release-prepared.');
+ const appendedEvents=[];
+ let next=record;
+ if(!state.releasePrepared) {
+  const releasePrepared={type:'release-prepared',at:currentTime.toISOString(),actor,approximate:true};
+  next=appendEvent(next,releasePrepared);
+  appendedEvents.push(releasePrepared);
+ }
+ const accepted={type:'accepted',at:acceptedAt?new Date(acceptedAt).toISOString():currentTime.toISOString(),actor,humanApproval};
+ if(standingPlus!==undefined) accepted.standingPlus=validateStandingPlus(standingPlus);
+ next=appendEvent(next,accepted);
+ appendedEvents.push(accepted);
+ return {record:next,events:appendedEvents};
+}
 /** @template T @param {T[]} snapshots @returns {T[]} */
 export function sortAcceptanceSnapshots(snapshots) {
  return snapshots.filter(entry => !entry.supersededBy).sort((a, b) => {
@@ -61,5 +94,9 @@ export function appendEvent(record,event) {
   if(event.versionId!==state.deployed.versionId) throw Error('Review must identify the confirmed deployed version.');
  }
  if(event.type==='accepted'&&!event.humanApproval?.trim()) throw Error('Explicit human acceptance and closure evidence required.');
+ if(event.standingPlus!==undefined) {
+  if(event.type!=='accepted') throw Error('Standing-plus is allowed only on an accepted event.');
+  event={...event,standingPlus:validateStandingPlus(event.standingPlus)};
+ }
  return {...record,events:[...record.events,event]};
 }
