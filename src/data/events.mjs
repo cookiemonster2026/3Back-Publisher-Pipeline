@@ -80,5 +80,17 @@ export const events = [
 		"date": "Nov 7",
 		"days": "Sat",
 		"url": "https://event.3back.com/scrum-better-with-kanban-november-7-2026"
+	},
+	{
+		"month": "November 2026",
+		"course": "Certified ScrumMaster®",
+		"mark": "(CSM®)",
+		"seal": {
+			"src": "/assets/events/sa-csm.png",
+			"alt": "Scrum Alliance Certified ScrumMaster certification seal"
+		},
+		"date": "Nov 10–11",
+		"days": "Tue–Wed",
+		"url": "https://event.3back.com/certified-scrummaster-november-10-11"
 	}
 ];
