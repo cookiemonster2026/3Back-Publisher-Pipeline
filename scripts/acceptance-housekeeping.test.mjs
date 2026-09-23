@@ -12,7 +12,7 @@ import {
 } from "./validate-acceptance-housekeeping.mjs";
 
 test("rejects checklist ids missing from the acceptance classifications", () => {
-  assert.throws(() => assertChecklistLiveItems("| 836 | Affected | Agent | Test | Test |\n| 837 | Affected | Agent | Test | Test |", LIVE_ITEMS, PROCESS_ITEMS, RETIRED_ITEMS), /Checklist contains 836, 837, but LIVE_ITEMS does not\./);
+  assert.throws(() => assertChecklistLiveItems("| 839 | Affected | Agent | Test | Test |\n| 840 | Affected | Agent | Test | Test |", LIVE_ITEMS, PROCESS_ITEMS, RETIRED_ITEMS), /Checklist contains 839, 840, but LIVE_ITEMS does not\./);
   const currentChecklist = fs.readFileSync(resolve(import.meta.dirname, "../docs/website-acceptance-checklist.md"), "utf8");
   assert.doesNotThrow(() => assertChecklistLiveItems(currentChecklist, LIVE_ITEMS, PROCESS_ITEMS, RETIRED_ITEMS));
 });

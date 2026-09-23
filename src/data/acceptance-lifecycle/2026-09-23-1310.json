@@ -37,6 +37,26 @@
         "Production version unconfirmed: observations do not verify a particular release."
       ],
       "requiresHumanJudgment": true
+    },
+    {
+      "type": "accepted",
+      "at": "2026-09-23T21:28:05.527Z",
+      "actor": "Douglas Shimp",
+      "humanApproval": "Mark tests 001, 002, and 003 as passed, promote them to the standing test suite, correct their date criteria to the accepted live dates of September 21, September 22, and September 20 respectively, accept release 2026-09-23-1310, commit to main, push to origin, and close the thread. Everything is accepted.",
+      "standingPlus": [
+        {
+          "from": "001",
+          "to": "836"
+        },
+        {
+          "from": "002",
+          "to": "837"
+        },
+        {
+          "from": "003",
+          "to": "838"
+        }
+      ]
     }
   ]
 }

@@ -38,6 +38,7 @@ export const deploymentMilestones = [
 	{"completedAt":"2026-09-21T02:23:08Z","description":"Team-first AI homepage, production visual invariants, and acceptance coverage"},
 	{"completedAt":"2026-09-23T17:00:13.756Z","description":"Close acceptance closeout housekeeping suite"},
 	{"completedAt":"2026-09-23T17:00:14.683Z","description":"Close Operational Grip AI illustration suite"},
+	{"completedAt":"2026-09-23T16:28:05.5272516-05:00","description":"Publish Tales strips 200, 201, and 202"},
 ];
 
 // Preserve the existing archive while adding future completed milestones.

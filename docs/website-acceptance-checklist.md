@@ -4,7 +4,7 @@ This file is the shared verification source for future website changes. It conta
 
 ## Acceptance Testing Readiness
 
-000 — Initialize: The Independent AI Reviewer reads Reviewer Agents.md and confirms readiness to perform according to its instructions. At each handoff the builder resets this item to R Review. The reviewer records Pass or Fail; on Fail, identifies the blocker and stops. This readiness result is separate from the 97 active live-site verdicts.
+000 — Initialize: The Independent AI Reviewer reads Reviewer Agents.md and confirms readiness to perform according to its instructions. At each handoff the builder resets this item to R Review. The reviewer records Pass or Fail; on Fail, identifies the blocker and stops. This readiness result is separate from the 100 active live-site verdicts.
 
 ## Governing sources
 
@@ -42,7 +42,7 @@ Run an `Affected` item when the requested or resulting diff could change its con
 
 ### Status on /docs/acceptance-testing
 
-Live colors apply to the 97 active live items. Five retired conditions remain in source history but are omitted from the current results view and score. Green and red are live verdicts on a known condition. Blue means a known condition needs a live look. J means human judgment is needed to proceed. The implementer may only mark blue. An outside reviewer marks green, red, or J. Douglas decides J. The surface map is a starting point, not a closed list. Last checked ignores blue and J.
+Live colors apply to the 100 active live items. Five retired conditions remain in source history but are omitted from the current results view and score. Green and red are live verdicts on a known condition. Blue means a known condition needs a live look. J means human judgment is needed to proceed. The implementer may only mark blue. An outside reviewer marks green, red, or J. Douglas decides J. The surface map is a starting point, not a closed list. Last checked ignores blue and J.
 
 Retirement authority: Douglas approved the replacement homepage, route-specific header and regrouped footer, and the conflicting-test revisions in task `01a0bba0-a8c0-73b3-866c-49c7ae602c95`, implemented September 20, 2026. Retire 304 and 704–707 without deleting their conditions or historical evidence. Replacement coverage is 309 and 709–715. Production typography and colors are invariants, not new design choices; 109 adds regression coverage. Item 308 covers the approved homepage arrow grammar.
 
@@ -202,6 +202,9 @@ Promoted at Accept from the staff-docs, Product Ownership I, Product Ownership I
 | 833 | Affected | Agent | The publish-events workflow rejects a missing or wrong `PUBLISH_EVENTS_SECRET` and rejects an empty or invalid payload before writing `src/data/events.mjs`. | Inspect the workflow guards and a rejected run when one exists. |
 | 834 | Affected | Agent | A valid publish-events payload may write only `src/data/events.mjs`. Enrollment URLs start with `https://event.3back.com/`. Seal paths start with `/assets/`. | Inspect the workflow write path and a successful run diff. |
 | 835 | Affected | Agent | The publish-events workflow commits only changed `src/data/events.mjs` content with message `Publish events from Events Schedule`, pushes `main`, and does not run pnpm or edit `events.astro`. | Inspect the workflow commit step and the resulting commit. |
+| 836 | Affected | Agent | Strip 200, We Removed the Role, has a live permanent page dated September 21, 2026 whose complete artwork matches the approved source; its public image is the same 1600 by 2400 artwork. | Open `https://3back.com/tales-of-the-grip/we-removed-the-role/`, compare every panel and line of text with the approved source, and inspect `https://3back.com/social/tales-of-the-grip/we-removed-the-role.png`. |
+| 837 | Affected | Agent | Strip 201, True Agility. Now Faster., has a live permanent page dated September 22, 2026 whose complete artwork matches the approved source; its public image is the same 1600 by 2400 artwork. | Open `https://3back.com/tales-of-the-grip/true-agility-now-faster/`, compare every panel and line of text with the approved source, and inspect `https://3back.com/social/tales-of-the-grip/true-agility-now-faster.png`. |
+| 838 | Affected | Agent | Strip 202, Virtual Product Training for Customers, has a live permanent page dated September 20, 2026 whose complete artwork matches the approved source; its public image is the same 1600 by 2400 artwork. | Open `https://3back.com/tales-of-the-grip/virtual-product-training-for-customers/`, compare every panel and line of text with the approved source, and inspect `https://3back.com/social/tales-of-the-grip/virtual-product-training-for-customers.png`. |
 
 ## Human visual and executive review
 
