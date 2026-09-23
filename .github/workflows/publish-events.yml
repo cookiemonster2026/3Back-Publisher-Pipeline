@@ -1,0 +1,129 @@
+name: Publish events
+
+on:
+  repository_dispatch:
+    types:
+      - publish-events
+
+concurrency:
+  group: publish-events
+  cancel-in-progress: false
+
+jobs:
+  publish:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write
+    steps:
+      - name: Check out main
+        uses: actions/checkout@v7
+        with:
+          ref: main
+
+      - name: Validate payload and write events data
+        env:
+          PUBLISH_EVENTS_SECRET: ${{ secrets.PUBLISH_EVENTS_SECRET }}
+        run: |
+          node <<'NODE'
+          const crypto = require("node:crypto");
+          const fs = require("node:fs");
+          const path = require("node:path");
+
+          const fail = (message) => {
+            console.error(message);
+            process.exit(1);
+          };
+
+          const expectedSecret = process.env.PUBLISH_EVENTS_SECRET;
+          if (!expectedSecret) fail("PUBLISH_EVENTS_SECRET is not configured.");
+
+          const payload = JSON.parse(fs.readFileSync(process.env.GITHUB_EVENT_PATH, "utf8"));
+          const providedSecret = payload.client_payload?.secret;
+          if (typeof providedSecret !== "string" || !providedSecret) {
+            fail("The dispatch secret is missing.");
+          }
+
+          const expectedBuffer = Buffer.from(expectedSecret);
+          const providedBuffer = Buffer.from(providedSecret);
+          if (
+            expectedBuffer.length !== providedBuffer.length ||
+            !crypto.timingSafeEqual(expectedBuffer, providedBuffer)
+          ) {
+            fail("The dispatch secret is invalid.");
+          }
+
+          const events = payload.client_payload?.events;
+          if (!Array.isArray(events) || events.length === 0) {
+            fail("client_payload.events must be a non-empty array.");
+          }
+
+          const requiredString = (event, key, index) => {
+            const value = event[key];
+            if (typeof value !== "string" || value.trim() === "") {
+              fail(`Event ${index + 1} requires a non-empty ${key}.`);
+            }
+            return value;
+          };
+
+          const normalizedEvents = events.map((event, index) => {
+            if (!event || typeof event !== "object" || Array.isArray(event)) {
+              fail(`Event ${index + 1} must be an object.`);
+            }
+
+            const month = requiredString(event, "month", index);
+            const course = requiredString(event, "course", index);
+            const date = requiredString(event, "date", index);
+            const days = requiredString(event, "days", index);
+            const url = requiredString(event, "url", index);
+
+            if (!url.startsWith("https://event.3back.com/")) {
+              fail(`Event ${index + 1} has an invalid url.`);
+            }
+
+            if (!event.seal || typeof event.seal !== "object" || Array.isArray(event.seal)) {
+              fail(`Event ${index + 1} requires a seal object.`);
+            }
+
+            const sealSrc = requiredString(event.seal, "src", index);
+            if (!sealSrc.startsWith("/assets/")) {
+              fail(`Event ${index + 1} has an invalid seal.src.`);
+            }
+
+            if (event.mark !== undefined && typeof event.mark !== "string") {
+              fail(`Event ${index + 1} mark must be a string when provided.`);
+            }
+            if (event.seal.alt !== undefined && typeof event.seal.alt !== "string") {
+              fail(`Event ${index + 1} seal.alt must be a string when provided.`);
+            }
+
+            return {
+              month,
+              course,
+              ...(event.mark ? { mark: event.mark } : {}),
+              seal: { src: sealSrc, alt: event.seal.alt ?? "" },
+              date,
+              days,
+              url,
+            };
+          });
+
+          const target = path.join(process.env.GITHUB_WORKSPACE, "src", "data", "events.mjs");
+          const source = `export const events = ${JSON.stringify(normalizedEvents, null, "\t")};\n`;
+          fs.writeFileSync(target, source, "utf8");
+          NODE
+
+      - name: Commit changed events data
+        run: |
+          git add -- src/data/events.mjs
+          if git diff --cached --quiet -- src/data/events.mjs; then
+            echo "Events data is unchanged."
+            exit 0
+          fi
+
+          test "$(git diff --cached --name-only | wc -l)" -eq 1
+          test "$(git diff --cached --name-only)" = "src/data/events.mjs"
+
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git commit -m "Publish events from Events Schedule" -- src/data/events.mjs
+          git push origin HEAD:main

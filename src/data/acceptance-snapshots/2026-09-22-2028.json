@@ -59,6 +59,54 @@
       "reviewerType": "agent",
       "reason": "changed",
       "evidence": "Local test build, SEO validation, desktop and mobile browser checks, console inspection, and final diff review passed. Independent live review remains required after release."
+    },
+    {
+      "item": "006",
+      "condition": "The publish-events workflow listens only for repository_dispatch type publish-events and grants only contents write permission to its job.",
+      "status": "unverified",
+      "environment": "production",
+      "url": "https://github.com/cookiemonster2026/3Back-Publisher-Pipeline/actions/workflows/publish-events.yml",
+      "checkedAt": "2026-09-22T20:55:30-05:00",
+      "reviewer": "Codex Builder",
+      "reviewerType": "agent",
+      "reason": "changed",
+      "evidence": "Static workflow inspection and isolated receiver tests passed. Independent GitHub review remains required after release."
+    },
+    {
+      "item": "007",
+      "condition": "The publish-events workflow rejects a missing or incorrect PUBLISH_EVENTS_SECRET and rejects empty or invalid event payloads before writing src/data/events.mjs.",
+      "status": "unverified",
+      "environment": "production",
+      "url": "https://github.com/cookiemonster2026/3Back-Publisher-Pipeline/actions/workflows/publish-events.yml",
+      "checkedAt": "2026-09-22T20:55:30-05:00",
+      "reviewer": "Codex Builder",
+      "reviewerType": "agent",
+      "reason": "changed",
+      "evidence": "Twelve isolated invalid-payload cases failed without creating the target file. Independent GitHub review remains required after release."
+    },
+    {
+      "item": "008",
+      "condition": "A valid publish-events payload is normalized to the approved event keys, restricts enrollment URLs to event.3back.com and seals to /assets/, and may write only src/data/events.mjs.",
+      "status": "unverified",
+      "environment": "production",
+      "url": "https://github.com/cookiemonster2026/3Back-Publisher-Pipeline/actions/workflows/publish-events.yml",
+      "checkedAt": "2026-09-22T20:55:30-05:00",
+      "reviewer": "Codex Builder",
+      "reviewerType": "agent",
+      "reason": "changed",
+      "evidence": "An isolated valid payload produced the expected module and discarded an unapproved extra key. Independent GitHub review remains required after release."
+    },
+    {
+      "item": "009",
+      "condition": "The publish-events workflow commits only changed src/data/events.mjs content with message Publish events from Events Schedule, pushes to main, and does not run pnpm or edit events.astro.",
+      "status": "unverified",
+      "environment": "production",
+      "url": "https://github.com/cookiemonster2026/3Back-Publisher-Pipeline/actions/workflows/publish-events.yml",
+      "checkedAt": "2026-09-22T20:55:30-05:00",
+      "reviewer": "Codex Builder",
+      "reviewerType": "agent",
+      "reason": "changed",
+      "evidence": "Static workflow inspection confirmed the path-limited add and commit, unchanged-file exit, exact commit message, main push, and exclusions. Independent GitHub review remains required after release."
     }
   ]
 }

@@ -14,6 +14,12 @@
       "type": "handoff",
       "at": "2026-09-23T01:34:03.904Z",
       "actor": "Codex Builder"
+    },
+    {
+      "type": "release-prepared",
+      "at": "2026-09-23T01:58:52.207Z",
+      "actor": "Codex Builder",
+      "approximate": true
     }
   ]
 }
