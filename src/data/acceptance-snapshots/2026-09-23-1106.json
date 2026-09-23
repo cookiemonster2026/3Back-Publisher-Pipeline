@@ -59,6 +59,78 @@
       "reviewerType": "agent",
       "reason": "changed",
       "evidence": "Final diff inspection and pnpm build:test pass locally. Independent post-release review remains required."
+    },
+    {
+      "item": "001",
+      "condition": "accept-closeout validates and appends release-prepared when missing followed by accepted, then persists the lifecycle file once and leaves the suite immutable.",
+      "status": "passed",
+      "environment": "production",
+      "url": "https://3back.com/docs/acceptance-results/2026-09-23-1106/",
+      "checkedAt": "2026-09-23T17:20:50.4320839Z",
+      "reviewer": "Independent AI Reviewer",
+      "reviewerType": "agent",
+      "reason": "review",
+      "evidence": "Douglas relayed that the independent reviewer ran suite 2026-09-23-1106 and found item 001 Pass."
+    },
+    {
+      "item": "002",
+      "condition": "Optional standing-plus mappings accept only unique increment ids 001–010 that exist in the suite and map to existing live standing ids. They are stored only on the accepted event and do not edit the checklist or LIVE_ITEMS.",
+      "status": "passed",
+      "environment": "production",
+      "url": "https://3back.com/docs/acceptance-results/2026-09-23-1106/",
+      "checkedAt": "2026-09-23T17:20:50.4320839Z",
+      "reviewer": "Independent AI Reviewer",
+      "reviewerType": "agent",
+      "reason": "review",
+      "evidence": "Douglas relayed that the independent reviewer ran suite 2026-09-23-1106 and found item 002 Pass."
+    },
+    {
+      "item": "003",
+      "condition": "Build housekeeping fails before Astro diagnostics when the standing checklist contains ids absent from LIVE_ITEMS, PROCESS_ITEMS, and RETIRED_ITEMS, naming every missing id in checklist order.",
+      "status": "passed",
+      "environment": "production",
+      "url": "https://3back.com/docs/acceptance-results/2026-09-23-1106/",
+      "checkedAt": "2026-09-23T17:20:50.4320839Z",
+      "reviewer": "Independent AI Reviewer",
+      "reviewerType": "agent",
+      "reason": "review",
+      "evidence": "Douglas relayed that the independent reviewer ran suite 2026-09-23-1106 and found item 003 Pass."
+    },
+    {
+      "item": "004",
+      "condition": "Standing items 831–835 retain Douglas's accepted Pass verdicts from suite 2026-09-22-2028, the active count is 97, and the accepted suite remains unchanged.",
+      "status": "passed",
+      "environment": "production",
+      "url": "https://3back.com/docs/acceptance-testing/",
+      "checkedAt": "2026-09-23T17:20:50.4320839Z",
+      "reviewer": "Independent AI Reviewer",
+      "reviewerType": "agent",
+      "reason": "review",
+      "evidence": "Douglas relayed that the independent reviewer ran suite 2026-09-23-1106 and found item 004 Pass."
+    },
+    {
+      "item": "005",
+      "condition": "The residual changes do not alter homepage or other public-site content, staff-document source wiring, routes, sitemap behavior, or indexing controls, and the test build succeeds.",
+      "status": "passed",
+      "environment": "production",
+      "url": "https://3back.com/",
+      "checkedAt": "2026-09-23T17:20:50.4320839Z",
+      "reviewer": "Independent AI Reviewer",
+      "reviewerType": "agent",
+      "reason": "review",
+      "evidence": "Douglas relayed that the independent reviewer ran suite 2026-09-23-1106 and found item 005 Pass."
+    },
+    {
+      "item": "004",
+      "condition": "Standing items 831–835 retain Douglas’s accepted Pass verdicts from suite 2026-09-22-2028, the active count is 97, and the accepted suite remains unchanged.",
+      "status": "passed",
+      "environment": "production",
+      "url": "https://3back.com/docs/acceptance-testing/",
+      "checkedAt": "2026-09-23T17:24:22.5402073Z",
+      "reviewer": "Independent AI Reviewer",
+      "reviewerType": "agent",
+      "reason": "review",
+      "evidence": "Douglas relayed that the independent reviewer ran suite 2026-09-23-1106 and found item 004 Pass. Condition transcribed from rendered text with its typographic apostrophe; the prior record remains preserved."
     }
   ]
 }
