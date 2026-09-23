@@ -36,6 +36,7 @@ export const HOMEPAGE_OPERATIONAL_GRIP_EXPLANATION = "A team has Operational Gri
 
 export const STAFF_DOCS = [
   { slug: "homepage-testing-walkthrough", label: "Homepage testing walkthrough", source: "docs/publishing/packages/homepage-team-ai/release-testing-guide.md", path: "/docs/homepage-testing-walkthrough" },
+  { slug: "publish-events-procedure", label: "Publish Events procedure", source: "docs/publishing/packages/publish-events/publication-procedure.md", path: "/docs/publish-events-procedure" },
   { slug: "approved-access-list", label: "Users of Docs", source: null, path: "/docs/approved-access-list" },
   { slug: "page-metadata", label: "Registry Metadata", source: null, path: "/docs/page-metadata" },
   { slug: "reviewer-agents", label: "Reviewer Agents", source: "Reviewer Agents.md", path: "/docs/reviewer-agents" },

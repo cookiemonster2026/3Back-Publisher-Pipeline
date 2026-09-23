@@ -107,6 +107,114 @@
       "reviewerType": "agent",
       "reason": "changed",
       "evidence": "Static workflow inspection confirmed the path-limited add and commit, unchanged-file exit, exact commit message, main push, and exclusions. Independent GitHub review remains required after release."
+    },
+    {
+      "item": "001",
+      "condition": "The Events page shows the same six approved event rows in the same order, grouped under September 2026 and October 2026, with the approved course names, dates, days, Live Online labels, and enrollment URLs.",
+      "status": "passed",
+      "environment": "production",
+      "url": "https://3back.com/events/",
+      "checkedAt": "2026-09-23T02:23:21.489Z",
+      "reviewer": "Douglas Shimp",
+      "reviewerType": "human",
+      "evidence": "Live four-row drop and six-row restore on https://3back.com/events/ on 2026-09-22.",
+      "releaseSha": "6c790e13adaa3f2003fde04830879a8864fa6a5a"
+    },
+    {
+      "item": "002",
+      "condition": "Each event row retains its approved credential seal and alternative text, and all six seals load successfully.",
+      "status": "passed",
+      "environment": "production",
+      "url": "https://3back.com/events/",
+      "checkedAt": "2026-09-23T02:23:21.489Z",
+      "reviewer": "Douglas Shimp",
+      "reviewerType": "human",
+      "evidence": "Live four-row drop and six-row restore on https://3back.com/events/ on 2026-09-22.",
+      "releaseSha": "6c790e13adaa3f2003fde04830879a8864fa6a5a"
+    },
+    {
+      "item": "003",
+      "condition": "The Events heading and lead, testimonials carousel, FAQ link, contact closer, and Check your grip action remain present and unchanged.",
+      "status": "passed",
+      "environment": "production",
+      "url": "https://3back.com/events/",
+      "checkedAt": "2026-09-23T02:23:21.489Z",
+      "reviewer": "Douglas Shimp",
+      "reviewerType": "human",
+      "evidence": "Live four-row drop and six-row restore on https://3back.com/events/ on 2026-09-22.",
+      "releaseSha": "6c790e13adaa3f2003fde04830879a8864fa6a5a"
+    },
+    {
+      "item": "004",
+      "condition": "The Events page imports its schedule from src/data/events.mjs and makes no Google Sheet, webhook, or ES_Script request at runtime.",
+      "status": "passed",
+      "environment": "production",
+      "url": "https://3back.com/events/",
+      "checkedAt": "2026-09-23T02:23:21.489Z",
+      "reviewer": "Douglas Shimp",
+      "reviewerType": "human",
+      "evidence": "Live four-row drop and six-row restore on https://3back.com/events/ on 2026-09-22.",
+      "releaseSha": "6c790e13adaa3f2003fde04830879a8864fa6a5a"
+    },
+    {
+      "item": "005",
+      "condition": "The Events page loads directly without horizontal overflow, missing seals, console errors, metadata changes, or unrelated route changes.",
+      "status": "passed",
+      "environment": "production",
+      "url": "https://3back.com/events/",
+      "checkedAt": "2026-09-23T02:23:21.489Z",
+      "reviewer": "Douglas Shimp",
+      "reviewerType": "human",
+      "evidence": "Live four-row drop and six-row restore on https://3back.com/events/ on 2026-09-22.",
+      "releaseSha": "6c790e13adaa3f2003fde04830879a8864fa6a5a"
+    },
+    {
+      "item": "006",
+      "condition": "The publish-events workflow listens only for repository_dispatch type publish-events and grants only contents write permission to its job.",
+      "status": "passed",
+      "environment": "production",
+      "url": "https://github.com/cookiemonster2026/3Back-Publisher-Pipeline/actions/workflows/publish-events.yml",
+      "checkedAt": "2026-09-23T02:23:21.489Z",
+      "reviewer": "Douglas Shimp",
+      "reviewerType": "human",
+      "evidence": "Live four-row drop and six-row restore on https://3back.com/events/ on 2026-09-22.",
+      "releaseSha": "6c790e13adaa3f2003fde04830879a8864fa6a5a"
+    },
+    {
+      "item": "007",
+      "condition": "The publish-events workflow rejects a missing or incorrect PUBLISH_EVENTS_SECRET and rejects empty or invalid event payloads before writing src/data/events.mjs.",
+      "status": "passed",
+      "environment": "production",
+      "url": "https://github.com/cookiemonster2026/3Back-Publisher-Pipeline/actions/workflows/publish-events.yml",
+      "checkedAt": "2026-09-23T02:23:21.489Z",
+      "reviewer": "Douglas Shimp",
+      "reviewerType": "human",
+      "evidence": "Live four-row drop and six-row restore on https://3back.com/events/ on 2026-09-22.",
+      "releaseSha": "6c790e13adaa3f2003fde04830879a8864fa6a5a"
+    },
+    {
+      "item": "008",
+      "condition": "A valid publish-events payload is normalized to the approved event keys, restricts enrollment URLs to event.3back.com and seals to /assets/, and may write only src/data/events.mjs.",
+      "status": "passed",
+      "environment": "production",
+      "url": "https://github.com/cookiemonster2026/3Back-Publisher-Pipeline/actions/workflows/publish-events.yml",
+      "checkedAt": "2026-09-23T02:23:21.489Z",
+      "reviewer": "Douglas Shimp",
+      "reviewerType": "human",
+      "evidence": "Live four-row drop and six-row restore on https://3back.com/events/ on 2026-09-22.",
+      "releaseSha": "6c790e13adaa3f2003fde04830879a8864fa6a5a"
+    },
+    {
+      "item": "009",
+      "condition": "The publish-events workflow commits only changed src/data/events.mjs content with message Publish events from Events Schedule, pushes to main, and does not run pnpm or edit events.astro.",
+      "status": "passed",
+      "environment": "production",
+      "url": "https://github.com/cookiemonster2026/3Back-Publisher-Pipeline/actions/workflows/publish-events.yml",
+      "checkedAt": "2026-09-23T02:23:21.489Z",
+      "reviewer": "Douglas Shimp",
+      "reviewerType": "human",
+      "evidence": "Live four-row drop and six-row restore on https://3back.com/events/ on 2026-09-22.",
+      "releaseSha": "6c790e13adaa3f2003fde04830879a8864fa6a5a"
     }
   ]
 }
