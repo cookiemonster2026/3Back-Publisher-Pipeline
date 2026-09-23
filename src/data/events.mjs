@@ -1,18 +1,6 @@
 export const events = [
 	{
 		"month": "September 2026",
-		"course": "Certified Scrum Product Owner®",
-		"mark": "(CSPO®)",
-		"seal": {
-			"src": "/assets/courses/sa-cspo.png",
-			"alt": "Scrum Alliance Certified Scrum Product Owner certification seal"
-		},
-		"date": "Sep 22–23",
-		"days": "Tue–Wed",
-		"url": "https://event.3back.com/certified-scrum-product-owner-september-22-23"
-	},
-	{
-		"month": "September 2026",
 		"course": "Certified ScrumMaster®",
 		"mark": "(CSM®)",
 		"seal": {
