@@ -36,6 +36,8 @@ export const deploymentMilestones = [
 	{"completedAt":"2026-09-13T20:05:32.040Z","description":"Complete Scrum for Teams course page"},
 	{"completedAt":"2026-09-19T15:00:43.524-05:00","description":"Publish Strip 005 and compact Tales collection"},
 	{"completedAt":"2026-09-21T02:23:08Z","description":"Team-first AI homepage, production visual invariants, and acceptance coverage"},
+	{"completedAt":"2026-09-23T17:00:13.756Z","description":"Close acceptance closeout housekeeping suite"},
+	{"completedAt":"2026-09-23T17:00:14.683Z","description":"Close Operational Grip AI illustration suite"},
 ];
 
 // Preserve the existing archive while adding future completed milestones.
