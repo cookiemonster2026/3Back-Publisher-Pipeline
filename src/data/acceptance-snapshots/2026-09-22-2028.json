@@ -1,0 +1,64 @@
+{
+  "records": [
+    {
+      "item": "001",
+      "condition": "The Events page shows the same six approved event rows in the same order, grouped under September 2026 and October 2026, with the approved course names, dates, days, Live Online labels, and enrollment URLs.",
+      "status": "unverified",
+      "environment": "production",
+      "url": "https://3back.com/events/",
+      "checkedAt": "2026-09-22T20:28:47-05:00",
+      "reviewer": "Codex Builder",
+      "reviewerType": "agent",
+      "reason": "changed",
+      "evidence": "The exported array exactly matches the prior inline array. Local source, test build, desktop, 320-pixel, and 390-pixel browser checks passed. Independent live review remains required after release."
+    },
+    {
+      "item": "002",
+      "condition": "Each event row retains its approved credential seal and alternative text, and all six seals load successfully.",
+      "status": "unverified",
+      "environment": "production",
+      "url": "https://3back.com/events/",
+      "checkedAt": "2026-09-22T20:28:47-05:00",
+      "reviewer": "Codex Builder",
+      "reviewerType": "agent",
+      "reason": "changed",
+      "evidence": "All six seals loaded locally with nonzero intrinsic widths and the original alternative text. Independent live review remains required after release."
+    },
+    {
+      "item": "003",
+      "condition": "The Events heading and lead, testimonials carousel, FAQ link, contact closer, and Check your grip action remain present and unchanged.",
+      "status": "unverified",
+      "environment": "production",
+      "url": "https://3back.com/events/",
+      "checkedAt": "2026-09-22T20:28:47-05:00",
+      "reviewer": "Codex Builder",
+      "reviewerType": "agent",
+      "reason": "changed",
+      "evidence": "Local browser inspection confirmed each retained element, and the carousel advanced correctly. Independent live review remains required after release."
+    },
+    {
+      "item": "004",
+      "condition": "The Events page imports its schedule from src/data/events.mjs and makes no Google Sheet, webhook, or ES_Script request at runtime.",
+      "status": "unverified",
+      "environment": "production",
+      "url": "https://3back.com/events/",
+      "checkedAt": "2026-09-22T20:28:47-05:00",
+      "reviewer": "Codex Builder",
+      "reviewerType": "agent",
+      "reason": "changed",
+      "evidence": "Source and built-output inspection found the new data import and zero Google Sheet, webhook, or ES_Script markers. Independent live review remains required after release."
+    },
+    {
+      "item": "005",
+      "condition": "The Events page loads directly without horizontal overflow, missing seals, console errors, metadata changes, or unrelated route changes.",
+      "status": "unverified",
+      "environment": "production",
+      "url": "https://3back.com/events/",
+      "checkedAt": "2026-09-22T20:28:47-05:00",
+      "reviewer": "Codex Builder",
+      "reviewerType": "agent",
+      "reason": "changed",
+      "evidence": "Local test build, SEO validation, desktop and mobile browser checks, console inspection, and final diff review passed. Independent live review remains required after release."
+    }
+  ]
+}
