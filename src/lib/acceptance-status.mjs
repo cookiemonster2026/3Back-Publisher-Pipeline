@@ -4,7 +4,7 @@ const labels = { passed: "Passed", failed: "Failed", unverified: "Needs a live l
 const symbols = { passed: "P", failed: "F", unverified: "R", judgment: "J" };
 const reasons = { changed: "Surface changed.", "never-checked": "Never checked.", blocked: "Live check blocked.", "condition-changed": "Condition text changed.", "awaiting-human": "Awaiting Douglas's live review." };
 const range = (first, last) => Array.from({ length: last - first + 1 }, (_, index) => String(first + index));
-export const PROCESS_ITEMS = Object.freeze(["001", "002", "003", "004", "005", "006", "602", "606"]);
+export const PROCESS_ITEMS = Object.freeze(["001", "002", "003", "004", "005", "006", "007", "602", "606"]);
 export const RETIRED_ITEMS = Object.freeze(["304", "704", "705", "706", "707"]);
 export const LIVE_ITEMS = Object.freeze([...range(101, 109), ...range(201, 205), ...range(301, 303), ...range(305, 310), ...range(321, 324), ...range(401, 405), ...range(501, 508), "601", ...range(603, 605), ...range(701, 703), ...range(708, 717), ...range(801, 835), ...range(901, 905)]);
 const processItems = new Set(PROCESS_ITEMS);

@@ -56,14 +56,14 @@ const baseline = readFileSync(new URL('../docs/website-acceptance-checklist.md',
 const rows = baseline.split(/\r?\n/).filter(line => /^\| \d{3} \|/.test(line)).map(line => line.split('|').slice(1, -1).map(cell => cell.trim()));
 const completeTable = '<table><thead><tr><th>Item</th><th>Class</th><th>Verifier</th><th>Acceptance condition</th><th>Verification</th></tr></thead><tbody>' + rows.map(cells => '<tr>' + cells.map(cell => `<td>${cell}</td>`).join('') + '</tr>').join('') + '</tbody></table>';
 
-test('the complete baseline has 97 active live, eight process, and five retired items', () => {
+test('the complete baseline has 97 active live, nine process, and five retired items', () => {
   assert.equal(LIVE_ITEMS.length, 97);
-  assert.equal(PROCESS_ITEMS.length, 8);
+  assert.equal(PROCESS_ITEMS.length, 9);
   assert.equal(RETIRED_ITEMS.length, 5);
   assert.deepEqual(new Set(rows.map(row => row[0])), new Set([...LIVE_ITEMS, ...PROCESS_ITEMS, ...RETIRED_ITEMS]));
   const result = acceptanceStatus(completeTable, []);
   assert.equal(result.applicable, 97);
-  assert.equal(result.processCount, 8);
+  assert.equal(result.processCount, 9);
   assert.equal(result.retiredCount, 5);
   assert.equal(result.counts.unverified, 97);
   for (const item of LIVE_ITEMS) assert.equal(result.html.split('id="' + item + '"').length - 1, 1);

@@ -194,6 +194,12 @@ Reviewer execution: a reviewer with repository write access performs authorized 
 
 ## Acceptance suite naming and links
 
+Every new or still-unaccepted task suite must put concise release notes directly on its acceptance-results page. Release notes state what shipped, identify the affected public routes, and name supplied source files and public asset URLs when files or assets are part of the release. Record material scope exclusions when they would prevent a reviewer from assuming more changed than actually did. Do not require a reviewer to reconstruct the release from a commit diff, chat history, or acceptance conditions.
+
+Write increment tests for direct human use. Each row should cover one distinct specimen or observable outcome. Do not combine unrelated pages, controls, metadata, and regressions in one row merely to reduce the row count. When a live URL exists, put the visible, clickable absolute URL in the Test cell, followed by the smallest concrete inspection needed for Pass or Fail. Add separately labeled clickable source, asset, or comparison links when the reviewer needs them. When no URL can test the condition, state that explicitly and provide the exact alternative evidence or command. Prefer one row per published page, strip, document, download, or other independently reviewable artifact. Leave general regression coverage in the standing suite instead of duplicating it as vague increment criteria.
+
+The acceptance-results page is the reviewer's navigation surface. A reviewer should normally be able to move through the release by clicking its release-note and test links without searching the repository or asking for destinations. Link labels and visible URLs must identify what opens. A successful click is not a Pass by itself; the row must say what the reviewer observes and compares after opening it.
+
 Suite IDs use America/Chicago `YYYY-MM-DD-HHMM`. No seconds. No UTC. Builder may not reset standing greens to R. Only the new increment rows start R. Standing stays P unless this diff actually broke a named row.
 
 The production URL is https://3back.com/docs/acceptance-results/SUITE_ID/. Check for an existing ID before creation and store the assigned creation timestamp with timezone in suite metadata. This is the suite creation time, not a deployment or review time.

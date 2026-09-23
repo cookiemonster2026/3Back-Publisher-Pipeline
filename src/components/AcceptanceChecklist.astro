@@ -9,6 +9,7 @@ import { canonicalUrl, pageSeo } from "../seo/registry.mjs";
 const { html, standingHtml = "", results = false, archive = false, snapshotId, brief = false } = Astro.props;
 const milestoneDate = (value: string | null | undefined) => value ? new Date(value).toLocaleString("en-US", { timeZone: "America/Chicago", timeZoneName: "short" }) : "Not Recorded";
 const snapshot = acceptanceSnapshots.find(entry => entry.id === snapshotId);
+const releaseNotes = (snapshot as any)?.releaseNotes as { summary?: string; items: { text: string; files?: string[]; links?: { label: string; href: string }[] }[] } | undefined;
 const briefPagePath = snapshot?.brief?.pageRoute?.replace(/\/+$/, "");
 const briefPageMetadata = briefPagePath ? pageSeo[briefPagePath] : null;
 const evidence = import.meta.glob<{ records: any[] }>("../data/acceptance-snapshots/*.json", { eager: true });
@@ -113,6 +114,15 @@ const standingTestHtml = standingStatus ? displayTables(standingStatus.html, !in
     <p><strong>Last published:</strong> {milestoneDate(published?.at)}{stampActor(published)}</p>
     {!incrementSuite && <p class:list={["acceptance-state", { "acceptance-status--judgment": accepted }]}><strong>{accepted ? "Accepted" : "Not accepted"}</strong></p>}
   </div>
+  {releaseNotes && <section class="release-notes" aria-labelledby="release-notes-heading">
+    <h2 id="release-notes-heading">Release notes</h2>
+    {releaseNotes.summary && <p>{releaseNotes.summary}</p>}
+    <ul>{releaseNotes.items.map(item => <li>
+      <strong>{item.text}</strong>
+      {item.files?.map(file => <span class="release-note-reference"><span>Source file:</span> <code>{file}</code></span>)}
+      {item.links?.map(link => <span class="release-note-reference"><span>{link.label}:</span> <a href={link.href} target="_blank" rel="noopener noreferrer">{link.href}</a></span>)}
+    </li>)}</ul>
+  </section>}
   {lifecycle && !incrementSuite && <h3>Initialize</h3>}
   {lifecycle && !incrementSuite && <div class="source-document acceptance-checklist">
     <table><thead><tr><th class="acceptance-status-heading">Status</th><th>Item</th><th>Verifier</th><th>Acceptance condition</th><th>Test</th></tr></thead>
@@ -204,6 +214,12 @@ const standingTestHtml = standingStatus ? displayTables(standingStatus.html, !in
   .verdict-pair { display: inline-flex; flex-wrap: wrap; align-items: baseline; gap: 6px; }
 
   .acceptance-overview .work-description { margin-block: 16px 12px; font-size: 1.5rem; line-height: 1.35; font-weight: 700; }
+  .release-notes { margin-block: 28px; padding: 20px 24px; border-left: 4px solid var(--amber); background: color-mix(in srgb, var(--amber) 7%, transparent); }
+  .release-notes h2 { margin-top: 0; }
+  .release-notes ul { margin-bottom: 0; padding-left: 22px; }
+  .release-notes li + li { margin-top: 18px; }
+  .release-note-reference { display: block; margin-top: 5px; overflow-wrap: anywhere; }
+  .release-note-reference > span { font-weight: 600; }
   .acceptance-overview :global(.working-brief-link) { display: block; margin-top: 4px; font-size: 1rem; line-height: 1.6; font-weight: 400; white-space: nowrap; }
   .acceptance-overview .suite-heading { margin: 32px 0 8px; font-size: 1.5rem; line-height: 1.35; color: var(--ink, #202723); }
   .acceptance-overview .initialize-heading { margin: 32px 0 8px; }
