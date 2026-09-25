@@ -4,7 +4,7 @@ This file is the shared verification source for future website changes. It conta
 
 ## Acceptance Testing Readiness
 
-000 — Initialize: The Independent AI Reviewer reads Reviewer Agents.md and confirms readiness to perform according to its instructions. At each handoff the builder resets this item to R Review. The reviewer records Pass or Fail; on Fail, identifies the blocker and stops. This readiness result is separate from the 100 active live-site verdicts.
+000 — Initialize: The Independent AI Reviewer reads Reviewer Agents.md and confirms readiness to perform according to its instructions. At each handoff the builder resets this item to R Review. The reviewer records Pass or Fail; on Fail, identifies the blocker and stops. This readiness result is separate from the 102 active live-site verdicts.
 
 ## Governing sources
 
@@ -42,7 +42,7 @@ Run an `Affected` item when the requested or resulting diff could change its con
 
 ### Status on /docs/acceptance-testing
 
-Live colors apply to the 100 active live items. Five retired conditions remain in source history but are omitted from the current results view and score. Green and red are live verdicts on a known condition. Blue means a known condition needs a live look. J means human judgment is needed to proceed. The implementer may only mark blue. An outside reviewer marks green, red, or J. Douglas decides J. The surface map is a starting point, not a closed list. Last checked ignores blue and J.
+Live colors apply to the 102 active live items. Five retired conditions remain in source history but are omitted from the current results view and score. Green and red are live verdicts on a known condition. Blue means a known condition needs a live look. J means human judgment is needed to proceed. The implementer may only mark blue. An outside reviewer marks green, red, or J. Douglas decides J. The surface map is a starting point, not a closed list. Last checked ignores blue and J.
 
 Retirement authority: Douglas approved the replacement homepage, route-specific header and regrouped footer, and the conflicting-test revisions in task `01a0bba0-a8c0-73b3-866c-49c7ae602c95`, implemented September 20, 2026. Retire 304 and 704–707 without deleting their conditions or historical evidence. Replacement coverage is 309 and 709–715. Production typography and colors are invariants, not new design choices; 109 adds regression coverage. Item 308 covers the approved homepage arrow grammar.
 
@@ -133,6 +133,8 @@ Retirement authority: Douglas approved the replacement homepage, route-specific 
 | 604 | Affected | Agent | Affected public pages produce no new runtime exceptions, failed local resource requests, or invalid asset references. | Inspect the browser console and network on affected public pages. Do not use /docs or the Access login. |
 | 605 | Affected | Agent | Metadata, canonical URLs, indexing directives, and social preview data remain accurate for the affected public page and environment. | Inspect affected public built head output and referenced assets. Staff /docs metadata is out of this item unless Douglas includes it. |
 | 606 | Affected | Agent | Changed dependencies, configuration, and scripts are necessary, reproducible, and compatible with the repository's declared runtime. | Inspect manifest and lockfile diffs, then run the relevant command with the declared runtime. |
+| 607 | Affected | Agent | Published PDF consistency: the webpage download serves the approved revision, with correct content and metadata. | Open each affected webpage and its PDF download. Compare the served file with the approved revision; verify its text, links, PDF Info fields, and XMP metadata. |
+| 608 | Affected | Agent | PDF layout: inspect every page for readable text, intact columns and footers, clipping, overlap, and accidental blank pages. Material pagination changes require human approval. | Render every page of each affected PDF and inspect the layout. Record the page counts and the human approval for any material pagination change. |
 
 ## Homepage
 

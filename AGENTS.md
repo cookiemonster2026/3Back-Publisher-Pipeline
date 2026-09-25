@@ -102,9 +102,9 @@ Housekeeping tripwires run at build. Open suite JSON and `acceptance-status.json
 
 Push to origin/main is not Published. Published means the Cloudflare Pages build for that commit is success and the affected URL shows the change. Run `pnpm build:test` before pushing acceptance JSON or housekeeping files. If the Pages build fails, stop and report the error. Do not say Published.
 
-The Current Status column and composite on `/docs/acceptance-testing/` report live-site verification for the 100 live items only. Checks cover surfaces, not pages. This board is not a pure Boolean suite. Builders infer. Reviewers infer. The symbols are where inference stops. Never use local builds, local previews, source inspection, or inferred deployment success to mark an item green or red.
+The Current Status column and composite on `/docs/acceptance-testing/` report live-site verification for the 102 live items only. Checks cover surfaces, not pages. This board is not a pure Boolean suite. Builders infer. Reviewers infer. The symbols are where inference stops. Never use local builds, local previews, source inspection, or inferred deployment success to mark an item green or red.
 
-Green means the live surface passed a known condition. Red means it failed. Blue R means a known condition needs a live look. Burnt orange J means a human decision is needed to proceed. J is not a pass, not a fail, and not a substitute for looking. Count the 100 live items only. Count only green in the passed numerator. Blue and J count in the total. Process items 001, 002, 003, 004, 005, 006, 602, and 606 stay in the checklist and are reported in the task report. They do not take a live color.
+Green means the live surface passed a known condition. Red means it failed. Blue R means a known condition needs a live look. Burnt orange J means a human decision is needed to proceed. J is not a pass, not a fail, and not a substitute for looking. Count the 102 live items only. Count only green in the passed numerator. Blue and J count in the total. Process items 001, 002, 003, 004, 005, 006, 602, and 606 stay in the checklist and are reported in the task report. They do not take a live color.
 
 Last checked is the newest green or red live-item timestamp. Blue and J do not move it.
 
