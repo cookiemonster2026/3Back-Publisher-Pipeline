@@ -1,0 +1,52 @@
+{
+  "records": [
+    {
+      "item": "001",
+      "condition": "The Operational Grip page uses the approved predictable-effect wording, boundary-evidence paragraph, painter example, and fifth question.",
+      "status": "unverified",
+      "environment": "production",
+      "url": "https://3back.com/operational-grip/",
+      "checkedAt": "2026-09-24T20:37:20.869-05:00",
+      "reviewer": "Codex Builder",
+      "reviewerType": "agent",
+      "reason": "changed",
+      "evidence": "Approved source wording and local test build checked. Independent live review remains required after release."
+    },
+    {
+      "item": "002",
+      "condition": "The learning page uses the approved two-line lead, instructor paragraph, two capability replacements, and closing question; step 05 and the return label remain unchanged.",
+      "status": "unverified",
+      "environment": "production",
+      "url": "https://3back.com/papers/how-3back-approaches-learning/",
+      "checkedAt": "2026-09-24T20:37:20.869-05:00",
+      "reviewer": "Codex Builder",
+      "reviewerType": "agent",
+      "reason": "changed",
+      "evidence": "Approved source wording and local test build checked. Independent live review remains required after release."
+    },
+    {
+      "item": "003",
+      "condition": "The Domain Guides page uses both approved wording changes; What this is remains unchanged.",
+      "status": "unverified",
+      "environment": "production",
+      "url": "https://3back.com/domain-guides/",
+      "checkedAt": "2026-09-24T20:37:20.869-05:00",
+      "reviewer": "Codex Builder",
+      "reviewerType": "agent",
+      "reason": "changed",
+      "evidence": "Approved source wording and local test build checked. Independent live review remains required after release."
+    },
+    {
+      "item": "004",
+      "condition": "The domain expertise page uses both approved wording changes.",
+      "status": "unverified",
+      "environment": "production",
+      "url": "https://3back.com/why-domain-expertise-matters/",
+      "checkedAt": "2026-09-24T20:37:20.869-05:00",
+      "reviewer": "Codex Builder",
+      "reviewerType": "agent",
+      "reason": "changed",
+      "evidence": "Approved source wording and local test build checked. Independent live review remains required after release."
+    }
+  ]
+}
