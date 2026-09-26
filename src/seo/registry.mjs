@@ -21,7 +21,7 @@ const websiteId = `${SITE_ORIGIN}/#website`;
 const homepagePageId = `${SITE_ORIGIN}/#webpage`;
 const operationalGripPageId = `${operationalGripUrl}#webpage`;
 const operationalGripTermId = `${operationalGripUrl}#term`;
-const operationalGripImagePath = "/social/operational-grip-wheelbarrow-mess.webp";
+const operationalGripImagePath = "/social/operational-grip-wheelbarrow-mess.jpg";
 const operationalGripImageAlt = "A worker pushing a wheelbarrow carrying a large tangled mass of rope while becoming entangled in it.";
 const operationalGripDescription = "Understand Operational Grip: the ability to make bounded changes, observe their effects, and adapt without losing control.";
 const aboutUsPath = "/about-us";
@@ -1413,7 +1413,7 @@ export const pageSeo = Object.freeze({
 				alt: operationalGripImageAlt,
 				width: 1200,
 				height: 630,
-				type: "image/webp",
+				type: "image/jpeg",
 			},
 		},
 		structuredData: {
@@ -1742,6 +1742,13 @@ export const pageSeo = Object.freeze({
 			title: "Grip Check | 3Back",
 			description: "7-minute directional screening of operating conditions. 20 questions. Immediate Grip Score.",
 			type: "website",
+			image: {
+				src: "/social/grip-check.jpg",
+				alt: "A clipboard with a short five-line checklist on a worktable.",
+				width: 1200,
+				height: 630,
+				type: "image/jpeg",
+			},
 		},
 		structuredData: {
 			"@context": "https://schema.org",
