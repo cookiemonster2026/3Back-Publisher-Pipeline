@@ -15,8 +15,10 @@ const text = markup => markup.replace(/<[^>]*>/g,' ').replace(/\s+/g,' ').trim()
 
 test('homepage keeps the approved team-first copy and one H1', () => {
  assert.equal((main.match(/<h1\b/g)||[]).length,1);
- for(const copy of ['Organizations do not outgrow teams.','They lose the boundaries that focus human expertise and AI capability on outcomes the organization needs.','Teamwork with AI expands what is possible and how quickly it can be explored.','3Back helps leaders work through a bounded execution problem and build the capability to handle the next one.',HOMEPAGE_OPERATIONAL_GRIP_EXPLANATION]) assert.ok(text(main).includes(copy),copy);
- assert.ok(text(main).includes('As possibilities become less costly to produce, the constraint shifts toward selection.'));
+ for(const copy of ['Organizations do not outgrow teams.','They lose the boundaries that focus expertise on outcomes the organization needs.','Teamwork expands what is possible and how quickly it can be explored.','3Back helps leaders work through a bounded execution problem and build the capability to handle the next one.',HOMEPAGE_OPERATIONAL_GRIP_EXPLANATION]) assert.ok(text(main).includes(copy),copy);
+ assert.ok(text(main).includes('As AI makes possibilities less costly to produce, the constraint shifts toward selection.'));
+ assert.ok(!text(main).includes('human expertise and AI capability'));
+ assert.ok(!text(main).includes('Teamwork with AI expands what is possible'));
 });
 
 test('five homepage sections retain the approved reading order', () => {
