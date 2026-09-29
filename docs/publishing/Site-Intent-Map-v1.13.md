@@ -1,7 +1,7 @@
 # 3Back Site Intent Map
 
-**Version:** 1.13
-**Date:** 2026-09-21
+**Version:** 1.14
+**Date:** 2026-09-29
 **Scope:** Operational Grip cornerstone brief and portable executive brief. Unrelated route intents retained.
 **Acceptance:** The intentionally shipped `/operational-grip` route is recorded as the canonical web-native cornerstone brief. Production confirmation and acceptance are reported separately.
 **Twin to:** Technical Manifest (`docs/publishing/technical-manifest.md`)
@@ -79,7 +79,7 @@ About, Reviews, Start a Conversation, Privacy Policy, Course Policy.
 | Operational Grip | Local observable, correctable action and four concurrent signals. |
 | Engage | Assess it / Check your operational grip; Work it / Workshop a bounded problem; Keep the capability / Build your Domain Guides program. |
 | Why 3Back | Concise experience and posture, not training testimonials presented as advisory outcomes. |
-| Current Ideas | Four illustrated cards: latest published Tales strip, No Head Works Alone, How 3Back Approaches Learning, and books. Brief descriptions and direct information links. Replaces the closing conversation band. |
+| Current Ideas | Four illustrated cards: latest published Tales strip, Certification Is Not Capability post, No Head Works Alone, and books. Brief descriptions and direct information links. Replaces the closing conversation band. |
 | Shared footer | Preserve production styling and Explore / Engage / Learn / Company groups. Orange divider retained. |
 
 ---

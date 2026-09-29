@@ -1797,6 +1797,25 @@ export const pageSeo = Object.freeze({
 			},
 		},
 	},
+	"/ideas/certification-is-not-capability": {
+		status: "complete",
+		path: "/ideas/certification-is-not-capability",
+		title: "Certification Is Not Capability | 3Back",
+		description: "Certification is not evidence of professional capability. Training can start the work. The domain has to finish it.",
+		indexability: "index, follow",
+		social: {
+			title: "Certification Is Not Capability | 3Back",
+			description: "Certification is not evidence of professional capability. Training can start the work. The domain has to finish it.",
+			type: "article",
+			image: {
+				src: "/social/certification-is-not-capability.jpg",
+				alt: "A man in a lab coat labeled I AM CERTIFIED opens a gated enclosure of lions with a keycard.",
+				width: 1200,
+				height: 630,
+				type: "image/jpeg",
+			},
+		},
+	},
 	"/building-domain-expertise": {
 		status: "stub",
 		path: "/building-domain-expertise",

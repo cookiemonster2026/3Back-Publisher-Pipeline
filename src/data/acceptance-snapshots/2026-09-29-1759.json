@@ -1,0 +1,52 @@
+{
+  "records": [
+    {
+      "item": "001",
+      "condition": "Certification Is Not Capability publishes the approved article copy, hierarchy, pull quote, supplied lion illustration, exact caption, and three related links without a byline, version label, PDF control, form, or added call to action.",
+      "status": "unverified",
+      "environment": "production",
+      "url": "https://3back.com/ideas/certification-is-not-capability/",
+      "checkedAt": "2026-09-29T17:59:19.2897181-05:00",
+      "reviewer": "Codex Builder",
+      "reviewerType": "agent",
+      "reason": "changed",
+      "evidence": "Approved source copy, local rendered page, links, illustration, caption, and exclusions checked. Independent live review remains required after release."
+    },
+    {
+      "item": "002",
+      "condition": "The homepage Current Ideas section presents Tales, Certification Is Not Capability, No Head Works Alone, and Books in that order; the new card uses the approved image, description, and article destination while the other cards retain their prior image treatment.",
+      "status": "unverified",
+      "environment": "production",
+      "url": "https://3back.com/#current-ideas",
+      "checkedAt": "2026-09-29T17:59:19.2897181-05:00",
+      "reviewer": "Codex Builder",
+      "reviewerType": "agent",
+      "reason": "changed",
+      "evidence": "Homepage source, desktop rendering, destinations, and automated card assertions checked locally. Mobile live review remains required after release."
+    },
+    {
+      "item": "003",
+      "condition": "The Ideas page lists Certification Is Not Capability first under Posts and preserves the existing Papers, Books, and Talks sections and destinations.",
+      "status": "unverified",
+      "environment": "production",
+      "url": "https://3back.com/ideas/",
+      "checkedAt": "2026-09-29T17:59:19.2897181-05:00",
+      "reviewer": "Codex Builder",
+      "reviewerType": "agent",
+      "reason": "changed",
+      "evidence": "Ideas source and local route output checked. Independent live review remains required after release."
+    },
+    {
+      "item": "004",
+      "condition": "The article exposes the approved title, description, canonical URL, index/follow directive, article social type, 1200 by 630 JPEG social image, and descriptive alternative text; its visible page has one H1, logical H2 order, semantic landmarks, keyboard focus, and no runtime errors.",
+      "status": "unverified",
+      "environment": "production",
+      "url": "https://3back.com/ideas/certification-is-not-capability/",
+      "checkedAt": "2026-09-29T17:59:19.2897181-05:00",
+      "reviewer": "Codex Builder",
+      "reviewerType": "agent",
+      "reason": "changed",
+      "evidence": "Local metadata, social asset dimensions, semantic markup, accessibility tree, keyboard provisions, contrast, and browser console checked. Independent production verification remains required after release."
+    }
+  ]
+}

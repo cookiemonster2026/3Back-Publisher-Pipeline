@@ -1,0 +1,130 @@
+---
+import { Image } from "astro:assets";
+import SiteLayout from "../../layouts/SiteLayout.astro";
+import certificationImage from "../../assets/ideas/certification-is-not-capability.png";
+import { pageSeo } from "../../seo/registry.mjs";
+---
+
+<SiteLayout metadata={pageSeo["/ideas/certification-is-not-capability"]}>
+	<main id="main" class="ideas-post">
+		<article aria-labelledby="post-title">
+			<header class="opening reading">
+				<p class="eyebrow">3Back point of view</p>
+				<h1 id="post-title">Certification Is Not Capability</h1>
+				<p class="lead">Foundational knowledge can begin outside the domain.<br />Professional capability cannot be established outside it.</p>
+				<p><a href="/papers/how-3back-approaches-learning/">How 3Back Approaches Learning</a> explains why professional capability develops in the domain. This article focuses on a narrower execution warning: certification is not evidence that capability has been established.</p>
+			</header>
+
+			<section class="reading prose" aria-label="The execution problem">
+				<p>Organizations like evidence they can count. Courses completed. Certifications earned. People trained.</p>
+				<p>Those measures have legitimate uses, but they become dangerous when leaders begin treating them as evidence of something they do not actually prove.</p>
+				<blockquote>Completion becomes qualification. Qualification becomes capability. Capability becomes authority.</blockquote>
+				<p>By the time the last step occurs, someone may be making consequential decisions because the organization believes capability has been established when what has actually been established is training.</p>
+				<p>That is an execution problem.</p>
+			</section>
+
+			<figure class="post-figure reading">
+				<Image
+					src={certificationImage}
+					alt="A man in a lab coat labeled I AM CERTIFIED opens a gated enclosure of lions with a keycard."
+					widths={[480, 760, 1200]}
+					sizes="(max-width: 808px) calc(100vw - 48px), 760px"
+					loading="eager"
+				/>
+				<figcaption>Access can be granted. Judgment still has to be developed.</figcaption>
+			</figure>
+
+			<section class="reading prose">
+				<h2>Training has a legitimate role</h2>
+				<p>A good course can introduce concepts, language, practices, and ways of thinking that help someone see their work differently. Certification can document that a person completed a defined body of learning and demonstrated whatever knowledge an assessment was designed to test.</p>
+				<p>That is useful evidence. It is simply not evidence of professional capability.</p>
+				<p>A recent industry case study still points to certification counts as evidence that leadership or product capability has been established. Yet the more convincing evidence in the same story appears later, when people begin applying what they learned to real decisions, real products, and real operating conditions.</p>
+				<p>That is where the distinction becomes visible.</p>
+			</section>
+
+			<section class="reading prose">
+				<h2>Capability has to survive contact with the work</h2>
+				<p>Operational Grip is the ability to apply intentional, local change with predictable effect without requiring global reasoning.</p>
+				<p>Predictable effect does not mean guaranteed outcome. It means understanding enough about an action and its likely consequences to keep the effects within a usable boundary, observe what happens, and correct course before the consequences spread beyond control.</p>
+				<p>That requires judgment.</p>
+				<p>A person can understand prioritization in a classroom and still make poor priority decisions in a particular business. Someone can understand facilitation and still fail to recognize when a team is moving toward a technically dangerous choice. Someone can understand product ownership while lacking the market, financial, regulatory, operational, or technical knowledge needed to make a sound product decision.</p>
+				<p>The issue is not whether the training was good. The issue is whether the person has developed enough judgment inside the domain to use that knowledge when conditions are incomplete, trade-offs are real, and consequences matter.</p>
+			</section>
+
+			<section class="reading prose">
+				<h2>The mistake can be damaging</h2>
+				<p>If leaders assume that capability exists because training has been completed, decision authority can move ahead of judgment.</p>
+				<p>A newly trained person may understand the language of the discipline well enough to sound confident. That fluency can make the risk harder to see. Managers hear the right terminology, see the credential, and assume the person is prepared to exercise judgment that has not yet been developed.</p>
+				<p>False confidence is more dangerous than visible inexperience.</p>
+				<p>When inexperience is visible, people compensate for it. They ask for help, narrow the decision, involve someone with deeper domain knowledge, or watch the effects more carefully. When capability is assumed, those safeguards can disappear.</p>
+				<p>Operational Grip weakens because authority, knowledge, action, and consequences no longer fit within the same usable boundary.</p>
+			</section>
+
+			<section class="reading prose">
+				<h2>Look at what happened after the class</h2>
+				<p>The strongest evidence in many certification success stories is not the certificate. It is the applied work that followed.</p>
+				<p>People take what they learned into an actual operating environment. They make decisions, test assumptions, work through constraints, expose ideas to customers or users, observe what happens, and revise their understanding.</p>
+				<p>That work produces evidence of capability because reality gets a vote.</p>
+				<p>A credential cannot tell you whether someone can recognize a bad assumption before it becomes an expensive commitment. It cannot tell you whether they understand the downstream consequences of a local decision. It cannot tell you whether they can distinguish a useful practice from one that no longer fits the demand in front of them.</p>
+				<p>The work can.</p>
+			</section>
+
+			<section class="reading prose">
+				<h2>Ask a harder question</h2>
+				<p>If you are accountable for execution, How many people have we certified? is an easy question.</p>
+				<p>The more useful question is: What can they now do in the actual work that they could not do before?</p>
+				<ul>
+					<li>Can they interpret demand more clearly?</li>
+					<li>Can they make a bounded decision and explain the reasoning behind it?</li>
+					<li>Can they recognize where the effects should appear?</li>
+					<li>Can they detect when their interpretation was wrong?</li>
+					<li>Can they correct course before the consequences spread?</li>
+					<li>Can they help the people around them develop that same judgment?</li>
+				</ul>
+				<p>Those questions are harder because they require evidence from the work rather than evidence of participation. That is precisely why they matter.</p>
+				<p>Training can begin the development of capability. Certification can document part of the learning path. Neither establishes professional capability by itself.</p>
+				<p>Professional capability develops in the domain, through repeated judgment, action, consequence, and correction.</p>
+				<p>That is why <a href="/domain-guides/">Domain Guides</a> develops people already in the operating environment. The next cohort comes from people who know how the work actually moves.</p>
+			</section>
+
+			<footer class="reading post-close">
+				<p class="closing">Capability is not what someone was taught. It is what they can reliably do when the work answers back.</p>
+				<nav class="related" aria-label="Related ideas">
+					<a href="/operational-grip/">Operational Grip</a><span aria-hidden="true">·</span>
+					<a href="/papers/how-3back-approaches-learning/">How 3Back Approaches Learning</a><span aria-hidden="true">·</span>
+					<a href="/domain-guides/">Domain Guides</a>
+				</nav>
+			</footer>
+		</article>
+	</main>
+</SiteLayout>
+
+<style>
+	.ideas-post { color: var(--charcoal); background: var(--paper); }
+	.reading { width: min(760px, var(--shell)); margin-inline: auto; }
+	.opening { padding-top: 76px; padding-bottom: 48px; font-size: 1.125rem; line-height: 1.7; }
+	.eyebrow { margin-bottom: 18px; font-size: 1rem; font-weight: 600; letter-spacing: .08em; text-transform: uppercase; }
+	.eyebrow::before { content: ""; display: block; width: 52px; height: 4px; margin-bottom: 20px; background: var(--amber); }
+	h1 { margin-bottom: 26px; font-size: clamp(2.6rem, 5vw, 4.25rem); line-height: 1.12; }
+	.lead { font-size: clamp(1.25rem, 2vw, 1.5rem); line-height: 1.5; font-weight: 600; }
+	.prose { padding-bottom: 48px; font-size: 1.125rem; line-height: 1.7; }
+	.prose p { margin-bottom: 22px; }
+	h2 { margin: 12px 0 24px; font-size: clamp(1.85rem, 3vw, 2.65rem); line-height: 1.18; }
+	a { font-weight: 600; text-decoration-thickness: 2px; text-decoration-color: var(--amber); text-underline-offset: 5px; }
+	a:focus-visible { outline: 3px solid currentColor; outline-offset: 5px; }
+	blockquote { border-left: 4px solid var(--amber); padding: 8px 0 8px 26px; margin: 32px 0; font-size: 1.35rem; font-weight: 600; line-height: 1.5; }
+	.post-figure { margin-top: 0; margin-bottom: 64px; }
+	.post-figure img { display: block; width: 100%; height: auto; }
+	figcaption { margin-top: 16px; font-size: 1rem; font-weight: 600; line-height: 1.5; }
+	.prose ul { margin: 0 0 26px; padding-left: 24px; }
+	.prose li { margin-bottom: 10px; padding-left: 4px; }
+	.post-close { padding: 10px 0 80px; border-top: 1px solid var(--charcoal); }
+	.closing { max-width: 700px; margin: 30px 0; font-size: clamp(1.45rem, 2.5vw, 2rem); font-weight: 600; line-height: 1.4; }
+	.related { display: flex; flex-wrap: wrap; gap: 8px 12px; font-size: 1rem; line-height: 1.6; }
+	@media (max-width: 720px) {
+		.opening { padding-top: 48px; padding-bottom: 40px; }
+		.post-figure { margin-bottom: 48px; }
+		.prose { padding-bottom: 40px; }
+		.post-close { padding-bottom: 56px; }
+	}
+</style>

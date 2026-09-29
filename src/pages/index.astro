@@ -2,7 +2,7 @@
 import SiteLayout from "../layouts/SiteLayout.astro";
 import { Image } from "astro:assets";
 import bowtiePreview from "../assets/papers/bowtie-figure-1-muted.jpg";
-import learningPreview from "../assets/homepage/learning-paper-tile.png";
+import certificationPreview from "../assets/ideas/certification-is-not-capability.png";
 import booksPreview from "../assets/homepage/bookshelf-illustration.png";
 import { publishedTalesStrips } from "../data/tales-of-the-grip.mjs";
 import { talesStripHomepagePreviews } from "../data/tales-of-the-grip-assets";
@@ -167,18 +167,18 @@ const latestPreview = talesStripHomepagePreviews[latestStrip.slug];
           <p>Humor to start tough conversations.</p>
           <span class="idea-action"><span class="link-label">Read the strip</span><span class="link-arrow" aria-hidden="true">→</span></span>
         </a>
+        <a class="idea-card" href="/ideas/certification-is-not-capability/">
+          <p class="eyebrow">Post</p>
+          <Image class="post-preview" src={certificationPreview} alt="A man in a lab coat labeled I AM CERTIFIED opens a gated enclosure of lions with a keycard." widths={[320, 480, 640]} sizes="(max-width: 680px) calc(100vw - 96px), 280px" loading="lazy" />
+          <h3>Certification Is Not Capability</h3>
+          <p>Certification is not evidence that capability has been established.</p>
+          <span class="idea-action"><span class="link-label">Read the post</span><span class="link-arrow" aria-hidden="true">→</span></span>
+        </a>
         <a class="idea-card" href="/papers/no-head-works-alone/">
           <p class="eyebrow">Paper</p>
           <Image src={bowtiePreview} alt="Judgments converge on one overloaded decision maker; direction spreads outward." widths={[320, 480, 640]} sizes="(max-width: 680px) calc(100vw - 96px), 280px" loading="lazy" />
           <h3>No Head Works Alone</h3>
           <p>Understanding overloaded decision-making.</p>
-          <span class="idea-action"><span class="link-label">Read the paper</span><span class="link-arrow" aria-hidden="true">→</span></span>
-        </a>
-        <a class="idea-card" href="/papers/how-3back-approaches-learning/">
-          <p class="eyebrow">Paper</p>
-          <Image src={learningPreview} alt="How 3Back Approaches Learning: Judgment, Action, Evidence." widths={[320, 480, 640]} sizes="(max-width: 680px) calc(100vw - 96px), 280px" loading="lazy" />
-          <h3>How 3Back Approaches Learning</h3>
-          <p>How understanding develops into capability through judgment, action, and evidence.</p>
           <span class="idea-action"><span class="link-label">Read the paper</span><span class="link-arrow" aria-hidden="true">→</span></span>
         </a>
         <a class="idea-card" href="/ideas/#books-title">
@@ -287,6 +287,7 @@ h1 { margin-bottom: 22px; }
 .idea-card h3 { margin: 0 0 20px; }
 .idea-card > p:not(.eyebrow) { font-size: var(--type-body); line-height: var(--leading-card); }
 .idea-card img { display: block; width: 100%; height: auto; aspect-ratio: 3 / 2; object-fit: contain; margin-bottom: 20px; }
+.idea-card .post-preview { object-fit: cover; }
 .idea-action { display: flex; align-items: center; justify-content: space-between; gap: 12px; margin-top: auto; padding-top: 20px; color: var(--amber-text); font-weight: var(--font-weight-bold); }
 .idea-card:hover .link-arrow, .idea-card:focus-visible .link-arrow { transform: translateX(3px); }
 @media (max-width: 1050px) {

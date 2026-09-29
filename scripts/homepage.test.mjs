@@ -55,13 +55,13 @@ test('four available ideas replace the closing conversation band', () => {
  const destinations=links(ideas).map(l=>l.href);
  assert.equal(destinations.length,4);
  assert.ok(destinations[0].startsWith('/tales-of-the-grip/'));
- assert.deepEqual(destinations.slice(1),['/papers/no-head-works-alone/','/papers/how-3back-approaches-learning/','/ideas/#books-title']);
+ assert.deepEqual(destinations.slice(1),['/ideas/certification-is-not-capability/','/papers/no-head-works-alone/','/ideas/#books-title']);
  assert.match(ideas,/<img\b[^>]*alt="Preview of /);
  assert.ok(!main.includes('id="conversation"'));
  assert.equal((ideas.match(/<img\b/g)||[]).length,4);
  assert.ok(text(ideas).includes('Operational Grip · Coming soon.'));
  assert.ok(text(ideas).includes('Understanding overloaded decision-making.'));
- assert.ok(text(ideas).includes('How understanding develops into capability through judgment, action, and evidence.'));
+ assert.ok(text(ideas).includes('Certification is not evidence that capability has been established.'));
  assert.ok(html('ideas/').includes('id="books-title"'));
 });
 
