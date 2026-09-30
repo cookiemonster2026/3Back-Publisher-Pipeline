@@ -12,6 +12,19 @@
       "reason": "changed",
       "evidence": "Approved source copy, supplied figure, caption, sources, related links, and exclusions were implemented. Independent live review remains required after release.",
       "suiteId": "2026-09-30-1258"
+    },
+    {
+      "item": "001",
+      "condition": "The Shortage That Cannot Hide publishes the approved article copy, figure, sources, and related links at /ideas/the-shortage-that-cannot-hide/ without a figure caption, byline, version label, PDF control, form, or added call to action.",
+      "status": "unverified",
+      "environment": "production",
+      "url": "https://3back.com/ideas/the-shortage-that-cannot-hide/",
+      "checkedAt": "2026-09-30T14:46:45.6581503-05:00",
+      "reviewer": "Codex Builder",
+      "reviewerType": "agent",
+      "reason": "condition-changed",
+      "evidence": "The approved short-path revision removes the figure caption, replaces the Census employment sentence with the commitment-risk paragraph, and replaces the three leader questions with the automotive example while preserving the locked ending. Independent live review remains required after release.",
+      "suiteId": "2026-09-30-1258"
     }
   ]
 }

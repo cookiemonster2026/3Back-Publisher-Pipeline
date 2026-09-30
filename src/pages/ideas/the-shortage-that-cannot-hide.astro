@@ -22,7 +22,6 @@ import { pageSeo } from "../../seo/registry.mjs";
 					sizes="(max-width: 808px) calc(100vw - 48px), 760px"
 					loading="eager"
 				/>
-				<figcaption>A data center can still be running while nobody at the rack can see what an apparently local cable change will affect.</figcaption>
 			</figure>
 
 			<section class="reading prose" aria-label="The shortage that cannot hide">
@@ -85,7 +84,8 @@ import { pageSeo } from "../../seo/registry.mjs";
 				<p>A data center can still be running while nobody at the rack can see what an apparently local cable change will affect. The hall still runs. The dependency is no longer local.</p>
 				<p>This is where capital can become an accelerant. Investors put capital into a company because they expect the business to grow and the return on that capital to compound. But capital can allow headcount, systems, process, and authority to expand much faster than domain judgment can develop.</p>
 				<blockquote>Capital is supposed to compound returns. Premature scaling can compound the mess instead.</blockquote>
-				<p>Research using U.S. Census Bureau microdata finds that VC-backed firms can experience large employment gains after funding. The point is not that investment causes poor execution. It is that capital can remove a constraint that once forced the organization to learn before it multiplied.</p>
+				<p>Research on startup scaling describes the hazard as commitment risk: resources are committed before enough learning has occurred.</p>
+				<p>The point is not that investment causes poor execution. It is that capital can remove a constraint that once forced the organization to learn before it multiplied.</p>
 				<blockquote>You can fund growth much faster than you can develop judgment.</blockquote>
 			</section>
 
@@ -132,12 +132,8 @@ import { pageSeo } from "../../seo/registry.mjs";
 				<p>The skilled-trades shortage deserves attention on its own. Executives should also pay attention to what it reveals.</p>
 				<p>The trades operate close enough to consequence that weak capability becomes difficult to conceal. Knowledge-work organizations have more room to avoid that evidence. They can mistake fluency for judgment, credentials for capability, activity for progress, and complexity for sophistication. Weak decisions can become infrastructure while the evidence of those decisions is cleaned up as it moves through the organization.</p>
 				<p>For a while, everything may look fine.</p>
-				<p>A leader does not need a new program to start looking. Three questions can expose where the problem may already exist:</p>
-				<ul class="leader-questions">
-					<li>Where does a decision meet consequence in days, not quarters?</li>
-					<li>Which systems would we hesitate to remove because nobody is sure what they touch?</li>
-					<li>Where did we treat a credential, a title, or a polished artifact as proof of performance?</li>
-				</ul>
+				<p>A leader does not need a new program to start looking. Consider an automotive service operation. Most of us know cars well enough to feel familiar with the domain. Then a vehicle arrives because the driver's seat no longer behaves correctly. The seat motor works. The switches work. The problem may begin somewhere else entirely. A Bluetooth-based phone key identifies the driver, software associates that identity with a saved profile, other electronic modules communicate that state across the vehicle network, and the seat controller acts on it. A failure somewhere in that chain can show up at the seat even though nothing is wrong with the seat itself.</p>
+				<p>Someone familiar with dealerships and automobiles can look at that problem and feel reasonably confident about what needs fixing. Domain expertise changes the question: Which dependency actually produced the behavior, and what else moves if we change it?</p>
 				<p>The more important question is not simply whether the organization has enough people.</p>
 				<p>It is:</p>
 				<blockquote>Where are we relying on evidence that someone was prepared instead of evidence that they can perform?</blockquote>
@@ -180,13 +176,12 @@ import { pageSeo } from "../../seo/registry.mjs";
 	h2 { margin: 12px 0 24px; font-size: clamp(1.85rem, 3vw, 2.65rem); line-height: 1.18; }
 	a { font-weight: 600; text-decoration-thickness: 2px; text-decoration-color: var(--amber); text-underline-offset: 5px; }
 	a:focus-visible { outline: 3px solid currentColor; outline-offset: 5px; }
-	blockquote, .leader-questions { border-left: 4px solid var(--amber); padding: 8px 0 8px 26px; margin: 32px 0; font-size: 1.35rem; font-weight: 600; line-height: 1.5; }
+	blockquote { border-left: 4px solid var(--amber); padding: 8px 0 8px 26px; margin: 32px 0; font-size: 1.35rem; font-weight: 600; line-height: 1.5; }
 	.post-figure { margin-top: 0; margin-bottom: 64px; }
 	.post-figure img { display: block; width: 100%; height: auto; }
 	figcaption { margin-top: 16px; font-size: 1rem; font-weight: 600; line-height: 1.5; }
 	.prose ol { margin: 0 0 26px; padding-left: 24px; }
 	.prose li { margin-bottom: 14px; padding-left: 4px; }
-	.leader-questions { list-style: none; }
 	.sources { padding-top: 8px; font-size: 1rem; }
 	.sources li { margin-bottom: 18px; }
 	.post-close { padding: 30px 0 80px; border-top: 1px solid var(--charcoal); }
