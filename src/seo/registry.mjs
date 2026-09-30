@@ -13,7 +13,7 @@ const organizationId = `${SITE_ORIGIN}/#organization`;
 const organizationSameAs = [
 	"https://www.linkedin.com/company/3back-llc/",
 	"https://www.facebook.com/3back",
-	"https://x.com/scrum_coach",
+	"https://x.com/3backhq",
 	"https://www.youtube.com/user/scrumtv",
 	"https://apps.dfi.wi.gov/apps/CorpSearch/Details.aspx?entityID=T051200&hash=587244409",
 ];
@@ -1810,6 +1810,25 @@ export const pageSeo = Object.freeze({
 			image: {
 				src: "/social/certification-is-not-capability.jpg",
 				alt: "A man in a lab coat labeled I AM CERTIFIED opens a gated enclosure of lions with a keycard.",
+				width: 1200,
+				height: 630,
+				type: "image/jpeg",
+			},
+		},
+	},
+	"/ideas/the-shortage-that-cannot-hide": {
+		status: "complete",
+		path: "/ideas/the-shortage-that-cannot-hide",
+		title: "The Shortage That Cannot Hide | 3Back",
+		description: "The skilled-trades shortage makes missing capability visible. Knowledge work can hide the same deficit until it becomes infrastructure.",
+		indexability: "index, follow",
+		social: {
+			title: "The Shortage That Cannot Hide | 3Back",
+			description: "The skilled-trades shortage makes missing capability visible. Knowledge work can hide the same deficit until it becomes infrastructure.",
+			type: "article",
+			image: {
+				src: "/social/the-shortage-that-cannot-hide.jpg",
+				alt: "A technician kneels at a server rack and seats an orange cable under a dense overhead run of labeled cables, including a tag that reads DO NOT UNPLUG.",
 				width: 1200,
 				height: 630,
 				type: "image/jpeg",

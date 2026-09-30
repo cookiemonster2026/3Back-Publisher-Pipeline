@@ -1,0 +1,17 @@
+{
+  "records": [
+    {
+      "item": "001",
+      "condition": "The Shortage That Cannot Hide publishes the approved article copy, figure, caption, sources, and related links at /ideas/the-shortage-that-cannot-hide/ without a byline, version label, PDF control, form, or added call to action.",
+      "status": "unverified",
+      "environment": "production",
+      "url": "https://3back.com/ideas/the-shortage-that-cannot-hide/",
+      "checkedAt": "2026-09-30T12:58:04.0401927-05:00",
+      "reviewer": "Codex Builder",
+      "reviewerType": "agent",
+      "reason": "changed",
+      "evidence": "Approved source copy, supplied figure, caption, sources, related links, and exclusions were implemented. Independent live review remains required after release.",
+      "suiteId": "2026-09-30-1258"
+    }
+  ]
+}

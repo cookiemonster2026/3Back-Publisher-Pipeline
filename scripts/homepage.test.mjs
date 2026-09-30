@@ -85,7 +85,7 @@ test('shared footer preserves approved groups and the PO3 exception', () => {
   const headings=[...markup.matchAll(/class="footer-heading"[^>]*>([^<]+)<\/p>/g)].map(m=>m[1]);
   assert.deepEqual(headings,['Explore','Engage','Learn','Company']);
   const hrefs=links(markup).map(l=>l.href);
-  for(const href of ['/grip-check/','/workshops/','/domain-guides/','/privacy-policy/','/course-policy/','https://www.linkedin.com/company/3back-llc/','https://www.facebook.com/3back','https://x.com/scrum_coach']) assert.ok(hrefs.includes(href),href);
+  for(const href of ['/grip-check/','/workshops/','/domain-guides/','/privacy-policy/','/course-policy/','https://www.linkedin.com/company/3back-llc/','https://www.facebook.com/3back','https://x.com/3backhq']) assert.ok(hrefs.includes(href),href);
   assert.equal(hrefs.includes('https://path.3back.com'),route!=='training/product-ownership-3/');
  }
 });
