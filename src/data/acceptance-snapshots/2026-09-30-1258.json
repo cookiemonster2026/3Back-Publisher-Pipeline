@@ -38,6 +38,18 @@
       "reason": "condition-changed",
       "evidence": "The approved short-path revision replaces the four-link closer with Explore next, places the Learning path above the stronger Grip Check band, and leaves exactly three links under Related. Independent live review remains required after release.",
       "suiteId": "2026-09-30-1258"
+    },
+    {
+      "item": "001",
+      "condition": "The Shortage That Cannot Hide publishes the approved article at /ideas/the-shortage-that-cannot-hide/ with the figure, sources, Explore next (Learning then Grip Check), and three related links, and without a figure caption, byline, version label, PDF control, form, or Start a Conversation.",
+      "status": "passed",
+      "environment": "production",
+      "url": "https://3back.com/ideas/the-shortage-that-cannot-hide/",
+      "checkedAt": "2026-10-01T08:31:57.2476944-05:00",
+      "reviewer": "Douglas Shimp",
+      "reviewerType": "human",
+      "evidence": "Douglas explicitly instructed that the acceptance test for this suite and package be marked Pass and that the suite be accepted and closed.",
+      "suiteId": "2026-09-30-1258"
     }
   ]
 }

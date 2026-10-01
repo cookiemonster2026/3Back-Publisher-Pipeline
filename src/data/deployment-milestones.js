@@ -40,6 +40,7 @@ export const deploymentMilestones = [
 	{"completedAt":"2026-09-23T17:00:13.756Z","description":"Close acceptance closeout housekeeping suite"},
 	{"completedAt":"2026-09-23T17:00:14.683Z","description":"Close Operational Grip AI illustration suite"},
 	{"completedAt":"2026-09-23T16:28:05.5272516-05:00","description":"Publish Tales strips 200, 201, and 202"},
+	{"completedAt":"2026-10-01T08:31:57.2476944-05:00","description":"Publish and close The Shortage That Cannot Hide"},
 ];
 
 // Preserve the existing archive while adding future completed milestones.
