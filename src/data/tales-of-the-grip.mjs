@@ -162,6 +162,24 @@ export const talesStrips = Object.freeze([
 		}),
 		parts: Object.freeze([]),
 	}),
+	Object.freeze({
+		status: "published",
+		stripNumber: 203,
+		slug: "scaling-expertise",
+		path: "/tales-of-the-grip/scaling-expertise",
+		title: "Scaling Expertise",
+		datePublished: "2026-10-02",
+		dateLabel: "October 2, 2026",
+		imageAlt: "Tales of the Grip strip titled Scaling Expertise. A manager asks two observers to study Cal and make compounding faster. They take notes without interrupting him, then define a standardized intake, formulate, check, and release workflow. The process completes but flags Cal’s non-standard strength as an exception.",
+		seoDescription: "Scaling Expertise. A Tales of the Grip editorial cartoon about confusing process standardization with the transfer of expert judgment.",
+		socialImage: Object.freeze({
+			src: "/social/tales-of-the-grip/scaling-expertise.png",
+			width: 1024,
+			height: 1536,
+			type: "image/png",
+		}),
+		parts: Object.freeze([]),
+	}),
 ]);
 
 export const publishedTalesStrips = Object.freeze(

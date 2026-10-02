@@ -9,6 +9,7 @@ import sixLayersOfGovernancePart3 from "../assets/tales-of-the-grip/six-layers-o
 import trueAgilityNowFaster from "../assets/tales-of-the-grip/true-agility-now-faster.png";
 import weRemovedTheRole from "../assets/tales-of-the-grip/we-removed-the-role.png";
 import virtualProductTrainingForCustomers from "../assets/tales-of-the-grip/virtual-product-training-for-customers.png";
+import scalingExpertise from "../assets/tales-of-the-grip/scaling-expertise.png";
 import allHandsOnDirectionPreview from "../assets/tales-of-the-grip/previews/all-hands-on-direction.png";
 import aiBudgetHasLandedPreview from "../assets/tales-of-the-grip/previews/the-ai-budget-has-landed.png";
 import factoryAllGreenPreview from "../assets/tales-of-the-grip/previews/factory-all-green.png";
@@ -17,6 +18,7 @@ import sixLayersOfGovernancePreview from "../assets/tales-of-the-grip/previews/s
 import trueAgilityNowFasterPreview from "../assets/tales-of-the-grip/previews/true-agility-now-faster.png";
 import weRemovedTheRolePreview from "../assets/tales-of-the-grip/previews/we-removed-the-role.png";
 import virtualProductTrainingForCustomersPreview from "../assets/tales-of-the-grip/previews/virtual-product-training-for-customers.png";
+import scalingExpertisePreview from "../assets/tales-of-the-grip/previews/scaling-expertise.png";
 
 export const talesStripImages: Readonly<Record<string, ImageMetadata>> = Object.freeze({
 	"all-hands-on-direction": allHandsOnDirection,
@@ -27,6 +29,7 @@ export const talesStripImages: Readonly<Record<string, ImageMetadata>> = Object.
 	"true-agility-now-faster": trueAgilityNowFaster,
 	"we-removed-the-role": weRemovedTheRole,
 	"virtual-product-training-for-customers": virtualProductTrainingForCustomers,
+	"scaling-expertise": scalingExpertise,
 });
 
 export const talesStripPartImages: Readonly<Record<string, ImageMetadata>> = Object.freeze({
@@ -44,4 +47,5 @@ export const talesStripHomepagePreviews: Readonly<Record<string, ImageMetadata>>
 	"true-agility-now-faster": trueAgilityNowFasterPreview,
 	"we-removed-the-role": weRemovedTheRolePreview,
 	"virtual-product-training-for-customers": virtualProductTrainingForCustomersPreview,
+	"scaling-expertise": scalingExpertisePreview,
 });
