@@ -80,5 +80,40 @@ export const events = [
 		"date": "Nov 21–22",
 		"days": "Sat–Sun",
 		"url": "https://event.3back.com/certified-scrummaster-november-21-22"
+	},
+	{
+		"month": "December 2026",
+		"course": "Certified ScrumMaster®",
+		"mark": "(CSM®)",
+		"seal": {
+			"src": "/assets/events/sa-csm.png",
+			"alt": "Scrum Alliance Certified ScrumMaster certification seal"
+		},
+		"date": "Dec 5–6",
+		"days": "Sat–Sun",
+		"url": "https://event.3back.com/certified-scrummaster-december-5-6"
+	},
+	{
+		"month": "December 2026",
+		"course": "Advanced Certified ScrumMaster®",
+		"mark": "(A-CSM®)",
+		"seal": {
+			"src": "/assets/events/sa-adv_csm.png",
+			"alt": "Scrum Alliance Advanced Certified ScrumMaster certification seal"
+		},
+		"date": "Dec 10–11",
+		"days": "Thu–Fri",
+		"url": "https://event.3back.com/advanced-certified-scrummaster-december-10-11"
+	},
+	{
+		"month": "December 2026",
+		"course": "Scrum Better with Kanban",
+		"seal": {
+			"src": "/assets/events/ku-certified-training-seal.png",
+			"alt": "Kanban University Certified Kanban Training seal"
+		},
+		"date": "Dec 12",
+		"days": "Sat",
+		"url": "https://event.3back.com/scrum-better-with-kanban-december-12"
 	}
 ];
