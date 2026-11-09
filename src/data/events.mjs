@@ -1,17 +1,6 @@
 export const events = [
 	{
 		"month": "November 2026",
-		"course": "Scrum Better with Kanban",
-		"seal": {
-			"src": "/assets/events/ku-certified-training-seal.png",
-			"alt": "Kanban University Certified Kanban Training seal"
-		},
-		"date": "Nov 7",
-		"days": "Sat",
-		"url": "https://event.3back.com/scrum-better-with-kanban-november-7-2026"
-	},
-	{
-		"month": "November 2026",
 		"course": "Certified ScrumMaster®",
 		"mark": "(CSM®)",
 		"seal": {
