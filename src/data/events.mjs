@@ -1,18 +1,6 @@
 export const events = [
 	{
 		"month": "November 2026",
-		"course": "Certified ScrumMaster®",
-		"mark": "(CSM®)",
-		"seal": {
-			"src": "/assets/events/sa-csm.png",
-			"alt": "Scrum Alliance Certified ScrumMaster certification seal"
-		},
-		"date": "Nov 10–11",
-		"days": "Tue–Wed",
-		"url": "https://event.3back.com/certified-scrummaster-november-10-11"
-	},
-	{
-		"month": "November 2026",
 		"course": "Advanced Certified ScrumMaster®",
 		"mark": "(A-CSM®)",
 		"seal": {
